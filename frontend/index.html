@@ -24,6 +24,10 @@
                 <button class="tour-tab" data-tour="wta">WTA Tour</button>
             </div>
             <div class="header-actions">
+                <button class="h2h-btn" onclick="window.TennisApp.openH2HModal()" title="Player Head-to-Head Comparison">
+                    <i class="fas fa-users"></i>
+                    H2H
+                </button>
                 <span class="live-indicator">
                     <span class="live-dot"></span>
                     LIVE
@@ -157,6 +161,92 @@
                 <span>Loading Tennis Dashboard...</span>
             </div>
         </div>
+
+        <!-- Match Modal (Click-based) -->
+        <div class="match-modal" id="matchModal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+                <div class="modal-header">
+                    <div class="modal-tournament"></div>
+                    <div class="modal-round"></div>
+                    <div class="modal-round-points"></div>
+                </div>
+                <div class="modal-players">
+                    <div class="modal-player" id="modalPlayer1">
+                        <img class="modal-player-img" src="" alt="">
+                        <span class="modal-player-name"></span>
+                        <span class="modal-player-details"></span>
+                    </div>
+                    <span class="modal-vs">VS</span>
+                    <div class="modal-player" id="modalPlayer2">
+                        <img class="modal-player-img" src="" alt="">
+                        <span class="modal-player-name"></span>
+                        <span class="modal-player-details"></span>
+                    </div>
+                </div>
+                <div class="modal-score"></div>
+            </div>
+        </div>
+
+        <!-- Credit Footer -->
+        <div class="credit-footer">
+            Created by Pasindu Ranasinghe
+        </div>
+    </div>
+
+    <!-- Match Statistics Modal -->
+    <div class="modal-overlay" id="matchStatsModal">
+        <div class="modal-content match-stats-modal">
+            <div class="modal-header">
+                <h3>Match Statistics</h3>
+                <button class="close-modal" onclick="window.TennisApp.Scores.closeMatchStats()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="matchStatsContent">
+                <!-- Stats content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- H2H Player Comparison Modal -->
+    <div class="modal-overlay" id="h2hModal">
+        <div class="modal-content h2h-modal">
+            <div class="modal-header">
+                <h3>Head-to-Head Comparison</h3>
+                <button class="close-modal" onclick="window.TennisApp.closeH2HModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="h2h-search">
+                    <div class="player-search-box">
+                        <label>Player 1</label>
+                        <input type="text" id="h2hPlayer1" placeholder="Search player..." class="h2h-input">
+                        <div class="search-dropdown" id="h2hPlayer1Results"></div>
+                    </div>
+                    <div class="vs-divider">VS</div>
+                    <div class="player-search-box">
+                        <label>Player 2</label>
+                        <input type="text" id="h2hPlayer2" placeholder="Search player..." class="h2h-input">
+                        <div class="search-dropdown" id="h2hPlayer2Results"></div>
+                    </div>
+                </div>
+                <div id="h2hResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Champion Celebration Modal -->
+    <div class="modal-overlay" id="championModal">
+        <div class="modal-content champion-modal">
+            <div class="champion-celebration" id="championContent">
+                <!-- Champion content will be inserted here -->
+            </div>
+            <button class="close-modal champion-close" onclick="window.TennisApp.BracketModule.closeChampionModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
     </div>
 
     <!-- JavaScript Files -->
@@ -165,5 +255,6 @@
     <script src="js/rankings.js"></script>
     <script src="js/tournaments.js"></script>
     <script src="js/bracket.js"></script>
+    <script src="js/h2h.js"></script>
 </body>
 </html>

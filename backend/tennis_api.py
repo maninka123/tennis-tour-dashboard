@@ -1,6 +1,98 @@
 """
 Tennis API - Data fetching module for live tennis data
 Fetches data from various sources including web scraping and APIs
+
+==============================================
+REAL ATP/WTA API INTEGRATION GUIDE
+==============================================
+
+This file currently uses demo data. To integrate real live tennis data, 
+you can use the following APIs and data sources:
+
+1. OFFICIAL ATP/WTA APIs (Requires Partnership/License)
+   - ATP World Tour API: https://www.atptour.com/
+   - WTA Tennis API: https://www.wtatennis.com/
+   - These require official partnerships and licensing agreements
+   
+2. SPORTRADAR API (Commercial - Paid)
+   - Website: https://sportradar.com/
+   - Coverage: Comprehensive ATP/WTA data including live scores, rankings, player stats
+   - Pricing: Enterprise-level, contact for quotes
+   - Endpoints: Live scores, match statistics, player profiles, H2H records
+   - Documentation: https://developer.sportradar.com/tennis/reference/intro
+   
+3. THE ODDS API (Free Tier Available)
+   - Website: https://the-odds-api.com/
+   - Coverage: Live scores, upcoming matches (limited tennis coverage)
+   - Free Tier: 500 requests/month
+   - API Key: Register at https://the-odds-api.com/account/
+   - Endpoints: /v4/sports/tennis/scores, /v4/sports/tennis/odds
+   
+4. RAPID API - Tennis Live Data (Paid)
+   - Website: https://rapidapi.com/
+   - Search for "tennis" to find multiple providers
+   - Popular: Tennis Live Data API, Ultimate Tennis API
+   - Pricing: Starting from $10/month
+   - Coverage: Live scores, rankings, tournaments, player stats
+   
+5. SPORTSDATA.IO (Paid)
+   - Website: https://sportsdata.io/
+   - Coverage: Comprehensive tennis data
+   - Pricing: Starting from $50/month
+   - Endpoints: Live scores, schedules, player stats, odds
+   
+6. WEB SCRAPING (Free but Limited)
+   - Source: https://www.flashscore.com/tennis/
+   - Source: https://www.tennislive.net/
+   - Note: Check Terms of Service, may violate TOS
+   - Libraries: BeautifulSoup, Selenium, Scrapy
+   - Challenges: Website structure changes, rate limiting, legal concerns
+
+IMPLEMENTATION EXAMPLES:
+
+# Example 1: Using Sportradar API
+def fetch_live_scores_sportradar(self, tour='atp'):
+    api_key = 'YOUR_SPORTRADAR_API_KEY'
+    endpoint = f'https://api.sportradar.us/tennis/{tour}/v3/en/schedules/live/schedule.json'
+    response = requests.get(endpoint, params={'api_key': api_key})
+    data = response.json()
+    return self._parse_sportradar_data(data)
+
+# Example 2: Using The Odds API
+def fetch_live_scores_odds_api(self):
+    api_key = 'YOUR_ODDS_API_KEY'
+    endpoint = 'https://api.the-odds-api.com/v4/sports/tennis/scores'
+    response = requests.get(endpoint, params={'apiKey': api_key, 'daysFrom': 1})
+    return response.json()
+
+# Example 3: Web Scraping FlashScore
+def scrape_flashscore(self):
+    url = 'https://www.flashscore.com/tennis/'
+    response = self.session.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    # Parse match data from HTML structure
+    matches = soup.find_all('div', class_='event__match')
+    return self._parse_flashscore_matches(matches)
+
+RECOMMENDED APPROACH:
+1. Start with The Odds API (free tier for testing)
+2. If you need more data, upgrade to Rapid API or SportsData.io
+3. For production with high traffic, consider Sportradar
+4. Always cache responses to minimize API calls and costs
+
+DATA STRUCTURE REQUIREMENTS:
+- Live Scores: match_id, tournament, round, player1, player2, score, status, serving
+- Rankings: rank, player_name, country, points, tournaments_played
+- Tournaments: id, name, category, surface, dates, location, draw_size
+- Player Stats: aces, double_faults, first_serve%, break_points, winners, errors
+- H2H: matches_played, wins_p1, wins_p2, recent_matches, surfaces
+
+SECURITY NOTES:
+- Store API keys in environment variables (.env file)
+- Never commit API keys to version control
+- Use rate limiting to avoid exceeding API quotas
+- Implement proper error handling for API failures
+- Set up monitoring for API usage and costs
 """
 
 import requests

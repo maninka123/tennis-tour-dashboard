@@ -33,7 +33,7 @@ pip install -r requirements.txt --quiet
 
 # Start the backend server in background
 echo "🚀 Starting backend server..."
-python app.py &
+PORT=5001 python app.py &
 BACKEND_PID=$!
 
 # Wait for server to start
@@ -51,7 +51,7 @@ echo ""
 echo "✅ Dashboard is running!"
 echo ""
 echo "   Frontend: http://localhost:8080"
-echo "   Backend:  http://localhost:5000"
+echo "   Backend:  http://localhost:5001"
 echo ""
 echo "Press Ctrl+C to stop all servers"
 

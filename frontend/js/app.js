@@ -7,8 +7,8 @@
 // Configuration
 // ============================================
 const CONFIG = {
-    API_BASE_URL: 'http://localhost:5000/api',
-    WS_URL: 'http://localhost:5000',
+    API_BASE_URL: 'http://localhost:5001/api',
+    WS_URL: 'http://localhost:5001',
     UPDATE_INTERVAL: 30000, // 30 seconds
     TOURNAMENT_COLORS: {
         'grand_slam': '#9B59B6',
@@ -125,9 +125,24 @@ const Utils = {
      * Generate player image placeholder URL
      */
     getPlayerImage(playerId, tour = 'atp') {
-        // Use UI Avatars for placeholder images
-        // In production, replace with actual player image URLs
-        return `https://ui-avatars.com/api/?name=${playerId}&background=random&size=100`;
+        // Use placeholder service that works reliably
+        // Generate unique color based on player ID
+        const colors = ['3498db', '9b59b6', 'e74c3c', 'f39c12', '1abc9c', '34495e', '16a085', 'd35400'];
+        const color = colors[playerId % colors.length];
+        return `https://via.placeholder.com/150/${color}/ffffff?text=P${playerId}`;
+    },
+
+    /**
+     * Format player name to A.LastName format
+     */
+    formatPlayerName(fullName) {
+        if (!fullName) return '';
+        const parts = fullName.split(' ');
+        if (parts.length < 2) return fullName;
+        // Get first initial and last name
+        const firstInitial = parts[0][0];
+        const lastName = parts.slice(1).join(' ');
+        return `${firstInitial}. ${lastName}`;
     },
 
     /**
@@ -339,11 +354,30 @@ const EventHandlers = {
             AppState.selectedTournament = null;
         });
 
+        // Match card click handlers
+        document.addEventListener('click', (e) => {
+            const matchCard = e.target.closest('.match-card');
+            if (matchCard) {
+                const matchId = matchCard.dataset.matchId;
+                if (matchId) {
+                    ScoresModule.showMatchStats(matchId);
+                }
+            }
+        });
+
+        // Modal overlay click to close
+        document.addEventListener('click', (e) => {
+            if (e.target.id === 'matchStatsModal') {
+                ScoresModule.closeMatchStats();
+            }
+        });
+
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 DOM.tournamentDetailsPanel.classList.remove('visible');
                 DOM.matchPopup.classList.remove('visible');
+                ScoresModule.closeMatchStats();
             }
         });
     },
@@ -450,6 +484,28 @@ const App = {
         ScoresModule.renderRecentMatches();
         RankingsModule.render();
         TournamentsModule.render();
+    },
+
+    /**
+     * Open H2H comparison modal
+     */
+    openH2HModal() {
+        const modal = document.getElementById('h2hModal');
+        if (modal) {
+            H2HModule.reset();
+            modal.classList.add('active');
+            H2HModule.init();
+        }
+    },
+
+    /**
+     * Close H2H comparison modal
+     */
+    closeH2HModal() {
+        const modal = document.getElementById('h2hModal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
     }
 };
 
@@ -466,5 +522,10 @@ window.TennisApp = {
     AppState,
     Utils,
     API,
-    DOM
+    DOM,
+    Scores: ScoresModule,
+    BracketModule: BracketModule,
+    H2HModule: H2HModule,
+    openH2HModal: App.openH2HModal,
+    closeH2HModal: App.closeH2HModal
 };

@@ -134,14 +134,16 @@ const RankingsModule = {
             movementHTML = `<i class="fas fa-minus"></i>`;
         }
 
-        // Career high badge
-        const careerHighBadge = player.is_career_high 
-            ? '<span class="career-high-badge">CH</span>' 
-            : '';
+        // Career high - highlight in yellow if at career high
+        const careerHighClass = player.is_career_high ? 'career-high-number' : '';
+        
+        // Check if player is currently playing (for demo, make some top players "playing")
+        const isPlaying = player.rank <= 10 && Math.random() > 0.6;
+        const playingClass = isPlaying ? 'playing' : '';
 
         // Only show image for top 200 (already limited)
         const showImage = player.rank <= 200;
-        const imageClass = player.is_career_high ? 'career-high' : '';
+        const imageClass = `${playingClass}`;
 
         return `
             <div class="ranking-item" data-player-id="${player.id}">
@@ -162,12 +164,11 @@ const RankingsModule = {
                     <div class="ranking-name">
                         <span class="country-flag">${Utils.getFlag(player.country)}</span>
                         ${player.name}
-                        ${careerHighBadge}
                     </div>
                     <div class="ranking-details">
                         <span>Age: ${player.age}</span>
                         <span>•</span>
-                        <span>CH: ${player.career_high}</span>
+                        <span>CH: <span class="${careerHighClass}">${player.career_high}</span></span>
                     </div>
                 </div>
                 <div class="ranking-points">

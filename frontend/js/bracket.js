@@ -10,9 +10,55 @@ const BracketModule = {
     currentBracket: null,
 
     /**
+     * Points by round for different tournament categories
+     */
+    pointsByRound: {
+        grand_slam: {
+            'R128': 10, 'R64': 45, 'R32': 90, 'R16': 180, 'QF': 360, 'SF': 720, 'F': 1200, 'W': 2000
+        },
+        masters_1000: {
+            'R64': 10, 'R32': 45, 'R16': 90, 'QF': 180, 'SF': 360, 'F': 600, 'W': 1000
+        },
+        atp_500: {
+            'R32': 0, 'R16': 25, 'QF': 50, 'SF': 100, 'F': 200, 'W': 500
+        },
+        atp_250: {
+            'R32': 0, 'R16': 13, 'QF': 25, 'SF': 50, 'F': 100, 'W': 250
+        },
+        finals: {
+            'RR': 200, 'SF': 400, 'F': 500, 'W': 1500
+        }
+    },
+
+    /**
+     * Prize money by round (in USD)
+     */
+    prizeMoneyByRound: {
+        grand_slam: {
+            'R128': '$100K', 'R64': '$180K', 'R32': '$300K', 'R16': '$530K', 
+            'QF': '$925K', 'SF': '$1.7M', 'F': '$3M', 'W': '$3.5M'
+        },
+        masters_1000: {
+            'R64': '$25K', 'R32': '$52K', 'R16': '$105K', 'QF': '$215K', 
+            'SF': '$440K', 'F': '$880K', 'W': '$1.4M'
+        },
+        atp_500: {
+            'R32': '$12K', 'R16': '$25K', 'QF': '$52K', 'SF': '$110K', 
+            'F': '$225K', 'W': '$450K'
+        },
+        atp_250: {
+            'R32': '$7K', 'R16': '$14K', 'QF': '$28K', 'SF': '$57K', 
+            'F': '$115K', 'W': '$230K'
+        },
+        finals: {
+            'RR': '$350K', 'SF': '$1.2M', 'F': '$2.5M', 'W': '$5M'
+        }
+    },
+
+    /**
      * Demo bracket data generator
      */
-    generateDemoBracket(tournamentId) {
+    generateDemoBracket(tournamentId, category) {
         const { AppState } = window.TennisApp;
         const tour = AppState.currentTour;
         
@@ -23,30 +69,100 @@ const BracketModule = {
             : TournamentsModule.demoTournaments.wta;
         
         tournament = tournaments.find(t => t.id == tournamentId);
+        const tournamentCategory = category || tournament?.category || 'atp_250';
         
         // Generate players for bracket
         const players = tour === 'atp' 
             ? this.generateATPPlayers() 
             : this.generateWTAPlayers();
 
+        // Special handling for Finals
+        if (tournamentCategory === 'finals') {
+            return this.generateFinalsBracket(tournament, players, tour);
+        }
+
         // Determine draw size based on category
         let drawSize = 32;
-        if (tournament?.category === 'grand_slam') {
+        if (tournamentCategory === 'grand_slam') {
             drawSize = 128;
-        } else if (tournament?.category === 'masters_1000') {
+        } else if (tournamentCategory === 'masters_1000') {
             drawSize = 64;
         }
 
         const rounds = this.getRounds(drawSize);
-        const matches = this.generateBracketMatches(players, rounds, drawSize);
+        const matches = this.generateBracketMatches(players, rounds, drawSize, tournamentCategory);
 
         return {
             tournament_id: tournamentId,
             tournament_name: tournament?.name || 'Tournament',
-            tournament_category: tournament?.category || 'atp_250',
+            tournament_category: tournamentCategory,
             draw_size: drawSize,
             rounds: rounds,
-            matches: matches
+            matches: matches,
+            is_finals: false
+        };
+    },
+
+    /**
+     * Generate Finals bracket with group stage
+     */
+    generateFinalsBracket(tournament, players, tour) {
+        const topPlayers = players.slice(0, 8);
+        
+        // Create groups
+        const groups = [
+            { name: 'Green Group', players: topPlayers.slice(0, 4) },
+            { name: 'Red Group', players: topPlayers.slice(4, 8) }
+        ];
+
+        // Semi-finals (top 2 from each group)
+        const semiFinals = [
+            {
+                id: 101,
+                round: 'SF',
+                match_number: 1,
+                player1: groups[0].players[0],
+                player2: groups[1].players[1],
+                winner: groups[0].players[0],
+                score: { sets: [{ p1: 6, p2: 4 }, { p1: 6, p2: 3 }] },
+                status: 'finished'
+            },
+            {
+                id: 102,
+                round: 'SF',
+                match_number: 2,
+                player1: groups[1].players[0],
+                player2: groups[0].players[1],
+                winner: groups[1].players[0],
+                score: { sets: [{ p1: 7, p2: 6 }, { p1: 6, p2: 4 }] },
+                status: 'finished'
+            }
+        ];
+
+        // Final
+        const final = {
+            id: 103,
+            round: 'F',
+            match_number: 1,
+            player1: groups[0].players[0],
+            player2: groups[1].players[0],
+            winner: groups[0].players[0],
+            score: { sets: [{ p1: 6, p2: 3 }, { p1: 7, p2: 5 }] },
+            status: 'finished'
+        };
+
+        return {
+            tournament_id: tournament?.id,
+            tournament_name: tournament?.name || (tour === 'atp' ? 'ATP Finals' : 'WTA Finals'),
+            tournament_category: 'finals',
+            draw_size: 8,
+            rounds: ['RR', 'SF', 'F'],
+            groups: groups,
+            matches: [
+                { round: 'SF', matches: semiFinals },
+                { round: 'F', matches: [final] }
+            ],
+            is_finals: true
         };
     },
 
@@ -180,7 +296,7 @@ const BracketModule = {
     /**
      * Generate bracket matches
      */
-    generateBracketMatches(players, rounds, drawSize) {
+    generateBracketMatches(players, rounds, drawSize, category) {
         const matches = [];
         let matchId = 1;
         
@@ -236,7 +352,8 @@ const BracketModule = {
                     player2: p2,
                     winner: winner,
                     score: score,
-                    status: status
+                    status: status,
+                    points: this.getPointsForRound(round, category)
                 });
             }
 
@@ -249,6 +366,15 @@ const BracketModule = {
         });
 
         return matches;
+    },
+
+    /**
+     * Get points for a round
+     */
+    getPointsForRound(round, category) {
+        const cat = category || 'atp_250';
+        const roundPoints = this.pointsByRound[cat] || this.pointsByRound.atp_250;
+        return roundPoints[round] || 0;
     },
 
     /**
@@ -273,7 +399,7 @@ const BracketModule = {
     /**
      * Load and render bracket
      */
-    async loadAndRender(tournamentId) {
+    async loadAndRender(tournamentId, category) {
         const { DOM, API } = window.TennisApp;
         
         // Show loading
@@ -290,7 +416,7 @@ const BracketModule = {
             
             // Fall back to demo data
             if (!bracket) {
-                bracket = this.generateDemoBracket(tournamentId);
+                bracket = this.generateDemoBracket(tournamentId, category);
             }
 
             this.currentBracket = bracket;
@@ -298,7 +424,7 @@ const BracketModule = {
         } catch (error) {
             console.error('Error loading bracket:', error);
             // Use demo data on error
-            this.currentBracket = this.generateDemoBracket(tournamentId);
+            this.currentBracket = this.generateDemoBracket(tournamentId, category);
             this.render();
         }
     },
@@ -320,25 +446,52 @@ const BracketModule = {
         }
 
         const bracket = this.currentBracket;
+        const category = bracket.tournament_category || 'atp_250';
+        
+        // Check if tournament is completed (has a champion)
+        const finalMatch = bracket.matches[bracket.matches.length - 1]?.matches[0];
+        const hasChampion = finalMatch && finalMatch.winner;
         
         let html = `
             <div class="bracket-info">
                 <h3>${bracket.tournament_name || 'Tournament Draw'}</h3>
                 <span class="bracket-draw-size">${bracket.draw_size} Players</span>
+                ${hasChampion ? `
+                    <button class="champion-btn" onclick="window.TennisApp.BracketModule.showChampionCelebration(
+                        '${bracket.tournament_name}',
+                        ${JSON.stringify(finalMatch.winner).replace(/"/g, '&quot;')},
+                        '${category}',
+                        ${this.getPointsForRound('W', category)}
+                    )">
+                        <i class="fas fa-trophy"></i> View Champion
+                    </button>
+                ` : ''}
             </div>
-            <div class="bracket-container">
         `;
+
+        // If Finals, show group stage first
+        if (bracket.is_finals && bracket.groups) {
+            html += this.renderFinalsGroups(bracket.groups);
+        }
+
+        html += '<div class="bracket-container">';
 
         // Render each round
         bracket.matches.forEach((roundData, roundIdx) => {
+            const roundPoints = this.getPointsForRound(roundData.round, category);
+            const prizeMoney = this.getPrizeMoneyForRound(roundData.round, category);
             html += `
                 <div class="bracket-round" data-round="${roundData.round}">
-                    <div class="round-header">${roundData.round}</div>
+                    <div class="round-header">
+                        ${this.getRoundDisplayName(roundData.round)}
+                        ${roundPoints > 0 ? `<span class="round-points">${roundPoints} pts</span>` : ''}
+                        ${prizeMoney ? `<span class="round-prize-money">${prizeMoney}</span>` : ''}
+                    </div>
                     <div class="round-matches">
             `;
 
             roundData.matches.forEach(match => {
-                html += this.createMatchHTML(match, roundIdx);
+                html += this.createMatchHTML(match, roundIdx, category);
             });
 
             html += `
@@ -351,14 +504,63 @@ const BracketModule = {
 
         DOM.tournamentBracket.innerHTML = html;
         
-        // Add event listeners for match hover
+        // Add event listeners for match click
         this.attachMatchListeners();
+    },
+
+    /**
+     * Render Finals group stage
+     */
+    renderFinalsGroups(groups) {
+        const { Utils } = window.TennisApp;
+        
+        let html = '<div class="finals-groups"><h4>Group Stage (200 pts per win)</h4><div class="groups-container">';
+        
+        groups.forEach((group, idx) => {
+            html += `
+                <div class="group-card">
+                    <div class="group-name">${group.name}</div>
+            `;
+            
+            group.players.forEach((player, playerIdx) => {
+                const qualified = playerIdx < 2;
+                html += `
+                    <div class="group-player ${qualified ? 'qualified' : ''}">
+                        <img src="${Utils.getPlayerImage(player.id)}" alt="">
+                        ${Utils.getFlag(player.country)} ${player.name}
+                        ${qualified ? '<i class="fas fa-check" style="margin-left:auto; color: var(--accent-success);"></i>' : ''}
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+        });
+        
+        html += '</div></div>';
+        return html;
+    },
+
+    /**
+     * Get display name for round
+     */
+    getRoundDisplayName(round) {
+        const displayNames = {
+            'R128': 'Round of 128',
+            'R64': 'Round of 64',
+            'R32': 'Round of 32',
+            'R16': 'Round of 16',
+            'QF': 'Quarter Finals',
+            'SF': 'Semi Finals',
+            'F': 'Final',
+            'RR': 'Round Robin'
+        };
+        return displayNames[round] || round;
     },
 
     /**
      * Create match HTML for bracket
      */
-    createMatchHTML(match, roundIdx) {
+    createMatchHTML(match, roundIdx, category) {
         const { Utils } = window.TennisApp;
         
         const p1 = match.player1;
@@ -373,21 +575,21 @@ const BracketModule = {
         }
 
         return `
-            <div class="bracket-match ${match.status}" data-match-id="${match.id}">
+            <div class="bracket-match clickable ${match.status}" data-match-id="${match.id}" data-points="${match.points || this.getPointsForRound(match.round, category)}">
                 <div class="bracket-player ${isP1Winner ? 'winner' : ''}">
                     ${p1 ? `
-                        ${p1.rank <= 200 ? `<img class="bracket-player-img" src="${Utils.getPlayerImage(p1.id)}" alt="">` : ''}
+                        <img class="bracket-player-img" src="${Utils.getPlayerImage(p1.id)}" alt="">
                         ${p1.seed ? `<span class="bracket-seed">[${p1.seed}]</span>` : ''}
-                        <span class="bracket-player-name">${Utils.getFlag(p1.country)} ${p1.name}</span>
+                        <span class="bracket-player-name">${p1.name}</span>
                         <span class="bracket-player-rank">${p1.rank}</span>
                     ` : '<span class="bracket-player-name tbd">TBD</span>'}
                     ${isP1Winner ? `<span class="bracket-score">${scoreHTML}</span>` : ''}
                 </div>
                 <div class="bracket-player ${isP2Winner ? 'winner' : ''}">
                     ${p2 ? `
-                        ${p2.rank <= 200 ? `<img class="bracket-player-img" src="${Utils.getPlayerImage(p2.id)}" alt="">` : ''}
+                        <img class="bracket-player-img" src="${Utils.getPlayerImage(p2.id)}" alt="">
                         ${p2.seed ? `<span class="bracket-seed">[${p2.seed}]</span>` : ''}
-                        <span class="bracket-player-name">${Utils.getFlag(p2.country)} ${p2.name}</span>
+                        <span class="bracket-player-name">${p2.name}</span>
                         <span class="bracket-player-rank">${p2.rank}</span>
                     ` : '<span class="bracket-player-name tbd">TBD</span>'}
                     ${isP2Winner ? `<span class="bracket-score">${scoreHTML}</span>` : ''}
@@ -397,24 +599,28 @@ const BracketModule = {
     },
 
     /**
-     * Attach hover listeners for match popups
+     * Get prize money for a round
+     */
+    getPrizeMoneyForRound(round, category) {
+        const prizes = this.prizeMoneyByRound[category];
+        return prizes ? prizes[round] || '' : '';
+    },
+
+    /**
+     * Attach click listeners for match modal
      */
     attachMatchListeners() {
-        const { DOM, Utils } = window.TennisApp;
-        const matches = document.querySelectorAll('.bracket-match');
+        const matches = document.querySelectorAll('.bracket-match.clickable');
         
         matches.forEach(matchEl => {
-            matchEl.addEventListener('mouseenter', (e) => {
+            matchEl.addEventListener('click', (e) => {
                 const matchId = matchEl.dataset.matchId;
+                const points = matchEl.dataset.points;
                 const match = this.findMatch(matchId);
                 
                 if (match && match.player1 && match.player2) {
-                    this.showMatchPopup(match, e);
+                    this.showMatchModal(match, points);
                 }
-            });
-
-            matchEl.addEventListener('mouseleave', () => {
-                DOM.matchPopup.classList.remove('visible');
             });
         });
     },
@@ -433,14 +639,16 @@ const BracketModule = {
     },
 
     /**
-     * Show match popup
+     * Show match modal
      */
-    showMatchPopup(match, event) {
-        const { DOM, Utils } = window.TennisApp;
-        const popup = DOM.matchPopup;
+    showMatchModal(match, points) {
+        const { Utils } = window.TennisApp;
+        const modal = document.getElementById('matchModal');
         
         const p1 = match.player1;
         const p2 = match.player2;
+        const isP1Winner = match.winner && p1 && match.winner.id === p1.id;
+        const isP2Winner = match.winner && p2 && match.winner.id === p2.id;
         
         // Format score
         let scoreText = 'Not started';
@@ -448,44 +656,94 @@ const BracketModule = {
             scoreText = match.score.sets.map(s => `${s.p1}-${s.p2}`).join('  ');
         }
 
-        popup.innerHTML = `
-            <div class="popup-content">
-                <div class="popup-header">
-                    <span class="popup-tournament">${this.currentBracket.tournament_name}</span>
-                    <span class="popup-round">${match.round}</span>
+        // Update modal content
+        modal.querySelector('.modal-tournament').textContent = this.currentBracket.tournament_name;
+        modal.querySelector('.modal-round').textContent = this.getRoundDisplayName(match.round);
+        modal.querySelector('.modal-round-points').textContent = points > 0 ? `Winner: ${points} pts` : '';
+        
+        // Player 1
+        const p1El = modal.querySelector('#modalPlayer1');
+        p1El.className = `modal-player ${isP1Winner ? 'winner' : ''}`;
+        p1El.querySelector('.modal-player-img').src = Utils.getPlayerImage(p1.id);
+        p1El.querySelector('.modal-player-name').innerHTML = `${Utils.getFlag(p1.country)} ${p1.name}`;
+        p1El.querySelector('.modal-player-details').textContent = `Rank: ${p1.rank}${p1.seed ? ` [${p1.seed}]` : ''}`;
+        
+        // Player 2
+        const p2El = modal.querySelector('#modalPlayer2');
+        p2El.className = `modal-player ${isP2Winner ? 'winner' : ''}`;
+        p2El.querySelector('.modal-player-img').src = Utils.getPlayerImage(p2.id);
+        p2El.querySelector('.modal-player-name').innerHTML = `${Utils.getFlag(p2.country)} ${p2.name}`;
+        p2El.querySelector('.modal-player-details').textContent = `Rank: ${p2.rank}${p2.seed ? ` [${p2.seed}]` : ''}`;
+        
+        // Score
+        modal.querySelector('.modal-score').textContent = scoreText;
+
+        // Show modal
+        modal.classList.add('visible');
+
+        // Close button handler
+        const closeBtn = modal.querySelector('#modalClose');
+        const closeHandler = () => {
+            modal.classList.remove('visible');
+            closeBtn.removeEventListener('click', closeHandler);
+        };
+        closeBtn.addEventListener('click', closeHandler);
+
+        // Click outside to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('visible');
+            }
+        });
+    },
+
+    /**
+     * Show champion celebration modal
+     */
+    showChampionCelebration(tournamentName, winner, category, points) {
+        const { Utils } = window.TennisApp;
+        const modal = document.getElementById('championModal');
+        const content = document.getElementById('championContent');
+
+        const prizeMoney = this.getPrizeMoneyForRound('W', category);
+
+        content.innerHTML = `
+            <div class="champion-trophy">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="champion-title">🎉 CHAMPION! 🎉</div>
+            <div class="champion-tournament">${tournamentName}</div>
+            <div class="champion-player">
+                <img src="${Utils.getPlayerImage(winner.id)}" alt="${winner.name}">
+                <div class="champion-player-name">${Utils.getFlag(winner.country)} ${winner.name}</div>
+                <div class="champion-player-rank">World #${winner.rank}</div>
+            </div>
+            <div class="champion-prizes">
+                <div class="champion-prize-item">
+                    <i class="fas fa-medal"></i>
+                    <span>${points} Points</span>
                 </div>
-                <div class="popup-players">
-                    <div class="popup-player">
-                        <img class="popup-player-img" src="${Utils.getPlayerImage(p1.id)}" alt="${p1.name}">
-                        <span class="popup-player-name">${Utils.getFlag(p1.country)} ${p1.name}</span>
-                        <span class="popup-player-rank">Rank: ${p1.rank}${p1.seed ? ` [${p1.seed}]` : ''}</span>
-                    </div>
-                    <span class="vs-text">VS</span>
-                    <div class="popup-player">
-                        <img class="popup-player-img" src="${Utils.getPlayerImage(p2.id)}" alt="${p2.name}">
-                        <span class="popup-player-name">${Utils.getFlag(p2.country)} ${p2.name}</span>
-                        <span class="popup-player-rank">Rank: ${p2.rank}${p2.seed ? ` [${p2.seed}]` : ''}</span>
-                    </div>
+                <div class="champion-prize-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>${prizeMoney}</span>
                 </div>
-                <div class="popup-score">${scoreText}</div>
+            </div>
+            <div class="champion-confetti">
+                ${'<div class="confetti"></div>'.repeat(50)}
             </div>
         `;
 
-        // Position popup
-        const rect = event.target.getBoundingClientRect();
-        popup.style.left = `${rect.right + 10}px`;
-        popup.style.top = `${rect.top}px`;
-        
-        // Ensure popup stays in viewport
-        const popupRect = popup.getBoundingClientRect();
-        if (popupRect.right > window.innerWidth) {
-            popup.style.left = `${rect.left - popupRect.width - 10}px`;
-        }
-        if (popupRect.bottom > window.innerHeight) {
-            popup.style.top = `${window.innerHeight - popupRect.height - 10}px`;
-        }
+        modal.classList.add('active');
+    },
 
-        popup.classList.add('visible');
+    /**
+     * Close champion modal
+     */
+    closeChampionModal() {
+        const modal = document.getElementById('championModal');
+        if (modal) {
+            modal.classList.remove('active');
+        }
     }
 };
 

@@ -68,6 +68,15 @@ const TournamentsModule = {
             { id: 18, name: 'US Open', category: 'grand_slam', location: 'New York, USA', 
               start_date: '2026-08-24', end_date: '2026-09-06', surface: 'Hard', status: 'upcoming',
               winner: { name: 'Jannik Sinner', country: 'ITA' }, runner_up: { name: 'Taylor Fritz', country: 'USA' } },
+            { id: 19, name: 'Shanghai Masters', category: 'masters_1000', location: 'Shanghai, China', 
+              start_date: '2026-10-05', end_date: '2026-10-12', surface: 'Hard', status: 'upcoming',
+              winner: { name: 'Jannik Sinner', country: 'ITA' }, runner_up: { name: 'Novak Djokovic', country: 'SRB' } },
+            { id: 20, name: 'Paris Masters', category: 'masters_1000', location: 'Paris, France', 
+              start_date: '2026-10-27', end_date: '2026-11-02', surface: 'Hard (Indoor)', status: 'upcoming',
+              winner: { name: 'Alexander Zverev', country: 'GER' }, runner_up: { name: 'Daniil Medvedev', country: 'RUS' } },
+            { id: 21, name: 'ATP Finals', category: 'finals', location: 'Turin, Italy', 
+              start_date: '2026-11-10', end_date: '2026-11-17', surface: 'Hard (Indoor)', status: 'upcoming',
+              winner: { name: 'Jannik Sinner', country: 'ITA' }, runner_up: { name: 'Taylor Fritz', country: 'USA' } },
         ],
         wta: [
             // Finished tournaments
@@ -117,6 +126,12 @@ const TournamentsModule = {
             { id: 114, name: 'US Open', category: 'grand_slam', location: 'New York, USA', 
               start_date: '2026-08-24', end_date: '2026-09-06', surface: 'Hard', status: 'upcoming',
               winner: { name: 'Aryna Sabalenka', country: 'BLR' }, runner_up: { name: 'Jessica Pegula', country: 'USA' } },
+            { id: 115, name: 'China Open', category: 'masters_1000', location: 'Beijing, China', 
+              start_date: '2026-09-28', end_date: '2026-10-05', surface: 'Hard', status: 'upcoming',
+              winner: { name: 'Coco Gauff', country: 'USA' }, runner_up: { name: 'Karolina Muchova', country: 'CZE' } },
+            { id: 116, name: 'WTA Finals', category: 'finals', location: 'Riyadh, Saudi Arabia', 
+              start_date: '2026-11-02', end_date: '2026-11-09', surface: 'Hard (Indoor)', status: 'upcoming',
+              winner: { name: 'Coco Gauff', country: 'USA' }, runner_up: { name: 'Iga Swiatek', country: 'POL' } },
         ]
     },
 
@@ -233,11 +248,19 @@ const TournamentsModule = {
             'atp_500': '500',
             'atp_250': '250',
             'atp_125': '125',
+            'finals': 'Finals',
             'other': 'Other'
         };
 
+        // Surface class for coloring
+        const surfaceLower = tournament.surface.toLowerCase();
+        let surfaceClass = 'hard';
+        if (surfaceLower.includes('clay')) surfaceClass = 'clay';
+        else if (surfaceLower.includes('grass')) surfaceClass = 'grass';
+        else if (surfaceLower.includes('indoor')) surfaceClass = 'indoor';
+
         return `
-            <div class="tournament-item ${categoryClass} ${tournament.status}" data-tournament-id="${tournament.id}">
+            <div class="tournament-item ${categoryClass} ${tournament.status}" data-tournament-id="${tournament.id}" data-category="${tournament.category}">
                 <div class="tournament-date">
                     <div class="date-month">${date.month}</div>
                     <div class="date-day">${date.day}</div>
@@ -245,13 +268,13 @@ const TournamentsModule = {
                 <div class="tournament-main">
                     <div class="tournament-title">
                         ${tournament.name}
-                        <span class="tournament-category-badge ${categoryClass}">${categoryNames[tournament.category]}</span>
+                        <span class="tournament-category-badge ${categoryClass}">${categoryNames[tournament.category] || tournament.category}</span>
                     </div>
                     <div class="tournament-location">
                         <i class="fas fa-map-marker-alt"></i>
                         ${tournament.location}
                     </div>
-                    <span class="tournament-surface">${tournament.surface}</span>
+                    <span class="tournament-surface ${surfaceClass}">${tournament.surface}</span>
                 </div>
                 ${resultsHTML}
             </div>
@@ -267,13 +290,14 @@ const TournamentsModule = {
         document.querySelectorAll('.tournament-item').forEach(item => {
             item.addEventListener('click', async () => {
                 const tournamentId = item.dataset.tournamentId;
+                const category = item.dataset.category;
                 AppState.selectedTournament = tournamentId;
                 
                 // Show bracket panel
                 DOM.tournamentDetailsPanel.classList.add('visible');
                 
-                // Load and render bracket
-                await BracketModule.loadAndRender(tournamentId);
+                // Load and render bracket (special handling for finals)
+                await BracketModule.loadAndRender(tournamentId, category);
             });
         });
     }
