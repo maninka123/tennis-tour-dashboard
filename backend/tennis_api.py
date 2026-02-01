@@ -202,9 +202,9 @@ class TennisDataFetcher:
         tournaments_cache[cache_key] = tournaments
         return tournaments
     
-    def fetch_tournament_bracket(self, tournament_id):
+    def fetch_tournament_bracket(self, tournament_id, tour='atp'):
         """Fetch tournament bracket/draw"""
-        return self._generate_sample_bracket(tournament_id)
+        return self._generate_sample_bracket(tournament_id, tour)
     
     def fetch_player_details(self, player_id):
         """Fetch player details"""
@@ -236,10 +236,15 @@ class TennisDataFetcher:
             {'id': 108, 'name': 'Qinwen Zheng', 'country': 'CHN', 'rank': 8},
         ]
         
-        tournaments = [
+        atp_tournaments = [
             {'name': 'Australian Open', 'category': 'grand_slam', 'location': 'Melbourne, Australia'},
             {'name': 'Indian Wells Masters', 'category': 'masters_1000', 'location': 'Indian Wells, USA'},
             {'name': 'Dubai Tennis Championships', 'category': 'atp_500', 'location': 'Dubai, UAE'},
+        ]
+        wta_tournaments = [
+            {'name': 'Australian Open', 'category': 'grand_slam', 'location': 'Melbourne, Australia'},
+            {'name': 'Qatar Open', 'category': 'masters_1000', 'location': 'Doha, Qatar'},
+            {'name': 'Dubai Championships', 'category': 'masters_1000', 'location': 'Dubai, UAE'},
         ]
         
         matches = []
@@ -248,7 +253,8 @@ class TennisDataFetcher:
             for i in range(3):
                 p1 = atp_players[i * 2]
                 p2 = atp_players[i * 2 + 1]
-                tournament = tournaments[i % len(tournaments)]
+                tournament = atp_tournaments[i % len(atp_tournaments)]
+                best_of = self._get_best_of('ATP', tournament['category'])
                 
                 matches.append({
                     'id': f'atp_live_{i}',
@@ -260,7 +266,7 @@ class TennisDataFetcher:
                     'court': f'Court {random.randint(1, 3)}',
                     'player1': p1,
                     'player2': p2,
-                    'score': self._generate_live_score(),
+                    'score': self._generate_live_score(best_of=best_of),
                     'status': 'live',
                     'serving': random.choice([1, 2]),
                     'start_time': datetime.now().strftime('%H:%M')
@@ -270,7 +276,8 @@ class TennisDataFetcher:
             for i in range(3):
                 p1 = wta_players[i * 2]
                 p2 = wta_players[i * 2 + 1]
-                tournament = tournaments[i % len(tournaments)]
+                tournament = wta_tournaments[i % len(wta_tournaments)]
+                best_of = self._get_best_of('WTA', tournament['category'])
                 
                 matches.append({
                     'id': f'wta_live_{i}',
@@ -282,7 +289,7 @@ class TennisDataFetcher:
                     'court': f'Court {random.randint(1, 3)}',
                     'player1': p1,
                     'player2': p2,
-                    'score': self._generate_live_score(best_of=3),
+                    'score': self._generate_live_score(best_of=best_of),
                     'status': 'live',
                     'serving': random.choice([1, 2]),
                     'start_time': datetime.now().strftime('%H:%M')
@@ -302,16 +309,18 @@ class TennisDataFetcher:
         for _ in range(num_completed):
             if random.random() > 0.5:
                 if random.random() > 0.3:
-                    sets.append({'p1': 6, 'p2': random.randint(0, 4)})
+                    set_score = {'p1': 6, 'p2': random.randint(0, 4)}
                 else:
-                    sets.append({'p1': 7, 'p2': random.choice([5, 6])})
+                    set_score = {'p1': 7, 'p2': random.choice([5, 6])}
                 p1_sets += 1
             else:
                 if random.random() > 0.3:
-                    sets.append({'p1': random.randint(0, 4), 'p2': 6})
+                    set_score = {'p1': random.randint(0, 4), 'p2': 6}
                 else:
-                    sets.append({'p1': random.choice([5, 6]), 'p2': 7})
+                    set_score = {'p1': random.choice([5, 6]), 'p2': 7}
                 p2_sets += 1
+            is_decider = (p1_sets == max_sets) or (p2_sets == max_sets)
+            sets.append(self._apply_tiebreak(set_score, is_decider))
         
         # Current set
         if p1_sets < max_sets and p2_sets < max_sets:
@@ -334,6 +343,31 @@ class TennisDataFetcher:
             'p1_sets': p1_sets,
             'p2_sets': p2_sets
         }
+
+    def _apply_tiebreak(self, set_score, is_decider=False):
+        """Attach tiebreak scores for 7-6/6-7 sets."""
+        if not set_score:
+            return set_score
+        p1 = set_score.get('p1')
+        p2 = set_score.get('p2')
+        if (p1, p2) == (7, 6):
+            if is_decider:
+                set_score['tiebreak'] = {'p1': 10, 'p2': random.choice([8, 9])}
+            else:
+                set_score['tiebreak'] = {'p1': 7, 'p2': random.choice([4, 5, 6])}
+        elif (p1, p2) == (6, 7):
+            if is_decider:
+                set_score['tiebreak'] = {'p1': random.choice([8, 9]), 'p2': 10}
+            else:
+                set_score['tiebreak'] = {'p1': random.choice([4, 5, 6]), 'p2': 7}
+        return set_score
+
+    def _get_best_of(self, tour_name, category):
+        """Determine best-of format."""
+        tour = (tour_name or '').upper()
+        if tour == 'ATP' and category == 'grand_slam':
+            return 5
+        return 3
     
     def _generate_sample_recent_matches(self, tour, limit):
         """Generate sample recently completed matches"""
@@ -341,10 +375,15 @@ class TennisDataFetcher:
         atp_players = self._get_sample_atp_players()
         wta_players = self._get_sample_wta_players()
         
-        tournaments = [
+        atp_tournaments = [
             {'name': 'Australian Open', 'category': 'grand_slam'},
             {'name': 'Rotterdam Open', 'category': 'atp_500'},
             {'name': 'Qatar Open', 'category': 'atp_250'},
+        ]
+        wta_tournaments = [
+            {'name': 'Australian Open', 'category': 'grand_slam'},
+            {'name': 'Qatar Open', 'category': 'masters_1000'},
+            {'name': 'Doha Open', 'category': 'atp_500'},
         ]
         
         for i in range(limit):
@@ -360,8 +399,10 @@ class TennisDataFetcher:
             while p2_idx == p1_idx:
                 p2_idx = random.randint(0, len(players) - 1)
             
-            tournament = random.choice(tournaments)
-            winner = random.choice([1, 2])
+            tournament = random.choice(atp_tournaments if tour_name == 'ATP' else wta_tournaments)
+            best_of = self._get_best_of(tour_name, tournament['category'])
+            final_score = self._generate_final_score(best_of=best_of)
+            winner = 1 if final_score['p1_sets'] > final_score['p2_sets'] else 2
             
             matches.append({
                 'id': f'recent_{i}',
@@ -372,7 +413,7 @@ class TennisDataFetcher:
                 'player1': players[p1_idx],
                 'player2': players[p2_idx],
                 'winner': winner,
-                'final_score': self._generate_final_score(best_of=5 if tour_name == 'ATP' else 3),
+                'final_score': final_score,
                 'status': 'finished',
                 'end_time': (datetime.now() - timedelta(hours=random.randint(1, 24))).strftime('%Y-%m-%d %H:%M')
             })
@@ -385,11 +426,17 @@ class TennisDataFetcher:
         atp_players = self._get_sample_atp_players()
         wta_players = self._get_sample_wta_players()
         
-        tournaments = [
+        atp_tournaments = [
             {'name': 'Australian Open', 'category': 'grand_slam'},
             {'name': 'Rotterdam Open', 'category': 'atp_500'},
             {'name': 'Dubai Championships', 'category': 'atp_500'},
             {'name': 'Qatar Open', 'category': 'atp_250'},
+        ]
+        wta_tournaments = [
+            {'name': 'Australian Open', 'category': 'grand_slam'},
+            {'name': 'Qatar Open', 'category': 'masters_1000'},
+            {'name': 'Dubai Championships', 'category': 'masters_1000'},
+            {'name': 'Abu Dhabi Open', 'category': 'atp_500'},
         ]
         
         # Generate 2-4 upcoming matches
@@ -406,7 +453,7 @@ class TennisDataFetcher:
             while p2_idx == p1_idx:
                 p2_idx = random.randint(0, len(players) - 1)
             
-            tournament = random.choice(tournaments)
+            tournament = random.choice(atp_tournaments if tour_name == 'ATP' else wta_tournaments)
             scheduled_time = datetime.now() + timedelta(hours=random.randint(1, days * 24))
             
             matches.append({
@@ -432,16 +479,18 @@ class TennisDataFetcher:
         while p1_sets < max_sets and p2_sets < max_sets:
             if random.random() > 0.5:
                 if random.random() > 0.3:
-                    sets.append({'p1': 6, 'p2': random.randint(0, 4)})
+                    set_score = {'p1': 6, 'p2': random.randint(0, 4)}
                 else:
-                    sets.append({'p1': 7, 'p2': random.choice([5, 6])})
+                    set_score = {'p1': 7, 'p2': random.choice([5, 6])}
                 p1_sets += 1
             else:
                 if random.random() > 0.3:
-                    sets.append({'p1': random.randint(0, 4), 'p2': 6})
+                    set_score = {'p1': random.randint(0, 4), 'p2': 6}
                 else:
-                    sets.append({'p1': random.choice([5, 6]), 'p2': 7})
+                    set_score = {'p1': random.choice([5, 6]), 'p2': 7}
                 p2_sets += 1
+            is_decider = (p1_sets == max_sets) or (p2_sets == max_sets)
+            sets.append(self._apply_tiebreak(set_score, is_decider))
         
         return {'sets': sets, 'p1_sets': p1_sets, 'p2_sets': p2_sets}
     
@@ -622,83 +671,136 @@ class TennisDataFetcher:
         """Generate sample tournament calendar"""
         tournaments = []
         
-        tournament_data = [
-            # Grand Slams
-            {'name': 'Australian Open', 'category': 'grand_slam', 'location': 'Melbourne, Australia', 
-             'start': f'{year}-01-14', 'end': f'{year}-01-28', 'surface': 'Hard'},
-            {'name': 'Roland Garros', 'category': 'grand_slam', 'location': 'Paris, France',
-             'start': f'{year}-05-26', 'end': f'{year}-06-09', 'surface': 'Clay'},
-            {'name': 'Wimbledon', 'category': 'grand_slam', 'location': 'London, UK',
-             'start': f'{year}-07-01', 'end': f'{year}-07-14', 'surface': 'Grass'},
-            {'name': 'US Open', 'category': 'grand_slam', 'location': 'New York, USA',
-             'start': f'{year}-08-26', 'end': f'{year}-09-08', 'surface': 'Hard'},
-            
-            # Masters 1000
-            {'name': 'Indian Wells Masters', 'category': 'masters_1000', 'location': 'Indian Wells, USA',
-             'start': f'{year}-03-06', 'end': f'{year}-03-17', 'surface': 'Hard'},
-            {'name': 'Miami Open', 'category': 'masters_1000', 'location': 'Miami, USA',
-             'start': f'{year}-03-20', 'end': f'{year}-03-31', 'surface': 'Hard'},
-            {'name': 'Monte-Carlo Masters', 'category': 'masters_1000', 'location': 'Monte Carlo, Monaco',
-             'start': f'{year}-04-07', 'end': f'{year}-04-14', 'surface': 'Clay'},
-            {'name': 'Madrid Open', 'category': 'masters_1000', 'location': 'Madrid, Spain',
-             'start': f'{year}-04-25', 'end': f'{year}-05-05', 'surface': 'Clay'},
-            {'name': 'Italian Open', 'category': 'masters_1000', 'location': 'Rome, Italy',
-             'start': f'{year}-05-08', 'end': f'{year}-05-19', 'surface': 'Clay'},
-            {'name': 'Canadian Open', 'category': 'masters_1000', 'location': 'Toronto/Montreal, Canada',
-             'start': f'{year}-08-05', 'end': f'{year}-08-11', 'surface': 'Hard'},
-            {'name': 'Cincinnati Masters', 'category': 'masters_1000', 'location': 'Cincinnati, USA',
-             'start': f'{year}-08-12', 'end': f'{year}-08-18', 'surface': 'Hard'},
-            {'name': 'Shanghai Masters', 'category': 'masters_1000', 'location': 'Shanghai, China',
-             'start': f'{year}-10-02', 'end': f'{year}-10-13', 'surface': 'Hard'},
-            {'name': 'Paris Masters', 'category': 'masters_1000', 'location': 'Paris, France',
-             'start': f'{year}-10-28', 'end': f'{year}-11-03', 'surface': 'Hard (Indoor)'},
-            
-            # ATP/WTA 500
-            {'name': 'Rotterdam Open', 'category': 'atp_500', 'location': 'Rotterdam, Netherlands',
-             'start': f'{year}-02-05', 'end': f'{year}-02-11', 'surface': 'Hard (Indoor)'},
-            {'name': 'Dubai Tennis Championships', 'category': 'atp_500', 'location': 'Dubai, UAE',
-             'start': f'{year}-02-26', 'end': f'{year}-03-02', 'surface': 'Hard'},
-            {'name': 'Barcelona Open', 'category': 'atp_500', 'location': 'Barcelona, Spain',
-             'start': f'{year}-04-15', 'end': f'{year}-04-21', 'surface': 'Clay'},
-            {'name': 'Queen\'s Club Championships', 'category': 'atp_500', 'location': 'London, UK',
-             'start': f'{year}-06-17', 'end': f'{year}-06-23', 'surface': 'Grass'},
-            {'name': 'Halle Open', 'category': 'atp_500', 'location': 'Halle, Germany',
-             'start': f'{year}-06-17', 'end': f'{year}-06-23', 'surface': 'Grass'},
-            {'name': 'Washington Open', 'category': 'atp_500', 'location': 'Washington D.C., USA',
-             'start': f'{year}-07-29', 'end': f'{year}-08-04', 'surface': 'Hard'},
-            {'name': 'Tokyo Open', 'category': 'atp_500', 'location': 'Tokyo, Japan',
-             'start': f'{year}-09-25', 'end': f'{year}-10-01', 'surface': 'Hard'},
-            {'name': 'Basel Open', 'category': 'atp_500', 'location': 'Basel, Switzerland',
-             'start': f'{year}-10-21', 'end': f'{year}-10-27', 'surface': 'Hard (Indoor)'},
-            {'name': 'Vienna Open', 'category': 'atp_500', 'location': 'Vienna, Austria',
-             'start': f'{year}-10-21', 'end': f'{year}-10-27', 'surface': 'Hard (Indoor)'},
-            
-            # ATP/WTA 250
-            {'name': 'Brisbane International', 'category': 'atp_250', 'location': 'Brisbane, Australia',
-             'start': f'{year}-01-01', 'end': f'{year}-01-07', 'surface': 'Hard'},
-            {'name': 'Adelaide International', 'category': 'atp_250', 'location': 'Adelaide, Australia',
-             'start': f'{year}-01-08', 'end': f'{year}-01-13', 'surface': 'Hard'},
-            {'name': 'Montpellier Open', 'category': 'atp_250', 'location': 'Montpellier, France',
-             'start': f'{year}-02-05', 'end': f'{year}-02-11', 'surface': 'Hard (Indoor)'},
-            {'name': 'Dallas Open', 'category': 'atp_250', 'location': 'Dallas, USA',
-             'start': f'{year}-02-05', 'end': f'{year}-02-11', 'surface': 'Hard (Indoor)'},
-            {'name': 'Lyon Open', 'category': 'atp_250', 'location': 'Lyon, France',
-             'start': f'{year}-05-20', 'end': f'{year}-05-25', 'surface': 'Clay'},
-            {'name': 'Stuttgart Open', 'category': 'atp_250', 'location': 'Stuttgart, Germany',
-             'start': f'{year}-06-10', 'end': f'{year}-06-16', 'surface': 'Grass'},
-            {'name': 'Eastbourne International', 'category': 'atp_250', 'location': 'Eastbourne, UK',
-             'start': f'{year}-06-24', 'end': f'{year}-06-29', 'surface': 'Grass'},
-            {'name': 'Atlanta Open', 'category': 'atp_250', 'location': 'Atlanta, USA',
-             'start': f'{year}-07-22', 'end': f'{year}-07-28', 'surface': 'Hard'},
-            {'name': 'Winston-Salem Open', 'category': 'atp_250', 'location': 'Winston-Salem, USA',
-             'start': f'{year}-08-19', 'end': f'{year}-08-24', 'surface': 'Hard'},
-            {'name': 'Chengdu Open', 'category': 'atp_250', 'location': 'Chengdu, China',
-             'start': f'{year}-09-16', 'end': f'{year}-09-22', 'surface': 'Hard'},
-            {'name': 'Stockholm Open', 'category': 'atp_250', 'location': 'Stockholm, Sweden',
-             'start': f'{year}-10-14', 'end': f'{year}-10-20', 'surface': 'Hard (Indoor)'},
-            {'name': 'Antwerp Open', 'category': 'atp_250', 'location': 'Antwerp, Belgium',
-             'start': f'{year}-10-14', 'end': f'{year}-10-20', 'surface': 'Hard (Indoor)'},
-        ]
+        if tour == 'atp':
+            tournament_data = [
+                # Grand Slams
+                {'name': 'Australian Open', 'category': 'grand_slam', 'location': 'Melbourne, Australia',
+                 'start': f'{year}-01-14', 'end': f'{year}-01-28', 'surface': 'Hard'},
+                {'name': 'Roland Garros', 'category': 'grand_slam', 'location': 'Paris, France',
+                 'start': f'{year}-05-26', 'end': f'{year}-06-09', 'surface': 'Clay'},
+                {'name': 'Wimbledon', 'category': 'grand_slam', 'location': 'London, UK',
+                 'start': f'{year}-07-01', 'end': f'{year}-07-14', 'surface': 'Grass'},
+                {'name': 'US Open', 'category': 'grand_slam', 'location': 'New York, USA',
+                 'start': f'{year}-08-26', 'end': f'{year}-09-08', 'surface': 'Hard'},
+                # Masters 1000
+                {'name': 'Indian Wells Masters', 'category': 'masters_1000', 'location': 'Indian Wells, USA',
+                 'start': f'{year}-03-06', 'end': f'{year}-03-17', 'surface': 'Hard'},
+                {'name': 'Miami Open', 'category': 'masters_1000', 'location': 'Miami, USA',
+                 'start': f'{year}-03-20', 'end': f'{year}-03-31', 'surface': 'Hard'},
+                {'name': 'Monte-Carlo Masters', 'category': 'masters_1000', 'location': 'Monte Carlo, Monaco',
+                 'start': f'{year}-04-07', 'end': f'{year}-04-14', 'surface': 'Clay'},
+                {'name': 'Madrid Open', 'category': 'masters_1000', 'location': 'Madrid, Spain',
+                 'start': f'{year}-04-25', 'end': f'{year}-05-05', 'surface': 'Clay'},
+                {'name': 'Italian Open', 'category': 'masters_1000', 'location': 'Rome, Italy',
+                 'start': f'{year}-05-08', 'end': f'{year}-05-19', 'surface': 'Clay'},
+                {'name': 'Canadian Open', 'category': 'masters_1000', 'location': 'Toronto/Montreal, Canada',
+                 'start': f'{year}-08-05', 'end': f'{year}-08-11', 'surface': 'Hard'},
+                {'name': 'Cincinnati Masters', 'category': 'masters_1000', 'location': 'Cincinnati, USA',
+                 'start': f'{year}-08-12', 'end': f'{year}-08-18', 'surface': 'Hard'},
+                {'name': 'Shanghai Masters', 'category': 'masters_1000', 'location': 'Shanghai, China',
+                 'start': f'{year}-10-02', 'end': f'{year}-10-13', 'surface': 'Hard'},
+                {'name': 'Paris Masters', 'category': 'masters_1000', 'location': 'Paris, France',
+                 'start': f'{year}-10-28', 'end': f'{year}-11-03', 'surface': 'Hard (Indoor)'},
+                # ATP 500
+                {'name': 'Rotterdam Open', 'category': 'atp_500', 'location': 'Rotterdam, Netherlands',
+                 'start': f'{year}-02-05', 'end': f'{year}-02-11', 'surface': 'Hard (Indoor)'},
+                {'name': 'Dubai Tennis Championships', 'category': 'atp_500', 'location': 'Dubai, UAE',
+                 'start': f'{year}-02-26', 'end': f'{year}-03-02', 'surface': 'Hard'},
+                {'name': 'Barcelona Open', 'category': 'atp_500', 'location': 'Barcelona, Spain',
+                 'start': f'{year}-04-15', 'end': f'{year}-04-21', 'surface': 'Clay'},
+                {'name': "Queen's Club Championships", 'category': 'atp_500', 'location': 'London, UK',
+                 'start': f'{year}-06-17', 'end': f'{year}-06-23', 'surface': 'Grass'},
+                {'name': 'Halle Open', 'category': 'atp_500', 'location': 'Halle, Germany',
+                 'start': f'{year}-06-17', 'end': f'{year}-06-23', 'surface': 'Grass'},
+                {'name': 'Washington Open', 'category': 'atp_500', 'location': 'Washington D.C., USA',
+                 'start': f'{year}-07-29', 'end': f'{year}-08-04', 'surface': 'Hard'},
+                {'name': 'Tokyo Open', 'category': 'atp_500', 'location': 'Tokyo, Japan',
+                 'start': f'{year}-09-25', 'end': f'{year}-10-01', 'surface': 'Hard'},
+                {'name': 'Basel Open', 'category': 'atp_500', 'location': 'Basel, Switzerland',
+                 'start': f'{year}-10-21', 'end': f'{year}-10-27', 'surface': 'Hard (Indoor)'},
+                {'name': 'Vienna Open', 'category': 'atp_500', 'location': 'Vienna, Austria',
+                 'start': f'{year}-10-21', 'end': f'{year}-10-27', 'surface': 'Hard (Indoor)'},
+                # ATP 250
+                {'name': 'Brisbane International', 'category': 'atp_250', 'location': 'Brisbane, Australia',
+                 'start': f'{year}-01-01', 'end': f'{year}-01-07', 'surface': 'Hard'},
+                {'name': 'Adelaide International', 'category': 'atp_250', 'location': 'Adelaide, Australia',
+                 'start': f'{year}-01-08', 'end': f'{year}-01-13', 'surface': 'Hard'},
+                {'name': 'Montpellier Open', 'category': 'atp_250', 'location': 'Montpellier, France',
+                 'start': f'{year}-02-05', 'end': f'{year}-02-11', 'surface': 'Hard (Indoor)'},
+                {'name': 'Dallas Open', 'category': 'atp_250', 'location': 'Dallas, USA',
+                 'start': f'{year}-02-05', 'end': f'{year}-02-11', 'surface': 'Hard (Indoor)'},
+                {'name': 'Lyon Open', 'category': 'atp_250', 'location': 'Lyon, France',
+                 'start': f'{year}-05-20', 'end': f'{year}-05-25', 'surface': 'Clay'},
+                {'name': 'Stuttgart Open', 'category': 'atp_250', 'location': 'Stuttgart, Germany',
+                 'start': f'{year}-06-10', 'end': f'{year}-06-16', 'surface': 'Grass'},
+                {'name': 'Eastbourne International', 'category': 'atp_250', 'location': 'Eastbourne, UK',
+                 'start': f'{year}-06-24', 'end': f'{year}-06-29', 'surface': 'Grass'},
+                {'name': 'Atlanta Open', 'category': 'atp_250', 'location': 'Atlanta, USA',
+                 'start': f'{year}-07-22', 'end': f'{year}-07-28', 'surface': 'Hard'},
+                {'name': 'Winston-Salem Open', 'category': 'atp_250', 'location': 'Winston-Salem, USA',
+                 'start': f'{year}-08-19', 'end': f'{year}-08-24', 'surface': 'Hard'},
+                {'name': 'Chengdu Open', 'category': 'atp_250', 'location': 'Chengdu, China',
+                 'start': f'{year}-09-16', 'end': f'{year}-09-22', 'surface': 'Hard'},
+                {'name': 'Stockholm Open', 'category': 'atp_250', 'location': 'Stockholm, Sweden',
+                 'start': f'{year}-10-14', 'end': f'{year}-10-20', 'surface': 'Hard (Indoor)'},
+                {'name': 'Antwerp Open', 'category': 'atp_250', 'location': 'Antwerp, Belgium',
+                 'start': f'{year}-10-14', 'end': f'{year}-10-20', 'surface': 'Hard (Indoor)'},
+            ]
+        else:
+            tournament_data = [
+                # Grand Slams
+                {'name': 'Australian Open', 'category': 'grand_slam', 'location': 'Melbourne, Australia',
+                 'start': f'{year}-01-14', 'end': f'{year}-01-28', 'surface': 'Hard'},
+                {'name': 'Roland Garros', 'category': 'grand_slam', 'location': 'Paris, France',
+                 'start': f'{year}-05-26', 'end': f'{year}-06-09', 'surface': 'Clay'},
+                {'name': 'Wimbledon', 'category': 'grand_slam', 'location': 'London, UK',
+                 'start': f'{year}-07-01', 'end': f'{year}-07-14', 'surface': 'Grass'},
+                {'name': 'US Open', 'category': 'grand_slam', 'location': 'New York, USA',
+                 'start': f'{year}-08-26', 'end': f'{year}-09-08', 'surface': 'Hard'},
+                # WTA 1000 (mapped to masters_1000 for styling)
+                {'name': 'Qatar Open', 'category': 'masters_1000', 'location': 'Doha, Qatar',
+                 'start': f'{year}-02-10', 'end': f'{year}-02-17', 'surface': 'Hard'},
+                {'name': 'Dubai Championships', 'category': 'masters_1000', 'location': 'Dubai, UAE',
+                 'start': f'{year}-02-19', 'end': f'{year}-02-25', 'surface': 'Hard'},
+                {'name': 'Indian Wells Open', 'category': 'masters_1000', 'location': 'Indian Wells, USA',
+                 'start': f'{year}-03-06', 'end': f'{year}-03-17', 'surface': 'Hard'},
+                {'name': 'Miami Open', 'category': 'masters_1000', 'location': 'Miami, USA',
+                 'start': f'{year}-03-20', 'end': f'{year}-03-31', 'surface': 'Hard'},
+                {'name': 'Madrid Open', 'category': 'masters_1000', 'location': 'Madrid, Spain',
+                 'start': f'{year}-04-25', 'end': f'{year}-05-05', 'surface': 'Clay'},
+                {'name': 'Italian Open', 'category': 'masters_1000', 'location': 'Rome, Italy',
+                 'start': f'{year}-05-08', 'end': f'{year}-05-19', 'surface': 'Clay'},
+                {'name': 'Canadian Open', 'category': 'masters_1000', 'location': 'Toronto/Montreal, Canada',
+                 'start': f'{year}-08-05', 'end': f'{year}-08-11', 'surface': 'Hard'},
+                {'name': 'Cincinnati Open', 'category': 'masters_1000', 'location': 'Cincinnati, USA',
+                 'start': f'{year}-08-12', 'end': f'{year}-08-18', 'surface': 'Hard'},
+                {'name': 'Wuhan Open', 'category': 'masters_1000', 'location': 'Wuhan, China',
+                 'start': f'{year}-09-21', 'end': f'{year}-09-29', 'surface': 'Hard'},
+                {'name': 'Beijing Open', 'category': 'masters_1000', 'location': 'Beijing, China',
+                 'start': f'{year}-10-01', 'end': f'{year}-10-08', 'surface': 'Hard'},
+                # WTA 500
+                {'name': 'Adelaide International', 'category': 'atp_500', 'location': 'Adelaide, Australia',
+                 'start': f'{year}-01-08', 'end': f'{year}-01-13', 'surface': 'Hard'},
+                {'name': 'Stuttgart Open', 'category': 'atp_500', 'location': 'Stuttgart, Germany',
+                 'start': f'{year}-04-15', 'end': f'{year}-04-21', 'surface': 'Clay'},
+                {'name': 'Berlin Open', 'category': 'atp_500', 'location': 'Berlin, Germany',
+                 'start': f'{year}-06-17', 'end': f'{year}-06-23', 'surface': 'Grass'},
+                {'name': 'Eastbourne International', 'category': 'atp_500', 'location': 'Eastbourne, UK',
+                 'start': f'{year}-06-24', 'end': f'{year}-06-29', 'surface': 'Grass'},
+                {'name': 'San Diego Open', 'category': 'atp_500', 'location': 'San Diego, USA',
+                 'start': f'{year}-09-09', 'end': f'{year}-09-15', 'surface': 'Hard'},
+                # WTA 250
+                {'name': 'Hobart International', 'category': 'atp_250', 'location': 'Hobart, Australia',
+                 'start': f'{year}-01-08', 'end': f'{year}-01-13', 'surface': 'Hard'},
+                {'name': 'Auckland Open', 'category': 'atp_250', 'location': 'Auckland, New Zealand',
+                 'start': f'{year}-01-01', 'end': f'{year}-01-07', 'surface': 'Hard'},
+                {'name': 'Linz Open', 'category': 'atp_250', 'location': 'Linz, Austria',
+                 'start': f'{year}-01-27', 'end': f'{year}-02-02', 'surface': 'Hard (Indoor)'},
+                {'name': 'Charleston Open', 'category': 'atp_250', 'location': 'Charleston, USA',
+                 'start': f'{year}-04-01', 'end': f'{year}-04-07', 'surface': 'Clay'},
+                {'name': 'Seoul Open', 'category': 'atp_250', 'location': 'Seoul, South Korea',
+                 'start': f'{year}-09-16', 'end': f'{year}-09-22', 'surface': 'Hard'},
+            ]
         
         today = datetime.now().date()
         
@@ -756,26 +858,45 @@ class TennisDataFetcher:
         
         return tournaments
     
-    def _generate_sample_bracket(self, tournament_id):
+    def _generate_sample_bracket(self, tournament_id, tour='atp'):
         """Generate sample tournament bracket"""
-        # Determine bracket size (128, 64, 32 draw)
-        draw_size = 128
+        year = datetime.now().year
+        tournaments = self._generate_sample_tournaments(tour, year)
+        tournament = next((t for t in tournaments if t['id'] == tournament_id), None)
+        category = tournament['category'] if tournament else 'atp_250'
+        surface = tournament['surface'] if tournament else 'Hard'
+        name = tournament['name'] if tournament else f'Tournament {tournament_id}'
+
+        # Determine bracket size by category
+        if category == 'grand_slam':
+            draw_size = 128
+        elif category == 'masters_1000':
+            draw_size = 64
+        elif category == 'finals':
+            draw_size = 8
+        else:
+            draw_size = 32
         
         rounds = ['R128', 'R64', 'R32', 'R16', 'QF', 'SF', 'F']
         if draw_size == 64:
             rounds = ['R64', 'R32', 'R16', 'QF', 'SF', 'F']
         elif draw_size == 32:
             rounds = ['R32', 'R16', 'QF', 'SF', 'F']
+        elif draw_size == 8:
+            rounds = ['QF', 'SF', 'F']
         
         bracket = {
             'tournament_id': tournament_id,
+            'tournament_name': name,
+            'tournament_category': category,
+            'tournament_surface': surface,
             'draw_size': draw_size,
             'rounds': rounds,
             'matches': []
         }
         
         # Generate seeded players (top 32)
-        players = self._get_full_atp_rankings()[:draw_size]
+        players = self._get_full_atp_rankings()[:draw_size] if tour == 'atp' else self._get_full_wta_rankings()[:draw_size]
         seeds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                  17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
         
@@ -800,14 +921,13 @@ class TennisDataFetcher:
                     if p2 and p2['rank'] <= 32:
                         p2['seed'] = p2['rank']
                     
-                    # Determine winner (higher ranked player wins more often)
-                    if p1 and p2:
-                        if random.random() < 0.7:  # 70% chance higher ranked wins
-                            winner = p1 if p1['rank'] < p2['rank'] else p2
-                        else:
-                            winner = p2 if p1['rank'] < p2['rank'] else p1
-                    else:
-                        winner = p1 or p2
+                    status = 'finished' if random.random() > 0.3 else 'scheduled'
+                    winner = None
+                    score = None
+                    if p1 and p2 and status == 'finished':
+                        best_of = self._get_best_of('ATP' if tour == 'atp' else 'WTA', category)
+                        score = self._generate_final_score(best_of=best_of)
+                        winner = p1 if score['p1_sets'] > score['p2_sets'] else p2
                     
                     round_matches.append({
                         'id': match_id,
@@ -816,8 +936,8 @@ class TennisDataFetcher:
                         'player1': p1,
                         'player2': p2,
                         'winner': winner,
-                        'score': self._generate_final_score() if winner else None,
-                        'status': 'finished' if random.random() > 0.3 else 'scheduled'
+                        'score': score,
+                        'status': status
                     })
                 else:
                     # Later rounds - winners from previous round

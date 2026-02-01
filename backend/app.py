@@ -135,8 +135,9 @@ def get_tournaments(tour):
 @app.route('/api/tournament/<int:tournament_id>/bracket', methods=['GET'])
 def get_tournament_bracket(tournament_id):
     """Get tournament bracket/draw"""
+    tour = request.args.get('tour', default='atp')
     try:
-        bracket = tennis_fetcher.fetch_tournament_bracket(tournament_id)
+        bracket = tennis_fetcher.fetch_tournament_bracket(tournament_id, tour)
         return jsonify({
             'success': True,
             'data': bracket

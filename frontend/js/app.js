@@ -184,7 +184,12 @@ const Utils = {
         const initials = displayName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
         const colors = ['d1e8ff', 'e8f5e9', 'fff4e6', 'f3e5f5', 'e0f7fa', 'fce4ec'];
         const color = colors[((player && player.id) || Math.floor(Math.random() * colors.length)) % colors.length];
-        return `https://via.placeholder.com/200/${color}/0f172a?text=${initials}`;
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+            <rect width="100%" height="100%" fill="#${color}"/>
+            <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
+                font-family="Arial, sans-serif" font-size="72" fill="#0f172a">${initials}</text>
+        </svg>`;
+        return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
     },
 
     /**
@@ -295,8 +300,8 @@ const API = {
     /**
      * Get tournament bracket
      */
-    async getTournamentBracket(tournamentId) {
-        return await this.fetch(`/tournament/${tournamentId}/bracket`);
+    async getTournamentBracket(tournamentId, tour = 'atp') {
+        return await this.fetch(`/tournament/${tournamentId}/bracket`, { tour });
     },
 
     /**
@@ -441,6 +446,15 @@ const EventHandlers = {
 
         // Match card click handlers
         document.addEventListener('click', (e) => {
+            const upcomingCard = e.target.closest('.upcoming-match-card');
+            if (upcomingCard) {
+                const matchId = upcomingCard.dataset.matchId;
+                if (matchId) {
+                    ScoresModule.showUpcomingInsights(matchId);
+                }
+                return;
+            }
+
             const matchCard = e.target.closest('.match-card');
             if (matchCard) {
                 const matchId = matchCard.dataset.matchId;
@@ -497,6 +511,7 @@ const EventHandlers = {
 
         // Re-render all components for new tour
         ScoresModule.renderLiveScores();
+        ScoresModule.renderUpcomingMatches();
         ScoresModule.renderRecentMatches();
         RankingsModule.render();
         TournamentsModule.render();

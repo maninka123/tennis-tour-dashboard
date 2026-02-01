@@ -31,9 +31,9 @@ const ScoresModule = {
             {
                 id: 'demo_atp_2',
                 tour: 'ATP',
-                tournament: 'Australian Open',
-                tournament_category: 'grand_slam',
-                location: 'Melbourne, Australia',
+                tournament: 'Qatar Open',
+                tournament_category: 'masters_1000',
+                location: 'Doha, Qatar',
                 round: 'SF',
                 court: 'Margaret Court Arena',
                 player1: { id: 3, name: 'Jannik Sinner', country: 'ITA', rank: 3 },
@@ -90,8 +90,8 @@ const ScoresModule = {
             {
                 id: 'demo_wta_2',
                 tour: 'WTA',
-                tournament: 'Dubai Championships',
-                tournament_category: 'atp_500',
+                tournament: 'Australian Open',
+                tournament_category: 'grand_slam',
                 location: 'Dubai, UAE',
                 round: 'R16',
                 court: 'Centre Court',
@@ -117,8 +117,8 @@ const ScoresModule = {
             {
                 id: 'recent_atp_1',
                 tour: 'ATP',
-                tournament: 'Australian Open',
-                tournament_category: 'grand_slam',
+                tournament: 'Qatar Open',
+                tournament_category: 'masters_1000',
                 round: 'QF',
                 player1: { id: 1, name: 'Novak Djokovic', country: 'SRB', rank: 1 },
                 player2: { id: 7, name: 'Holger Rune', country: 'DEN', rank: 7 },
@@ -129,13 +129,13 @@ const ScoresModule = {
             {
                 id: 'recent_atp_2',
                 tour: 'ATP',
-                tournament: 'Australian Open',
-                tournament_category: 'grand_slam',
+                tournament: 'Dubai Championships',
+                tournament_category: 'masters_1000',
                 round: 'QF',
                 player1: { id: 2, name: 'Carlos Alcaraz', country: 'ESP', rank: 2 },
                 player2: { id: 8, name: 'Stefanos Tsitsipas', country: 'GRE', rank: 8 },
                 winner: 1,
-                final_score: { sets: [{ p1: 7, p2: 6 }, { p1: 6, p2: 4 }, { p1: 6, p2: 2 }] },
+                final_score: { sets: [{ p1: 7, p2: 6, tiebreak: { p1: 7, p2: 5 } }, { p1: 6, p2: 4 }, { p1: 6, p2: 2 }] },
                 status: 'finished'
             },
             {
@@ -147,7 +147,7 @@ const ScoresModule = {
                 player1: { id: 9, name: 'Hubert Hurkacz', country: 'POL', rank: 9 },
                 player2: { id: 15, name: 'Felix Auger-Aliassime', country: 'CAN', rank: 15 },
                 winner: 2,
-                final_score: { sets: [{ p1: 4, p2: 6 }, { p1: 6, p2: 7 }] },
+                final_score: { sets: [{ p1: 4, p2: 6 }, { p1: 6, p2: 7, tiebreak: { p1: 5, p2: 7 } }] },
                 status: 'finished'
             }
         ],
@@ -155,8 +155,8 @@ const ScoresModule = {
             {
                 id: 'recent_wta_1',
                 tour: 'WTA',
-                tournament: 'Australian Open',
-                tournament_category: 'grand_slam',
+                tournament: 'Qatar Open',
+                tournament_category: 'masters_1000',
                 round: 'SF',
                 player1: { id: 101, name: 'Iga Swiatek', country: 'POL', rank: 1 },
                 player2: { id: 105, name: 'Jessica Pegula', country: 'USA', rank: 5 },
@@ -239,7 +239,7 @@ const ScoresModule = {
             {
                 id: 'upcoming_wta_2',
                 tour: 'WTA',
-                tournament: 'Dubai Championships',
+                tournament: 'Abu Dhabi Open',
                 tournament_category: 'atp_500',
                 round: 'R16',
                 player1: { id: 103, name: 'Coco Gauff', country: 'USA', rank: 3 },
@@ -250,7 +250,7 @@ const ScoresModule = {
                 id: 'upcoming_wta_3',
                 tour: 'WTA',
                 tournament: 'Dubai Championships',
-                tournament_category: 'atp_500',
+                tournament_category: 'masters_1000',
                 round: 'QF',
                 player1: { id: 105, name: 'Jessica Pegula', country: 'USA', rank: 5 },
                 player2: { id: 106, name: 'Karolina Muchova', country: 'CZE', rank: 6 },
@@ -260,7 +260,7 @@ const ScoresModule = {
                 id: 'upcoming_wta_4',
                 tour: 'WTA',
                 tournament: 'Dubai Championships',
-                tournament_category: 'atp_500',
+                tournament_category: 'masters_1000',
                 round: 'QF',
                 player1: { id: 107, name: 'Marketa Vondrousova', country: 'CZE', rank: 7 },
                 player2: { id: 108, name: 'Madison Keys', country: 'USA', rank: 8 },
@@ -389,6 +389,87 @@ const ScoresModule = {
         });
     },
 
+    showUpcomingInsights(matchId) {
+        const { AppState } = window.TennisApp;
+        const tour = AppState.currentTour;
+        const match = AppState.upcomingMatches[tour]?.find(m => m.id === matchId)
+            || this.demoUpcomingMatches[tour]?.find(m => m.id === matchId);
+        if (!match) return;
+
+        const winEdge = this.calculateWinEdge(match.player1, match.player2);
+        const p1Fav = winEdge.p1 >= winEdge.p2;
+        const favorite = p1Fav ? match.player1 : match.player2;
+        const underdog = p1Fav ? match.player2 : match.player1;
+        const favPct = p1Fav ? winEdge.p1 : winEdge.p2;
+        const dogPct = 100 - favPct;
+        const categoryLabel = this.getCategoryLabel(match.tournament_category);
+        const categoryClass = window.TennisApp.Utils.getCategoryClass(match.tournament_category);
+
+        let modal = document.getElementById('upcomingInsightsModal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'upcomingInsightsModal';
+            modal.className = 'modal-overlay active';
+            modal.innerHTML = `
+                <div class="modal-content edge-insights-modal">
+                    <div class="modal-header">
+                        <h3>Match Preview</h3>
+                        <button class="close-modal" id="upcomingInsightsClose">&times;</button>
+                    </div>
+                    <div class="modal-body" id="upcomingInsightsContent"></div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.addEventListener('click', (e) => {
+                if (e.target.id === 'upcomingInsightsModal') {
+                    modal.classList.remove('active');
+                }
+            });
+            modal.querySelector('#upcomingInsightsClose').addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+        }
+
+        const content = document.getElementById('upcomingInsightsContent');
+        content.innerHTML = `
+            <div class="match-stats-title">
+                <div class="match-stats-tournament">
+                    ${match.tournament}
+                    ${categoryLabel ? `<span class="category-badge ${categoryClass}">${categoryLabel}</span>` : ''}
+                    ${match.round ? `<span class="match-stats-round-tag">${match.round}</span>` : ''}
+                </div>
+            </div>
+            <div class="upcoming-preview-hero">
+                <div class="upcoming-preview-scoreline">
+                    <span class="pct left">${winEdge.p1}%</span>
+                    <span class="dash">-</span>
+                    <span class="pct right">${winEdge.p2}%</span>
+                </div>
+                <div class="edge-bar">
+                    <span class="edge-pct left">${winEdge.p1}%</span>
+                    <div class="edge-track">
+                        <div class="edge-fill left" style="width:${winEdge.p1}%"></div>
+                        <div class="edge-fill right" style="width:${winEdge.p2}%"></div>
+                    </div>
+                    <span class="edge-pct right">${winEdge.p2}%</span>
+                </div>
+                <div class="edge-names">
+                    <span class="edge-name left">${window.TennisApp.Utils.formatPlayerName(match.player1.name)}</span>
+                    <span class="edge-name right">${window.TennisApp.Utils.formatPlayerName(match.player2.name)}</span>
+                </div>
+            </div>
+            <p><strong>Prediction:</strong> ${favorite.name} is favored (${favPct}%) over ${underdog.name} (${dogPct}%).</p>
+            <ul class="edge-insights-list">
+                <li>Current form: ${winEdge.formNote}</li>
+                <li>H2H snapshot: ${winEdge.h2hText}</li>
+                <li>Ranking edge: #${match.player1.rank} vs #${match.player2.rank}</li>
+                <li>Momentum note: ${winEdge.reason}</li>
+            </ul>
+        `;
+
+        modal.classList.add('active');
+    },
+
     showEdgeInsights(match) {
         const winEdge = this.calculateWinEdge(match.player1, match.player2);
         let modal = document.getElementById('edgeInsightsModal');
@@ -467,7 +548,11 @@ const ScoresModule = {
                         </div>
                         <div class="match-round">${match.round}</div>
                     </div>
-                    <div class="scheduled-time">${dateStr} ${timeStr}</div>
+                    <div class="scheduled-pill-group">
+                        <span class="scheduled-pill">${dateStr}</span>
+                        <span class="scheduled-connector"></span>
+                        <span class="scheduled-pill">${timeStr}</span>
+                    </div>
                 </div>
                 <div class="match-players">
                     <div class="player-row">
@@ -548,9 +633,10 @@ const ScoresModule = {
         
         const player1Score = this.formatPlayerScore(match, 1, isLive);
         const player2Score = this.formatPlayerScore(match, 2, isLive);
+        const resolvedWinner = !isLive ? this.getWinnerFromScore(match, match.final_score || match.score) : null;
         
-        const p1IsWinner = !isLive && match.winner === 1;
-        const p2IsWinner = !isLive && match.winner === 2;
+        const p1IsWinner = !isLive && resolvedWinner === 1;
+        const p2IsWinner = !isLive && resolvedWinner === 2;
         const p1Serving = isLive && match.serving === 1;
         const p2Serving = isLive && match.serving === 2;
 
@@ -633,6 +719,46 @@ const ScoresModule = {
     },
 
     /**
+     * Best-of format based on tour/category
+     */
+    getBestOfForMatch(match) {
+        const category = (match?.tournament_category || '').toLowerCase();
+        const tour = (match?.tour || '').toLowerCase();
+        if (category === 'grand_slam' && tour === 'atp') {
+            return 5;
+        }
+        return 3;
+    },
+
+    /**
+     * Determine winner from score (if possible)
+     */
+    getWinnerFromScore(match, score) {
+        if (!score || !Array.isArray(score.sets)) {
+            return match?.winner ?? null;
+        }
+        const bestOf = this.getBestOfForMatch(match);
+        const winSets = Math.floor(bestOf / 2) + 1;
+        let p1Sets = 0;
+        let p2Sets = 0;
+
+        for (const set of score.sets) {
+            if (set.p1 > set.p2) {
+                p1Sets += 1;
+            } else if (set.p2 > set.p1) {
+                p2Sets += 1;
+            }
+            if (p1Sets >= winSets || p2Sets >= winSets) {
+                break;
+            }
+        }
+
+        if (p1Sets >= winSets && p1Sets > p2Sets) return 1;
+        if (p2Sets >= winSets && p2Sets > p1Sets) return 2;
+        return match?.winner ?? null;
+    },
+
+    /**
      * Format player score display
      */
     formatPlayerScore(match, playerNum, isLive) {
@@ -652,7 +778,10 @@ const ScoresModule = {
             
             if (isTiebreak && set.tiebreak) {
                 const tiebreakScore = playerNum === 1 ? set.tiebreak.p1 : set.tiebreak.p2;
-                html += `<span class="set-score ${isCurrentSet ? 'current' : ''}">${games}<sup>${tiebreakScore}</sup></span>`;
+                html += `<span class="set-score ${isCurrentSet ? 'current' : ''}">${games}<sup class="tb">(${tiebreakScore})</sup></span>`;
+            } else if (isTiebreak) {
+                const fallbackTb = games === 7 ? 7 : 6;
+                html += `<span class="set-score ${isCurrentSet ? 'current' : ''}">${games}<sup class="tb">(${fallbackTb})</sup></span>`;
             } else {
                 html += `<span class="set-score ${isCurrentSet ? 'current' : ''}">${games}</span>`;
             }
@@ -704,8 +833,12 @@ const ScoresModule = {
                 match = AppState.recentMatches[tour]?.find(m => m.id === matchId);
             }
             if (!match) {
+                match = AppState.upcomingMatches[tour]?.find(m => m.id === matchId);
+            }
+            if (!match) {
                 match = this.demoLiveMatches[tour]?.find(m => m.id === matchId) ||
-                       this.demoRecentMatches[tour]?.find(m => m.id === matchId);
+                       this.demoRecentMatches[tour]?.find(m => m.id === matchId) ||
+                       this.demoUpcomingMatches[tour]?.find(m => m.id === matchId);
             }
         }
         
@@ -718,7 +851,8 @@ const ScoresModule = {
         const content = document.getElementById('matchStatsContent');
         
         const isLive = match.status === 'live';
-        const score = isLive ? match.score : match.final_score;
+        const score = isLive ? match.score : (match.final_score || match.score);
+        const resolvedWinner = !isLive ? this.getWinnerFromScore(match, score) : null;
         const tournamentName = context.tournament || match.tournament || 'Match Statistics';
         const roundName = match.round || context.round || '';
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
@@ -734,7 +868,7 @@ const ScoresModule = {
                 </div>
             </div>
             <div class="match-stats-hero">
-                <div class="match-stats-player-card ${match.winner === 1 ? 'winner' : ''}">
+                <div class="match-stats-player-card ${resolvedWinner === 1 ? 'winner' : ''}">
                     <img class="player-hero-img" src="${Utils.getPlayerImage(match.player1.id)}" alt="${match.player1.name}">
                     <div class="player-hero-name">${match.player1.name}</div>
                     <div class="player-hero-meta">${Utils.getFlag(match.player1.country)} ${match.player1.country} • Rank ${match.player1.rank || '-'}</div>
@@ -745,7 +879,7 @@ const ScoresModule = {
                     </div>
                     ${stats.duration ? `<div class="duration">${stats.duration}</div>` : ''}
                 </div>
-                <div class="match-stats-player-card ${match.winner === 2 ? 'winner' : ''}">
+                <div class="match-stats-player-card ${resolvedWinner === 2 ? 'winner' : ''}">
                     <img class="player-hero-img" src="${Utils.getPlayerImage(match.player2.id)}" alt="${match.player2.name}">
                     <div class="player-hero-name">${match.player2.name}</div>
                     <div class="player-hero-meta">${Utils.getFlag(match.player2.country)} ${match.player2.country} • Rank ${match.player2.rank || '-'}</div>
@@ -846,11 +980,14 @@ const ScoresModule = {
             const p2 = set.p2;
             const p1Win = p1 > p2;
             const p2Win = p2 > p1;
+            const isTiebreak = (p1 === 7 && p2 === 6) || (p1 === 6 && p2 === 7);
+            const tbP1 = isTiebreak ? (set.tiebreak ? set.tiebreak.p1 : (p1 === 7 ? 7 : 6)) : null;
+            const tbP2 = isTiebreak ? (set.tiebreak ? set.tiebreak.p2 : (p2 === 7 ? 7 : 6)) : null;
             return `
                 <div class="set-line">
-                    <span class="${p1Win ? 'winner' : ''}">${p1}</span>
+                    <span class="${p1Win ? 'winner' : ''}">${p1}${tbP1 !== null ? `<sup class="tb">(${tbP1})</sup>` : ''}</span>
                     <span class="dash">-</span>
-                    <span class="${p2Win ? 'winner' : ''}">${p2}</span>
+                    <span class="${p2Win ? 'winner' : ''}">${p2}${tbP2 !== null ? `<sup class="tb">(${tbP2})</sup>` : ''}</span>
                 </div>
             `;
         }).join('');
