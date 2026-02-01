@@ -88,7 +88,7 @@
             <aside class="rankings-panel">
                 <div class="panel-header">
                     <h2><i class="fas fa-trophy"></i> <span id="rankingsTitle">ATP</span> Rankings</h2>
-                    <span class="subtitle">Top 200 Players</span>
+                    <span class="subtitle" id="rankingsSubtitle">Top 200 Players</span>
                 </div>
                 <div class="rankings-list" id="rankingsList">
                     <!-- Rankings will be inserted here -->
@@ -96,6 +96,9 @@
                         <i class="fas fa-spinner fa-spin"></i>
                         <span>Loading rankings...</span>
                     </div>
+                </div>
+                <div class="rankings-footer">
+                    <button class="rankings-load-more" id="rankingsLoadMore" type="button">Show next 200</button>
                 </div>
             </aside>
 

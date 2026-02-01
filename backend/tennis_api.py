@@ -101,6 +101,9 @@ from datetime import datetime, timedelta
 from cachetools import TTLCache
 import random
 import json
+import csv
+import re
+from pathlib import Path
 from config import Config
 
 # Caches for different data types
@@ -183,9 +186,15 @@ class TennisDataFetcher:
         cache_key = f'rankings_{tour}'
         if cache_key in rankings_cache:
             return rankings_cache[cache_key][:limit]
-        
+
+        rankings = None
+        if tour == 'wta':
+            rankings = self._load_wta_rankings_csv()
+
         # Generate sample rankings data
-        rankings = self._generate_sample_rankings(tour, limit)
+        if not rankings:
+            rankings = self._generate_sample_rankings(tour, limit)
+
         rankings_cache[cache_key] = rankings
         return rankings
     
@@ -208,33 +217,41 @@ class TennisDataFetcher:
     
     def fetch_player_details(self, player_id):
         """Fetch player details"""
+        wta_player = self._get_wta_player_from_csv(player_id)
+        if wta_player:
+            return wta_player
         return self._generate_sample_player(player_id)
+
+    def _get_wta_player_from_csv(self, player_id):
+        """Resolve WTA player details from CSV-backed rankings."""
+        if player_id < 100000:
+            return None
+        rankings = self._load_wta_rankings_csv()
+        if not rankings:
+            return None
+        rank = player_id - 100000
+        player = next((p for p in rankings if p.get('rank') == rank), None)
+        if not player:
+            return None
+        return {
+            **player,
+            'id': player_id,
+            'tour': 'WTA',
+            'height': f"{random.randint(170, 190)} cm",
+            'plays': random.choice(['Right-Handed', 'Left-Handed']),
+            'turned_pro': random.randint(2010, 2022),
+            'titles': random.randint(0, 15),
+            'prize_money': f"${random.randint(1, 50)},{random.randint(100, 999)},{random.randint(100, 999)}",
+            'biography': f"Professional tennis player from {player.get('country', '')}.",
+            'image_url': f'https://api.sofascore.com/api/v1/player/{player_id}/image'
+        }
     
     # Sample data generators (would be replaced with real API calls)
     
     def _generate_sample_live_matches(self, tour):
         """Generate sample live matches data"""
-        atp_players = [
-            {'id': 1, 'name': 'Novak Djokovic', 'country': 'SRB', 'rank': 1},
-            {'id': 2, 'name': 'Carlos Alcaraz', 'country': 'ESP', 'rank': 2},
-            {'id': 3, 'name': 'Jannik Sinner', 'country': 'ITA', 'rank': 3},
-            {'id': 4, 'name': 'Daniil Medvedev', 'country': 'RUS', 'rank': 4},
-            {'id': 5, 'name': 'Andrey Rublev', 'country': 'RUS', 'rank': 5},
-            {'id': 6, 'name': 'Alexander Zverev', 'country': 'GER', 'rank': 6},
-            {'id': 7, 'name': 'Holger Rune', 'country': 'DEN', 'rank': 7},
-            {'id': 8, 'name': 'Stefanos Tsitsipas', 'country': 'GRE', 'rank': 8},
-        ]
-        
-        wta_players = [
-            {'id': 101, 'name': 'Iga Swiatek', 'country': 'POL', 'rank': 1},
-            {'id': 102, 'name': 'Aryna Sabalenka', 'country': 'BLR', 'rank': 2},
-            {'id': 103, 'name': 'Coco Gauff', 'country': 'USA', 'rank': 3},
-            {'id': 104, 'name': 'Elena Rybakina', 'country': 'KAZ', 'rank': 4},
-            {'id': 105, 'name': 'Jessica Pegula', 'country': 'USA', 'rank': 5},
-            {'id': 106, 'name': 'Ons Jabeur', 'country': 'TUN', 'rank': 6},
-            {'id': 107, 'name': 'Marketa Vondrousova', 'country': 'CZE', 'rank': 7},
-            {'id': 108, 'name': 'Qinwen Zheng', 'country': 'CHN', 'rank': 8},
-        ]
+        atp_players = self._get_sample_atp_players()
+        wta_players = self._get_sample_wta_players()
         
         atp_tournaments = [
             {'name': 'Australian Open', 'category': 'grand_slam', 'location': 'Melbourne, Australia'},
@@ -502,6 +519,70 @@ class TennisDataFetcher:
             players = self._get_full_wta_rankings()
         
         return players[:limit]
+
+    def _load_wta_rankings_csv(self):
+        """Load WTA rankings from CSV created by live-tennis.eu scraper."""
+        csv_path = Path(__file__).resolve().parent.parent / 'data' / 'wta_live_ranking.csv'
+        if not csv_path.exists():
+            return None
+
+        rankings = []
+        with csv_path.open('r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                rank_raw = (row.get('rank') or '').strip()
+                if not rank_raw.isdigit():
+                    continue
+                rank = int(rank_raw)
+                name = (row.get('player') or '').strip()
+                if not name:
+                    continue
+
+                points_raw = re.sub(r'[^\d]', '', row.get('points') or '')
+                points = int(points_raw) if points_raw else 0
+                age_raw = re.sub(r'[^\d]', '', row.get('age') or '')
+                age = int(age_raw) if age_raw else None
+
+                ch_raw = re.sub(r'[^\d]', '', row.get('career_high') or '')
+                career_high = int(ch_raw) if ch_raw else rank
+                at_ch = (row.get('at_career_high') or '').strip().lower() == 'yes'
+                is_new_ch = (row.get('is_new_career_high') or '').strip().lower() == 'yes'
+
+                rank_change_raw = row.get('rank_change') or ''
+                rank_change_clean = re.sub(r'[^-\d]', '', rank_change_raw)
+                rank_change = int(rank_change_clean) if rank_change_clean else 0
+
+                current_raw = (row.get('current') or '').strip()
+                points_change = 0
+                if re.match(r'^[+-]\d+$', current_raw):
+                    points_change = int(current_raw)
+
+                movement = rank_change
+
+                country = (row.get('country') or '').strip() or 'WHITE'
+                is_playing = (row.get('is_playing') or '').strip().lower() == 'yes'
+
+                rankings.append({
+                    'rank': rank,
+                    'id': 100000 + rank,
+                    'name': name,
+                    'country': country,
+                    'age': age,
+                    'points': points,
+                    'career_high': career_high,
+                    'is_career_high': at_ch,
+                    'is_new_career_high': is_new_ch,
+                    'movement': movement,
+                    'rank_change': rank_change,
+                    'points_change': points_change,
+                    'is_playing': is_playing,
+                    'current': (row.get('current') or '').strip(),
+                    'previous': (row.get('previous') or '').strip(),
+                    'next': (row.get('next') or '').strip(),
+                    'max': (row.get('max') or '').strip()
+                })
+
+        return rankings
     
     def _get_sample_atp_players(self):
         """Get sample ATP players with real IDs and image URLs"""
@@ -522,7 +603,24 @@ class TennisDataFetcher:
         return players
     
     def _get_sample_wta_players(self):
-        """Get sample WTA players with real IDs and image URLs"""
+        """Get sample WTA players with current ranking data when available."""
+        rankings = self._load_wta_rankings_csv()
+        if rankings:
+            players = []
+            for player in rankings[:10]:
+                players.append({
+                    'id': player['id'],
+                    'name': player['name'],
+                    'country': player['country'],
+                    'rank': player['rank'],
+                    'age': player.get('age'),
+                    'points': player.get('points'),
+                    'career_high': player.get('career_high'),
+                    'is_career_high': player.get('is_career_high'),
+                    'image_url': f'https://api.sofascore.com/api/v1/player/{player["id"]}/image'
+                })
+            return players
+
         players = [
             {'id': 126388, 'name': 'Iga Swiatek', 'country': 'POL', 'rank': 1},
             {'id': 83528, 'name': 'Aryna Sabalenka', 'country': 'BLR', 'rank': 2},
@@ -605,6 +703,10 @@ class TennisDataFetcher:
     
     def _get_full_wta_rankings(self):
         """Generate full WTA rankings (top 200)"""
+        rankings = self._load_wta_rankings_csv()
+        if rankings:
+            return rankings[:200]
+
         top_players = [
             # id, name, country, age, points, career_high, is_career_high
             (126388, 'Iga Swiatek', 'POL', 22, 10715, 1, True),

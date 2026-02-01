@@ -58,6 +58,22 @@ const PlayerModule = {
         const modal = document.getElementById('playerStatsModal');
         if (!modal) return;
 
+        const pointsDelta = typeof player.points_change === 'number' && player.points_change !== 0
+            ? this.formatDeltaPill(player.points_change, 'PTS')
+            : '';
+        const rankDeltaValue = typeof player.rank_change === 'number'
+            ? player.rank_change
+            : (typeof player.movement === 'number' ? player.movement : 0);
+        const rankDelta = rankDeltaValue
+            ? this.formatDeltaPill(rankDeltaValue, 'POS')
+            : '';
+
+        const chClass = player.is_new_career_high ? 'ch-highlight nch' : (player.is_career_high ? 'ch-highlight' : '');
+        const chText = player.career_high ? `CH #${player.career_high}` : 'CH -';
+        const rankText = player.rank ? `Rank #${player.rank}` : 'Rank -';
+        const playingText = player.is_playing && player.previous ? `${player.previous}` : '';
+        const rankBadge = player.rank ? `<div class="rank-badge">#${player.rank}</div>` : '';
+
         let html = `
             <div class="modal-content">
                 <div class="modal-header">
@@ -69,8 +85,17 @@ const PlayerModule = {
                         <div class="player-hero">
                             <img src="${Utils.getPlayerImage(player)}" alt="${player.name}">
                             <div class="player-info">
-                                <h4>${player.name}</h4>
-                                <p>${Utils.getFlag(player.country)} ${player.country} • Rank ${player.rank}</p>
+                                ${rankBadge}
+                                <h4>
+                                    ${player.name}
+                                    ${pointsDelta}
+                                    ${rankDelta}
+                                </h4>
+                                <div class="player-meta-row">
+                                    <span>${Utils.getFlag(player.country)} ${player.country}</span>
+                                    <span class="${chClass}">${chText}</span>
+                                </div>
+                                ${playingText ? `<div class="player-status playing-text">${playingText}</div>` : ''}
                             </div>
                         </div>
                         <div class="stats-toggle pill-toggle">
@@ -137,10 +162,20 @@ const PlayerModule = {
     },
 
     getInfoCardsHTML(profile) {
+        const pointsCard = profile.points !== null && profile.points !== undefined
+            ? `
+            <div class="info-card">
+                <span class="label">Points</span>
+                <span class="value">${profile.points.toLocaleString()}</span>
+            </div>
+        ` : '';
+        const playingCard = profile.playing ? `<div class="subtext playing-text">${profile.playing}</div>` : '';
+
         return `
             <div class="info-card">
                 <span class="label">Age</span>
                 <span class="value">${profile.age}</span>
+                ${playingCard}
             </div>
             <div class="info-card">
                 <span class="label">Height</span>
@@ -150,10 +185,7 @@ const PlayerModule = {
                 <span class="label">Plays</span>
                 <span class="value">${profile.hand}</span>
             </div>
-            <div class="info-card">
-                <span class="label">Career High</span>
-                <span class="value">#${profile.careerHigh}</span>
-            </div>
+            ${pointsCard}
             <div class="info-card">
                 <span class="label">Titles</span>
                 <span class="value">${profile.titles}</span>
@@ -311,13 +343,27 @@ const PlayerModule = {
     },
 
     generateDemoProfile(player, period = '2026') {
+        const pointsValue = typeof player?.points === 'number' ? player.points : null;
+        const rankChangeValue = typeof player?.rank_change === 'number'
+            ? player.rank_change
+            : (typeof player?.movement === 'number' ? player.movement : null);
+        const playingValue = player?.is_playing && player?.previous ? player.previous : null;
         return {
-            age: period === 'career' ? 29 : 27,
+            age: player?.age || (period === 'career' ? 29 : 27),
             height: '188 cm',
             hand: 'Right-Handed',
             titles: period === 'career' ? 52 : 4,
-            careerHigh: 1
+            careerHigh: player?.career_high || 1,
+            points: pointsValue,
+            rankChange: rankChangeValue,
+            playing: playingValue
         };
+    },
+
+    formatDeltaPill(value, label) {
+        const cls = value > 0 ? 'up' : 'down';
+        const sign = value > 0 ? '+' : '';
+        return `<span class="snapshot-pill ${cls}">${sign}${value} ${label}</span>`;
     },
 
     generateDemoPerformance(player, period = '2026') {

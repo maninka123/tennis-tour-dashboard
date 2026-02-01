@@ -98,8 +98,16 @@ const RankingsModule = {
             rankings = this.generateFullRankings(tour);
         }
 
-        // Limit to 200
-        rankings = rankings.slice(0, 200);
+        let displayLimit = AppState.rankingsDisplayLimit[tour] || 200;
+        if (tour === 'wta') {
+            displayLimit = Math.min(400, displayLimit);
+        } else {
+            displayLimit = 200;
+            AppState.rankingsDisplayLimit.atp = 200;
+        }
+
+        const totalCount = rankings.length;
+        rankings = rankings.slice(0, displayLimit);
 
         if (rankings.length === 0) {
             DOM.rankingsList.innerHTML = `
@@ -112,6 +120,19 @@ const RankingsModule = {
         }
 
         DOM.rankingsList.innerHTML = rankings.map(player => this.createRankingItem(player, tour)).join('');
+
+        if (DOM.rankingsSubtitle) {
+            DOM.rankingsSubtitle.textContent = `Top ${displayLimit} Players`;
+        }
+
+        if (DOM.rankingsLoadMore) {
+            const canLoadMore = tour === 'wta' && totalCount > displayLimit && displayLimit < 400;
+            DOM.rankingsLoadMore.hidden = !canLoadMore;
+            DOM.rankingsLoadMore.onclick = () => {
+                AppState.rankingsDisplayLimit.wta = Math.min(400, displayLimit + 200);
+                this.render();
+            };
+        }
     },
 
     /**
@@ -120,30 +141,40 @@ const RankingsModule = {
     createRankingItem(player, tour) {
         const { Utils } = window.TennisApp;
         
-        // Movement indicator
+        const movementValue = typeof player.movement === 'number'
+            ? player.movement
+            : parseInt(player.movement, 10) || 0;
+
+        // Movement indicator (rank positions)
         let movementHTML = '';
         let movementClass = 'same';
-        
-        if (player.movement > 0) {
+        if (movementValue > 0) {
             movementClass = 'up';
-            movementHTML = `<i class="fas fa-arrow-up"></i> ${player.movement}`;
-        } else if (player.movement < 0) {
+            movementHTML = `<i class="fas fa-arrow-up"></i> ${movementValue}`;
+        } else if (movementValue < 0) {
             movementClass = 'down';
-            movementHTML = `<i class="fas fa-arrow-down"></i> ${Math.abs(player.movement)}`;
+            movementHTML = `<i class="fas fa-arrow-down"></i> ${Math.abs(movementValue)}`;
         } else {
             movementHTML = `<i class="fas fa-minus"></i>`;
         }
 
         // Career high - highlight in yellow if at career high
-        const careerHighClass = player.is_career_high ? 'career-high-number' : '';
+        const isNewCareerHigh = !!player.is_new_career_high;
+        const careerHighClass = player.is_career_high
+            ? `career-high-number${isNewCareerHigh ? ' nch' : ''}`
+            : '';
         
-        // Check if player is currently playing (for demo, make some top players "playing")
-        const isPlaying = player.rank <= 10 && Math.random() > 0.6;
+        // Check if player is currently playing
+        const isPlaying = typeof player.is_playing !== 'undefined'
+            ? !!player.is_playing
+            : (player.rank <= 10 && Math.random() > 0.6);
         const playingClass = isPlaying ? 'playing' : '';
 
         // Only show image for top 200 (already limited)
         const showImage = player.rank <= 200;
         const imageClass = `${playingClass}`;
+
+        const ageValue = player.age ? player.age : '-';
 
         return `
             <div class="ranking-item" data-player-id="${player.id}">
@@ -164,16 +195,13 @@ const RankingsModule = {
                     <div class="ranking-name">
                         <span class="country-flag">${Utils.getFlag(player.country)}</span>
                         ${player.name}
+                        ${player.is_career_high ? `<span class="career-high-badge${isNewCareerHigh ? ' nch' : ''}">${isNewCareerHigh ? 'NCH' : 'CH'}</span>` : ''}
                     </div>
                     <div class="ranking-details">
-                        <span>Age: ${player.age}</span>
+                        <span>Age: ${ageValue}</span>
                         <span>•</span>
                         <span>CH: <span class="${careerHighClass}">${player.career_high}</span></span>
                     </div>
-                </div>
-                <div class="ranking-points">
-                    <div class="points-value">${player.points.toLocaleString()}</div>
-                    <div class="points-label">pts</div>
                 </div>
             </div>
         `;

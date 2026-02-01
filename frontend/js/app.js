@@ -71,6 +71,7 @@ const AppState = {
     upcomingMatches: { atp: [], wta: [] },
     recentMatches: { atp: [], wta: [] },
     rankings: { atp: [], wta: [] },
+    rankingsDisplayLimit: { atp: 200, wta: 200 },
     tournaments: { atp: [], wta: [] },
     selectedTournament: null,
     socket: null,
@@ -100,6 +101,8 @@ const DOM = {
     // Rankings
     rankingsList: document.getElementById('rankingsList'),
     rankingsTitle: document.getElementById('rankingsTitle'),
+    rankingsSubtitle: document.getElementById('rankingsSubtitle'),
+    rankingsLoadMore: document.getElementById('rankingsLoadMore'),
     
     // Tournaments
     tournamentCalendar: document.getElementById('tournamentCalendar'),
@@ -560,7 +563,7 @@ const App = {
                 API.getRecentMatches('atp', 15),
                 API.getRecentMatches('wta', 15),
                 API.getRankings('atp', 200),
-                API.getRankings('wta', 200),
+                API.getRankings('wta', 400),
                 API.getTournaments('atp'),
                 API.getTournaments('wta')
             ]).catch(err => {

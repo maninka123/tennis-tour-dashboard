@@ -991,6 +991,33 @@ body {
     padding: var(--space-sm);
 }
 
+.rankings-footer {
+    padding: var(--space-sm) var(--space-md);
+    border-top: 1px solid var(--bg-tertiary);
+    background: var(--bg-secondary);
+}
+
+.rankings-load-more {
+    width: 100%;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.rankings-load-more:hover {
+    background: var(--bg-hover);
+}
+
+.rankings-load-more[hidden] {
+    display: none;
+}
+
 .ranking-item {
     display: flex;
     align-items: center;
@@ -1039,6 +1066,27 @@ body {
     color: var(--text-muted);
 }
 
+.movement-pill {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.movement-pill.up {
+    background: rgba(34, 197, 94, 0.18);
+    color: #15803d;
+}
+
+.movement-pill.down {
+    background: rgba(239, 68, 68, 0.18);
+    color: #b91c1c;
+}
+
 .ranking-player-img {
     width: 36px;
     height: 36px;
@@ -1080,6 +1128,11 @@ body {
     font-weight: 700;
 }
 
+.career-high-number.nch {
+    color: #d32f2f;
+    font-weight: 800;
+}
+
 .career-high-badge {
     font-size: 0.55rem;
     background: var(--masters-1000);
@@ -1091,11 +1144,26 @@ body {
     flex-shrink: 0;
 }
 
+.career-high-badge.nch {
+    background: #d32f2f;
+    color: #fff5f5;
+}
+
 .ranking-details {
     display: flex;
     gap: var(--space-sm);
     font-size: 0.7rem;
     color: var(--text-muted);
+}
+
+.playing-badge {
+    font-size: 0.55rem;
+    background: rgba(34, 197, 94, 0.15);
+    color: #15803d;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .ranking-points {
@@ -2562,11 +2630,84 @@ body {
 
 .player-info h4 {
     font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
 .player-info p {
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+.player-meta-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    flex-wrap: wrap;
+}
+
+.player-status {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.player-status.playing-text,
+.subtext.playing-text {
+    color: #15803d;
+    font-weight: 600;
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff1d6, #ffe6b3);
+    color: #7a4b00;
+    font-weight: 800;
+    font-size: 0.75rem;
+    width: fit-content;
+}
+
+.info-card .subtext {
+    font-size: 0.68rem;
+    margin-top: 2px;
+}
+
+.snapshot-pill {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    line-height: 1.1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.snapshot-pill.up {
+    background: rgba(34, 197, 94, 0.18);
+    color: #15803d;
+}
+
+.snapshot-pill.down {
+    background: rgba(239, 68, 68, 0.18);
+    color: #b91c1c;
+}
+
+.ch-highlight {
+    color: var(--masters-1000);
+    font-weight: 700;
+}
+
+.ch-highlight.nch {
+    color: #d32f2f;
 }
 
 .pill-toggle {
