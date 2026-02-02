@@ -41,8 +41,12 @@ const PlayerModule = {
                 ? this.buildStatsFromScraped(player.stats_2026)
                 : this.generateDemoStats();
             const profile = this.generateDemoProfile(player, '2026', player?.stats_2026 || {});
-            const performance = player?.records?.length
-                ? this.buildPerformanceFromRecords(player.records, player.records_summary || [])
+            const yearlyRecords = player?.stats_2026?.records_tab?.yearly
+                || player?.stats_2026?.records
+                || player?.records
+                || [];
+            const performance = yearlyRecords.length
+                ? this.buildPerformanceFromRecords(yearlyRecords)
                 : this.generateDemoPerformance(player);
 
             this.currentPlayer = player;
@@ -249,12 +253,6 @@ const PlayerModule = {
                     <div class="perf-row surface-${row.surface}">
                         <div class="event">
                             <div class="event-name">${row.event}</div>
-                            ${row.summary ? `
-                                <div class="event-summary">
-                                    ${row.summary.best_result ? `<span>${row.summary.best_result}</span>` : ''}
-                                    ${row.summary.total_wl ? `<span>W/L ${row.summary.total_wl}</span>` : ''}
-                                </div>
-                            ` : ''}
                         </div>
                         ${years.map(y => {
                             const val = row.results[y] || '-';
@@ -405,7 +403,7 @@ const PlayerModule = {
         };
     },
 
-    buildPerformanceFromRecords(records, summary = []) {
+    buildPerformanceFromRecords(records) {
         const years = ['2020','2021','2022','2023','2024','2025'];
         const byYear = {};
         records.forEach(row => {
@@ -413,25 +411,19 @@ const PlayerModule = {
                 byYear[String(row.year)] = row;
             }
         });
-        const summaryByEvent = {};
-        summary.forEach(item => {
-            if (item && item.event) {
-                summaryByEvent[item.event] = item;
-            }
-        });
-        const buildResults = (key) => {
+        const buildResults = (key, fallbackKey = '') => {
             const results = {};
             years.forEach(year => {
                 const row = byYear[year] || {};
-                results[year] = row[key] || '-';
+                results[year] = row[key] || (fallbackKey ? row[fallbackKey] : '') || '-';
             });
             return results;
         };
         return [
-            { event: 'Australian Open', surface: 'hard', results: buildResults('australian_open'), summary: summaryByEvent['Australian Open'] },
-            { event: 'Roland Garros', surface: 'clay', results: buildResults('french_open'), summary: summaryByEvent['Roland Garros'] },
-            { event: 'Wimbledon', surface: 'grass', results: buildResults('wimbledon'), summary: summaryByEvent['Wimbledon'] },
-            { event: 'US Open', surface: 'hard', results: buildResults('us_open'), summary: summaryByEvent['US Open'] }
+            { event: 'Australian Open', surface: 'hard', results: buildResults('australian_open') },
+            { event: 'Roland Garros', surface: 'clay', results: buildResults('roland_garros', 'french_open') },
+            { event: 'Wimbledon', surface: 'grass', results: buildResults('wimbledon') },
+            { event: 'US Open', surface: 'hard', results: buildResults('us_open') }
         ];
     },
 

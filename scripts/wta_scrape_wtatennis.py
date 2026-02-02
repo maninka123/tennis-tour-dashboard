@@ -291,52 +291,52 @@ def parse_records_from_text(text: str) -> List[Dict[str, str]]:
     return records
 
 
+def _extract_text_lines(raw: str) -> List[str]:
+    if "<" in raw and ">" in raw:
+        cleaned = re.sub(r"<script[^>]*>.*?</script>", " ", raw, flags=re.DOTALL | re.IGNORECASE)
+        cleaned = re.sub(r"<style[^>]*>.*?</style>", " ", cleaned, flags=re.DOTALL | re.IGNORECASE)
+        cleaned = re.sub(r"<[^>]+>", "\n", cleaned)
+        raw = cleaned
+    return [line.strip() for line in raw.splitlines() if line.strip()]
+
+
+def _normalize_result_token(token: str) -> str:
+    if not token:
+        return ""
+    upper = token.upper().strip()
+    if upper.startswith("ROUND OF"):
+        digits = re.sub(r"[^\d]", "", upper)
+        return f"R{digits}" if digits else ""
+    if re.match(r"^R\\d+$", upper):
+        return upper
+    if upper in {"QF", "QUARTERFINAL", "QUARTERFINALS", "QUARTER-FINALS"}:
+        return "QF"
+    if upper in {"SF", "SEMIFINALS", "SEMI-FINALS", "SEMI FINAL", "SEMI-FINALIST"}:
+        return "SF"
+    if upper in {"F", "FINAL", "FINALIST"}:
+        return "F"
+    if upper in {"W", "WINNER"}:
+        return "W"
+    if upper in {"RR", "DNQ", "-"}:
+        return upper
+    return ""
+
+
 def parse_records_tab(text: str) -> Dict[str, List[Dict[str, str]]]:
-    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    # Try HTML table parsing first
+    yearly_from_html = parse_records_table_from_html(text)
+    if yearly_from_html:
+        return {
+            "summary": parse_records_summary_from_text(text),
+            "yearly": yearly_from_html
+        }
+
+    lines = _extract_text_lines(text)
     events = ["Australian Open", "Roland Garros", "Wimbledon", "US Open"]
 
-    summary = []
-    lower_lines = [line.lower() for line in lines]
-
-    # Extract summary blocks per Grand Slam
-    for event in events:
-        try:
-            idx = lower_lines.index(event.lower())
-        except ValueError:
-            continue
-        block = []
-        for j in range(idx + 1, min(idx + 20, len(lines))):
-            if lines[j] in events:
-                break
-            block.append(lines[j])
-
-        best_result = ""
-        best_years = ""
-        total_wl = ""
-        for entry in block:
-            if re.search(r"Total W/L", entry):
-                m = re.search(r"Total W/L\s*-\s*([\d/]+)", entry)
-                total_wl = m.group(1) if m else total_wl
-                continue
-            if re.search(r"\b\d{4}\b", entry) and ("," in entry or "20" in entry):
-                best_years = entry
-                continue
-            if any(word in entry.lower() for word in ["winner", "final", "semi", "quarter", "r32", "r64", "r128"]):
-                if not best_result:
-                    best_result = entry
-
-        summary.append({
-            "event": event,
-            "best_result": best_result,
-            "best_years": best_years,
-            "total_wl": total_wl
-        })
+    summary = parse_records_summary_from_text(text)
 
     # Extract yearly results table (year + 4 results)
-    result_pattern = re.compile(
-        r"^(R\d+|QF|SF|F|W|WINNER|FINAL|SEMI\-?FINAL(S|IST)?|QUARTERFINAL(S)?|ROUND OF 16|ROUND OF 32|ROUND OF 64|ROUND OF 128|DNQ|RR|\-)$",
-        re.IGNORECASE,
-    )
     yearly = []
     i = 0
     while i < len(lines):
@@ -344,27 +344,23 @@ def parse_records_tab(text: str) -> Dict[str, List[Dict[str, str]]]:
             year = lines[i]
             results = []
             j = i + 1
-            while j < len(lines) and len(results) < 4:
-                if re.match(r"^\d{4}$", lines[j]):
-                    break
-                results.append(lines[j])
+            while j < len(lines) and not re.match(r"^\d{4}$", lines[j]):
+                token = lines[j]
+                if "total w/l" in token.lower() or "tournament" in token.lower():
+                    j += 1
+                    continue
+                normalized = _normalize_result_token(token)
+                if normalized:
+                    if not results or normalized != results[-1]:
+                        results.append(normalized)
+                    if len(results) == 4:
+                        break
                 j += 1
             if len(results) == 4:
-                valid = 0
-                for entry in results:
-                    entry_norm = entry.strip()
-                    if "total w/l" in entry_norm.lower() or "tournament" in entry_norm.lower():
-                        continue
-                    if result_pattern.match(entry_norm):
-                        valid += 1
-                    elif len(entry_norm) <= 12:
-                        valid += 1
-                if valid < 3:
-                    i = j
-                    continue
                 yearly.append({
                     "year": year,
                     "australian_open": results[0],
+                    "roland_garros": results[1],
                     "french_open": results[1],
                     "wimbledon": results[2],
                     "us_open": results[3],
@@ -377,6 +373,86 @@ def parse_records_tab(text: str) -> Dict[str, List[Dict[str, str]]]:
         "summary": summary,
         "yearly": yearly
     }
+
+
+def parse_records_summary_from_text(text: str) -> List[Dict[str, str]]:
+    lines = _extract_text_lines(text)
+    events = ["Australian Open", "Roland Garros", "Wimbledon", "US Open"]
+    summary = []
+    lower_lines = [line.lower() for line in lines]
+    for event in events:
+        try:
+            idx = lower_lines.index(event.lower())
+        except ValueError:
+            continue
+        block = []
+        for j in range(idx + 1, min(idx + 20, len(lines))):
+            if lines[j] in events:
+                break
+            block.append(lines[j])
+        best_result = ""
+        best_years = ""
+        total_wl = ""
+        for entry in block:
+            if re.search(r"Total W/L", entry):
+                m = re.search(r"Total W/L\\s*-\\s*([\\d/]+)", entry)
+                total_wl = m.group(1) if m else total_wl
+                continue
+            if re.search(r"\\b\\d{4}\\b", entry) and ("," in entry or "20" in entry):
+                best_years = entry
+                continue
+            if any(word in entry.lower() for word in ["winner", "final", "semi", "quarter", "r32", "r64", "r128"]):
+                if not best_result:
+                    best_result = entry
+        summary.append({
+            "event": event,
+            "best_result": best_result,
+            "best_years": best_years,
+            "total_wl": total_wl
+        })
+    return summary
+
+
+def parse_records_table_from_html(html: str) -> List[Dict[str, str]]:
+    yearly = []
+    if "gs-history-table__row" not in html:
+        return yearly
+    rows = re.findall(r'<tr class=\"gs-history-table__row[^>]*\">(.*?)</tr>', html, re.DOTALL)
+    for row in rows:
+        year_match = re.search(r'>\s*(20\d{2})\s*<', row)
+        if not year_match:
+            continue
+        year = year_match.group(1)
+        mods = re.findall(r'gs-history-table__cell--([a-z0-9-]+)', row)
+        if len(mods) < 4:
+            continue
+        def map_mod(mod):
+            m = mod.lower()
+            if m in {"w", "winner"}:
+                return "W"
+            if m in {"f", "final"}:
+                return "F"
+            if m in {"sf", "semi", "semifinal"}:
+                return "SF"
+            if m in {"qf", "quarterfinal"}:
+                return "QF"
+            if m.startswith("r") and m[1:].isdigit():
+                return f"R{m[1:]}"
+            if m == "blank":
+                return "-"
+            if m in {"rr", "dnq"}:
+                return m.upper()
+            return "-"
+        results = [map_mod(mods[0]), map_mod(mods[1]), map_mod(mods[2]), map_mod(mods[3])]
+        yearly.append({
+            "year": year,
+            "australian_open": results[0],
+            "roland_garros": results[1],
+            "french_open": results[1],
+            "wimbledon": results[2],
+            "us_open": results[3],
+        })
+    return yearly
 
 
 def parse_stats_from_text(text: str) -> Dict[str, str]:
@@ -523,22 +599,24 @@ def scrape_player_stats(page, player_url: str) -> Dict[str, str]:
 
 
 def scrape_player_records(page, player_url: str) -> Dict[str, List[Dict[str, str]]]:
-    # Try record tab on stats page first
+    # Prefer player record page HTML
+    record_url = f"{player_url}/record"
+    try:
+        session = requests.Session()
+        html = fetch_html(record_url, session)
+        records = parse_records_tab(html)
+        if records.get("summary") or records.get("yearly"):
+            return records
+    except Exception:
+        pass
+
+    # Fallback to stats page record tab
     stats_url = f"{player_url}/stats"
     page.goto(stats_url, wait_until="domcontentloaded")
     page.wait_for_timeout(1200)
     _dismiss_cookie_banner(page)
     _click_if_exists(page, "button:has-text('Record')")
     _click_if_exists(page, "button:has-text('Records')")
-    page.wait_for_timeout(1200)
-    text = page.inner_text("body")
-    records = parse_records_tab(text)
-    if records.get("summary") or records.get("yearly"):
-        return records
-
-    # Fallback to player record page if exists
-    record_url = f"{player_url}/record"
-    page.goto(record_url, wait_until="domcontentloaded")
     page.wait_for_timeout(1200)
     text = page.inner_text("body")
     return parse_records_tab(text)
