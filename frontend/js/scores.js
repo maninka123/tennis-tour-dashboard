@@ -292,7 +292,10 @@ const ScoresModule = {
             return;
         }
 
-        DOM.liveScoresWrapper.innerHTML = matches.map(match => this.createMatchCard(match, true)).join('');
+        const grouped = this.groupMatchesByTournament(matches);
+        DOM.liveScoresWrapper.innerHTML = grouped
+            .map(group => this.renderTournamentGroup(group, true))
+            .join('');
     },
 
     /**
@@ -317,7 +320,75 @@ const ScoresModule = {
             return;
         }
 
-        DOM.recentMatchesWrapper.innerHTML = matches.map(match => this.createMatchCard(match, false)).join('');
+        const grouped = this.groupMatchesByTournament(matches);
+        DOM.recentMatchesWrapper.innerHTML = grouped
+            .map(group => this.renderTournamentGroup(group, false))
+            .join('');
+    },
+
+    /**
+     * Group matches by tournament and sort by category priority
+     */
+    groupMatchesByTournament(matches) {
+        const grouped = new Map();
+        matches.forEach(match => {
+            const tournament = match.tournament || 'Tournament';
+            const category = match.tournament_category || 'other';
+            const key = `${tournament}__${category}`;
+            if (!grouped.has(key)) {
+                grouped.set(key, {
+                    tournament,
+                    category,
+                    matches: []
+                });
+            }
+            grouped.get(key).matches.push(match);
+        });
+
+        return Array.from(grouped.values()).sort((a, b) => {
+            const aRank = this.getCategoryPriority(a.category);
+            const bRank = this.getCategoryPriority(b.category);
+            if (aRank !== bRank) return aRank - bRank;
+            return a.tournament.localeCompare(b.tournament);
+        });
+    },
+
+    getCategoryPriority(category) {
+        const key = (category || '').toLowerCase();
+        const priorities = {
+            grand_slam: 0,
+            masters_1000: 1,
+            wta_1000: 1,
+            atp_500: 2,
+            wta_500: 2,
+            atp_250: 3,
+            wta_250: 3,
+            atp_125: 4,
+            wta_125: 4,
+            finals: 5,
+            other: 6
+        };
+        return priorities[key] ?? 6;
+    },
+
+    renderTournamentGroup(group, isLive) {
+        const { Utils } = window.TennisApp;
+        const categoryClass = Utils.getCategoryClass(group.category);
+        const categoryLabel = this.getCategoryLabel(group.category);
+
+        return `
+            <div class="tournament-group ${categoryClass}">
+                <div class="tournament-group-header">
+                    <div class="tournament-group-title">
+                        <span class="tournament-group-name">${group.tournament}</span>
+                        <span class="category-badge">${categoryLabel}</span>
+                    </div>
+                </div>
+                <div class="tournament-group-row">
+                    ${group.matches.map(match => this.createMatchCard(match, isLive)).join('')}
+                </div>
+            </div>
+        `;
     },
 
     /**

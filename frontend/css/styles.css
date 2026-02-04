@@ -291,8 +291,45 @@ body {
 .live-scores-wrapper,
 .recent-matches-wrapper {
     display: flex;
+    flex-direction: column;
     gap: var(--space-md);
     padding: var(--space-xs) 0;
+}
+
+.tournament-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.tournament-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-xs);
+}
+
+.tournament-group-title {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+}
+
+.tournament-group-name {
+    max-width: 100%;
+    white-space: normal;
+    overflow: visible;
+}
+
+.tournament-group-row {
+    display: flex;
+    gap: var(--space-md);
+    overflow-x: auto;
+    padding: var(--space-xs) 0 var(--space-sm);
+    scroll-behavior: smooth;
 }
 
 /* Match Card Styles */
@@ -740,6 +777,7 @@ body {
 
 .tournament-info {
     flex: 1;
+    min-width: 0;
 }
 
 .tournament-name {
@@ -750,6 +788,10 @@ body {
     display: flex;
     align-items: center;
     gap: var(--space-xs);
+    flex-wrap: wrap;
+    white-space: normal;
+    max-width: 100%;
+    line-height: 1.15;
 }
 
 .category-badge {
