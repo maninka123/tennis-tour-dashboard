@@ -1051,7 +1051,7 @@ const BracketModule = {
             
             html += `
                 <div class="bracket-round">
-                    <div class="round-header">
+                    <div class="round-header${hasFinalSummary ? ' final-round' : ''}">
                         ${roundLabel}
                         ${hasFinalSummary ? `
                             <div class="round-final-summary">

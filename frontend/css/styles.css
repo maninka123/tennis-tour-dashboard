@@ -2088,6 +2088,26 @@ body {
     font-weight: 600;
 }
 
+.round-header.final-round {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.round-header.final-round .round-final-summary {
+    margin-top: 2px;
+    gap: 2px;
+}
+
+.round-header.final-round .final-line {
+    margin-top: 0;
+    gap: 6px;
+}
+
+.round-header.final-round .final-badge {
+    padding: 1px 6px;
+    font-size: 0.66rem;
+}
+
 .round-matches {
     display: flex;
     flex-direction: column;
