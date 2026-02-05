@@ -105,6 +105,8 @@ import csv
 import re
 import unicodedata
 import difflib
+import math
+import time
 from pathlib import Path
 from config import Config
 
@@ -125,6 +127,12 @@ class TennisDataFetcher:
 
         self._wta_scraped_index = None
         self._wta_tournament_index = None
+        self._wta_rankings_cache = None
+        self._wta_rankings_index = None
+        self._wta_global_cache_fast_data = None
+        self._wta_global_cache_fast_at = 0.0
+        self._wta_global_cache_slow_data = None
+        self._wta_global_cache_slow_at = 0.0
 
     def _normalize_player_name(self, name):
         if not name:
@@ -134,6 +142,12 @@ class TennisDataFetcher:
         cleaned = re.sub(r"[^A-Za-z\s]", " ", cleaned)
         cleaned = re.sub(r"\s+", " ", cleaned).strip().lower()
         return cleaned
+
+    def _clean_tournament_name(self, name):
+        if not name:
+            return ""
+        cleaned = re.sub(r"\s+(presented|powered)\s+by\s+.*$", "", str(name), flags=re.IGNORECASE).strip()
+        return cleaned or str(name).strip()
 
     def _load_wta_scraped_index(self):
         if self._wta_scraped_index is not None:
@@ -246,6 +260,331 @@ class TennisDataFetcher:
             return 'atp_125'
         
         return 'other'
+
+    def _get_wta_rankings(self):
+        if self._wta_rankings_cache is None:
+            self._wta_rankings_cache = self._load_wta_rankings_csv() or []
+        return self._wta_rankings_cache
+
+    def _get_wta_rankings_index(self):
+        if self._wta_rankings_index is not None:
+            return self._wta_rankings_index
+        index = {}
+        for player in self._get_wta_rankings():
+            norm = self._normalize_player_name(player.get('name') or '')
+            if norm and norm not in index:
+                index[norm] = player
+        self._wta_rankings_index = index
+        return index
+
+    def _match_wta_ranking(self, name):
+        if not name:
+            return None
+        norm = self._normalize_player_name(name)
+        index = self._get_wta_rankings_index()
+        if norm in index:
+            return index[norm]
+        choices = list(index.keys())
+        if choices:
+            match = difflib.get_close_matches(norm, choices, n=1, cutoff=0.82)
+            if match:
+                return index[match[0]]
+        return None
+
+    def _fetch_wta_global_matches(self):
+        url = 'https://api.wtatennis.com/tennis/matches/global'
+        try:
+            resp = self.session.get(url, headers={
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                'Referer': 'https://www.wtatennis.com/scores?type=S'
+            }, timeout=20)
+            resp.raise_for_status()
+            data = resp.json()
+        except Exception as exc:
+            print(f"Error fetching WTA live matches: {exc}")
+            return []
+
+        if isinstance(data, list):
+            return data
+        if isinstance(data, dict):
+            for key in ('Matches', 'matches', 'data'):
+                if isinstance(data.get(key), list):
+                    return data.get(key)
+        return []
+
+    def _get_wta_global_matches_cached(self, ttl=10, cache_slot='fast'):
+        now = time.time()
+        if cache_slot == 'slow':
+            data = self._wta_global_cache_slow_data
+            ts = self._wta_global_cache_slow_at
+        else:
+            data = self._wta_global_cache_fast_data
+            ts = self._wta_global_cache_fast_at
+
+        if data is not None and (now - ts) < ttl:
+            return data
+
+        matches = self._fetch_wta_global_matches()
+        if cache_slot == 'slow':
+            self._wta_global_cache_slow_data = matches
+            self._wta_global_cache_slow_at = now
+        else:
+            self._wta_global_cache_fast_data = matches
+            self._wta_global_cache_fast_at = now
+        return matches
+
+    def _format_wta_duration(self, value):
+        if not value:
+            return None
+        try:
+            parts = str(value).split(':')
+            if len(parts) != 3:
+                return None
+            hours = int(parts[0])
+            minutes = int(parts[1])
+            if hours > 0:
+                return f"{hours}:{minutes:02d}"
+            return f"0:{minutes:02d}"
+        except Exception:
+            return None
+
+    def _parse_wta_match_time(self, value):
+        if not value:
+            return None
+        try:
+            ts = value.replace('Z', '+00:00')
+            dt = datetime.fromisoformat(ts)
+            local_dt = dt.astimezone()
+            return local_dt.strftime('%b %d %I:%M %p').lstrip('0')
+        except Exception:
+            return None
+
+    def _is_grand_slam_event(self, name, level):
+        level_lower = (level or '').lower()
+        if 'grand slam' in level_lower:
+            return True
+        for gs in Config.GRAND_SLAMS:
+            if gs.lower() in (name or '').lower():
+                return True
+        return False
+
+    def _wta_category_from_level(self, name, level):
+        level_lower = (level or '').lower()
+        if self._is_grand_slam_event(name, level):
+            return 'grand_slam'
+        if '1000' in level_lower:
+            return 'masters_1000'
+        if '500' in level_lower:
+            return 'atp_500'
+        if '250' in level_lower:
+            return 'atp_250'
+        if '125' in level_lower:
+            return 'atp_125'
+        return 'other'
+
+    def _wta_round_from_match(self, match, is_grand_slam, draw_size=32):
+        round_id = str(match.get('RoundID') or '').strip()
+        match_id = str(match.get('MatchID') or '')
+        match_digits = re.sub(r'\D', '', match_id)
+        match_number = int(match_digits) if match_digits.isdigit() else 0
+
+        if match_number and match_number < 5:
+            if match_number == 1:
+                return 'F'
+            if match_number in (2, 3):
+                return 'SF'
+            if match_number == 4:
+                return 'QF'
+
+        if is_grand_slam and round_id in ('1', '2', '3', '4'):
+            gs_map = {'1': 'R128', '2': 'R64', '3': 'R32', '4': 'R16'}
+            return gs_map[round_id]
+
+        # Numeric round ids are common in WTA feed for some tournaments
+        if round_id.isdigit():
+            rid = int(round_id)
+            if rid == 1:
+                return f"R{max(2, draw_size)}"
+            if rid == 2:
+                return f"R{max(2, draw_size // 2)}"
+            if rid == 3:
+                return f"R{max(2, draw_size // 4)}"
+            if rid == 4:
+                return f"R{max(2, draw_size // 8)}"
+
+        if match_number:
+            round_of = 2 ** math.ceil(math.log2(match_number + 1))
+            if round_of < 16:
+                return 'QF'
+            return f"R{round_of}"
+
+        if round_id.upper() == 'Q':
+            return 'QF'
+        if round_id.upper() == 'S':
+            return 'SF'
+        if round_id.upper() == 'F':
+            return 'F'
+        return ''
+
+    def _parse_wta_sets(self, match):
+        sets = []
+        for idx in range(1, 6):
+            raw_a = match.get(f'ScoreSet{idx}A')
+            raw_b = match.get(f'ScoreSet{idx}B')
+            if raw_a in (None, '', ' ') or raw_b in (None, '', ' '):
+                continue
+            try:
+                games_a = int(raw_a)
+                games_b = int(raw_b)
+            except Exception:
+                continue
+            entry = {'p1': games_a, 'p2': games_b}
+            raw_tb = match.get(f'ScoreTbSet{idx}')
+            if raw_tb not in (None, '', ' '):
+                try:
+                    loser_tb = int(raw_tb)
+                except Exception:
+                    loser_tb = None
+                if loser_tb is not None and ((games_a == 7 and games_b == 6) or (games_a == 6 and games_b == 7)):
+                    winner_tb = max(7, loser_tb + 2)
+                    if games_a > games_b:
+                        entry['tiebreak'] = {'p1': winner_tb, 'p2': loser_tb}
+                    else:
+                        entry['tiebreak'] = {'p1': loser_tb, 'p2': winner_tb}
+            sets.append(entry)
+        return sets
+
+    def _determine_sets_winner(self, sets):
+        if not sets:
+            return None
+        p1_sets = sum(1 for s in sets if s['p1'] > s['p2'])
+        p2_sets = sum(1 for s in sets if s['p2'] > s['p1'])
+        if p1_sets > p2_sets:
+            return 1
+        if p2_sets > p1_sets:
+            return 2
+        return None
+
+    def _resolve_wta_player(self, name, country, player_id):
+        rank_entry = self._match_wta_ranking(name)
+        scraped_entry = self._match_wta_scraped(name)
+        image_url = ''
+        if rank_entry and rank_entry.get('image_url'):
+            image_url = rank_entry.get('image_url')
+        elif scraped_entry:
+            image_url = scraped_entry.get('profile', {}).get('image_url') or ''
+        return {
+            'id': (rank_entry or {}).get('id') or (int(player_id) if player_id and str(player_id).isdigit() else None),
+            'name': name,
+            'country': country or (rank_entry or {}).get('country') or (scraped_entry or {}).get('profile', {}).get('country'),
+            'rank': (rank_entry or {}).get('rank'),
+            'image_url': image_url
+        }
+
+    def _parse_wta_match(self, match):
+        tournament = match.get('Tournament') or {}
+        group = tournament.get('tournamentGroup') or {}
+        title = tournament.get('title') or ''
+        if ' - ' in title:
+            event_name = title.split(' - ')[0].strip()
+        else:
+            event_name = title.strip() or (group.get('name') or '').title()
+        event_name = self._clean_tournament_name(event_name)
+        level = group.get('level') or tournament.get('level') or ''
+        is_grand_slam = self._is_grand_slam_event(event_name, level)
+        category = self._wta_category_from_level(event_name, level)
+
+        city = tournament.get('city') or ''
+        country = tournament.get('country') or ''
+        location = ''
+        if city and country:
+            location = f"{city.title()}, {country.title()}"
+        elif city:
+            location = city.title()
+        elif country:
+            location = country.title()
+
+        surface = tournament.get('surface') or ''
+        court_label = ''
+        court_id = match.get('CourtID')
+        try:
+            if court_id is not None and str(court_id).strip() != '':
+                court_label = f"Court {int(court_id)}"
+        except Exception:
+            court_label = ''
+
+        first_a = (match.get('PlayerNameFirstA') or '').strip()
+        last_a = (match.get('PlayerNameLastA') or '').strip()
+        first_b = (match.get('PlayerNameFirstB') or '').strip()
+        last_b = (match.get('PlayerNameLastB') or '').strip()
+        name_a = f"{first_a} {last_a}".strip()
+        name_b = f"{first_b} {last_b}".strip()
+
+        player_a = self._resolve_wta_player(name_a, match.get('PlayerCountryA'), match.get('PlayerIDA'))
+        player_b = self._resolve_wta_player(name_b, match.get('PlayerCountryB'), match.get('PlayerIDB'))
+
+        match_state = match.get('MatchState') or ''
+        status = 'upcoming'
+        if match_state == 'P':
+            status = 'live'
+        elif match_state == 'F':
+            status = 'finished'
+
+        sets = self._parse_wta_sets(match)
+        winner = self._determine_sets_winner(sets)
+
+        score_payload = {
+            'sets': sets
+        }
+        if status == 'live':
+            point_a = match.get('PointA')
+            point_b = match.get('PointB')
+            if point_a or point_b:
+                score_payload['current_game'] = {'p1': point_a or '', 'p2': point_b or ''}
+
+        serving = None
+        if match.get('Serve') == 'A':
+            serving = 1
+        elif match.get('Serve') == 'B':
+            serving = 2
+
+        match_time = None
+        if status == 'live':
+            match_time = self._format_wta_duration(match.get('MatchTimeTotal'))
+            if not match_time:
+                match_time = self._parse_wta_match_time(match.get('MatchTimeStamp'))
+        draw_size = tournament.get('singlesDrawSize') or 32
+        try:
+            draw_size = int(draw_size)
+        except Exception:
+            draw_size = 32
+        round_code = self._wta_round_from_match(match, is_grand_slam, draw_size=draw_size)
+
+        parsed = {
+            'id': match.get('MatchID') or f"wta_{match.get('EventID')}",
+            'tour': 'WTA',
+            'tournament': event_name or 'Tournament',
+            'tournament_category': category,
+            'location': location,
+            'surface': surface,
+            'round': round_code,
+            'court': court_label,
+            'player1': player_a,
+            'player2': player_b,
+            'status': status,
+            'serving': serving,
+            'match_time': match_time,
+            'scheduled_time': match.get('MatchTimeStamp')
+        }
+
+        if status == 'finished':
+            parsed['final_score'] = score_payload
+            parsed['winner'] = winner
+            parsed['match_duration'] = self._format_wta_duration(match.get('MatchTimeTotal'))
+        else:
+            parsed['score'] = score_payload
+
+        return parsed
     
     def fetch_live_scores(self, tour='both'):
         """
@@ -256,17 +595,49 @@ class TennisDataFetcher:
         if cache_key in live_scores_cache:
             return live_scores_cache[cache_key]
         
-        # In production, this would fetch from a real API
-        # For now, we'll generate realistic sample data
-        live_matches = self._generate_sample_live_matches(tour)
+        live_matches = []
+        if tour in ('wta', 'both'):
+            wta_raw = self._get_wta_global_matches_cached(ttl=10, cache_slot='fast')
+            if not wta_raw:
+                live_matches.extend(self._generate_sample_live_matches('wta'))
+            else:
+                wta_live = [
+                    self._parse_wta_match(match)
+                    for match in wta_raw
+                    if isinstance(match, dict)
+                    and match.get('DrawMatchType') == 'S'
+                    and match.get('MatchState') == 'P'
+                ]
+                live_matches.extend(wta_live)
+
+        if tour in ('atp', 'both'):
+            live_matches.extend(self._generate_sample_live_matches('atp'))
         
         live_scores_cache[cache_key] = live_matches
         return live_matches
     
     def fetch_recent_matches(self, tour='both', limit=20):
         """Fetch recently completed matches"""
-        # Generate sample recent matches
-        return self._generate_sample_recent_matches(tour, limit)
+        matches = []
+        if tour in ('wta', 'both'):
+            wta_raw = self._get_wta_global_matches_cached(ttl=1800, cache_slot='slow')
+            if not wta_raw:
+                matches.extend(self._generate_sample_recent_matches('wta', limit))
+            else:
+                wta_finished = [
+                    match for match in wta_raw
+                    if isinstance(match, dict)
+                    and match.get('DrawMatchType') == 'S'
+                    and match.get('MatchState') == 'F'
+                ]
+                wta_finished.sort(key=lambda m: m.get('MatchTimeStamp') or '', reverse=True)
+                parsed = [self._parse_wta_match(match) for match in wta_finished[:limit]]
+                matches.extend(parsed)
+
+        if tour in ('atp', 'both'):
+            matches.extend(self._generate_sample_recent_matches('atp', limit))
+
+        return matches[:limit] if tour == 'both' else matches
     
     def fetch_upcoming_matches(self, tour='both', days=2):
         """
@@ -274,8 +645,39 @@ class TennisDataFetcher:
         tour: 'atp', 'wta', or 'both'
         days: number of days to look ahead (default 2)
         """
-        # Generate sample upcoming matches
-        return self._generate_sample_upcoming_matches(tour, days)
+        matches = []
+        cutoff = datetime.now().date() + timedelta(days=days)
+
+        if tour in ('wta', 'both'):
+            wta_raw = self._get_wta_global_matches_cached(ttl=1800, cache_slot='slow')
+            if not wta_raw:
+                matches.extend(self._generate_sample_upcoming_matches('wta', days))
+            else:
+                upcoming = []
+                for match in wta_raw:
+                    if not isinstance(match, dict):
+                        continue
+                    if match.get('DrawMatchType') != 'S':
+                        continue
+                    if match.get('MatchState') in ('P', 'F'):
+                        continue
+                    ts = match.get('MatchTimeStamp') or ''
+                    try:
+                        dt = datetime.fromisoformat(ts.replace('Z', '+00:00'))
+                        if dt.date() > cutoff:
+                            continue
+                    except Exception:
+                        pass
+                    upcoming.append(match)
+
+                upcoming.sort(key=lambda m: m.get('MatchTimeStamp') or '')
+                parsed = [self._parse_wta_match(match) for match in upcoming]
+                matches.extend(parsed)
+
+        if tour in ('atp', 'both'):
+            matches.extend(self._generate_sample_upcoming_matches('atp', days))
+
+        return matches
     
     def fetch_rankings(self, tour='atp', limit=200):
         """
@@ -940,6 +1342,7 @@ class TennisDataFetcher:
                 name = title.split(' - ')[0].strip()
             else:
                 name = tournament.get('name') or title or 'Tournament'
+            name = self._clean_tournament_name(name)
             name = _title_case(name)
             level = tournament.get('level') or ''
             category = _normalize_level(level, name)

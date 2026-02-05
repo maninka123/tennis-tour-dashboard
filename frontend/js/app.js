@@ -9,7 +9,8 @@
 const CONFIG = {
     API_BASE_URL: 'http://localhost:5001/api',
     WS_URL: 'http://localhost:5001',
-    UPDATE_INTERVAL: 30000, // 30 seconds
+    UPDATE_INTERVAL: 300000, // 5 minutes (live scores)
+    MATCH_LIST_UPDATE_INTERVAL: 1800000, // 30 minutes (recent + upcoming)
     TOURNAMENT_COLORS: {
         'grand_slam': '#9B59B6',
         'masters_1000': '#F1C40F',
@@ -539,6 +540,7 @@ const App = {
         
         // Load initial data
         await this.loadInitialData();
+        this.startPeriodicRefresh();
         
         // Hide loading overlay
         setTimeout(() => {
@@ -615,6 +617,34 @@ const App = {
         ScoresModule.renderRecentMatches();
         RankingsModule.render();
         TournamentsModule.render();
+    },
+
+    /**
+     * Periodic refresh for match sections
+     */
+    startPeriodicRefresh() {
+        // Refresh recent/upcoming blocks every 30 minutes.
+        setInterval(async () => {
+            try {
+                const [atpUpcoming, wtaUpcoming, atpRecent, wtaRecent] = await Promise.all([
+                    API.getUpcomingMatches('atp'),
+                    API.getUpcomingMatches('wta'),
+                    API.getRecentMatches('atp', 15),
+                    API.getRecentMatches('wta', 15)
+                ]);
+
+                AppState.upcomingMatches.atp = atpUpcoming || [];
+                AppState.upcomingMatches.wta = wtaUpcoming || [];
+                AppState.recentMatches.atp = atpRecent || [];
+                AppState.recentMatches.wta = wtaRecent || [];
+
+                ScoresModule.renderUpcomingMatches();
+                ScoresModule.renderRecentMatches();
+                Socket.updateLastUpdated();
+            } catch (error) {
+                console.error('Error refreshing recent/upcoming matches:', error);
+            }
+        }, CONFIG.MATCH_LIST_UPDATE_INTERVAL);
     },
 
     /**

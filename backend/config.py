@@ -15,7 +15,7 @@ class Config:
     RAPID_API_KEY = os.getenv('RAPID_API_KEY', '')
     
     # Cache settings (seconds)
-    CACHE_LIVE_SCORES = 30  # Update live scores every 30 seconds
+    CACHE_LIVE_SCORES = 300  # Update live scores every 5 minutes
     CACHE_RANKINGS = 3600   # Update rankings every hour
     CACHE_TOURNAMENTS = 1800  # Update tournaments every 30 minutes
     

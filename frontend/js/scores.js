@@ -273,20 +273,16 @@ const ScoresModule = {
      * Render live scores
      */
     renderLiveScores() {
-        const { AppState, Utils, DOM } = window.TennisApp;
+        const { AppState, DOM } = window.TennisApp;
         const tour = AppState.currentTour;
-        
-        // Get data (use demo if empty)
-        let matches = AppState.liveScores[tour];
-        if (!matches || matches.length === 0) {
-            matches = this.demoLiveMatches[tour] || [];
-        }
+        const matches = AppState.liveScores[tour] || [];
 
         if (matches.length === 0) {
             DOM.liveScoresWrapper.innerHTML = `
-                <div class="no-matches-message">
-                    <i class="fas fa-moon"></i>
-                    <p>No live matches at the moment</p>
+                <div class="no-live-card">
+                    <div class="no-live-icon">🎾</div>
+                    <div class="no-live-title">No Live Matches Right Now</div>
+                    <div class="no-live-subtitle">All courts are quiet at the moment. Check back soon for live scores.</div>
                 </div>
             `;
             return;
@@ -332,7 +328,7 @@ const ScoresModule = {
     groupMatchesByTournament(matches) {
         const grouped = new Map();
         matches.forEach(match => {
-            const tournament = match.tournament || 'Tournament';
+            const tournament = this.sanitizeTournamentName(match.tournament || 'Tournament');
             const category = match.tournament_category || 'other';
             const key = `${tournament}__${category}`;
             if (!grouped.has(key)) {
@@ -353,6 +349,13 @@ const ScoresModule = {
         });
     },
 
+    sanitizeTournamentName(name) {
+        if (!name) return 'Tournament';
+        return String(name)
+            .replace(/\s+(presented|powered)\s+by\s+.*$/i, '')
+            .trim();
+    },
+
     getCategoryPriority(category) {
         const key = (category || '').toLowerCase();
         const priorities = {
@@ -371,10 +374,11 @@ const ScoresModule = {
         return priorities[key] ?? 6;
     },
 
-    renderTournamentGroup(group, isLive) {
+    renderTournamentGroup(group, isLive, renderFn = null) {
         const { Utils } = window.TennisApp;
         const categoryClass = Utils.getCategoryClass(group.category);
         const categoryLabel = this.getCategoryLabel(group.category);
+        const cardRenderer = renderFn || ((match) => this.createMatchCard(match, isLive));
 
         return `
             <div class="tournament-group ${categoryClass}">
@@ -385,10 +389,93 @@ const ScoresModule = {
                     </div>
                 </div>
                 <div class="tournament-group-row">
-                    ${group.matches.map(match => this.createMatchCard(match, isLive)).join('')}
+                    ${group.matches.map(match => cardRenderer(match)).join('')}
                 </div>
             </div>
         `;
+    },
+
+    /**
+     * Expand round codes to full labels
+     */
+    getRoundLabel(round) {
+        if (!round) return '';
+        const raw = String(round).trim();
+        const upper = raw.toUpperCase();
+        const map = {
+            F: 'Final',
+            SF: 'Semi Final',
+            QF: 'Quarter Final',
+            R128: 'Round of 128',
+            R64: 'Round of 64',
+            R32: 'Round of 32',
+            R16: 'Round of 16',
+            RR: 'Round Robin'
+        };
+        if (map[upper]) return map[upper];
+        if (upper.startsWith('R') && /^[0-9]+$/.test(upper.slice(1))) {
+            return `Round of ${upper.slice(1)}`;
+        }
+        return raw;
+    },
+
+    getRoundCode(round) {
+        if (!round) return '';
+        const upper = String(round).trim().toUpperCase();
+        if (upper === 'Q') return 'QF';
+        if (upper === 'S') return 'SF';
+        if (upper === 'F') return 'F';
+        if (upper.startsWith('R') && /^[0-9]+$/.test(upper.slice(1))) return upper;
+        if (upper === 'SF' || upper === 'QF' || upper === 'RR') return upper;
+        return upper;
+    },
+
+    getPointsLevel(match) {
+        const category = String(match?.tournament_category || '').toLowerCase();
+        if (category.includes('grand_slam')) return 'grand_slam';
+        if (category.includes('1000')) return '1000';
+        if (category.includes('500')) return '500';
+        if (category.includes('250')) return '250';
+        if (category.includes('125')) return '125';
+        return '';
+    },
+
+    getRoundPoints(match) {
+        const roundCode = this.getRoundCode(match?.round);
+        const pointsLevel = this.getPointsLevel(match);
+        if (!roundCode || !pointsLevel) return null;
+
+        const tour = String(match?.tour || '').toUpperCase();
+        const atpTable = {
+            W: { grand_slam: 2000, '1000': 1000, '500': 500, '250': 250, '125': 125 },
+            F: { grand_slam: 1200, '1000': 600, '500': 300, '250': 150, '125': 75 },
+            SF: { grand_slam: 720, '1000': 360, '500': 180, '250': 90, '125': 45 },
+            QF: { grand_slam: 360, '1000': 180, '500': 90, '250': 45, '125': 25 },
+            R16: { grand_slam: 180, '1000': 90, '500': 45, '250': 20, '125': 13 },
+            R32: { grand_slam: 90, '1000': 45, '500': 20, '250': 10, '125': 7 },
+            R64: { grand_slam: 45, '1000': 25 },
+            R128: { grand_slam: 10 }
+        };
+        const wtaTable = {
+            W: { grand_slam: 2000, '1000': 1000, '500': 500, '250': 250, '125': 160 },
+            F: { grand_slam: 1200, '1000': 650, '500': 325, '250': 163, '125': 95 },
+            SF: { grand_slam: 720, '1000': 390, '500': 195, '250': 98, '125': 57 },
+            QF: { grand_slam: 360, '1000': 215, '500': 108, '250': 54, '125': 30 },
+            R16: { grand_slam: 180, '1000': 120, '500': 60, '250': 30, '125': 18 },
+            R32: { grand_slam: 90, '1000': 65, '500': 30, '250': 18, '125': 1 },
+            R64: { grand_slam: 45, '1000': 35 },
+            R128: { grand_slam: 10 }
+        };
+
+        const table = tour === 'WTA' ? wtaTable : atpTable;
+        return table?.[roundCode]?.[pointsLevel] ?? null;
+    },
+
+    getRoundLabelWithPoints(match) {
+        const label = this.getRoundLabel(match?.round);
+        if (!label) return '';
+        const pts = this.getRoundPoints(match);
+        return pts !== null ? `${label} (${pts} pts)` : label;
     },
 
     /**
@@ -432,12 +519,13 @@ const ScoresModule = {
             return;
         }
 
+        const grouped = this.groupMatchesByTournament(matches);
         const upcomingHTML = `
             <div class="section-header">
                 <h2><i class="fas fa-calendar"></i> Upcoming Matches (Next 2 Days)</h2>
             </div>
             <div class="upcoming-matches-container">
-                ${matches.map(match => this.createUpcomingMatchCard(match)).join('')}
+                ${grouped.map(group => this.renderTournamentGroup(group, false, (match) => this.createUpcomingMatchCard(match))).join('')}
             </div>
         `;
 
@@ -603,6 +691,9 @@ const ScoresModule = {
         const categoryClass = Utils.getCategoryClass(match.tournament_category);
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
         const surfaceClass = this.getSurfaceClass(match);
+        const tournamentName = this.sanitizeTournamentName(match.tournament);
+        const roundLabel = this.getRoundLabelWithPoints(match);
+        const courtLabel = match.court || match.court_name || match.stadium || 'Stadium TBA';
         const scheduledTime = new Date(match.scheduled_time);
         const timeStr = scheduledTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         const dateStr = scheduledTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
@@ -614,10 +705,13 @@ const ScoresModule = {
                 <div class="match-header">
                     <div class="tournament-info">
                         <div class="tournament-name">
-                            ${match.tournament}
+                            ${tournamentName}
                             <span class="category-badge">${categoryLabel}</span>
                         </div>
-                        <div class="match-round">${match.round}</div>
+                        <div class="match-round-row">
+                            ${roundLabel ? `<span class="match-stage-pill">${roundLabel}</span>` : ''}
+                            ${courtLabel ? `<span class="match-court">${courtLabel}</span>` : ''}
+                        </div>
                     </div>
                     <div class="scheduled-pill-group">
                         <span class="scheduled-pill">${dateStr}</span>
@@ -630,7 +724,7 @@ const ScoresModule = {
                         <img class="player-img" src="${Utils.getPlayerImage(match.player1)}" alt="${match.player1.name}">
                         <div class="player-info">
                             <div class="player-name">
-                                <span class="player-rank-badge">[${match.player1.rank}]</span>
+                                ${match.player1.rank ? `<span class="player-rank-badge">[${match.player1.rank}]</span>` : ''}
                                 <span class="country-flag">${Utils.getFlag(match.player1.country)}</span>
                                 ${Utils.formatPlayerName(match.player1.name)}
                             </div>
@@ -640,7 +734,7 @@ const ScoresModule = {
                         <img class="player-img" src="${Utils.getPlayerImage(match.player2)}" alt="${match.player2.name}">
                         <div class="player-info">
                             <div class="player-name">
-                                <span class="player-rank-badge">[${match.player2.rank}]</span>
+                                ${match.player2.rank ? `<span class="player-rank-badge">[${match.player2.rank}]</span>` : ''}
                                 <span class="country-flag">${Utils.getFlag(match.player2.country)}</span>
                                 ${Utils.formatPlayerName(match.player2.name)}
                             </div>
@@ -701,6 +795,10 @@ const ScoresModule = {
         const categoryClass = Utils.getCategoryClass(match.tournament_category);
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
         const surfaceClass = this.getSurfaceClass(match);
+        const tournamentName = this.sanitizeTournamentName(match.tournament);
+        const roundLabel = this.getRoundLabelWithPoints(match);
+        const courtLabel = match.court || match.court_name || '';
+        const finishedDuration = !isLive ? (match.match_duration || match.duration || '') : '';
         
         const player1Score = this.formatPlayerScore(match, 1, isLive);
         const player2Score = this.formatPlayerScore(match, 2, isLive);
@@ -710,24 +808,32 @@ const ScoresModule = {
         const p2IsWinner = !isLive && resolvedWinner === 2;
         const p1Serving = isLive && match.serving === 1;
         const p2Serving = isLive && match.serving === 2;
+        const p1RankBadge = match.player1.rank ? `<span class="player-rank-badge">[${match.player1.rank}]</span>` : '';
+        const p2RankBadge = match.player2.rank ? `<span class="player-rank-badge">[${match.player2.rank}]</span>` : '';
 
         return `
             <div class="match-card ${categoryClass} ${surfaceClass}" data-match-id="${match.id}">
                 <div class="match-header">
                     <div class="tournament-info">
                         <div class="tournament-name">
-                            ${match.tournament}
+                            ${tournamentName}
                             <span class="category-badge">${categoryLabel}</span>
                         </div>
-                        <div class="match-round">${match.round}</div>
+                        <div class="match-round-row">
+                            ${roundLabel ? `<span class="match-stage-pill">${roundLabel}</span>` : ''}
+                            ${courtLabel ? `<span class="match-court">${courtLabel}</span>` : ''}
+                        </div>
                     </div>
                     ${isLive ? `
                         <div class="live-badge">
-                            <span class="live-dot"></span>
-                            LIVE
+                            <span class="live-label"><span class="live-dot"></span>LIVE</span>
+                            ${match.match_time ? `<span class="live-time">${match.match_time}</span>` : ''}
                         </div>
                     ` : `
-                        <div class="finished-badge">Completed</div>
+                        <div class="finished-stack">
+                            <div class="finished-badge">Completed</div>
+                            ${finishedDuration ? `<div class="finished-duration-pill">${finishedDuration}</div>` : ''}
+                        </div>
                     `}
                 </div>
                 <div class="match-players">
@@ -735,9 +841,10 @@ const ScoresModule = {
                         <img class="player-img" src="${Utils.getPlayerImage(match.player1)}" alt="${match.player1.name}">
                         <div class="player-info">
                             <div class="player-name">
-                                <span class="player-rank-badge">[${match.player1.rank}]</span>
+                                ${p1RankBadge}
                                 <span class="country-flag">${Utils.getFlag(match.player1.country)}</span>
                                 ${Utils.formatPlayerName(match.player1.name)}
+                                ${p1Serving ? '<span class="serve-ball" title="Serving"></span>' : ''}
                             </div>
                         </div>
                         <div class="player-score">${player1Score}</div>
@@ -746,9 +853,10 @@ const ScoresModule = {
                         <img class="player-img" src="${Utils.getPlayerImage(match.player2)}" alt="${match.player2.name}">
                         <div class="player-info">
                             <div class="player-name">
-                                <span class="player-rank-badge">[${match.player2.rank}]</span>
+                                ${p2RankBadge}
                                 <span class="country-flag">${Utils.getFlag(match.player2.country)}</span>
                                 ${Utils.formatPlayerName(match.player2.name)}
+                                ${p2Serving ? '<span class="serve-ball" title="Serving"></span>' : ''}
                             </div>
                         </div>
                         <div class="player-score">${player2Score}</div>

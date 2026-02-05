@@ -47,7 +47,7 @@ def broadcast_live_scores():
 
 # Start scheduler for live score updates (after routes are initialized)
 if not scheduler.running:
-    scheduler.add_job(broadcast_live_scores, 'interval', seconds=30, id='live_scores_job')
+    scheduler.add_job(broadcast_live_scores, 'interval', seconds=300, id='live_scores_job')
     try:
         scheduler.start()
     except:

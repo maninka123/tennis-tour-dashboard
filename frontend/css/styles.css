@@ -296,6 +296,43 @@ body {
     padding: var(--space-xs) 0;
 }
 
+.no-live-card {
+    border: 1px solid #e7dcc9;
+    border-radius: var(--radius-lg);
+    padding: 18px 16px;
+    background: linear-gradient(135deg, #fffaf0 0%, #f7efe1 100%);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 88px;
+}
+
+.no-live-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    background: #fff;
+    border: 1px solid #ebdfcc;
+    box-shadow: var(--shadow-sm);
+}
+
+.no-live-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #3b2f1f;
+    line-height: 1.2;
+}
+
+.no-live-subtitle {
+    font-size: 0.82rem;
+    color: #7a6a55;
+    margin-top: 2px;
+}
+
 .tournament-group {
     display: flex;
     flex-direction: column;
@@ -382,8 +419,8 @@ body {
 }
 
 .upcoming-matches-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: var(--space-md);
     margin-top: var(--space-md);
 }
@@ -397,6 +434,8 @@ body {
     cursor: pointer;
     box-shadow: var(--shadow-sm);
     border-right: 4px solid transparent;
+    flex-shrink: 0;
+    width: 360px;
 }
 
 .upcoming-match-card:hover {
@@ -794,6 +833,30 @@ body {
     line-height: 1.15;
 }
 
+.match-round-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.match-stage-pill {
+    background: rgba(255, 238, 204, 0.7);
+    color: #7a5a1d;
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.match-court {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
 .category-badge {
     display: inline-flex;
     align-items: center;
@@ -835,20 +898,34 @@ body {
 
 .live-badge {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
     background: var(--accent-live);
     color: white;
-    padding: 2px 8px;
+    padding: 4px 8px;
     border-radius: var(--radius-sm);
     font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
 }
 
+.live-badge .live-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .live-badge .live-dot {
     width: 6px;
     height: 6px;
+}
+
+.live-badge .live-time {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-transform: none;
 }
 
 .finished-badge {
@@ -859,6 +936,23 @@ body {
     font-size: 0.65rem;
     font-weight: 600;
     text-transform: uppercase;
+}
+
+.finished-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.finished-duration-pill {
+    background: #d64545;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 /* Players in Match Card */
@@ -885,18 +979,6 @@ body {
     position: relative;
 }
 
-.player-row.serving::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 60%;
-    background: var(--accent-primary);
-    border-radius: 2px;
-}
-
 .player-img {
     width: 32px;
     height: 32px;
@@ -919,6 +1001,34 @@ body {
     display: flex;
     align-items: center;
     gap: 4px;
+}
+
+.serve-ball {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f2c94c;
+    box-shadow: 0 0 0 2px rgba(242, 201, 76, 0.25);
+    display: inline-block;
+    flex-shrink: 0;
+    animation: servePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes servePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 2px rgba(242, 201, 76, 0.25);
+    }
+    50% {
+        transform: scale(1.18);
+        box-shadow: 0 0 0 3px rgba(242, 201, 76, 0.2);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .serve-ball {
+        animation: none;
+    }
 }
 
 .player-rank-badge {

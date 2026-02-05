@@ -4,6 +4,13 @@
  */
 
 const TournamentsModule = {
+    sanitizeTournamentName(name) {
+        if (!name) return 'Tournament';
+        return String(name)
+            .replace(/\s+(presented|powered)\s+by\s+.*$/i, '')
+            .trim();
+    },
+
     /**
      * Demo tournaments data (used when API is unavailable)
      */
@@ -211,6 +218,7 @@ const TournamentsModule = {
     createTournamentItem(tournament) {
         const { Utils } = window.TennisApp;
         const categoryClass = Utils.getCategoryClass(tournament.category);
+        const cleanedName = this.sanitizeTournamentName(tournament.name);
         const date = Utils.formatDate(tournament.start_date);
         const startDate = new Date(tournament.start_date);
         const endDate = new Date(tournament.end_date || tournament.start_date);
@@ -303,14 +311,14 @@ const TournamentsModule = {
             : '';
 
         return `
-            <div class="tournament-item ${categoryClass} ${statusClass} ${isSelected ? 'selected' : ''}" data-tournament-id="${tournament.id}" data-category="${tournament.category}" data-name="${tournament.name}" data-surface="${tournament.surface}" data-status="${tournament.status}">
+            <div class="tournament-item ${categoryClass} ${statusClass} ${isSelected ? 'selected' : ''}" data-tournament-id="${tournament.id}" data-category="${tournament.category}" data-name="${cleanedName}" data-surface="${tournament.surface}" data-status="${tournament.status}">
                 <div class="tournament-date">
                     <div class="date-month">${date.month}</div>
                     <div class="date-day">${date.day}</div>
                 </div>
                 <div class="tournament-main">
                     <div class="tournament-title">
-                        <span class="tournament-name-text">${tournament.name}</span>
+                        <span class="tournament-name-text">${cleanedName}</span>
                         <div class="tournament-badges">
                             <span class="tournament-category-badge ${categoryClass}">${categoryNames[tournament.category] || tournament.category}</span>
                             ${liveBadge}
