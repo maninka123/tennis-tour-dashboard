@@ -385,7 +385,7 @@ const ScoresModule = {
                 <div class="tournament-group-header">
                     <div class="tournament-group-title">
                         <span class="tournament-group-name">${group.tournament}</span>
-                        <span class="category-badge">${categoryLabel}</span>
+                        <span class="category-badge ${categoryClass}">${categoryLabel}</span>
                     </div>
                 </div>
                 <div class="tournament-group-row">
@@ -706,7 +706,7 @@ const ScoresModule = {
                     <div class="tournament-info">
                         <div class="tournament-name">
                             ${tournamentName}
-                            <span class="category-badge">${categoryLabel}</span>
+                            <span class="category-badge ${categoryClass}">${categoryLabel}</span>
                         </div>
                         <div class="match-round-row">
                             ${roundLabel ? `<span class="match-stage-pill">${roundLabel}</span>` : ''}
@@ -817,7 +817,7 @@ const ScoresModule = {
                     <div class="tournament-info">
                         <div class="tournament-name">
                             ${tournamentName}
-                            <span class="category-badge">${categoryLabel}</span>
+                            <span class="category-badge ${categoryClass}">${categoryLabel}</span>
                         </div>
                         <div class="match-round-row">
                             ${roundLabel ? `<span class="match-stage-pill">${roundLabel}</span>` : ''}

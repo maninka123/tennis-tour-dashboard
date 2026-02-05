@@ -105,7 +105,6 @@ import csv
 import re
 import unicodedata
 import difflib
-import math
 import time
 from pathlib import Path
 from config import Config
@@ -382,48 +381,88 @@ class TennisDataFetcher:
             return 'atp_125'
         return 'other'
 
+    def _normalize_draw_size(self, draw_size):
+        try:
+            value = int(draw_size)
+        except Exception:
+            return 32
+        if value in (16, 28, 32, 56, 64, 96, 128):
+            return value
+        if value <= 16:
+            return 16
+        if value <= 36:
+            return 32
+        if value <= 60:
+            return 56
+        if value <= 80:
+            return 64
+        if value <= 110:
+            return 96
+        return 128
+
     def _wta_round_from_match(self, match, is_grand_slam, draw_size=32):
         round_id = str(match.get('RoundID') or '').strip()
         match_id = str(match.get('MatchID') or '')
         match_digits = re.sub(r'\D', '', match_id)
         match_number = int(match_digits) if match_digits.isdigit() else 0
 
-        if match_number and match_number < 5:
+        round_upper = round_id.upper()
+        if round_upper in ('F', 'SF', 'QF', 'RR', 'R128', 'R64', 'R32', 'R16'):
+            return round_upper
+        if round_upper == 'Q':
+            return 'QF'
+        if round_upper == 'S':
+            return 'SF'
+        if round_upper.startswith('R') and round_upper[1:].isdigit():
+            numeric = int(round_upper[1:])
+            if numeric in (16, 32, 64, 128):
+                return f'R{numeric}'
+
+        normalized_draw = self._normalize_draw_size(draw_size)
+
+        if round_id.isdigit():
+            rid = int(round_id)
+            if is_grand_slam:
+                gs_rounds = ['R128', 'R64', 'R32', 'R16', 'QF', 'SF', 'F']
+                if 1 <= rid <= len(gs_rounds):
+                    return gs_rounds[rid - 1]
+            else:
+                if normalized_draw in (96, 56):
+                    opening_round = 'R64'
+                elif normalized_draw == 128:
+                    opening_round = 'R128'
+                elif normalized_draw in (64,):
+                    opening_round = 'R64'
+                elif normalized_draw in (32, 28):
+                    opening_round = 'R32'
+                else:
+                    opening_round = 'R16'
+                rounds = [opening_round]
+                if opening_round == 'R128':
+                    rounds.extend(['R64', 'R32', 'R16'])
+                elif opening_round == 'R64':
+                    rounds.extend(['R32', 'R16'])
+                elif opening_round == 'R32':
+                    rounds.append('R16')
+                rounds.extend(['QF', 'SF', 'F'])
+                if 1 <= rid <= len(rounds):
+                    return rounds[rid - 1]
+
+        if match_number:
             if match_number == 1:
                 return 'F'
             if match_number in (2, 3):
                 return 'SF'
-            if match_number == 4:
+            if 4 <= match_number <= 7:
                 return 'QF'
-
-        if is_grand_slam and round_id in ('1', '2', '3', '4'):
-            gs_map = {'1': 'R128', '2': 'R64', '3': 'R32', '4': 'R16'}
-            return gs_map[round_id]
-
-        # Numeric round ids are common in WTA feed for some tournaments
-        if round_id.isdigit():
-            rid = int(round_id)
-            if rid == 1:
-                return f"R{max(2, draw_size)}"
-            if rid == 2:
-                return f"R{max(2, draw_size // 2)}"
-            if rid == 3:
-                return f"R{max(2, draw_size // 4)}"
-            if rid == 4:
-                return f"R{max(2, draw_size // 8)}"
-
-        if match_number:
-            round_of = 2 ** math.ceil(math.log2(match_number + 1))
-            if round_of < 16:
-                return 'QF'
-            return f"R{round_of}"
-
-        if round_id.upper() == 'Q':
-            return 'QF'
-        if round_id.upper() == 'S':
-            return 'SF'
-        if round_id.upper() == 'F':
-            return 'F'
+            if 8 <= match_number <= 15:
+                return 'R16'
+            if 16 <= match_number <= 31:
+                return 'R32'
+            if 32 <= match_number <= 63:
+                return 'R64'
+            if 64 <= match_number <= 127:
+                return 'R128'
         return ''
 
     def _parse_wta_sets(self, match):
