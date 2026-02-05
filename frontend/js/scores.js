@@ -742,7 +742,10 @@ const ScoresModule = {
                     </div>
                 </div>
                 <div class="edge-row" data-edge-id="${match.id}">
-                    <div class="h2h-chip">H2H: ${winEdge.h2hText}</div>
+                    <div class="h2h-chip" aria-label="Head to head">
+                        <span class="h2h-label">H2H</span>
+                        <span class="h2h-value">${winEdge.h2hText}</span>
+                    </div>
                     <div class="edge-block">
                         <div class="edge-bar" data-edge-id="${match.id}">
                             <span class="edge-pct left">${winEdge.p1}%</span>
