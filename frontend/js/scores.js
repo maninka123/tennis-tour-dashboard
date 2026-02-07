@@ -353,6 +353,9 @@ const ScoresModule = {
         if (!name) return 'Tournament';
         return String(name)
             .replace(/\s+(presented|powered)\s+by\s+.*$/i, '')
+            // Remove trailing season year variants: " 2026", "(2026)", "- 2026", ", 2026"
+            .replace(/\s*[\-,]?\s*\(\s*(?:19|20)\d{2}\s*\)\s*$/i, '')
+            .replace(/\s*[\-,]?\s*(?:19|20)\d{2}\s*$/i, '')
             .trim();
     },
 
@@ -555,7 +558,7 @@ const ScoresModule = {
             || this.demoUpcomingMatches[tour]?.find(m => m.id === matchId);
         if (!match) return;
 
-        const winEdge = this.calculateWinEdge(match.player1, match.player2);
+        const winEdge = this.calculateWinEdge(match);
         const p1Fav = winEdge.p1 >= winEdge.p2;
         const favorite = p1Fav ? match.player1 : match.player2;
         const underdog = p1Fav ? match.player2 : match.player1;
@@ -630,7 +633,7 @@ const ScoresModule = {
     },
 
     showEdgeInsights(match) {
-        const winEdge = this.calculateWinEdge(match.player1, match.player2);
+        const winEdge = this.calculateWinEdge(match);
         let modal = document.getElementById('edgeInsightsModal');
         if (!modal) {
             modal = document.createElement('div');
@@ -698,14 +701,14 @@ const ScoresModule = {
         const timeStr = scheduledTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         const dateStr = scheduledTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-        const winEdge = this.calculateWinEdge(match.player1, match.player2);
+        const winEdge = this.calculateWinEdge(match);
 
         return `
             <div class="upcoming-match-card ${categoryClass} ${surfaceClass}" data-match-id="${match.id}">
                 <div class="match-header">
                     <div class="tournament-info">
-                        <div class="tournament-name">
-                            ${tournamentName}
+                        <div class="tournament-name compact-inline">
+                            <span class="tournament-title-text">${tournamentName}</span>
                             <span class="category-badge ${categoryClass}">${categoryLabel}</span>
                         </div>
                         <div class="match-round-row">
@@ -768,7 +771,9 @@ const ScoresModule = {
     /**
      * Calculate a lightweight win edge metric using rank and recent form (demo)
      */
-    calculateWinEdge(p1, p2) {
+    calculateWinEdge(match) {
+        const p1 = match?.player1 || {};
+        const p2 = match?.player2 || {};
         // Lower rank number is stronger; add tiny randomness
         const baseP1 = (p2.rank || 50) / (p1.rank || 50);
         const noise = 0.05 * (Math.random() - 0.5);
@@ -778,7 +783,7 @@ const ScoresModule = {
         const p2Pct = 100 - p1Pct;
 
         const reason = p1Pct > 55 ? 'Better recent form & rank' : p2Pct > 55 ? 'Edge on momentum' : 'Too close to call';
-        const h2hText = `${Math.floor(Math.random() * 4) + 1}-${Math.floor(Math.random() * 3)}`;
+        const h2hText = (typeof match?.h2h_text === 'string' && match.h2h_text.trim()) ? match.h2h_text : 'N/A';
         const formNote = p1Pct > 55 ? 'Won 4 of last 5' : p2Pct > 55 ? 'On 6-match streak' : 'Evenly matched';
 
         return {

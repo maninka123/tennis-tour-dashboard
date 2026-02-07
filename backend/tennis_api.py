@@ -113,6 +113,31 @@ from config import Config
 live_scores_cache = TTLCache(maxsize=100, ttl=Config.CACHE_LIVE_SCORES)
 rankings_cache = TTLCache(maxsize=10, ttl=Config.CACHE_RANKINGS)
 tournaments_cache = TTLCache(maxsize=10, ttl=Config.CACHE_TOURNAMENTS)
+h2h_summary_cache = TTLCache(maxsize=1000, ttl=60 * 60 * 6)
+
+WTA_TENNIS_API_BASE = 'https://api.wtatennis.com/tennis'
+WTA_SEARCH_API_BASE = 'https://api.wtatennis.com/search/v2/wta/'
+
+WTA_SERVING_METRICS = [
+    {'key': 'aces', 'label': 'Aces', 'value_path': 'Aces', 'min_path': 'MinAces', 'avg_path': 'AverageAces', 'max_path': 'MaxAces', 'lower_is_better': False, 'is_percent': False},
+    {'key': 'double-faults', 'label': 'Double Faults', 'value_path': 'Double_Faults', 'min_path': 'MinDoubleFaults', 'avg_path': 'AverageDoubleFaults', 'max_path': 'MaxDoubleFaults', 'lower_is_better': True, 'is_percent': False},
+    {'key': 'first-serve-percent', 'label': '1st Serve %', 'value_path': 'first_serve_percent', 'min_path': 'MinFirstServePercent', 'avg_path': 'AverageFirstServePercent', 'max_path': 'MaxFirstServePercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'first-serve-won-percent', 'label': '1st Serve Won %', 'value_path': 'first_serve_won_percent', 'min_path': 'MinFirstServeWonPercent', 'avg_path': 'AverageFirstServeWonPercent', 'max_path': 'MaxFirstServeWonPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'second-serve-won-percent', 'label': '2nd Serve Won %', 'value_path': 'second_serve_won_percent', 'min_path': 'MinSecondServeWonPercent', 'avg_path': 'AverageSecondServeWonPercent', 'max_path': 'MaxSecondServeWonPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'break-points-saved', 'label': 'Break Points Saved %', 'value_path': 'breakpoint_saved_percent', 'min_path': 'MinBreakpointSavedPercent', 'avg_path': 'AverageBreakpointSavedPercent', 'max_path': 'MaxBreakpointSavedPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'service-points-won-percent', 'label': 'Service Points Won %', 'value_path': 'service_points_won_percent', 'min_path': 'MinServicePointsWonPercent', 'avg_path': 'AverageServicePointsWonPercent', 'max_path': 'MaxServicePointsWonPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'service-games-won-percent', 'label': 'Service Games Won %', 'value_path': 'service_games_won_percent', 'min_path': 'MinServiceGamesWonPercent', 'avg_path': 'AverageServiceGamesWonPercent', 'max_path': 'MaxServiceGamesWonPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'service-games-played', 'label': 'Service Games Played', 'value_path': 'Service_Games_Played', 'min_path': 'MinServiceGamesPlayed', 'avg_path': 'AverageServiceGamesPlayed', 'max_path': 'MaxServiceGamesPlayed', 'lower_is_better': False, 'is_percent': False}
+]
+
+WTA_RETURNING_METRICS = [
+    {'key': 'return-points-won-percent', 'label': 'Return Points Won %', 'value_path': 'return_points_won_percent', 'min_path': 'MinReturnPointsWonPercent', 'avg_path': 'AverageReturnPointsWonPercent', 'max_path': 'MaxReturnPointsWonPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'first-return-points-won-percent', 'label': '1st Return Points Won %', 'value_path': 'first_return_percent', 'min_path': 'MinFirstReturnPercent', 'avg_path': 'AverageFirstReturnPercent', 'max_path': 'MaxFirstReturnPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'second-return-points-won-percent', 'label': '2nd Return Points Won %', 'value_path': 'second_return_percent', 'min_path': 'MinSecondReturnPercent', 'avg_path': 'AverageSecondReturnPercent', 'max_path': 'MaxSecondReturnPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'break-points-converted-percent', 'label': 'Break Points Converted %', 'value_path': 'breakpoint_converted_percent', 'min_path': 'MinBreakpointConvertedPercent', 'avg_path': 'AverageBreakpointConvertedPercent', 'max_path': 'MaxBreakpointConvertedPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'return-games-won-percent', 'label': 'Return Games Won %', 'value_path': 'return_games_won_percent', 'min_path': 'MinReturnGamesWonPercent', 'avg_path': 'AverageReturnGamesWonPercent', 'max_path': 'MaxReturnGamesWonPercent', 'lower_is_better': False, 'is_percent': True},
+    {'key': 'return-games-played', 'label': 'Return Games Played', 'value_path': 'Return_Games_Played', 'min_path': 'MinReturnGamesPlayed', 'avg_path': 'AverageReturnGamesPlayed', 'max_path': 'MaxReturnGamesPlayed', 'lower_is_better': False, 'is_percent': False}
+]
 
 
 class TennisDataFetcher:
@@ -289,6 +314,635 @@ class TennisDataFetcher:
             if match:
                 return index[match[0]]
         return None
+
+    def _to_float(self, value):
+        if value is None:
+            return None
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return None
+
+    def _format_metric_value(self, value, is_percent=False):
+        numeric = self._to_float(value)
+        if numeric is None:
+            return '-'
+        if is_percent:
+            return f"{numeric:.1f}%"
+        if abs(numeric - round(numeric)) < 1e-9:
+            return str(int(round(numeric)))
+        return f"{numeric:.1f}"
+
+    def _normalize_metric_value(self, value, min_value, max_value, lower_is_better=False):
+        val = self._to_float(value)
+        low = self._to_float(min_value)
+        high = self._to_float(max_value)
+        if val is None or low is None or high is None or high <= low:
+            return 0.0
+        scaled = (val - low) / (high - low) * 100.0
+        if lower_is_better:
+            scaled = 100.0 - scaled
+        return max(0.0, min(100.0, scaled))
+
+    def _wta_api_get_json(self, url, params=None, include_account_header=False):
+        headers = {
+            'User-Agent': self.session.headers.get('User-Agent', 'Mozilla/5.0'),
+            'Referer': 'https://www.wtatennis.com/'
+        }
+        if include_account_header:
+            headers['account'] = 'wta'
+        response = self.session.get(url, params=params or {}, headers=headers, timeout=30)
+        response.raise_for_status()
+        return response.json()
+
+    def _to_int(self, value):
+        try:
+            return int(value)
+        except Exception:
+            return None
+
+    def _get_wta_h2h_pair_summary(self, player_a_id, player_b_id):
+        a_id = self._to_int(player_a_id)
+        b_id = self._to_int(player_b_id)
+        if not a_id or not b_id or a_id == b_id:
+            return None
+
+        key = tuple(sorted((a_id, b_id)))
+        if key in h2h_summary_cache:
+            return h2h_summary_cache[key]
+
+        first_id, second_id = key
+        try:
+            payload = self._wta_api_get_json(
+                f"{WTA_TENNIS_API_BASE}/players/{first_id}/headtohead/{second_id}",
+                params={'sort': 'desc'},
+                include_account_header=True
+            )
+            summary = ((payload.get('headToHeadSummary') or [{}])[0]) or {}
+            first_wins = self._to_int(summary.get('wins')) or 0
+            second_wins = self._to_int(summary.get('losses')) or 0
+            result = {
+                'first_id': first_id,
+                'second_id': second_id,
+                'first_wins': first_wins,
+                'second_wins': second_wins
+            }
+        except Exception:
+            result = None
+
+        h2h_summary_cache[key] = result
+        return result
+
+    def _format_h2h_text_for_match_order(self, p1_id, p2_id):
+        p1 = self._to_int(p1_id)
+        p2 = self._to_int(p2_id)
+        if not p1 or not p2 or p1 == p2:
+            return 'N/A'
+
+        summary = self._get_wta_h2h_pair_summary(p1, p2)
+        if not summary:
+            return 'N/A'
+
+        if p1 == summary['first_id'] and p2 == summary['second_id']:
+            return f"{summary['first_wins']}-{summary['second_wins']}"
+        if p1 == summary['second_id'] and p2 == summary['first_id']:
+            return f"{summary['second_wins']}-{summary['first_wins']}"
+        return 'N/A'
+
+    def _attach_upcoming_h2h(self, matches):
+        enriched = []
+        for match in matches or []:
+            if not isinstance(match, dict):
+                continue
+            out = dict(match)
+            p1 = (out.get('player1') or {}).get('id')
+            p2 = (out.get('player2') or {}).get('id')
+            if (out.get('tour') or '').upper() == 'WTA':
+                out['h2h_text'] = self._format_h2h_text_for_match_order(p1, p2)
+            else:
+                out['h2h_text'] = 'N/A'
+            enriched.append(out)
+        return enriched
+
+    def _extract_wta_player_id_from_url(self, url):
+        if not url:
+            return None
+        match = re.search(r"/players/(\d+)", str(url))
+        if not match:
+            return None
+        try:
+            return int(match.group(1))
+        except Exception:
+            return None
+
+    def _name_match_score(self, query_norm, candidate_norm):
+        if not query_norm or not candidate_norm:
+            return 0.0
+        score = 0.0
+
+        if candidate_norm == query_norm:
+            score += 100.0
+        if candidate_norm.startswith(query_norm):
+            score += 35.0
+        if query_norm in candidate_norm:
+            score += 22.0
+
+        query_tokens = query_norm.split()
+        candidate_tokens = candidate_norm.split()
+        token_hits = 0
+        for token in query_tokens:
+            if any(ct.startswith(token) for ct in candidate_tokens):
+                token_hits += 1
+
+        if query_tokens:
+            score += token_hits * 12.0
+            if token_hits == len(query_tokens):
+                score += 10.0
+            if len(query_tokens) == 1 and candidate_tokens and candidate_tokens[-1].startswith(query_tokens[0]):
+                score += 12.0
+
+        score += difflib.SequenceMatcher(None, query_norm, candidate_norm).ratio() * 10.0
+        return score
+
+    def _wta_level_to_category(self, tournament_level='', tournament_name=''):
+        raw_level = str(tournament_level or '').upper()
+        raw_name = str(tournament_name or '').upper()
+        if 'GRAND' in raw_level or raw_level in ('GS',) or any(gs.upper() in raw_name for gs in Config.GRAND_SLAMS):
+            return 'grand_slam'
+        if any(token in raw_level for token in ('1000', 'PM', 'P1')):
+            return 'masters_1000'
+        if any(token in raw_level for token in ('500', 'P5')):
+            return 'atp_500'
+        if any(token in raw_level for token in ('250', 'P2')):
+            return 'atp_250'
+        if any(token in raw_level for token in ('125', 'P3')):
+            return 'atp_125'
+        if 'FINAL' in raw_level:
+            return 'finals'
+        category = self.get_tournament_category(tournament_name or '')
+        return category if category != 'other' else 'other'
+
+    def _category_label(self, category):
+        labels = {
+            'grand_slam': 'Grand Slam',
+            'masters_1000': 'WTA 1000',
+            'atp_500': 'WTA 500',
+            'atp_250': 'WTA 250',
+            'atp_125': 'WTA 125',
+            'finals': 'WTA Finals',
+            'other': 'Tour'
+        }
+        return labels.get(category, 'Tour')
+
+    def _build_h2h_player_payload(self, player_id, full_name, country_code=''):
+        ranking = self._match_wta_ranking(full_name or '')
+        scraped = self._match_wta_scraped(full_name or '')
+        profile = scraped.get('profile') if scraped else {}
+        image_url = (ranking or {}).get('image_url') or profile.get('image_url') or ''
+        country = country_code or (ranking or {}).get('country') or profile.get('country') or ''
+        return {
+            'id': int(player_id) if str(player_id).isdigit() else player_id,
+            'name': full_name or '',
+            'country': country,
+            'rank': (ranking or {}).get('rank'),
+            'image_url': image_url
+        }
+
+    def _build_wta_metric_rows(self, player_stats_payload, opponent_stats_payload, metric_specs):
+        player_stats = (player_stats_payload or {}).get('stats') or {}
+        opponent_stats = (opponent_stats_payload or {}).get('stats') or {}
+        aggregate = player_stats.get('AggregateData') or opponent_stats.get('AggregateData') or {}
+
+        rows = []
+        for spec in metric_specs:
+            player_raw = self._to_float(player_stats.get(spec['value_path']))
+            opponent_raw = self._to_float(opponent_stats.get(spec['value_path']))
+            avg_raw = self._to_float(aggregate.get(spec['avg_path']))
+            min_raw = self._to_float(aggregate.get(spec['min_path']))
+            max_raw = self._to_float(aggregate.get(spec['max_path']))
+
+            row = {
+                'key': spec['key'],
+                'label': spec['label'],
+                'is_percent': bool(spec.get('is_percent')),
+                'lower_is_better': bool(spec.get('lower_is_better')),
+                'player1_raw': player_raw,
+                'player2_raw': opponent_raw,
+                'tour_avg_raw': avg_raw,
+                'min_raw': min_raw,
+                'max_raw': max_raw,
+                'player1_display': self._format_metric_value(player_raw, bool(spec.get('is_percent'))),
+                'player2_display': self._format_metric_value(opponent_raw, bool(spec.get('is_percent'))),
+                'tour_avg_display': self._format_metric_value(avg_raw, bool(spec.get('is_percent'))),
+                'player1_norm': self._normalize_metric_value(
+                    player_raw,
+                    min_raw,
+                    max_raw,
+                    bool(spec.get('lower_is_better'))
+                ),
+                'player2_norm': self._normalize_metric_value(
+                    opponent_raw,
+                    min_raw,
+                    max_raw,
+                    bool(spec.get('lower_is_better'))
+                ),
+                'tour_avg_norm': self._normalize_metric_value(
+                    avg_raw,
+                    min_raw,
+                    max_raw,
+                    bool(spec.get('lower_is_better'))
+                )
+            }
+            rows.append(row)
+        return rows
+
+    def _extract_wta_surface_records(self, records_payload):
+        out = {}
+        by_surface = (records_payload or {}).get('bySurface') or []
+        for entry in by_surface:
+            surface = str(entry.get('surface') or '').upper()
+            stats = entry.get('statistics') or {}
+            out[surface] = {
+                'wins': stats.get('wins'),
+                'losses': stats.get('losses'),
+                'winPercentage': self._to_float(stats.get('winPercentage'))
+            }
+        return out
+
+    def _extract_wta_career_summary(self, bio_rows, player_id):
+        if not isinstance(bio_rows, list):
+            return {}
+        target = str(player_id)
+        selected = None
+        for row in bio_rows:
+            row_pid = row.get('playerid')
+            if str(row_pid) == target:
+                selected = row
+                break
+        if selected is None:
+            return {}
+
+        def as_int(value):
+            raw = re.sub(r"[^\d-]", "", str(value or ""))
+            if raw in ("", "-"):
+                return None
+            try:
+                return int(raw)
+            except Exception:
+                return None
+
+        def as_text(value):
+            text = str(value or "").strip()
+            return text if text else None
+
+        return {
+            'singles_titles': as_int(selected.get('sglcareertitles')),
+            'doubles_titles': as_int(selected.get('dblcareertitles')),
+            'prize_money': as_text(selected.get('careerprize')),
+            'singles_wins': as_int(selected.get('sglcareerwon')),
+            'singles_losses': as_int(selected.get('sglcareerlost')),
+            'doubles_wins': as_int(selected.get('dblcareerwon')),
+            'doubles_losses': as_int(selected.get('dblcareerlost')),
+            'career_high_singles': as_int(selected.get('sglhirank')),
+            'career_high_doubles': as_int(selected.get('dblhirank'))
+        }
+
+    def _parse_h2h_set_scores(self, score_text, reverse_order=False):
+        text = re.sub(r"\s+", " ", str(score_text or "")).strip()
+        if not text:
+            return []
+
+        set_rows = []
+        token_pattern = re.compile(r"^(\d+)-(\d+)(?:\((\d+)\))?$")
+        for token in text.split(" "):
+            match = token_pattern.match(token.strip())
+            if not match:
+                continue
+            left_games = int(match.group(1))
+            right_games = int(match.group(2))
+            tiebreak_loser_points = match.group(3)
+
+            if reverse_order:
+                left_games, right_games = right_games, left_games
+
+            left_won = None
+            if left_games > right_games:
+                left_won = True
+            elif right_games > left_games:
+                left_won = False
+
+            if tiebreak_loser_points:
+                if left_games > right_games:
+                    display = f"{left_games}-{right_games} ({tiebreak_loser_points})"
+                elif right_games > left_games:
+                    display = f"{left_games} ({tiebreak_loser_points})-{right_games}"
+                else:
+                    display = f"{left_games}-{right_games} ({tiebreak_loser_points})"
+            else:
+                display = f"{left_games}-{right_games}"
+
+            set_rows.append({
+                'left_games': left_games,
+                'right_games': right_games,
+                'left_won': left_won,
+                'display': display
+            })
+        return set_rows
+
+    def search_wta_players_for_h2h(self, query, limit=8):
+        text = (query or '').strip()
+        if not text:
+            return []
+        query_norm = self._normalize_player_name(text)
+        if not query_norm:
+            return []
+
+        limit = max(1, min(int(limit or 8), 20))
+        candidates = {}
+
+        def add_candidate(player_id, full_name, country_code='', image_url='', rank=None, source=''):
+            if not player_id or not full_name:
+                return
+            try:
+                pid = int(player_id)
+            except Exception:
+                return
+            normalized = self._normalize_player_name(full_name)
+            score = self._name_match_score(query_norm, normalized)
+            if score < 12.0:
+                return
+
+            ranking = self._match_wta_ranking(full_name)
+            scraped = self._match_wta_scraped(full_name)
+            profile = scraped.get('profile') if scraped else {}
+            existing = candidates.get(pid) or {}
+            chosen_rank = rank if rank is not None else (ranking or {}).get('rank')
+            if existing.get('rank') and chosen_rank:
+                chosen_rank = min(existing.get('rank'), chosen_rank)
+            elif existing.get('rank') and not chosen_rank:
+                chosen_rank = existing.get('rank')
+            final_image = (
+                image_url
+                or existing.get('image_url')
+                or (ranking or {}).get('image_url')
+                or profile.get('image_url')
+                or ''
+            )
+            final_country = (
+                country_code
+                or existing.get('country')
+                or (ranking or {}).get('country')
+                or profile.get('country')
+                or ''
+            )
+            candidates[pid] = {
+                'id': pid,
+                'name': full_name,
+                'country': final_country,
+                'rank': chosen_rank,
+                'image_url': final_image,
+                'score': max(score, existing.get('score', 0.0)),
+                'source': source or existing.get('source') or 'wta'
+            }
+
+        try:
+            search_payload = self._wta_api_get_json(
+                WTA_SEARCH_API_BASE,
+                params={
+                    'lang': 'en',
+                    'terms': f"{text}*",
+                    'size': 100,
+                    'type': 'PLAYER',
+                    'start': 0,
+                    'fullObjectResponse': 'true'
+                },
+                include_account_header=False
+            )
+            for hit in search_payload.get('hits', []):
+                ref = hit.get('contentReference') or {}
+                add_candidate(
+                    ref.get('id'),
+                    ref.get('fullName'),
+                    country_code=ref.get('countryCode'),
+                    source='wta-search'
+                )
+        except Exception:
+            pass
+
+        scraped_index = self._load_wta_scraped_index()
+        for entry in scraped_index.get('players', []):
+            score = self._name_match_score(query_norm, entry.get('norm') or '')
+            if score < 16.0:
+                continue
+            profile = entry.get('profile') or {}
+            pid = self._extract_wta_player_id_from_url(profile.get('url'))
+            add_candidate(
+                pid,
+                entry.get('name'),
+                country_code=profile.get('country') or '',
+                image_url=profile.get('image_url') or '',
+                source='scraped'
+            )
+
+        if not candidates:
+            return []
+
+        ranked = sorted(
+            candidates.values(),
+            key=lambda c: (
+                -c.get('score', 0.0),
+                c.get('rank') if c.get('rank') is not None else 10_000,
+                c.get('name', '')
+            )
+        )
+        return [
+            {
+                'id': row['id'],
+                'name': row['name'],
+                'country': row.get('country') or '',
+                'rank': row.get('rank'),
+                'image_url': row.get('image_url') or ''
+            }
+            for row in ranked[:limit]
+        ]
+
+    def fetch_wta_h2h_details(self, player1_id, player2_id, year=2026, meetings_limit=5):
+        p1_id = int(player1_id)
+        p2_id = int(player2_id)
+        year = int(year or datetime.now().year)
+        meetings_limit = max(1, min(int(meetings_limit or 5), 10))
+
+        h2h_payload = {}
+        try:
+            h2h_payload = self._wta_api_get_json(
+                f"{WTA_TENNIS_API_BASE}/players/{p1_id}/headtohead/{p2_id}",
+                params={'sort': 'desc'},
+                include_account_header=True
+            )
+        except Exception:
+            h2h_payload = {}
+
+        try:
+            p1_year = self._wta_api_get_json(
+                f"{WTA_TENNIS_API_BASE}/players/{p1_id}/year/{year}",
+                include_account_header=True
+            )
+        except Exception:
+            p1_year = {'player': {}, 'stats': {}}
+        try:
+            p2_year = self._wta_api_get_json(
+                f"{WTA_TENNIS_API_BASE}/players/{p2_id}/year/{year}",
+                include_account_header=True
+            )
+        except Exception:
+            p2_year = {'player': {}, 'stats': {}}
+
+        try:
+            p1_records = self._wta_api_get_json(
+                f"{WTA_TENNIS_API_BASE}/players/{p1_id}/records",
+                include_account_header=True
+            )
+        except Exception:
+            p1_records = {}
+        try:
+            p2_records = self._wta_api_get_json(
+                f"{WTA_TENNIS_API_BASE}/players/{p2_id}/records",
+                include_account_header=True
+            )
+        except Exception:
+            p2_records = {}
+
+        summary = ((h2h_payload.get('headToHeadSummary') or [{}])[0]) or {}
+        p1_meta = (p1_year or {}).get('player') or {}
+        p2_meta = (p2_year or {}).get('player') or {}
+
+        p1_name = p1_meta.get('fullName') or (
+            f"{summary.get('playernamefirst', '').title()} {summary.get('playernamelast', '').title()}".strip()
+        )
+        p2_name = p2_meta.get('fullName') or (
+            f"{summary.get('opponentnamefirst', '').title()} {summary.get('opponentnamelast', '').title()}".strip()
+        )
+
+        player1 = self._build_h2h_player_payload(
+            p1_id,
+            p1_name or str(p1_id),
+            country_code=p1_meta.get('countryCode') or ''
+        )
+        player2 = self._build_h2h_player_payload(
+            p2_id,
+            p2_name or str(p2_id),
+            country_code=p2_meta.get('countryCode') or ''
+        )
+
+        meetings = []
+        for match in (h2h_payload.get('matchEncounterResults') or [])[:meetings_limit]:
+            p1_info = match.get('player1Info') or {}
+            p2_info = match.get('player2Info') or {}
+            api_player1_id = p1_info.get('id')
+            api_player2_id = p2_info.get('id')
+            winner_flag = match.get('winner')
+            winner_id = None
+            if winner_flag == 1:
+                winner_id = p1_info.get('id')
+            elif winner_flag == 2:
+                winner_id = p2_info.get('id')
+
+            start_date = match.get('StartDate') or ''
+            try:
+                date_text = datetime.fromisoformat(start_date.replace('Z', '+00:00')).date().isoformat()
+            except Exception:
+                date_text = start_date[:10] if start_date else ''
+
+            tournament = self._clean_tournament_name(match.get('TournamentName') or 'Tournament')
+            category = self._wta_level_to_category(match.get('TournamentLevel') or '', tournament)
+            surface = str(match.get('Surface') or '').title()
+            score = re.sub(r"\s+", " ", str(match.get('scores') or '')).strip()
+            reverse_order = int(api_player1_id or 0) != int(p1_id)
+            set_scores = self._parse_h2h_set_scores(score, reverse_order=reverse_order)
+
+            meetings.append({
+                'date': date_text,
+                'tournament': tournament,
+                'category': category,
+                'category_label': self._category_label(category),
+                'surface': surface,
+                'round': match.get('round_name') or match.get('tourn_round') or '',
+                'winner_id': winner_id,
+                'winner_name': (p1_info.get('fullName') if winner_flag == 1 else p2_info.get('fullName') if winner_flag == 2 else ''),
+                'score': score,
+                'set_scores': set_scores
+            })
+
+        wins = int(summary.get('wins') or 0)
+        losses = int(summary.get('losses') or 0)
+        if wins == 0 and losses == 0 and meetings:
+            for match in meetings:
+                if int(match.get('winner_id') or 0) == p1_id:
+                    wins += 1
+                elif int(match.get('winner_id') or 0) == p2_id:
+                    losses += 1
+
+        recent_p1_wins = sum(1 for m in meetings if int(m.get('winner_id') or 0) == p1_id)
+        recent_p2_wins = sum(1 for m in meetings if int(m.get('winner_id') or 0) == p2_id)
+
+        p1_surface = self._extract_wta_surface_records(p1_records)
+        p2_surface = self._extract_wta_surface_records(p2_records)
+        surface_order = ['HARD', 'CLAY', 'GRASS']
+        available_surfaces = [s for s in surface_order if s in p1_surface or s in p2_surface]
+        for surface in sorted(set(list(p1_surface.keys()) + list(p2_surface.keys()))):
+            if 'CARPET' in str(surface).upper():
+                continue
+            if surface not in available_surfaces:
+                available_surfaces.append(surface)
+
+        surface_records = {}
+        for surface in available_surfaces:
+            s1 = p1_surface.get(surface, {})
+            s2 = p2_surface.get(surface, {})
+            surface_records[surface] = {
+                'player1': {
+                    'wins': s1.get('wins'),
+                    'losses': s1.get('losses'),
+                    'winPercentage': s1.get('winPercentage')
+                },
+                'player2': {
+                    'wins': s2.get('wins'),
+                    'losses': s2.get('losses'),
+                    'winPercentage': s2.get('winPercentage')
+                }
+            }
+
+        serving_rows = self._build_wta_metric_rows(p1_year, p2_year, WTA_SERVING_METRICS)
+        returning_rows = self._build_wta_metric_rows(p1_year, p2_year, WTA_RETURNING_METRICS)
+        bio_rows = h2h_payload.get('bio') or []
+        career_summary = {
+            'player1': self._extract_wta_career_summary(bio_rows, p1_id),
+            'player2': self._extract_wta_career_summary(bio_rows, p2_id)
+        }
+
+        return {
+            'tour': 'wta',
+            'players': {
+                'player1': player1,
+                'player2': player2
+            },
+            'head_to_head': {
+                'player1_wins': wins,
+                'player2_wins': losses,
+                'total_matches': wins + losses,
+                'recent_last_n': len(meetings),
+                'recent_player1_wins': recent_p1_wins,
+                'recent_player2_wins': recent_p2_wins
+            },
+            'season_stats': {
+                'year': year,
+                'serving': serving_rows,
+                'returning': returning_rows
+            },
+            'career_summary': career_summary,
+            'career_surface_records': surface_records,
+            'past_meetings': meetings
+        }
 
     def _fetch_wta_global_matches(self):
         url = 'https://api.wtatennis.com/tennis/matches/global'
@@ -716,7 +1370,7 @@ class TennisDataFetcher:
         if tour in ('atp', 'both'):
             matches.extend(self._generate_sample_upcoming_matches('atp', days))
 
-        return matches
+        return self._attach_upcoming_h2h(matches)
     
     def fetch_rankings(self, tour='atp', limit=200):
         """

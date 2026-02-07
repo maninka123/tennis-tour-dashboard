@@ -313,6 +313,25 @@ const API = {
      */
     async getPlayer(playerId) {
         return await this.fetch(`/player/${playerId}`);
+    },
+
+    /**
+     * Search WTA players for H2H autocomplete
+     */
+    async searchWTAH2HPlayers(query, limit = 8) {
+        return await this.fetch('/h2h/wta/search', { query, limit });
+    },
+
+    /**
+     * Get WTA H2H detail payload
+     */
+    async getWTAH2H(player1Id, player2Id, year = 2026, meetings = 5) {
+        return await this.fetch('/h2h/wta', {
+            player1_id: player1Id,
+            player2_id: player2Id,
+            year,
+            meetings
+        });
     }
 };
 

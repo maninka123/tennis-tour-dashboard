@@ -174,6 +174,53 @@ def get_player(player_id):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@app.route('/api/h2h/wta/search', methods=['GET'])
+def search_wta_h2h_players():
+    """Search WTA players for H2H autocomplete."""
+    query = request.args.get('query', '').strip()
+    limit = request.args.get('limit', 8, type=int)
+    if not query:
+        return jsonify({'success': True, 'data': [], 'count': 0})
+
+    try:
+        players = tennis_fetcher.search_wta_players_for_h2h(query, limit=limit)
+        return jsonify({
+            'success': True,
+            'data': players,
+            'count': len(players)
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/h2h/wta', methods=['GET'])
+def get_wta_h2h():
+    """Get WTA head-to-head details for two players."""
+    player1_id = request.args.get('player1_id', type=int)
+    player2_id = request.args.get('player2_id', type=int)
+    year = request.args.get('year', 2026, type=int)
+    meetings = request.args.get('meetings', 5, type=int)
+
+    if not player1_id or not player2_id:
+        return jsonify({'success': False, 'error': 'player1_id and player2_id are required'}), 400
+    if player1_id == player2_id:
+        return jsonify({'success': False, 'error': 'Please choose two different players'}), 400
+
+    try:
+        payload = tennis_fetcher.fetch_wta_h2h_details(
+            player1_id=player1_id,
+            player2_id=player2_id,
+            year=year,
+            meetings_limit=meetings
+        )
+        return jsonify({
+            'success': True,
+            'data': payload
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/categories', methods=['GET'])
 def get_categories():
     """Get tournament categories and colors"""
