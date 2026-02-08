@@ -1228,13 +1228,14 @@ body {
     justify-content: center;
     background: rgba(74, 144, 226, 0.15);
     color: #2b5fa6;
-    padding: 5px 12px;
+    padding: 4px 8px;
     border-radius: 999px;
     font-size: 0.8rem;
     font-weight: 700;
     line-height: 1;
-    min-width: 86px;
+    min-width: 60px;
     white-space: nowrap;
+    text-align: center;
 }
 
 .scheduled-connector {
@@ -1266,28 +1267,27 @@ body {
 .upcoming-match-card .tournament-name.compact-inline {
     display: flex;
     align-items: center;
-    gap: 5px;
-    flex-wrap: wrap;
+    gap: 6px;
+    flex-wrap: nowrap;
     width: 100%;
-    max-width: 100%;
     min-width: 0;
     overflow: visible;
 }
 
 .upcoming-match-card .tournament-name.compact-inline .tournament-title-text {
     display: block;
-    flex: 1 1 auto;
-    min-width: 0;
-    white-space: normal;
+    white-space: nowrap;
     overflow: visible;
-    text-overflow: clip;
-    line-height: 1.2;
+    flex: 0 1 auto;
 }
 
 .upcoming-match-card .tournament-name.compact-inline .category-badge {
     margin-left: 0;
     white-space: nowrap;
     flex: 0 0 auto;
+    height: 18px;
+    line-height: 1;
+    padding-top: 1px;
 }
 
 /* Upcoming cards: keep date/time at top-right inside the card */
