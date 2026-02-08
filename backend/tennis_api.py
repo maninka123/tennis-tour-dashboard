@@ -7,7 +7,7 @@ REAL ATP/WTA API INTEGRATION GUIDE
 ==============================================
 
 This file currently uses demo data. To integrate real live tennis data, 
-you can use the following APIs and data sources:
+you can use the following APIs and daata sources:
 
 1. OFFICIAL ATP/WTA APIs (Requires Partnership/License)
    - ATP World Tour API: https://www.atptour.com/
@@ -117,9 +117,13 @@ live_scores_cache = TTLCache(maxsize=100, ttl=Config.CACHE_LIVE_SCORES)
 rankings_cache = TTLCache(maxsize=10, ttl=Config.CACHE_RANKINGS)
 tournaments_cache = TTLCache(maxsize=10, ttl=Config.CACHE_TOURNAMENTS)
 h2h_summary_cache = TTLCache(maxsize=1000, ttl=60 * 60 * 6)
+atp_h2h_summary_cache = TTLCache(maxsize=1000, ttl=60 * 60 * 6)
+wta_match_stats_cache = TTLCache(maxsize=2000, ttl=30)
 
 WTA_TENNIS_API_BASE = 'https://api.wtatennis.com/tennis'
 WTA_SEARCH_API_BASE = 'https://api.wtatennis.com/search/v2/wta/'
+ATP_H2H_BASE = 'https://www.atptour.com/en/players/atp-head-2-head'
+RJINA_HTTP_PREFIX = 'https://r.jina.ai/http://'
 
 WTA_SERVING_METRICS = [
     {'key': 'aces', 'label': 'Aces', 'value_path': 'Aces', 'min_path': 'MinAces', 'avg_path': 'AverageAces', 'max_path': 'MaxAces', 'lower_is_better': False, 'is_percent': False},
@@ -153,10 +157,16 @@ class TennisDataFetcher:
         })
 
         self._wta_scraped_index = None
+        self._atp_scraped_index = None
         self._wta_tournament_index = None
+        self._atp_tournament_index = None
         self._wta_rankings_cache = None
         self._wta_rankings_index = None
+        self._atp_rankings_cache = None
+        self._atp_rankings_index = None
         self._wta_connections_map = None
+        self._atp_stats_cache = None
+        self._wta_stats_cache = None
 
     def _normalize_player_name(self, name):
         if not name:
@@ -179,11 +189,47 @@ class TennisDataFetcher:
     def _wta_rankings_csv_path(self):
         return self._wta_data_root() / 'wta_live_ranking.csv'
 
+    def _atp_rankings_csv_path(self):
+        return self._wta_data_root() / 'atp_live_ranking.csv'
+
     def _wta_rankings_outdated_dir(self):
         return self._wta_data_root() / 'wta_rankings_outdated'
 
+    def _atp_rankings_outdated_dir(self):
+        return self._wta_data_root() / 'atp_rankings_outdated'
+
     def _wta_connections_file_path(self):
         return self._wta_data_root() / 'wta_player_connections.json'
+
+    def _atp_stats_dir(self):
+        return self._wta_data_root() / 'atp_stats'
+
+    def _atp_stats_csv_path(self):
+        return self._atp_stats_dir() / 'atp_stats_leaderboard.csv'
+
+    def _atp_stats_outdated_dir(self):
+        return self._wta_data_root() / 'atp_stats_outdated'
+
+    def _wta_stats_dir(self):
+        return self._wta_data_root() / 'wta_stats'
+
+    def _wta_stats_csv_path(self):
+        return self._wta_stats_dir() / 'wta_stats_leaderboard.csv'
+
+    def _wta_stats_outdated_dir(self):
+        return self._wta_data_root() / 'wta_stats_outdated'
+
+    def _tour_tournaments_dir(self, tour):
+        tour_name = str(tour or '').strip().lower()
+        if tour_name not in {'wta', 'atp'}:
+            raise ValueError(f"Unsupported tour '{tour}'")
+        return self._wta_data_root() / tour_name / 'tournaments'
+
+    def _tour_tournaments_outdated_dir(self, tour):
+        tour_name = str(tour or '').strip().lower()
+        if tour_name not in {'wta', 'atp'}:
+            raise ValueError(f"Unsupported tour '{tour}'")
+        return self._wta_data_root() / f'{tour_name}_tournaments_outdated'
 
     def _to_iso_utc(self, ts):
         try:
@@ -281,6 +327,14 @@ class TennisDataFetcher:
             if str(key).startswith('rankings_wta'):
                 rankings_cache.pop(key, None)
 
+    def invalidate_atp_rankings_cache(self):
+        self._atp_rankings_cache = None
+        self._atp_rankings_index = None
+        self._atp_scraped_index = None
+        for key in list(rankings_cache.keys()):
+            if str(key).startswith('rankings_atp'):
+                rankings_cache.pop(key, None)
+
     def get_wta_rankings_status(self):
         csv_path = self._wta_rankings_csv_path()
         exists = csv_path.exists()
@@ -295,6 +349,29 @@ class TennisDataFetcher:
             created_at = self._to_iso_utc(birth_ts)
         outdated_dir = self._wta_rankings_outdated_dir()
         outdated_count = len(list(outdated_dir.glob('wta_live_ranking_*.csv'))) if outdated_dir.exists() else 0
+        return {
+            'exists': exists,
+            'path': str(csv_path),
+            'updated_at': updated_at,
+            'created_at': created_at,
+            'size_bytes': size_bytes,
+            'outdated_count': outdated_count
+        }
+
+    def get_atp_rankings_status(self):
+        csv_path = self._atp_rankings_csv_path()
+        exists = csv_path.exists()
+        updated_at = None
+        created_at = None
+        size_bytes = 0
+        if exists:
+            stat = csv_path.stat()
+            size_bytes = stat.st_size
+            updated_at = self._to_iso_utc(stat.st_mtime)
+            birth_ts = getattr(stat, 'st_birthtime', None) or stat.st_ctime
+            created_at = self._to_iso_utc(birth_ts)
+        outdated_dir = self._atp_rankings_outdated_dir()
+        outdated_count = len(list(outdated_dir.glob('atp_live_ranking_*.csv'))) if outdated_dir.exists() else 0
         return {
             'exists': exists,
             'path': str(csv_path),
@@ -344,6 +421,479 @@ class TennisDataFetcher:
         status['archived_path'] = archived_path
         status['stdout'] = (result.stdout or '').strip()
         return status
+
+    def refresh_atp_rankings_csv(self):
+        csv_path = self._atp_rankings_csv_path()
+        outdated_dir = self._atp_rankings_outdated_dir()
+        outdated_dir.mkdir(parents=True, exist_ok=True)
+        archived_path = None
+
+        if csv_path.exists():
+            stat = csv_path.stat()
+            birth_ts = getattr(stat, 'st_birthtime', None) or stat.st_ctime
+            timestamp = datetime.fromtimestamp(birth_ts).strftime('%Y%m%d_%H%M%S')
+            base_name = f"atp_live_ranking_{timestamp}"
+            archive_path = outdated_dir / f"{base_name}.csv"
+            suffix = 1
+            while archive_path.exists():
+                archive_path = outdated_dir / f"{base_name}_{suffix}.csv"
+                suffix += 1
+            shutil.copy2(csv_path, archive_path)
+            archived_path = str(archive_path)
+
+        script_path = Path(__file__).resolve().parent.parent / 'scripts' / 'atp_live_rankings_to_csv.py'
+        if not script_path.exists():
+            raise RuntimeError(f"Script not found: {script_path}")
+
+        result = subprocess.run(
+            [sys.executable, str(script_path), "--out", str(csv_path)],
+            capture_output=True,
+            text=True,
+            timeout=240
+        )
+        if result.returncode != 0:
+            stderr = (result.stderr or '').strip()
+            stdout = (result.stdout or '').strip()
+            message = stderr or stdout or "Failed to refresh ATP rankings CSV."
+            raise RuntimeError(message)
+
+        self.invalidate_atp_rankings_cache()
+        status = self.get_atp_rankings_status()
+        status['archived_path'] = archived_path
+        status['stdout'] = (result.stdout or '').strip()
+        return status
+
+    def invalidate_atp_stats_cache(self):
+        self._atp_stats_cache = None
+
+    def get_atp_stats_status(self):
+        csv_path = self._atp_stats_csv_path()
+        exists = csv_path.exists()
+        updated_at = None
+        created_at = None
+        size_bytes = 0
+        if exists:
+            stat = csv_path.stat()
+            size_bytes = stat.st_size
+            updated_at = self._to_iso_utc(stat.st_mtime)
+            birth_ts = getattr(stat, 'st_birthtime', None) or stat.st_ctime
+            created_at = self._to_iso_utc(birth_ts)
+        outdated_dir = self._atp_stats_outdated_dir()
+        outdated_count = len(list(outdated_dir.glob('atp_stats_leaderboard_*.csv'))) if outdated_dir.exists() else 0
+        return {
+            'exists': exists,
+            'path': str(csv_path),
+            'updated_at': updated_at,
+            'created_at': created_at,
+            'size_bytes': size_bytes,
+            'outdated_count': outdated_count
+        }
+
+    def refresh_atp_stats_csv(self):
+        csv_path = self._atp_stats_csv_path()
+        csv_path.parent.mkdir(parents=True, exist_ok=True)
+        outdated_dir = self._atp_stats_outdated_dir()
+        outdated_dir.mkdir(parents=True, exist_ok=True)
+        archived_path = None
+
+        if csv_path.exists():
+            stat = csv_path.stat()
+            birth_ts = getattr(stat, 'st_birthtime', None) or stat.st_ctime
+            timestamp = datetime.fromtimestamp(birth_ts).strftime('%Y%m%d_%H%M%S')
+            base_name = f"atp_stats_leaderboard_{timestamp}"
+            archive_path = outdated_dir / f"{base_name}.csv"
+            suffix = 1
+            while archive_path.exists():
+                archive_path = outdated_dir / f"{base_name}_{suffix}.csv"
+                suffix += 1
+            shutil.copy2(csv_path, archive_path)
+            archived_path = str(archive_path)
+
+        scripts_dir = Path(__file__).resolve().parent.parent / 'scripts'
+        script_candidates = [
+            scripts_dir / 'atp_return_serve_stats_to_csv.py',
+            scripts_dir / 'apt_return_serve_stats_to_csv.py',
+            scripts_dir / 'atp_stats_to_csv.py',
+            scripts_dir / 'apt_stats_to_csv.py',
+        ]
+        dynamic_patterns = [
+            '*atp*return*serve*stats*to*csv*.py',
+            '*apt*return*serve*stats*to*csv*.py',
+            '*atp*stats*to*csv*.py',
+            '*apt*stats*to*csv*.py',
+        ]
+        for pattern in dynamic_patterns:
+            for path in sorted(scripts_dir.glob(pattern)):
+                if path not in script_candidates:
+                    script_candidates.append(path)
+
+        script_path = next((p for p in script_candidates if p.exists()), None)
+        if not script_path:
+            raise RuntimeError(f"Script not found. Tried: {', '.join(str(p) for p in script_candidates)}")
+
+        result = subprocess.run(
+            [sys.executable, str(script_path), "--out", str(csv_path)],
+            capture_output=True,
+            text=True,
+            timeout=240
+        )
+        if result.returncode != 0:
+            stderr = (result.stderr or '').strip()
+            stdout = (result.stdout or '').strip()
+            message = stderr or stdout or "Failed to refresh ATP stats CSV."
+            raise RuntimeError(message)
+
+        self.invalidate_atp_stats_cache()
+        status = self.get_atp_stats_status()
+        status['archived_path'] = archived_path
+        status['stdout'] = (result.stdout or '').strip()
+        return status
+
+    def fetch_atp_stats_leaderboard(self):
+        if self._atp_stats_cache is not None:
+            return self._atp_stats_cache
+
+        csv_path = self._atp_stats_csv_path()
+        if not csv_path.exists():
+            payload = {
+                'categories': {'serve': [], 'return': [], 'pressure': []},
+                'top_players': {'serve': None, 'return': None, 'pressure': None},
+                'formulas': {
+                    'serve': 'Serve Rating = %1st Serve + %1st Serve Points Won + %2nd Serve Points Won + %Service Games Won + Avg Aces/Match - Avg Double Faults/Match',
+                    'return': 'Return Rating = %1st Return Points Won + %2nd Return Points Won + %Break Points Converted + %Return Games Won',
+                    'pressure': 'Under Pressure Rating = %Break Points Saved + %Break Points Converted + %Tie Breaks Won + %Deciding Sets Won'
+                }
+            }
+            self._atp_stats_cache = payload
+            return payload
+
+        categories = {'serve': [], 'return': [], 'pressure': []}
+        top_players = {'serve': None, 'return': None, 'pressure': None}
+        fetched_at = None
+
+        with csv_path.open('r', encoding='utf-8', newline='') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                category = (row.get('category_key') or '').strip().lower()
+                if category not in categories:
+                    continue
+
+                metrics = []
+                for i in range(1, 7):
+                    name = (row.get(f'metric_{i}_name') or '').strip()
+                    value = (row.get(f'metric_{i}_value') or '').strip()
+                    if name:
+                        metrics.append({'name': name, 'value': value})
+
+                try:
+                    rank = int((row.get('rank') or '').strip())
+                except Exception:
+                    continue
+
+                try:
+                    rating = float((row.get('rating') or '').strip())
+                except Exception:
+                    rating = None
+
+                item = {
+                    'rank': rank,
+                    'player_name': (row.get('player_name') or '').strip(),
+                    'player_id': (row.get('player_id') or '').strip(),
+                    'profile_url': (row.get('profile_url') or '').strip(),
+                    'image_url': (row.get('image_url') or '').strip(),
+                    'rating': rating,
+                    'metrics': metrics
+                }
+                categories[category].append(item)
+
+                if top_players[category] is None or rank < int(top_players[category].get('rank', 10**9)):
+                    top_players[category] = item
+
+                if not fetched_at:
+                    fetched_at = (row.get('fetched_at_utc') or '').strip() or None
+
+        for key in categories:
+            categories[key].sort(key=lambda x: x.get('rank', 10**9))
+
+        payload = {
+            'fetched_at': fetched_at,
+            'categories': categories,
+            'top_players': top_players,
+            'formulas': {
+                'serve': 'Serve Rating = %1st Serve + %1st Serve Points Won + %2nd Serve Points Won + %Service Games Won + Avg Aces/Match - Avg Double Faults/Match',
+                'return': 'Return Rating = %1st Return Points Won + %2nd Return Points Won + %Break Points Converted + %Return Games Won',
+                'pressure': 'Under Pressure Rating = %Break Points Saved + %Break Points Converted + %Tie Breaks Won + %Deciding Sets Won'
+            }
+        }
+        self._atp_stats_cache = payload
+        return payload
+
+    def invalidate_wta_stats_cache(self):
+        self._wta_stats_cache = None
+
+    def invalidate_tournaments_cache(self, tour=None):
+        tour_name = str(tour or '').strip().lower()
+        if tour_name == 'wta':
+            self._wta_tournament_index = None
+        elif tour_name == 'atp':
+            self._atp_tournament_index = None
+        else:
+            self._wta_tournament_index = None
+            self._atp_tournament_index = None
+
+        for key in list(tournaments_cache.keys()):
+            key_text = str(key)
+            if tour_name in {'wta', 'atp'}:
+                if key_text.startswith(f'tournaments_{tour_name}_'):
+                    tournaments_cache.pop(key, None)
+            elif key_text.startswith('tournaments_'):
+                tournaments_cache.pop(key, None)
+
+    def get_tournaments_status(self, tour='wta'):
+        output_dir = self._tour_tournaments_dir(tour)
+        exists = output_dir.exists()
+        json_files = sorted(output_dir.glob('*.json')) if exists else []
+        latest_ts = 0.0
+        for path in json_files:
+            try:
+                latest_ts = max(latest_ts, path.stat().st_mtime)
+            except Exception:
+                continue
+
+        outdated_dir = self._tour_tournaments_outdated_dir(tour)
+        outdated_count = 0
+        if outdated_dir.exists():
+            for entry in outdated_dir.iterdir():
+                if entry.is_dir() or entry.suffix.lower() == '.json':
+                    outdated_count += 1
+
+        return {
+            'tour': str(tour or '').strip().lower(),
+            'exists': exists,
+            'path': str(output_dir),
+            'file_count': len(json_files),
+            'updated_at': self._to_iso_utc(latest_ts) if latest_ts else None,
+            'outdated_count': outdated_count
+        }
+
+    def refresh_tournaments_json(self, tour='wta', year=None, full_refresh=False):
+        tour_name = str(tour or '').strip().lower()
+        if tour_name not in {'wta', 'atp'}:
+            raise RuntimeError("tour must be 'wta' or 'atp'")
+
+        if year is None:
+            year = datetime.now().year
+        try:
+            year = int(year)
+        except Exception:
+            year = datetime.now().year
+
+        scripts_dir = Path(__file__).resolve().parent.parent / 'scripts'
+        script_name = 'wta_tournaments_to_json.py' if tour_name == 'wta' else 'atp_tournaments_to_json.py'
+        script_path = scripts_dir / script_name
+        if not script_path.exists():
+            raise RuntimeError(f"Script not found: {script_path}")
+
+        output_dir = self._tour_tournaments_dir(tour_name)
+        outdated_dir = self._tour_tournaments_outdated_dir(tour_name)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        outdated_dir.mkdir(parents=True, exist_ok=True)
+
+        cmd = [
+            sys.executable,
+            str(script_path),
+            '--year',
+            str(year),
+            '--output-dir',
+            str(output_dir),
+            '--outdated-dir',
+            str(outdated_dir),
+        ]
+        if full_refresh:
+            cmd.append('--full-refresh')
+
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=1200
+        )
+        if result.returncode != 0:
+            stderr = (result.stderr or '').strip()
+            stdout = (result.stdout or '').strip()
+            message = stderr or stdout or f"Failed to refresh {tour_name.upper()} tournaments."
+            raise RuntimeError(message)
+
+        self.invalidate_tournaments_cache(tour_name)
+        status = self.get_tournaments_status(tour_name)
+        status['year'] = year
+        status['stdout'] = (result.stdout or '').strip()
+        return status
+
+    def get_wta_stats_status(self):
+        csv_path = self._wta_stats_csv_path()
+        exists = csv_path.exists()
+        updated_at = None
+        created_at = None
+        size_bytes = 0
+        if exists:
+            stat = csv_path.stat()
+            size_bytes = stat.st_size
+            updated_at = self._to_iso_utc(stat.st_mtime)
+            birth_ts = getattr(stat, 'st_birthtime', None) or stat.st_ctime
+            created_at = self._to_iso_utc(birth_ts)
+        outdated_dir = self._wta_stats_outdated_dir()
+        outdated_count = len(list(outdated_dir.glob('wta_stats_leaderboard_*.csv'))) if outdated_dir.exists() else 0
+        return {
+            'exists': exists,
+            'path': str(csv_path),
+            'updated_at': updated_at,
+            'created_at': created_at,
+            'size_bytes': size_bytes,
+            'outdated_count': outdated_count
+        }
+
+    def refresh_wta_stats_csv(self):
+        csv_path = self._wta_stats_csv_path()
+        csv_path.parent.mkdir(parents=True, exist_ok=True)
+        outdated_dir = self._wta_stats_outdated_dir()
+        outdated_dir.mkdir(parents=True, exist_ok=True)
+        archived_path = None
+
+        if csv_path.exists():
+            stat = csv_path.stat()
+            birth_ts = getattr(stat, 'st_birthtime', None) or stat.st_ctime
+            timestamp = datetime.fromtimestamp(birth_ts).strftime('%Y%m%d_%H%M%S')
+            base_name = f"wta_stats_leaderboard_{timestamp}"
+            archive_path = outdated_dir / f"{base_name}.csv"
+            suffix = 1
+            while archive_path.exists():
+                archive_path = outdated_dir / f"{base_name}_{suffix}.csv"
+                suffix += 1
+            shutil.copy2(csv_path, archive_path)
+            archived_path = str(archive_path)
+
+        scripts_dir = Path(__file__).resolve().parent.parent / 'scripts'
+        script_candidates = [
+            scripts_dir / 'wta_return_serve_stats_to_csv.py',
+            scripts_dir / 'wta_stats_to_csv.py',
+        ]
+        dynamic_patterns = [
+            '*wta*return*serve*stats*to*csv*.py',
+            '*wta*stats*to*csv*.py',
+        ]
+        for pattern in dynamic_patterns:
+            for path in sorted(scripts_dir.glob(pattern)):
+                if path not in script_candidates:
+                    script_candidates.append(path)
+
+        script_path = next((p for p in script_candidates if p.exists()), None)
+        if not script_path:
+            raise RuntimeError(f"Script not found. Tried: {', '.join(str(p) for p in script_candidates)}")
+
+        result = subprocess.run(
+            [sys.executable, str(script_path), "--out", str(csv_path)],
+            capture_output=True,
+            text=True,
+            timeout=300
+        )
+        if result.returncode != 0:
+            stderr = (result.stderr or '').strip()
+            stdout = (result.stdout or '').strip()
+            message = stderr or stdout or "Failed to refresh WTA stats CSV."
+            raise RuntimeError(message)
+
+        self.invalidate_wta_stats_cache()
+        status = self.get_wta_stats_status()
+        status['archived_path'] = archived_path
+        status['stdout'] = (result.stdout or '').strip()
+        return status
+
+    def fetch_wta_stats_leaderboard(self):
+        if self._wta_stats_cache is not None:
+            return self._wta_stats_cache
+
+        csv_path = self._wta_stats_csv_path()
+        if not csv_path.exists():
+            payload = {
+                'categories': {'serve': [], 'return': []},
+                'top_players': {'serve': None, 'return': None},
+                'formulas': {
+                    'serve': '🟣 Serve Rating = Σ(norm(metric) × weight) across serve metrics',
+                    'return': '🟢 Return Rating = Σ(norm(metric) × weight) across return metrics'
+                }
+            }
+            self._wta_stats_cache = payload
+            return payload
+
+        categories = {'serve': [], 'return': []}
+        top_players = {'serve': None, 'return': None}
+        fetched_at = None
+
+        with csv_path.open('r', encoding='utf-8', newline='') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                category = (row.get('category_key') or '').strip().lower()
+                if category not in categories:
+                    continue
+
+                metrics = []
+                for i in range(1, 7):
+                    name = (row.get(f'metric_{i}_name') or '').strip()
+                    value = (row.get(f'metric_{i}_value') or '').strip()
+                    if name:
+                        metrics.append({'name': name, 'value': value})
+
+                try:
+                    rank = int((row.get('rank') or '').strip())
+                except Exception:
+                    continue
+
+                try:
+                    rating = float((row.get('rating') or '').strip())
+                except Exception:
+                    rating = None
+
+                details = {}
+                metrics_json_raw = (row.get('metrics_json') or '').strip()
+                if metrics_json_raw:
+                    try:
+                        details = json.loads(metrics_json_raw)
+                    except Exception:
+                        details = {}
+
+                item = {
+                    'rank': rank,
+                    'player_name': (row.get('player_name') or '').strip(),
+                    'player_id': (row.get('player_id') or '').strip(),
+                    'profile_url': (row.get('profile_url') or '').strip(),
+                    'image_url': (row.get('image_url') or '').strip(),
+                    'rating': rating,
+                    'metrics': metrics,
+                    'details': details
+                }
+                categories[category].append(item)
+
+                if top_players[category] is None or rank < int(top_players[category].get('rank', 10**9)):
+                    top_players[category] = item
+
+                if not fetched_at:
+                    fetched_at = (row.get('fetched_at_utc') or '').strip() or None
+
+        for key in categories:
+            categories[key].sort(key=lambda x: x.get('rank', 10**9))
+
+        payload = {
+            'fetched_at': fetched_at,
+            'categories': categories,
+            'top_players': top_players,
+            'formulas': {
+                'serve': '🟣 Serve Rating = Σ(norm(metric) × weight), lower-is-better metrics are inverted',
+                'return': '🟢 Return Rating = Σ(norm(metric) × weight), each norm(metric) scaled to [0,100]'
+            }
+        }
+        self._wta_stats_cache = payload
+        return payload
 
     def _load_wta_scraped_index(self):
         if self._wta_scraped_index is not None:
@@ -433,6 +983,92 @@ class TennisDataFetcher:
             if match:
                 return index['by_full'][match[0]]
         return None
+
+    def _load_atp_scraped_index(self):
+        if self._atp_scraped_index is not None:
+            return self._atp_scraped_index
+
+        base_dir = Path(__file__).resolve().parent.parent / 'data' / 'atp'
+        index = {
+            'by_full': {},
+            'by_last_first': {},
+            'by_last': {},
+            'players': []
+        }
+        if not base_dir.exists():
+            self._atp_scraped_index = index
+            return index
+
+        for folder in sorted(base_dir.iterdir()):
+            if not folder.is_dir():
+                continue
+            profile_path = folder / 'profile.json'
+            if not profile_path.exists():
+                continue
+            try:
+                profile = json.loads(profile_path.read_text(encoding='utf-8'))
+            except Exception:
+                continue
+            stats_path = folder / 'stats_2026.json'
+            stats = {}
+            if stats_path.exists():
+                try:
+                    stats = json.loads(stats_path.read_text(encoding='utf-8'))
+                except Exception:
+                    stats = {}
+
+            name = (profile.get('name') or '').strip()
+            if not name:
+                continue
+            norm = self._normalize_player_name(name)
+            tokens = norm.split()
+            first = tokens[0] if tokens else ""
+            last = tokens[-1] if tokens else ""
+            entry = {
+                'name': name,
+                'norm': norm,
+                'first': first,
+                'last': last,
+                'profile': profile,
+                'stats': stats,
+                'folder': str(folder),
+                'player_code': (profile.get('player_id') or '').strip(),
+                'profile_url': (profile.get('url') or '').strip()
+            }
+            index['players'].append(entry)
+            if norm and norm not in index['by_full']:
+                index['by_full'][norm] = entry
+            if first and last:
+                key = f"{last}_{first[0]}"
+                index['by_last_first'][key] = entry
+            if last:
+                index['by_last'].setdefault(last, []).append(entry)
+
+        self._atp_scraped_index = index
+        return index
+
+    def _match_atp_scraped(self, name):
+        index = self._load_atp_scraped_index()
+        if not name:
+            return None
+        norm = self._normalize_player_name(name)
+        if norm in index['by_full']:
+            return index['by_full'][norm]
+
+        tokens = norm.split()
+        if tokens:
+            last = tokens[-1]
+            first = tokens[0]
+            key = f"{last}_{first[0]}"
+            if key in index['by_last_first']:
+                return index['by_last_first'][key]
+
+        choices = list(index['by_full'].keys())
+        if choices:
+            match = difflib.get_close_matches(norm, choices, n=1, cutoff=0.82)
+            if match:
+                return index['by_full'][match[0]]
+        return None
     
     def get_tournament_category(self, tournament_name):
         """Determine tournament category based on name"""
@@ -501,6 +1137,61 @@ class TennisDataFetcher:
             return None
         return self._get_wta_rankings_index().get(norm)
 
+    def _get_atp_rankings(self):
+        if self._atp_rankings_cache is None:
+            self._atp_rankings_cache = self._load_atp_rankings_csv() or []
+        return self._atp_rankings_cache
+
+    def _get_atp_rankings_index(self):
+        if self._atp_rankings_index is not None:
+            return self._atp_rankings_index
+        by_norm = {}
+        by_code = {}
+        by_last_first = {}
+        for player in self._get_atp_rankings():
+            norm = self._normalize_player_name(player.get('name') or '')
+            if norm and norm not in by_norm:
+                by_norm[norm] = player
+            parts = norm.split()
+            if len(parts) >= 2 and parts[0] and parts[-1]:
+                key = f"{parts[-1]}_{parts[0][0]}"
+                if key not in by_last_first:
+                    by_last_first[key] = player
+            code = str(player.get('player_code') or '').strip().upper()
+            if code and code not in by_code:
+                by_code[code] = player
+        self._atp_rankings_index = {
+            'by_norm': by_norm,
+            'by_code': by_code,
+            'by_last_first': by_last_first
+        }
+        return self._atp_rankings_index
+
+    def _match_atp_ranking(self, name='', player_code=''):
+        index = self._get_atp_rankings_index()
+        code = str(player_code or '').strip().upper()
+        if code and code in index.get('by_code', {}):
+            return index['by_code'][code]
+
+        norm = self._normalize_player_name(name or '')
+        by_norm = index.get('by_norm', {})
+        if norm in by_norm:
+            return by_norm[norm]
+        tokens = norm.split()
+        if tokens:
+            last = tokens[-1]
+            first = tokens[0]
+            key = f"{last}_{first[0]}" if first else ''
+            if key and key in index.get('by_last_first', {}):
+                return index['by_last_first'][key]
+
+        choices = list(by_norm.keys())
+        if choices and norm:
+            match = difflib.get_close_matches(norm, choices, n=1, cutoff=0.82)
+            if match:
+                return by_norm[match[0]]
+        return None
+
     def _match_wta_scraped_strict(self, name='', player_id=None):
         index = self._load_wta_scraped_index()
         pid = self._to_int(player_id)
@@ -550,6 +1241,287 @@ class TennisDataFetcher:
         response = self.session.get(url, params=params or {}, headers=headers, timeout=30)
         response.raise_for_status()
         return response.json()
+
+    def _rjina_url(self, url):
+        plain = str(url or '').strip()
+        plain = re.sub(r'^https?://', '', plain, flags=re.IGNORECASE)
+        return f"{RJINA_HTTP_PREFIX}{plain}"
+
+    def _fetch_rjina_markdown(self, url, timeout=30):
+        response = self.session.get(self._rjina_url(url), timeout=timeout)
+        response.raise_for_status()
+        return response.text or ''
+
+    def _build_atp_h2h_url(self, player1_code, player2_code):
+        p1 = str(player1_code or '').strip().lower()
+        p2 = str(player2_code or '').strip().lower()
+        return f"{ATP_H2H_BASE}/player-a-vs-player-b/{p1}/{p2}"
+
+    def _resolve_atp_player_code(self, value='', fallback_name=''):
+        raw = str(value or '').strip()
+        if raw and re.match(r'^[A-Za-z0-9]{3,8}$', raw) and not raw.isdigit():
+            return raw.upper()
+
+        numeric = self._to_int(raw)
+        if numeric is not None:
+            for player in self._get_atp_rankings():
+                if self._to_int(player.get('id')) == numeric:
+                    code = str(player.get('player_code') or '').strip().upper()
+                    if code:
+                        return code
+
+        candidate_name = fallback_name or raw
+        ranking = self._match_atp_ranking(name=candidate_name)
+        code = str((ranking or {}).get('player_code') or '').strip().upper()
+        if code:
+            return code
+
+        scraped = self._match_atp_scraped(candidate_name)
+        profile = (scraped or {}).get('profile') or {}
+        code = str(profile.get('player_id') or (scraped or {}).get('player_code') or '').strip().upper()
+        return code
+
+    def _extract_atp_h2h_wins(self, markdown):
+        if not markdown:
+            return None
+
+        lines = [line.strip() for line in str(markdown).splitlines()]
+
+        def find_int(start, step):
+            i = start
+            for _ in range(12):
+                if i < 0 or i >= len(lines):
+                    break
+                token = lines[i]
+                if re.fullmatch(r'\d+', token or ''):
+                    return int(token)
+                i += step
+            return None
+
+        for idx, line in enumerate(lines):
+            if line.lower() != 'vs':
+                continue
+            left = find_int(idx - 1, -1)
+            wins_idx = None
+            for j in range(idx + 1, min(idx + 8, len(lines))):
+                if lines[j].lower() == 'wins':
+                    wins_idx = j
+                    break
+            if wins_idx is None:
+                continue
+            right = find_int(wins_idx + 1, 1)
+            if left is not None and right is not None:
+                return {'first_wins': left, 'second_wins': right}
+
+        pattern = re.search(
+            r'\n\s*(\d+)\s*\n\s*Vs\s*\n\s*wins\s*\n\s*(\d+)\s*\n',
+            markdown,
+            flags=re.IGNORECASE
+        )
+        if pattern:
+            return {'first_wins': int(pattern.group(1)), 'second_wins': int(pattern.group(2))}
+        return None
+
+    def _format_atp_h2h_score_text(self, raw_score):
+        text = re.sub(r'\s+', ' ', str(raw_score or '')).strip()
+        if not text:
+            return ''
+        tokens = text.split(' ')
+        out = []
+        for token in tokens:
+            m = re.match(r'^(\d)-?(\d)(\(\d+\))?$', token)
+            if m:
+                out.append(f"{m.group(1)}-{m.group(2)}{m.group(3) or ''}")
+            else:
+                out.append(token)
+        return ' '.join(out)
+
+    def _extract_atp_h2h_career_summary(self, markdown):
+        summary = {
+            'player1': {
+                'singles_titles': None,
+                'doubles_titles': None,
+                'prize_money': None,
+                'singles_wins': None,
+                'singles_losses': None,
+                'doubles_wins': None,
+                'doubles_losses': None
+            },
+            'player2': {
+                'singles_titles': None,
+                'doubles_titles': None,
+                'prize_money': None,
+                'singles_wins': None,
+                'singles_losses': None,
+                'doubles_wins': None,
+                'doubles_losses': None
+            }
+        }
+        if not markdown:
+            return summary
+
+        for line in str(markdown).splitlines():
+            if 'Career W/L' in line:
+                pairs = re.findall(r'(\d+)\s*/\s*(\d+)', line)
+                if len(pairs) >= 2:
+                    summary['player1']['singles_wins'] = int(pairs[0][0])
+                    summary['player1']['singles_losses'] = int(pairs[0][1])
+                    summary['player2']['singles_wins'] = int(pairs[1][0])
+                    summary['player2']['singles_losses'] = int(pairs[1][1])
+            elif 'Career titles' in line:
+                nums = [self._to_int(v) for v in re.findall(r'\d+', line)]
+                nums = [v for v in nums if v is not None]
+                if len(nums) >= 2:
+                    summary['player1']['singles_titles'] = nums[0]
+                    summary['player2']['singles_titles'] = nums[1]
+            elif 'Career prize money' in line:
+                monies = re.findall(r'\$[\d,]+', line)
+                if len(monies) >= 1:
+                    summary['player1']['prize_money'] = monies[0]
+                if len(monies) >= 2:
+                    summary['player2']['prize_money'] = monies[1]
+
+        return summary
+
+    def _build_atp_h2h_player_payload(self, player_code, full_name=''):
+        code = str(player_code or '').strip().upper()
+        ranking = self._match_atp_ranking(name=full_name, player_code=code)
+        scraped = self._match_atp_scraped((ranking or {}).get('name') or full_name)
+        profile = (scraped or {}).get('profile') or {}
+        country = (ranking or {}).get('country') or profile.get('country') or ''
+        return {
+            'id': (ranking or {}).get('id'),
+            'player_code': code,
+            'name': (ranking or {}).get('name') or profile.get('name') or full_name or code,
+            'country': country,
+            'rank': (ranking or {}).get('rank'),
+            'image_url': (ranking or {}).get('image_url') or profile.get('image_url') or ''
+        }
+
+    def _parse_atp_h2h_meetings(self, markdown, player1, player2, meetings_limit=5):
+        meetings = []
+        if not markdown:
+            return meetings
+
+        p1_code = str((player1 or {}).get('player_code') or '').strip().upper()
+        p2_code = str((player2 or {}).get('player_code') or '').strip().upper()
+        p1_name_norm = self._normalize_player_name((player1 or {}).get('name') or '')
+        p2_name_norm = self._normalize_player_name((player2 or {}).get('name') or '')
+
+        for raw_line in str(markdown).splitlines():
+            line = raw_line.strip()
+            if not line.startswith('|'):
+                continue
+            cols = [c.strip() for c in line.strip('|').split('|')]
+            if len(cols) < 7:
+                continue
+            if cols[0].lower() == 'year' or cols[0].startswith('---'):
+                continue
+            if not re.fullmatch(r'\d{4}', cols[0]):
+                continue
+
+            year = cols[0]
+            winner_cell = cols[1]
+            event_cell = cols[2]
+            round_text = cols[3]
+            surface_text = cols[4]
+            score_cell = cols[5]
+
+            winner_name = re.sub(r'!\[[^\]]*\]\([^)]+\)', '', winner_cell).strip()
+            winner_name = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', winner_name).strip()
+            winner_code_match = re.search(
+                r'/players/[^/]+/([a-z0-9]{3,8})/overview',
+                winner_cell,
+                flags=re.IGNORECASE
+            )
+            winner_code = (winner_code_match.group(1).upper() if winner_code_match else '')
+            if not winner_code:
+                winner_norm = self._normalize_player_name(winner_name)
+                if winner_norm and winner_norm == p1_name_norm:
+                    winner_code = p1_code
+                elif winner_norm and winner_norm == p2_name_norm:
+                    winner_code = p2_code
+
+            event_name = re.sub(r'\[([^\]]+)\]\([^)]+\)', r'\1', event_cell).strip() or event_cell
+            score_raw_match = re.search(r'\[([^\]]+)\]\(([^)]+)\)', score_cell)
+            score_raw = score_raw_match.group(1).strip() if score_raw_match else score_cell.strip()
+            score_text = self._format_atp_h2h_score_text(score_raw)
+            set_scores = self._parse_h2h_set_scores(score_text, reverse_order=False)
+
+            winner_id = None
+            if winner_code and winner_code == p1_code:
+                winner_id = (player1 or {}).get('id')
+            elif winner_code and winner_code == p2_code:
+                winner_id = (player2 or {}).get('id')
+                set_scores = self._flip_h2h_set_scores(set_scores)
+
+            category = self._wta_level_to_category('', event_name)
+            meetings.append({
+                'date': year,
+                'tournament': event_name,
+                'category': category,
+                'category_label': self._category_label_for_tour(category, tour='atp'),
+                'surface': surface_text or '',
+                'round': round_text or '',
+                'winner_id': winner_id,
+                'winner_code': winner_code,
+                'winner_name': winner_name,
+                'score': score_text or score_raw,
+                'set_scores': set_scores
+            })
+
+        meetings.sort(
+            key=lambda m: self._to_int(str(m.get('date') or '').split('-')[0]) or 0,
+            reverse=True
+        )
+        return meetings[:max(1, min(int(meetings_limit or 5), 10))]
+
+    def _get_atp_h2h_pair_summary(self, player_a_code, player_b_code):
+        a_code = self._resolve_atp_player_code(player_a_code)
+        b_code = self._resolve_atp_player_code(player_b_code)
+        if not a_code or not b_code or a_code == b_code:
+            return None
+
+        key = tuple(sorted((a_code, b_code)))
+        if key in atp_h2h_summary_cache:
+            return atp_h2h_summary_cache[key]
+
+        first_code, second_code = key
+        result = None
+        try:
+            url = self._build_atp_h2h_url(first_code, second_code)
+            markdown = self._fetch_rjina_markdown(url, timeout=35)
+            wins = self._extract_atp_h2h_wins(markdown) or {}
+            first_wins = self._to_int(wins.get('first_wins'))
+            second_wins = self._to_int(wins.get('second_wins'))
+            if first_wins is not None and second_wins is not None:
+                result = {
+                    'first_code': first_code,
+                    'second_code': second_code,
+                    'first_wins': first_wins,
+                    'second_wins': second_wins
+                }
+        except Exception:
+            result = None
+
+        atp_h2h_summary_cache[key] = result
+        return result
+
+    def _format_atp_h2h_text_for_match_order(self, p1_code, p2_code, p1_name='', p2_name=''):
+        c1 = self._resolve_atp_player_code(p1_code, fallback_name=p1_name)
+        c2 = self._resolve_atp_player_code(p2_code, fallback_name=p2_name)
+        if not c1 or not c2 or c1 == c2:
+            return 'N/A'
+
+        summary = self._get_atp_h2h_pair_summary(c1, c2)
+        if not summary:
+            return 'N/A'
+
+        if c1 == summary['first_code'] and c2 == summary['second_code']:
+            return f"{summary['first_wins']}-{summary['second_wins']}"
+        if c1 == summary['second_code'] and c2 == summary['first_code']:
+            return f"{summary['second_wins']}-{summary['first_wins']}"
+        return 'N/A'
 
     def _to_int(self, value):
         try:
@@ -611,10 +1583,21 @@ class TennisDataFetcher:
             if not isinstance(match, dict):
                 continue
             out = dict(match)
-            p1 = (out.get('player1') or {}).get('id')
-            p2 = (out.get('player2') or {}).get('id')
-            if (out.get('tour') or '').upper() == 'WTA':
-                out['h2h_text'] = self._format_h2h_text_for_match_order(p1, p2)
+            player1 = out.get('player1') or {}
+            player2 = out.get('player2') or {}
+            tour_name = (out.get('tour') or '').upper()
+            if tour_name == 'WTA':
+                out['h2h_text'] = self._format_h2h_text_for_match_order(
+                    player1.get('id'),
+                    player2.get('id')
+                )
+            elif tour_name == 'ATP':
+                out['h2h_text'] = self._format_atp_h2h_text_for_match_order(
+                    player1.get('player_code') or player1.get('id'),
+                    player2.get('player_code') or player2.get('id'),
+                    player1.get('name') or '',
+                    player2.get('name') or ''
+                )
             else:
                 out['h2h_text'] = 'N/A'
             enriched.append(out)
@@ -679,13 +1662,22 @@ class TennisDataFetcher:
         return category if category != 'other' else 'other'
 
     def _category_label(self, category):
+        return self._category_label_for_tour(category, tour='wta')
+
+    def _category_label_for_tour(self, category, tour='wta'):
+        tour_name = str(tour or '').strip().lower()
+        masters_label = 'ATP 1000' if tour_name == 'atp' else 'WTA 1000'
+        atp500_label = 'ATP 500' if tour_name == 'atp' else 'WTA 500'
+        atp250_label = 'ATP 250' if tour_name == 'atp' else 'WTA 250'
+        atp125_label = 'ATP 125' if tour_name == 'atp' else 'WTA 125'
+        finals_label = 'ATP Finals' if tour_name == 'atp' else 'WTA Finals'
         labels = {
             'grand_slam': 'Grand Slam',
-            'masters_1000': 'WTA 1000',
-            'atp_500': 'WTA 500',
-            'atp_250': 'WTA 250',
-            'atp_125': 'WTA 125',
-            'finals': 'WTA Finals',
+            'masters_1000': masters_label,
+            'atp_500': atp500_label,
+            'atp_250': atp250_label,
+            'atp_125': atp125_label,
+            'finals': finals_label,
             'other': 'Tour'
         }
         return labels.get(category, 'Tour')
@@ -881,6 +1873,89 @@ class TennisDataFetcher:
                 'display': display
             })
         return flipped
+
+    def search_atp_players_for_h2h(self, query, limit=8):
+        text = (query or '').strip()
+        if not text:
+            return []
+        query_norm = self._normalize_player_name(text)
+        if not query_norm:
+            return []
+
+        limit = max(1, min(int(limit or 8), 20))
+        candidates = {}
+
+        def add_candidate(player_code, full_name, country_code='', image_url='', rank=None):
+            code = str(player_code or '').strip().upper()
+            if not code or not full_name:
+                return
+            normalized = self._normalize_player_name(full_name)
+            score = self._name_match_score(query_norm, normalized)
+            if score < 12.0:
+                return
+
+            ranking = self._match_atp_ranking(name=full_name, player_code=code)
+            scraped = self._match_atp_scraped((ranking or {}).get('name') or full_name)
+            profile = (scraped or {}).get('profile') or {}
+            key = str((ranking or {}).get('id') or code)
+            existing = candidates.get(key) or {}
+
+            chosen_rank = rank if rank is not None else (ranking or {}).get('rank')
+            if existing.get('rank') is not None and chosen_rank is not None:
+                chosen_rank = min(existing.get('rank'), chosen_rank)
+            elif existing.get('rank') is not None and chosen_rank is None:
+                chosen_rank = existing.get('rank')
+
+            candidates[key] = {
+                'id': (ranking or {}).get('id'),
+                'player_code': code,
+                'name': (ranking or {}).get('name') or profile.get('name') or full_name,
+                'country': country_code or (ranking or {}).get('country') or profile.get('country') or '',
+                'rank': chosen_rank,
+                'image_url': image_url or (ranking or {}).get('image_url') or profile.get('image_url') or '',
+                'score': max(score, existing.get('score', 0.0))
+            }
+
+        for row in self._get_atp_rankings():
+            add_candidate(
+                row.get('player_code'),
+                row.get('name'),
+                country_code=row.get('country') or '',
+                image_url=row.get('image_url') or '',
+                rank=row.get('rank')
+            )
+
+        for entry in (self._load_atp_scraped_index().get('players') or []):
+            profile = entry.get('profile') or {}
+            add_candidate(
+                entry.get('player_code') or profile.get('player_id'),
+                entry.get('name'),
+                country_code=profile.get('country') or '',
+                image_url=profile.get('image_url') or ''
+            )
+
+        if not candidates:
+            return []
+
+        ranked = sorted(
+            candidates.values(),
+            key=lambda c: (
+                -c.get('score', 0.0),
+                c.get('rank') if c.get('rank') is not None else 10_000,
+                c.get('name', '')
+            )
+        )
+        return [
+            {
+                'id': row.get('id') if row.get('id') is not None else row.get('player_code'),
+                'player_code': row.get('player_code'),
+                'name': row.get('name'),
+                'country': row.get('country') or '',
+                'rank': row.get('rank'),
+                'image_url': row.get('image_url') or ''
+            }
+            for row in ranked[:limit]
+        ]
 
     def search_wta_players_for_h2h(self, query, limit=8):
         text = (query or '').strip()
@@ -1191,39 +2266,165 @@ class TennisDataFetcher:
             'past_meetings': meetings
         }
 
-    def _run_wta_matches_script(self, script_name, args=None, timeout=35):
+    def fetch_atp_h2h_details(self, player1_code, player2_code, year=2026, meetings_limit=5):
+        year = int(year or datetime.now().year)
+        meetings_limit = max(1, min(int(meetings_limit or 5), 10))
+
+        p1_code = self._resolve_atp_player_code(player1_code)
+        p2_code = self._resolve_atp_player_code(player2_code)
+        if not p1_code or not p2_code:
+            raise ValueError('player1_code and player2_code are required')
+        if p1_code == p2_code:
+            raise ValueError('Please choose two different players')
+
+        markdown = self._fetch_rjina_markdown(
+            self._build_atp_h2h_url(p1_code, p2_code),
+            timeout=40
+        )
+        wins = self._extract_atp_h2h_wins(markdown) or {'first_wins': 0, 'second_wins': 0}
+
+        title_match = re.search(
+            r'^Title:\s*(.+?)\s+VS\s+(.+?)\s+\|',
+            markdown,
+            flags=re.IGNORECASE | re.MULTILINE
+        )
+        title_p1 = title_match.group(1).strip() if title_match else ''
+        title_p2 = title_match.group(2).strip() if title_match else ''
+
+        player1 = self._build_atp_h2h_player_payload(p1_code, full_name=title_p1)
+        player2 = self._build_atp_h2h_player_payload(p2_code, full_name=title_p2)
+
+        if title_match:
+            if not player1.get('name') or self._normalize_player_name(player1.get('name')) == self._normalize_player_name(p1_code):
+                player1['name'] = title_p1
+            if not player2.get('name') or self._normalize_player_name(player2.get('name')) == self._normalize_player_name(p2_code):
+                player2['name'] = title_p2
+
+        meetings = self._parse_atp_h2h_meetings(
+            markdown=markdown,
+            player1=player1,
+            player2=player2,
+            meetings_limit=meetings_limit
+        )
+        career_summary = self._extract_atp_h2h_career_summary(markdown)
+
+        p1_id = self._to_int(player1.get('id'))
+        p2_id = self._to_int(player2.get('id'))
+        recent_p1_wins = 0
+        recent_p2_wins = 0
+        for row in meetings:
+            winner_id = self._to_int(row.get('winner_id'))
+            winner_code = str(row.get('winner_code') or '').strip().upper()
+            if winner_id is None:
+                if winner_code and winner_code == p1_code:
+                    recent_p1_wins += 1
+                elif winner_code and winner_code == p2_code:
+                    recent_p2_wins += 1
+                continue
+            if p1_id is not None and winner_id == p1_id:
+                recent_p1_wins += 1
+            elif p2_id is not None and winner_id == p2_id:
+                recent_p2_wins += 1
+
+        first_wins = self._to_int(wins.get('first_wins')) or 0
+        second_wins = self._to_int(wins.get('second_wins')) or 0
+
+        return {
+            'tour': 'atp',
+            'players': {
+                'player1': player1,
+                'player2': player2
+            },
+            'head_to_head': {
+                'player1_wins': first_wins,
+                'player2_wins': second_wins,
+                'total_matches': first_wins + second_wins,
+                'recent_last_n': len(meetings),
+                'recent_player1_wins': recent_p1_wins,
+                'recent_player2_wins': recent_p2_wins
+            },
+            'season_stats': {
+                'year': year,
+                'serving': [],
+                'returning': []
+            },
+            'career_summary': career_summary,
+            'career_surface_records': {},
+            'past_meetings': meetings
+        }
+
+    def _run_matches_script(self, script_name, args=None, timeout=35, label='match'):
         script_path = Path(__file__).resolve().parent.parent / 'scripts' / script_name
         if not script_path.exists():
-            print(f"WTA match script not found: {script_path}")
+            print(f"{label} script not found: {script_path}")
             return None
         cmd = [sys.executable, str(script_path)]
         for arg in args or []:
             cmd.append(str(arg))
-        try:
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=timeout
-            )
-        except Exception as exc:
-            print(f"Error running WTA script {script_name}: {exc}")
-            return None
-        if result.returncode != 0:
-            stderr = (result.stderr or '').strip()
-            print(f"WTA script failed ({script_name}): {stderr or 'unknown error'}")
-            return None
-        stdout = (result.stdout or '').strip()
-        if not stdout:
+        attempts = 2 if str(label or '').upper().startswith('ATP') else 1
+        last_error = None
+
+        for attempt in range(1, attempts + 1):
+            try:
+                result = subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout
+                )
+            except Exception as exc:
+                last_error = exc
+                if attempt < attempts:
+                    print(f"Retrying {label} script ({script_name}) after error: {exc}")
+                    continue
+                print(f"Error running {label} script {script_name}: {exc}")
+                return None
+
+            if result.returncode != 0:
+                stderr = (result.stderr or '').strip()
+                last_error = stderr or 'unknown error'
+                if attempt < attempts:
+                    print(f"Retrying {label} script ({script_name}) after non-zero exit: {last_error}")
+                    continue
+                print(f"{label} script failed ({script_name}): {last_error}")
+                return None
+
+            stdout = (result.stdout or '').strip()
+            if not stdout:
+                return []
+            try:
+                payload = json.loads(stdout)
+            except Exception as exc:
+                last_error = exc
+                if attempt < attempts:
+                    print(f"Retrying {label} script ({script_name}) after JSON parse error: {exc}")
+                    continue
+                print(f"Invalid JSON from {label} script {script_name}: {exc}")
+                return None
+
+            if isinstance(payload, list):
+                return payload
             return []
-        try:
-            payload = json.loads(stdout)
-        except Exception as exc:
-            print(f"Invalid JSON from WTA script {script_name}: {exc}")
-            return None
-        if isinstance(payload, list):
-            return payload
-        return []
+
+        if last_error is not None:
+            print(f"{label} script failed ({script_name}): {last_error}")
+        return None
+
+    def _run_wta_matches_script(self, script_name, args=None, timeout=35):
+        return self._run_matches_script(
+            script_name=script_name,
+            args=args,
+            timeout=timeout,
+            label='WTA match'
+        )
+
+    def _run_atp_matches_script(self, script_name, args=None, timeout=60):
+        return self._run_matches_script(
+            script_name=script_name,
+            args=args,
+            timeout=timeout,
+            label='ATP match'
+        )
 
     def _format_wta_duration(self, value):
         if not value:
@@ -1295,11 +2496,24 @@ class TennisDataFetcher:
 
     def _wta_round_from_match(self, match, is_grand_slam, draw_size=32):
         round_id = str(match.get('RoundID') or '').strip()
+        draw_level_type = str(match.get('DrawLevelType') or '').strip().upper()
         match_id = str(match.get('MatchID') or '')
         match_digits = re.sub(r'\D', '', match_id)
         match_number = int(match_digits) if match_digits.isdigit() else 0
 
         round_upper = round_id.upper()
+        if draw_level_type == 'Q':
+            if round_upper in ('Q', 'Q1'):
+                return 'Qualifying R1'
+            if round_upper == 'Q2':
+                return 'Qualifying R2'
+            if round_upper == 'Q3':
+                return 'Qualifying R3'
+            if round_id.isdigit():
+                rid = int(round_id)
+                if rid > 0:
+                    return f'Qualifying R{rid}'
+
         if round_upper in ('F', 'SF', 'QF', 'RR', 'R128', 'R64', 'R32', 'R16'):
             return round_upper
         if round_upper == 'Q':
@@ -1416,6 +2630,290 @@ class TennisDataFetcher:
             'image_url': image_url
         }
 
+    def _resolve_atp_player(self, player_payload):
+        payload = player_payload if isinstance(player_payload, dict) else {}
+        name = (payload.get('name') or '').strip()
+        country = (payload.get('country') or '').strip().upper()
+        raw_player_code = payload.get('player_code') or payload.get('player_id') or ''
+        player_code = str(raw_player_code).strip().upper()
+        # Only use numeric ID as player_code if we don't have an explicit player_code
+        if not player_code:
+            id_as_code = str(payload.get('id') or '').strip()
+            if id_as_code and not id_as_code.isdigit():
+                player_code = id_as_code.upper()
+
+        ranking = self._match_atp_ranking(name=name, player_code=player_code)
+        scraped = self._match_atp_scraped((ranking or {}).get('name') or name)
+        profile = scraped.get('profile') if scraped else {}
+
+        resolved_id = None
+        if ranking and ranking.get('id') is not None:
+            resolved_id = ranking.get('id')
+        elif str(payload.get('id') or '').isdigit():
+            resolved_id = int(payload.get('id'))
+
+        rank = payload.get('rank')
+        if rank in (None, '', 0):
+            rank = (ranking or {}).get('rank')
+
+        image_url = (
+            payload.get('image_url')
+            or (ranking or {}).get('image_url')
+            or profile.get('image_url')
+            or ''
+        )
+        points = payload.get('points')
+        if points in (None, ''):
+            points = (ranking or {}).get('points')
+
+        resolved_player_code = (
+            player_code
+            or str(profile.get('player_id') or '').strip().upper()
+            or str((ranking or {}).get('player_code') or '').strip().upper()
+        )
+
+        return {
+            'id': resolved_id,
+            'player_code': resolved_player_code,
+            'name': (ranking or {}).get('name') or profile.get('name') or name or 'TBD',
+            'country': country or (ranking or {}).get('country') or profile.get('country') or '',
+            'rank': rank,
+            'points': points,
+            'image_url': image_url
+        }
+
+    def _enrich_atp_match(self, match):
+        if not isinstance(match, dict):
+            return None
+        out = dict(match)
+        out['tour'] = 'ATP'
+        out['player1'] = self._resolve_atp_player(out.get('player1'))
+        out['player2'] = self._resolve_atp_player(out.get('player2'))
+        out.setdefault('h2h_text', 'N/A')
+        return out
+
+    def _parse_wta_match_stats_snapshot(self, match):
+        snapshot = match.get('DetailedStats')
+        if not isinstance(snapshot, dict):
+            return None
+
+        def int_or_zero(key):
+            value = self._to_int(snapshot.get(key))
+            return value if value is not None else 0
+
+        def pct_or_calc(pct_key, numerator_key, denominator_key):
+            pct = self._to_float(snapshot.get(pct_key))
+            if pct is not None:
+                return round(pct, 1)
+            numerator = int_or_zero(numerator_key)
+            denominator = int_or_zero(denominator_key)
+            if denominator <= 0:
+                return 0.0
+            return round((numerator / denominator) * 100.0, 1)
+
+        aces_p1 = int_or_zero('aces_a')
+        aces_p2 = int_or_zero('aces_b')
+        df_p1 = int_or_zero('double_faults_a')
+        df_p2 = int_or_zero('double_faults_b')
+
+        first_in_p1 = int_or_zero('first_serve_in_a')
+        first_in_p2 = int_or_zero('first_serve_in_b')
+        first_total_p1 = int_or_zero('service_points_played_a')
+        first_total_p2 = int_or_zero('service_points_played_b')
+        first_won_p1 = int_or_zero('first_serve_points_won_a')
+        first_won_p2 = int_or_zero('first_serve_points_won_b')
+
+        second_won_p1 = int_or_zero('second_serve_points_won_a')
+        second_won_p2 = int_or_zero('second_serve_points_won_b')
+        second_total_p1 = int_or_zero('second_serve_points_played_a')
+        second_total_p2 = int_or_zero('second_serve_points_played_b')
+
+        break_conv_p1 = int_or_zero('break_points_converted_a')
+        break_conv_p2 = int_or_zero('break_points_converted_b')
+        break_total_p1 = int_or_zero('break_points_total_a')
+        break_total_p2 = int_or_zero('break_points_total_b')
+        break_faced_p1 = int_or_zero('break_points_faced_a')
+        break_faced_p2 = int_or_zero('break_points_faced_b')
+        break_saved_p1 = int_or_zero('break_points_saved_a')
+        break_saved_p2 = int_or_zero('break_points_saved_b')
+
+        service_games_p1 = int_or_zero('service_games_played_a')
+        service_games_p2 = int_or_zero('service_games_played_b')
+        total_points_p1 = int_or_zero('total_points_won_a')
+        total_points_p2 = int_or_zero('total_points_won_b')
+
+        return {
+            'source': 'wta_match_stats_snapshot',
+            'aces': {'p1': aces_p1, 'p2': aces_p2},
+            'doubleFaults': {'p1': df_p1, 'p2': df_p2},
+            'firstServe': {
+                'p1': pct_or_calc('first_serve_percent_a', 'first_serve_in_a', 'service_points_played_a'),
+                'p2': pct_or_calc('first_serve_percent_b', 'first_serve_in_b', 'service_points_played_b'),
+                'made': {'p1': first_in_p1, 'p2': first_in_p2},
+                'total': {'p1': first_total_p1, 'p2': first_total_p2}
+            },
+            'firstServeWon': {
+                'p1': pct_or_calc('first_serve_points_won_percent_a', 'first_serve_points_won_a', 'first_serve_in_a'),
+                'p2': pct_or_calc('first_serve_points_won_percent_b', 'first_serve_points_won_b', 'first_serve_in_b'),
+                'won': {'p1': first_won_p1, 'p2': first_won_p2},
+                'total': {'p1': first_in_p1, 'p2': first_in_p2}
+            },
+            'secondServeWon': {
+                'p1': pct_or_calc('second_serve_points_won_percent_a', 'second_serve_points_won_a', 'second_serve_points_played_a'),
+                'p2': pct_or_calc('second_serve_points_won_percent_b', 'second_serve_points_won_b', 'second_serve_points_played_b'),
+                'won': {'p1': second_won_p1, 'p2': second_won_p2},
+                'total': {'p1': second_total_p1, 'p2': second_total_p2}
+            },
+            'breakPointsWon': {'p1': break_conv_p1, 'p2': break_conv_p2},
+            'breakPointsTotal': {'p1': break_total_p1, 'p2': break_total_p2},
+            'breakPointsRate': {
+                'p1': pct_or_calc('break_points_converted_percent_a', 'break_points_converted_a', 'break_points_total_a'),
+                'p2': pct_or_calc('break_points_converted_percent_b', 'break_points_converted_b', 'break_points_total_b')
+            },
+            'breakPointsFaced': {'p1': break_faced_p1, 'p2': break_faced_p2},
+            'breakPointsSaved': {'p1': break_saved_p1, 'p2': break_saved_p2},
+            'breakPointsSavedRate': {
+                'p1': pct_or_calc('break_points_saved_percent_a', 'break_points_saved_a', 'break_points_faced_a'),
+                'p2': pct_or_calc('break_points_saved_percent_b', 'break_points_saved_b', 'break_points_faced_b')
+            },
+            'serviceGamesPlayed': {'p1': service_games_p1, 'p2': service_games_p2},
+            'totalPoints': {'p1': total_points_p1, 'p2': total_points_p2},
+            'winners': {'p1': 0, 'p2': 0},
+            'unforcedErrors': {'p1': 0, 'p2': 0},
+        }
+
+    def _pick_wta_match_stats_row(self, payload):
+        if not isinstance(payload, list):
+            return None
+        rows = [row for row in payload if isinstance(row, dict)]
+        if not rows:
+            return None
+        for row in rows:
+            set_num = self._to_int(row.get('setnum'))
+            if set_num == 0:
+                return row
+        return rows[0]
+
+    def _build_wta_detailed_stats_snapshot(self, row, event_id, event_year, match_id):
+        if not isinstance(row, dict):
+            return None
+
+        def as_int(key):
+            value = self._to_int(row.get(key))
+            return value if value is not None else 0
+
+        def pct(numerator, denominator):
+            if denominator <= 0:
+                return 0.0
+            return round((numerator / denominator) * 100.0, 1)
+
+        aces_a = as_int('acesa')
+        aces_b = as_int('acesb')
+        dblflt_a = as_int('dblflta')
+        dblflt_b = as_int('dblfltb')
+
+        first_in_a = as_int('ptsplayed1stserva')
+        first_in_b = as_int('ptsplayed1stservb')
+        first_won_a = as_int('ptswon1stserva')
+        first_won_b = as_int('ptswon1stservb')
+        serve_pts_a = as_int('totservplayeda')
+        serve_pts_b = as_int('totservplayedb')
+        serve_pts_won_a = as_int('ptstotwonserva')
+        serve_pts_won_b = as_int('ptstotwonservb')
+        total_pts_won_a = as_int('totptswona')
+        total_pts_won_b = as_int('totptswonb')
+
+        second_played_a = max(0, serve_pts_a - first_in_a)
+        second_played_b = max(0, serve_pts_b - first_in_b)
+        second_won_a = max(0, serve_pts_won_a - first_won_a)
+        second_won_b = max(0, serve_pts_won_b - first_won_b)
+
+        break_conv_a = as_int('breakptsconva')
+        break_conv_b = as_int('breakptsconvb')
+        break_total_a = as_int('breakptsplayeda')
+        break_total_b = as_int('breakptsplayedb')
+
+        break_faced_a = break_total_b
+        break_faced_b = break_total_a
+        break_saved_a = max(0, break_faced_a - break_conv_b)
+        break_saved_b = max(0, break_faced_b - break_conv_a)
+
+        serv_games_a = as_int('servgamesplayeda')
+        serv_games_b = as_int('servgamesplayedb')
+
+        return {
+            'event_id': str(event_id),
+            'event_year': str(event_year),
+            'match_id': str(match_id),
+            'aces_a': aces_a,
+            'aces_b': aces_b,
+            'double_faults_a': dblflt_a,
+            'double_faults_b': dblflt_b,
+            'first_serve_in_a': first_in_a,
+            'first_serve_in_b': first_in_b,
+            'first_serve_points_won_a': first_won_a,
+            'first_serve_points_won_b': first_won_b,
+            'service_points_played_a': serve_pts_a,
+            'service_points_played_b': serve_pts_b,
+            'service_points_won_a': serve_pts_won_a,
+            'service_points_won_b': serve_pts_won_b,
+            'second_serve_points_played_a': second_played_a,
+            'second_serve_points_played_b': second_played_b,
+            'second_serve_points_won_a': second_won_a,
+            'second_serve_points_won_b': second_won_b,
+            'break_points_converted_a': break_conv_a,
+            'break_points_converted_b': break_conv_b,
+            'break_points_total_a': break_total_a,
+            'break_points_total_b': break_total_b,
+            'break_points_faced_a': break_faced_a,
+            'break_points_faced_b': break_faced_b,
+            'break_points_saved_a': break_saved_a,
+            'break_points_saved_b': break_saved_b,
+            'service_games_played_a': serv_games_a,
+            'service_games_played_b': serv_games_b,
+            'total_points_won_a': total_pts_won_a,
+            'total_points_won_b': total_pts_won_b,
+            'first_serve_percent_a': pct(first_in_a, serve_pts_a),
+            'first_serve_percent_b': pct(first_in_b, serve_pts_b),
+            'first_serve_points_won_percent_a': pct(first_won_a, first_in_a),
+            'first_serve_points_won_percent_b': pct(first_won_b, first_in_b),
+            'second_serve_points_won_percent_a': pct(second_won_a, second_played_a),
+            'second_serve_points_won_percent_b': pct(second_won_b, second_played_b),
+            'break_points_converted_percent_a': pct(break_conv_a, break_total_a),
+            'break_points_converted_percent_b': pct(break_conv_b, break_total_b),
+            'break_points_saved_percent_a': pct(break_saved_a, break_faced_a),
+            'break_points_saved_percent_b': pct(break_saved_b, break_faced_b),
+        }
+
+    def fetch_wta_match_stats(self, event_id, event_year, match_id):
+        event_id_val = self._to_int(event_id)
+        event_year_val = self._to_int(event_year)
+        match_id_val = str(match_id or '').strip()
+        if not event_id_val or not event_year_val or not match_id_val:
+            return None
+
+        cache_key = f"{event_id_val}|{event_year_val}|{match_id_val}"
+        if cache_key in wta_match_stats_cache:
+            return wta_match_stats_cache[cache_key]
+
+        try:
+            payload = self._wta_api_get_json(
+                f"{WTA_TENNIS_API_BASE}/tournaments/{event_id_val}/{event_year_val}/matches/{match_id_val}/stats"
+            )
+            row = self._pick_wta_match_stats_row(payload)
+            snapshot = self._build_wta_detailed_stats_snapshot(
+                row=row,
+                event_id=event_id_val,
+                event_year=event_year_val,
+                match_id=match_id_val
+            )
+            stats = self._parse_wta_match_stats_snapshot({'DetailedStats': snapshot}) if snapshot else None
+        except Exception:
+            stats = None
+
+        wta_match_stats_cache[cache_key] = stats
+        return stats
+
     def _parse_wta_match(self, match):
         tournament = match.get('Tournament') or {}
         group = tournament.get('tournamentGroup') or {}
@@ -1500,6 +2998,9 @@ class TennisDataFetcher:
             'tour': 'WTA',
             'tournament': event_name or 'Tournament',
             'tournament_category': category,
+            'wta_event_id': match.get('EventID'),
+            'wta_event_year': match.get('EventYear'),
+            'wta_match_id': match.get('MatchID'),
             'location': location,
             'surface': surface,
             'round': round_code,
@@ -1519,6 +3020,10 @@ class TennisDataFetcher:
         else:
             parsed['score'] = score_payload
 
+        match_stats = self._parse_wta_match_stats_snapshot(match)
+        if match_stats:
+            parsed['match_stats'] = match_stats
+
         return parsed
     
     def fetch_live_scores(self, tour='both'):
@@ -1533,7 +3038,7 @@ class TennisDataFetcher:
         live_matches = []
         if tour in ('wta', 'both'):
             wta_raw = self._run_wta_matches_script('[Live] wta_live_matches.py')
-            if not wta_raw:
+            if wta_raw is None:
                 live_matches.extend(self._generate_sample_live_matches('wta'))
             else:
                 wta_live = [
@@ -1544,7 +3049,18 @@ class TennisDataFetcher:
                 live_matches.extend(wta_live)
 
         if tour in ('atp', 'both'):
-            live_matches.extend(self._generate_sample_live_matches('atp'))
+            atp_raw = self._run_atp_matches_script('[Live] atp_live_matches.py')
+            if atp_raw is None:
+                live_matches.extend(self._generate_sample_live_matches('atp'))
+            else:
+                atp_live = []
+                for match in atp_raw:
+                    if not isinstance(match, dict):
+                        continue
+                    enriched = self._enrich_atp_match(match)
+                    if enriched:
+                        atp_live.append(enriched)
+                live_matches.extend(atp_live)
         
         live_scores_cache[cache_key] = live_matches
         return live_matches
@@ -1557,14 +3073,28 @@ class TennisDataFetcher:
                 '[Live] wta_recent_matches.py',
                 args=['--limit', str(limit)]
             )
-            if not wta_raw:
+            if wta_raw is None:
                 matches.extend(self._generate_sample_recent_matches('wta', limit))
             else:
                 parsed = [self._parse_wta_match(match) for match in wta_raw if isinstance(match, dict)]
                 matches.extend(parsed)
 
         if tour in ('atp', 'both'):
-            matches.extend(self._generate_sample_recent_matches('atp', limit))
+            atp_raw = self._run_atp_matches_script(
+                '[Live] atp_recent_matches.py',
+                args=['--limit', str(limit)]
+            )
+            if atp_raw is None:
+                matches.extend(self._generate_sample_recent_matches('atp', limit))
+            else:
+                parsed = []
+                for match in atp_raw:
+                    if not isinstance(match, dict):
+                        continue
+                    enriched = self._enrich_atp_match(match)
+                    if enriched:
+                        parsed.append(enriched)
+                matches.extend(parsed)
 
         return matches[:limit] if tour == 'both' else matches
     
@@ -1581,15 +3111,55 @@ class TennisDataFetcher:
                 '[Live] wta_upcoming_matches.py',
                 args=['--days', str(days)]
             )
-            if not wta_raw:
+            if wta_raw is None:
+                print(f"WTA upcoming: script failed, using generated matches")
+                matches.extend(self._generate_sample_upcoming_matches('wta', days))
+            elif len(wta_raw) == 0:
+                # Scraper ran successfully but found no matches - use generated matches as fallback
+                print(f"WTA upcoming: scraper returned empty, using generated matches")
                 matches.extend(self._generate_sample_upcoming_matches('wta', days))
             else:
                 parsed = [self._parse_wta_match(match) for match in wta_raw if isinstance(match, dict)]
+                print(f"WTA upcoming: loaded {len(parsed)} real matches from scraper")
                 matches.extend(parsed)
 
         if tour in ('atp', 'both'):
-            matches.extend(self._generate_sample_upcoming_matches('atp', days))
+            atp_raw = self._run_atp_matches_script(
+                '[Live] atp_upcoming_matches.py',
+                args=['--days', str(days)]
+            )
+            if atp_raw is None:
+                print(f"ATP upcoming: script failed, using generated matches")
+                sample_matches = self._generate_sample_upcoming_matches('atp', days)
+                print(f"ATP upcoming: generated {len(sample_matches)} sample matches")
+                # Enrich sample matches the same way as real matches
+                for match in sample_matches:
+                    enriched = self._enrich_atp_match(match)
+                    if enriched:
+                        matches.append(enriched)
+                print(f"ATP upcoming: enriched {len([m for m in matches if m.get('tour') == 'ATP'])} ATP matches")
+            elif len(atp_raw) == 0:
+                # Scraper ran successfully but found no matches - use generated matches as fallback
+                print(f"ATP upcoming: scraper returned empty, using generated matches")
+                sample_matches = self._generate_sample_upcoming_matches('atp', days)
+                print(f"ATP upcoming: generated {len(sample_matches)} sample matches")
+                for match in sample_matches:
+                    enriched = self._enrich_atp_match(match)
+                    if enriched:
+                        matches.append(enriched)
+                print(f"ATP upcoming: enriched {len([m for m in matches if m.get('tour') == 'ATP'])} ATP matches")
+            else:
+                parsed = []
+                for match in atp_raw:
+                    if not isinstance(match, dict):
+                        continue
+                    enriched = self._enrich_atp_match(match)
+                    if enriched:
+                        parsed.append(enriched)
+                print(f"ATP upcoming: loaded {len(parsed)} real matches from scraper")
+                matches.extend(parsed)
 
+        print(f"fetch_upcoming_matches(tour={tour}): returning {len(matches)} total matches")
         return self._attach_upcoming_h2h(matches)
     
     def fetch_rankings(self, tour='atp', limit=200):
@@ -1605,13 +3175,15 @@ class TennisDataFetcher:
         rankings = None
         if tour == 'wta':
             rankings = self._load_wta_rankings_csv()
+        elif tour == 'atp':
+            rankings = self._load_atp_rankings_csv()
 
         # Generate sample rankings data
         if not rankings:
             rankings = self._generate_sample_rankings(tour, limit)
 
         rankings_cache[cache_key] = rankings
-        return rankings
+        return rankings[:limit]
     
     def fetch_tournaments(self, tour='atp', year=None):
         """Fetch tournament calendar"""
@@ -1625,6 +3197,8 @@ class TennisDataFetcher:
         tournaments = []
         if tour == 'wta':
             tournaments = self._load_wta_tournaments_from_files(year)
+        elif tour == 'atp':
+            tournaments = self._load_atp_tournaments_from_files(year)
 
         if not tournaments:
             tournaments = self._generate_sample_tournaments(tour, year)
@@ -1637,6 +3211,10 @@ class TennisDataFetcher:
             bracket = self._build_wta_bracket_from_files(tournament_id)
             if bracket:
                 return bracket
+        elif tour == 'atp':
+            bracket = self._build_atp_bracket_from_files(tournament_id)
+            if bracket:
+                return bracket
         return self._generate_sample_bracket(tournament_id, tour)
     
     def fetch_player_details(self, player_id):
@@ -1644,6 +3222,9 @@ class TennisDataFetcher:
         wta_player = self._get_wta_player_from_csv(player_id)
         if wta_player:
             return wta_player
+        atp_player = self._get_atp_player_from_csv(player_id)
+        if atp_player:
+            return atp_player
         return self._generate_sample_player(player_id)
 
     def _get_wta_player_from_csv(self, player_id):
@@ -1681,6 +3262,59 @@ class TennisDataFetcher:
             'records_summary': player.get('records_summary') or []
         }
 
+    def _get_atp_player_from_csv(self, player_id):
+        """Resolve ATP player details from CSV-backed rankings."""
+        rankings = self._load_atp_rankings_csv()
+        if not rankings:
+            return None
+        player = next((p for p in rankings if p.get('id') == player_id), None)
+        if not player:
+            return None
+
+        resolved_id = player.get('id') or player_id
+        height = player.get('height') or f"{random.randint(175, 200)} cm"
+        plays = player.get('plays') or random.choice(['Right-Handed', 'Left-Handed'])
+        titles = player.get('titles') or random.randint(0, 25)
+        image_url = player.get('image_url') or f'https://api.sofascore.com/api/v1/player/{resolved_id}/image'
+        stats_2026 = player.get('stats_2026') or {}
+
+        prize_money_career = (
+            player.get('career_prize_money')
+            or player.get('prize_money')
+            or stats_2026.get('career_prize_money')
+            or stats_2026.get('prize_money')
+            or ''
+        )
+        prize_money_ytd = (
+            player.get('ytd_prize_money')
+            or stats_2026.get('ytd_prize_money')
+            or ''
+        )
+        ytd_won_lost = (
+            player.get('ytd_won_lost')
+            or stats_2026.get('ytd_won_lost')
+            or ''
+        )
+
+        return {
+            **player,
+            'id': resolved_id,
+            'tour': 'ATP',
+            'height': height,
+            'plays': plays,
+            'turned_pro': random.randint(2005, 2023),
+            'titles': titles,
+            'prize_money': prize_money_career,
+            'prize_money_career': prize_money_career,
+            'prize_money_ytd': prize_money_ytd,
+            'ytd_won_lost': ytd_won_lost,
+            'biography': f"Professional tennis player from {player.get('country', '')}.",
+            'image_url': image_url,
+            'stats_2026': stats_2026,
+            'records': [],
+            'records_summary': []
+        }
+
     def _load_wta_tournaments_index(self):
         if self._wta_tournament_index is not None:
             return self._wta_tournament_index
@@ -1702,6 +3336,51 @@ class TennisDataFetcher:
             index[str(tid)] = tournament
         self._wta_tournament_index = index
         return index
+
+    def _load_atp_tournaments_index(self):
+        if self._atp_tournament_index is not None:
+            return self._atp_tournament_index
+
+        base_dir = self._tour_tournaments_dir('atp')
+        index = {}
+        if not base_dir.exists():
+            self._atp_tournament_index = index
+            return index
+
+        for file_path in base_dir.glob("*.json"):
+            try:
+                tournament = json.loads(file_path.read_text(encoding='utf-8'))
+            except Exception:
+                continue
+            tid = tournament.get('tournament_group_id') or tournament.get('id') or tournament.get('order')
+            if tid is None:
+                continue
+            index[str(tid)] = tournament
+
+        self._atp_tournament_index = index
+        return index
+
+    def _build_atp_bracket_from_files(self, tournament_id):
+        index = self._load_atp_tournaments_index()
+        tournament = index.get(str(tournament_id))
+        if not tournament:
+            return None
+
+        bracket = tournament.get('bracket') or {}
+        if isinstance(bracket, dict) and bracket.get('matches'):
+            payload = dict(bracket)
+            payload.setdefault('tournament_id', tournament.get('tournament_group_id') or tournament.get('id') or tournament_id)
+            payload.setdefault('tournament_name', tournament.get('name') or tournament.get('title') or f'Tournament {tournament_id}')
+            payload.setdefault('tournament_category', tournament.get('category') or self._normalize_wta_level(tournament.get('level') or ''))
+            payload.setdefault('tournament_surface', tournament.get('surface') or '')
+            payload.setdefault('tournament_year', tournament.get('year'))
+            payload.setdefault('tournament_status', tournament.get('status') or 'upcoming')
+            payload.setdefault('tournament_tour', 'atp')
+            payload.setdefault('draw_size', tournament.get('draw_size_singles') or 32)
+            payload.setdefault('source', 'atp')
+            return payload
+
+        return None
 
     def _build_wta_bracket_from_files(self, tournament_id):
         index = self._load_wta_tournaments_index()
@@ -2316,6 +3995,87 @@ class TennisDataFetcher:
 
         tournaments.sort(key=lambda x: x.get('start_date') or '')
         return tournaments
+
+    def _load_atp_tournaments_from_files(self, year):
+        base_dir = self._tour_tournaments_dir('atp')
+        if not base_dir.exists():
+            return []
+
+        def _parse_date(value):
+            try:
+                return datetime.strptime(value, "%Y-%m-%d").date()
+            except Exception:
+                return None
+
+        today = datetime.now().date()
+        tournaments = []
+        files = sorted(base_dir.glob("*.json"))
+        for file_path in files:
+            try:
+                tournament = json.loads(file_path.read_text(encoding='utf-8'))
+            except Exception:
+                continue
+
+            record_year = tournament.get('year')
+            if year and record_year and int(record_year) != int(year):
+                continue
+
+            start_date = tournament.get('start_date') or ''
+            end_date = tournament.get('end_date') or ''
+            start_dt = _parse_date(start_date)
+            end_dt = _parse_date(end_date)
+
+            status_raw = str(tournament.get('status') or '').strip().lower()
+            if status_raw in {'past', 'completed', 'complete', 'finished'}:
+                status = 'finished'
+            elif status_raw in {'current', 'in_progress', 'in progress', 'live', 'running'}:
+                status = 'in_progress'
+            else:
+                if start_dt and end_dt:
+                    if end_dt < today:
+                        status = 'finished'
+                    elif start_dt <= today <= end_dt:
+                        status = 'in_progress'
+                    else:
+                        status = 'upcoming'
+                else:
+                    status = 'upcoming'
+
+            category = tournament.get('category') or self._normalize_wta_level(tournament.get('level') or '')
+            surface = tournament.get('surface') or 'Hard'
+            if str(tournament.get('indoor_outdoor') or '').strip().upper().startswith('I') and 'Indoor' not in surface:
+                surface = f"{surface} (Indoor)"
+
+            champion = tournament.get('champion') or {}
+            runner_up = tournament.get('runner_up') or {}
+            location = tournament.get('location')
+            if not location:
+                city = (tournament.get('city') or '').strip()
+                country = (tournament.get('country') or '').strip()
+                location = ", ".join([part for part in [city, country] if part])
+
+            tournaments.append({
+                'id': tournament.get('tournament_group_id') or tournament.get('id') or tournament.get('order'),
+                'name': tournament.get('name') or tournament.get('title') or 'Tournament',
+                'category': category,
+                'location': location or '',
+                'start_date': start_date,
+                'end_date': end_date,
+                'surface': surface,
+                'status': status,
+                'year': tournament.get('year'),
+                'winner': {
+                    'name': champion.get('name'),
+                    'country': champion.get('country')
+                } if isinstance(champion, dict) and champion.get('name') else None,
+                'runner_up': {
+                    'name': runner_up.get('name'),
+                    'country': runner_up.get('country')
+                } if isinstance(runner_up, dict) and runner_up.get('name') else None,
+            })
+
+        tournaments.sort(key=lambda x: x.get('start_date') or '')
+        return tournaments
     
     # Sample data generators (would be replaced with real API calls)
     
@@ -2511,7 +4271,18 @@ class TennisDataFetcher:
     def _generate_sample_upcoming_matches(self, tour, days=2):
         """Generate sample upcoming matches for the next N days"""
         matches = []
-        atp_players = self._get_sample_atp_players()
+        
+        # Use actual ranking data for ATP players
+        if tour == 'atp':
+            atp_rankings = self._get_atp_rankings()
+            if len(atp_rankings) >= 10:
+                atp_players = atp_rankings[:10]
+            else:
+                atp_players = self._get_sample_atp_players()
+        else:
+            atp_players = []
+        
+        # Use WTA players
         wta_players = self._get_sample_wta_players()
         
         atp_tournaments = [
@@ -2529,29 +4300,44 @@ class TennisDataFetcher:
         
         # Generate 2-4 upcoming matches
         for i in range(random.randint(2, 4)):
-            if tour == 'atp' or (tour == 'both' and i % 2 == 0):
+            if tour == 'atp':
                 players = atp_players
                 tour_name = 'ATP'
-            else:
+                tournaments = atp_tournaments
+            elif tour == 'wta':
                 players = wta_players
                 tour_name = 'WTA'
+                tournaments = wta_tournaments
+            else:
+                # Both
+                if i % 2 == 0:
+                    players = atp_players
+                    tour_name = 'ATP'
+                    tournaments = atp_tournaments
+                else:
+                    players = wta_players
+                    tour_name = 'WTA'
+                    tournaments = wta_tournaments
             
+            if len(players) < 2:
+                continue
+                
             p1_idx = random.randint(0, len(players) - 1)
             p2_idx = random.randint(0, len(players) - 1)
             while p2_idx == p1_idx:
                 p2_idx = random.randint(0, len(players) - 1)
             
-            tournament = random.choice(atp_tournaments if tour_name == 'ATP' else wta_tournaments)
+            tournament = random.choice(tournaments)
             scheduled_time = datetime.now() + timedelta(hours=random.randint(1, days * 24))
             
             matches.append({
-                'id': f'upcoming_{i}',
+                'id': f'upcoming_{tour_name}_{i}',
                 'tour': tour_name,
                 'tournament': tournament['name'],
                 'tournament_category': tournament['category'],
                 'round': random.choice(['R32', 'R16', 'QF', 'SF', 'F']),
-                'player1': players[p1_idx],
-                'player2': players[p2_idx],
+                'player1': dict(players[p1_idx]),
+                'player2': dict(players[p2_idx]),
                 'scheduled_time': scheduled_time.isoformat() + 'Z'
             })
         
@@ -2718,20 +4504,132 @@ class TennisDataFetcher:
                 })
 
         return rankings
+
+    def _load_atp_rankings_csv(self):
+        """Load ATP rankings from CSV created by live-tennis.eu scraper."""
+        csv_path = self._atp_rankings_csv_path()
+        if not csv_path.exists():
+            return None
+
+        used_ids = set()
+        rankings = []
+        with csv_path.open('r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                rank_raw = (row.get('rank') or '').strip()
+                if not rank_raw.isdigit():
+                    continue
+                rank = int(rank_raw)
+                name = (row.get('player') or '').strip()
+                if not name:
+                    continue
+                norm_name = self._normalize_player_name(name)
+
+                scraped = self._match_atp_scraped(name)
+                profile_data = scraped.get('profile') if scraped else {}
+                stats_data = scraped.get('stats') if scraped else {}
+
+                player_code = (
+                    (profile_data.get('player_id') or '').strip()
+                    or (scraped.get('player_code') if scraped else '')
+                    or ''
+                )
+                resolved_id = self._stable_player_id_from_name(
+                    f"atp:{player_code.lower()}" if player_code else f"atp:{norm_name}",
+                    used_ids
+                )
+
+                points_raw = re.sub(r'[^\d]', '', row.get('points') or '')
+                points = int(points_raw) if points_raw else 0
+                age_raw = re.sub(r'[^\d]', '', row.get('age') or '')
+                age = int(age_raw) if age_raw else None
+                if age is None:
+                    profile_age = re.sub(r'[^\d]', '', str(profile_data.get('age') or ''))
+                    age = int(profile_age) if profile_age else None
+
+                ch_raw = re.sub(r'[^\d]', '', row.get('career_high') or '')
+                career_high = int(ch_raw) if ch_raw else rank
+                at_ch = (row.get('at_career_high') or '').strip().lower() == 'yes'
+                is_new_ch = (row.get('is_new_career_high') or '').strip().lower() == 'yes'
+
+                rank_change_raw = row.get('rank_change') or ''
+                rank_change_clean = re.sub(r'[^-\d]', '', rank_change_raw)
+                rank_change = int(rank_change_clean) if rank_change_clean else 0
+
+                current_raw = (row.get('current') or '').strip()
+                points_change = 0
+                if re.match(r'^[+-]\d+$', current_raw):
+                    points_change = int(current_raw)
+                if abs(rank_change) >= 100:
+                    if points_change == 0:
+                        points_change = rank_change
+                    rank_change = 0
+                movement = rank_change
+
+                country = (row.get('country') or '').strip() or profile_data.get('country') or 'WHITE'
+                is_playing = (row.get('is_playing') or '').strip().lower() == 'yes'
+
+                image_url = profile_data.get('image_url') or ''
+                height = profile_data.get('height') or ''
+                plays = profile_data.get('plays') or ''
+                prize_money = stats_data.get('prize_money') or ''
+                ytd_prize_money = profile_data.get('ytd_prize_money') or stats_data.get('ytd_prize_money') or ''
+                career_prize_money = (
+                    profile_data.get('career_prize_money')
+                    or stats_data.get('career_prize_money')
+                    or stats_data.get('prize_money')
+                    or ''
+                )
+                ytd_won_lost = profile_data.get('ytd_won_lost') or ''
+                singles_titles = stats_data.get('singles_titles') or ''
+
+                rankings.append({
+                    'rank': rank,
+                    'id': resolved_id,
+                    'name': name,
+                    'player_code': player_code.upper() if player_code else '',
+                    'country': country,
+                    'age': age,
+                    'points': points,
+                    'career_high': career_high,
+                    'is_career_high': at_ch,
+                    'is_new_career_high': is_new_ch,
+                    'movement': movement,
+                    'rank_change': rank_change,
+                    'points_change': points_change,
+                    'is_playing': is_playing,
+                    'current': (row.get('current') or '').strip(),
+                    'previous': (row.get('previous') or '').strip(),
+                    'next': (row.get('next') or '').strip(),
+                    'max': (row.get('max') or '').strip(),
+                    'image_url': image_url,
+                    'height': height,
+                    'plays': plays,
+                    'prize_money': prize_money,
+                    'ytd_prize_money': ytd_prize_money,
+                    'career_prize_money': career_prize_money,
+                    'ytd_won_lost': ytd_won_lost,
+                    'titles': singles_titles,
+                    'stats_2026': stats_data,
+                    'records': [],
+                    'records_summary': []
+                })
+
+        return rankings
     
     def _get_sample_atp_players(self):
-        """Get sample ATP players with real IDs and image URLs"""
+        """Get sample ATP players with real IDs, player codes, and image URLs"""
         players = [
-            {'id': 4878, 'name': 'Novak Djokovic', 'country': 'SRB', 'rank': 1},
-            {'id': 216431, 'name': 'Carlos Alcaraz', 'country': 'ESP', 'rank': 2},
-            {'id': 139170, 'name': 'Jannik Sinner', 'country': 'ITA', 'rank': 3},
-            {'id': 38758, 'name': 'Daniil Medvedev', 'country': 'RUS', 'rank': 4},
-            {'id': 39667, 'name': 'Andrey Rublev', 'country': 'RUS', 'rank': 5},
-            {'id': 40285, 'name': 'Alexander Zverev', 'country': 'GER', 'rank': 6},
-            {'id': 124335, 'name': 'Holger Rune', 'country': 'DEN', 'rank': 7},
-            {'id': 41379, 'name': 'Stefanos Tsitsipas', 'country': 'GRE', 'rank': 8},
-            {'id': 59642, 'name': 'Hubert Hurkacz', 'country': 'POL', 'rank': 9},
-            {'id': 63343, 'name': 'Casper Ruud', 'country': 'NOR', 'rank': 10},
+            {'id': 4878, 'name': 'Novak Djokovic', 'country': 'SRB', 'rank': 1, 'player_code': 'D643'},
+            {'id': 216431, 'name': 'Carlos Alcaraz', 'country': 'ESP', 'rank': 2, 'player_code': 'A0E2'},
+            {'id': 139170, 'name': 'Jannik Sinner', 'country': 'ITA', 'rank': 3, 'player_code': 'S0AG'},
+            {'id': 38758, 'name': 'Daniil Medvedev', 'country': 'RUS', 'rank': 4, 'player_code': 'MM58'},
+            {'id': 39667, 'name': 'Andrey Rublev', 'country': 'RUS', 'rank': 5, 'player_code': 'RE44'},
+            {'id': 40285, 'name': 'Alexander Zverev', 'country': 'GER', 'rank': 6, 'player_code': 'Z355'},
+            {'id': 124335, 'name': 'Holger Rune', 'country': 'DEN', 'rank': 7, 'player_code': 'R0DG'},
+            {'id': 41379, 'name': 'Stefanos Tsitsipas', 'country': 'GRE', 'rank': 8, 'player_code': 'TE51'},
+            {'id': 59642, 'name': 'Hubert Hurkacz', 'country': 'POL', 'rank': 9, 'player_code': 'HB71'},
+            {'id': 63343, 'name': 'Casper Ruud', 'country': 'NOR', 'rank': 10, 'player_code': 'RH16'},
         ]
         for player in players:
             player['image_url'] = f'https://api.sofascore.com/api/v1/player/{player["id"]}/image'

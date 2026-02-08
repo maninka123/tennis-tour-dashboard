@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n37.7%\n1st Return Points Won %\n34.1%\n2nd Return Points Won %\n44.4%\nBreak Points Converted\n50.0%\nReturn Games Won\n23.8%\nReturn Games Played\n21\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:03:06.031986+00:00",
+  "updated_at": "2026-02-07T13:35:50.416822+00:00",
   "records_tab": {
     "summary": [
       {
@@ -194,6 +194,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Elsa Jacquemot",
             "opponent_country": "FRA",
@@ -204,6 +207,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Beatriz Haddad Maia",
             "opponent_country": "BRA",
@@ -237,6 +243,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Emma Navarro",
             "opponent_country": "USA",
@@ -246,7 +255,10 @@
             "opponent_rank": 15
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Marie Bouzkova",
             "opponent_country": "CZE",
@@ -257,6 +269,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Dalma Galfi",
             "opponent_country": "HUN",
@@ -266,7 +281,10 @@
             "opponent_rank": 93
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tori Russell",
             "opponent_country": "AUS",
@@ -300,6 +318,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Olivia Gadecki",
             "opponent_country": "AUS",
@@ -310,6 +331,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Priscilla Hon",
             "opponent_country": "AUS",
@@ -319,7 +343,10 @@
             "opponent_rank": 121
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Marta Kostyuk",
             "opponent_country": "UKR",
@@ -330,6 +357,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Hailey Baptiste",
             "opponent_country": "USA",
@@ -348,6 +378,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:03:06.031967+00:00"
+    "updated_at": "2026-02-07T13:35:50.416750+00:00"
   }
 }

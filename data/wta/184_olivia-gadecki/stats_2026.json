@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.0%\n1st Return Points Won %\n28.0%\n2nd Return Points Won %\n56.9%\nBreak Points Converted\n37.5%\nReturn Games Won\n26.1%\nReturn Games Played\n23\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:09:59.189628+00:00",
+  "updated_at": "2026-02-07T13:42:32.480493+00:00",
   "records_tab": {
     "summary": [
       {
@@ -106,6 +106,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Sloane Stephens",
             "opponent_country": "USA",
@@ -116,6 +119,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Arantxa Rus",
             "opponent_country": "NED",
@@ -149,6 +155,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Yulia Putintseva",
             "opponent_country": "KAZ",
@@ -159,6 +168,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anastasia Zakharova",
             "opponent_country": "RUS",
@@ -168,7 +180,10 @@
             "opponent_rank": 104
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Mirra Andreeva",
             "opponent_country": "RUS",
@@ -179,6 +194,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ann Li",
             "opponent_country": "USA",
@@ -197,6 +215,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:09:59.189603+00:00"
+    "updated_at": "2026-02-07T13:42:32.480411+00:00"
   }
 }

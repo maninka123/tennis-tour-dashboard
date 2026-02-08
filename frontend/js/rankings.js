@@ -21,34 +21,39 @@ const RankingsModule = {
         return `Updated ${day}d ago`;
     },
 
-    refreshWtaUpdatedAgo() {
+    refreshUpdatedAgo() {
         const { AppState, DOM } = window.TennisApp;
         if (!DOM.rankingsUpdatedAgo) return;
-        if (AppState.currentTour !== 'wta') {
-            DOM.rankingsUpdatedAgo.textContent = 'Updated --';
-            return;
-        }
-        const updatedAt = (AppState.wtaRankingsStatus || {}).updated_at;
+        const tour = AppState.currentTour === 'wta' ? 'wta' : 'atp';
+        const status = tour === 'wta' ? (AppState.wtaRankingsStatus || {}) : (AppState.atpRankingsStatus || {});
+        const updatedAt = status.updated_at;
         DOM.rankingsUpdatedAgo.textContent = this.formatRelativeTime(updatedAt);
     },
 
-    renderWtaHeader() {
+    refreshWtaUpdatedAgo() {
+        // Backward-compatible alias used by app timer.
+        this.refreshUpdatedAgo();
+    },
+
+    renderHeader() {
         const { AppState, DOM } = window.TennisApp;
         const isWta = AppState.currentTour === 'wta';
+        const isUpdating = isWta ? !!AppState.isUpdatingWtaRankings : !!AppState.isUpdatingAtpRankings;
+        const tourLabel = isWta ? 'WTA' : 'ATP';
         if (DOM.rankingsUpdateBtn) {
-            DOM.rankingsUpdateBtn.hidden = !isWta;
-            DOM.rankingsUpdateBtn.disabled = !!AppState.isUpdatingWtaRankings;
-            DOM.rankingsUpdateBtn.innerHTML = AppState.isUpdatingWtaRankings
+            DOM.rankingsUpdateBtn.hidden = false;
+            DOM.rankingsUpdateBtn.disabled = isUpdating;
+            DOM.rankingsUpdateBtn.innerHTML = isUpdating
                 ? '<i class="fas fa-spinner fa-spin"></i>'
                 : '<i class="fas fa-rotate-right"></i>';
-            const label = AppState.isUpdatingWtaRankings ? 'Updating rankings' : 'Update rankings';
+            const label = isUpdating ? `Updating ${tourLabel} rankings` : `Update ${tourLabel} rankings`;
             DOM.rankingsUpdateBtn.setAttribute('aria-label', label);
             DOM.rankingsUpdateBtn.setAttribute('title', label);
         }
         if (DOM.rankingsUpdatedAgo) {
-            DOM.rankingsUpdatedAgo.style.display = isWta ? 'block' : 'none';
+            DOM.rankingsUpdatedAgo.style.display = 'block';
         }
-        this.refreshWtaUpdatedAgo();
+        this.refreshUpdatedAgo();
     },
 
     /**
@@ -138,7 +143,7 @@ const RankingsModule = {
     render() {
         const { AppState, Utils, DOM } = window.TennisApp;
         const tour = AppState.currentTour;
-        this.renderWtaHeader();
+        this.renderHeader();
         
         // Get data (use demo if empty)
         let rankings = AppState.rankings[tour];

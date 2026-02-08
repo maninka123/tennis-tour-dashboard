@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n31.1%\n1st Return Points Won %\n23.3%\n2nd Return Points Won %\n46.7%\nBreak Points Converted\n50.0%\nReturn Games Won\n12.5%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:00:57.781684+00:00",
+  "updated_at": "2026-02-07T13:34:01.438798+00:00",
   "records_tab": {
     "summary": [
       {
@@ -138,6 +138,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Yulia Putintseva",
             "opponent_country": "KAZ",
@@ -148,6 +151,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Marta Kostyuk",
             "opponent_country": "UKR",
@@ -181,6 +187,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Magdalena Frech",
             "opponent_country": "POL",
@@ -214,6 +223,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Ajla Tomljanovic",
             "opponent_country": "AUS",
@@ -232,6 +244,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:00:57.781668+00:00"
+    "updated_at": "2026-02-07T13:34:01.438754+00:00"
   }
 }

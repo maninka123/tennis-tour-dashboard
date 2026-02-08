@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.3%\n1st Return Points Won %\n36.5%\n2nd Return Points Won %\n52.2%\nBreak Points Converted\n20.0%\nReturn Games Won\n20.0%\nReturn Games Played\n10\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:54:06.991679+00:00",
+  "updated_at": "2026-02-07T13:27:39.730239+00:00",
   "records_tab": {
     "summary": [
       {
@@ -138,6 +138,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Magda Linette",
             "opponent_country": "POL",
@@ -148,6 +151,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Camila Osorio",
             "opponent_country": "COL",
@@ -181,6 +187,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elisabetta Cocciaretto",
             "opponent_country": "ITA",
@@ -191,6 +200,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Katie Volynets",
             "opponent_country": "USA",
@@ -224,6 +236,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Olivia Gadecki",
             "opponent_country": "AUS",
@@ -242,6 +257,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:54:06.991645+00:00"
+    "updated_at": "2026-02-07T13:27:39.730144+00:00"
   }
 }

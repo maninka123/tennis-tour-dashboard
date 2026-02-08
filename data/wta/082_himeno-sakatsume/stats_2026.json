@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.1%\n1st Return Points Won %\n39.0%\n2nd Return Points Won %\n57.3%\nBreak Points Converted\n43.9%\nReturn Games Won\n40.9%\nReturn Games Played\n44\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:58:24.569501+00:00",
+  "updated_at": "2026-02-07T13:31:50.764997+00:00",
   "records_tab": {
     "summary": [
       {
@@ -90,6 +90,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Marina Bassols Ribera",
             "opponent_country": "ESP",
@@ -100,6 +103,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mai Hontama",
             "opponent_country": "JPN",
@@ -110,6 +116,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Caty Mcnally",
             "opponent_country": "USA",
@@ -119,7 +128,10 @@
             "opponent_rank": 85
           },
           {
-            "round": "Round of 128",
+            "round": "Qualifying R1",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Manon Leonard",
             "opponent_country": "FRA",
@@ -152,7 +164,36 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Polina Kudermetova",
+            "opponent_country": "UZB",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "7-5, 6-2",
+            "opponent_rank": 167
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Ekaterine Gorgodze",
+            "opponent_country": "GEO",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "3-6, 6-2, 6-0",
+            "opponent_rank": 176
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mary Stoiana",
             "opponent_country": "USA",
@@ -162,7 +203,10 @@
             "opponent_rank": 223
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mayar Sherif",
             "opponent_country": "EGY",
@@ -173,6 +217,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Carol Young Suh Lee",
             "opponent_country": "USA",
@@ -182,7 +229,10 @@
             "opponent_rank": 208
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tahlia Kokkinis",
             "opponent_country": "AUS",
@@ -190,26 +240,6 @@
             "opponent_entry": "W",
             "score": "7-5, 6-2",
             "opponent_rank": 489
-          },
-          {
-            "round": "S",
-            "result": "L",
-            "opponent_name": "Polina Kudermetova",
-            "opponent_country": "UZB",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "7-5, 6-2",
-            "opponent_rank": 167
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Ekaterine Gorgodze",
-            "opponent_country": "GEO",
-            "opponent_seed": null,
-            "opponent_entry": "Q",
-            "score": "3-6, 6-2, 6-0",
-            "opponent_rank": 176
           }
         ],
         "summary": {
@@ -221,6 +251,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:58:24.569482+00:00"
+    "updated_at": "2026-02-07T13:31:50.764927+00:00"
   }
 }

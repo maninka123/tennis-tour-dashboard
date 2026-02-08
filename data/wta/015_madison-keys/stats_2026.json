@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.5%\n1st Return Points Won %\n36.3%\n2nd Return Points Won %\n51.8%\nBreak Points Converted\n40.9%\nReturn Games Won\n25.0%\nReturn Games Played\n36\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:51:28.778228+00:00",
+  "updated_at": "2026-02-07T13:25:05.934422+00:00",
   "records_tab": {
     "summary": [
       {
@@ -210,6 +210,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Karolina Pliskova",
             "opponent_country": "CZE",
@@ -220,6 +223,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ashlyn Krueger",
             "opponent_country": "USA",
@@ -230,6 +236,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Oleksandra Oliynykova",
             "opponent_country": "UKR",
@@ -262,7 +271,23 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Victoria Mboko",
+            "opponent_country": "CAN",
+            "opponent_seed": 8,
+            "opponent_entry": "",
+            "score": "6-4, 4-6, 6-2",
+            "opponent_rank": 17
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tereza Valentova",
             "opponent_country": "CZE",
@@ -273,6 +298,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -280,16 +308,6 @@
             "opponent_entry": "",
             "score": "",
             "opponent_rank": 0
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Victoria Mboko",
-            "opponent_country": "CAN",
-            "opponent_seed": 8,
-            "opponent_entry": "",
-            "score": "6-4, 4-6, 6-2",
-            "opponent_rank": 17
           }
         ],
         "summary": {
@@ -315,7 +333,23 @@
         "draw": "48M/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Aryna Sabalenka",
+            "opponent_country": "BLR",
+            "opponent_seed": 1,
+            "opponent_entry": "",
+            "score": "6-3, 6-3",
+            "opponent_rank": 1
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Diana Shnaider",
             "opponent_country": "RUS",
@@ -326,6 +360,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mccartney Kessler",
             "opponent_country": "USA",
@@ -336,6 +373,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -343,16 +383,6 @@
             "opponent_entry": "",
             "score": "",
             "opponent_rank": 0
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Aryna Sabalenka",
-            "opponent_country": "BLR",
-            "opponent_seed": 1,
-            "opponent_entry": "",
-            "score": "6-3, 6-3",
-            "opponent_rank": 1
           }
         ],
         "summary": {
@@ -364,6 +394,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:51:28.778208+00:00"
+    "updated_at": "2026-02-07T13:25:05.934270+00:00"
   }
 }

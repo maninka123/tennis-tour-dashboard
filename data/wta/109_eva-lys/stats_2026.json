@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n51.0%\n1st Return Points Won %\n48.4%\n2nd Return Points Won %\n55.2%\nBreak Points Converted\n50.0%\nReturn Games Won\n59.1%\nReturn Games Played\n22\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:01:53.115637+00:00",
+  "updated_at": "2026-02-07T13:34:45.973805+00:00",
   "records_tab": {
     "summary": [
       {
@@ -114,6 +114,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Sorana Cirstea",
             "opponent_country": "ROU",
@@ -147,6 +150,9 @@
         "matches": [
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Suzan Lamens",
             "opponent_country": "NED",
@@ -157,6 +163,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Iga Swiatek",
             "opponent_country": "POL",
@@ -175,6 +184,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:01:53.115619+00:00"
+    "updated_at": "2026-02-07T13:34:45.973772+00:00"
   }
 }

@@ -6,9 +6,10 @@ Provides REST API and WebSocket for real-time tennis data
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_socketio import SocketIO, emit
-from apscheduler.schedulers.background import BackgroundScheduler
 import time
 import sys
+import os
+import threading
 import eventlet.wsgi
 from tennis_api import tennis_fetcher
 from config import Config
@@ -17,6 +18,37 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tennis_dashboard_secret_2024'
 CORS(app, origins="*", resources={r"/api/*": {"origins": "*"}})
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet', ping_timeout=60, ping_interval=25)
+
+# Keep request logs, but silence known client-disconnect tracebacks from eventlet.
+class QuietEventletLogger:
+    _NOISY_MARKERS = (
+        "ConnectionResetError",
+        "BrokenPipeError",
+        "Errno 54",
+        "Errno 32",
+    )
+
+    def _is_noisy_disconnect(self, msg) -> bool:
+        text = str(msg or "")
+        return any(marker in text for marker in self._NOISY_MARKERS)
+
+    def info(self, msg, *args, **kwargs):
+        if self._is_noisy_disconnect(msg):
+            return
+        line = (msg % args) if args else str(msg)
+        sys.stdout.write(f"{line}\n")
+        sys.stdout.flush()
+
+    def error(self, msg, *args, **kwargs):
+        if self._is_noisy_disconnect(msg):
+            return
+        line = (msg % args) if args else str(msg)
+        sys.stderr.write(f"{line}\n")
+        sys.stderr.flush()
+
+    def debug(self, msg, *args, **kwargs):
+        # Keep debug output path compatible with eventlet logger interface.
+        self.info(msg, *args, **kwargs)
 
 # Suppress noisy BrokenPipe/connection reset logs from client disconnects
 class QuietHttpProtocol(eventlet.wsgi.HttpProtocol):
@@ -28,8 +60,9 @@ class QuietHttpProtocol(eventlet.wsgi.HttpProtocol):
 
 eventlet.wsgi.HttpProtocol = QuietHttpProtocol
 
-# Background scheduler for real-time updates
-scheduler = BackgroundScheduler()
+# Dedicated live-score background loop state
+live_scores_thread_started = False
+live_scores_thread_lock = threading.Lock()
 
 def broadcast_live_scores():
     """Broadcast live scores to all connected clients"""
@@ -45,13 +78,25 @@ def broadcast_live_scores():
     except Exception as e:
         print(f"Error broadcasting live scores: {e}")
 
-# Start scheduler for live score updates (after routes are initialized)
-if not scheduler.running:
-    scheduler.add_job(broadcast_live_scores, 'interval', seconds=30, id='live_scores_job')
-    try:
-        scheduler.start()
-    except:
-        pass  # Scheduler might already be running
+def _live_scores_loop():
+    """Run live score updates in a dedicated background task."""
+    while True:
+        broadcast_live_scores()
+        socketio.sleep(30)
+
+
+def ensure_live_scores_thread():
+    """Start live score background task once."""
+    global live_scores_thread_started
+    with live_scores_thread_lock:
+        if live_scores_thread_started:
+            return
+        socketio.start_background_task(_live_scores_loop)
+        live_scores_thread_started = True
+
+
+# Start dedicated live updates loop.
+ensure_live_scores_thread()
 
 
 # ============== REST API Routes ==============
@@ -60,6 +105,29 @@ if not scheduler.running:
 def health_check():
     """Health check endpoint"""
     return jsonify({'status': 'healthy', 'message': 'Tennis Dashboard API is running'})
+
+
+@app.route('/api/intro-gifs', methods=['GET'])
+def get_intro_gifs():
+    """Get list of intro gif files for loading screen"""
+    try:
+        # Path to intro gifs folder relative to backend
+        gifs_folder = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'Images', 'intro gifs')
+        
+        # Get all gif files from the folder
+        gif_files = []
+        if os.path.exists(gifs_folder):
+            all_files = os.listdir(gifs_folder)
+            gif_files = [f for f in all_files if f.lower().endswith('.gif')]
+            gif_files.sort()  # Sort for consistency
+        
+        return jsonify({
+            'success': True,
+            'data': gif_files,
+            'count': len(gif_files)
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e), 'data': []}), 500
 
 
 @app.route('/api/live-scores', methods=['GET'])
@@ -97,11 +165,12 @@ def get_recent_matches():
 
 @app.route('/api/upcoming-matches', methods=['GET'])
 def get_upcoming_matches():
-    """Get upcoming matches in the next 2 days"""
+    """Get upcoming matches in the next 7 days (or more if requested)"""
     tour = request.args.get('tour', 'both')
+    days = request.args.get('days', 7, type=int)
     
     try:
-        matches = tennis_fetcher.fetch_upcoming_matches(tour, days=2)
+        matches = tennis_fetcher.fetch_upcoming_matches(tour, days=days)
         return jsonify({
             'success': True,
             'data': matches,
@@ -126,6 +195,8 @@ def get_rankings(tour):
         }
         if tour == 'wta':
             payload['meta'] = tennis_fetcher.get_wta_rankings_status()
+        elif tour == 'atp':
+            payload['meta'] = tennis_fetcher.get_atp_rankings_status()
         return jsonify(payload)
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
@@ -161,6 +232,121 @@ def refresh_wta_rankings():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@app.route('/api/rankings/atp/status', methods=['GET'])
+def get_atp_rankings_status():
+    """Get ATP rankings file metadata."""
+    try:
+        return jsonify({
+            'success': True,
+            'data': tennis_fetcher.get_atp_rankings_status()
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/rankings/atp/refresh', methods=['POST'])
+def refresh_atp_rankings():
+    """Refresh ATP rankings CSV and archive previous file."""
+    try:
+        status = tennis_fetcher.refresh_atp_rankings_csv()
+        socketio.emit('rankings_update', {
+            'tour': 'atp',
+            'timestamp': time.time()
+        })
+        return jsonify({
+            'success': True,
+            'data': status
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/stats/atp/status', methods=['GET'])
+def get_atp_stats_status():
+    """Get ATP Stat Zone file metadata."""
+    try:
+        return jsonify({
+            'success': True,
+            'data': tennis_fetcher.get_atp_stats_status()
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/stats/atp/leaderboard', methods=['GET'])
+def get_atp_stats_leaderboard():
+    """Get ATP Stat Zone leaderboard payload from cached CSV."""
+    try:
+        data = tennis_fetcher.fetch_atp_stats_leaderboard()
+        return jsonify({
+            'success': True,
+            'data': data
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/stats/atp/refresh', methods=['POST'])
+def refresh_atp_stats():
+    """Refresh ATP Stat Zone CSV and archive previous file."""
+    try:
+        status = tennis_fetcher.refresh_atp_stats_csv()
+        socketio.emit('stats_update', {
+            'tour': 'atp',
+            'scope': 'stat_zone',
+            'timestamp': time.time()
+        })
+        return jsonify({
+            'success': True,
+            'data': status
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/stats/wta/status', methods=['GET'])
+def get_wta_stats_status():
+    """Get WTA Stat Zone file metadata."""
+    try:
+        return jsonify({
+            'success': True,
+            'data': tennis_fetcher.get_wta_stats_status()
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/stats/wta/leaderboard', methods=['GET'])
+def get_wta_stats_leaderboard():
+    """Get WTA Stat Zone leaderboard payload from cached CSV."""
+    try:
+        data = tennis_fetcher.fetch_wta_stats_leaderboard()
+        return jsonify({
+            'success': True,
+            'data': data
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/stats/wta/refresh', methods=['POST'])
+def refresh_wta_stats():
+    """Refresh WTA Stat Zone CSV and archive previous file."""
+    try:
+        status = tennis_fetcher.refresh_wta_stats_csv()
+        socketio.emit('stats_update', {
+            'tour': 'wta',
+            'scope': 'stat_zone',
+            'timestamp': time.time()
+        })
+        return jsonify({
+            'success': True,
+            'data': status
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/tournaments/<tour>', methods=['GET'])
 def get_tournaments(tour):
     """Get tournament calendar"""
@@ -172,6 +358,48 @@ def get_tournaments(tour):
             'success': True,
             'data': tournaments,
             'count': len(tournaments)
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/tournaments/<tour>/status', methods=['GET'])
+def get_tournaments_status(tour):
+    """Get tournament file metadata for a tour."""
+    try:
+        status = tennis_fetcher.get_tournaments_status(tour)
+        return jsonify({
+            'success': True,
+            'data': status
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/tournaments/<tour>/refresh', methods=['POST'])
+def refresh_tournaments(tour):
+    """Refresh tournament JSON files for a tour."""
+    payload = request.get_json(silent=True) or {}
+    year = request.args.get('year', type=int)
+    if year is None:
+        year = payload.get('year')
+    full_refresh = request.args.get('full_refresh', '').strip().lower() in {'1', 'true', 'yes'}
+    if not full_refresh:
+        full_refresh = bool(payload.get('full_refresh'))
+
+    try:
+        status = tennis_fetcher.refresh_tournaments_json(
+            tour=tour,
+            year=year,
+            full_refresh=full_refresh
+        )
+        socketio.emit('tournaments_update', {
+            'tour': str(tour or '').strip().lower(),
+            'timestamp': time.time()
+        })
+        return jsonify({
+            'success': True,
+            'data': status
         })
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
@@ -207,6 +435,51 @@ def get_player(player_id):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@app.route('/api/match-stats/wta', methods=['GET'])
+def get_wta_match_stats():
+    """Get on-demand WTA match stats for a specific match."""
+    event_id = request.args.get('event_id', type=int)
+    event_year = request.args.get('event_year', type=int)
+    match_id = (request.args.get('match_id') or '').strip()
+
+    if not event_id or not event_year or not match_id:
+        return jsonify({
+            'success': False,
+            'error': 'event_id, event_year and match_id are required'
+        }), 400
+
+    try:
+        stats = tennis_fetcher.fetch_wta_match_stats(
+            event_id=event_id,
+            event_year=event_year,
+            match_id=match_id
+        )
+        if not stats:
+            return jsonify({'success': False, 'error': 'Match stats not available'}), 404
+        return jsonify({'success': True, 'data': stats})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/match-stats/atp', methods=['GET'])
+def get_atp_match_stats():
+    """Get on-demand ATP match stats using ATP stats-centre URL."""
+    stats_url = (request.args.get('stats_url') or '').strip()
+    if not stats_url:
+        return jsonify({
+            'success': False,
+            'error': 'stats_url is required'
+        }), 400
+
+    try:
+        stats = tennis_fetcher.fetch_atp_match_stats(stats_url=stats_url)
+        if not stats:
+            return jsonify({'success': False, 'error': 'Match stats not available'}), 404
+        return jsonify({'success': True, 'data': stats})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/h2h/wta/search', methods=['GET'])
 def search_wta_h2h_players():
     """Search WTA players for H2H autocomplete."""
@@ -217,6 +490,25 @@ def search_wta_h2h_players():
 
     try:
         players = tennis_fetcher.search_wta_players_for_h2h(query, limit=limit)
+        return jsonify({
+            'success': True,
+            'data': players,
+            'count': len(players)
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/h2h/atp/search', methods=['GET'])
+def search_atp_h2h_players():
+    """Search ATP players for H2H autocomplete."""
+    query = request.args.get('query', '').strip()
+    limit = request.args.get('limit', 8, type=int)
+    if not query:
+        return jsonify({'success': True, 'data': [], 'count': 0})
+
+    try:
+        players = tennis_fetcher.search_atp_players_for_h2h(query, limit=limit)
         return jsonify({
             'success': True,
             'data': players,
@@ -254,6 +546,34 @@ def get_wta_h2h():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@app.route('/api/h2h/atp', methods=['GET'])
+def get_atp_h2h():
+    """Get ATP head-to-head details for two players."""
+    player1_code = request.args.get('player1_code', '').strip()
+    player2_code = request.args.get('player2_code', '').strip()
+    year = request.args.get('year', 2026, type=int)
+    meetings = request.args.get('meetings', 5, type=int)
+
+    if not player1_code or not player2_code:
+        return jsonify({'success': False, 'error': 'player1_code and player2_code are required'}), 400
+    if player1_code.upper() == player2_code.upper():
+        return jsonify({'success': False, 'error': 'Please choose two different players'}), 400
+
+    try:
+        payload = tennis_fetcher.fetch_atp_h2h_details(
+            player1_code=player1_code,
+            player2_code=player2_code,
+            year=year,
+            meetings_limit=meetings
+        )
+        return jsonify({
+            'success': True,
+            'data': payload
+        })
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 @app.route('/api/categories', methods=['GET'])
 def get_categories():
     """Get tournament categories and colors"""
@@ -269,6 +589,7 @@ def get_categories():
 def handle_connect():
     """Handle client connection"""
     print('Client connected')
+    ensure_live_scores_thread()
     # Send initial data on connect
     emit('connected', {'message': 'Connected to Tennis Dashboard'})
     
@@ -327,4 +648,11 @@ if __name__ == '__main__':
     print(f"Starting server on http://{Config.HOST}:{Config.PORT}")
     print("WebSocket enabled for real-time updates")
     print("=" * 50)
-    socketio.run(app, host=Config.HOST, port=Config.PORT, debug=Config.DEBUG)
+    socketio.run(
+        app,
+        host=Config.HOST,
+        port=Config.PORT,
+        debug=Config.DEBUG,
+        log=QuietEventletLogger(),
+        log_output=True,
+    )

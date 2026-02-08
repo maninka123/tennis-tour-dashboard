@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.6%\n1st Return Points Won %\n30.5%\n2nd Return Points Won %\n55.7%\nBreak Points Converted\n50.0%\nReturn Games Won\n27.6%\nReturn Games Played\n29\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:02:19.288222+00:00",
+  "updated_at": "2026-02-07T13:35:08.696635+00:00",
   "records_tab": {
     "summary": [
       {
@@ -106,6 +106,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Yuliia Starodubtseva",
             "opponent_country": "UKR",
@@ -116,6 +119,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Joanna Garland",
             "opponent_country": "TPE",
@@ -149,6 +155,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Moyuka Uchijima",
             "opponent_country": "JPN",
@@ -182,6 +191,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Antonia Ruzic",
             "opponent_country": "CRO",
@@ -192,6 +204,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Caty Mcnally",
             "opponent_country": "USA",
@@ -224,7 +239,23 @@
         "draw": "0M/0Q/0D",
         "matches": [
           {
+            "round": "Round 3",
+            "round_name": "",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Belinda Bencic",
+            "opponent_country": "SUI",
+            "opponent_seed": 16,
+            "opponent_entry": "",
+            "score": "6-2, 6-2",
+            "opponent_rank": 11
+          },
+          {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jessica Bouzas Maneiro",
             "opponent_country": "ESP",
@@ -235,6 +266,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Coco Gauff",
             "opponent_country": "USA",
@@ -242,16 +276,6 @@
             "opponent_entry": "",
             "score": "6-1, 6-1",
             "opponent_rank": 4
-          },
-          {
-            "round": "Round 3",
-            "result": "L",
-            "opponent_name": "Belinda Bencic",
-            "opponent_country": "SUI",
-            "opponent_seed": 16,
-            "opponent_entry": "",
-            "score": "6-2, 6-2",
-            "opponent_rank": 11
           }
         ],
         "summary": {
@@ -263,6 +287,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:02:19.288161+00:00"
+    "updated_at": "2026-02-07T13:35:08.696562+00:00"
   }
 }

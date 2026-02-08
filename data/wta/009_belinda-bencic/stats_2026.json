@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n49.5%\n1st Return Points Won %\n42.9%\n2nd Return Points Won %\n60.7%\nBreak Points Converted\n51.0%\nReturn Games Won\n46.3%\nReturn Games Played\n54\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:50:54.678861+00:00",
+  "updated_at": "2026-02-07T13:24:30.865594+00:00",
   "records_tab": {
     "summary": [
       {
@@ -186,6 +186,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Nikola Bartunkova",
             "opponent_country": "CZE",
@@ -196,6 +199,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Katie Boulter",
             "opponent_country": "GBR",
@@ -228,7 +234,49 @@
         "draw": "0M/0Q/0D",
         "matches": [
           {
+            "round": "Round 1",
+            "round_name": "",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Iga Swiatek",
+            "opponent_country": "POL",
+            "opponent_seed": 9,
+            "opponent_entry": "",
+            "score": "3-6, 6-0, 6-3",
+            "opponent_rank": 2
+          },
+          {
+            "round": "Round 2",
+            "round_name": "",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Elise Mertens",
+            "opponent_country": "BEL",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "6-3, 4-6, 7-6(0)",
+            "opponent_rank": 19
+          },
+          {
+            "round": "Round 3",
+            "round_name": "",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Solana Sierra",
+            "opponent_country": "ARG",
+            "opponent_seed": 14,
+            "opponent_entry": "",
+            "score": "6-2, 6-2",
+            "opponent_rank": 66
+          },
+          {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Leolia Jeanjean",
             "opponent_country": "FRA",
@@ -239,6 +287,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jasmine Paolini",
             "opponent_country": "ITA",
@@ -246,36 +297,6 @@
             "opponent_entry": "",
             "score": "6-4, 6-3",
             "opponent_rank": 8
-          },
-          {
-            "round": "Round 3",
-            "result": "W",
-            "opponent_name": "Solana Sierra",
-            "opponent_country": "ARG",
-            "opponent_seed": 14,
-            "opponent_entry": "",
-            "score": "6-2, 6-2",
-            "opponent_rank": 66
-          },
-          {
-            "round": "Round 2",
-            "result": "W",
-            "opponent_name": "Elise Mertens",
-            "opponent_country": "BEL",
-            "opponent_seed": 7,
-            "opponent_entry": "",
-            "score": "6-3, 4-6, 7-6(0)",
-            "opponent_rank": 19
-          },
-          {
-            "round": "Round 1",
-            "result": "W",
-            "opponent_name": "Iga Swiatek",
-            "opponent_country": "POL",
-            "opponent_seed": 9,
-            "opponent_entry": "",
-            "score": "3-6, 6-0, 6-3",
-            "opponent_rank": 2
           }
         ],
         "summary": {
@@ -287,6 +308,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:50:54.678843+00:00"
+    "updated_at": "2026-02-07T13:24:30.865553+00:00"
   }
 }

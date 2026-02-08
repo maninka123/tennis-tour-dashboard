@@ -1,6 +1,13 @@
 # Tennis Live Dashboard
 
-A web dashboard for ATP and WTA tracking with live scores, rankings, upcoming-match insights, tournament calendar, bracket view, and advanced WTA head-to-head analytics.
+Real-time ATP and WTA dashboard for the 2026 season with live scores, rankings, upcoming-match insights, tournament calendars, draw trees, H2H tools, and stat views.
+
+## Real-Time 2026, No Paid APIs
+
+- Built for fast tennis tracking in one place across ATP and WTA.
+- Uses public web sources and open endpoints only (no paid data API subscriptions).
+- Useful for quick match monitoring, player comparison, and tournament context during the season.
+- Designed for practical daily use: live scores, recent results, upcoming predictions, rankings, and stats in one workflow.
 
 ## What Is Included
 

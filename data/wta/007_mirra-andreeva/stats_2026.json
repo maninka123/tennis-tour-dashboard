@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.5%\n1st Return Points Won %\n35.8%\n2nd Return Points Won %\n46.2%\nBreak Points Converted\n44.0%\nReturn Games Won\n28.2%\nReturn Games Played\n39\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:50:44.028499+00:00",
+  "updated_at": "2026-02-07T13:24:18.911975+00:00",
   "records_tab": {
     "summary": [
       {
@@ -113,7 +113,36 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Diana Shnaider",
+            "opponent_country": "RUS",
+            "opponent_seed": 9,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 23
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Maya Joint",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-0",
+            "opponent_rank": 32
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Marie Bouzkova",
             "opponent_country": "CZE",
@@ -124,6 +153,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -131,26 +163,6 @@
             "opponent_entry": "",
             "score": "",
             "opponent_rank": 0
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Diana Shnaider",
-            "opponent_country": "RUS",
-            "opponent_seed": 9,
-            "opponent_entry": "",
-            "score": "6-3, 6-2",
-            "opponent_rank": 23
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Maya Joint",
-            "opponent_country": "AUS",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 6-0",
-            "opponent_rank": 32
           }
         ],
         "summary": {
@@ -176,7 +188,23 @@
         "draw": "48M/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Marta Kostyuk",
+            "opponent_country": "UKR",
+            "opponent_seed": 16,
+            "opponent_entry": "",
+            "score": "7-6(7), 6-3",
+            "opponent_rank": 26
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Linda Noskova",
             "opponent_country": "CZE",
@@ -187,6 +215,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Olivia Gadecki",
             "opponent_country": "AUS",
@@ -197,6 +228,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -204,16 +238,6 @@
             "opponent_entry": "",
             "score": "",
             "opponent_rank": 0
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Marta Kostyuk",
-            "opponent_country": "UKR",
-            "opponent_seed": 16,
-            "opponent_entry": "",
-            "score": "7-6(7), 6-3",
-            "opponent_rank": 26
           }
         ],
         "summary": {
@@ -225,6 +249,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:50:44.028481+00:00"
+    "updated_at": "2026-02-07T13:24:18.911913+00:00"
   }
 }

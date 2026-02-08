@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.1%\n1st Return Points Won %\n31.2%\n2nd Return Points Won %\n52.2%\nBreak Points Converted\n34.0%\nReturn Games Won\n25.0%\nReturn Games Played\n43\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:59:20.388960+00:00",
+  "updated_at": "2026-02-07T13:32:41.329058+00:00",
   "records_tab": {
     "summary": [
       {
@@ -114,6 +114,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Lanlana Tararudee",
             "opponent_country": "THA",
@@ -124,6 +127,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Miho Kuramochi",
             "opponent_country": "JPN",
@@ -157,6 +163,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Clara Tauson",
             "opponent_country": "DEN",
@@ -167,6 +176,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Guiomar Maristany Zuleta De Reales",
             "opponent_country": "ESP",
@@ -200,6 +212,9 @@
         "matches": [
           {
             "round": "Final",
+            "round_name": "F",
+            "tourn_round": 5,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Joanna Garland",
             "opponent_country": "TPE",
@@ -209,7 +224,36 @@
             "opponent_rank": 129
           },
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Himeno Sakatsume",
+            "opponent_country": "JPN",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "7-5, 6-2",
+            "opponent_rank": 151
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Yue Yuan",
+            "opponent_country": "CHN",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-1, 6-0",
+            "opponent_rank": 135
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lola Radivojevic",
             "opponent_country": "SRB",
@@ -220,6 +264,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Alina Korneeva",
             "opponent_country": "RUS",
@@ -227,26 +274,6 @@
             "opponent_entry": "",
             "score": "6-2, 6-3",
             "opponent_rank": 210
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Himeno Sakatsume",
-            "opponent_country": "JPN",
-            "opponent_seed": null,
-            "opponent_entry": "Q",
-            "score": "7-5, 6-2",
-            "opponent_rank": 151
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Yue Yuan",
-            "opponent_country": "CHN",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-1, 6-0",
-            "opponent_rank": 135
           }
         ],
         "summary": {
@@ -258,6 +285,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:59:20.388941+00:00"
+    "updated_at": "2026-02-07T13:32:41.328797+00:00"
   }
 }

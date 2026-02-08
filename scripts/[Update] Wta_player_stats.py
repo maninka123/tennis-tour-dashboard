@@ -151,10 +151,16 @@ def update_player_folder(
         try:
             recent = scraper.scrape_player_recent_matches(player_id, year, api_session)
             if isinstance(recent, dict):
+                if hasattr(scraper, "_normalize_recent_rounds_payload"):
+                    recent = scraper._normalize_recent_rounds_payload(recent)
                 merged["recent_matches_tab"] = recent
         except Exception:
             # Keep previous recent_matches_tab if refresh fails.
             pass
+
+    # Always run round-label normalization over stored payload as a safety net.
+    if isinstance(merged.get("recent_matches_tab"), dict) and hasattr(scraper, "_normalize_recent_rounds_payload"):
+        merged["recent_matches_tab"] = scraper._normalize_recent_rounds_payload(merged["recent_matches_tab"])
 
     merged["updated_at"] = now_iso()
 

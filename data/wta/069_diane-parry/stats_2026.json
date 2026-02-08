@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.0%\n1st Return Points Won %\n39.0%\n2nd Return Points Won %\n41.9%\nBreak Points Converted\n71.4%\nReturn Games Won\n33.3%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:57:03.919620+00:00",
+  "updated_at": "2026-02-07T13:30:29.799073+00:00",
   "records_tab": {
     "summary": [
       {
@@ -137,7 +137,23 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Harriet Dart",
+            "opponent_country": "GBR",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "6-2, 6-1",
+            "opponent_rank": 170
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anastasia Kulikova",
             "opponent_country": "FIN",
@@ -148,6 +164,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anastasia Tikhonova",
             "opponent_country": "RUS",
@@ -155,16 +174,6 @@
             "opponent_entry": "",
             "score": "6-3, 7-5",
             "opponent_rank": 250
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Harriet Dart",
-            "opponent_country": "GBR",
-            "opponent_seed": 7,
-            "opponent_entry": "",
-            "score": "6-2, 6-1",
-            "opponent_rank": 170
           }
         ],
         "summary": {
@@ -191,6 +200,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elena Pridankina",
             "opponent_country": "RUS",
@@ -224,6 +236,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Joanna Garland",
             "opponent_country": "TPE",
@@ -242,6 +257,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:57:03.919603+00:00"
+    "updated_at": "2026-02-07T13:30:29.799031+00:00"
   }
 }

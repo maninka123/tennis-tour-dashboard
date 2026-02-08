@@ -81,7 +81,7 @@ const H2HModule = {
             if (!item) {
                 return;
             }
-            const playerId = Number(item.dataset.playerId);
+            const playerId = String(item.dataset.playerId || '');
             this.selectPlayerById(playerNum, playerId);
         });
     },
@@ -108,6 +108,10 @@ const H2HModule = {
             await this.searchWTAPlayers(query, playerNum);
             return;
         }
+        if (tour === 'atp') {
+            await this.searchATPPlayers(query, playerNum);
+            return;
+        }
 
         const players = this.playerDatabase.atp;
         const q = query.toLowerCase();
@@ -128,6 +132,27 @@ const H2HModule = {
 
         this.lastSearchResults[playerNum] = filtered;
         this.renderSearchResults(playerNum, filtered);
+    },
+
+    async searchATPPlayers(query, playerNum) {
+        const { API } = window.TennisApp;
+        const token = ++this.searchToken[playerNum];
+
+        try {
+            const results = await API.searchATPH2HPlayers(query, 10);
+            if (token !== this.searchToken[playerNum]) {
+                return;
+            }
+            this.lastSearchResults[playerNum] = results || [];
+            this.renderSearchResults(playerNum, results || []);
+        } catch (error) {
+            if (token !== this.searchToken[playerNum]) {
+                return;
+            }
+            console.error('ATP H2H search failed:', error);
+            this.lastSearchResults[playerNum] = [];
+            this.renderSearchResults(playerNum, []);
+        }
     },
 
     async searchWTAPlayers(query, playerNum) {
@@ -158,7 +183,8 @@ const H2HModule = {
 
     renderSearchResults(playerNum, players) {
         const resultsDiv = document.getElementById(`h2hPlayer${playerNum}Results`);
-        const { Utils } = window.TennisApp;
+        const { Utils, AppState } = window.TennisApp;
+        const tourLabel = (AppState.currentTour || 'wta').toUpperCase();
         if (!resultsDiv) {
             return;
         }
@@ -173,7 +199,7 @@ const H2HModule = {
                 <img src="${Utils.getPlayerImage(player)}" alt="${player.name}">
                 <div class="search-result-info">
                     <div class="search-result-name">${Utils.getFlag(player.country)} ${player.name}</div>
-                    <div class="search-result-rank">${player.rank ? `Rank #${player.rank}` : 'WTA Player'}</div>
+                    <div class="search-result-rank">${player.rank ? `Rank #${player.rank}` : `${tourLabel} Player`}</div>
                 </div>
             </div>
         `).join('');
@@ -181,7 +207,7 @@ const H2HModule = {
     },
 
     selectPlayerById(playerNum, playerId) {
-        const player = (this.lastSearchResults[playerNum] || []).find((p) => Number(p.id) === Number(playerId));
+        const player = (this.lastSearchResults[playerNum] || []).find((p) => String(p.id) === String(playerId));
         if (!player) {
             return;
         }
@@ -209,29 +235,26 @@ const H2HModule = {
             return;
         }
 
-        if (AppState.currentTour !== 'wta') {
-            resultsDiv.innerHTML = `
-                <div class="h2h-empty-state">
-                    <h4>WTA H2H Live View</h4>
-                    <p>Advanced H2H analytics are available in WTA mode. Switch to WTA to view radar charts and surface record breakdowns.</p>
-                </div>
-            `;
-            return;
-        }
-
         resultsDiv.innerHTML = `
             <div class="h2h-loading">
                 <div class="loading-spinner"></div>
-                <span>Loading WTA head-to-head details...</span>
+                <span>Loading ${AppState.currentTour.toUpperCase()} head-to-head details...</span>
             </div>
         `;
 
         try {
-            const payload = await API.getWTAH2H(p1.id, p2.id, this.defaultYear, 5);
+            let payload;
+            if (AppState.currentTour === 'atp') {
+                const p1Code = p1.player_code || p1.id || '';
+                const p2Code = p2.player_code || p2.id || '';
+                payload = await API.getATPH2H(p1Code, p2Code, this.defaultYear, 5);
+            } else {
+                payload = await API.getWTAH2H(p1.id, p2.id, this.defaultYear, 5);
+            }
             this.renderWTAComparison(payload, Utils);
             await this.renderRadarCharts(payload);
         } catch (error) {
-            console.error('WTA H2H fetch failed:', error);
+            console.error('H2H fetch failed:', error);
             resultsDiv.innerHTML = `
                 <div class="h2h-empty-state">
                     <h4>Unable to load H2H details</h4>
@@ -252,10 +275,19 @@ const H2HModule = {
         const surfaces = data.career_surface_records || {};
         const meetings = data.past_meetings || [];
         const seasonYear = ((data.season_stats || {}).year) || this.defaultYear;
+        const tourCode = ((data.tour || window.TennisApp.AppState.currentTour || 'wta') + '').toLowerCase();
+        const tourLabel = tourCode === 'atp' ? 'ATP' : 'WTA';
+        const hasRadar = (
+            ((data.season_stats || {}).serving || []).length > 0
+            || ((data.season_stats || {}).returning || []).length > 0
+        );
 
-        const orderedSurfaces = Object.keys(surfaces).length > 0
-            ? Object.keys(surfaces).filter((surfaceKey) => !`${surfaceKey}`.toLowerCase().includes('carpet'))
-            : ['HARD', 'CLAY', 'GRASS'];
+        const availableSurfaceKeys = Object.keys(surfaces).filter(
+            (surfaceKey) => !`${surfaceKey}`.toLowerCase().includes('carpet')
+        );
+        const orderedSurfaces = availableSurfaceKeys.length > 0
+            ? availableSurfaceKeys
+            : (tourCode === 'wta' ? ['HARD', 'CLAY', 'GRASS'] : []);
 
         const surfaceRows = orderedSurfaces.map((surfaceKey) => {
             const record = surfaces[surfaceKey] || {};
@@ -326,41 +358,7 @@ const H2HModule = {
             </div>
         `).join('');
 
-        const resultsDiv = document.getElementById('h2hResults');
-        resultsDiv.innerHTML = `
-            <div class="h2h-hero">
-                <div class="h2h-hero-card">
-                    <div class="h2h-hero-avatar">
-                        <img src="${Utils.getPlayerImage(p1)}" alt="${p1.name}">
-                    </div>
-                    <div class="h2h-hero-meta">
-                        <div class="h2h-hero-name">${p1.name}</div>
-                        <div class="h2h-hero-rank">${Utils.getFlag(p1.country)} ${p1.rank ? `Rank #${p1.rank}` : 'WTA'}</div>
-                    </div>
-                </div>
-                <div class="h2h-hero-center">
-                    <div class="h2h-record-score">${h2h.player1_wins || 0} - ${h2h.player2_wins || 0}</div>
-                    <div class="h2h-record-label">Career H2H</div>
-                    <div class="h2h-record-sub">Last ${h2h.recent_last_n || 0}: ${h2h.recent_player1_wins || 0} - ${h2h.recent_player2_wins || 0}</div>
-                </div>
-                <div class="h2h-hero-card h2h-hero-card-right">
-                    <div class="h2h-hero-avatar">
-                        <img src="${Utils.getPlayerImage(p2)}" alt="${p2.name}">
-                    </div>
-                    <div class="h2h-hero-meta">
-                        <div class="h2h-hero-name">${p2.name}</div>
-                        <div class="h2h-hero-rank">${Utils.getFlag(p2.country)} ${p2.rank ? `Rank #${p2.rank}` : 'WTA'}</div>
-                    </div>
-                </div>
-            </div>
-
-            <section class="h2h-career-section">
-                <h4>Career Stats</h4>
-                <div class="h2h-career-grid">
-                    ${careerRowsHtml}
-                </div>
-            </section>
-
+        const radarSection = hasRadar ? `
             <section class="h2h-radar-section">
                 <div class="h2h-section-title-row">
                     <h4>Season Match Profile</h4>
@@ -377,13 +375,54 @@ const H2HModule = {
                     </div>
                 </div>
             </section>
+        ` : '';
 
+        const surfacesSection = orderedSurfaces.length > 0 ? `
             <section class="h2h-surfaces-section">
                 <h4>Career Surface Records</h4>
                 <div class="h2h-surface-grid">
                     ${surfaceRows}
                 </div>
             </section>
+        ` : '';
+
+        const resultsDiv = document.getElementById('h2hResults');
+        resultsDiv.innerHTML = `
+            <div class="h2h-hero">
+                <div class="h2h-hero-card">
+                    <div class="h2h-hero-avatar">
+                        <img src="${Utils.getPlayerImage(p1)}" alt="${p1.name}">
+                    </div>
+                    <div class="h2h-hero-meta">
+                        <div class="h2h-hero-name">${p1.name}</div>
+                        <div class="h2h-hero-rank">${Utils.getFlag(p1.country)} ${p1.rank ? `Rank #${p1.rank}` : tourLabel}</div>
+                    </div>
+                </div>
+                <div class="h2h-hero-center">
+                    <div class="h2h-record-score">${h2h.player1_wins || 0} - ${h2h.player2_wins || 0}</div>
+                    <div class="h2h-record-label">Career H2H</div>
+                    <div class="h2h-record-sub">Last ${h2h.recent_last_n || 0}: ${h2h.recent_player1_wins || 0} - ${h2h.recent_player2_wins || 0}</div>
+                </div>
+                <div class="h2h-hero-card h2h-hero-card-right">
+                    <div class="h2h-hero-avatar">
+                        <img src="${Utils.getPlayerImage(p2)}" alt="${p2.name}">
+                    </div>
+                    <div class="h2h-hero-meta">
+                        <div class="h2h-hero-name">${p2.name}</div>
+                        <div class="h2h-hero-rank">${Utils.getFlag(p2.country)} ${p2.rank ? `Rank #${p2.rank}` : tourLabel}</div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="h2h-career-section">
+                <h4>Career Stats</h4>
+                <div class="h2h-career-grid">
+                    ${careerRowsHtml}
+                </div>
+            </section>
+
+            ${radarSection}
+            ${surfacesSection}
 
             <section class="h2h-matches-section">
                 <h4>Past Meetings</h4>
@@ -394,11 +433,14 @@ const H2HModule = {
 
     createMatchItem(match, p1, p2, Utils) {
         const winnerId = Number(match.winner_id);
+        const winnerCode = String(match.winner_code || '').trim().toUpperCase();
+        const p1Code = String(p1.player_code || '').trim().toUpperCase();
+        const p2Code = String(p2.player_code || '').trim().toUpperCase();
         const category = match.category || 'other';
         const categoryClass = Utils.getCategoryClass(category);
         const surfaceClass = this.surfaceClass(match.surface);
-        const p1IsWinner = winnerId === Number(p1.id);
-        const p2IsWinner = winnerId === Number(p2.id);
+        const p1IsWinner = (winnerId === Number(p1.id)) || (winnerCode && winnerCode === p1Code);
+        const p2IsWinner = (winnerId === Number(p2.id)) || (winnerCode && winnerCode === p2Code);
         const roundText = this.formatRoundLabel(match.round, match.tournament || '');
         const setScores = Array.isArray(match.set_scores) ? match.set_scores : [];
         const setBoxes = this.renderSetScoreBoxes(setScores, match.score || '-');
@@ -438,6 +480,30 @@ const H2HModule = {
         }
         const upper = raw.toUpperCase();
         const tournamentUpper = `${tournamentName || ''}`.toUpperCase();
+        const extractQualifierRound = (text) => {
+            const value = `${text || ''}`.trim().toUpperCase();
+            if (!value || value === 'Q') return null;
+
+            const patterns = [
+                /^Q\s*([1-9])$/,
+                /^QUALIF(?:YING|IER)\s+R\s*([1-9])$/,
+                /^QUALIF(?:YING|IER)\s+ROUND\s*([1-9])$/,
+                /^([1-9])(?:ST|ND|RD|TH)\s+ROUND\s+QUALIF(?:YING|IER)$/,
+                /^ROUND\s*([1-9])\s+QUALIF(?:YING|IER)$/
+            ];
+            for (const pattern of patterns) {
+                const match = value.match(pattern);
+                if (match) {
+                    return Number(match[1]);
+                }
+            }
+            return null;
+        };
+
+        const qualifyingRound = extractQualifierRound(raw);
+        if (qualifyingRound) {
+            return `Qualifier R${qualifyingRound}`;
+        }
 
         if (upper === 'F') return 'Final';
         if (upper === 'SF' || upper === 'S') return 'Semi Final';

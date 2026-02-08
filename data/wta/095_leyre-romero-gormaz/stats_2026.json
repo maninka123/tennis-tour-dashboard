@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.7%\n1st Return Points Won %\n36.4%\n2nd Return Points Won %\n45.8%\nBreak Points Converted\n16.7%\nReturn Games Won\n20.0%\nReturn Games Played\n10\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:00:01.112018+00:00",
+  "updated_at": "2026-02-07T13:33:16.888975+00:00",
   "records_tab": {
     "summary": [
       {
@@ -90,6 +90,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Fiona Crawley",
             "opponent_country": "USA",
@@ -100,6 +103,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Analu Freitas",
             "opponent_country": "POR",
@@ -133,6 +139,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Maddison Inglis",
             "opponent_country": "AUS",
@@ -166,6 +175,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Gabriela Knutson",
             "opponent_country": "CZE",
@@ -175,7 +187,10 @@
             "opponent_rank": 182
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Gabriela Knutson",
             "opponent_country": "CZE",
@@ -194,6 +209,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:00:01.111998+00:00"
+    "updated_at": "2026-02-07T13:33:16.888930+00:00"
   }
 }

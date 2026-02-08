@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.0%\n1st Return Points Won %\n34.5%\n2nd Return Points Won %\n60.9%\nBreak Points Converted\n37.5%\nReturn Games Won\n30.0%\nReturn Games Played\n10\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:54:25.859262+00:00",
+  "updated_at": "2026-02-07T13:27:55.926448+00:00",
   "records_tab": {
     "summary": [
       {
@@ -98,6 +98,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elena Rybakina",
             "opponent_country": "KAZ",
@@ -108,6 +111,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Linda Fruhvirtova",
             "opponent_country": "CZE",
@@ -118,6 +124,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Maya Joint",
             "opponent_country": "AUS",
@@ -151,6 +160,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Vera Zvonareva",
             "opponent_country": "RUS",
@@ -160,7 +172,10 @@
             "opponent_rank": 641
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Madison Keys",
             "opponent_country": "USA",
@@ -171,6 +186,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Laquisa Khan",
             "opponent_country": "AUS",
@@ -180,7 +198,10 @@
             "opponent_rank": 774
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jelena Ostapenko",
             "opponent_country": "LAT",
@@ -214,6 +235,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Anna Kalinskaya",
             "opponent_country": "RUS",
@@ -232,6 +256,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:54:25.859236+00:00"
+    "updated_at": "2026-02-07T13:27:55.926381+00:00"
   }
 }

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.3%\n1st Return Points Won %\n29.7%\n2nd Return Points Won %\n62.9%\nBreak Points Converted\n88.9%\nReturn Games Won\n29.6%\nReturn Games Played\n27\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:53:35.809402+00:00",
+  "updated_at": "2026-02-07T13:27:09.931616+00:00",
   "records_tab": {
     "summary": [
       {
@@ -234,6 +234,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Naomi Osaka",
             "opponent_country": "JPN",
@@ -244,6 +247,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Eva Lys",
             "opponent_country": "GER",
@@ -277,6 +283,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Kamilla Rakhimova",
             "opponent_country": "UZB",
@@ -287,6 +296,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ulrikke Eikeri",
             "opponent_country": "NOR",
@@ -320,6 +332,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Aryna Sabalenka",
             "opponent_country": "BLR",
@@ -330,6 +345,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jelena Ostapenko",
             "opponent_country": "LAT",
@@ -340,6 +358,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anastasia Pavlyuchenkova",
             "opponent_country": "RUS",
@@ -358,6 +379,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:53:35.809370+00:00"
+    "updated_at": "2026-02-07T13:27:09.931561+00:00"
   }
 }

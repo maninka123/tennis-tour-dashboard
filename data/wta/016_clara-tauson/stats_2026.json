@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n29.4%\n1st Return Points Won %\n14.3%\n2nd Return Points Won %\n47.8%\nBreak Points Converted\n0.0%\nReturn Games Won\n0.0%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:51:34.674452+00:00",
+  "updated_at": "2026-02-07T13:25:13.365985+00:00",
   "records_tab": {
     "summary": [
       {
@@ -138,6 +138,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Victoria Mboko",
             "opponent_country": "CAN",
@@ -148,6 +151,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Polina Kudermetova",
             "opponent_country": "UZB",
@@ -158,6 +164,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Dalma Galfi",
             "opponent_country": "HUN",
@@ -191,6 +200,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Ajla Tomljanovic",
             "opponent_country": "AUS",
@@ -224,6 +236,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Aliaksandra Sasnovich",
             "opponent_country": "BLR",
@@ -234,6 +249,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -252,6 +270,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:51:34.674433+00:00"
+    "updated_at": "2026-02-07T13:25:13.365930+00:00"
   }
 }

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n43.0%\n1st Return Points Won %\n38.9%\n2nd Return Points Won %\n50.0%\nBreak Points Converted\n55.6%\nReturn Games Won\n41.7%\nReturn Games Played\n12\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:56:55.384545+00:00",
+  "updated_at": "2026-02-07T13:30:22.854736+00:00",
   "records_tab": {
     "summary": [
       {
@@ -114,6 +114,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Diana Shnaider",
             "opponent_country": "RUS",
@@ -124,6 +127,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anna Blinkova",
             "opponent_country": "RUS",
@@ -157,6 +163,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Xinyu Wang",
             "opponent_country": "CHN",
@@ -190,6 +199,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Dayana Yastremska",
             "opponent_country": "UKR",
@@ -208,6 +220,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:56:55.384519+00:00"
+    "updated_at": "2026-02-07T13:30:22.854682+00:00"
   }
 }

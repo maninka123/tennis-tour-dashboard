@@ -1,0 +1,2545 @@
+{
+  "order": 13,
+  "tournament_group_id": 6932,
+  "id": 6932,
+  "name": "Rio Open presented by Claro",
+  "title": "Rio Open presented by Claro - Rio de Janeiro, Brazil",
+  "level": "ATP 500",
+  "level_number": "ATP 500",
+  "category": "atp_500",
+  "year": 2026,
+  "start_date": "2026-02-16",
+  "end_date": "2026-02-22",
+  "surface": "Clay",
+  "indoor_outdoor": "O",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "location": "Rio de Janeiro, Brazil",
+  "status": "upcoming",
+  "draw_size_singles": 32,
+  "draw_size_doubles": 16,
+  "prize_money": "$2,486,125",
+  "prize_money_currency": "USD",
+  "draw_url": "https://www.atptour.com/en/scores/current/rio-de-janeiro/6932/draws",
+  "scores_url": "https://www.atptour.com/en/scores/current/rio-de-janeiro/6932/results",
+  "champion": null,
+  "runner_up": null,
+  "draw": {
+    "draw_size": 32,
+    "surface": "Clay",
+    "draw_type": "Singles",
+    "draw_lines": [],
+    "breakdown": [],
+    "results": []
+  },
+  "matches": [
+    {
+      "match_id": "ms016",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "Z355",
+        "name": "A. Zverev",
+        "country": "GER",
+        "seed": 1,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+        "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+      },
+      "player_b": {
+        "id": "Y09V",
+        "name": "Y. Bu",
+        "country": "CHN",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/y09v",
+        "profile_url": "https://www.atptour.com/en/players/yunchaokete-bu/y09v/overview"
+      },
+      "score_string": "7-6(4) 6-4",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms017",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "S0H2",
+        "name": "A. Shevchenko",
+        "country": "KAZ",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0h2",
+        "profile_url": "https://www.atptour.com/en/players/alexander-shevchenko/s0h2/overview"
+      },
+      "player_b": {
+        "id": "MW75",
+        "name": "F. Meligeni Alves",
+        "country": "BRA",
+        "seed": null,
+        "entry": "WC",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mw75",
+        "profile_url": "https://www.atptour.com/en/players/felipe-meligeni-alves/mw75/overview"
+      },
+      "score_string": "6-4 6-2",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms018",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "H0DU",
+        "name": "G. Heide",
+        "country": "BRA",
+        "seed": null,
+        "entry": "WC",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/h0du",
+        "profile_url": "https://www.atptour.com/en/players/gustavo-heide/h0du/overview"
+      },
+      "player_b": {
+        "id": "C0DF",
+        "name": "F. Comesana",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+        "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+      },
+      "score_string": "6-7(7) 7-6(7) 3-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms019",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "C0C8",
+        "name": "J. Cerundolo",
+        "country": "ARG",
+        "seed": null,
+        "entry": "Q",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0c8",
+        "profile_url": "https://www.atptour.com/en/players/juan-manuel-cerundolo/c0c8/overview"
+      },
+      "player_b": {
+        "id": "J551",
+        "name": "N. Jarry",
+        "country": "CHI",
+        "seed": 6,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/j551",
+        "profile_url": "https://www.atptour.com/en/players/nicolas-jarry/j551/overview"
+      },
+      "score_string": "6-4 3-6 4-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms020",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "C0AU",
+        "name": "F. Cerundolo",
+        "country": "ARG",
+        "seed": 4,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+        "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+      },
+      "player_b": {
+        "id": "G09O",
+        "name": "H. Gaston",
+        "country": "FRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/g09o",
+        "profile_url": "https://www.atptour.com/en/players/hugo-gaston/g09o/overview"
+      },
+      "score_string": "7-6(9) 6-0",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms021",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "D0FJ",
+        "name": "L. Darderi",
+        "country": "ITA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d0fj",
+        "profile_url": "https://www.atptour.com/en/players/luciano-darderi/d0fj/overview"
+      },
+      "player_b": {
+        "id": "DA31",
+        "name": "H. Dellien",
+        "country": "BOL",
+        "seed": null,
+        "entry": "Q",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/da31",
+        "profile_url": "https://www.atptour.com/en/players/hugo-dellien/da31/overview"
+      },
+      "score_string": "7-6(2) 2-2",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms022",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "F0FV",
+        "name": "J. Fonseca",
+        "country": "BRA",
+        "seed": null,
+        "entry": "SE",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0fv",
+        "profile_url": "https://www.atptour.com/en/players/joao-fonseca/f0fv/overview"
+      },
+      "player_b": {
+        "id": "MP20",
+        "name": "A. Muller",
+        "country": "FRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+        "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+      },
+      "score_string": "1-6 6-7(7)",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms023",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "MW02",
+        "name": "C. Moutet",
+        "country": "FRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mw02",
+        "profile_url": "https://www.atptour.com/en/players/corentin-moutet/mw02/overview"
+      },
+      "player_b": {
+        "id": "EA24",
+        "name": "T. Etcheverry",
+        "country": "ARG",
+        "seed": 8,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/ea24",
+        "profile_url": "https://www.atptour.com/en/players/tomas-martin-etcheverry/ea24/overview"
+      },
+      "score_string": "3-6 6-7(7)",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms024",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "B0BI",
+        "name": "S. Baez",
+        "country": "ARG",
+        "seed": 5,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+        "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+      },
+      "player_b": {
+        "id": "B0FV",
+        "name": "R. Burruchaga",
+        "country": "ARG",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0fv",
+        "profile_url": "https://www.atptour.com/en/players/roman-andres-burruchaga/b0fv/overview"
+      },
+      "score_string": "6-3 7-5",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms025",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "N0BS",
+        "name": "M. Navone",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/n0bs",
+        "profile_url": "https://www.atptour.com/en/players/mariano-navone/n0bs/overview"
+      },
+      "player_b": {
+        "id": "CF59",
+        "name": "R. Carballes Baena",
+        "country": "ESP",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/cf59",
+        "profile_url": "https://www.atptour.com/en/players/roberto-carballes-baena/cf59/overview"
+      },
+      "score_string": "6-4 6-3",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms026",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "D0CG",
+        "name": "F. Diaz Acosta",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d0cg",
+        "profile_url": "https://www.atptour.com/en/players/facundo-diaz-acosta/d0cg/overview"
+      },
+      "player_b": {
+        "id": "MJ08",
+        "name": "T. Monteiro",
+        "country": "BRA",
+        "seed": null,
+        "entry": "WC",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mj08",
+        "profile_url": "https://www.atptour.com/en/players/thiago-monteiro/mj08/overview"
+      },
+      "score_string": "6-3 3-6 6-7(7)",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms027",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "T0AP",
+        "name": "C. Tseng",
+        "country": "TPE",
+        "seed": null,
+        "entry": "Q",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+        "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+      },
+      "player_b": {
+        "id": "TE30",
+        "name": "A. Tabilo",
+        "country": "CHI",
+        "seed": 3,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/te30",
+        "profile_url": "https://www.atptour.com/en/players/alejandro-tabilo/te30/overview"
+      },
+      "score_string": "6-2 7-5",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms028",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "MO44",
+        "name": "P. Martinez",
+        "country": "ESP",
+        "seed": 7,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mo44",
+        "profile_url": "https://www.atptour.com/en/players/pedro-martinez/mo44/overview"
+      },
+      "player_b": {
+        "id": "U182",
+        "name": "C. Ugo Carabelli",
+        "country": "ARG",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+        "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+      },
+      "score_string": "6-4 3-6 3-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms029",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "L987",
+        "name": "D. Lajovic",
+        "country": "SRB",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/l987",
+        "profile_url": "https://www.atptour.com/en/players/dusan-lajovic/l987/overview"
+      },
+      "player_b": {
+        "id": "D923",
+        "name": "D. Dzumhur",
+        "country": "BIH",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d923",
+        "profile_url": "https://www.atptour.com/en/players/damir-dzumhur/d923/overview"
+      },
+      "score_string": "3-6 4-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms030",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "MU94",
+        "name": "J. Munar",
+        "country": "ESP",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mu94",
+        "profile_url": "https://www.atptour.com/en/players/jaume-munar/mu94/overview"
+      },
+      "player_b": {
+        "id": "SX91",
+        "name": "T. Seyboth Wild",
+        "country": "BRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/sx91",
+        "profile_url": "https://www.atptour.com/en/players/thiago-seyboth-wild/sx91/overview"
+      },
+      "score_string": "6-4 3-6 6-0",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms031",
+      "round_id": "R32",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "BS86",
+        "name": "T. Barrios Vera",
+        "country": "CHI",
+        "seed": null,
+        "entry": "Q",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/bs86",
+        "profile_url": "https://www.atptour.com/en/players/tomas-barrios-vera/bs86/overview"
+      },
+      "player_b": {
+        "id": "F0F2",
+        "name": "J. Faria",
+        "country": "POR",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+        "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+      },
+      "score_string": "2-6 5-7",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms008",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "Z355",
+        "name": "A. Zverev",
+        "country": "GER",
+        "seed": 1,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+        "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+      },
+      "player_b": {
+        "id": "S0H2",
+        "name": "A. Shevchenko",
+        "country": "KAZ",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0h2",
+        "profile_url": "https://www.atptour.com/en/players/alexander-shevchenko/s0h2/overview"
+      },
+      "score_string": "7-6(1) 7-6(6)",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms009",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "C0DF",
+        "name": "F. Comesana",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+        "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+      },
+      "player_b": {
+        "id": "J551",
+        "name": "N. Jarry",
+        "country": "CHI",
+        "seed": 6,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/j551",
+        "profile_url": "https://www.atptour.com/en/players/nicolas-jarry/j551/overview"
+      },
+      "score_string": "7-6(4) 6-7(7) 7-6(6)",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms010",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "C0AU",
+        "name": "F. Cerundolo",
+        "country": "ARG",
+        "seed": 4,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+        "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+      },
+      "player_b": {
+        "id": "D0FJ",
+        "name": "L. Darderi",
+        "country": "ITA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d0fj",
+        "profile_url": "https://www.atptour.com/en/players/luciano-darderi/d0fj/overview"
+      },
+      "score_string": "6-7(7) 6-3 6-2",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms011",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "MP20",
+        "name": "A. Muller",
+        "country": "FRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+        "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+      },
+      "player_b": {
+        "id": "EA24",
+        "name": "T. Etcheverry",
+        "country": "ARG",
+        "seed": 8,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/ea24",
+        "profile_url": "https://www.atptour.com/en/players/tomas-martin-etcheverry/ea24/overview"
+      },
+      "score_string": "7-5 7-6(5)",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms012",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "B0BI",
+        "name": "S. Baez",
+        "country": "ARG",
+        "seed": 5,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+        "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+      },
+      "player_b": {
+        "id": "N0BS",
+        "name": "M. Navone",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/n0bs",
+        "profile_url": "https://www.atptour.com/en/players/mariano-navone/n0bs/overview"
+      },
+      "score_string": "6-4 1-6 6-3",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms013",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "MJ08",
+        "name": "T. Monteiro",
+        "country": "BRA",
+        "seed": null,
+        "entry": "WC",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mj08",
+        "profile_url": "https://www.atptour.com/en/players/thiago-monteiro/mj08/overview"
+      },
+      "player_b": {
+        "id": "T0AP",
+        "name": "C. Tseng",
+        "country": "TPE",
+        "seed": null,
+        "entry": "Q",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+        "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+      },
+      "score_string": "7-6(4) 3-6 6-7(7)",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms014",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "U182",
+        "name": "C. Ugo Carabelli",
+        "country": "ARG",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+        "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+      },
+      "player_b": {
+        "id": "D923",
+        "name": "D. Dzumhur",
+        "country": "BIH",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d923",
+        "profile_url": "https://www.atptour.com/en/players/damir-dzumhur/d923/overview"
+      },
+      "score_string": "6-4 6-4",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms015",
+      "round_id": "R16",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "MU94",
+        "name": "J. Munar",
+        "country": "ESP",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mu94",
+        "profile_url": "https://www.atptour.com/en/players/jaume-munar/mu94/overview"
+      },
+      "player_b": {
+        "id": "F0F2",
+        "name": "J. Faria",
+        "country": "POR",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+        "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+      },
+      "score_string": "4-6 6-2 3-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms004",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "Z355",
+        "name": "A. Zverev",
+        "country": "GER",
+        "seed": 1,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+        "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+      },
+      "player_b": {
+        "id": "C0DF",
+        "name": "F. Comesana",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+        "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+      },
+      "score_string": "6-4 3-6 4-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms005",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "C0AU",
+        "name": "F. Cerundolo",
+        "country": "ARG",
+        "seed": 4,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+        "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+      },
+      "player_b": {
+        "id": "MP20",
+        "name": "A. Muller",
+        "country": "FRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+        "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+      },
+      "score_string": "5-7 1-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms006",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "B0BI",
+        "name": "S. Baez",
+        "country": "ARG",
+        "seed": 5,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+        "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+      },
+      "player_b": {
+        "id": "T0AP",
+        "name": "C. Tseng",
+        "country": "TPE",
+        "seed": null,
+        "entry": "Q",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+        "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+      },
+      "score_string": "6-4 6-1",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms007",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "U182",
+        "name": "C. Ugo Carabelli",
+        "country": "ARG",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+        "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+      },
+      "player_b": {
+        "id": "F0F2",
+        "name": "J. Faria",
+        "country": "POR",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+        "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+      },
+      "score_string": "7-6(5) 6-4",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms002",
+      "round_id": "SF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "C0DF",
+        "name": "F. Comesana",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+        "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+      },
+      "player_b": {
+        "id": "MP20",
+        "name": "A. Muller",
+        "country": "FRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+        "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+      },
+      "score_string": "5-7 7-6(3) 3-6",
+      "winner_side": "B"
+    },
+    {
+      "match_id": "ms003",
+      "round_id": "SF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "B0BI",
+        "name": "S. Baez",
+        "country": "ARG",
+        "seed": 5,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+        "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+      },
+      "player_b": {
+        "id": "U182",
+        "name": "C. Ugo Carabelli",
+        "country": "ARG",
+        "seed": null,
+        "entry": "LL",
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+        "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+      },
+      "score_string": "3-6 6-1 6-1",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "ms001",
+      "round_id": "Finals",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "MP20",
+        "name": "A. Muller",
+        "country": "FRA",
+        "seed": null,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+        "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+      },
+      "player_b": {
+        "id": "B0BI",
+        "name": "S. Baez",
+        "country": "ARG",
+        "seed": 5,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+        "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+      },
+      "score_string": "2-6 3-6",
+      "winner_side": "B"
+    }
+  ],
+  "bracket": {
+    "tournament_id": 6932,
+    "tournament_name": "Rio Open presented by Claro",
+    "tournament_category": "atp_500",
+    "tournament_surface": "Clay",
+    "tournament_year": 2026,
+    "tournament_status": "upcoming",
+    "tournament_tour": "atp",
+    "draw_size": 32,
+    "rounds": [
+      "R32",
+      "R16",
+      "QF",
+      "SF",
+      "Finals"
+    ],
+    "matches": [
+      {
+        "round": "R32",
+        "matches": [
+          {
+            "id": "ms016",
+            "round": "R32",
+            "match_number": 1,
+            "player1": {
+              "id": "Z355",
+              "name": "A. Zverev",
+              "country": "GER",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+              "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+            },
+            "player2": {
+              "id": "Y09V",
+              "name": "Y. Bu",
+              "country": "CHN",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/y09v",
+              "profile_url": "https://www.atptour.com/en/players/yunchaokete-bu/y09v/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 4
+                  }
+                },
+                {
+                  "p1": 6,
+                  "p2": 4
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "Z355",
+              "name": "A. Zverev",
+              "country": "GER",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+              "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms016"
+          },
+          {
+            "id": "ms017",
+            "round": "R32",
+            "match_number": 2,
+            "player1": {
+              "id": "S0H2",
+              "name": "A. Shevchenko",
+              "country": "KAZ",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0h2",
+              "profile_url": "https://www.atptour.com/en/players/alexander-shevchenko/s0h2/overview"
+            },
+            "player2": {
+              "id": "MW75",
+              "name": "F. Meligeni Alves",
+              "country": "BRA",
+              "seed": null,
+              "entry": "WC",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mw75",
+              "profile_url": "https://www.atptour.com/en/players/felipe-meligeni-alves/mw75/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 6,
+                  "p2": 2
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "S0H2",
+              "name": "A. Shevchenko",
+              "country": "KAZ",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0h2",
+              "profile_url": "https://www.atptour.com/en/players/alexander-shevchenko/s0h2/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms017"
+          },
+          {
+            "id": "ms018",
+            "round": "R32",
+            "match_number": 3,
+            "player1": {
+              "id": "H0DU",
+              "name": "G. Heide",
+              "country": "BRA",
+              "seed": null,
+              "entry": "WC",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/h0du",
+              "profile_url": "https://www.atptour.com/en/players/gustavo-heide/h0du/overview"
+            },
+            "player2": {
+              "id": "C0DF",
+              "name": "F. Comesana",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+              "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 2,
+                    "p2": 7
+                  }
+                },
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 9,
+                    "p2": 7
+                  }
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "C0DF",
+              "name": "F. Comesana",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+              "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms018"
+          },
+          {
+            "id": "ms019",
+            "round": "R32",
+            "match_number": 4,
+            "player1": {
+              "id": "C0C8",
+              "name": "J. Cerundolo",
+              "country": "ARG",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0c8",
+              "profile_url": "https://www.atptour.com/en/players/juan-manuel-cerundolo/c0c8/overview"
+            },
+            "player2": {
+              "id": "J551",
+              "name": "N. Jarry",
+              "country": "CHI",
+              "seed": 6,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/j551",
+              "profile_url": "https://www.atptour.com/en/players/nicolas-jarry/j551/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 4,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "J551",
+              "name": "N. Jarry",
+              "country": "CHI",
+              "seed": 6,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/j551",
+              "profile_url": "https://www.atptour.com/en/players/nicolas-jarry/j551/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms019"
+          },
+          {
+            "id": "ms020",
+            "round": "R32",
+            "match_number": 5,
+            "player1": {
+              "id": "C0AU",
+              "name": "F. Cerundolo",
+              "country": "ARG",
+              "seed": 4,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+              "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+            },
+            "player2": {
+              "id": "G09O",
+              "name": "H. Gaston",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/g09o",
+              "profile_url": "https://www.atptour.com/en/players/hugo-gaston/g09o/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 11,
+                    "p2": 9
+                  }
+                },
+                {
+                  "p1": 6,
+                  "p2": 0
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "C0AU",
+              "name": "F. Cerundolo",
+              "country": "ARG",
+              "seed": 4,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+              "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms020"
+          },
+          {
+            "id": "ms021",
+            "round": "R32",
+            "match_number": 6,
+            "player1": {
+              "id": "D0FJ",
+              "name": "L. Darderi",
+              "country": "ITA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d0fj",
+              "profile_url": "https://www.atptour.com/en/players/luciano-darderi/d0fj/overview"
+            },
+            "player2": {
+              "id": "DA31",
+              "name": "H. Dellien",
+              "country": "BOL",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/da31",
+              "profile_url": "https://www.atptour.com/en/players/hugo-dellien/da31/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 2
+                  }
+                },
+                {
+                  "p1": 2,
+                  "p2": 2
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "D0FJ",
+              "name": "L. Darderi",
+              "country": "ITA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d0fj",
+              "profile_url": "https://www.atptour.com/en/players/luciano-darderi/d0fj/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms021"
+          },
+          {
+            "id": "ms022",
+            "round": "R32",
+            "match_number": 7,
+            "player1": {
+              "id": "F0FV",
+              "name": "J. Fonseca",
+              "country": "BRA",
+              "seed": null,
+              "entry": "SE",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0fv",
+              "profile_url": "https://www.atptour.com/en/players/joao-fonseca/f0fv/overview"
+            },
+            "player2": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 1,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 4,
+                    "p2": 7
+                  }
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms022"
+          },
+          {
+            "id": "ms023",
+            "round": "R32",
+            "match_number": 8,
+            "player1": {
+              "id": "MW02",
+              "name": "C. Moutet",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mw02",
+              "profile_url": "https://www.atptour.com/en/players/corentin-moutet/mw02/overview"
+            },
+            "player2": {
+              "id": "EA24",
+              "name": "T. Etcheverry",
+              "country": "ARG",
+              "seed": 8,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/ea24",
+              "profile_url": "https://www.atptour.com/en/players/tomas-martin-etcheverry/ea24/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 1,
+                    "p2": 7
+                  }
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "EA24",
+              "name": "T. Etcheverry",
+              "country": "ARG",
+              "seed": 8,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/ea24",
+              "profile_url": "https://www.atptour.com/en/players/tomas-martin-etcheverry/ea24/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms023"
+          },
+          {
+            "id": "ms024",
+            "round": "R32",
+            "match_number": 9,
+            "player1": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "player2": {
+              "id": "B0FV",
+              "name": "R. Burruchaga",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0fv",
+              "profile_url": "https://www.atptour.com/en/players/roman-andres-burruchaga/b0fv/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 3
+                },
+                {
+                  "p1": 7,
+                  "p2": 5
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms024"
+          },
+          {
+            "id": "ms025",
+            "round": "R32",
+            "match_number": 10,
+            "player1": {
+              "id": "N0BS",
+              "name": "M. Navone",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/n0bs",
+              "profile_url": "https://www.atptour.com/en/players/mariano-navone/n0bs/overview"
+            },
+            "player2": {
+              "id": "CF59",
+              "name": "R. Carballes Baena",
+              "country": "ESP",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/cf59",
+              "profile_url": "https://www.atptour.com/en/players/roberto-carballes-baena/cf59/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 6,
+                  "p2": 3
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "N0BS",
+              "name": "M. Navone",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/n0bs",
+              "profile_url": "https://www.atptour.com/en/players/mariano-navone/n0bs/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms025"
+          },
+          {
+            "id": "ms026",
+            "round": "R32",
+            "match_number": 11,
+            "player1": {
+              "id": "D0CG",
+              "name": "F. Diaz Acosta",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d0cg",
+              "profile_url": "https://www.atptour.com/en/players/facundo-diaz-acosta/d0cg/overview"
+            },
+            "player2": {
+              "id": "MJ08",
+              "name": "T. Monteiro",
+              "country": "BRA",
+              "seed": null,
+              "entry": "WC",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mj08",
+              "profile_url": "https://www.atptour.com/en/players/thiago-monteiro/mj08/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 3
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 3,
+                    "p2": 7
+                  }
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "MJ08",
+              "name": "T. Monteiro",
+              "country": "BRA",
+              "seed": null,
+              "entry": "WC",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mj08",
+              "profile_url": "https://www.atptour.com/en/players/thiago-monteiro/mj08/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms026"
+          },
+          {
+            "id": "ms027",
+            "round": "R32",
+            "match_number": 12,
+            "player1": {
+              "id": "T0AP",
+              "name": "C. Tseng",
+              "country": "TPE",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+              "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+            },
+            "player2": {
+              "id": "TE30",
+              "name": "A. Tabilo",
+              "country": "CHI",
+              "seed": 3,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/te30",
+              "profile_url": "https://www.atptour.com/en/players/alejandro-tabilo/te30/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 2
+                },
+                {
+                  "p1": 7,
+                  "p2": 5
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "T0AP",
+              "name": "C. Tseng",
+              "country": "TPE",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+              "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms027"
+          },
+          {
+            "id": "ms028",
+            "round": "R32",
+            "match_number": 13,
+            "player1": {
+              "id": "MO44",
+              "name": "P. Martinez",
+              "country": "ESP",
+              "seed": 7,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mo44",
+              "profile_url": "https://www.atptour.com/en/players/pedro-martinez/mo44/overview"
+            },
+            "player2": {
+              "id": "U182",
+              "name": "C. Ugo Carabelli",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+              "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "U182",
+              "name": "C. Ugo Carabelli",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+              "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms028"
+          },
+          {
+            "id": "ms029",
+            "round": "R32",
+            "match_number": 14,
+            "player1": {
+              "id": "L987",
+              "name": "D. Lajovic",
+              "country": "SRB",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/l987",
+              "profile_url": "https://www.atptour.com/en/players/dusan-lajovic/l987/overview"
+            },
+            "player2": {
+              "id": "D923",
+              "name": "D. Dzumhur",
+              "country": "BIH",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d923",
+              "profile_url": "https://www.atptour.com/en/players/damir-dzumhur/d923/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 4,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "D923",
+              "name": "D. Dzumhur",
+              "country": "BIH",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d923",
+              "profile_url": "https://www.atptour.com/en/players/damir-dzumhur/d923/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms029"
+          },
+          {
+            "id": "ms030",
+            "round": "R32",
+            "match_number": 15,
+            "player1": {
+              "id": "MU94",
+              "name": "J. Munar",
+              "country": "ESP",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mu94",
+              "profile_url": "https://www.atptour.com/en/players/jaume-munar/mu94/overview"
+            },
+            "player2": {
+              "id": "SX91",
+              "name": "T. Seyboth Wild",
+              "country": "BRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/sx91",
+              "profile_url": "https://www.atptour.com/en/players/thiago-seyboth-wild/sx91/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 0
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "MU94",
+              "name": "J. Munar",
+              "country": "ESP",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mu94",
+              "profile_url": "https://www.atptour.com/en/players/jaume-munar/mu94/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms030"
+          },
+          {
+            "id": "ms031",
+            "round": "R32",
+            "match_number": 16,
+            "player1": {
+              "id": "BS86",
+              "name": "T. Barrios Vera",
+              "country": "CHI",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/bs86",
+              "profile_url": "https://www.atptour.com/en/players/tomas-barrios-vera/bs86/overview"
+            },
+            "player2": {
+              "id": "F0F2",
+              "name": "J. Faria",
+              "country": "POR",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+              "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 2,
+                  "p2": 6
+                },
+                {
+                  "p1": 5,
+                  "p2": 7
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "F0F2",
+              "name": "J. Faria",
+              "country": "POR",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+              "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+            },
+            "points": 20,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms031"
+          }
+        ]
+      },
+      {
+        "round": "R16",
+        "matches": [
+          {
+            "id": "ms008",
+            "round": "R16",
+            "match_number": 1,
+            "player1": {
+              "id": "Z355",
+              "name": "A. Zverev",
+              "country": "GER",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+              "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+            },
+            "player2": {
+              "id": "S0H2",
+              "name": "A. Shevchenko",
+              "country": "KAZ",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0h2",
+              "profile_url": "https://www.atptour.com/en/players/alexander-shevchenko/s0h2/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 1
+                  }
+                },
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 8,
+                    "p2": 6
+                  }
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "Z355",
+              "name": "A. Zverev",
+              "country": "GER",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+              "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms008"
+          },
+          {
+            "id": "ms009",
+            "round": "R16",
+            "match_number": 2,
+            "player1": {
+              "id": "C0DF",
+              "name": "F. Comesana",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+              "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+            },
+            "player2": {
+              "id": "J551",
+              "name": "N. Jarry",
+              "country": "CHI",
+              "seed": 6,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/j551",
+              "profile_url": "https://www.atptour.com/en/players/nicolas-jarry/j551/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 4
+                  }
+                },
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 1,
+                    "p2": 7
+                  }
+                },
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 8,
+                    "p2": 6
+                  }
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "C0DF",
+              "name": "F. Comesana",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+              "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms009"
+          },
+          {
+            "id": "ms010",
+            "round": "R16",
+            "match_number": 3,
+            "player1": {
+              "id": "C0AU",
+              "name": "F. Cerundolo",
+              "country": "ARG",
+              "seed": 4,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+              "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+            },
+            "player2": {
+              "id": "D0FJ",
+              "name": "L. Darderi",
+              "country": "ITA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d0fj",
+              "profile_url": "https://www.atptour.com/en/players/luciano-darderi/d0fj/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 1,
+                    "p2": 7
+                  }
+                },
+                {
+                  "p1": 6,
+                  "p2": 3
+                },
+                {
+                  "p1": 6,
+                  "p2": 2
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "C0AU",
+              "name": "F. Cerundolo",
+              "country": "ARG",
+              "seed": 4,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+              "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms010"
+          },
+          {
+            "id": "ms011",
+            "round": "R16",
+            "match_number": 4,
+            "player1": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "player2": {
+              "id": "EA24",
+              "name": "T. Etcheverry",
+              "country": "ARG",
+              "seed": 8,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/ea24",
+              "profile_url": "https://www.atptour.com/en/players/tomas-martin-etcheverry/ea24/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 5
+                },
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 5
+                  }
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms011"
+          },
+          {
+            "id": "ms012",
+            "round": "R16",
+            "match_number": 5,
+            "player1": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "player2": {
+              "id": "N0BS",
+              "name": "M. Navone",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/n0bs",
+              "profile_url": "https://www.atptour.com/en/players/mariano-navone/n0bs/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 1,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 3
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms012"
+          },
+          {
+            "id": "ms013",
+            "round": "R16",
+            "match_number": 6,
+            "player1": {
+              "id": "MJ08",
+              "name": "T. Monteiro",
+              "country": "BRA",
+              "seed": null,
+              "entry": "WC",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mj08",
+              "profile_url": "https://www.atptour.com/en/players/thiago-monteiro/mj08/overview"
+            },
+            "player2": {
+              "id": "T0AP",
+              "name": "C. Tseng",
+              "country": "TPE",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+              "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 4
+                  }
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 4,
+                    "p2": 7
+                  }
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "T0AP",
+              "name": "C. Tseng",
+              "country": "TPE",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+              "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms013"
+          },
+          {
+            "id": "ms014",
+            "round": "R16",
+            "match_number": 7,
+            "player1": {
+              "id": "U182",
+              "name": "C. Ugo Carabelli",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+              "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+            },
+            "player2": {
+              "id": "D923",
+              "name": "D. Dzumhur",
+              "country": "BIH",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/d923",
+              "profile_url": "https://www.atptour.com/en/players/damir-dzumhur/d923/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 6,
+                  "p2": 4
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "U182",
+              "name": "C. Ugo Carabelli",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+              "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms014"
+          },
+          {
+            "id": "ms015",
+            "round": "R16",
+            "match_number": 8,
+            "player1": {
+              "id": "MU94",
+              "name": "J. Munar",
+              "country": "ESP",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mu94",
+              "profile_url": "https://www.atptour.com/en/players/jaume-munar/mu94/overview"
+            },
+            "player2": {
+              "id": "F0F2",
+              "name": "J. Faria",
+              "country": "POR",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+              "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 4,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 2
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "F0F2",
+              "name": "J. Faria",
+              "country": "POR",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+              "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+            },
+            "points": 45,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms015"
+          }
+        ]
+      },
+      {
+        "round": "QF",
+        "matches": [
+          {
+            "id": "ms004",
+            "round": "QF",
+            "match_number": 1,
+            "player1": {
+              "id": "Z355",
+              "name": "A. Zverev",
+              "country": "GER",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/z355",
+              "profile_url": "https://www.atptour.com/en/players/alexander-zverev/z355/overview"
+            },
+            "player2": {
+              "id": "C0DF",
+              "name": "F. Comesana",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+              "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 4,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "C0DF",
+              "name": "F. Comesana",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+              "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms004"
+          },
+          {
+            "id": "ms005",
+            "round": "QF",
+            "match_number": 2,
+            "player1": {
+              "id": "C0AU",
+              "name": "F. Cerundolo",
+              "country": "ARG",
+              "seed": 4,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0au",
+              "profile_url": "https://www.atptour.com/en/players/francisco-cerundolo/c0au/overview"
+            },
+            "player2": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 5,
+                  "p2": 7
+                },
+                {
+                  "p1": 1,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms005"
+          },
+          {
+            "id": "ms006",
+            "round": "QF",
+            "match_number": 3,
+            "player1": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "player2": {
+              "id": "T0AP",
+              "name": "C. Tseng",
+              "country": "TPE",
+              "seed": null,
+              "entry": "Q",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/t0ap",
+              "profile_url": "https://www.atptour.com/en/players/chun-hsin-tseng/t0ap/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 4
+                },
+                {
+                  "p1": 6,
+                  "p2": 1
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms006"
+          },
+          {
+            "id": "ms007",
+            "round": "QF",
+            "match_number": 4,
+            "player1": {
+              "id": "U182",
+              "name": "C. Ugo Carabelli",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+              "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+            },
+            "player2": {
+              "id": "F0F2",
+              "name": "J. Faria",
+              "country": "POR",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/f0f2",
+              "profile_url": "https://www.atptour.com/en/players/jaime-faria/f0f2/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 5
+                  }
+                },
+                {
+                  "p1": 6,
+                  "p2": 4
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "U182",
+              "name": "C. Ugo Carabelli",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+              "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms007"
+          }
+        ]
+      },
+      {
+        "round": "SF",
+        "matches": [
+          {
+            "id": "ms002",
+            "round": "SF",
+            "match_number": 1,
+            "player1": {
+              "id": "C0DF",
+              "name": "F. Comesana",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/c0df",
+              "profile_url": "https://www.atptour.com/en/players/francisco-comesana/c0df/overview"
+            },
+            "player2": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 5,
+                  "p2": 7
+                },
+                {
+                  "p1": 7,
+                  "p2": 6,
+                  "tiebreak": {
+                    "p1": 7,
+                    "p2": 3
+                  }
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "points": 180,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms002"
+          },
+          {
+            "id": "ms003",
+            "round": "SF",
+            "match_number": 2,
+            "player1": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "player2": {
+              "id": "U182",
+              "name": "C. Ugo Carabelli",
+              "country": "ARG",
+              "seed": null,
+              "entry": "LL",
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/u182",
+              "profile_url": "https://www.atptour.com/en/players/camilo-ugo-carabelli/u182/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 3,
+                  "p2": 6
+                },
+                {
+                  "p1": 6,
+                  "p2": 1
+                },
+                {
+                  "p1": 6,
+                  "p2": 1
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "points": 180,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms003"
+          }
+        ]
+      },
+      {
+        "round": "Finals",
+        "matches": [
+          {
+            "id": "ms001",
+            "round": "Finals",
+            "match_number": 1,
+            "player1": {
+              "id": "MP20",
+              "name": "A. Muller",
+              "country": "FRA",
+              "seed": null,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/mp20",
+              "profile_url": "https://www.atptour.com/en/players/alexandre-muller/mp20/overview"
+            },
+            "player2": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 2,
+                  "p2": 6
+                },
+                {
+                  "p1": 3,
+                  "p2": 6
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "B0BI",
+              "name": "S. Baez",
+              "country": "ARG",
+              "seed": 5,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/b0bi",
+              "profile_url": "https://www.atptour.com/en/players/sebastian-baez/b0bi/overview"
+            },
+            "points": null,
+            "prize_money": null,
+            "stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2025/6932/ms001"
+          }
+        ]
+      }
+    ],
+    "round_points": {
+      "R32": 20,
+      "R16": 45,
+      "QF": 90,
+      "SF": 180,
+      "F": 300,
+      "W": 500
+    },
+    "round_prize": {},
+    "champion": null,
+    "source": "atp"
+  }
+}

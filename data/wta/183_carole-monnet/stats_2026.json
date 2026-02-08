@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.8%\n1st Return Points Won %\n31.6%\n2nd Return Points Won %\n56.4%\nBreak Points Converted\n20.0%\nReturn Games Won\n20.0%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:09:53.459251+00:00",
+  "updated_at": "2026-02-07T13:42:26.565766+00:00",
   "records_tab": {
     "summary": [
       {
@@ -114,6 +114,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Alina Korneeva",
             "opponent_country": "RUS",
@@ -146,7 +149,23 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Arantxa Rus",
+            "opponent_country": "NED",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-4, 3-6, 6-1",
+            "opponent_rank": 133
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mai Hontama",
             "opponent_country": "JPN",
@@ -157,6 +176,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Rina Saigo",
             "opponent_country": "JPN",
@@ -164,16 +186,6 @@
             "opponent_entry": "Q",
             "score": "6-3, 6-1",
             "opponent_rank": 306
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Arantxa Rus",
-            "opponent_country": "NED",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-4, 3-6, 6-1",
-            "opponent_rank": 133
           }
         ],
         "summary": {
@@ -200,6 +212,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elena Micic",
             "opponent_country": "AUS",
@@ -233,6 +248,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Kaitlin Quevedo",
             "opponent_country": "ESP",
@@ -242,7 +260,10 @@
             "opponent_rank": 141
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Kaitlin Quevedo",
             "opponent_country": "ESP",
@@ -261,6 +282,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:09:53.459231+00:00"
+    "updated_at": "2026-02-07T13:42:26.565695+00:00"
   }
 }

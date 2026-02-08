@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n51.0%\n1st Return Points Won %\n48.5%\n2nd Return Points Won %\n56.7%\nBreak Points Converted\n53.8%\nReturn Games Won\n50.0%\nReturn Games Played\n14\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:58:01.570045+00:00",
+  "updated_at": "2026-02-07T13:31:27.728937+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
@@ -51,7 +51,36 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Renata Zarazua",
+            "opponent_country": "MEX",
+            "opponent_seed": 1,
+            "opponent_entry": "",
+            "score": "6-2, 3-0",
+            "opponent_rank": 80
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Viktoria Hruncakova",
+            "opponent_country": "SVK",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-5, 6-1",
+            "opponent_rank": 220
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Chloe Paquet",
             "opponent_country": "FRA",
@@ -62,6 +91,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Teodora Kostovic",
             "opponent_country": "SRB",
@@ -69,26 +101,6 @@
             "opponent_entry": "",
             "score": "6-1, 6-1",
             "opponent_rank": 177
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Renata Zarazua",
-            "opponent_country": "MEX",
-            "opponent_seed": 1,
-            "opponent_entry": "",
-            "score": "6-2, 3-0",
-            "opponent_rank": 80
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Viktoria Hruncakova",
-            "opponent_country": "SVK",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "7-5, 6-1",
-            "opponent_rank": 220
           }
         ],
         "summary": {
@@ -115,6 +127,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Lanlana Tararudee",
             "opponent_country": "THA",
@@ -125,6 +140,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Elena Pridankina",
             "opponent_country": "RUS",
@@ -135,6 +153,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Xinyu Gao",
             "opponent_country": "CHN",
@@ -168,6 +189,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Yuliia Starodubtseva",
             "opponent_country": "UKR",
@@ -178,6 +202,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Laura Pigossi",
             "opponent_country": "BRA",
@@ -187,7 +214,10 @@
             "opponent_rank": 198
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Laura Pigossi",
             "opponent_country": "BRA",
@@ -206,6 +236,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:58:01.570029+00:00"
+    "updated_at": "2026-02-07T13:31:27.728806+00:00"
   }
 }

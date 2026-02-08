@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n37.4%\n1st Return Points Won %\n28.6%\n2nd Return Points Won %\n55.3%\nBreak Points Converted\n45.5%\nReturn Games Won\n26.3%\nReturn Games Played\n19\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:06:24.278464+00:00",
+  "updated_at": "2026-02-07T13:39:01.804448+00:00",
   "records_tab": {
     "summary": [
       {
@@ -169,7 +169,23 @@
         "draw": "32M/16Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Donna Vekic",
+            "opponent_country": "CRO",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-4, 6-3",
+            "opponent_rank": 72
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mananchaya Sawangkaew",
             "opponent_country": "THA",
@@ -180,6 +196,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lulu Sun",
             "opponent_country": "NZL",
@@ -187,16 +206,6 @@
             "opponent_entry": "",
             "score": "7-5, 6-4",
             "opponent_rank": 86
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Donna Vekic",
-            "opponent_country": "CRO",
-            "opponent_seed": 4,
-            "opponent_entry": "",
-            "score": "6-4, 6-3",
-            "opponent_rank": 72
           }
         ],
         "summary": {
@@ -223,6 +232,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Marina Stakusic",
             "opponent_country": "CAN",
@@ -233,6 +245,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Victoria Jimenez Kasintseva",
             "opponent_country": "AND",
@@ -243,6 +258,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Laura Pigossi",
             "opponent_country": "BRA",
@@ -276,6 +294,9 @@
         "matches": [
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elise Mertens",
             "opponent_country": "BEL",
@@ -286,6 +307,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Victoria Mboko",
             "opponent_country": "CAN",
@@ -304,6 +328,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:06:24.278446+00:00"
+    "updated_at": "2026-02-07T13:39:01.804389+00:00"
   }
 }

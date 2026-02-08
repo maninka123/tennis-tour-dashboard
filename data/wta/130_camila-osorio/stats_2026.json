@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.6%\n1st Return Points Won %\n36.4%\n2nd Return Points Won %\n63.6%\nBreak Points Converted\n66.7%\nReturn Games Won\n42.9%\nReturn Games Played\n14\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:04:07.678780+00:00",
+  "updated_at": "2026-02-07T13:36:50.502902+00:00",
   "records_tab": {
     "summary": [
       {
@@ -130,6 +130,9 @@
         "matches": [
           {
             "round": "Final",
+            "round_name": "F",
+            "tourn_round": 5,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Donna Vekic",
             "opponent_country": "CRO",
@@ -139,7 +142,36 @@
             "opponent_rank": 72
           },
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Solana Sierra",
+            "opponent_country": "ARG",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-0, 6-1",
+            "opponent_rank": 63
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Alexandra Eala",
+            "opponent_country": "PHI",
+            "opponent_seed": 2,
+            "opponent_entry": "W",
+            "score": "6-4, 6-4",
+            "opponent_rank": 49
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mai Hontama",
             "opponent_country": "JPN",
@@ -150,6 +182,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sakura Hosogi",
             "opponent_country": "JPN",
@@ -157,26 +192,6 @@
             "opponent_entry": "Q",
             "score": "6-4, 6-3",
             "opponent_rank": 298
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Solana Sierra",
-            "opponent_country": "ARG",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-0, 6-1",
-            "opponent_rank": 63
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Alexandra Eala",
-            "opponent_country": "PHI",
-            "opponent_seed": 2,
-            "opponent_entry": "W",
-            "score": "6-4, 6-4",
-            "opponent_rank": 49
           }
         ],
         "summary": {
@@ -203,6 +218,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Ann Li",
             "opponent_country": "USA",
@@ -236,6 +254,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Emma Raducanu",
             "opponent_country": "GBR",
@@ -269,6 +290,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Petra Marcinko",
             "opponent_country": "CRO",
@@ -287,6 +311,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:04:07.678746+00:00"
+    "updated_at": "2026-02-07T13:36:50.502788+00:00"
   }
 }

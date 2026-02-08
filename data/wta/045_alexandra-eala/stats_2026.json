@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n50.3%\n1st Return Points Won %\n42.2%\n2nd Return Points Won %\n64.9%\nBreak Points Converted\n45.1%\nReturn Games Won\n48.9%\nReturn Games Played\n47\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:54:31.200700+00:00",
+  "updated_at": "2026-02-07T13:28:01.569028+00:00",
   "records_tab": {
     "summary": [
       {
@@ -98,6 +98,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Alina Charaeva",
             "opponent_country": "RUS",
@@ -131,6 +134,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Alycia Parks",
             "opponent_country": "USA",
@@ -163,7 +169,36 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Xinyu Wang",
+            "opponent_country": "CHN",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "5-7, 7-5, 6-4",
+            "opponent_rank": 57
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Magda Linette",
+            "opponent_country": "POL",
+            "opponent_seed": 5,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 52
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Petra Marcinko",
             "opponent_country": "CRO",
@@ -174,6 +209,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Donna Vekic",
             "opponent_country": "CRO",
@@ -181,26 +219,6 @@
             "opponent_entry": "",
             "score": "4-6, 6-4, 6-4",
             "opponent_rank": 69
-          },
-          {
-            "round": "S",
-            "result": "L",
-            "opponent_name": "Xinyu Wang",
-            "opponent_country": "CHN",
-            "opponent_seed": 7,
-            "opponent_entry": "",
-            "score": "5-7, 7-5, 6-4",
-            "opponent_rank": 57
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Magda Linette",
-            "opponent_country": "POL",
-            "opponent_seed": 5,
-            "opponent_entry": "",
-            "score": "6-3, 6-2",
-            "opponent_rank": 52
           }
         ],
         "summary": {
@@ -212,6 +230,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:54:31.200675+00:00"
+    "updated_at": "2026-02-07T13:28:01.568971+00:00"
   }
 }

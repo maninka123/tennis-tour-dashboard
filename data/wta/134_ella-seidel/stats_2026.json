@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.0%\n1st Return Points Won %\n43.1%\n2nd Return Points Won %\n48.3%\nBreak Points Converted\n87.5%\nReturn Games Won\n46.7%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:04:30.499819+00:00",
+  "updated_at": "2026-02-07T13:37:14.712709+00:00",
   "records_tab": {
     "summary": [
       {
@@ -106,6 +106,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Oksana Selekhmeteva",
             "opponent_country": "RUS",
@@ -139,6 +142,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Katie Volynets",
             "opponent_country": "USA",
@@ -149,6 +155,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Suzan Lamens",
             "opponent_country": "NED",
@@ -158,7 +167,10 @@
             "opponent_rank": 95
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Anna Bondar",
             "opponent_country": "HUN",
@@ -192,6 +204,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Sonay Kartal",
             "opponent_country": "GBR",
@@ -202,6 +217,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Monique Barry",
             "opponent_country": "NZL",
@@ -220,6 +238,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:04:30.499804+00:00"
+    "updated_at": "2026-02-07T13:37:14.712640+00:00"
   }
 }

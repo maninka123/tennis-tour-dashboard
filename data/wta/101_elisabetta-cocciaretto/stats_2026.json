@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.5%\n1st Return Points Won %\n36.0%\n2nd Return Points Won %\n58.0%\nBreak Points Converted\n43.5%\nReturn Games Won\n40.0%\nReturn Games Played\n25\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:00:51.758410+00:00",
+  "updated_at": "2026-02-07T13:33:55.121767+00:00",
   "records_tab": {
     "summary": [
       {
@@ -138,6 +138,9 @@
         "matches": [
           {
             "round": "Final",
+            "round_name": "F",
+            "tourn_round": 5,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Iva Jovic",
             "opponent_country": "USA",
@@ -147,7 +150,36 @@
             "opponent_rank": 30
           },
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Antonia Ruzic",
+            "opponent_country": "CRO",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 71
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anna Bondar",
+            "opponent_country": "HUN",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-2",
+            "opponent_rank": 75
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Darja Semenistaja",
             "opponent_country": "LAT",
@@ -157,7 +189,10 @@
             "opponent_rank": 96
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ann Li",
             "opponent_country": "USA",
@@ -168,6 +203,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jizelle Sibai",
             "opponent_country": "AUS",
@@ -177,7 +215,10 @@
             "opponent_rank": 1001
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ayano Shimizu",
             "opponent_country": "JPN",
@@ -185,26 +226,6 @@
             "opponent_entry": "Q",
             "score": "6-3, 6-4",
             "opponent_rank": 425
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Antonia Ruzic",
-            "opponent_country": "CRO",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-3, 6-2",
-            "opponent_rank": 71
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Anna Bondar",
-            "opponent_country": "HUN",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 6-2",
-            "opponent_rank": 75
           }
         ],
         "summary": {
@@ -231,6 +252,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Magda Linette",
             "opponent_country": "POL",
@@ -241,6 +265,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Alycia Parks",
             "opponent_country": "USA",
@@ -259,6 +286,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:00:51.758378+00:00"
+    "updated_at": "2026-02-07T13:33:55.121707+00:00"
   }
 }

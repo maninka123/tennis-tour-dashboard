@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.4%\n1st Return Points Won %\n36.7%\n2nd Return Points Won %\n56.0%\nBreak Points Converted\n71.4%\nReturn Games Won\n33.3%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:03:11.788614+00:00",
+  "updated_at": "2026-02-07T13:35:56.172145+00:00",
   "records_tab": {
     "summary": [
       {
@@ -146,6 +146,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Victoria Mboko",
             "opponent_country": "CAN",
@@ -156,6 +159,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Himeno Sakatsume",
             "opponent_country": "JPN",
@@ -189,6 +195,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Julia Grabher",
             "opponent_country": "AUT",
@@ -199,6 +208,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Kaja Juvan",
             "opponent_country": "SLO",
@@ -208,7 +220,10 @@
             "opponent_rank": 97
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Solana Sierra",
             "opponent_country": "ARG",
@@ -242,6 +257,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Xinyu Wang",
             "opponent_country": "CHN",
@@ -260,6 +278,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:03:11.788595+00:00"
+    "updated_at": "2026-02-07T13:35:56.172075+00:00"
   }
 }

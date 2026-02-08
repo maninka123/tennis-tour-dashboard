@@ -620,40 +620,274 @@ def _format_date_range(start_date: str, end_date: str) -> str:
     return single.strftime("%d %b %Y").lstrip("0")
 
 
-def _round_label(round_name: str, tourn_round: Any) -> str:
+def _qualifying_round_number(round_name: str, tourn_round: Any) -> Optional[int]:
+    round_num = _to_int(tourn_round)
+    if round_num is not None and round_num > 0:
+        return round_num
+
+    upper = str(round_name or "").strip().upper()
+    if upper in {"Q", "Q1"}:
+        return 1
+    if upper == "Q2":
+        return 2
+    if upper == "Q3":
+        return 3
+
+    m_qual = re.search(r"(?:QUALIFYING\s*)?R\s*(\d+)$", upper)
+    if m_qual:
+        parsed = _to_int(m_qual.group(1))
+        if parsed is not None and 0 < parsed <= 9:
+            return parsed
+    return None
+
+
+def _round_label(round_name: str, tourn_round: Any, draw_level_type: Any = None) -> str:
     raw = str(round_name or "").strip()
     upper = raw.upper()
-    if upper == "F":
-        return "Final"
-    if upper == "SF":
-        return "Semifinals"
-    if upper == "QF":
-        return "Quarterfinals"
-    m = re.match(r"^R(\d+)$", upper)
-    if m:
-        return f"Round of {m.group(1)}"
+    draw_level = str(draw_level_type or "").strip().upper()
+
+    # Keep qualifying rounds explicit even when DrawLevelType is missing.
+    if upper in {"Q1", "Q2", "Q3"} or upper.startswith("QUALIFY"):
+        q_round = _qualifying_round_number(raw, tourn_round)
+        if q_round:
+            return f"Qualifying R{q_round}"
+        return raw or "Qualifying"
+
+    # "Q" can be qualifying (Q1 shorthand) or quarterfinals.
+    if upper == "Q" and draw_level != "M":
+        q_round = _qualifying_round_number(raw, tourn_round)
+        if q_round and q_round <= 3:
+            return f"Qualifying R{q_round}"
+
+    if draw_level == "Q":
+        if upper in {"Q", "Q1", "Q2", "Q3"}:
+            q_round = _qualifying_round_number(raw, tourn_round)
+            if q_round:
+                return f"Qualifying R{q_round}"
+        if upper.startswith("QUALIFY"):
+            q_round = _qualifying_round_number(raw, tourn_round)
+            if q_round:
+                return f"Qualifying R{q_round}"
+            return raw
+        q_round = _qualifying_round_number(raw, tourn_round)
+        if q_round:
+            return f"Qualifying R{q_round}"
+        if re.match(r"^R\d+$", upper) or re.match(r"^ROUND OF \d+$", upper):
+            return "Qualifying"
+        return raw or "Qualifying"
+
     if raw:
+        if upper in {"F", "FINAL"}:
+            return "Final"
+        if upper in {"SF", "S", "SEMIFINAL", "SEMIFINALS"}:
+            return "Semifinals"
+        if upper in {"QF", "Q", "QUARTERFINAL", "QUARTERFINALS"}:
+            return "Quarterfinals"
+        m_round_of = re.match(r"^ROUND OF (\d+)$", upper)
+        if m_round_of:
+            return f"Round of {m_round_of.group(1)}"
+        m_r_code = re.match(r"^R(\d+)$", upper)
+        if m_r_code:
+            return f"Round of {m_r_code.group(1)}"
         return raw
+
     round_num = _to_int(tourn_round)
     if round_num is not None:
         return f"Round {round_num}"
     return "-"
 
 
-def _round_sort_value(round_name: str, tourn_round: Any) -> int:
-    upper = str(round_name or "").upper()
-    if upper == "F":
+def _round_sort_value(round_name: str, tourn_round: Any, draw_level_type: Any = None) -> int:
+    raw = str(round_name or "").strip()
+    upper = raw.upper()
+    draw_level = str(draw_level_type or "").strip().upper()
+
+    # Keep qualifying rows grouped after main draw rows.
+    is_qualifying = (
+        draw_level == "Q"
+        or upper.startswith("QUALIFY")
+        or upper in {"Q1", "Q2", "Q3"}
+    )
+
+    if not is_qualifying:
+        if upper in {"F", "FINAL"}:
+            return 1000
+        if upper in {"SF", "S", "SEMIFINAL", "SEMIFINALS"}:
+            return 900
+        if upper in {"QF", "Q", "QUARTERFINAL", "QUARTERFINALS"}:
+            return 800
+        m_round_of = re.match(r"^ROUND OF (\d+)$", upper)
+        if m_round_of:
+            return 700 - (_to_int(m_round_of.group(1)) or 0)
+        m_r_code = re.match(r"^R(\d+)$", upper)
+        if m_r_code:
+            return 700 - (_to_int(m_r_code.group(1)) or 0)
+
+    if is_qualifying:
+        q_round = _qualifying_round_number(raw, tourn_round)
+        if q_round is not None:
+            return 200 + q_round
+        return 150
+
+    round_num = _to_int(tourn_round)
+    if round_num is not None:
+        return 400 - round_num
+    return 0
+
+
+def _round_sort_from_label(round_label: Any) -> int:
+    text = str(round_label or "").strip()
+    if not text:
+        return 0
+    upper = text.upper()
+
+    if upper in {"FINAL"}:
         return 1000
-    if upper == "SF":
+    if upper in {"SEMIFINALS", "SEMIFINAL", "SEMI FINAL", "SF"}:
         return 900
-    if upper == "QF":
+    if upper in {"QUARTERFINALS", "QUARTERFINAL", "QUARTER FINAL", "QF"}:
         return 800
-    m = re.match(r"^R(\d+)$", upper)
-    if m:
-        n = _to_int(m.group(1)) or 0
-        # Round of 16 > Round of 32 > Round of 64 > Round of 128
-        return 700 - n
-    return _to_int(tourn_round) or 0
+
+    m_round_of = re.match(r"^ROUND OF (\d+)$", upper)
+    if m_round_of:
+        return 700 - (_to_int(m_round_of.group(1)) or 0)
+
+    m_r_code = re.match(r"^R(\d+)$", upper)
+    if m_r_code:
+        return 700 - (_to_int(m_r_code.group(1)) or 0)
+
+    if upper.startswith("QUALIFY"):
+        q_round = _qualifying_round_number(text, None)
+        if q_round is not None:
+            return 200 + q_round
+        return 150
+
+    return 0
+
+
+def _main_draw_bucket_key(label: Any) -> Optional[str]:
+    value = str(label or "").strip().upper()
+    if not value:
+        return None
+
+    m_round_of = re.match(r"^ROUND OF (\d+)$", value)
+    if m_round_of:
+        return f"R{m_round_of.group(1)}"
+
+    m_r_code = re.match(r"^R(\d+)$", value)
+    if m_r_code:
+        return f"R{m_r_code.group(1)}"
+
+    if value in {"FINAL", "F"}:
+        return "F"
+    if value in {"SEMIFINALS", "SEMIFINAL", "SEMI FINAL", "SF", "S"}:
+        return "SF"
+    if value in {"QUARTERFINALS", "QUARTERFINAL", "QUARTER FINAL", "QF"}:
+        return "QF"
+    return None
+
+
+def _recent_round_sort_key(row: Dict[str, Any]) -> Tuple[int, int]:
+    label = str((row or {}).get("round") or "").strip()
+    upper = label.upper()
+    is_qualifying = upper.startswith("QUALIFY")
+    return (
+        1 if is_qualifying else 0,
+        -_round_sort_from_label(label),
+    )
+
+
+def _looks_like_main_draw_round(text: Any) -> bool:
+    value = str(text or "").strip().upper()
+    if not value:
+        return False
+    if value in {"F", "FINAL", "SF", "SEMIFINAL", "SEMIFINALS", "QF", "QUARTERFINAL", "QUARTERFINALS", "RR"}:
+        return True
+    if re.match(r"^R\d+$", value):
+        return True
+    if re.match(r"^ROUND OF \d+$", value):
+        return True
+    return False
+
+
+def _opponent_strength_rank(row: Dict[str, Any]) -> int:
+    rank = _to_int(row.get("opponent_rank"))
+    if rank is not None and rank > 0:
+        return rank
+    seed = _to_int(row.get("opponent_seed"))
+    if seed is not None and seed > 0:
+        return 1000 + seed
+    return 10**6
+
+
+def _resolve_duplicate_qualifying_rows(matches: List[Dict[str, Any]]) -> None:
+    """Resolve duplicate round rows where API merges qualifying/main draws.
+
+    Some players can have two rows for the same round code (e.g. R128 twice).
+    Keep the stronger-opponent row as main draw and relabel others as
+    Qualifying R{tourn_round}.
+    """
+    buckets: Dict[str, List[Dict[str, Any]]] = {}
+    for row in matches:
+        if not isinstance(row, dict):
+            continue
+        if str(row.get("draw_level_type") or "").strip().upper() == "Q":
+            continue
+        label = str(row.get("round") or "").strip()
+        if not _looks_like_main_draw_round(label):
+            continue
+        key = _main_draw_bucket_key(label)
+        if not key:
+            continue
+        buckets.setdefault(key, []).append(row)
+
+    for _round_label_key, rows in buckets.items():
+        if len(rows) <= 1:
+            continue
+
+        # Keep the likely main-draw row (strongest opponent = lower rank number).
+        keep_main = sorted(rows, key=lambda r: (_opponent_strength_rank(r), str(r.get("opponent_name") or "")))[0]
+
+        # Remaining rows are qualifying rows.
+        q_rows = [r for r in rows if r is not keep_main]
+        for idx, row in enumerate(sorted(q_rows, key=lambda r: (_opponent_strength_rank(r), str(r.get("opponent_name") or ""))), start=1):
+            q_round = _qualifying_round_number(str(row.get("round_name") or ""), row.get("tourn_round"))
+            if q_round is None:
+                fallback_round = _to_int(row.get("tourn_round"))
+                q_round = fallback_round if (fallback_round is not None and fallback_round > 0) else idx
+            row["round"] = f"Qualifying R{q_round}"
+
+
+def _normalize_recent_rounds_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
+    if not isinstance(payload, dict):
+        return payload
+    tournaments = payload.get("tournaments")
+    if not isinstance(tournaments, list):
+        return payload
+
+    for event in tournaments:
+        if not isinstance(event, dict):
+            continue
+        matches = event.get("matches")
+        if not isinstance(matches, list):
+            continue
+
+        for row in matches:
+            if not isinstance(row, dict):
+                continue
+            draw_level = row.get("draw_level_type") or row.get("DrawLevelType")
+            row["round"] = _round_label(
+                row.get("round_name", row.get("round")),
+                row.get("tourn_round"),
+                draw_level,
+            )
+
+        _resolve_duplicate_qualifying_rows(matches)
+
+        # Sort after normalization so qualifying rounds stay grouped after main draw rounds.
+        matches.sort(key=lambda row: _recent_round_sort_key(row) if isinstance(row, dict) else (9, 0))
+
+    return payload
 
 
 def _flip_score_for_player_perspective(score_text: str, player_side: int) -> str:
@@ -767,8 +1001,19 @@ def scrape_player_recent_matches(player_id: str, year: int, session: requests.Se
 
         grouped[event_key]["matches"].append(
             {
-                "round": _round_label(row.get("round_name"), row.get("tourn_round")),
-                "round_sort": _round_sort_value(row.get("round_name"), row.get("tourn_round")),
+                "round": _round_label(
+                    row.get("round_name"),
+                    row.get("tourn_round"),
+                    row.get("DrawLevelType") or row.get("draw_level_type"),
+                ),
+                "round_sort": _round_sort_value(
+                    row.get("round_name"),
+                    row.get("tourn_round"),
+                    row.get("DrawLevelType") or row.get("draw_level_type"),
+                ),
+                "round_name": str(row.get("round_name") or "").strip(),
+                "tourn_round": _to_int(row.get("tourn_round")),
+                "draw_level_type": str(row.get("DrawLevelType") or row.get("draw_level_type") or "").strip().upper(),
                 "result": result,
                 "opponent_name": opponent_name,
                 "opponent_country": opponent_country,
@@ -811,11 +1056,12 @@ def scrape_player_recent_matches(player_id: str, year: int, session: requests.Se
     tournaments.sort(key=lambda t: str(t.get("_sort_start_date") or ""), reverse=True)
     for event in tournaments:
         event.pop("_sort_start_date", None)
-    return {
+    payload = {
         "year": year,
         "tournaments": tournaments,
         "updated_at": _iso_now(),
     }
+    return _normalize_recent_rounds_payload(payload)
 
 
 def scrape_player_stats(page, player_url: str) -> Dict[str, str]:

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tennis Tour Hub</title>
+    <title>RallyCourt 2026</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="vendor/brackets-viewer/brackets-viewer.min.css">
     <link rel="stylesheet" href="css/styles.css?v=20260204">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,13 +20,17 @@
         <header class="main-header">
             <div class="logo">
                 <i class="fas fa-tennis-ball"></i>
-                <h1>🎾 Tennis Tour Hub</h1>
+                <h1>RallyCourt 2026</h1>
             </div>
             <div class="tour-tabs">
                 <button class="tour-tab active" data-tour="atp">ATP Tour</button>
                 <button class="tour-tab" data-tour="wta">WTA Tour</button>
             </div>
             <div class="header-actions">
+                <button class="stat-zone-btn" id="statsZoneBtn" onclick="window.TennisApp.openStatsZoneModal()" title="Stats Zone">
+                    <i class="fas fa-chart-line"></i>
+                    Stat Zone
+                </button>
                 <button class="h2h-btn" onclick="window.TennisApp.openH2HModal()" title="Player Head-to-Head Comparison">
                     <i class="fas fa-users"></i>
                     H2H
@@ -117,8 +122,16 @@
             <!-- Center - Tournament Calendar/Tree -->
             <div class="center-panel">
                 <div class="panel-header">
-                    <h2><i class="fas fa-calendar-alt"></i> Tournament Calendar</h2>
-                    <span class="year-display" id="yearDisplay">2026</span>
+                    <div class="calendar-title-stack">
+                        <h2><i class="fas fa-calendar-alt"></i> Tournament Calendar</h2>
+                        <span class="calendar-updated-ago" id="tournamentsUpdatedAgo">Updated --</span>
+                    </div>
+                    <div class="calendar-header-meta">
+                        <button class="calendar-update-btn" id="tournamentsUpdateBtn" type="button" aria-label="Update tournaments" title="Update tournaments">
+                            <i class="fas fa-rotate-right"></i>
+                        </button>
+                        <span class="year-display" id="yearDisplay">2026</span>
+                    </div>
                 </div>
                 <div class="tournament-calendar" id="tournamentCalendar">
                     <!-- Tournament list will be inserted here -->
@@ -172,11 +185,10 @@
         </div>
 
         <!-- Loading Overlay -->
-        <div class="loading-overlay" id="loadingOverlay">
-            <div class="loader">
-                <i class="fas fa-tennis-ball fa-spin"></i>
-                <span>🎾 Loading Tennis Tour Hub...</span>
-            </div>
+        <div class="loading-overlay" id="loadingOverlay" aria-live="polite">
+            <div class="intro-gif-grid" id="introGifGrid"></div>
+            <div class="intro-gif-overlay-shade" aria-hidden="true"></div>
+            <div class="intro-gif-caption">Loading live tennis data...</div>
         </div>
 
         <!-- Match Modal (Click-based) -->
@@ -208,6 +220,44 @@
         <!-- Credit Footer -->
         <div class="credit-footer">
             Created by Pasindu Ranasinghe
+        </div>
+    </div>
+
+    <!-- ATP Stat Zone Modal -->
+    <div class="modal-overlay" id="statsZoneModal">
+        <div class="modal-content stats-zone-modal">
+            <div class="modal-header">
+                <h3 id="statsZoneTitle">ATP Stat Zone</h3>
+                <div class="stats-zone-actions">
+                    <button class="stats-zone-icon-btn" id="statsZoneInfoBtn" type="button" title="Show calculation method" aria-label="Show calculation method">
+                        <i class="fas fa-circle-info"></i>
+                    </button>
+                    <button class="stats-zone-icon-btn" id="statsZoneRefreshBtn" type="button" title="Update ATP stats" aria-label="Update ATP stats">
+                        <i class="fas fa-rotate-right"></i>
+                    </button>
+                    <button class="close-modal" onclick="window.TennisApp.closeStatsZoneModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body" id="statsZoneContent">
+                <!-- Stat zone content rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat Zone Breakdown Modal -->
+    <div class="modal-overlay" id="statsZoneBreakdownModal">
+        <div class="modal-content stats-zone-breakdown-modal">
+            <div class="modal-header">
+                <h3 id="statsZoneBreakdownTitle">Rating Breakdown</h3>
+                <button class="close-modal" onclick="window.TennisApp.StatZoneModule.closeBreakdownModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body stats-zone-breakdown-body" id="statsZoneBreakdownContent">
+                <!-- Breakdown content rendered by JS -->
+            </div>
         </div>
     </div>
 
@@ -272,12 +322,15 @@
     </div>
 
     <!-- JavaScript Files -->
+    <script src="js/prediction_wta_upcoming.js?v=20260207"></script>
     <script src="js/scores.js?v=20260204"></script>
     <script src="js/rankings.js?v=20260204"></script>
     <script src="js/tournaments.js?v=20260204"></script>
     <script src="js/bracket.js?v=20260204"></script>
     <script src="js/h2h.js?v=20260204"></script>
+    <script src="js/stats-zone.js?v=20260208"></script>
     <script src="js/player.js?v=20260204"></script>
-    <script src="js/app.js?v=20260204"></script>
+    <script src="js/loading-intro-gifs.js?v=20260208"></script>
+    <script src="js/app.js?v=20260209"></script>
 </body>
 </html>

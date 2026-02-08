@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.5%\n1st Return Points Won %\n39.4%\n2nd Return Points Won %\n60.5%\nBreak Points Converted\n36.4%\nReturn Games Won\n44.4%\nReturn Games Played\n18\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:50:49.644058+00:00",
+  "updated_at": "2026-02-07T13:24:25.392662+00:00",
   "records_tab": {
     "summary": [
       {
@@ -146,6 +146,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Iva Jovic",
             "opponent_country": "USA",
@@ -156,6 +159,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Magdalena Frech",
             "opponent_country": "POL",
@@ -166,6 +172,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Aliaksandra Sasnovich",
             "opponent_country": "BLR",
@@ -199,6 +208,9 @@
         "matches": [
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Belinda Bencic",
             "opponent_country": "SUI",
@@ -209,6 +221,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Leolia Jeanjean",
             "opponent_country": "FRA",
@@ -227,6 +242,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:50:49.644035+00:00"
+    "updated_at": "2026-02-07T13:24:25.392601+00:00"
   }
 }

@@ -1,0 +1,577 @@
+{
+  "order": 1,
+  "tournament_group_id": 9900,
+  "id": 9900,
+  "name": "United Cup",
+  "title": "United Cup - Perth-Sydney, Australia",
+  "level": "ATP 500",
+  "level_number": "ATP 500",
+  "category": "atp_500",
+  "year": 2026,
+  "start_date": "2026-01-02",
+  "end_date": "2026-01-11",
+  "surface": "Hard",
+  "indoor_outdoor": "O",
+  "city": "Perth-Sydney",
+  "country": "Australia",
+  "location": "Perth-Sydney, Australia",
+  "status": "finished",
+  "draw_size_singles": 18,
+  "draw_size_doubles": 18,
+  "prize_money": "$5,903,345",
+  "prize_money_currency": "USD",
+  "draw_url": "https://www.atptour.com/en/scores/archive/perth-sydney/9900/2026/country-draws",
+  "scores_url": "https://www.atptour.com/en/scores/archive/perth-sydney/9900/2026/country-results",
+  "champion": null,
+  "runner_up": null,
+  "draw": {
+    "draw_size": 18,
+    "surface": "Hard",
+    "draw_type": "Singles",
+    "draw_lines": [],
+    "breakdown": [],
+    "results": []
+  },
+  "matches": [
+    {
+      "match_id": "QF_1",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": null,
+        "name": "USA",
+        "country": "USA",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "player_b": {
+        "id": null,
+        "name": "GRE",
+        "country": "GRE",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "score_string": "2-1",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "QF_2",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": null,
+        "name": "AUS",
+        "country": "AUS",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "player_b": {
+        "id": null,
+        "name": "POL",
+        "country": "POL",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "score_string": "1-2",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "QF_3",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": null,
+        "name": "SUI",
+        "country": "SUI",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "player_b": {
+        "id": null,
+        "name": "ARG",
+        "country": "ARG",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "score_string": "2-1",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "QF_4",
+      "round_id": "QF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": null,
+        "name": "BEL",
+        "country": "BEL",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "player_b": {
+        "id": null,
+        "name": "CZE",
+        "country": "CZE",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "score_string": "2-1",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "SF_1",
+      "round_id": "SF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": null,
+        "name": "USA",
+        "country": "USA",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "player_b": {
+        "id": null,
+        "name": "POL",
+        "country": "POL",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "score_string": "1-2",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "SF_2",
+      "round_id": "SF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": null,
+        "name": "SUI",
+        "country": "SUI",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "player_b": {
+        "id": null,
+        "name": "BEL",
+        "country": "BEL",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "score_string": "2-1",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "Finals_1",
+      "round_id": "Finals",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": null,
+        "name": "POL",
+        "country": "POL",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "player_b": {
+        "id": null,
+        "name": "SUI",
+        "country": "SUI",
+        "seed": null,
+        "entry": null,
+        "image_url": null,
+        "profile_url": null
+      },
+      "score_string": "2-1",
+      "winner_side": "A"
+    }
+  ],
+  "bracket": {
+    "tournament_id": 9900,
+    "tournament_name": "United Cup",
+    "tournament_category": "atp_500",
+    "tournament_surface": "Hard",
+    "tournament_year": 2026,
+    "tournament_status": "finished",
+    "tournament_tour": "atp",
+    "draw_size": 18,
+    "rounds": [
+      "QF",
+      "SF",
+      "Finals"
+    ],
+    "matches": [
+      {
+        "round": "QF",
+        "matches": [
+          {
+            "id": "QF_1",
+            "round": "QF",
+            "match_number": 1,
+            "player1": {
+              "id": null,
+              "name": "USA",
+              "country": "USA",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "player2": {
+              "id": null,
+              "name": "GRE",
+              "country": "GRE",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 2,
+                  "p2": 1
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": null,
+              "name": "USA",
+              "country": "USA",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": null
+          },
+          {
+            "id": "QF_2",
+            "round": "QF",
+            "match_number": 2,
+            "player1": {
+              "id": null,
+              "name": "AUS",
+              "country": "AUS",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "player2": {
+              "id": null,
+              "name": "POL",
+              "country": "POL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 1,
+                  "p2": 2
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": null,
+              "name": "POL",
+              "country": "POL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": null
+          },
+          {
+            "id": "QF_3",
+            "round": "QF",
+            "match_number": 3,
+            "player1": {
+              "id": null,
+              "name": "SUI",
+              "country": "SUI",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "player2": {
+              "id": null,
+              "name": "ARG",
+              "country": "ARG",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 2,
+                  "p2": 1
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": null,
+              "name": "SUI",
+              "country": "SUI",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": null
+          },
+          {
+            "id": "QF_4",
+            "round": "QF",
+            "match_number": 4,
+            "player1": {
+              "id": null,
+              "name": "BEL",
+              "country": "BEL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "player2": {
+              "id": null,
+              "name": "CZE",
+              "country": "CZE",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 2,
+                  "p2": 1
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": null,
+              "name": "BEL",
+              "country": "BEL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "points": 90,
+            "prize_money": null,
+            "stats_url": null
+          }
+        ]
+      },
+      {
+        "round": "SF",
+        "matches": [
+          {
+            "id": "SF_1",
+            "round": "SF",
+            "match_number": 1,
+            "player1": {
+              "id": null,
+              "name": "USA",
+              "country": "USA",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "player2": {
+              "id": null,
+              "name": "POL",
+              "country": "POL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 1,
+                  "p2": 2
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": null,
+              "name": "POL",
+              "country": "POL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "points": 180,
+            "prize_money": null,
+            "stats_url": null
+          },
+          {
+            "id": "SF_2",
+            "round": "SF",
+            "match_number": 2,
+            "player1": {
+              "id": null,
+              "name": "SUI",
+              "country": "SUI",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "player2": {
+              "id": null,
+              "name": "BEL",
+              "country": "BEL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 2,
+                  "p2": 1
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": null,
+              "name": "SUI",
+              "country": "SUI",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "points": 180,
+            "prize_money": null,
+            "stats_url": null
+          }
+        ]
+      },
+      {
+        "round": "Finals",
+        "matches": [
+          {
+            "id": "Finals_1",
+            "round": "Finals",
+            "match_number": 1,
+            "player1": {
+              "id": null,
+              "name": "POL",
+              "country": "POL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "player2": {
+              "id": null,
+              "name": "SUI",
+              "country": "SUI",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 2,
+                  "p2": 1
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": null,
+              "name": "POL",
+              "country": "POL",
+              "seed": null,
+              "entry": null,
+              "image_url": null,
+              "profile_url": null
+            },
+            "points": null,
+            "prize_money": null,
+            "stats_url": null
+          }
+        ]
+      }
+    ],
+    "round_points": {
+      "R32": 20,
+      "R16": 45,
+      "QF": 90,
+      "SF": 180,
+      "F": 300,
+      "W": 500
+    },
+    "round_prize": {},
+    "champion": null,
+    "source": "atp"
+  }
+}

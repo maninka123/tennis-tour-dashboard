@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.5%\n1st Return Points Won %\n35.6%\n2nd Return Points Won %\n46.6%\nBreak Points Converted\n27.3%\nReturn Games Won\n26.1%\nReturn Games Played\n23\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:02:36.912115+00:00",
+  "updated_at": "2026-02-07T13:35:20.321140+00:00",
   "records_tab": {
     "summary": [
       {
@@ -146,6 +146,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Oksana Selekhmeteva",
             "opponent_country": "RUS",
@@ -156,6 +159,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Zarina Diyas",
             "opponent_country": "KAZ",
@@ -189,6 +195,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Marie Bouzkova",
             "opponent_country": "CZE",
@@ -222,6 +231,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elena Rybakina",
             "opponent_country": "KAZ",
@@ -232,6 +244,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Marie Bouzkova",
             "opponent_country": "CZE",
@@ -242,6 +257,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -260,6 +278,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:02:36.912058+00:00"
+    "updated_at": "2026-02-07T13:35:20.321088+00:00"
   }
 }

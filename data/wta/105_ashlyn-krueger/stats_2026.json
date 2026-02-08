@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n31.5%\n1st Return Points Won %\n27.1%\n2nd Return Points Won %\n45.5%\nBreak Points Converted\n28.6%\nReturn Games Won\n12.5%\nReturn Games Played\n16\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:01:26.981422+00:00",
+  "updated_at": "2026-02-07T13:34:23.232430+00:00",
   "records_tab": {
     "summary": [
       {
@@ -130,6 +130,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Madison Keys",
             "opponent_country": "USA",
@@ -140,6 +143,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sara Bejlek",
             "opponent_country": "CZE",
@@ -173,6 +179,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Dalma Galfi",
             "opponent_country": "HUN",
@@ -206,6 +215,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Shuai Zhang",
             "opponent_country": "CHN",
@@ -224,6 +236,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:01:26.981407+00:00"
+    "updated_at": "2026-02-07T13:34:23.232388+00:00"
   }
 }

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.4%\n1st Return Points Won %\n33.3%\n2nd Return Points Won %\n59.7%\nBreak Points Converted\n29.2%\nReturn Games Won\n38.9%\nReturn Games Played\n18\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:55:14.793496+00:00",
+  "updated_at": "2026-02-07T13:28:45.010935+00:00",
   "records_tab": {
     "summary": [
       {
@@ -106,6 +106,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Solana Sierra",
             "opponent_country": "ARG",
@@ -116,6 +119,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Peangtarn Plipuech",
             "opponent_country": "THA",
@@ -149,6 +155,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Viktoriya Tomova",
             "opponent_country": "BUL",
@@ -159,6 +168,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Despina Papamichail",
             "opponent_country": "GRE",
@@ -169,6 +181,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Alice Tubello",
             "opponent_country": "FRA",
@@ -178,7 +193,10 @@
             "opponent_rank": 435
           },
           {
-            "round": "Round of 128",
+            "round": "Qualifying R1",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Ajla Tomljanovic",
             "opponent_country": "AUS",
@@ -212,6 +230,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lilli Tagger",
             "opponent_country": "AUT",
@@ -222,6 +243,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Katie Boulter",
             "opponent_country": "GBR",
@@ -231,7 +255,10 @@
             "opponent_rank": 112
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jessika Ponchet",
             "opponent_country": "FRA",
@@ -241,7 +268,10 @@
             "opponent_rank": 164
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jessika Ponchet",
             "opponent_country": "FRA",
@@ -260,6 +290,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:55:14.793478+00:00"
+    "updated_at": "2026-02-07T13:28:45.010865+00:00"
   }
 }

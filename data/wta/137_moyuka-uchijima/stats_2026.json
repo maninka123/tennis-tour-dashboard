@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n48.4%\n1st Return Points Won %\n47.4%\n2nd Return Points Won %\n51.7%\nBreak Points Converted\n52.9%\nReturn Games Won\n47.4%\nReturn Games Played\n19\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:04:48.204858+00:00",
+  "updated_at": "2026-02-07T13:37:33.862016+00:00",
   "records_tab": {
     "summary": [
       {
@@ -114,6 +114,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elise Mertens",
             "opponent_country": "BEL",
@@ -124,6 +127,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Solana Sierra",
             "opponent_country": "ARG",
@@ -157,6 +163,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Darja Semenistaja",
             "opponent_country": "LAT",
@@ -190,6 +199,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Ekaterine Gorgodze",
             "opponent_country": "GEO",
@@ -200,6 +212,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Madison Brengle",
             "opponent_country": "USA",
@@ -218,6 +233,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:04:48.204833+00:00"
+    "updated_at": "2026-02-07T13:37:33.861966+00:00"
   }
 }

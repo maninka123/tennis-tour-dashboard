@@ -1,0 +1,301 @@
+{
+  "order": 60,
+  "tournament_group_id": 605,
+  "id": 605,
+  "name": "Nitto ATP Finals",
+  "title": "Nitto ATP Finals - Turin, Italy",
+  "level": "ATP Finals",
+  "level_number": "ATP Finals",
+  "category": "finals",
+  "year": 2026,
+  "start_date": "2026-11-15",
+  "end_date": "2026-11-22",
+  "surface": "Hard (Indoor)",
+  "indoor_outdoor": "I",
+  "city": "Turin",
+  "country": "Italy",
+  "location": "Turin, Italy",
+  "status": "upcoming",
+  "draw_size_singles": 8,
+  "draw_size_doubles": null,
+  "prize_money": "",
+  "prize_money_currency": "USD",
+  "draw_url": "https://www.atptour.com/en/scores/current/nitto-atp-finals/605/players-draws",
+  "scores_url": "https://www.atptour.com/en/scores/current/nitto-atp-finals/605/results",
+  "champion": null,
+  "runner_up": null,
+  "draw": {
+    "draw_size": 8,
+    "surface": "Hard (Indoor)",
+    "draw_type": "Singles",
+    "draw_lines": [],
+    "breakdown": [],
+    "results": []
+  },
+  "matches": [
+    {
+      "match_id": "SF_1",
+      "round_id": "SF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "A0E2",
+        "name": "C. Alcaraz",
+        "country": "ESP",
+        "seed": 1,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/a0e2",
+        "profile_url": "https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview"
+      },
+      "player_b": {
+        "id": "AG37",
+        "name": "F. Auger-Aliassime",
+        "country": "CAN",
+        "seed": 8,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/ag37",
+        "profile_url": "https://www.atptour.com/en/players/felix-auger-aliassime/ag37/overview"
+      },
+      "score_string": "6-2 6-4",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "SF_2",
+      "round_id": "SF",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "S0AG",
+        "name": "J. Sinner",
+        "country": "ITA",
+        "seed": 2,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0ag",
+        "profile_url": "https://www.atptour.com/en/players/jannik-sinner/s0ag/overview"
+      },
+      "player_b": {
+        "id": "DH58",
+        "name": "A. de Minaur",
+        "country": "AUS",
+        "seed": 7,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/dh58",
+        "profile_url": "https://www.atptour.com/en/players/alex-de-minaur/dh58/overview"
+      },
+      "score_string": "7-5 6-2",
+      "winner_side": "A"
+    },
+    {
+      "match_id": "Finals_1",
+      "round_id": "Finals",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "player_a": {
+        "id": "A0E2",
+        "name": "C. Alcaraz",
+        "country": "ESP",
+        "seed": 1,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/a0e2",
+        "profile_url": "https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview"
+      },
+      "player_b": {
+        "id": "S0AG",
+        "name": "J. Sinner",
+        "country": "ITA",
+        "seed": 2,
+        "entry": null,
+        "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0ag",
+        "profile_url": "https://www.atptour.com/en/players/jannik-sinner/s0ag/overview"
+      },
+      "score_string": "6-7(7) 5-7",
+      "winner_side": "B"
+    }
+  ],
+  "bracket": {
+    "tournament_id": 605,
+    "tournament_name": "Nitto ATP Finals",
+    "tournament_category": "finals",
+    "tournament_surface": "Hard (Indoor)",
+    "tournament_year": 2026,
+    "tournament_status": "upcoming",
+    "tournament_tour": "atp",
+    "draw_size": 8,
+    "rounds": [
+      "SF",
+      "Finals"
+    ],
+    "matches": [
+      {
+        "round": "SF",
+        "matches": [
+          {
+            "id": "SF_1",
+            "round": "SF",
+            "match_number": 1,
+            "player1": {
+              "id": "A0E2",
+              "name": "C. Alcaraz",
+              "country": "ESP",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/a0e2",
+              "profile_url": "https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview"
+            },
+            "player2": {
+              "id": "AG37",
+              "name": "F. Auger-Aliassime",
+              "country": "CAN",
+              "seed": 8,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/ag37",
+              "profile_url": "https://www.atptour.com/en/players/felix-auger-aliassime/ag37/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 2
+                },
+                {
+                  "p1": 6,
+                  "p2": 4
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "A0E2",
+              "name": "C. Alcaraz",
+              "country": "ESP",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/a0e2",
+              "profile_url": "https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview"
+            },
+            "points": 400,
+            "prize_money": null,
+            "stats_url": null
+          },
+          {
+            "id": "SF_2",
+            "round": "SF",
+            "match_number": 2,
+            "player1": {
+              "id": "S0AG",
+              "name": "J. Sinner",
+              "country": "ITA",
+              "seed": 2,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0ag",
+              "profile_url": "https://www.atptour.com/en/players/jannik-sinner/s0ag/overview"
+            },
+            "player2": {
+              "id": "DH58",
+              "name": "A. de Minaur",
+              "country": "AUS",
+              "seed": 7,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/dh58",
+              "profile_url": "https://www.atptour.com/en/players/alex-de-minaur/dh58/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 7,
+                  "p2": 5
+                },
+                {
+                  "p1": 6,
+                  "p2": 2
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "S0AG",
+              "name": "J. Sinner",
+              "country": "ITA",
+              "seed": 2,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0ag",
+              "profile_url": "https://www.atptour.com/en/players/jannik-sinner/s0ag/overview"
+            },
+            "points": 400,
+            "prize_money": null,
+            "stats_url": null
+          }
+        ]
+      },
+      {
+        "round": "Finals",
+        "matches": [
+          {
+            "id": "Finals_1",
+            "round": "Finals",
+            "match_number": 1,
+            "player1": {
+              "id": "A0E2",
+              "name": "C. Alcaraz",
+              "country": "ESP",
+              "seed": 1,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/a0e2",
+              "profile_url": "https://www.atptour.com/en/players/carlos-alcaraz/a0e2/overview"
+            },
+            "player2": {
+              "id": "S0AG",
+              "name": "J. Sinner",
+              "country": "ITA",
+              "seed": 2,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0ag",
+              "profile_url": "https://www.atptour.com/en/players/jannik-sinner/s0ag/overview"
+            },
+            "score": {
+              "sets": [
+                {
+                  "p1": 6,
+                  "p2": 7,
+                  "tiebreak": {
+                    "p1": 4,
+                    "p2": 7
+                  }
+                },
+                {
+                  "p1": 5,
+                  "p2": 7
+                }
+              ]
+            },
+            "status": "finished",
+            "winner": {
+              "id": "S0AG",
+              "name": "J. Sinner",
+              "country": "ITA",
+              "seed": 2,
+              "entry": null,
+              "image_url": "https://www.atptour.com/-/media/alias/player-headshot/s0ag",
+              "profile_url": "https://www.atptour.com/en/players/jannik-sinner/s0ag/overview"
+            },
+            "points": null,
+            "prize_money": null,
+            "stats_url": null
+          }
+        ]
+      }
+    ],
+    "round_points": {
+      "RR": 200,
+      "SF": 400,
+      "F": 500,
+      "W": 1500
+    },
+    "round_prize": {},
+    "champion": null,
+    "source": "atp"
+  }
+}

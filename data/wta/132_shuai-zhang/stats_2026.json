@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n35.3%\n1st Return Points Won %\n25.0%\n2nd Return Points Won %\n54.2%\nBreak Points Converted\n33.3%\nReturn Games Won\n18.5%\nReturn Games Played\n27\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:04:19.368036+00:00",
+  "updated_at": "2026-02-07T13:37:02.833923+00:00",
   "records_tab": {
     "summary": [
       {
@@ -234,6 +234,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Kamilla Rakhimova",
             "opponent_country": "UZB",
@@ -267,6 +270,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Taylah Preston",
             "opponent_country": "AUS",
@@ -277,6 +283,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Fiona Ferro",
             "opponent_country": "FRA",
@@ -286,7 +295,10 @@
             "opponent_rank": 364
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elena Rybakina",
             "opponent_country": "KAZ",
@@ -297,6 +309,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ashlyn Krueger",
             "opponent_country": "USA",
@@ -315,6 +330,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:04:19.368020+00:00"
+    "updated_at": "2026-02-07T13:37:02.833874+00:00"
   }
 }

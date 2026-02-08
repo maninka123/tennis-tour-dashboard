@@ -1,0 +1,2144 @@
+{
+  "order": 71,
+  "tournament_group_id": 405,
+  "name": "OSAKA",
+  "title": "Kinoshita Group Japan Open - Osaka, JPN",
+  "level": "WTA 250",
+  "level_number": "WTA 250",
+  "year": 2026,
+  "start_date": "2026-10-19",
+  "end_date": "2026-10-25",
+  "surface": "Hard",
+  "indoor_outdoor": "O",
+  "city": "OSAKA",
+  "country": "JAPAN",
+  "status": "upcoming",
+  "draw_size_singles": 0,
+  "draw_size_doubles": 0,
+  "prize_money": 283347,
+  "prize_money_currency": "USD",
+  "champion": {
+    "id": "326735",
+    "name": "Leylah Fernandez",
+    "country": "CAN"
+  },
+  "runner_up": {
+    "id": "330808",
+    "name": "Tereza Valentova",
+    "country": "CZE"
+  },
+  "draw_year": null,
+  "draw": null,
+  "scores_year": 2025,
+  "matches": [
+    {
+      "match_id": "RS019",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T05:53:51.143+00:00",
+      "duration": "02:00:58",
+      "player_a": {
+        "id": "330149",
+        "name": "Dominika Salkova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "score_string": "6-7(3),6-0,6-1",
+      "result_string": "[8]E. Ruse d D. Salkova 6-7(3),6-0,6-1",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS020",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T06:04:35.05+00:00",
+      "duration": "01:18:51",
+      "player_a": {
+        "id": "325725",
+        "name": "Caty McNally",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "323966",
+        "name": "Claire Liu",
+        "country": "USA"
+      },
+      "score_string": "6-2,6-2",
+      "result_string": "[3]C. McNally d C. Liu 6-2,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS021",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T06:13:11.24+00:00",
+      "duration": "02:07:24",
+      "player_a": {
+        "id": "332501",
+        "name": "Ena Koike",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "326512",
+        "name": "Joanna Garland",
+        "country": "TPE"
+      },
+      "score_string": "6-3,5-7,6-1",
+      "result_string": "[12]J. Garland d E. Koike 6-3,5-7,6-1",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS018",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T06:18:33.64+00:00",
+      "duration": "01:54:58",
+      "player_a": {
+        "id": "325836",
+        "name": "Varvara Gracheva",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "326568",
+        "name": "Himeno Sakatsume",
+        "country": "JPN"
+      },
+      "score_string": "6-3,7-5",
+      "result_string": "[2]V. Gracheva d H. Sakatsume 6-3,7-5",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS016",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T07:50:33.66+00:00",
+      "duration": "01:19:15",
+      "player_a": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "329198",
+        "name": "Alina Charaeva",
+        "country": "RUS"
+      },
+      "score_string": "6-1,6-2",
+      "result_string": "[1]T. Valentova d A. Charaeva 6-1,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS017",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T08:27:40.85+00:00",
+      "duration": "01:19:04",
+      "player_a": {
+        "id": "332175",
+        "name": "Sara Saito",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "321454",
+        "name": "Greet Minnen",
+        "country": "BEL"
+      },
+      "score_string": "7-5,6-1",
+      "result_string": "[10]G. Minnen d S. Saito 7-5,6-1",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS025",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T08:29:34.9+00:00",
+      "duration": "01:53:58",
+      "player_a": {
+        "id": "319696",
+        "name": "Astra Sharma",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "324702",
+        "name": "Kaja Juvan",
+        "country": "SLO"
+      },
+      "score_string": "3-6,6-2,6-2",
+      "result_string": "[9]K. Juvan d A. Sharma 3-6,6-2,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS022",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T08:43:39.897+00:00",
+      "duration": "02:03:42",
+      "player_a": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "324750",
+        "name": "Mai Hontama",
+        "country": "JPN"
+      },
+      "score_string": "6-1,7-6(5)",
+      "result_string": "[4]K. Birrell d M. Hontama 6-1,7-6(5)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS024",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T10:01:11.507+00:00",
+      "duration": "01:19:10",
+      "player_a": {
+        "id": "327909",
+        "name": "Elisabetta Cocciaretto",
+        "country": "ITA"
+      },
+      "player_b": {
+        "id": "321179",
+        "name": "Maddison Inglis",
+        "country": "AUS"
+      },
+      "score_string": "6-1,6-4",
+      "result_string": "[5]E. Cocciaretto d M. Inglis 6-1,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS023",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-12T10:55:37.343+00:00",
+      "duration": "01:39:15",
+      "player_a": {
+        "id": "332174",
+        "name": "Hayu Kinoshita",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "327391",
+        "name": "Katie Volynets",
+        "country": "USA"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "[7]K. Volynets d H. Kinoshita 6-4,6-4",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS026",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T02:14:20.623+00:00",
+      "duration": "01:50:04",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "319183",
+        "name": "Kyoka Okamura",
+        "country": "JPN"
+      },
+      "score_string": "6-3,7-6(7)",
+      "result_string": "[6]D. Galfi d K. Okamura 6-3,7-6(7)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS027",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T02:14:34.953+00:00",
+      "duration": "03:02:53",
+      "player_a": {
+        "id": "325473",
+        "name": "Mei Yamaguchi",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "318609",
+        "name": "Taylor Townsend",
+        "country": "USA"
+      },
+      "score_string": "6-7(4),6-3,7-6(3)",
+      "result_string": "[11]T. Townsend d M. Yamaguchi 6-7(4),6-3,7-6(3)",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS009",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T02:18:23.897+00:00",
+      "duration": "01:34:43",
+      "player_a": {
+        "id": "325836",
+        "name": "Varvara Gracheva",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "score_string": "7-6(2),6-2",
+      "result_string": "[2]V. Gracheva d [8]E. Ruse 7-6(2),6-2",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS023",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T02:20:00.227+00:00",
+      "duration": "01:56:24",
+      "player_a": {
+        "id": "320238",
+        "name": "Nao Hibino",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "324934",
+        "name": "Olga Danilovic",
+        "country": "SRB"
+      },
+      "score_string": "6-4,1-6,6-2",
+      "result_string": "[6]O. Danilovic d N. Hibino 6-4,1-6,6-2",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS012",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T04:18:00.117+00:00",
+      "duration": "01:51:22",
+      "player_a": {
+        "id": "327909",
+        "name": "Elisabetta Cocciaretto",
+        "country": "ITA"
+      },
+      "player_b": {
+        "id": "324702",
+        "name": "Kaja Juvan",
+        "country": "SLO"
+      },
+      "score_string": "7-6(5),6-2",
+      "result_string": "[5]E. Cocciaretto d [9]K. Juvan 7-6(5),6-2",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS008",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T04:31:21.267+00:00",
+      "duration": "02:03:38",
+      "player_a": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "321454",
+        "name": "Greet Minnen",
+        "country": "BEL"
+      },
+      "score_string": "4-6,6-4,6-2",
+      "result_string": "[1]T. Valentova d [10]G. Minnen 4-6,6-4,6-2",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS016",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T04:37:04.227+00:00",
+      "duration": "01:16:46",
+      "player_a": {
+        "id": "319998",
+        "name": "Naomi Osaka",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "331857",
+        "name": "Wakana Sonobe",
+        "country": "JPN"
+      },
+      "score_string": "6-0,6-4",
+      "result_string": "[1]N. Osaka d W. Sonobe 6-0,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS010",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T05:45:26.28+00:00",
+      "duration": "01:17:05",
+      "player_a": {
+        "id": "325725",
+        "name": "Caty McNally",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "326512",
+        "name": "Joanna Garland",
+        "country": "TPE"
+      },
+      "score_string": "6-1,6-3",
+      "result_string": "[12]J. Garland d [3]C. McNally 6-1,6-3",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS030",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T06:15:13.303+00:00",
+      "duration": "01:54:15",
+      "player_a": {
+        "id": "312469",
+        "name": "Sorana Cirstea",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "327241",
+        "name": "Moyuka Uchijima",
+        "country": "JPN"
+      },
+      "score_string": "2-6,6-4,6-2",
+      "result_string": "S. Cirstea d M. Uchijima 2-6,6-4,6-2",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS017",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T06:49:18.757+00:00",
+      "duration": "01:10:12",
+      "player_a": {
+        "id": "324898",
+        "name": "Suzan Lamens",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "324789",
+        "name": "Emiliana Arango",
+        "country": "COL"
+      },
+      "score_string": "6-1,6-2",
+      "result_string": "S. Lamens d E. Arango 6-1,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS013",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T07:22:08.51+00:00",
+      "duration": "01:04:22",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "318609",
+        "name": "Taylor Townsend",
+        "country": "USA"
+      },
+      "score_string": "6-1,6-3",
+      "result_string": "[6]D. Galfi d [11]T. Townsend 6-1,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD013",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-13T07:48:21.43+00:00",
+      "duration": "01:10:23",
+      "player_a": {
+        "id": "314704",
+        "name": "Nadiia Kichenok",
+        "country": "UKR"
+      },
+      "player_b": {
+        "id": "316060",
+        "name": "Giuliana Olmos",
+        "country": "MEX"
+      },
+      "score_string": "6-1,7-5",
+      "result_string": "N. Kichenok / M. Ninomiya d [4]G. Olmos / A. Sutjiadi 6-1,7-5",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS022",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T08:14:46.743+00:00",
+      "duration": "02:21:59",
+      "player_a": {
+        "id": "318312",
+        "name": "Maria Sakkari",
+        "country": "GRE"
+      },
+      "player_b": {
+        "id": "329409",
+        "name": "Ashlyn Krueger",
+        "country": "USA"
+      },
+      "score_string": "2-6,6-3,6-4",
+      "result_string": "A. Krueger d M. Sakkari 2-6,6-3,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS031",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T08:27:24.21+00:00",
+      "duration": "01:35:05",
+      "player_a": {
+        "id": "319125",
+        "name": "Katie Boulter",
+        "country": "GBR"
+      },
+      "player_b": {
+        "id": "329668",
+        "name": "Linda Noskova",
+        "country": "CZE"
+      },
+      "score_string": "7-6(3),6-3",
+      "result_string": "K. Boulter d [2]L. Noskova 7-6(3),6-3",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS011",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-13T10:19:02.017+00:00",
+      "duration": "01:42:09",
+      "player_a": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "327391",
+        "name": "Katie Volynets",
+        "country": "USA"
+      },
+      "score_string": "6-4,6-3",
+      "result_string": "[7]K. Volynets d [4]K. Birrell 6-4,6-3",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD008",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-13T10:48:54.127+00:00",
+      "duration": "01:27:05",
+      "player_a": {
+        "id": "315086",
+        "name": "Shuko Aoyama",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "324125",
+        "name": "Momoko Kobori",
+        "country": "JPN"
+      },
+      "score_string": "7-5,3-6,1-0(5)",
+      "result_string": "M. Kobori / A. Shimizu d [1]S. Aoyama / C. Bucsa 7-5,3-6,1-0(5)",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS024",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T02:14:15.17+00:00",
+      "duration": "01:02:42",
+      "player_a": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "325836",
+        "name": "Varvara Gracheva",
+        "country": "FRA"
+      },
+      "score_string": "6-4,6-0",
+      "result_string": "[7]A. Li d V. Gracheva 6-4,6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS018",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T02:17:15.717+00:00",
+      "duration": "01:53:25",
+      "player_a": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "327909",
+        "name": "Elisabetta Cocciaretto",
+        "country": "ITA"
+      },
+      "score_string": "6-2,7-6(4)",
+      "result_string": "J. Cristian d E. Cocciaretto 6-2,7-6(4)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS027",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T02:20:17.003+00:00",
+      "duration": "01:33:36",
+      "player_a": {
+        "id": "327101",
+        "name": "Hailey Baptiste",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "326735",
+        "name": "Leylah Fernandez",
+        "country": "CAN"
+      },
+      "score_string": "6-2,7-5",
+      "result_string": "[4]L. Fernandez d H. Baptiste 6-2,7-5",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD011",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-14T02:29:40.357+00:00",
+      "duration": "01:03:27",
+      "player_a": {
+        "id": "332174",
+        "name": "Hayu Kinoshita",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "328919",
+        "name": "Natsumi Kawaguchi",
+        "country": "JPN"
+      },
+      "score_string": "6-1,6-4",
+      "result_string": "N. Kawaguchi / S. Saito d H. Kinoshita / W. Sonobe 6-1,6-4",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS025",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T03:41:31.527+00:00",
+      "duration": "01:09:54",
+      "player_a": {
+        "id": "326512",
+        "name": "Joanna Garland",
+        "country": "TPE"
+      },
+      "player_b": {
+        "id": "320228",
+        "name": "Rebecca Sramkova",
+        "country": "SVK"
+      },
+      "score_string": "6-3,6-1",
+      "result_string": "R. Sramkova d J. Garland 6-3,6-1",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS029",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T04:15:40.4+00:00",
+      "duration": "02:27:13",
+      "player_a": {
+        "id": "316296",
+        "name": "Viktorija Golubic",
+        "country": "SUI"
+      },
+      "player_b": {
+        "id": "325088",
+        "name": "Bianca Andreescu",
+        "country": "CAN"
+      },
+      "score_string": "6-3,4-6,6-4",
+      "result_string": "V. Golubic d B. Andreescu 6-3,4-6,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS026",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T04:33:40.51+00:00",
+      "duration": "01:36:23",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "326007",
+        "name": "Alycia Parks",
+        "country": "USA"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "D. Galfi d A. Parks 6-4,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD015",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-14T04:51:56.547+00:00",
+      "duration": "01:02:40",
+      "player_a": {
+        "id": "319413",
+        "name": "Quinn Gleason",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "315616",
+        "name": "Kristina Mladenovic",
+        "country": "FRA"
+      },
+      "score_string": "6-1,6-1",
+      "result_string": "[2]K. Mladenovic / T. Townsend d Q. Gleason / S. Santamaria 6-1,6-1",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS019",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T05:16:17.867+00:00",
+      "duration": "01:21:30",
+      "player_a": {
+        "id": "327391",
+        "name": "Katie Volynets",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "328139",
+        "name": "Jessica Bouzas Maneiro",
+        "country": "ESP"
+      },
+      "score_string": "6-2,6-4",
+      "result_string": "[8]J. Bouzas Maneiro d K. Volynets 6-2,6-4",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD009",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-14T06:15:55.007+00:00",
+      "duration": "01:09:42",
+      "player_a": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "317138",
+        "name": "Eri Hozumi",
+        "country": "JPN"
+      },
+      "score_string": "6-3,6-4",
+      "result_string": "A. Li / C. McNally d E. Hozumi / M. Uchijima 6-3,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD012",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-14T06:24:19.037+00:00",
+      "duration": "01:11:30",
+      "player_a": {
+        "id": "320238",
+        "name": "Nao Hibino",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "score_string": "6-3,6-4",
+      "result_string": "J. Cristian / O. Danilovic d N. Hibino / K. Piter 6-3,6-4",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS028",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T07:00:20.01+00:00",
+      "duration": "01:01:33",
+      "player_a": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "322527",
+        "name": "Ena Shibahara",
+        "country": "JPN"
+      },
+      "score_string": "6-1,6-1",
+      "result_string": "[5]M. Bouzkova d E. Shibahara 6-1,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS021",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T07:02:36.02+00:00",
+      "duration": "01:27:27",
+      "player_a": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "330332",
+        "name": "Alexandra Eala",
+        "country": "PHI"
+      },
+      "score_string": "6-1,6-2",
+      "result_string": "T. Valentova d A. Eala 6-1,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD014",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-14T07:37:05.723+00:00",
+      "duration": "00:25:10",
+      "player_a": {
+        "id": "324267",
+        "name": "Anna Blinkova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "329409",
+        "name": "Ashlyn Krueger",
+        "country": "USA"
+      },
+      "score_string": "6-1,0-0 Ret'd",
+      "result_string": "A. Krueger / E. Ruse d A. Blinkova / E. Cocciaretto 6-1,0-0 Ret'd",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "0"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS020",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-14T08:18:29.78+00:00",
+      "duration": "01:42:12",
+      "player_a": {
+        "id": "317964",
+        "name": "Elise Mertens",
+        "country": "BEL"
+      },
+      "player_b": {
+        "id": "321158",
+        "name": "Cristina Bucsa",
+        "country": "ESP"
+      },
+      "score_string": "7-6(5),6-3",
+      "result_string": "[3]E. Mertens d C. Bucsa 7-6(5),6-3",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS009",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-15T02:17:31.303+00:00",
+      "duration": "01:57:27",
+      "player_a": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "328139",
+        "name": "Jessica Bouzas Maneiro",
+        "country": "ESP"
+      },
+      "score_string": "0-6,6-4,6-2",
+      "result_string": "J. Cristian d [8]J. Bouzas Maneiro 0-6,6-4,6-2",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD010",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-15T02:19:57.73+00:00",
+      "duration": "01:27:44",
+      "player_a": {
+        "id": "317612",
+        "name": "Miyu Kato",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "317810",
+        "name": "Storm Hunter",
+        "country": "AUS"
+      },
+      "score_string": "6-3,7-5",
+      "result_string": "S. Hunter / D. Krawczyk d [3]M. Kato / F. Stollar 6-3,7-5",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS011",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-15T04:09:39.373+00:00",
+      "duration": "01:18:00",
+      "player_a": {
+        "id": "329409",
+        "name": "Ashlyn Krueger",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "324934",
+        "name": "Olga Danilovic",
+        "country": "SRB"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "[6]O. Danilovic d A. Krueger 6-4,6-4",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS008",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-15T04:39:13.49+00:00",
+      "duration": "02:20:01",
+      "player_a": {
+        "id": "319998",
+        "name": "Naomi Osaka",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "324898",
+        "name": "Suzan Lamens",
+        "country": "NED"
+      },
+      "score_string": "7-6(6),3-6,6-2",
+      "result_string": "[1]N. Osaka d S. Lamens 7-6(6),3-6,6-2",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-15T05:39:04.347+00:00",
+      "duration": "01:06:16",
+      "player_a": {
+        "id": "324125",
+        "name": "Momoko Kobori",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "score_string": "6-4,6-2",
+      "result_string": "A. Li / C. McNally d M. Kobori / A. Shimizu 6-4,6-2",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-15T07:01:01.987+00:00",
+      "duration": "01:52:09",
+      "player_a": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "314704",
+        "name": "Nadiia Kichenok",
+        "country": "UKR"
+      },
+      "score_string": "7-5,5-7,1-0(6)",
+      "result_string": "N. Kichenok / M. Ninomiya d J. Cristian / O. Danilovic 7-5,5-7,1-0(6)",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS015",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-15T07:15:45.483+00:00",
+      "duration": "01:09:00",
+      "player_a": {
+        "id": "312469",
+        "name": "Sorana Cirstea",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "319125",
+        "name": "Katie Boulter",
+        "country": "GBR"
+      },
+      "score_string": "6-3,6-1",
+      "result_string": "S. Cirstea d K. Boulter 6-3,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS013",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-16T02:18:47.913+00:00",
+      "duration": "01:19:25",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "326735",
+        "name": "Leylah Fernandez",
+        "country": "CAN"
+      },
+      "score_string": "6-1,6-4",
+      "result_string": "[4]L. Fernandez d D. Galfi 6-1,6-4",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS012",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-16T02:22:03.63+00:00",
+      "duration": "01:42:30",
+      "player_a": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "320228",
+        "name": "Rebecca Sramkova",
+        "country": "SVK"
+      },
+      "score_string": "6-2,3-6,6-3",
+      "result_string": "R. Sramkova d [7]A. Li 6-2,3-6,6-3",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS010",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-16T04:11:36.2+00:00",
+      "duration": "01:16:09",
+      "player_a": {
+        "id": "317964",
+        "name": "Elise Mertens",
+        "country": "BEL"
+      },
+      "player_b": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "T. Valentova d [3]E. Mertens 6-4,6-1",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-16T04:25:07.133+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "329409",
+        "name": "Ashlyn Krueger",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "315616",
+        "name": "Kristina Mladenovic",
+        "country": "FRA"
+      },
+      "score_string": " W/O",
+      "result_string": "[2]K. Mladenovic / T. Townsend d A. Krueger / E. Ruse  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-16T04:27:24.05+00:00",
+      "duration": "01:23:00",
+      "player_a": {
+        "id": "317810",
+        "name": "Storm Hunter",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "328919",
+        "name": "Natsumi Kawaguchi",
+        "country": "JPN"
+      },
+      "score_string": "3-6,6-2,1-0(8)",
+      "result_string": "S. Hunter / D. Krawczyk d N. Kawaguchi / S. Saito 3-6,6-2,1-0(8)",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "1",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS014",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-16T05:45:48.713+00:00",
+      "duration": "02:45:09",
+      "player_a": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "316296",
+        "name": "Viktorija Golubic",
+        "country": "SUI"
+      },
+      "score_string": "1-6,6-2,7-6(3)",
+      "result_string": "V. Golubic d [5]M. Bouzkova 1-6,6-2,7-6(3)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-17T02:06:56.067+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "319998",
+        "name": "Naomi Osaka",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "score_string": " W/O",
+      "result_string": "J. Cristian d [1]N. Osaka  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-17T02:11:51.233+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "317810",
+        "name": "Storm Hunter",
+        "country": "AUS"
+      },
+      "score_string": " W/O",
+      "result_string": "S. Hunter / D. Krawczyk d A. Li / C. McNally  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-17T02:16:57.273+00:00",
+      "duration": "01:34:51",
+      "player_a": {
+        "id": "320228",
+        "name": "Rebecca Sramkova",
+        "country": "SVK"
+      },
+      "player_b": {
+        "id": "326735",
+        "name": "Leylah Fernandez",
+        "country": "CAN"
+      },
+      "score_string": "7-6(2),6-3",
+      "result_string": "[4]L. Fernandez d R. Sramkova 7-6(2),6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-17T03:15:57.287+00:00",
+      "duration": "01:28:35",
+      "player_a": {
+        "id": "314704",
+        "name": "Nadiia Kichenok",
+        "country": "UKR"
+      },
+      "player_b": {
+        "id": "315616",
+        "name": "Kristina Mladenovic",
+        "country": "FRA"
+      },
+      "score_string": "7-5,6-4",
+      "result_string": "[2]K. Mladenovic / T. Townsend d N. Kichenok / M. Ninomiya 7-5,6-4",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-17T04:41:27.583+00:00",
+      "duration": "01:43:03",
+      "player_a": {
+        "id": "316296",
+        "name": "Viktorija Golubic",
+        "country": "SUI"
+      },
+      "player_b": {
+        "id": "312469",
+        "name": "Sorana Cirstea",
+        "country": "ROU"
+      },
+      "score_string": "6-2,2-6,6-2",
+      "result_string": "S. Cirstea d V. Golubic 6-2,2-6,6-2",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-17T06:55:41.253+00:00",
+      "duration": "02:05:01",
+      "player_a": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "324934",
+        "name": "Olga Danilovic",
+        "country": "SRB"
+      },
+      "score_string": "4-6,6-2,6-3",
+      "result_string": "T. Valentova d [6]O. Danilovic 4-6,6-2,6-3",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-18T02:52:56.367+00:00",
+      "duration": "01:55:46",
+      "player_a": {
+        "id": "326735",
+        "name": "Leylah Fernandez",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "312469",
+        "name": "Sorana Cirstea",
+        "country": "ROU"
+      },
+      "score_string": "6-1,2-6,6-4",
+      "result_string": "[4]L. Fernandez d S. Cirstea 6-1,2-6,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-18T05:07:41.61+00:00",
+      "duration": "02:43:53",
+      "player_a": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "score_string": "6-7(3),6-4,6-3",
+      "result_string": "T. Valentova d J. Cristian 6-7(3),6-4,6-3",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-10-18T08:15:21.5+00:00",
+      "duration": "01:24:42",
+      "player_a": {
+        "id": "317810",
+        "name": "Storm Hunter",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "315616",
+        "name": "Kristina Mladenovic",
+        "country": "FRA"
+      },
+      "score_string": "6-4,2-6,1-0(5)",
+      "result_string": "[2]K. Mladenovic / T. Townsend d S. Hunter / D. Krawczyk 6-4,2-6,1-0(5)",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-10-19T02:48:43.573+00:00",
+      "duration": "02:11:46",
+      "player_a": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "326735",
+        "name": "Leylah Fernandez",
+        "country": "CAN"
+      },
+      "score_string": "6-0,5-7,6-3",
+      "result_string": "[4]L. Fernandez d T. Valentova 6-0,5-7,6-3",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    }
+  ]
+}

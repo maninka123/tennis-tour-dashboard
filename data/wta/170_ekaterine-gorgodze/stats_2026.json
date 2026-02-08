@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.4%\n1st Return Points Won %\n35.8%\n2nd Return Points Won %\n58.7%\nBreak Points Converted\n44.1%\nReturn Games Won\n41.7%\nReturn Games Played\n36\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:08:26.036488+00:00",
+  "updated_at": "2026-02-07T13:40:59.620623+00:00",
   "records_tab": {
     "summary": [
       {
@@ -98,6 +98,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lisa Pigato",
             "opponent_country": "ITA",
@@ -131,6 +134,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Storm Hunter",
             "opponent_country": "AUS",
@@ -163,7 +169,23 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Himeno Sakatsume",
+            "opponent_country": "JPN",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "3-6, 6-2, 6-0",
+            "opponent_rank": 151
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anouk Koevermans",
             "opponent_country": "NED",
@@ -173,7 +195,10 @@
             "opponent_rank": 194
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Moyuka Uchijima",
             "opponent_country": "JPN",
@@ -184,6 +209,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Selena Janicijevic",
             "opponent_country": "FRA",
@@ -193,7 +221,10 @@
             "opponent_rank": 221
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Elvina Kalieva",
             "opponent_country": "USA",
@@ -201,16 +232,6 @@
             "opponent_entry": "Q",
             "score": "6-2, 6-7(2), 7-6(3)",
             "opponent_rank": 203
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Himeno Sakatsume",
-            "opponent_country": "JPN",
-            "opponent_seed": null,
-            "opponent_entry": "Q",
-            "score": "3-6, 6-2, 6-0",
-            "opponent_rank": 151
           }
         ],
         "summary": {
@@ -222,6 +243,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:08:26.036468+00:00"
+    "updated_at": "2026-02-07T13:40:59.620571+00:00"
   }
 }

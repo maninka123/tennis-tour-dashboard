@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.0%\n1st Return Points Won %\n32.0%\n2nd Return Points Won %\n52.5%\nBreak Points Converted\n42.3%\nReturn Games Won\n28.9%\nReturn Games Played\n38\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:06:29.480143+00:00",
+  "updated_at": "2026-02-07T13:39:08.124438+00:00",
   "records_tab": {
     "summary": [
       {
@@ -146,6 +146,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Yue Yuan",
             "opponent_country": "CHN",
@@ -156,6 +159,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lina Gjorcheska",
             "opponent_country": "MKD",
@@ -166,6 +172,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Jessika Ponchet",
             "opponent_country": "FRA",
@@ -198,7 +207,23 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Joanna Garland",
+            "opponent_country": "TPE",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-4",
+            "opponent_rank": 129
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lanlana Tararudee",
             "opponent_country": "THA",
@@ -208,7 +233,10 @@
             "opponent_rank": 131
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Miriam Bulgaru",
             "opponent_country": "ROU",
@@ -219,6 +247,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lucia Bronzetti",
             "opponent_country": "ITA",
@@ -228,7 +259,10 @@
             "opponent_rank": 105
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sada Nahimana",
             "opponent_country": "BDI",
@@ -236,16 +270,6 @@
             "opponent_entry": "",
             "score": "6-2, 6-4",
             "opponent_rank": 218
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Joanna Garland",
-            "opponent_country": "TPE",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 6-4",
-            "opponent_rank": 129
           }
         ],
         "summary": {
@@ -257,6 +281,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:06:29.480121+00:00"
+    "updated_at": "2026-02-07T13:39:08.124381+00:00"
   }
 }

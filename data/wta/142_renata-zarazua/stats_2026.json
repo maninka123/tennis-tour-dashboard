@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n43.7%\n1st Return Points Won %\n36.1%\n2nd Return Points Won %\n59.0%\nBreak Points Converted\n44.4%\nReturn Games Won\n30.8%\nReturn Games Played\n26\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:05:18.721118+00:00",
+  "updated_at": "2026-02-07T13:38:03.866686+00:00",
   "records_tab": {
     "summary": [
       {
@@ -138,6 +138,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Marie Bouzkova",
             "opponent_country": "CZE",
@@ -171,6 +174,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Simona Waltert",
             "opponent_country": "SUI",
@@ -180,7 +186,10 @@
             "opponent_rank": 86
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Iva Jovic",
             "opponent_country": "USA",
@@ -191,6 +200,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Hiroko Kuwata",
             "opponent_country": "JPN",
@@ -200,7 +212,10 @@
             "opponent_rank": 664
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Hailey Baptiste",
             "opponent_country": "USA",
@@ -234,6 +249,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Xinyu Wang",
             "opponent_country": "CHN",
@@ -244,6 +262,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sloane Stephens",
             "opponent_country": "USA",
@@ -262,6 +283,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:05:18.721030+00:00"
+    "updated_at": "2026-02-07T13:38:03.866623+00:00"
   }
 }

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.0%\n1st Return Points Won %\n35.4%\n2nd Return Points Won %\n52.1%\nBreak Points Converted\n46.2%\nReturn Games Won\n32.4%\nReturn Games Played\n37\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:53:47.771806+00:00",
+  "updated_at": "2026-02-07T13:27:21.337568+00:00",
   "records_tab": {
     "summary": [
       {
@@ -178,6 +178,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Emma Navarro",
             "opponent_country": "USA",
@@ -210,7 +213,23 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Iva Jovic",
+            "opponent_country": "USA",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-3, 6-7(5), 6-2",
+            "opponent_rank": 30
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Xinyu Wang",
             "opponent_country": "CHN",
@@ -221,6 +240,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Oksana Selekhmeteva",
             "opponent_country": "RUS",
@@ -228,16 +250,6 @@
             "opponent_entry": "Q",
             "score": "6-3, 1-6, 6-1",
             "opponent_rank": 98
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Iva Jovic",
-            "opponent_country": "USA",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-3, 6-7(5), 6-2",
-            "opponent_rank": 30
           }
         ],
         "summary": {
@@ -263,7 +275,23 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Alexandra Eala",
+            "opponent_country": "PHI",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 53
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Elisabetta Cocciaretto",
             "opponent_country": "ITA",
@@ -274,6 +302,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Venus Williams",
             "opponent_country": "USA",
@@ -281,16 +312,6 @@
             "opponent_entry": "W",
             "score": "6-4, 4-6, 6-2",
             "opponent_rank": 582
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Alexandra Eala",
-            "opponent_country": "PHI",
-            "opponent_seed": 4,
-            "opponent_entry": "",
-            "score": "6-3, 6-2",
-            "opponent_rank": 53
           }
         ],
         "summary": {
@@ -302,6 +323,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:53:47.771789+00:00"
+    "updated_at": "2026-02-07T13:27:21.337514+00:00"
   }
 }

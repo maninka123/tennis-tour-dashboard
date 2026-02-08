@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.4%\n1st Return Points Won %\n36.4%\n2nd Return Points Won %\n52.5%\nBreak Points Converted\n35.7%\nReturn Games Won\n31.9%\nReturn Games Played\n47\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:50:38.208668+00:00",
+  "updated_at": "2026-02-07T13:24:13.495153+00:00",
   "records_tab": {
     "summary": [
       {
@@ -178,6 +178,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Madison Keys",
             "opponent_country": "USA",
@@ -188,6 +191,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Oksana Selekhmeteva",
             "opponent_country": "RUS",
@@ -198,6 +204,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mccartney Kessler",
             "opponent_country": "USA",
@@ -208,6 +217,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anastasia Zakharova",
             "opponent_country": "RUS",
@@ -240,7 +252,36 @@
         "draw": "48M/16D",
         "matches": [
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Marta Kostyuk",
+            "opponent_country": "UKR",
+            "opponent_seed": 16,
+            "opponent_entry": "",
+            "score": "6-0, 6-3",
+            "opponent_rank": 26
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Liudmila Samsonova",
+            "opponent_country": "RUS",
+            "opponent_seed": 10,
+            "opponent_entry": "",
+            "score": "6-3, 7-6(3)",
+            "opponent_rank": 17
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Dayana Yastremska",
             "opponent_country": "UKR",
@@ -251,6 +292,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anna Kalinskaya",
             "opponent_country": "RUS",
@@ -261,6 +305,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -268,26 +315,6 @@
             "opponent_entry": "",
             "score": "",
             "opponent_rank": 0
-          },
-          {
-            "round": "S",
-            "result": "L",
-            "opponent_name": "Marta Kostyuk",
-            "opponent_country": "UKR",
-            "opponent_seed": 16,
-            "opponent_entry": "",
-            "score": "6-0, 6-3",
-            "opponent_rank": 26
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Liudmila Samsonova",
-            "opponent_country": "RUS",
-            "opponent_seed": 10,
-            "opponent_entry": "",
-            "score": "6-3, 7-6(3)",
-            "opponent_rank": 17
           }
         ],
         "summary": {
@@ -299,6 +326,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:50:38.208648+00:00"
+    "updated_at": "2026-02-07T13:24:13.495094+00:00"
   }
 }

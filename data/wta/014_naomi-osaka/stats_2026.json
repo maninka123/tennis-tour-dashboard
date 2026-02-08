@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n44.7%\n1st Return Points Won %\n38.5%\n2nd Return Points Won %\n56.0%\nBreak Points Converted\n31.6%\nReturn Games Won\n31.6%\nReturn Games Played\n19\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:51:23.086410+00:00",
+  "updated_at": "2026-02-07T13:24:59.615573+00:00",
   "records_tab": {
     "summary": [
       {
@@ -170,6 +170,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Maddison Inglis",
             "opponent_country": "AUS",
@@ -180,6 +183,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sorana Cirstea",
             "opponent_country": "ROU",
@@ -190,6 +196,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Antonia Ruzic",
             "opponent_country": "CRO",
@@ -223,6 +232,9 @@
         "matches": [
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Maria Sakkari",
             "opponent_country": "GRE",
@@ -233,6 +245,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Katie Swan",
             "opponent_country": "GBR",
@@ -251,6 +266,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:51:23.086389+00:00"
+    "updated_at": "2026-02-07T13:24:59.615534+00:00"
   }
 }

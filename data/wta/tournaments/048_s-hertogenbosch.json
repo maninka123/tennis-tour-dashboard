@@ -1,0 +1,2129 @@
+{
+  "order": 48,
+  "tournament_group_id": 822,
+  "name": "'S-HERTOGENBOSCH",
+  "title": "Libéma Open - 's-Hertogenbosch, NED",
+  "level": "WTA 250",
+  "level_number": "WTA 250",
+  "year": 2026,
+  "start_date": "2026-06-08",
+  "end_date": "2026-06-14",
+  "surface": "Grass",
+  "indoor_outdoor": "O",
+  "city": "'S-HERTOGENBOSCH",
+  "country": "NETHERLANDS",
+  "status": "upcoming",
+  "draw_size_singles": 0,
+  "draw_size_doubles": 0,
+  "prize_money": 283347,
+  "prize_money_currency": "USD",
+  "champion": {
+    "id": "317964",
+    "name": "Elise Mertens",
+    "country": "BEL"
+  },
+  "runner_up": {
+    "id": "320408",
+    "name": "Elena-Gabriela Ruse",
+    "country": "ROU"
+  },
+  "draw_year": null,
+  "draw": null,
+  "scores_year": 2025,
+  "matches": [
+    {
+      "match_id": "RS024",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-07T09:21:11.38+00:00",
+      "duration": "02:14:54",
+      "player_a": {
+        "id": "317790",
+        "name": "Aliaksandra Sasnovich",
+        "country": "BLR"
+      },
+      "player_b": {
+        "id": "324360",
+        "name": "Maria Mateas",
+        "country": "USA"
+      },
+      "score_string": "6-0,6-7(6),6-2",
+      "result_string": "[5]A. Sasnovich d M. Mateas 6-0,6-7(6),6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS025",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-07T09:35:56.07+00:00",
+      "duration": "01:04:52",
+      "player_a": {
+        "id": "315472",
+        "name": "Ekaterina Yashina",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "326512",
+        "name": "Joanna Garland",
+        "country": "TPE"
+      },
+      "score_string": "6-3,6-2",
+      "result_string": "[11]J. Garland d E. Yashina 6-3,6-2",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS021",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-07T09:37:36.763+00:00",
+      "duration": "01:25:25",
+      "player_a": {
+        "id": "324361",
+        "name": "Carson Branstine",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "325940",
+        "name": "Jule Niemeier",
+        "country": "GER"
+      },
+      "score_string": "6-3,7-6(2)",
+      "result_string": "C. Branstine d [8]J. Niemeier 6-3,7-6(2)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS020",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-07T16:19:04.42+00:00",
+      "duration": "01:25:40",
+      "player_a": {
+        "id": "324325",
+        "name": "Yue Yuan",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "332204",
+        "name": "Joy De Zeeuw",
+        "country": "NED"
+      },
+      "score_string": "7-6(4),6-4",
+      "result_string": "[3]Y. Yuan d J. De Zeeuw 7-6(4),6-4",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS019",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-07T16:24:01.87+00:00",
+      "duration": "01:49:41",
+      "player_a": {
+        "id": "312623",
+        "name": "Sofia Shapatava",
+        "country": "GEO"
+      },
+      "player_b": {
+        "id": "315806",
+        "name": "Katarzyna Kawa",
+        "country": "POL"
+      },
+      "score_string": "7-6(4),6-3",
+      "result_string": "[9]K. Kawa d S. Shapatava 7-6(4),6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS018",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-07T17:07:26.003+00:00",
+      "duration": "00:58:34",
+      "player_a": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "312268",
+        "name": "Mihaela Buzarnescu",
+        "country": "ROU"
+      },
+      "score_string": "6-1,6-2",
+      "result_string": "[2]E. Ruse d M. Buzarnescu 6-1,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS027",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T09:27:40.097+00:00",
+      "duration": "01:18:11",
+      "player_a": {
+        "id": "312536",
+        "name": "Yanina Wickmayer",
+        "country": "BEL"
+      },
+      "player_b": {
+        "id": "320901",
+        "name": "Jessica Failla",
+        "country": "USA"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "Y. Wickmayer d J. Failla 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS026",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T09:31:49.63+00:00",
+      "duration": "02:26:09",
+      "player_a": {
+        "id": "330548",
+        "name": "Ella Seidel",
+        "country": "GER"
+      },
+      "player_b": {
+        "id": "332599",
+        "name": "Sarah Van Emst",
+        "country": "NED"
+      },
+      "score_string": "6-3,5-7,7-6(2)",
+      "result_string": "[6]E. Seidel d S. Van Emst 6-3,5-7,7-6(2)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS017",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T09:43:12.41+00:00",
+      "duration": "01:15:35",
+      "player_a": {
+        "id": "327527",
+        "name": "Lian Tran",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "319709",
+        "name": "Nina Stojanovic",
+        "country": "SRB"
+      },
+      "score_string": "6-3,6-4",
+      "result_string": "L. Tran d [10]N. Stojanovic 6-3,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS016",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T09:43:30.633+00:00",
+      "duration": "01:36:23",
+      "player_a": {
+        "id": "317146",
+        "name": "Nadiya Kolb",
+        "country": "UKR"
+      },
+      "player_b": {
+        "id": "333783",
+        "name": "Isis Louise Van Den Broek",
+        "country": "NED"
+      },
+      "score_string": "7-5,6-3",
+      "result_string": "I. Van Den Broek d N. Kolb 7-5,6-3",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS023",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T12:11:59.57+00:00",
+      "duration": "00:59:37",
+      "player_a": {
+        "id": "334654",
+        "name": "Loes Ebeling Koning",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "320592",
+        "name": "Mariam Bolkvadze",
+        "country": "GEO"
+      },
+      "score_string": "6-3,6-2",
+      "result_string": "[12]M. Bolkvadze d L. Ebeling Koning 6-3,6-2",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS022",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T13:29:41.283+00:00",
+      "duration": "02:12:21",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "332467",
+        "name": "Renata Jamrichova",
+        "country": "SVK"
+      },
+      "score_string": "6-7(4),6-4,6-4",
+      "result_string": "[4]D. Galfi d R. Jamrichova 6-7(4),6-4,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS012",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T13:49:28.827+00:00",
+      "duration": "01:05:30",
+      "player_a": {
+        "id": "317790",
+        "name": "Aliaksandra Sasnovich",
+        "country": "BLR"
+      },
+      "player_b": {
+        "id": "326512",
+        "name": "Joanna Garland",
+        "country": "TPE"
+      },
+      "score_string": "6-0,6-3",
+      "result_string": "[11]J. Garland d [5]A. Sasnovich 6-0,6-3",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS009",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T14:21:53.717+00:00",
+      "duration": "01:34:15",
+      "player_a": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "315806",
+        "name": "Katarzyna Kawa",
+        "country": "POL"
+      },
+      "score_string": "6-2,6-1",
+      "result_string": "[2]E. Ruse d [9]K. Kawa 6-2,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS010",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T16:35:25.543+00:00",
+      "duration": "01:22:41",
+      "player_a": {
+        "id": "324325",
+        "name": "Yue Yuan",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "324361",
+        "name": "Carson Branstine",
+        "country": "CAN"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "C. Branstine d [3]Y. Yuan 6-4,6-4",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS008",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-08T16:58:03.417+00:00",
+      "duration": "01:46:59",
+      "player_a": {
+        "id": "333783",
+        "name": "Isis Louise Van Den Broek",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "327527",
+        "name": "Lian Tran",
+        "country": "NED"
+      },
+      "score_string": "4-6,6-1,6-4",
+      "result_string": "I. Van Den Broek d L. Tran 4-6,6-1,6-4",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS021",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T08:43:37.17+00:00",
+      "duration": "01:54:54",
+      "player_a": {
+        "id": "323451",
+        "name": "Arianne Hartono",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "327909",
+        "name": "Elisabetta Cocciaretto",
+        "country": "ITA"
+      },
+      "score_string": "7-6(11),7-5",
+      "result_string": "E. Cocciaretto d A. Hartono 7-6(11),7-5",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS028",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T08:47:45.243+00:00",
+      "duration": "01:16:37",
+      "player_a": {
+        "id": "319526",
+        "name": "Veronika Kudermetova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "328897",
+        "name": "Polina Kudermetova",
+        "country": "RUS"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "[8]V. Kudermetova d P. Kudermetova 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS013",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T10:41:15.403+00:00",
+      "duration": "01:23:12",
+      "player_a": {
+        "id": "330548",
+        "name": "Ella Seidel",
+        "country": "GER"
+      },
+      "player_b": {
+        "id": "312536",
+        "name": "Yanina Wickmayer",
+        "country": "BEL"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "Y. Wickmayer d [6]E. Seidel 6-4,6-1",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS027",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T11:07:47.363+00:00",
+      "duration": "01:08:12",
+      "player_a": {
+        "id": "317584",
+        "name": "Viktoriya Tomova",
+        "country": "BUL"
+      },
+      "player_b": {
+        "id": "317964",
+        "name": "Elise Mertens",
+        "country": "BEL"
+      },
+      "score_string": "6-4,6-0",
+      "result_string": "[3]E. Mertens d V. Tomova 6-4,6-0",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS011",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T11:25:41.527+00:00",
+      "duration": "01:31:00",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "320592",
+        "name": "Mariam Bolkvadze",
+        "country": "GEO"
+      },
+      "score_string": "7-6(5),6-1",
+      "result_string": "[12]M. Bolkvadze d [4]D. Galfi 7-6(5),6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS019",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T12:34:09.253+00:00",
+      "duration": "01:09:13",
+      "player_a": {
+        "id": "331759",
+        "name": "Anouck Vrancken Peeters",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "324576",
+        "name": "Lulu Sun",
+        "country": "NZL"
+      },
+      "score_string": "6-1,6-3",
+      "result_string": "[7]L. Sun d A. Vrancken Peeters 6-1,6-3",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD015",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-09T13:13:12.33+00:00",
+      "duration": "00:56:55",
+      "player_a": {
+        "id": "317820",
+        "name": "Makoto Ninomiya",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "317915",
+        "name": "Irina Khromacheva",
+        "country": "RUS"
+      },
+      "score_string": "6-2,6-2",
+      "result_string": "[2]I. Khromacheva / F. Stollar d M. Ninomiya / Q. Tang 6-2,6-2",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD014",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-09T13:42:15.643+00:00",
+      "duration": "01:40:59",
+      "player_a": {
+        "id": "319007",
+        "name": "Ekaterina Alexandrova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "325088",
+        "name": "Bianca Andreescu",
+        "country": "CAN"
+      },
+      "score_string": "7-6(2),7-5",
+      "result_string": "B. Andreescu / C. Branstine d E. Alexandrova / A. Potapova 7-6(2),7-5",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS025",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T13:47:33.98+00:00",
+      "duration": "01:13:53",
+      "player_a": {
+        "id": "313987",
+        "name": "Anastasija Sevastova",
+        "country": "LAT"
+      },
+      "player_b": {
+        "id": "324325",
+        "name": "Yue Yuan",
+        "country": "CHN"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "Y. Yuan d A. Sevastova 6-3,6-3",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS030",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-09T15:36:29.557+00:00",
+      "duration": "01:04:56",
+      "player_a": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "324267",
+        "name": "Anna Blinkova",
+        "country": "RUS"
+      },
+      "score_string": "6-3,6-1",
+      "result_string": "A. Blinkova d K. Siniakova 6-3,6-1",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS022",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T08:42:10.937+00:00",
+      "duration": "01:42:26",
+      "player_a": {
+        "id": "312536",
+        "name": "Yanina Wickmayer",
+        "country": "BEL"
+      },
+      "player_b": {
+        "id": "324898",
+        "name": "Suzan Lamens",
+        "country": "NED"
+      },
+      "score_string": "6-3,0-6,6-3",
+      "result_string": "S. Lamens d Y. Wickmayer 6-3,0-6,6-3",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS020",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T08:43:29.35+00:00",
+      "duration": "02:23:41",
+      "player_a": {
+        "id": "315130",
+        "name": "Magda Linette",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "317708",
+        "name": "Bernarda Pera",
+        "country": "USA"
+      },
+      "score_string": "6-2,6-7(10),7-5",
+      "result_string": "B. Pera d [4]M. Linette 6-2,6-7(10),7-5",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS024",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T08:49:54.593+00:00",
+      "duration": "02:15:29",
+      "player_a": {
+        "id": "326376",
+        "name": "Xinyu Wang",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "score_string": "7-5,6-7(2),6-1",
+      "result_string": "K. Birrell d [6]X. Wang 7-5,6-7(2),6-1",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS018",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T13:31:44.26+00:00",
+      "duration": "01:14:54",
+      "player_a": {
+        "id": "326512",
+        "name": "Joanna Garland",
+        "country": "TPE"
+      },
+      "player_b": {
+        "id": "325088",
+        "name": "Bianca Andreescu",
+        "country": "CAN"
+      },
+      "score_string": "6-1,6-3",
+      "result_string": "B. Andreescu d J. Garland 6-1,6-3",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD013",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-10T13:58:32.417+00:00",
+      "duration": "01:31:26",
+      "player_a": {
+        "id": "312621",
+        "name": "Oksana Kalashnikova",
+        "country": "GEO"
+      },
+      "player_b": {
+        "id": "317138",
+        "name": "Eri Hozumi",
+        "country": "JPN"
+      },
+      "score_string": "3-6,6-4,1-0(14)",
+      "result_string": "[4]E. Hozumi / A. Sutjiadi d O. Kalashnikova / E. Pridankina 3-6,6-4,1-0(14)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS031",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T15:06:13.98+00:00",
+      "duration": "01:20:53",
+      "player_a": {
+        "id": "320592",
+        "name": "Mariam Bolkvadze",
+        "country": "GEO"
+      },
+      "player_b": {
+        "id": "319007",
+        "name": "Ekaterina Alexandrova",
+        "country": "RUS"
+      },
+      "score_string": "6-3,6-4",
+      "result_string": "[2]E. Alexandrova d M. Bolkvadze 6-3,6-4",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS029",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T15:07:44.773+00:00",
+      "duration": "01:39:37",
+      "player_a": {
+        "id": "316925",
+        "name": "Danielle Collins",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "321454",
+        "name": "Greet Minnen",
+        "country": "BEL"
+      },
+      "score_string": "4-6,6-1,6-2",
+      "result_string": "G. Minnen d D. Collins 4-6,6-1,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS023",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T15:09:16.543+00:00",
+      "duration": "01:14:13",
+      "player_a": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "325601",
+        "name": "Anastasia Potapova",
+        "country": "RUS"
+      },
+      "score_string": "7-5,6-2",
+      "result_string": "A. Li d [5]A. Potapova 7-5,6-2",
+      "sets": [
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD008",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-10T16:57:10.673+00:00",
+      "duration": "01:04:33",
+      "player_a": {
+        "id": "319526",
+        "name": "Veronika Kudermetova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "324898",
+        "name": "Suzan Lamens",
+        "country": "NED"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "[1]V. Kudermetova / E. Mertens d S. Lamens / S. Van Emst 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS016",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-10T17:32:47.62+00:00",
+      "duration": "02:16:18",
+      "player_a": {
+        "id": "322222",
+        "name": "Liudmila Samsonova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "324361",
+        "name": "Carson Branstine",
+        "country": "CAN"
+      },
+      "score_string": "6-4,5-7,6-1",
+      "result_string": "C. Branstine d [1]L. Samsonova 6-4,5-7,6-1",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS026",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-11T08:42:57.723+00:00",
+      "duration": "01:29:57",
+      "player_a": {
+        "id": "328988",
+        "name": "Anouk Koevermans",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "318312",
+        "name": "Maria Sakkari",
+        "country": "GRE"
+      },
+      "score_string": "6-3,6-4",
+      "result_string": "M. Sakkari d A. Koevermans 6-3,6-4",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS017",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-11T08:44:27.093+00:00",
+      "duration": "01:01:45",
+      "player_a": {
+        "id": "333783",
+        "name": "Isis Louise Van Den Broek",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "score_string": "6-2,6-1",
+      "result_string": "E. Ruse d I. Van Den Broek 6-2,6-1",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD011",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-11T08:48:10.667+00:00",
+      "duration": "01:39:55",
+      "player_a": {
+        "id": "326376",
+        "name": "Xinyu Wang",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "314704",
+        "name": "Nadiia Kichenok",
+        "country": "UKR"
+      },
+      "score_string": "7-6(3),4-6,1-0(2)",
+      "result_string": "N. Kichenok / M. Linette d X. Wang / S. Zheng 7-6(3),4-6,1-0(2)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS010",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-11T10:42:43.41+00:00",
+      "duration": "01:23:25",
+      "player_a": {
+        "id": "317708",
+        "name": "Bernarda Pera",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "327909",
+        "name": "Elisabetta Cocciaretto",
+        "country": "ITA"
+      },
+      "score_string": "6-1,7-6(4)",
+      "result_string": "E. Cocciaretto d B. Pera 6-1,7-6(4)",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD009",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-11T10:52:24.957+00:00",
+      "duration": "01:26:12",
+      "player_a": {
+        "id": "313806",
+        "name": "Katarzyna Piter",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "score_string": "6-4,7-6(7)",
+      "result_string": "K. Piter / N. Stojanovic d A. Li / L. Sun 6-4,7-6(7)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD012",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-11T11:25:02.03+00:00",
+      "duration": "01:02:51",
+      "player_a": {
+        "id": "320501",
+        "name": "Magali Kempen",
+        "country": "BEL"
+      },
+      "player_b": {
+        "id": "323849",
+        "name": "Anastasia Detiuc",
+        "country": "CZE"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "M. Kempen / E. Ruse d A. Detiuc / B. Schoofs 6-4,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS015",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-11T12:23:55.64+00:00",
+      "duration": "01:18:02",
+      "player_a": {
+        "id": "324267",
+        "name": "Anna Blinkova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "319007",
+        "name": "Ekaterina Alexandrova",
+        "country": "RUS"
+      },
+      "score_string": "6-0,7-5",
+      "result_string": "[2]E. Alexandrova d A. Blinkova 6-0,7-5",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD010",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-11T12:32:48.423+00:00",
+      "duration": "01:01:38",
+      "player_a": {
+        "id": "316713",
+        "name": "Nicole Melichar-Martinez",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "318112",
+        "name": "Angelica Moratelli",
+        "country": "ITA"
+      },
+      "score_string": "6-3,6-2",
+      "result_string": "[3]N. Melichar-Martinez / L. Samsonova d A. Moratelli / S. Santamaria 6-3,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-11T13:48:53.753+00:00",
+      "duration": "01:10:39",
+      "player_a": {
+        "id": "325088",
+        "name": "Bianca Andreescu",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "317915",
+        "name": "Irina Khromacheva",
+        "country": "RUS"
+      },
+      "score_string": "7-5,6-3",
+      "result_string": "[2]I. Khromacheva / F. Stollar d B. Andreescu / C. Branstine 7-5,6-3",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS014",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-11T16:14:09.447+00:00",
+      "duration": "01:14:16",
+      "player_a": {
+        "id": "319526",
+        "name": "Veronika Kudermetova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "321454",
+        "name": "Greet Minnen",
+        "country": "BEL"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "[8]V. Kudermetova d G. Minnen 6-4,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS008",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-12T08:50:55.623+00:00",
+      "duration": "01:28:58",
+      "player_a": {
+        "id": "324361",
+        "name": "Carson Branstine",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "score_string": "6-4,6-3",
+      "result_string": "E. Ruse d C. Branstine 6-4,6-3",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS011",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-12T08:54:44.947+00:00",
+      "duration": "02:15:11",
+      "player_a": {
+        "id": "324898",
+        "name": "Suzan Lamens",
+        "country": "NED"
+      },
+      "player_b": {
+        "id": "326096",
+        "name": "Ann Li",
+        "country": "USA"
+      },
+      "score_string": "7-6(4),7-6(5)",
+      "result_string": "S. Lamens d A. Li 7-6(4),7-6(5)",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-12T10:41:03.63+00:00",
+      "duration": "01:38:24",
+      "player_a": {
+        "id": "316713",
+        "name": "Nicole Melichar-Martinez",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "314704",
+        "name": "Nadiia Kichenok",
+        "country": "UKR"
+      },
+      "score_string": "6-2,5-7,1-0(5)",
+      "result_string": "[3]N. Melichar-Martinez / L. Samsonova d N. Kichenok / M. Linette 6-2,5-7,1-0(5)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "1",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS013",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-12T10:55:59.06+00:00",
+      "duration": "01:22:13",
+      "player_a": {
+        "id": "318312",
+        "name": "Maria Sakkari",
+        "country": "GRE"
+      },
+      "player_b": {
+        "id": "317964",
+        "name": "Elise Mertens",
+        "country": "BEL"
+      },
+      "score_string": "6-3,6-0",
+      "result_string": "[3]E. Mertens d M. Sakkari 6-3,6-0",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-12T12:32:53.41+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "320501",
+        "name": "Magali Kempen",
+        "country": "BEL"
+      },
+      "player_b": {
+        "id": "317138",
+        "name": "Eri Hozumi",
+        "country": "JPN"
+      },
+      "score_string": " W/O",
+      "result_string": "[4]E. Hozumi / A. Sutjiadi d M. Kempen / E. Ruse  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS009",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-12T12:35:53.167+00:00",
+      "duration": "01:05:50",
+      "player_a": {
+        "id": "325088",
+        "name": "Bianca Andreescu",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "324576",
+        "name": "Lulu Sun",
+        "country": "NZL"
+      },
+      "score_string": "6-0,6-4",
+      "result_string": "B. Andreescu d [7]L. Sun 6-0,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-12T13:48:35.28+00:00",
+      "duration": "01:08:00",
+      "player_a": {
+        "id": "319526",
+        "name": "Veronika Kudermetova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "313806",
+        "name": "Katarzyna Piter",
+        "country": "POL"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "[1]V. Kudermetova / E. Mertens d K. Piter / N. Stojanovic 6-4,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS012",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-12T14:05:50.477+00:00",
+      "duration": "01:36:34",
+      "player_a": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "324325",
+        "name": "Yue Yuan",
+        "country": "CHN"
+      },
+      "score_string": "6-4,6-3",
+      "result_string": "Y. Yuan d K. Birrell 6-4,6-3",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-13T08:53:54.237+00:00",
+      "duration": "01:26:38",
+      "player_a": {
+        "id": "317138",
+        "name": "Eri Hozumi",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "317915",
+        "name": "Irina Khromacheva",
+        "country": "RUS"
+      },
+      "score_string": "4-6,6-3,1-0(8)",
+      "result_string": "[2]I. Khromacheva / F. Stollar d [4]E. Hozumi / A. Sutjiadi 4-6,6-3,1-0(8)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-13T08:56:14.653+00:00",
+      "duration": "02:20:33",
+      "player_a": {
+        "id": "319526",
+        "name": "Veronika Kudermetova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "319007",
+        "name": "Ekaterina Alexandrova",
+        "country": "RUS"
+      },
+      "score_string": "5-7,6-4,6-2",
+      "result_string": "[2]E. Alexandrova d [8]V. Kudermetova 5-7,6-4,6-2",
+      "sets": [
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-13T11:32:02.297+00:00",
+      "duration": "01:27:32",
+      "player_a": {
+        "id": "324325",
+        "name": "Yue Yuan",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "317964",
+        "name": "Elise Mertens",
+        "country": "BEL"
+      },
+      "score_string": "6-0,6-4",
+      "result_string": "[3]E. Mertens d Y. Yuan 6-0,6-4",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-13T12:46:17.917+00:00",
+      "duration": "01:31:36",
+      "player_a": {
+        "id": "327909",
+        "name": "Elisabetta Cocciaretto",
+        "country": "ITA"
+      },
+      "player_b": {
+        "id": "324898",
+        "name": "Suzan Lamens",
+        "country": "NED"
+      },
+      "score_string": "6-2,7-6(4)",
+      "result_string": "E. Cocciaretto d S. Lamens 6-2,7-6(4)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-13T14:14:01.377+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "319526",
+        "name": "Veronika Kudermetova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "316713",
+        "name": "Nicole Melichar-Martinez",
+        "country": "USA"
+      },
+      "score_string": " W/O",
+      "result_string": "[3]N. Melichar-Martinez / L. Samsonova d [1]V. Kudermetova / E. Mertens  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-13T14:28:59.463+00:00",
+      "duration": "01:18:17",
+      "player_a": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "325088",
+        "name": "Bianca Andreescu",
+        "country": "CAN"
+      },
+      "score_string": "6-2,6-4",
+      "result_string": "E. Ruse d B. Andreescu 6-2,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-14T08:48:55.72+00:00",
+      "duration": "02:49:35",
+      "player_a": {
+        "id": "317964",
+        "name": "Elise Mertens",
+        "country": "BEL"
+      },
+      "player_b": {
+        "id": "319007",
+        "name": "Ekaterina Alexandrova",
+        "country": "RUS"
+      },
+      "score_string": "2-6,7-6(7),6-4",
+      "result_string": "[3]E. Mertens d [2]E. Alexandrova 2-6,7-6(7),6-4",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2025-06-14T11:13:10.177+00:00",
+      "duration": "01:17:52",
+      "player_a": {
+        "id": "316713",
+        "name": "Nicole Melichar-Martinez",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "317915",
+        "name": "Irina Khromacheva",
+        "country": "RUS"
+      },
+      "score_string": "7-5,6-3",
+      "result_string": "[2]I. Khromacheva / F. Stollar d [3]N. Melichar-Martinez / L. Samsonova 7-5,6-3",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-14T12:03:19.597+00:00",
+      "duration": "02:24:50",
+      "player_a": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "327909",
+        "name": "Elisabetta Cocciaretto",
+        "country": "ITA"
+      },
+      "score_string": "2-6,6-4,6-3",
+      "result_string": "E. Ruse d E. Cocciaretto 2-6,6-4,6-3",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2025-06-15T09:51:28.963+00:00",
+      "duration": "01:57:59",
+      "player_a": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "317964",
+        "name": "Elise Mertens",
+        "country": "BEL"
+      },
+      "score_string": "6-3,7-6(4)",
+      "result_string": "[3]E. Mertens d E. Ruse 6-3,7-6(4)",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    }
+  ]
+}

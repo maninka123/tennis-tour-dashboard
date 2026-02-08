@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.1%\n1st Return Points Won %\n38.5%\n2nd Return Points Won %\n57.1%\nBreak Points Converted\n34.8%\nReturn Games Won\n40.0%\nReturn Games Played\n40\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:05:31.322422+00:00",
+  "updated_at": "2026-02-07T13:38:14.716616+00:00",
   "records_tab": {
     "summary": [
       {
@@ -114,6 +114,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Lanlana Tararudee",
             "opponent_country": "THA",
@@ -147,6 +150,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Amanda Anisimova",
             "opponent_country": "USA",
@@ -180,6 +186,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Renata Zarazua",
             "opponent_country": "MEX",
@@ -190,6 +199,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ava Beck",
             "opponent_country": "AUS",
@@ -222,7 +234,23 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Daria Snigur",
+            "opponent_country": "UKR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-4",
+            "opponent_rank": 149
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Darja Vidmanova",
             "opponent_country": "CZE",
@@ -233,6 +261,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Dominika Salkova",
             "opponent_country": "CZE",
@@ -240,16 +271,6 @@
             "opponent_entry": "",
             "score": "6-7(2), 7-6(0), 6-2",
             "opponent_rank": 142
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Daria Snigur",
-            "opponent_country": "UKR",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 6-4",
-            "opponent_rank": 149
           }
         ],
         "summary": {
@@ -261,6 +282,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:05:31.322373+00:00"
+    "updated_at": "2026-02-07T13:38:14.716553+00:00"
   }
 }

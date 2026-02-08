@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.3%\n1st Return Points Won %\n31.6%\n2nd Return Points Won %\n62.3%\nBreak Points Converted\n60.0%\nReturn Games Won\n39.1%\nReturn Games Played\n23\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:52:40.331358+00:00",
+  "updated_at": "2026-02-07T13:26:17.194447+00:00",
   "records_tab": {
     "summary": [
       {
@@ -154,6 +154,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Iga Swiatek",
             "opponent_country": "POL",
@@ -164,6 +167,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Julia Grabher",
             "opponent_country": "AUT",
@@ -174,6 +180,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sonay Kartal",
             "opponent_country": "GBR",
@@ -207,6 +216,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Victoria Mboko",
             "opponent_country": "CAN",
@@ -217,6 +229,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Elena-Gabriela Ruse",
             "opponent_country": "ROU",
@@ -250,6 +265,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Jessica Pegula",
             "opponent_country": "USA",
@@ -260,6 +278,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tereza Valentova",
             "opponent_country": "CZE",
@@ -278,6 +299,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:52:40.331342+00:00"
+    "updated_at": "2026-02-07T13:26:17.194391+00:00"
   }
 }

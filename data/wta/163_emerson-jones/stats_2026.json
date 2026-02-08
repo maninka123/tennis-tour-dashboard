@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n50.5%\n1st Return Points Won %\n41.4%\n2nd Return Points Won %\n63.4%\nBreak Points Converted\n80.0%\nReturn Games Won\n47.1%\nReturn Games Played\n17\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:07:37.415633+00:00",
+  "updated_at": "2026-02-07T13:40:16.367494+00:00",
   "records_tab": {
     "summary": [
       {
@@ -98,6 +98,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Victoria Mboko",
             "opponent_country": "CAN",
@@ -131,6 +134,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Emma Navarro",
             "opponent_country": "USA",
@@ -164,6 +170,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Liudmila Samsonova",
             "opponent_country": "RUS",
@@ -174,6 +183,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tatjana Maria",
             "opponent_country": "GER",
@@ -192,6 +204,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:07:37.415619+00:00"
+    "updated_at": "2026-02-07T13:40:16.367440+00:00"
   }
 }

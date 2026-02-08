@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n49.2%\n1st Return Points Won %\n43.7%\n2nd Return Points Won %\n59.4%\nBreak Points Converted\n43.8%\nReturn Games Won\n48.3%\nReturn Games Played\n29\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:56:00.860097+00:00",
+  "updated_at": "2026-02-07T13:29:29.343795+00:00",
   "records_tab": {
     "summary": [
       {
@@ -186,6 +186,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Daria Snigur",
             "opponent_country": "UKR",
@@ -196,6 +199,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Kathinka Von Deichmann",
             "opponent_country": "LIE",
@@ -206,6 +212,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Jasmine Paolini",
             "opponent_country": "ITA",
@@ -215,7 +224,10 @@
             "opponent_rank": 8
           },
           {
-            "round": "Round of 128",
+            "round": "Qualifying R1",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Ksenia Efremova",
             "opponent_country": "FRA",
@@ -249,6 +261,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Maria Timofeeva",
             "opponent_country": "UZB",
@@ -258,7 +273,10 @@
             "opponent_rank": 138
           },
           {
-            "round": "Round of 16",
+            "round": "Qualifying R4",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Liudmila Samsonova",
             "opponent_country": "RUS",
@@ -269,6 +287,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Viktoriya Tomova",
             "opponent_country": "BUL",
@@ -278,7 +299,10 @@
             "opponent_rank": 128
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Clara Tauson",
             "opponent_country": "DEN",
@@ -289,6 +313,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anna Blinkova",
             "opponent_country": "RUS",
@@ -307,6 +334,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:56:00.860076+00:00"
+    "updated_at": "2026-02-07T13:29:29.343718+00:00"
   }
 }

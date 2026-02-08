@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n29.4%\n1st Return Points Won %\n30.8%\n2nd Return Points Won %\n25.0%\nBreak Points Converted\n0.0%\nReturn Games Won\n0.0%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:57:34.878332+00:00",
+  "updated_at": "2026-02-07T13:31:01.268233+00:00",
   "records_tab": {
     "summary": [
       {
@@ -130,6 +130,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Jeline Vandromme",
             "opponent_country": "BEL",
@@ -140,6 +143,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Angela Fita Boluda",
             "opponent_country": "ESP",
@@ -173,6 +179,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Maddison Inglis",
             "opponent_country": "AUS",
@@ -183,6 +192,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Silvia Ambrosio",
             "opponent_country": "ITA",
@@ -193,6 +205,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Miriam Bulgaru",
             "opponent_country": "ROU",
@@ -226,6 +241,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Daria Snigur",
             "opponent_country": "UKR",
@@ -244,6 +262,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:57:34.878303+00:00"
+    "updated_at": "2026-02-07T13:31:01.268185+00:00"
   }
 }

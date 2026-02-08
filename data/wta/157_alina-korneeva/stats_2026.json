@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n44.6%\n1st Return Points Won %\n44.7%\n2nd Return Points Won %\n44.4%\nBreak Points Converted\n37.5%\nReturn Games Won\n33.3%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:06:56.235400+00:00",
+  "updated_at": "2026-02-07T13:39:36.948072+00:00",
   "records_tab": {
     "summary": [
       {
@@ -89,7 +89,36 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Carol Young Suh Lee",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "3-6, 6-4, 6-4",
+            "opponent_rank": 210
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Sofia Costoulas",
+            "opponent_country": "BEL",
+            "opponent_seed": 5,
+            "opponent_entry": "",
+            "score": "6-3, 6-1",
+            "opponent_rank": 143
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Hanne Vandewinkel",
             "opponent_country": "BEL",
@@ -100,6 +129,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Havah Kaur Kaler",
             "opponent_country": "CAN",
@@ -107,26 +139,6 @@
             "opponent_entry": "W",
             "score": "6-1, 6-0",
             "opponent_rank": 1490
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Carol Young Suh Lee",
-            "opponent_country": "USA",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "3-6, 6-4, 6-4",
-            "opponent_rank": 210
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Sofia Costoulas",
-            "opponent_country": "BEL",
-            "opponent_seed": 5,
-            "opponent_entry": "",
-            "score": "6-3, 6-1",
-            "opponent_rank": 143
           }
         ],
         "summary": {
@@ -153,6 +165,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Zhuoxuan Bai",
             "opponent_country": "CHN",
@@ -186,6 +201,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Polina Kudermetova",
             "opponent_country": "UZB",
@@ -204,6 +222,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:06:56.235383+00:00"
+    "updated_at": "2026-02-07T13:39:36.948016+00:00"
   }
 }

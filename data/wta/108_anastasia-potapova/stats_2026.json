@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.8%\n1st Return Points Won %\n28.8%\n2nd Return Points Won %\n62.1%\nBreak Points Converted\n27.3%\nReturn Games Won\n25.0%\nReturn Games Played\n24\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:01:47.014486+00:00",
+  "updated_at": "2026-02-07T13:34:40.688021+00:00",
   "records_tab": {
     "summary": [
       {
@@ -162,6 +162,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Aryna Sabalenka",
             "opponent_country": "BLR",
@@ -172,6 +175,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Emma Raducanu",
             "opponent_country": "GBR",
@@ -182,6 +188,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Suzan Lamens",
             "opponent_country": "NED",
@@ -215,6 +224,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Jaqueline  Cristian",
             "opponent_country": "ROU",
@@ -225,6 +237,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Xiaodi You",
             "opponent_country": "CHN",
@@ -234,7 +249,10 @@
             "opponent_rank": 282
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Kimberly Birrell",
             "opponent_country": "AUS",
@@ -268,6 +286,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Diana Shnaider",
             "opponent_country": "RUS",
@@ -278,6 +299,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Daria Kasatkina",
             "opponent_country": "AUS",
@@ -296,6 +320,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:01:47.014463+00:00"
+    "updated_at": "2026-02-07T13:34:40.687954+00:00"
   }
 }

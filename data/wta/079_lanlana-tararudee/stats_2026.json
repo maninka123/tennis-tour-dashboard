@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n48.4%\n1st Return Points Won %\n36.0%\n2nd Return Points Won %\n65.2%\nBreak Points Converted\n55.6%\nReturn Games Won\n43.5%\nReturn Games Played\n23\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:58:07.120918+00:00",
+  "updated_at": "2026-02-07T13:31:33.921606+00:00",
   "records_tab": {
     "summary": [
       {
@@ -89,7 +89,23 @@
         "draw": "32M/16Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Solana Sierra",
+            "opponent_country": "ARG",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-3, 6-4",
+            "opponent_rank": 63
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Polina Kudermetova",
             "opponent_country": "UZB",
@@ -100,6 +116,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Simona Waltert",
             "opponent_country": "SUI",
@@ -107,16 +126,6 @@
             "opponent_entry": "",
             "score": "6-2, 3-6, 6-2",
             "opponent_rank": 87
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Solana Sierra",
-            "opponent_country": "ARG",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-3, 6-4",
-            "opponent_rank": 63
           }
         ],
         "summary": {
@@ -143,6 +152,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Lilli Tagger",
             "opponent_country": "AUT",
@@ -153,6 +165,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Harriet Dart",
             "opponent_country": "GBR",
@@ -163,6 +178,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sofia Costoulas",
             "opponent_country": "BEL",
@@ -172,7 +190,10 @@
             "opponent_rank": 143
           },
           {
-            "round": "Round of 128",
+            "round": "Qualifying R1",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elise Mertens",
             "opponent_country": "BEL",
@@ -206,6 +227,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Tamara Zidansek",
             "opponent_country": "SLO",
@@ -216,6 +240,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tina Smith",
             "opponent_country": "AUS",
@@ -234,6 +261,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:58:07.120901+00:00"
+    "updated_at": "2026-02-07T13:31:33.921546+00:00"
   }
 }

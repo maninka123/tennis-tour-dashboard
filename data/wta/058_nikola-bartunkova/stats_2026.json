@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n34.0%\n1st Return Points Won %\n30.0%\n2nd Return Points Won %\n40.0%\nBreak Points Converted\n16.7%\nReturn Games Won\n12.5%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:55:55.227221+00:00",
+  "updated_at": "2026-02-07T13:29:23.948371+00:00",
   "records_tab": {
     "summary": [
       {
@@ -90,6 +90,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elise Mertens",
             "opponent_country": "BEL",
@@ -99,7 +102,10 @@
             "opponent_rank": 21
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Whitney Osuigwe",
             "opponent_country": "USA",
@@ -110,6 +116,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Belinda Bencic",
             "opponent_country": "SUI",
@@ -119,7 +128,10 @@
             "opponent_rank": 10
           },
           {
-            "round": "Round of 64",
+            "round": "Qualifying R2",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tina Smith",
             "opponent_country": "AUS",
@@ -130,6 +142,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Daria Kasatkina",
             "opponent_country": "AUS",
@@ -139,7 +154,10 @@
             "opponent_rank": 43
           },
           {
-            "round": "Round of 128",
+            "round": "Qualifying R1",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Selena Janicijevic",
             "opponent_country": "FRA",
@@ -173,6 +191,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Tatiana Prozorova",
             "opponent_country": "RUS",
@@ -191,6 +212,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:55:55.227206+00:00"
+    "updated_at": "2026-02-07T13:29:23.948192+00:00"
   }
 }

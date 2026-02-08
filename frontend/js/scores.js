@@ -4,6 +4,62 @@
  */
 
 const ScoresModule = {
+    liveModalRefreshTimer: null,
+    activeLiveModalMatchId: null,
+    _activeMatchStatsRequestKey: null,
+
+    // ATP Match Stats Cache - persists stats to avoid re-fetching
+    atpMatchStatsCache: {},
+    atpMatchStatsCacheKey: 'tennisApp_atpMatchStatsCache',
+    
+    init() {
+        // Load cached ATP match stats from localStorage
+        try {
+            const cached = localStorage.getItem(this.atpMatchStatsCacheKey);
+            if (cached) {
+                this.atpMatchStatsCache = JSON.parse(cached);
+                console.log(`Loaded ${Object.keys(this.atpMatchStatsCache).length} cached ATP match stats`);
+            }
+        } catch (error) {
+            console.warn('Failed to load ATP match stats cache:', error);
+            this.atpMatchStatsCache = {};
+        }
+    },
+    
+    saveATPMatchStatsCache() {
+        try {
+            localStorage.setItem(this.atpMatchStatsCacheKey, JSON.stringify(this.atpMatchStatsCache));
+        } catch (error) {
+            console.warn('Failed to save ATP match stats cache:', error);
+        }
+    },
+    
+    getCachedATPMatchStats(cacheKey) {
+        const cached = this.atpMatchStatsCache[cacheKey];
+        if (!cached) return null;
+        
+        // Check if cache is still valid (24 hours for completed matches)
+        const now = Date.now();
+        const age = now - (cached.cachedAt || 0);
+        const maxAge = 24 * 60 * 60 * 1000; // 24 hours
+        
+        if (age > maxAge) {
+            delete this.atpMatchStatsCache[cacheKey];
+            this.saveATPMatchStatsCache();
+            return null;
+        }
+        
+        return cached.stats;
+    },
+    
+    cacheATPMatchStats(cacheKey, stats) {
+        this.atpMatchStatsCache[cacheKey] = {
+            stats: stats,
+            cachedAt: Date.now()
+        };
+        this.saveATPMatchStatsCache();
+    },
+
     /**
      * Demo live matches data (used when API is unavailable)
      */
@@ -439,6 +495,31 @@ const ScoresModule = {
         if (!round) return '';
         const raw = String(round).trim();
         const upper = raw.toUpperCase();
+        const extractQualifierRound = (text) => {
+            const value = String(text || '').trim().toUpperCase();
+            if (!value || value === 'Q') return null;
+
+            const patterns = [
+                /^Q\s*([1-9])$/,
+                /^QUALIF(?:YING|IER)\s+R\s*([1-9])$/,
+                /^QUALIF(?:YING|IER)\s+ROUND\s*([1-9])$/,
+                /^([1-9])(?:ST|ND|RD|TH)\s+ROUND\s+QUALIF(?:YING|IER)$/,
+                /^ROUND\s*([1-9])\s+QUALIF(?:YING|IER)$/
+            ];
+            for (const pattern of patterns) {
+                const match = value.match(pattern);
+                if (match) {
+                    return Number(match[1]);
+                }
+            }
+            return null;
+        };
+
+        const qualifyingRound = extractQualifierRound(raw);
+        if (qualifyingRound) {
+            return `Qualifier R${qualifyingRound}`;
+        }
+
         const map = {
             F: 'Final',
             SF: 'Semi Final',
@@ -593,10 +674,11 @@ const ScoresModule = {
         });
     },
 
-    showUpcomingInsights(matchId) {
-        const { AppState } = window.TennisApp;
+    showUpcomingInsights(matchId, matchOverride = null) {
+        const { AppState, Utils } = window.TennisApp;
         const tour = AppState.currentTour;
-        const match = AppState.upcomingMatches[tour]?.find(m => m.id === matchId)
+        const match = matchOverride
+            || AppState.upcomingMatches[tour]?.find(m => m.id === matchId)
             || this.demoUpcomingMatches[tour]?.find(m => m.id === matchId);
         if (!match) return;
 
@@ -607,7 +689,36 @@ const ScoresModule = {
         const favPct = p1Fav ? winEdge.p1 : winEdge.p2;
         const dogPct = 100 - favPct;
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
-        const categoryClass = window.TennisApp.Utils.getCategoryClass(match.tournament_category);
+        const categoryClass = Utils.getCategoryClass(match.tournament_category);
+        const surfaceClass = this.getSurfaceClass(match);
+        const surfaceLabel = this.getSurfaceLabel(match);
+        const previewRoundLabel = this.getRoundLabel(match.round);
+        const p1Season = winEdge?.players?.p1?.seasonRecord?.total
+            ? `${winEdge.players.p1.seasonRecord.wins}-${winEdge.players.p1.seasonRecord.losses}`
+            : '-';
+        const p2Season = winEdge?.players?.p2?.seasonRecord?.total
+            ? `${winEdge.players.p2.seasonRecord.wins}-${winEdge.players.p2.seasonRecord.losses}`
+            : '-';
+        const p1Recent = winEdge?.players?.p1?.recentRecord?.total
+            ? `${winEdge.players.p1.recentRecord.wins}-${winEdge.players.p1.recentRecord.losses}`
+            : '-';
+        const p2Recent = winEdge?.players?.p2?.recentRecord?.total
+            ? `${winEdge.players.p2.recentRecord.wins}-${winEdge.players.p2.recentRecord.losses}`
+            : '-';
+        const p1Surface = winEdge?.players?.p1?.surfaceRecord?.total
+            ? `${winEdge.players.p1.surfaceRecord.wins}-${winEdge.players.p1.surfaceRecord.losses}`
+            : '-';
+        const p2Surface = winEdge?.players?.p2?.surfaceRecord?.total
+            ? `${winEdge.players.p2.surfaceRecord.wins}-${winEdge.players.p2.surfaceRecord.losses}`
+            : '-';
+        const p1Points = winEdge?.players?.p1?.points
+            ? winEdge.players.p1.points.toLocaleString()
+            : '-';
+        const p2Points = winEdge?.players?.p2?.points
+            ? winEdge.players.p2.points.toLocaleString()
+            : '-';
+        const p1Rank = winEdge?.players?.p1?.rank ? `#${winEdge.players.p1.rank}` : '-';
+        const p2Rank = winEdge?.players?.p2?.rank ? `#${winEdge.players.p2.rank}` : '-';
 
         let modal = document.getElementById('upcomingInsightsModal');
         if (!modal) {
@@ -615,7 +726,7 @@ const ScoresModule = {
             modal.id = 'upcomingInsightsModal';
             modal.className = 'modal-overlay active';
             modal.innerHTML = `
-                <div class="modal-content edge-insights-modal">
+                <div class="modal-content edge-insights-modal prediction-modal">
                     <div class="modal-header">
                         <h3>Match Preview</h3>
                         <button class="close-modal" id="upcomingInsightsClose">&times;</button>
@@ -640,92 +751,132 @@ const ScoresModule = {
                 <div class="match-stats-tournament">
                     ${match.tournament}
                     ${categoryLabel ? `<span class="category-badge ${categoryClass}">${categoryLabel}</span>` : ''}
-                    ${match.round ? `<span class="match-stats-round-tag">${match.round}</span>` : ''}
+                    ${previewRoundLabel ? `<span class="match-stats-round-tag">${previewRoundLabel}</span>` : ''}
+                    <span class="match-surface-pill ${surfaceClass}">${surfaceLabel}</span>
                 </div>
             </div>
-            <div class="upcoming-preview-hero">
-                <div class="upcoming-preview-scoreline">
-                    <span class="pct left">${winEdge.p1}%</span>
-                    <span class="dash">-</span>
-                    <span class="pct right">${winEdge.p2}%</span>
-                </div>
-                <div class="edge-bar">
-                    <span class="edge-pct left">${winEdge.p1}%</span>
-                    <div class="edge-track">
-                        <div class="edge-fill left" style="width:${winEdge.p1}%"></div>
-                        <div class="edge-fill right" style="width:${winEdge.p2}%"></div>
+            <div class="prediction-hero">
+                <div class="prediction-player-column left">
+                    <div class="prediction-player-top">
+                        <div class="prediction-player-photo-wrap">
+                            <img class="prediction-player-image" src="${Utils.getPlayerImage(match.player1)}" alt="${match.player1.name}">
+                        </div>
+                        <div class="prediction-player-main">
+                            <div class="prediction-player-name">${match.player1.name}</div>
+                            <div class="prediction-player-meta">${Utils.getFlag(match.player1.country)} Rank ${p1Rank}</div>
+                            <div class="prediction-player-pills">
+                                <span class="prediction-pill">${p1Points} pts</span>
+                                <span class="prediction-pill">${surfaceLabel} ${p1Surface}</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="edge-pct right">${winEdge.p2}%</span>
+                    <div class="prediction-mini-grid">
+                        <div class="prediction-mini-item">
+                            <span class="label">Season</span>
+                            <span class="value">${p1Season}</span>
+                        </div>
+                        <div class="prediction-mini-item">
+                            <span class="label">Recent</span>
+                            <span class="value">${p1Recent}</span>
+                        </div>
+                        <div class="prediction-mini-item">
+                            <span class="label">Rank</span>
+                            <span class="value">${p1Rank}</span>
+                        </div>
+                        <div class="prediction-mini-item">
+                            <span class="label">Win Chance</span>
+                            <span class="value">${winEdge.p1}%</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="edge-names">
-                    <span class="edge-name left">${window.TennisApp.Utils.formatPlayerName(match.player1.name)}</span>
-                    <span class="edge-name right">${window.TennisApp.Utils.formatPlayerName(match.player2.name)}</span>
+                <div class="prediction-center">
+                    <div class="prediction-scoreline">
+                        <span class="pct left">${winEdge.p1}%</span>
+                        <span class="dash">-</span>
+                        <span class="pct right">${winEdge.p2}%</span>
+                    </div>
+                    <div class="edge-bar">
+                        <span class="edge-pct left">${winEdge.p1}%</span>
+                        <div class="edge-track">
+                            <div class="edge-fill left" style="width:${winEdge.p1}%"></div>
+                            <div class="edge-fill right" style="width:${winEdge.p2}%"></div>
+                        </div>
+                        <span class="edge-pct right">${winEdge.p2}%</span>
+                    </div>
+                    <div class="prediction-confidence">${winEdge.confidence || 'Low confidence'}</div>
+                    <div class="prediction-h2h">H2H ${winEdge.h2hText || 'N/A'}</div>
+                </div>
+                <div class="prediction-player-column right">
+                    <div class="prediction-player-top">
+                        <div class="prediction-player-photo-wrap">
+                            <img class="prediction-player-image" src="${Utils.getPlayerImage(match.player2)}" alt="${match.player2.name}">
+                        </div>
+                        <div class="prediction-player-main">
+                            <div class="prediction-player-name">${match.player2.name}</div>
+                            <div class="prediction-player-meta">${Utils.getFlag(match.player2.country)} Rank ${p2Rank}</div>
+                            <div class="prediction-player-pills">
+                                <span class="prediction-pill">${p2Points} pts</span>
+                                <span class="prediction-pill">${surfaceLabel} ${p2Surface}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prediction-mini-grid">
+                        <div class="prediction-mini-item">
+                            <span class="label">Season</span>
+                            <span class="value">${p2Season}</span>
+                        </div>
+                        <div class="prediction-mini-item">
+                            <span class="label">Recent</span>
+                            <span class="value">${p2Recent}</span>
+                        </div>
+                        <div class="prediction-mini-item">
+                            <span class="label">Rank</span>
+                            <span class="value">${p2Rank}</span>
+                        </div>
+                        <div class="prediction-mini-item">
+                            <span class="label">Win Chance</span>
+                            <span class="value">${winEdge.p2}%</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p><strong>Prediction:</strong> ${favorite.name} is favored (${favPct}%) over ${underdog.name} (${dogPct}%).</p>
-            <ul class="edge-insights-list">
-                <li>Current form: ${winEdge.formNote}</li>
-                <li>H2H snapshot: ${winEdge.h2hText}</li>
-                <li>Ranking edge: #${match.player1.rank} vs #${match.player2.rank}</li>
-                <li>Momentum note: ${winEdge.reason}</li>
-            </ul>
+
+            <div class="prediction-factors">
+                ${(winEdge.factors || []).map((factor) => `
+                    <div class="prediction-factor-row ${factor.edge > 0 ? 'left-edge' : factor.edge < 0 ? 'right-edge' : 'neutral-edge'}">
+                        <div class="prediction-factor-value left">${factor.p1Display || '-'}</div>
+                        <div class="prediction-factor-center">
+                            <div class="prediction-factor-head">
+                                <span class="label">${factor.label}</span>
+                                <span class="weight">${Math.round((factor.weight || 0) * 100)}%</span>
+                            </div>
+                            <div class="prediction-factor-track">
+                                <span class="midline"></span>
+                                <span class="fill ${factor.edge > 0 ? 'left' : factor.edge < 0 ? 'right' : 'neutral'}" style="width:${factor.magnitudePct || 0}%"></span>
+                            </div>
+                            <div class="prediction-factor-note">${factor.note || ''}</div>
+                        </div>
+                        <div class="prediction-factor-value right">${factor.p2Display || '-'}</div>
+                    </div>
+                `).join('')}
+            </div>
+
+            <div class="prediction-summary">
+                <p><strong>Prediction:</strong> ${favorite.name} is favored (${favPct}%) over ${underdog.name} (${dogPct}%).</p>
+                <p class="prediction-rationale">${winEdge.reason || ''}</p>
+                <ul class="edge-insights-list prediction-bullets">
+                    ${(winEdge.summaryBullets || []).map((line) => `<li>${line}</li>`).join('')}
+                </ul>
+                <p class="prediction-conclusion">${winEdge.conclusion || ''}</p>
+            </div>
         `;
 
         modal.classList.add('active');
     },
 
     showEdgeInsights(match) {
-        const winEdge = this.calculateWinEdge(match);
-        let modal = document.getElementById('edgeInsightsModal');
-        if (!modal) {
-            modal = document.createElement('div');
-            modal.id = 'edgeInsightsModal';
-            modal.className = 'modal-overlay active';
-            modal.innerHTML = `
-                <div class="modal-content edge-insights-modal">
-                    <div class="modal-header">
-                        <h3>Win Edge Insights</h3>
-                        <button class="close-modal" id="edgeInsightsClose">&times;</button>
-                    </div>
-                    <div class="modal-body" id="edgeInsightsContent"></div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            modal.addEventListener('click', (e) => {
-                if (e.target.id === 'edgeInsightsModal') {
-                    modal.classList.remove('active');
-                }
-            });
-            modal.querySelector('#edgeInsightsClose').addEventListener('click', () => {
-                modal.classList.remove('active');
-            });
-        }
-
-        const content = document.getElementById('edgeInsightsContent');
-        content.innerHTML = `
-            <div class="edge-insights-hero">
-                <div class="edge-player">
-                    <img src="${window.TennisApp.Utils.getPlayerImage(match.player1)}" alt="${match.player1.name}">
-                    <div>${match.player1.name}</div>
-                    <div class="edge-pct">${winEdge.p1}%</div>
-                </div>
-                <div class="edge-vs">VS</div>
-                <div class="edge-player">
-                    <img src="${window.TennisApp.Utils.getPlayerImage(match.player2)}" alt="${match.player2.name}">
-                    <div>${match.player2.name}</div>
-                    <div class="edge-pct">${winEdge.p2}%</div>
-                </div>
-            </div>
-            <ul class="edge-insights-list">
-                <li>${winEdge.reason}</li>
-                <li>H2H record: ${winEdge.h2hText}</li>
-                <li>Recent form: ${winEdge.formNote}</li>
-                <li>Rank edge: #${match.player1.rank} vs #${match.player2.rank}</li>
-                <li>Surface trend: ${match.tournament_category?.replace('_',' ')} (demo)</li>
-            </ul>
-        `;
-
-        modal.classList.add('active');
+        if (!match) return;
+        this.showUpcomingInsights(match.id, match);
     },
 
     /**
@@ -742,6 +893,12 @@ const ScoresModule = {
         const scheduledTime = new Date(match.scheduled_time);
         const timeStr = scheduledTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         const dateStr = scheduledTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const player1ModalId = this.resolvePlayerModalId(match.player1);
+        const player2ModalId = this.resolvePlayerModalId(match.player2);
+        const player1RowAttrs = player1ModalId ? `data-player-id="${player1ModalId}" role="button" tabindex="0" title="Open player details"` : '';
+        const player2RowAttrs = player2ModalId ? `data-player-id="${player2ModalId}" role="button" tabindex="0" title="Open player details"` : '';
+        const player1RowClass = player1ModalId ? ' player-clickable' : '';
+        const player2RowClass = player2ModalId ? ' player-clickable' : '';
 
         const winEdge = this.calculateWinEdge(match);
 
@@ -765,7 +922,7 @@ const ScoresModule = {
                     </div>
                 </div>
                 <div class="match-players">
-                    <div class="player-row">
+                    <div class="player-row${player1RowClass}" ${player1RowAttrs}>
                         <img class="player-img" src="${Utils.getPlayerImage(match.player1)}" alt="${match.player1.name}">
                         <div class="player-info">
                             <div class="player-name">
@@ -774,8 +931,9 @@ const ScoresModule = {
                                 ${Utils.formatPlayerName(match.player1.name)}
                             </div>
                         </div>
+                        <div class="player-score upcoming-score">${this.formatUpcomingPlayerScore(match, 1)}</div>
                     </div>
-                    <div class="player-row">
+                    <div class="player-row${player2RowClass}" ${player2RowAttrs}>
                         <img class="player-img" src="${Utils.getPlayerImage(match.player2)}" alt="${match.player2.name}">
                         <div class="player-info">
                             <div class="player-name">
@@ -784,6 +942,7 @@ const ScoresModule = {
                                 ${Utils.formatPlayerName(match.player2.name)}
                             </div>
                         </div>
+                        <div class="player-score upcoming-score">${this.formatUpcomingPlayerScore(match, 2)}</div>
                     </div>
                 </div>
                 <div class="edge-row" data-edge-id="${match.id}">
@@ -814,26 +973,35 @@ const ScoresModule = {
      * Calculate a lightweight win edge metric using rank and recent form (demo)
      */
     calculateWinEdge(match) {
-        const p1 = match?.player1 || {};
-        const p2 = match?.player2 || {};
-        // Lower rank number is stronger; add tiny randomness
-        const baseP1 = (p2.rank || 50) / (p1.rank || 50);
-        const noise = 0.05 * (Math.random() - 0.5);
-        let p1Prob = Math.min(0.85, Math.max(0.15, baseP1 + noise));
-        // Convert to percentage and balance
-        const p1Pct = Math.round((p1Prob / (p1Prob + 1)) * 100);
-        const p2Pct = 100 - p1Pct;
+        const { AppState } = window.TennisApp;
+        const isWTA = String(match?.tour || '').toUpperCase() === 'WTA';
+        const predictor = window.WTAUpcomingPrediction;
+        if (isWTA && predictor && typeof predictor.predictMatch === 'function') {
+            return predictor.predictMatch(match, AppState);
+        }
 
-        const reason = p1Pct > 55 ? 'Better recent form & rank' : p2Pct > 55 ? 'Edge on momentum' : 'Too close to call';
-        const h2hText = (typeof match?.h2h_text === 'string' && match.h2h_text.trim()) ? match.h2h_text : 'N/A';
-        const formNote = p1Pct > 55 ? 'Won 4 of last 5' : p2Pct > 55 ? 'On 6-match streak' : 'Evenly matched';
+        const p1Rank = Number(match?.player1?.rank || 200);
+        const p2Rank = Number(match?.player2?.rank || 200);
+        const rawRankEdge = (p2Rank - p1Rank) / Math.max(20, Math.max(p1Rank, p2Rank));
+        const rankEdge = Math.max(-1, Math.min(1, rawRankEdge));
+        const p1Pct = Math.round(Math.max(5, Math.min(95, 50 + (rankEdge * 36))));
+        const p2Pct = 100 - p1Pct;
 
         return {
             p1: p1Pct,
             p2: p2Pct,
-            reason,
-            h2hText,
-            formNote
+            reason: p1Pct === p2Pct ? 'Players are closely matched on ranking baseline.' : (p1Pct > p2Pct ? `${match?.player1?.name || 'Player 1'} has the ranking edge.` : `${match?.player2?.name || 'Player 2'} has the ranking edge.`),
+            h2hText: (typeof match?.h2h_text === 'string' && match.h2h_text.trim()) ? match.h2h_text : 'N/A',
+            formNote: 'Ranking baseline',
+            confidence: Math.abs(p1Pct - p2Pct) >= 12 ? 'Medium confidence' : 'Low confidence',
+            factors: [],
+            diagnostics: { weightCoverage: 0, edge: Number((rankEdge || 0).toFixed(4)) },
+            players: {
+                p1: { rank: Number.isFinite(p1Rank) ? p1Rank : null, points: null, seasonRecord: null, recentRecord: { wins: 0, losses: 0, total: 0 }, surfaceRecord: { wins: 0, losses: 0, total: 0 } },
+                p2: { rank: Number.isFinite(p2Rank) ? p2Rank : null, points: null, seasonRecord: null, recentRecord: { wins: 0, losses: 0, total: 0 }, surfaceRecord: { wins: 0, losses: 0, total: 0 } }
+            },
+            summaryBullets: ['Detailed WTA background factors are unavailable for this match.'],
+            conclusion: 'Prediction is based on ranking baseline only.'
         };
     },
 
@@ -849,10 +1017,10 @@ const ScoresModule = {
         const tournamentName = this.sanitizeTournamentName(match.tournament);
         const roundLabel = this.getRoundLabelWithPoints(match);
         const courtLabel = match.court || match.court_name || '';
-        const finishedDuration = !isLive ? (match.match_duration || match.duration || '') : '';
+        const finishedDuration = !isLive
+            ? this.formatFinishedDuration(match.match_duration || match.duration || '')
+            : '';
         
-        const player1Score = this.formatPlayerScore(match, 1, isLive);
-        const player2Score = this.formatPlayerScore(match, 2, isLive);
         const resolvedWinner = !isLive ? this.getWinnerFromScore(match, match.final_score || match.score) : null;
         
         const p1IsWinner = !isLive && resolvedWinner === 1;
@@ -861,6 +1029,12 @@ const ScoresModule = {
         const p2Serving = isLive && match.serving === 2;
         const p1RankBadge = match.player1.rank ? `<span class="player-rank-badge">[${match.player1.rank}]</span>` : '';
         const p2RankBadge = match.player2.rank ? `<span class="player-rank-badge">[${match.player2.rank}]</span>` : '';
+        const player1ModalId = this.resolvePlayerModalId(match.player1);
+        const player2ModalId = this.resolvePlayerModalId(match.player2);
+        const player1RowAttrs = player1ModalId ? `data-player-id="${player1ModalId}" role="button" tabindex="0" title="Open player details"` : '';
+        const player2RowAttrs = player2ModalId ? `data-player-id="${player2ModalId}" role="button" tabindex="0" title="Open player details"` : '';
+        const player1RowClass = player1ModalId ? ' player-clickable' : '';
+        const player2RowClass = player2ModalId ? ' player-clickable' : '';
 
         return `
             <div class="match-card ${categoryClass} ${surfaceClass}" data-match-id="${match.id}" data-match-key="${matchKey}">
@@ -888,7 +1062,7 @@ const ScoresModule = {
                     `}
                 </div>
                 <div class="match-players">
-                    <div class="player-row ${p1IsWinner ? 'winner' : ''} ${p1Serving ? 'serving' : ''}">
+                    <div class="player-row ${p1IsWinner ? 'winner' : ''} ${p1Serving ? 'serving' : ''}${player1RowClass}" ${player1RowAttrs}>
                         <img class="player-img" src="${Utils.getPlayerImage(match.player1)}" alt="${match.player1.name}">
                         <div class="player-info">
                             <div class="player-name">
@@ -898,9 +1072,9 @@ const ScoresModule = {
                                 ${p1Serving ? '<span class="serve-ball" title="Serving"></span>' : ''}
                             </div>
                         </div>
-                        <div class="player-score">${player1Score}</div>
+                        <div class="player-score">${this.formatPlayerScore(match, 1, isLive)}</div>
                     </div>
-                    <div class="player-row ${p2IsWinner ? 'winner' : ''} ${p2Serving ? 'serving' : ''}">
+                    <div class="player-row ${p2IsWinner ? 'winner' : ''} ${p2Serving ? 'serving' : ''}${player2RowClass}" ${player2RowAttrs}>
                         <img class="player-img" src="${Utils.getPlayerImage(match.player2)}" alt="${match.player2.name}">
                         <div class="player-info">
                             <div class="player-name">
@@ -910,7 +1084,7 @@ const ScoresModule = {
                                 ${p2Serving ? '<span class="serve-ball" title="Serving"></span>' : ''}
                             </div>
                         </div>
-                        <div class="player-score">${player2Score}</div>
+                        <div class="player-score">${this.formatPlayerScore(match, 2, isLive)}</div>
                     </div>
                 </div>
             </div>
@@ -921,16 +1095,22 @@ const ScoresModule = {
      * Get tournament category label
      */
     getCategoryLabel(category) {
+        const key = String(category || 'other').toLowerCase();
         const labels = {
             'grand_slam': 'Grand Slam',
             'masters_1000': '1000',
+            'wta_1000': '1000',
             'atp_500': '500',
+            'wta_500': '500',
             'atp_250': '250',
+            'wta_250': '250',
             'atp_125': '125',
+            'wta_125': '125',
+            'tour': 'Tour',
             'finals': 'Finals',
             'other': 'Other'
         };
-        return labels[category] || category;
+        return labels[key] || String(category || 'Other');
     },
 
     getSurfaceClass(match) {
@@ -1004,39 +1184,112 @@ const ScoresModule = {
      */
     formatPlayerScore(match, playerNum, isLive) {
         const score = isLive ? match.score : (match.final_score || match.score);
-        if (!score || !score.sets) return '';
+
+        let setScoresHtml = '';
+        if (score && Array.isArray(score.sets)) {
+            score.sets.forEach((set, idx) => {
+                const games = playerNum === 1 ? set.p1 : set.p2;
+                const opponentGames = playerNum === 1 ? set.p2 : set.p1;
+                const isCurrentSet = isLive && idx === score.sets.length - 1;
+                
+                // Check for tiebreak (7-6 or 6-7)
+                const isTiebreak = (games === 7 && opponentGames === 6) || (games === 6 && opponentGames === 7);
+                
+                const isSetWinner = games > opponentGames;
+
+                if (isTiebreak && set.tiebreak) {
+                    const tiebreakScore = playerNum === 1 ? set.tiebreak.p1 : set.tiebreak.p2;
+                    setScoresHtml += `<span class="set-score ${isSetWinner ? 'set-win' : ''} ${isCurrentSet ? 'current' : ''}">${games}<sup class="tb">(${tiebreakScore})</sup></span>`;
+                } else if (isTiebreak) {
+                    const fallbackTb = games === 7 ? 7 : 6;
+                    setScoresHtml += `<span class="set-score ${isSetWinner ? 'set-win' : ''} ${isCurrentSet ? 'current' : ''}">${games}<sup class="tb">(${fallbackTb})</sup></span>`;
+                } else {
+                    setScoresHtml += `<span class="set-score ${isSetWinner ? 'set-win' : ''} ${isCurrentSet ? 'current' : ''}">${games}</span>`;
+                }
+            });
+        }
 
         let html = '';
-        
-        // Set scores
-        score.sets.forEach((set, idx) => {
-            const games = playerNum === 1 ? set.p1 : set.p2;
-            const opponentGames = playerNum === 1 ? set.p2 : set.p1;
-            const isCurrentSet = isLive && idx === score.sets.length - 1;
-            
-            // Check for tiebreak (7-6 or 6-7)
-            const isTiebreak = (games === 7 && opponentGames === 6) || (games === 6 && opponentGames === 7);
-            
-            const isSetWinner = games > opponentGames;
-
-            if (isTiebreak && set.tiebreak) {
-                const tiebreakScore = playerNum === 1 ? set.tiebreak.p1 : set.tiebreak.p2;
-                html += `<span class="set-score ${isSetWinner ? 'set-win' : ''} ${isCurrentSet ? 'current' : ''}">${games}<sup class="tb">(${tiebreakScore})</sup></span>`;
-            } else if (isTiebreak) {
-                const fallbackTb = games === 7 ? 7 : 6;
-                html += `<span class="set-score ${isSetWinner ? 'set-win' : ''} ${isCurrentSet ? 'current' : ''}">${games}<sup class="tb">(${fallbackTb})</sup></span>`;
-            } else {
-                html += `<span class="set-score ${isSetWinner ? 'set-win' : ''} ${isCurrentSet ? 'current' : ''}">${games}</span>`;
-            }
-        });
 
         // Current game score (only for live matches)
         if (isLive && score.current_game) {
             const gameScore = playerNum === 1 ? score.current_game.p1 : score.current_game.p2;
-            html += `<span class="game-score">${gameScore}</span>`;
+            setScoresHtml += `<span class="game-score">${gameScore}</span>`;
         }
 
+        html += `<div class="set-scores-row">${setScoresHtml}</div>`;
         return html;
+    },
+
+    formatUpcomingPlayerScore(match, playerNum) {
+        const score = match?.score || match?.final_score || null;
+        let setScoresHtml = '';
+        if (score && Array.isArray(score.sets)) {
+            score.sets.forEach((set) => {
+                const games = playerNum === 1 ? set.p1 : set.p2;
+                const opponentGames = playerNum === 1 ? set.p2 : set.p1;
+                const isTiebreak = (games === 7 && opponentGames === 6) || (games === 6 && opponentGames === 7);
+                const isSetWinner = games > opponentGames;
+                if (isTiebreak && set.tiebreak) {
+                    const tiebreakScore = playerNum === 1 ? set.tiebreak.p1 : set.tiebreak.p2;
+                    setScoresHtml += `<span class="set-score ${isSetWinner ? 'set-win' : ''}">${games}<sup class="tb">(${tiebreakScore})</sup></span>`;
+                } else if (isTiebreak) {
+                    const fallbackTb = games === 7 ? 7 : 6;
+                    setScoresHtml += `<span class="set-score ${isSetWinner ? 'set-win' : ''}">${games}<sup class="tb">(${fallbackTb})</sup></span>`;
+                } else {
+                    setScoresHtml += `<span class="set-score ${isSetWinner ? 'set-win' : ''}">${games}</span>`;
+                }
+            });
+        }
+        return `<div class="set-scores-row">${setScoresHtml}</div>`;
+    },
+
+    getSetWinsFromScore(score, options = {}) {
+        const parseNum = (value) => {
+            const n = Number(value);
+            return Number.isFinite(n) ? n : null;
+        };
+        const preferExplicit = !!options.preferExplicit;
+        const onlyCompleted = !!options.onlyCompleted;
+
+        if (!score) return { p1: 0, p2: 0 };
+
+        if (preferExplicit) {
+            const p1Direct = parseNum(score.p1_sets ?? score.p1Sets);
+            const p2Direct = parseNum(score.p2_sets ?? score.p2Sets);
+            if (p1Direct !== null && p2Direct !== null) {
+                return { p1: p1Direct, p2: p2Direct };
+            }
+        }
+
+        let p1 = 0;
+        let p2 = 0;
+        const sets = Array.isArray(score.sets) ? score.sets : [];
+        sets.forEach((set) => {
+            const p1Games = parseNum(set?.p1);
+            const p2Games = parseNum(set?.p2);
+            if (p1Games === null || p2Games === null) return;
+            if (onlyCompleted && !this.isCompletedSetScore(p1Games, p2Games)) return;
+            if (p1Games > p2Games) p1 += 1;
+            else if (p2Games > p1Games) p2 += 1;
+        });
+        return { p1, p2 };
+    },
+
+    isCompletedSetScore(p1Games, p2Games) {
+        const maxGames = Math.max(p1Games, p2Games);
+        const minGames = Math.min(p1Games, p2Games);
+        if (maxGames >= 7) return true;
+        return maxGames >= 6 && (maxGames - minGames) >= 2;
+    },
+
+    formatFinishedDuration(value) {
+        const text = String(value ?? '').trim();
+        if (!text) return '';
+        if (/^\d{1,2}:\d{2}$/.test(text)) {
+            return `${text}h`;
+        }
+        return text;
     },
 
     /**
@@ -1048,9 +1301,20 @@ const ScoresModule = {
 
         // Update player scores
         const playerRows = matchCard.querySelectorAll('.player-row');
+        const liveSetWins = this.getSetWinsFromScore(newScore, { preferExplicit: true, onlyCompleted: true });
         if (playerRows.length >= 2) {
-            playerRows[0].querySelector('.player-score').innerHTML = this.formatPlayerScore({ score: newScore }, 1, true);
-            playerRows[1].querySelector('.player-score').innerHTML = this.formatPlayerScore({ score: newScore }, 2, true);
+            playerRows[0].querySelector('.player-score').innerHTML = this.formatPlayerScore(
+                { score: newScore, status: 'live' },
+                1,
+                true,
+                { setWins: liveSetWins.p1, isWinnerSide: false }
+            );
+            playerRows[1].querySelector('.player-score').innerHTML = this.formatPlayerScore(
+                { score: newScore, status: 'live' },
+                2,
+                true,
+                { setWins: liveSetWins.p2, isWinnerSide: false }
+            );
         }
 
         // Update serving indicator
@@ -1121,11 +1385,15 @@ const ScoresModule = {
         const resolvedWinner = !isLive ? this.getWinnerFromScore(match, score) : null;
         const tournamentName = context.tournament || match.tournament || 'Match Statistics';
         const roundName = match.round || context.round || '';
+        const roundLabel = this.getRoundLabel(roundName);
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
         const categoryClass = window.TennisApp.Utils.getCategoryClass(match.tournament_category);
+        const setSummary = this.formatSetSummary(score, match);
         const setLines = this.formatSetLines(score);
         const player1ModalId = this.resolvePlayerModalId(match.player1);
         const player2ModalId = this.resolvePlayerModalId(match.player2);
+        const player1Points = this.resolvePlayerPoints(match.player1);
+        const player2Points = this.resolvePlayerPoints(match.player2);
         const radarP1Label = Utils?.formatPlayerName
             ? Utils.formatPlayerName(match.player1?.name || 'Player 1')
             : (match.player1?.name || 'Player 1');
@@ -1138,16 +1406,20 @@ const ScoresModule = {
                 <div class="match-stats-tournament">
                     ${tournamentName}
                     ${categoryLabel ? `<span class="category-badge ${categoryClass}">${categoryLabel}</span>` : ''}
-                    ${roundName ? `<span class="match-stats-round-tag">${roundName}</span>` : ''}
+                    ${roundLabel ? `<span class="match-stats-round-tag">${roundLabel}</span>` : ''}
                 </div>
             </div>
             <div class="match-stats-hero">
                 <div class="match-stats-player-card ${resolvedWinner === 1 ? 'winner' : ''} ${player1ModalId ? 'clickable' : ''}" ${player1ModalId ? `data-player-id="${player1ModalId}" role="button" tabindex="0" title="Open player details"` : ''}>
                     <img class="player-hero-img" src="${Utils.getPlayerImage(match.player1)}" alt="${match.player1.name}">
                     <div class="player-hero-name">${match.player1.name}</div>
-                    <div class="player-hero-meta">${Utils.getFlag(match.player1.country)} ${match.player1.country} • Rank ${match.player1.rank || '-'}</div>
+                    <div class="player-hero-meta-row">
+                        <div class="player-hero-meta">${Utils.getFlag(match.player1.country)} ${match.player1.country} • Rank ${match.player1.rank || '-'}</div>
+                        ${player1Points !== null ? `<span class="player-hero-points-pill">${player1Points.toLocaleString()} pts</span>` : ''}
+                    </div>
                 </div>
                 <div class="match-stats-scoreboard">
+                    ${setSummary ? `<div class="set-summary-line">${setSummary}</div>` : ''}
                     <div class="set-lines">
                         ${setLines}
                     </div>
@@ -1156,28 +1428,43 @@ const ScoresModule = {
                 <div class="match-stats-player-card ${resolvedWinner === 2 ? 'winner' : ''} ${player2ModalId ? 'clickable' : ''}" ${player2ModalId ? `data-player-id="${player2ModalId}" role="button" tabindex="0" title="Open player details"` : ''}>
                     <img class="player-hero-img" src="${Utils.getPlayerImage(match.player2)}" alt="${match.player2.name}">
                     <div class="player-hero-name">${match.player2.name}</div>
-                    <div class="player-hero-meta">${Utils.getFlag(match.player2.country)} ${match.player2.country} • Rank ${match.player2.rank || '-'}</div>
+                    <div class="player-hero-meta-row">
+                        <div class="player-hero-meta">${Utils.getFlag(match.player2.country)} ${match.player2.country} • Rank ${match.player2.rank || '-'}</div>
+                        ${player2Points !== null ? `<span class="player-hero-points-pill">${player2Points.toLocaleString()} pts</span>` : ''}
+                    </div>
                 </div>
             </div>
             
             <div class="match-stats-section">
-                <h4>Serve</h4>
+                <h4>Service</h4>
                 <div class="stats-grid">
                     ${this.createStatRow('Aces', stats.aces.p1, stats.aces.p2, stats.aces.p1, stats.aces.p2, 'higher')}
                     ${this.createStatRow('Double Faults', stats.doubleFaults.p1, stats.doubleFaults.p2, stats.doubleFaults.p1, stats.doubleFaults.p2, 'lower')}
-                    ${this.createStatRow('1st Serve %', stats.firstServe.p1 + '%', stats.firstServe.p2 + '%', stats.firstServe.p1, stats.firstServe.p2, 'higher')}
-                    ${this.createStatRow('1st Serve Points Won', stats.firstServeWon.p1 + '%', stats.firstServeWon.p2 + '%', stats.firstServeWon.p1, stats.firstServeWon.p2, 'higher')}
-                    ${this.createStatRow('2nd Serve Points Won', stats.secondServeWon.p1 + '%', stats.secondServeWon.p2 + '%', stats.secondServeWon.p1, stats.secondServeWon.p2, 'higher')}
+                    ${this.createStatRow('1st Serve %', this.formatPercentCount(stats.firstServe.p1, stats.firstServeMade.p1, stats.firstServeTotal.p1), this.formatPercentCount(stats.firstServe.p2, stats.firstServeMade.p2, stats.firstServeTotal.p2), stats.firstServe.p1, stats.firstServe.p2, 'higher')}
+                    ${this.createStatRow('1st Serve Points Won', this.formatPercentCount(stats.firstServeWon.p1, stats.firstServeWonCount.p1, stats.firstServeWonTotal.p1), this.formatPercentCount(stats.firstServeWon.p2, stats.firstServeWonCount.p2, stats.firstServeWonTotal.p2), stats.firstServeWon.p1, stats.firstServeWon.p2, 'higher')}
+                    ${this.createStatRow('2nd Serve Points Won', this.formatPercentCount(stats.secondServeWon.p1, stats.secondServeWonCount.p1, stats.secondServeWonTotal.p1), this.formatPercentCount(stats.secondServeWon.p2, stats.secondServeWonCount.p2, stats.secondServeWonTotal.p2), stats.secondServeWon.p1, stats.secondServeWon.p2, 'higher')}
+                    ${this.createStatRow('Break Points Faced', stats.breakPointsFaced.p1, stats.breakPointsFaced.p2, stats.breakPointsFaced.p1, stats.breakPointsFaced.p2, 'lower')}
+                    ${this.createStatRow('Break Points Saved', this.formatPercentCount(stats.breakPointsSavedRate.p1, stats.breakPointsSaved.p1, stats.breakPointsFaced.p1), this.formatPercentCount(stats.breakPointsSavedRate.p2, stats.breakPointsSaved.p2, stats.breakPointsFaced.p2), stats.breakPointsSavedRate.p1, stats.breakPointsSavedRate.p2, 'higher')}
+                    ${this.createStatRow('Service Games Played', stats.serviceGamesPlayed.p1, stats.serviceGamesPlayed.p2, stats.serviceGamesPlayed.p1, stats.serviceGamesPlayed.p2, 'higher')}
                 </div>
             </div>
 
             <div class="match-stats-section">
-                <h4>Return & Pressure</h4>
+                <h4>Return</h4>
                 <div class="stats-grid">
-                    ${this.createStatRow('Break Points Converted', `${stats.breakPointsWon.p1}/${stats.breakPointsTotal.p1} (${stats.breakPointsRate.p1}%)`, `${stats.breakPointsWon.p2}/${stats.breakPointsTotal.p2} (${stats.breakPointsRate.p2}%)`, stats.breakPointsRate.p1, stats.breakPointsRate.p2, 'higher')}
-                    ${this.createStatRow('Winners', stats.winners.p1, stats.winners.p2, stats.winners.p1, stats.winners.p2, 'higher')}
-                    ${this.createStatRow('Unforced Errors', stats.unforcedErrors.p1, stats.unforcedErrors.p2, stats.unforcedErrors.p1, stats.unforcedErrors.p2, 'lower')}
-                    ${this.createStatRow('Total Points Won', stats.totalPoints.p1, stats.totalPoints.p2, stats.totalPoints.p1, stats.totalPoints.p2, 'higher')}
+                    ${this.createStatRow('1st Return Points Won', this.formatPercentCount(stats.firstReturnWon.p1, stats.firstReturnWonCount.p1, stats.firstReturnWonTotal.p1), this.formatPercentCount(stats.firstReturnWon.p2, stats.firstReturnWonCount.p2, stats.firstReturnWonTotal.p2), stats.firstReturnWon.p1, stats.firstReturnWon.p2, 'higher')}
+                    ${this.createStatRow('2nd Return Points Won', this.formatPercentCount(stats.secondReturnWon.p1, stats.secondReturnWonCount.p1, stats.secondReturnWonTotal.p1), this.formatPercentCount(stats.secondReturnWon.p2, stats.secondReturnWonCount.p2, stats.secondReturnWonTotal.p2), stats.secondReturnWon.p1, stats.secondReturnWon.p2, 'higher')}
+                    ${this.createStatRow('Break Points Converted', this.formatPercentCount(stats.breakPointsRate.p1, stats.breakPointsWon.p1, stats.breakPointsTotal.p1), this.formatPercentCount(stats.breakPointsRate.p2, stats.breakPointsWon.p2, stats.breakPointsTotal.p2), stats.breakPointsRate.p1, stats.breakPointsRate.p2, 'higher')}
+                    ${this.createStatRow('Return Games Played', stats.returnGamesPlayed.p1, stats.returnGamesPlayed.p2, stats.returnGamesPlayed.p1, stats.returnGamesPlayed.p2, 'higher')}
+                </div>
+            </div>
+
+            <div class="match-stats-section">
+                <h4>Total Points</h4>
+                <div class="stats-grid">
+                    ${this.createStatRow('Total Service Points Won', this.formatPercentCount(stats.totalServicePointsWon.p1, stats.servicePointsWon.p1, stats.servicePointsPlayed.p1), this.formatPercentCount(stats.totalServicePointsWon.p2, stats.servicePointsWon.p2, stats.servicePointsPlayed.p2), stats.totalServicePointsWon.p1, stats.totalServicePointsWon.p2, 'higher')}
+                    ${this.createStatRow('Total Return Points Won', this.formatPercentCount(stats.totalReturnPointsWon.p1, stats.returnPointsWonCount.p1, stats.returnPointsPlayed.p1), this.formatPercentCount(stats.totalReturnPointsWon.p2, stats.returnPointsWonCount.p2, stats.returnPointsPlayed.p2), stats.totalReturnPointsWon.p1, stats.totalReturnPointsWon.p2, 'higher')}
+                    ${this.createStatRow('Total Points Won', this.formatPercentCount(stats.totalPointsWon.p1, stats.totalPoints.p1, stats.totalPointsPlayed.p1), this.formatPercentCount(stats.totalPointsWon.p2, stats.totalPoints.p2, stats.totalPointsPlayed.p2), stats.totalPointsWon.p1, stats.totalPointsWon.p2, 'higher')}
                 </div>
             </div>
 
@@ -1186,7 +1473,7 @@ const ScoresModule = {
                 <div class="match-radar-grid">
                     <div class="match-radar-card">
                         <div class="match-radar-head">
-                            <div class="match-radar-heading">Serve Radar</div>
+                            <div class="match-radar-heading">Service Radar</div>
                             <div class="match-radar-legend">
                                 <span class="match-radar-legend-item p1"><span class="swatch"></span>${radarP1Label}</span>
                                 <span class="match-radar-legend-item p2"><span class="swatch"></span>${radarP2Label}</span>
@@ -1205,6 +1492,18 @@ const ScoresModule = {
                             </div>
                         </div>
                         <div id="matchReturnRadar" class="match-radar-canvas">
+                            <div class="match-radar-fallback">Loading radar...</div>
+                        </div>
+                    </div>
+                    <div class="match-radar-card">
+                        <div class="match-radar-head">
+                            <div class="match-radar-heading">Total Points Radar</div>
+                            <div class="match-radar-legend">
+                                <span class="match-radar-legend-item p1"><span class="swatch"></span>${radarP1Label}</span>
+                                <span class="match-radar-legend-item p2"><span class="swatch"></span>${radarP2Label}</span>
+                            </div>
+                        </div>
+                        <div id="matchTotalRadar" class="match-radar-canvas">
                             <div class="match-radar-fallback">Loading radar...</div>
                         </div>
                     </div>
@@ -1231,6 +1530,58 @@ const ScoresModule = {
         
         modal.classList.add('active');
         this.renderMatchStatsRadars(match, stats);
+        this.loadMatchStatsOnDemand(match, context);
+        this.startLiveModalAutoRefresh(match, context);
+    },
+
+    findCurrentLiveMatch(match) {
+        const { AppState } = window.TennisApp;
+        const tour = AppState.currentTour;
+        const list = AppState.liveScores?.[tour] || [];
+        const targetId = String(match?.id || '').trim();
+        const targetEventId = String(match?.wta_event_id ?? match?.event_id ?? '').trim();
+        const targetMatchId = String(match?.wta_match_id ?? '').trim();
+
+        let found = null;
+        if (targetId) {
+            found = list.find((m) => String(m?.id || '').trim() === targetId);
+        }
+        if (!found && targetEventId && targetMatchId) {
+            found = list.find((m) =>
+                String(m?.wta_event_id ?? m?.event_id ?? '').trim() === targetEventId
+                && String(m?.wta_match_id ?? '').trim() === targetMatchId
+            );
+        }
+        return found || null;
+    },
+
+    startLiveModalAutoRefresh(match, context = {}) {
+        this.stopLiveModalAutoRefresh();
+        if (!match || String(match.status || '').toLowerCase() !== 'live') return;
+
+        this.activeLiveModalMatchId = String(match.id || '').trim();
+        this.liveModalRefreshTimer = setInterval(() => {
+            const modal = document.getElementById('matchStatsModal');
+            if (!modal || !modal.classList.contains('active')) {
+                this.stopLiveModalAutoRefresh();
+                return;
+            }
+            const liveMatch = this.findCurrentLiveMatch(match);
+            if (!liveMatch) return;
+            this.showMatchStats(
+                liveMatch.id,
+                liveMatch,
+                { ...context, source: 'live' }
+            );
+        }, 30000);
+    },
+
+    stopLiveModalAutoRefresh() {
+        if (this.liveModalRefreshTimer) {
+            clearInterval(this.liveModalRefreshTimer);
+            this.liveModalRefreshTimer = null;
+        }
+        this.activeLiveModalMatchId = null;
     },
 
     /**
@@ -1291,6 +1642,28 @@ const ScoresModule = {
         return '';
     },
 
+    resolvePlayerPoints(player) {
+        const parsePoints = (value) => {
+            if (typeof value === 'number' && Number.isFinite(value)) return value;
+            const cleaned = String(value ?? '').replace(/[^\d]/g, '');
+            if (!cleaned) return null;
+            const num = Number(cleaned);
+            return Number.isFinite(num) ? num : null;
+        };
+        const direct = parsePoints(player?.points);
+        if (direct !== null) return direct;
+        const { AppState } = window.TennisApp || {};
+        const list = AppState?.rankings?.[AppState?.currentTour] || [];
+        if (!Array.isArray(list) || !player?.name) return null;
+        const normalize = (value) => String(value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+        const targetName = normalize(player.name);
+        const targetCountry = normalize(player.country);
+        const exact = list.find((row) => normalize(row.name) === targetName && (!targetCountry || normalize(row.country) === targetCountry));
+        if (exact) return parsePoints(exact.points);
+        const nameOnly = list.find((row) => normalize(row.name) === targetName);
+        return parsePoints(nameOnly?.points);
+    },
+
     getMatchKey(match) {
         const normalize = (value) => String(value ?? '').trim().toLowerCase();
         return [
@@ -1336,23 +1709,32 @@ const ScoresModule = {
             { label: 'Double Faults', p1: stats.doubleFaults.p1, p2: stats.doubleFaults.p2, better: 'lower', suffix: '' },
             { label: '1st Serve %', p1: stats.firstServe.p1, p2: stats.firstServe.p2, better: 'higher', suffix: '%' },
             { label: '1st Serve Pts Won', p1: stats.firstServeWon.p1, p2: stats.firstServeWon.p2, better: 'higher', suffix: '%' },
-            { label: '2nd Serve Pts Won', p1: stats.secondServeWon.p1, p2: stats.secondServeWon.p2, better: 'higher', suffix: '%' }
+            { label: '2nd Serve Pts Won', p1: stats.secondServeWon.p1, p2: stats.secondServeWon.p2, better: 'higher', suffix: '%' },
+            { label: 'Break Pts Saved %', p1: stats.breakPointsSavedRate.p1, p2: stats.breakPointsSavedRate.p2, better: 'higher', suffix: '%' }
         ];
         const returnMetrics = [
+            { label: '1st Return Pts Won %', p1: stats.firstReturnWon.p1, p2: stats.firstReturnWon.p2, better: 'higher', suffix: '%' },
+            { label: '2nd Return Pts Won %', p1: stats.secondReturnWon.p1, p2: stats.secondReturnWon.p2, better: 'higher', suffix: '%' },
             { label: 'Break Pts Conv %', p1: stats.breakPointsRate.p1, p2: stats.breakPointsRate.p2, better: 'higher', suffix: '%' },
-            { label: 'Break Pts Won', p1: stats.breakPointsWon.p1, p2: stats.breakPointsWon.p2, better: 'higher', suffix: '' },
-            { label: 'Winners', p1: stats.winners.p1, p2: stats.winners.p2, better: 'higher', suffix: '' },
-            { label: 'Unforced Errors', p1: stats.unforcedErrors.p1, p2: stats.unforcedErrors.p2, better: 'lower', suffix: '' },
-            { label: 'Total Points', p1: stats.totalPoints.p1, p2: stats.totalPoints.p2, better: 'higher', suffix: '' }
+            { label: 'Return Games Played', p1: stats.returnGamesPlayed.p1, p2: stats.returnGamesPlayed.p2, better: 'higher', suffix: '' },
+            { label: 'Return Pts Won %', p1: stats.totalReturnPointsWon.p1, p2: stats.totalReturnPointsWon.p2, better: 'higher', suffix: '%' }
+        ];
+        const totalMetrics = [
+            { label: 'Total Serv Pts Won %', p1: stats.totalServicePointsWon.p1, p2: stats.totalServicePointsWon.p2, better: 'higher', suffix: '%' },
+            { label: 'Total Ret Pts Won %', p1: stats.totalReturnPointsWon.p1, p2: stats.totalReturnPointsWon.p2, better: 'higher', suffix: '%' },
+            { label: 'Total Pts Won %', p1: stats.totalPointsWon.p1, p2: stats.totalPointsWon.p2, better: 'higher', suffix: '%' },
+            { label: 'Total Pts Won', p1: stats.totalPoints.p1, p2: stats.totalPoints.p2, better: 'higher', suffix: '' },
+            { label: 'Points Played', p1: stats.totalPointsPlayed.p1, p2: stats.totalPointsPlayed.p2, better: 'higher', suffix: '' }
         ];
 
         try {
             const plotly = await this.ensurePlotly();
             this.renderMatchRadarChart(plotly, 'matchServeRadar', serveMetrics, p1Label, p2Label);
             this.renderMatchRadarChart(plotly, 'matchReturnRadar', returnMetrics, p1Label, p2Label);
+            this.renderMatchRadarChart(plotly, 'matchTotalRadar', totalMetrics, p1Label, p2Label);
         } catch (error) {
             console.error('Match radar rendering failed:', error);
-            ['matchServeRadar', 'matchReturnRadar'].forEach((id) => {
+            ['matchServeRadar', 'matchReturnRadar', 'matchTotalRadar'].forEach((id) => {
                 const container = document.getElementById(id);
                 if (container) {
                     container.innerHTML = '<div class="match-radar-fallback">Radar unavailable</div>';
@@ -1466,31 +1848,329 @@ const ScoresModule = {
     },
 
     /**
-     * Generate demo match statistics
+     * Format percent labels with count detail.
+     */
+    formatPercentCount(percent, made, total) {
+        const safePercent = this.formatStatPercent(percent);
+        const madeNum = Number.isFinite(Number(made)) ? Math.round(Number(made)) : 0;
+        const totalNum = Number.isFinite(Number(total)) ? Math.round(Number(total)) : 0;
+        return `${safePercent}% ${madeNum}/${totalNum}`;
+    },
+
+    toNumber(value, fallback = 0) {
+        const num = Number(value);
+        return Number.isFinite(num) ? num : fallback;
+    },
+
+    toInt(value, fallback = 0) {
+        return Math.round(this.toNumber(value, fallback));
+    },
+
+    toPair(value, fallbackP1 = 0, fallbackP2 = 0) {
+        return {
+            p1: this.toNumber(value?.p1, fallbackP1),
+            p2: this.toNumber(value?.p2, fallbackP2)
+        };
+    },
+
+    toIntPair(value, fallbackP1 = 0, fallbackP2 = 0) {
+        return {
+            p1: this.toInt(value?.p1, fallbackP1),
+            p2: this.toInt(value?.p2, fallbackP2)
+        };
+    },
+
+    safePct(numerator, denominator) {
+        const num = this.toNumber(numerator, 0);
+        const den = this.toNumber(denominator, 0);
+        if (den <= 0) return 0;
+        return Math.round((num / den) * 1000) / 10;
+    },
+
+    formatStatPercent(value) {
+        const num = this.toNumber(value, 0);
+        return String(Math.round(num));
+    },
+
+    withDerivedMatchStats(base) {
+        const servicePointsPlayed = base.servicePointsPlayed || base.firstServeTotal;
+        const servicePointsWon = base.servicePointsWon || {
+            p1: base.firstServeWonCount.p1 + base.secondServeWonCount.p1,
+            p2: base.firstServeWonCount.p2 + base.secondServeWonCount.p2
+        };
+
+        const firstReturnWonTotal = {
+            p1: base.firstServeWonTotal.p2,
+            p2: base.firstServeWonTotal.p1
+        };
+        const firstReturnWonCount = {
+            p1: Math.max(0, firstReturnWonTotal.p1 - base.firstServeWonCount.p2),
+            p2: Math.max(0, firstReturnWonTotal.p2 - base.firstServeWonCount.p1)
+        };
+        const firstReturnWon = {
+            p1: this.safePct(firstReturnWonCount.p1, firstReturnWonTotal.p1),
+            p2: this.safePct(firstReturnWonCount.p2, firstReturnWonTotal.p2)
+        };
+
+        const secondReturnWonTotal = {
+            p1: base.secondServeWonTotal.p2,
+            p2: base.secondServeWonTotal.p1
+        };
+        const secondReturnWonCount = {
+            p1: Math.max(0, secondReturnWonTotal.p1 - base.secondServeWonCount.p2),
+            p2: Math.max(0, secondReturnWonTotal.p2 - base.secondServeWonCount.p1)
+        };
+        const secondReturnWon = {
+            p1: this.safePct(secondReturnWonCount.p1, secondReturnWonTotal.p1),
+            p2: this.safePct(secondReturnWonCount.p2, secondReturnWonTotal.p2)
+        };
+
+        const returnGamesPlayed = {
+            p1: base.serviceGamesPlayed.p2,
+            p2: base.serviceGamesPlayed.p1
+        };
+
+        const returnPointsWonCount = {
+            p1: Math.max(0, servicePointsPlayed.p2 - servicePointsWon.p2),
+            p2: Math.max(0, servicePointsPlayed.p1 - servicePointsWon.p1)
+        };
+        const returnPointsPlayed = {
+            p1: servicePointsPlayed.p2,
+            p2: servicePointsPlayed.p1
+        };
+
+        const totalServicePointsWon = {
+            p1: this.safePct(servicePointsWon.p1, servicePointsPlayed.p1),
+            p2: this.safePct(servicePointsWon.p2, servicePointsPlayed.p2)
+        };
+        const totalReturnPointsWon = {
+            p1: this.safePct(returnPointsWonCount.p1, returnPointsPlayed.p1),
+            p2: this.safePct(returnPointsWonCount.p2, returnPointsPlayed.p2)
+        };
+        const totalPointsPlayed = {
+            p1: servicePointsPlayed.p1 + servicePointsPlayed.p2,
+            p2: servicePointsPlayed.p1 + servicePointsPlayed.p2
+        };
+        const totalPointsWon = {
+            p1: this.safePct(base.totalPoints.p1, totalPointsPlayed.p1),
+            p2: this.safePct(base.totalPoints.p2, totalPointsPlayed.p2)
+        };
+
+        return {
+            ...base,
+            servicePointsPlayed,
+            servicePointsWon,
+            firstReturnWon,
+            firstReturnWonCount,
+            firstReturnWonTotal,
+            secondReturnWon,
+            secondReturnWonCount,
+            secondReturnWonTotal,
+            returnGamesPlayed,
+            returnPointsWonCount,
+            returnPointsPlayed,
+            totalServicePointsWon,
+            totalReturnPointsWon,
+            totalPointsPlayed,
+            totalPointsWon
+        };
+    },
+
+    normalizeExtractedMatchStats(raw) {
+        if (!raw || typeof raw !== 'object') {
+            return null;
+        }
+        const aces = this.toIntPair(raw.aces);
+        const doubleFaults = this.toIntPair(raw.doubleFaults);
+        const firstServe = this.toIntPair(raw.firstServe);
+        const firstServeMade = this.toIntPair(raw?.firstServe?.made);
+        const firstServeTotal = this.toIntPair(raw?.firstServe?.total);
+        const firstServeWon = this.toIntPair(raw.firstServeWon);
+        const firstServeWonCount = this.toIntPair(raw?.firstServeWon?.won);
+        const firstServeWonTotal = this.toIntPair(raw?.firstServeWon?.total);
+        const secondServeWon = this.toIntPair(raw.secondServeWon);
+        const secondServeWonCount = this.toIntPair(raw?.secondServeWon?.won);
+        const secondServeWonTotal = this.toIntPair(raw?.secondServeWon?.total);
+        const breakPointsWon = this.toIntPair(raw.breakPointsWon);
+        const breakPointsTotal = this.toIntPair(raw.breakPointsTotal);
+        const breakPointsRate = this.toIntPair(raw.breakPointsRate);
+        const breakPointsFaced = this.toIntPair(raw.breakPointsFaced);
+        const breakPointsSaved = this.toIntPair(raw.breakPointsSaved);
+        const breakPointsSavedRate = this.toIntPair(raw.breakPointsSavedRate);
+        const serviceGamesPlayed = this.toIntPair(raw.serviceGamesPlayed);
+        const totalPoints = this.toIntPair(raw.totalPoints);
+        const base = {
+            duration: '',
+            aces,
+            doubleFaults,
+            firstServe,
+            firstServeMade,
+            firstServeTotal,
+            firstServeWon,
+            firstServeWonCount,
+            firstServeWonTotal,
+            secondServeWon,
+            secondServeWonCount,
+            secondServeWonTotal,
+            breakPointsWon,
+            breakPointsTotal,
+            breakPointsRate,
+            breakPointsFaced,
+            breakPointsSaved,
+            breakPointsSavedRate,
+            serviceGamesPlayed,
+            totalPoints,
+            servicePointsPlayed: this.toIntPair(raw.servicePointsPlayed, firstServeTotal.p1, firstServeTotal.p2),
+            servicePointsWon: this.toIntPair(
+                raw.servicePointsWon,
+                firstServeWonCount.p1 + secondServeWonCount.p1,
+                firstServeWonCount.p2 + secondServeWonCount.p2
+            ),
+            winners: this.toIntPair(raw.winners),
+            unforcedErrors: this.toIntPair(raw.unforcedErrors),
+        };
+        return this.withDerivedMatchStats(base);
+    },
+
+    resolveWTAMatchIdentity(match) {
+        if (!match || String(match.tour || '').toUpperCase() !== 'WTA') return null;
+        const eventId = match.wta_event_id ?? match.event_id ?? null;
+        const eventYear = match.wta_event_year ?? match.event_year ?? null;
+        const matchId = match.wta_match_id ?? match.id ?? null;
+        if (!eventId || !eventYear || !matchId) return null;
+        return { eventId, eventYear, matchId };
+    },
+
+    resolveATPMatchStatsUrl(match) {
+        if (!match || String(match.tour || '').toUpperCase() !== 'ATP') return '';
+        const url = String(
+            match.atp_stats_url
+            || match.stats_url
+            || match.match_stats_url
+            || ''
+        ).trim();
+        if (!url) return '';
+        return url;
+    },
+
+    async loadMatchStatsOnDemand(match, context = {}) {
+        if (!match) return;
+        const tour = String(match.tour || '').toUpperCase();
+
+        const isLive = String(match.status || '').toLowerCase() === 'live';
+        const nowMs = Date.now();
+        const lastFetchedAt = Number(match._matchStatsFetchedAt || 0);
+        const liveRefreshWindowMs = 30000;
+        if (match.match_stats) {
+            if (!isLive) return;
+            if (lastFetchedAt > 0 && nowMs - lastFetchedAt < liveRefreshWindowMs) {
+                return;
+            }
+        }
+
+        const ids = this.resolveWTAMatchIdentity(match);
+        const atpStatsUrl = this.resolveATPMatchStatsUrl(match);
+
+        if (tour === 'WTA' && !ids) return;
+        if (tour === 'ATP' && !atpStatsUrl) return;
+
+        const requestKey = tour === 'WTA'
+            ? `${this.getMatchKey(match)}|${ids.eventId}|${ids.eventYear}|${ids.matchId}`
+            : `${this.getMatchKey(match)}|${atpStatsUrl}`;
+        this._activeMatchStatsRequestKey = requestKey;
+
+        // For ATP completed matches, check cache first
+        if (tour === 'ATP' && !isLive) {
+            const cachedStats = this.getCachedATPMatchStats(requestKey);
+            if (cachedStats) {
+                console.log('Using cached ATP match stats for:', match.id);
+                match.match_stats = cachedStats;
+                match._matchStatsFetchedAt = Date.now();
+                
+                const modal = document.getElementById('matchStatsModal');
+                if (modal && modal.classList.contains('active')) {
+                    this.showMatchStats(match.id, match, context);
+                }
+                return;
+            }
+        }
+
+        try {
+            const api = window.TennisApp?.API;
+            let stats = null;
+
+            if (tour === 'WTA') {
+                if (!api?.getWTAMatchStats) return;
+                stats = await api.getWTAMatchStats(ids.eventId, ids.eventYear, ids.matchId);
+            } else if (tour === 'ATP') {
+                if (!api?.getATPMatchStats) return;
+                console.log('Fetching ATP match stats from server:', atpStatsUrl);
+                stats = await api.getATPMatchStats(atpStatsUrl);
+            } else {
+                return;
+            }
+
+            if (!stats) return;
+            match.match_stats = stats;
+            match._matchStatsFetchedAt = Date.now();
+
+            // Cache ATP stats for completed matches
+            if (tour === 'ATP' && !isLive) {
+                console.log('Caching ATP match stats for:', match.id);
+                this.cacheATPMatchStats(requestKey, stats);
+            }
+
+            const modal = document.getElementById('matchStatsModal');
+            if (!modal || !modal.classList.contains('active')) return;
+            if (this._activeMatchStatsRequestKey !== requestKey) return;
+
+            this.showMatchStats(match.id, match, context);
+        } catch (error) {
+            if (tour === 'ATP') {
+                console.error('Failed to load on-demand ATP match stats:', error);
+            } else {
+                console.error('Failed to load on-demand WTA match stats:', error);
+            }
+        }
+    },
+
+    /**
+     * Generate match statistics
      */
     generateMatchStats(match) {
-        // Generate realistic demo statistics
-        const breakP1Total = Math.floor(Math.random() * 8) + 4;
-        const breakP2Total = Math.floor(Math.random() * 8) + 4;
-        const breakP1Won = Math.floor(Math.random() * Math.max(2, breakP1Total - 1)) + 1;
-        const breakP2Won = Math.floor(Math.random() * Math.max(2, breakP2Total - 1)) + 1;
-        return {
+        const extracted = this.normalizeExtractedMatchStats(match?.match_stats);
+        if (extracted) {
+            return extracted;
+        }
+
+        // Keep fallback deterministic/neutral when detailed stats are unavailable.
+        const base = {
             duration: '',
-            aces: { p1: Math.floor(Math.random() * 12) + 3, p2: Math.floor(Math.random() * 12) + 3 },
-            doubleFaults: { p1: Math.floor(Math.random() * 5), p2: Math.floor(Math.random() * 5) },
-            firstServe: { p1: Math.floor(Math.random() * 15) + 55, p2: Math.floor(Math.random() * 15) + 55 },
-            firstServeWon: { p1: Math.floor(Math.random() * 15) + 65, p2: Math.floor(Math.random() * 15) + 65 },
-            secondServeWon: { p1: Math.floor(Math.random() * 20) + 40, p2: Math.floor(Math.random() * 20) + 40 },
-            breakPointsWon: { p1: breakP1Won, p2: breakP2Won },
-            breakPointsTotal: { p1: breakP1Total, p2: breakP2Total },
-            breakPointsRate: {
-                p1: Math.round((breakP1Won / breakP1Total) * 100),
-                p2: Math.round((breakP2Won / breakP2Total) * 100)
-            },
-            winners: { p1: Math.floor(Math.random() * 20) + 20, p2: Math.floor(Math.random() * 20) + 20 },
-            unforcedErrors: { p1: Math.floor(Math.random() * 15) + 15, p2: Math.floor(Math.random() * 15) + 15 },
-            totalPoints: { p1: Math.floor(Math.random() * 30) + 80, p2: Math.floor(Math.random() * 30) + 80 }
+            aces: { p1: 0, p2: 0 },
+            doubleFaults: { p1: 0, p2: 0 },
+            firstServe: { p1: 0, p2: 0 },
+            firstServeMade: { p1: 0, p2: 0 },
+            firstServeTotal: { p1: 0, p2: 0 },
+            firstServeWon: { p1: 0, p2: 0 },
+            firstServeWonCount: { p1: 0, p2: 0 },
+            firstServeWonTotal: { p1: 0, p2: 0 },
+            secondServeWon: { p1: 0, p2: 0 },
+            secondServeWonCount: { p1: 0, p2: 0 },
+            secondServeWonTotal: { p1: 0, p2: 0 },
+            breakPointsWon: { p1: 0, p2: 0 },
+            breakPointsTotal: { p1: 0, p2: 0 },
+            breakPointsRate: { p1: 0, p2: 0 },
+            breakPointsFaced: { p1: 0, p2: 0 },
+            breakPointsSaved: { p1: 0, p2: 0 },
+            breakPointsSavedRate: { p1: 0, p2: 0 },
+            serviceGamesPlayed: { p1: 0, p2: 0 },
+            servicePointsPlayed: { p1: 0, p2: 0 },
+            servicePointsWon: { p1: 0, p2: 0 },
+            winners: { p1: 0, p2: 0 },
+            unforcedErrors: { p1: 0, p2: 0 },
+            totalPoints: { p1: 0, p2: 0 }
         };
+        return this.withDerivedMatchStats(base);
     },
 
     resolveMatchTimeLabel(match, isLive) {
@@ -1540,12 +2220,30 @@ const ScoresModule = {
         }).join('');
     },
 
+    formatSetSummary(score, match) {
+        const wins = this.getSetWinsFromScore(score, { preferExplicit: true, onlyCompleted: true });
+        const p1Wins = Number.isFinite(Number(wins?.p1)) ? Number(wins.p1) : 0;
+        const p2Wins = Number.isFinite(Number(wins?.p2)) ? Number(wins.p2) : 0;
+        const hasAny = (p1Wins + p2Wins) > 0;
+        if (!hasAny) return '';
+
+        const winner = this.getWinnerFromScore(match, score);
+        const p1Class = winner === 1 ? 'winner' : '';
+        const p2Class = winner === 2 ? 'winner' : '';
+        return `
+            <span class="set-summary-value ${p1Class}">${p1Wins}</span>
+            <span class="set-summary-dash">-</span>
+            <span class="set-summary-value ${p2Class}">${p2Wins}</span>
+        `;
+    },
+
     /**
      * Close match statistics modal
      */
     closeMatchStats() {
         const modal = document.getElementById('matchStatsModal');
         modal.classList.remove('active');
+        this.stopLiveModalAutoRefresh();
     }
 };
 

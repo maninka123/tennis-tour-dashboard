@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n37.5%\n1st Return Points Won %\n29.1%\n2nd Return Points Won %\n52.6%\nBreak Points Converted\n46.4%\nReturn Games Won\n28.1%\nReturn Games Played\n51\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:52:16.620421+00:00",
+  "updated_at": "2026-02-07T13:25:53.709688+00:00",
   "records_tab": {
     "summary": [
       {
@@ -154,6 +154,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Elsa Jacquemot",
             "opponent_country": "FRA",
@@ -187,6 +190,9 @@
         "matches": [
           {
             "round": "Final",
+            "round_name": "F",
+            "tourn_round": 6,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Aryna Sabalenka",
             "opponent_country": "BLR",
@@ -196,7 +202,36 @@
             "opponent_rank": 1
           },
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Jessica Pegula",
+            "opponent_country": "USA",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-0, 6-3",
+            "opponent_rank": 6
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Mirra Andreeva",
+            "opponent_country": "RUS",
+            "opponent_seed": 6,
+            "opponent_entry": "",
+            "score": "7-6(7), 6-3",
+            "opponent_rank": 9
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Amanda Anisimova",
             "opponent_country": "USA",
@@ -207,6 +242,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Yulia Putintseva",
             "opponent_country": "KAZ",
@@ -217,6 +255,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -224,26 +265,6 @@
             "opponent_entry": "",
             "score": "",
             "opponent_rank": 0
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Jessica Pegula",
-            "opponent_country": "USA",
-            "opponent_seed": 4,
-            "opponent_entry": "",
-            "score": "6-0, 6-3",
-            "opponent_rank": 6
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Mirra Andreeva",
-            "opponent_country": "RUS",
-            "opponent_seed": 6,
-            "opponent_entry": "",
-            "score": "7-6(7), 6-3",
-            "opponent_rank": 9
           }
         ],
         "summary": {
@@ -255,6 +276,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:52:16.620397+00:00"
+    "updated_at": "2026-02-07T13:25:53.709604+00:00"
   }
 }

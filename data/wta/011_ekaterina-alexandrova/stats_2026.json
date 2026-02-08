@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.8%\n1st Return Points Won %\n34.3%\n2nd Return Points Won %\n57.9%\nBreak Points Converted\n46.2%\nReturn Games Won\n27.3%\nReturn Games Played\n22\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:51:06.147317+00:00",
+  "updated_at": "2026-02-07T13:24:42.783101+00:00",
   "records_tab": {
     "summary": [
       {
@@ -170,6 +170,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Zeynep Sonmez",
             "opponent_country": "TUR",
@@ -203,6 +206,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Jaqueline  Cristian",
             "opponent_country": "ROU",
@@ -236,6 +242,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Karolina Muchova",
             "opponent_country": "CZE",
@@ -246,6 +255,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Sofia Kenin",
             "opponent_country": "USA",
@@ -256,6 +268,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -274,6 +289,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:51:06.147301+00:00"
+    "updated_at": "2026-02-07T13:24:42.783053+00:00"
   }
 }

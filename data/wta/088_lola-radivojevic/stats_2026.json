@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.2%\n1st Return Points Won %\n26.2%\n2nd Return Points Won %\n54.4%\nBreak Points Converted\n31.2%\nReturn Games Won\n23.8%\nReturn Games Played\n21\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:59:12.412099+00:00",
+  "updated_at": "2026-02-07T13:32:35.651091+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
@@ -52,6 +52,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Storm Hunter",
             "opponent_country": "AUS",
@@ -62,6 +65,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Alana Subasic",
             "opponent_country": "AUS",
@@ -95,6 +101,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Polina Kudermetova",
             "opponent_country": "UZB",
@@ -105,6 +114,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Teodora Kostovic",
             "opponent_country": "SRB",
@@ -123,6 +135,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:59:12.412085+00:00"
+    "updated_at": "2026-02-07T13:32:35.651053+00:00"
   }
 }

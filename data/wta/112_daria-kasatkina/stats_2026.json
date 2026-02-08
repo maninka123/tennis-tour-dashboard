@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n37.7%\n1st Return Points Won %\n30.9%\n2nd Return Points Won %\n50.0%\nBreak Points Converted\n44.4%\nReturn Games Won\n25.0%\nReturn Games Played\n16\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:02:12.371708+00:00",
+  "updated_at": "2026-02-07T13:35:02.246851+00:00",
   "records_tab": {
     "summary": [
       {
@@ -178,6 +178,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Nikola Bartunkova",
             "opponent_country": "CZE",
@@ -211,6 +214,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Jaqueline  Cristian",
             "opponent_country": "ROU",
@@ -221,6 +227,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Maria Sakkari",
             "opponent_country": "GRE",
@@ -254,6 +263,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Anastasia Potapova",
             "opponent_country": "AUT",
@@ -272,6 +284,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:02:12.371677+00:00"
+    "updated_at": "2026-02-07T13:35:02.246807+00:00"
   }
 }

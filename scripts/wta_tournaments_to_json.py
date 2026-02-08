@@ -2,9 +2,10 @@
 import argparse
 import json
 import re
+import shutil
 import sys
 import time
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -40,6 +41,79 @@ def _level_number(level: str) -> Optional[str]:
 
 def _slugify(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", (text or "").lower()).strip("-")
+
+
+def _parse_iso_date(value: Optional[str]) -> Optional[date]:
+    text = _clean_text(value)
+    if not text:
+        return None
+    try:
+        return datetime.strptime(text, "%Y-%m-%d").date()
+    except Exception:
+        return None
+
+
+def _status_normalized(value: Optional[str]) -> str:
+    return _clean_text(value).lower()
+
+
+def _is_finished_status(value: Optional[str]) -> bool:
+    return _status_normalized(value) in {"past", "finished", "completed", "complete", "ended", "final"}
+
+
+def _is_complete_tournament_tree(record: dict, today: date) -> bool:
+    if not isinstance(record, dict):
+        return False
+    end_dt = _parse_iso_date(record.get("end_date"))
+    is_finished = _is_finished_status(record.get("status")) or bool(end_dt and end_dt < today)
+    if not is_finished:
+        return False
+
+    champion = record.get("champion") or {}
+    champion_name = _clean_text((champion or {}).get("name") if isinstance(champion, dict) else "")
+    if not champion_name:
+        return False
+
+    draw = record.get("draw") or {}
+    matches = record.get("matches") or []
+    has_draw = isinstance(draw, dict) and bool(draw.get("draw_lines"))
+    has_results = False
+    if isinstance(draw, dict):
+        for rnd in draw.get("results") or []:
+            if (rnd or {}).get("matches"):
+                has_results = True
+                break
+    has_matches = isinstance(matches, list) and len(matches) > 0
+    return has_draw and (has_results or has_matches)
+
+
+def _load_existing_records(output_dir: Path, year: int) -> Dict[str, dict]:
+    existing: Dict[str, dict] = {}
+    for file_path in sorted(output_dir.glob("*.json")):
+        try:
+            payload = json.loads(file_path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if payload.get("year") != year:
+            continue
+        group_id = payload.get("tournament_group_id")
+        if group_id is None:
+            continue
+        existing[str(group_id)] = {"path": file_path, "data": payload}
+    return existing
+
+
+def _archive_file_if_needed(path: Path, outdated_dir: Path, stamp: str) -> None:
+    if not path.exists():
+        return
+    target_dir = outdated_dir / stamp
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target = target_dir / path.name
+    suffix = 1
+    while target.exists():
+        target = target_dir / f"{path.stem}_{suffix}{path.suffix}"
+        suffix += 1
+    shutil.copy2(path, target)
 
 
 def _parse_draw_json(draw_info_entry: object) -> Optional[dict]:
@@ -307,14 +381,31 @@ def fetch_matches(
     return resp.json()
 
 
+def _normalize_status(value: Optional[str]) -> str:
+    raw = _status_normalized(value)
+    if raw in {"future", "upcoming", "scheduled"}:
+        return "upcoming"
+    if raw in {"current", "live", "in_progress", "in progress", "running"}:
+        return "in_progress"
+    if raw in {"past", "finished", "completed", "complete", "ended", "final"}:
+        return "finished"
+    return raw or "upcoming"
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description="Scrape WTA tournaments + draws to per-tournament JSON files.")
     parser.add_argument("--year", type=int, default=2026, help="Season year to scrape.")
     parser.add_argument(
         "--output-dir",
         type=str,
         default="data/wta/tournaments",
         help="Directory to write per-tournament JSON files.",
+    )
+    parser.add_argument(
+        "--outdated-dir",
+        type=str,
+        default="data/wta_tournaments_outdated",
+        help="Archive folder for replaced tournament JSON files.",
     )
     parser.add_argument(
         "--limit", type=int, default=0, help="Limit number of tournaments."
@@ -325,6 +416,11 @@ def main() -> int:
         default=2025,
         help="Fallback year to use when scores/draws are missing.",
     )
+    parser.add_argument(
+        "--full-refresh",
+        action="store_true",
+        help="Refresh all tournaments, ignoring incremental skip rules.",
+    )
     args = parser.parse_args()
 
     session = requests.Session()
@@ -334,21 +430,75 @@ def main() -> int:
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-
-    output = {
-        "generated_at": _iso_now(),
-        "year": args.year,
-        "tournaments": [],
+    outdated_dir = Path(args.outdated_dir)
+    outdated_dir.mkdir(parents=True, exist_ok=True)
+    existing = _load_existing_records(output_dir, args.year)
+    today = datetime.utcnow().date()
+    archive_stamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+    seen_group_ids = set()
+    stats = {
+        "source_rows": len(tournaments),
+        "refreshed_rows": 0,
+        "skipped_rows": 0,
+        "draw_success": 0,
+        "draw_missing": 0,
+        "new_files": 0,
+        "updated_files": 0,
+        "unchanged_files": 0,
     }
+    output_records: List[dict] = []
 
     for idx, t in enumerate(tournaments, start=1):
         group = t.get("tournamentGroup", {}) or {}
         group_id = group.get("id")
+        if group_id is None:
+            continue
+        group_key = str(group_id)
+        seen_group_ids.add(group_key)
+
+        existing_entry = existing.get(group_key)
+        existing_data = existing_entry.get("data") if existing_entry else None
+
         title = t.get("title") or group.get("name")
         level = t.get("level") or group.get("level")
         level_num = _level_number(level or "")
+        normalized_status = _normalize_status(t.get("status"))
 
-        print(f"[{idx}/{len(tournaments)}] {title}")
+        skip_refresh = False
+        if existing_data and not args.full_refresh:
+            if normalized_status == "upcoming":
+                skip_refresh = True
+            elif _is_complete_tournament_tree(existing_data, today):
+                skip_refresh = True
+
+        if skip_refresh:
+            merged = dict(existing_data)
+            merged.update(
+                {
+                    "name": group.get("name") or merged.get("name"),
+                    "title": title or merged.get("title"),
+                    "level": level or merged.get("level"),
+                    "level_number": level_num or merged.get("level_number"),
+                    "year": t.get("year") or merged.get("year"),
+                    "start_date": t.get("startDate") or merged.get("start_date"),
+                    "end_date": t.get("endDate") or merged.get("end_date"),
+                    "surface": t.get("surface") or merged.get("surface"),
+                    "indoor_outdoor": t.get("inOutdoor") or merged.get("indoor_outdoor"),
+                    "city": t.get("city") or merged.get("city"),
+                    "country": t.get("country") or merged.get("country"),
+                    "status": normalized_status or merged.get("status"),
+                    "draw_size_singles": t.get("singlesDrawSize") or merged.get("draw_size_singles"),
+                    "draw_size_doubles": t.get("doublesDrawSize") or merged.get("draw_size_doubles"),
+                    "prize_money": t.get("prizeMoney") or merged.get("prize_money"),
+                    "prize_money_currency": t.get("prizeMoneyCurrency") or merged.get("prize_money_currency"),
+                }
+            )
+            output_records.append(merged)
+            stats["skipped_rows"] += 1
+            print(f"[{idx}/{len(tournaments)}] {title} -> skip (incremental)")
+            continue
+
+        print(f"[{idx}/{len(tournaments)}] {title} -> refresh")
 
         has_singles_draw = bool(t.get("singlesDrawSize"))
         is_united_cup = (group.get("name") or "").strip().upper() == "UNITED CUP"
@@ -390,7 +540,7 @@ def main() -> int:
                     }
                     break
 
-        output["tournaments"].append(
+        output_records.append(
             {
                 "order": idx,
                 "tournament_group_id": group_id,
@@ -405,7 +555,7 @@ def main() -> int:
                 "indoor_outdoor": t.get("inOutdoor"),
                 "city": t.get("city"),
                 "country": t.get("country"),
-                "status": t.get("status"),
+                "status": normalized_status,
                 "draw_size_singles": t.get("singlesDrawSize"),
                 "draw_size_doubles": t.get("doublesDrawSize"),
                 "prize_money": t.get("prizeMoney"),
@@ -418,22 +568,91 @@ def main() -> int:
                 "matches": matches,
             }
         )
+        stats["refreshed_rows"] += 1
+        if draw:
+            stats["draw_success"] += 1
+        else:
+            stats["draw_missing"] += 1
         time.sleep(0.15)
 
-    output["tournaments"].sort(key=lambda x: x.get("start_date") or "")
-    for idx, t in enumerate(output["tournaments"], start=1):
-        t["order"] = idx
+    for group_key, entry in existing.items():
+        if group_key in seen_group_ids:
+            continue
+        output_records.append(entry["data"])
 
-    for tournament in output["tournaments"]:
-        order = tournament.get("order")
+    output_records.sort(key=lambda x: ((x.get("start_date") or "9999-12-31"), _clean_text(x.get("name"))))
+    for order, tournament in enumerate(output_records, start=1):
+        tournament["order"] = order
+
+    for tournament in output_records:
+        group_key = str(tournament.get("tournament_group_id") or "")
+        order = int(tournament.get("order") or 0)
         name = tournament.get("name") or tournament.get("title") or f"tournament-{order}"
-        slug = _slugify(name)
-        filename = f"{order:03d}_{slug}.json"
-        path = output_dir / filename
-        with path.open("w", encoding="utf-8") as f:
-            json.dump(tournament, f, ensure_ascii=False, indent=2)
+        filename = f"{order:03d}_{_slugify(name)}.json"
+        out_path = output_dir / filename
+        new_text = json.dumps(tournament, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {len(output['tournaments'])} tournament files to {output_dir}")
+        existing_entry = existing.get(group_key)
+        previous_path = existing_entry.get("path") if existing_entry else None
+        previous_text = ""
+        if previous_path and previous_path.exists():
+            try:
+                previous_text = previous_path.read_text(encoding="utf-8")
+            except Exception:
+                previous_text = ""
+
+        if previous_path and previous_text == new_text and previous_path.resolve() == out_path.resolve():
+            stats["unchanged_files"] += 1
+            continue
+
+        if previous_path and previous_path.exists() and previous_text != new_text:
+            _archive_file_if_needed(previous_path, outdated_dir, archive_stamp)
+
+        if out_path.exists() and (not previous_path or out_path.resolve() != previous_path.resolve()):
+            old_text = ""
+            try:
+                old_text = out_path.read_text(encoding="utf-8")
+            except Exception:
+                old_text = ""
+            if old_text != new_text:
+                _archive_file_if_needed(out_path, outdated_dir, archive_stamp)
+
+        out_path.write_text(new_text, encoding="utf-8")
+
+        if previous_path and previous_path.exists() and previous_path.resolve() != out_path.resolve():
+            previous_path.unlink(missing_ok=True)
+
+        if previous_path:
+            stats["updated_files"] += 1
+        else:
+            stats["new_files"] += 1
+
+    keep_names = {
+        f"{int(t.get('order') or 0):03d}_{_slugify(t.get('name') or t.get('title') or 'tournament')}.json"
+        for t in output_records
+    }
+    for extra in output_dir.glob("*.json"):
+        if extra.name in keep_names:
+            continue
+        try:
+            payload = json.loads(extra.read_text(encoding="utf-8"))
+            if payload.get("year") == args.year:
+                _archive_file_if_needed(extra, outdated_dir, archive_stamp)
+                extra.unlink(missing_ok=True)
+        except Exception:
+            continue
+
+    print("========== WTA TOURNAMENT SUMMARY ==========")
+    print(f"source rows:      {stats['source_rows']}")
+    print(f"refreshed rows:   {stats['refreshed_rows']}")
+    print(f"skipped rows:     {stats['skipped_rows']}")
+    print(f"draw success:     {stats['draw_success']}")
+    print(f"draw missing:     {stats['draw_missing']}")
+    print(f"new files:        {stats['new_files']}")
+    print(f"updated files:    {stats['updated_files']}")
+    print(f"unchanged files:  {stats['unchanged_files']}")
+    print(f"output dir:       {output_dir}")
+
     return 0
 
 

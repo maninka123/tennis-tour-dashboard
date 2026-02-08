@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.0%\n1st Return Points Won %\n37.8%\n2nd Return Points Won %\n56.5%\nBreak Points Converted\n60.0%\nReturn Games Won\n33.3%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:01:20.817419+00:00",
+  "updated_at": "2026-02-07T13:34:17.613039+00:00",
   "records_tab": {
     "summary": [
       {
@@ -242,6 +242,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Tatiana Prozorova",
             "opponent_country": "RUS",
@@ -252,6 +255,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Leolia Jeanjean",
             "opponent_country": "FRA",
@@ -285,6 +291,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Petra Marcinko",
             "opponent_country": "CRO",
@@ -318,6 +327,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Anna Bondar",
             "opponent_country": "HUN",
@@ -328,6 +340,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Venus Williams",
             "opponent_country": "USA",
@@ -361,6 +376,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Emerson Jones",
             "opponent_country": "AUS",
@@ -379,6 +397,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:01:20.817376+00:00"
+    "updated_at": "2026-02-07T13:34:17.612973+00:00"
   }
 }

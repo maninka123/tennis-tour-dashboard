@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.6%\n1st Return Points Won %\n38.6%\n2nd Return Points Won %\n62.9%\nBreak Points Converted\n46.8%\nReturn Games Won\n44.0%\nReturn Games Played\n50\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:50:15.835981+00:00",
+  "updated_at": "2026-02-07T13:23:44.692794+00:00",
   "records_tab": {
     "summary": [
       {
@@ -145,7 +145,23 @@
         "draw": "128M/64D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elena Rybakina",
+            "opponent_country": "KAZ",
+            "opponent_seed": 5,
+            "opponent_entry": "",
+            "score": "7-5, 6-1",
+            "opponent_rank": 5
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Maddison Inglis",
             "opponent_country": "AUS",
@@ -156,6 +172,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Anna Kalinskaya",
             "opponent_country": "RUS",
@@ -166,6 +185,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Marie Bouzkova",
             "opponent_country": "CZE",
@@ -176,6 +198,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Yue Yuan",
             "opponent_country": "CHN",
@@ -183,16 +208,6 @@
             "opponent_entry": "Q",
             "score": "7-6(5), 6-3",
             "opponent_rank": 130
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Elena Rybakina",
-            "opponent_country": "KAZ",
-            "opponent_seed": 5,
-            "opponent_entry": "",
-            "score": "7-5, 6-1",
-            "opponent_rank": 5
           }
         ],
         "summary": {
@@ -218,7 +233,49 @@
         "draw": "0M/0Q/0D",
         "matches": [
           {
+            "round": "Round 1",
+            "round_name": "",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Belinda Bencic",
+            "opponent_country": "SUI",
+            "opponent_seed": 16,
+            "opponent_entry": "",
+            "score": "3-6, 6-0, 6-3",
+            "opponent_rank": 11
+          },
+          {
+            "round": "Round 2",
+            "round_name": "",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Coco Gauff",
+            "opponent_country": "USA",
+            "opponent_seed": 1,
+            "opponent_entry": "",
+            "score": "6-4, 6-2",
+            "opponent_rank": 4
+          },
+          {
+            "round": "Round 3",
+            "round_name": "",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Maya Joint",
+            "opponent_country": "AUS",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-1, 6-1",
+            "opponent_rank": 32
+          },
+          {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Eva Lys",
             "opponent_country": "GER",
@@ -229,6 +286,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Suzan Lamens",
             "opponent_country": "NED",
@@ -236,36 +296,6 @@
             "opponent_entry": "",
             "score": "6-3, 6-2",
             "opponent_rank": 97
-          },
-          {
-            "round": "Round 3",
-            "result": "W",
-            "opponent_name": "Maya Joint",
-            "opponent_country": "AUS",
-            "opponent_seed": 4,
-            "opponent_entry": "",
-            "score": "6-1, 6-1",
-            "opponent_rank": 32
-          },
-          {
-            "round": "Round 2",
-            "result": "L",
-            "opponent_name": "Coco Gauff",
-            "opponent_country": "USA",
-            "opponent_seed": 1,
-            "opponent_entry": "",
-            "score": "6-4, 6-2",
-            "opponent_rank": 4
-          },
-          {
-            "round": "Round 1",
-            "result": "L",
-            "opponent_name": "Belinda Bencic",
-            "opponent_country": "SUI",
-            "opponent_seed": 16,
-            "opponent_entry": "",
-            "score": "3-6, 6-0, 6-3",
-            "opponent_rank": 11
           }
         ],
         "summary": {
@@ -277,6 +307,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:50:15.835962+00:00"
+    "updated_at": "2026-02-07T13:23:44.692731+00:00"
   }
 }

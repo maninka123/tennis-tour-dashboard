@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n35.0%\n1st Return Points Won %\n39.6%\n2nd Return Points Won %\n16.7%\nBreak Points Converted\n25.0%\nReturn Games Won\n11.1%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:01:34.153499+00:00",
+  "updated_at": "2026-02-07T13:34:29.336764+00:00",
   "records_tab": {
     "summary": [
       {
@@ -138,6 +138,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Coco Gauff",
             "opponent_country": "USA",
@@ -148,6 +151,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Storm Hunter",
             "opponent_country": "AUS",
@@ -158,6 +164,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Taylor Townsend",
             "opponent_country": "USA",
@@ -191,6 +200,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Renata Zarazua",
             "opponent_country": "MEX",
@@ -224,6 +236,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Yulia Putintseva",
             "opponent_country": "KAZ",
@@ -242,6 +257,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:01:34.153479+00:00"
+    "updated_at": "2026-02-07T13:34:29.336704+00:00"
   }
 }

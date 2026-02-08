@@ -6,9 +6,31 @@
 // ============================================
 // Configuration
 // ============================================
+const PAGE_PROTOCOL = (window.location && window.location.protocol && window.location.protocol.startsWith('http'))
+    ? window.location.protocol
+    : 'http:';
+const PAGE_HOST = (window.location && window.location.hostname)
+    ? window.location.hostname
+    : 'localhost';
+const PAGE_ORIGIN = (window.location && window.location.origin)
+    ? window.location.origin
+    : `${PAGE_PROTOCOL}//${PAGE_HOST}`;
+
+const PAGE_PORT = (window.location && typeof window.location.port === 'string')
+    ? window.location.port
+    : '';
+
+const SAME_ORIGIN_API_BASE = (PAGE_PORT === '5001' || PAGE_PORT === '5000')
+    ? `${PAGE_ORIGIN}/api`
+    : null;
+
 const CONFIG = {
-    API_BASE_URL: 'http://localhost:5001/api',
-    WS_URL: 'http://localhost:5001',
+    API_BASE_URL: `${PAGE_PROTOCOL}//${PAGE_HOST}:5001/api`,
+    API_BASE_CANDIDATES: [
+        `${PAGE_PROTOCOL}//${PAGE_HOST}:5001/api`,
+        `${PAGE_PROTOCOL}//${PAGE_HOST}:5000/api`
+    ].concat(SAME_ORIGIN_API_BASE ? [SAME_ORIGIN_API_BASE] : []),
+    WS_URL: `${PAGE_PROTOCOL}//${PAGE_HOST}:5001`,
     UPDATE_INTERVAL: 30000, // 30 seconds (live scores)
     MATCH_LIST_UPDATE_INTERVAL: 1800000, // 30 minutes (recent + upcoming)
     TOURNAMENT_COLORS: {
@@ -75,13 +97,25 @@ const AppState = {
     recentMatchesUpdatedAt: null,
     rankings: { atp: [], wta: [] },
     rankingsDisplayLimit: { atp: 200, wta: 200 },
+    atpRankingsStatus: null,
+    isUpdatingAtpRankings: false,
     wtaRankingsStatus: null,
     isUpdatingWtaRankings: false,
+    wtaStatsStatus: null,
+    isUpdatingWtaStats: false,
+    wtaStatsData: null,
+    atpStatsStatus: null,
+    isUpdatingAtpStats: false,
+    atpStatsData: null,
+    tournamentsStatus: { atp: null, wta: null },
+    isUpdatingTournaments: { atp: false, wta: false },
     tournaments: { atp: [], wta: [] },
     selectedTournament: null,
     socket: null,
     isConnected: false,
-    lastUpdated: null
+    livePollingBySocket: false,
+    lastUpdated: null,
+    apiBaseResolved: null
 };
 
 // ============================================
@@ -110,10 +144,13 @@ const DOM = {
     rankingsLoadMore: document.getElementById('rankingsLoadMore'),
     rankingsUpdateBtn: document.getElementById('rankingsUpdateBtn'),
     rankingsUpdatedAgo: document.getElementById('rankingsUpdatedAgo'),
+    statsZoneBtn: document.getElementById('statsZoneBtn'),
     
     // Tournaments
     tournamentCalendar: document.getElementById('tournamentCalendar'),
     yearDisplay: document.getElementById('yearDisplay'),
+    tournamentsUpdateBtn: document.getElementById('tournamentsUpdateBtn'),
+    tournamentsUpdatedAgo: document.getElementById('tournamentsUpdatedAgo'),
     
     // Bracket
     tournamentDetailsPanel: document.getElementById('tournamentDetailsPanel'),
@@ -153,7 +190,14 @@ const Utils = {
      * Format category for CSS class
      */
     getCategoryClass(category) {
-        return category.replace(/_/g, '-');
+        const safe = String(category || 'other').trim().toLowerCase();
+        if (!safe) return 'other';
+        return safe
+            .replace(/\s+/g, '_')
+            .replace(/[^a-z0-9_]/g, '_')
+            .replace(/_+/g, '_')
+            .replace(/^_+|_+$/g, '')
+            .replace(/_/g, '-') || 'other';
     },
 
     /**
@@ -243,29 +287,61 @@ const Utils = {
 // API Functions
 // ============================================
 const API = {
+    _buildBaseCandidates() {
+        const resolved = AppState.apiBaseResolved;
+        const sources = [
+            resolved,
+            CONFIG.API_BASE_URL,
+            ...(Array.isArray(CONFIG.API_BASE_CANDIDATES) ? CONFIG.API_BASE_CANDIDATES : [])
+        ];
+        const unique = [];
+        sources.forEach((base) => {
+            const clean = String(base || '').trim().replace(/\/+$/, '');
+            if (!clean || unique.includes(clean)) return;
+            unique.push(clean);
+        });
+        return unique;
+    },
+
     /**
      * Fetch raw API payload
      */
     async fetchRaw(endpoint, params = {}, options = {}) {
-        try {
-            const url = new URL(`${CONFIG.API_BASE_URL}${endpoint}`);
-            Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-            
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 15000);
-            
-            const response = await fetch(url, { signal: controller.signal, ...options });
-            clearTimeout(timeoutId);
-            
-            const data = await response.json();
-            if (data.success === false) {
-                throw new Error(data.error || 'API Error');
+        let lastError = null;
+        const candidates = this._buildBaseCandidates();
+
+        for (const baseUrl of candidates) {
+            try {
+                const url = new URL(`${baseUrl}${endpoint}`);
+                Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
+                const controller = new AbortController();
+                const timeoutMs = Number(options.timeoutMs) > 0 ? Number(options.timeoutMs) : 45000;
+                const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+                const fetchOptions = { ...options, signal: controller.signal };
+                delete fetchOptions.timeoutMs;
+                const response = await fetch(url, fetchOptions);
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status} from ${baseUrl}`);
+                }
+
+                const data = await response.json();
+                if (data.success === false) {
+                    throw new Error(data.error || 'API Error');
+                }
+
+                AppState.apiBaseResolved = baseUrl;
+                return data;
+            } catch (error) {
+                lastError = error;
             }
-            return data;
-        } catch (error) {
-            console.error(`API Error (${endpoint}):`, error);
-            throw error;
         }
+
+        console.error(`API Error (${endpoint}):`, lastError);
+        throw lastError || new Error('API request failed');
     },
 
     /**
@@ -312,6 +388,13 @@ const API = {
     },
 
     /**
+     * Get ATP rankings file status metadata
+     */
+    async getAtpRankingsStatus() {
+        return await this.fetch('/rankings/atp/status');
+    },
+
+    /**
      * Refresh WTA rankings source file
      */
     async refreshWtaRankings() {
@@ -320,11 +403,93 @@ const API = {
     },
 
     /**
+     * Refresh ATP rankings source file
+     */
+    async refreshAtpRankings() {
+        const payload = await this.fetchRaw('/rankings/atp/refresh', {}, { method: 'POST' });
+        return payload.data || payload;
+    },
+
+    /**
+     * Get ATP Stat Zone file status metadata
+     */
+    async getATPStatsStatus() {
+        return await this.fetch('/stats/atp/status');
+    },
+
+    /**
+     * Refresh ATP Stat Zone source CSV
+     */
+    async refreshATPStats() {
+        const payload = await this.fetchRaw('/stats/atp/refresh', {}, { method: 'POST' });
+        return payload.data || payload;
+    },
+
+    /**
+     * Get ATP Stat Zone leaderboard payload
+     */
+    async getATPStatsLeaderboard() {
+        return await this.fetch('/stats/atp/leaderboard');
+    },
+
+    /**
+     * Get WTA Stat Zone file status metadata
+     */
+    async getWTAStatsStatus() {
+        return await this.fetch('/stats/wta/status');
+    },
+
+    /**
+     * Refresh WTA Stat Zone source CSV
+     */
+    async refreshWTAStats() {
+        const payload = await this.fetchRaw('/stats/wta/refresh', {}, { method: 'POST' });
+        return payload.data || payload;
+    },
+
+    /**
+     * Get WTA Stat Zone leaderboard payload
+     */
+    async getWTAStatsLeaderboard() {
+        return await this.fetch('/stats/wta/leaderboard');
+    },
+
+    /**
      * Get tournaments
      */
     async getTournaments(tour = 'atp', year = null) {
         const params = year ? { year } : {};
         return await this.fetch(`/tournaments/${tour}`, params);
+    },
+
+    /**
+     * Get tournament JSON status metadata
+     */
+    async getTournamentsStatus(tour = 'atp') {
+        return await this.fetch(`/tournaments/${tour}/status`);
+    },
+
+    /**
+     * Refresh tournament JSON files
+     */
+    async refreshTournaments(tour = 'atp', year = null, fullRefresh = false) {
+        const params = {};
+        if (year) {
+            params.year = year;
+        }
+        if (fullRefresh) {
+            params.full_refresh = '1';
+        }
+        const payload = await this.fetchRaw(
+            `/tournaments/${tour}/refresh`,
+            params,
+            {
+                method: 'POST',
+                // Tournament refresh can be heavy (draw parsing + selective updates).
+                timeoutMs: 900000
+            }
+        );
+        return payload.data || payload;
     },
 
     /**
@@ -342,10 +507,37 @@ const API = {
     },
 
     /**
+     * Get on-demand WTA match statistics
+     */
+    async getWTAMatchStats(eventId, eventYear, matchId) {
+        return await this.fetch('/match-stats/wta', {
+            event_id: eventId,
+            event_year: eventYear,
+            match_id: matchId
+        });
+    },
+
+    /**
+     * Get on-demand ATP match statistics
+     */
+    async getATPMatchStats(statsUrl) {
+        return await this.fetch('/match-stats/atp', {
+            stats_url: statsUrl
+        });
+    },
+
+    /**
      * Search WTA players for H2H autocomplete
      */
     async searchWTAH2HPlayers(query, limit = 8) {
         return await this.fetch('/h2h/wta/search', { query, limit });
+    },
+
+    /**
+     * Search ATP players for H2H autocomplete
+     */
+    async searchATPH2HPlayers(query, limit = 8) {
+        return await this.fetch('/h2h/atp/search', { query, limit });
     },
 
     /**
@@ -355,6 +547,18 @@ const API = {
         return await this.fetch('/h2h/wta', {
             player1_id: player1Id,
             player2_id: player2Id,
+            year,
+            meetings
+        });
+    },
+
+    /**
+     * Get ATP H2H detail payload
+     */
+    async getATPH2H(player1Code, player2Code, year = 2026, meetings = 5) {
+        return await this.fetch('/h2h/atp', {
+            player1_code: player1Code,
+            player2_code: player2Code,
             year,
             meetings
         });
@@ -375,7 +579,8 @@ window.TennisApp = {
     Scores: null,
     Bracket: null,
     H2H: null,
-    Player: null
+    Player: null,
+    StatZone: null
 };
 
 // ============================================
@@ -434,14 +639,50 @@ const Socket = {
         });
 
         AppState.socket.on('rankings_update', async (data) => {
-            if (!data || data.tour !== 'wta') return;
+            const tour = String((data || {}).tour || '').toLowerCase();
+            if (!tour || !['atp', 'wta'].includes(tour)) return;
             try {
-                await App.refreshWtaRankingsStatus();
-                const wtaRankings = await API.getRankings('wta', 400);
-                AppState.rankings.wta = wtaRankings || [];
+                await App.refreshRankingsStatus(tour);
+                const limit = tour === 'wta' ? 400 : 200;
+                AppState.rankings[tour] = await API.getRankings(tour, limit) || [];
                 RankingsModule.render();
             } catch (error) {
                 console.error('Error handling rankings_update event:', error);
+            }
+        });
+
+        AppState.socket.on('stats_update', async (data) => {
+            if (!data || data.scope !== 'stat_zone') return;
+            try {
+                if (data.tour === 'atp') {
+                    await App.refreshAtpStatsStatus();
+                    AppState.atpStatsData = await API.getATPStatsLeaderboard();
+                } else if (data.tour === 'wta') {
+                    await App.refreshWtaStatsStatus();
+                    AppState.wtaStatsData = await API.getWTAStatsLeaderboard();
+                } else {
+                    return;
+                }
+                if (window.StatZoneModule && typeof window.StatZoneModule.render === 'function') {
+                    window.StatZoneModule.render();
+                }
+            } catch (error) {
+                console.error('Error handling stats_update event:', error);
+            }
+        });
+
+        AppState.socket.on('tournaments_update', async (data) => {
+            const tour = String((data || {}).tour || '').toLowerCase();
+            if (!tour || !['atp', 'wta'].includes(tour)) return;
+            try {
+                await App.refreshTournamentsStatus(tour);
+                const year = parseInt(DOM.yearDisplay?.textContent || '', 10) || null;
+                AppState.tournaments[tour] = await API.getTournaments(tour, year);
+                if (tour === AppState.currentTour) {
+                    TournamentsModule.render();
+                }
+            } catch (error) {
+                console.error('Error handling tournaments_update event:', error);
             }
         });
     },
@@ -450,6 +691,7 @@ const Socket = {
      * Start polling if WebSocket is not available
      */
     startPolling() {
+        AppState.livePollingBySocket = true;
         setInterval(async () => {
             try {
                 const scores = await API.getLiveScores('both');
@@ -505,13 +747,23 @@ const EventHandlers = {
             AppState.selectedTournament = null;
         });
 
-        // WTA rankings manual refresh
+        // Rankings manual refresh (ATP/WTA based on current tab)
         DOM.rankingsUpdateBtn?.addEventListener('click', async () => {
-            await App.refreshWtaRankings();
+            await App.refreshCurrentTourRankings();
+        });
+
+        DOM.tournamentsUpdateBtn?.addEventListener('click', async () => {
+            await App.refreshCurrentTourTournaments();
         });
 
         // Match card click handlers
         document.addEventListener('click', (e) => {
+            const playerRow = e.target.closest('.player-row[data-player-id]');
+            if (playerRow && playerRow.dataset.playerId) {
+                PlayerModule.showPlayerStats(playerRow.dataset.playerId);
+                return;
+            }
+
             const upcomingCard = e.target.closest('.upcoming-match-card');
             if (upcomingCard) {
                 const matchId = upcomingCard.dataset.matchId;
@@ -555,6 +807,14 @@ const EventHandlers = {
             }
         });
 
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const playerRow = e.target.closest('.player-row[data-player-id]');
+            if (!playerRow || !playerRow.dataset.playerId) return;
+            e.preventDefault();
+            PlayerModule.showPlayerStats(playerRow.dataset.playerId);
+        });
+
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
@@ -562,6 +822,10 @@ const EventHandlers = {
                 DOM.matchPopup.classList.remove('visible');
                 ScoresModule.closeMatchStats();
                 PlayerModule.close();
+                App.closeStatsZoneModal();
+                if (window.StatZoneModule && typeof window.StatZoneModule.closeBreakdownModal === 'function') {
+                    window.StatZoneModule.closeBreakdownModal();
+                }
             }
         });
     },
@@ -581,8 +845,11 @@ const EventHandlers = {
 
         // Update rankings title
         DOM.rankingsTitle.textContent = tour.toUpperCase();
-        if (tour === 'wta') {
-            App.refreshWtaRankingsStatus();
+        App.refreshRankingsStatus(tour);
+        App.refreshTournamentsStatus(tour);
+        App.syncTournamentHeaderState();
+        if (window.StatZoneModule && typeof window.StatZoneModule.syncHeaderState === 'function') {
+            window.StatZoneModule.syncHeaderState();
         }
 
         // Re-render all components for new tour
@@ -607,12 +874,22 @@ const App = {
         // Initialize event handlers
         EventHandlers.init();
         
+        // Initialize ATP match stats cache
+        ScoresModule.init();
+        
         // Initialize WebSocket connection
         Socket.init();
         
         // Load initial data
         await this.loadInitialData();
+        await this.refreshAtpRankingsStatus();
         await this.refreshWtaRankingsStatus();
+        await this.refreshAtpStatsStatus();
+        await this.refreshWtaStatsStatus();
+        await this.refreshTournamentsStatus('atp');
+        await this.refreshTournamentsStatus('wta');
+        this.syncTournamentHeaderState();
+        this.startLiveScoreRefreshLoop();
         this.startPeriodicRefresh();
         
         // Hide loading overlay
@@ -624,13 +901,33 @@ const App = {
     },
 
     /**
+     * Keep live scores on a dedicated refresh loop (independent of recent/upcoming refresh).
+     * When websocket is connected, it becomes no-op to avoid duplicate traffic.
+     */
+    startLiveScoreRefreshLoop() {
+        if (AppState.livePollingBySocket) return;
+        setInterval(async () => {
+            if (AppState.isConnected) return;
+            try {
+                const scores = await API.getLiveScores('both');
+                AppState.liveScores.atp = scores.filter(m => m.tour === 'ATP');
+                AppState.liveScores.wta = scores.filter(m => m.tour === 'WTA');
+                ScoresModule.renderLiveScores();
+                Socket.updateLastUpdated();
+            } catch (error) {
+                console.error('Error refreshing live scores:', error);
+            }
+        }, CONFIG.UPDATE_INTERVAL);
+    },
+
+    /**
      * Load all initial data
      */
     async loadInitialData() {
         try {
             console.log('Fetching initial data from API...');
-            // Load data in parallel
-            const [atpScores, wtaScores, atpUpcoming, wtaUpcoming, atpRecent, wtaRecent, atpRankings, wtaRankings, atpTournaments, wtaTournaments] = await Promise.all([
+            // Load data in parallel; do not fail whole screen if one endpoint is down.
+            const requests = [
                 API.getLiveScores('atp'),
                 API.getLiveScores('wta'),
                 API.getUpcomingMatches('atp'),
@@ -641,12 +938,48 @@ const App = {
                 API.getRankings('wta', 400),
                 API.getTournaments('atp'),
                 API.getTournaments('wta')
-            ]).catch(err => {
-                console.error("One or more API calls failed:", err);
-                throw err; // Re-throw to be caught by the outer try/catch
+            ];
+            const keys = [
+                'atpScores', 'wtaScores',
+                'atpUpcoming', 'wtaUpcoming',
+                'atpRecent', 'wtaRecent',
+                'atpRankings', 'wtaRankings',
+                'atpTournaments', 'wtaTournaments'
+            ];
+            const settled = await Promise.allSettled(requests);
+            const resultMap = {};
+            settled.forEach((result, index) => {
+                const key = keys[index];
+                if (result.status === 'fulfilled') {
+                    resultMap[key] = result.value;
+                } else {
+                    resultMap[key] = [];
+                    console.error(`Initial load failed for ${key}:`, result.reason);
+                }
             });
+            const atpScores = resultMap.atpScores;
+            const wtaScores = resultMap.wtaScores;
+            const atpUpcoming = resultMap.atpUpcoming;
+            const wtaUpcoming = resultMap.wtaUpcoming;
+            const atpRecent = resultMap.atpRecent;
+            const wtaRecent = resultMap.wtaRecent;
+            const atpRankings = resultMap.atpRankings;
+            const wtaRankings = resultMap.wtaRankings;
+            const atpTournaments = resultMap.atpTournaments;
+            const wtaTournaments = resultMap.wtaTournaments;
 
-            console.log('Data fetched successfully. Raw data:', { atpScores, wtaScores, atpRankings, wtaRankings, atpTournaments, wtaTournaments });
+            console.log('Data fetched successfully.', {
+                atpLive: Array.isArray(atpScores) ? atpScores.length : 0,
+                wtaLive: Array.isArray(wtaScores) ? wtaScores.length : 0,
+                atpUpcoming: Array.isArray(atpUpcoming) ? atpUpcoming.length : 0,
+                wtaUpcoming: Array.isArray(wtaUpcoming) ? wtaUpcoming.length : 0,
+                atpRecent: Array.isArray(atpRecent) ? atpRecent.length : 0,
+                wtaRecent: Array.isArray(wtaRecent) ? wtaRecent.length : 0,
+                atpRankings: Array.isArray(atpRankings) ? atpRankings.length : 0,
+                wtaRankings: Array.isArray(wtaRankings) ? wtaRankings.length : 0,
+                atpTournaments: Array.isArray(atpTournaments) ? atpTournaments.length : 0,
+                wtaTournaments: Array.isArray(wtaTournaments) ? wtaTournaments.length : 0
+            });
 
             // Update state
             AppState.liveScores.atp = atpScores || [];
@@ -662,15 +995,15 @@ const App = {
             AppState.tournaments.atp = atpTournaments || [];
             AppState.tournaments.wta = wtaTournaments || [];
 
-            console.log('Application state updated:', AppState);
+            console.log('Application state updated.');
 
             // Render all components
             console.log('Rendering all modules...');
-            ScoresModule.renderLiveScores();
-            ScoresModule.renderUpcomingMatches();
-            ScoresModule.renderRecentMatches();
-            RankingsModule.render();
-            TournamentsModule.render();
+            try { ScoresModule.renderLiveScores(); } catch (e) { console.error('renderLiveScores failed:', e); }
+            try { ScoresModule.renderUpcomingMatches(); } catch (e) { console.error('renderUpcomingMatches failed:', e); }
+            try { ScoresModule.renderRecentMatches(); } catch (e) { console.error('renderRecentMatches failed:', e); }
+            try { RankingsModule.render(); } catch (e) { console.error('Rankings render failed:', e); }
+            try { TournamentsModule.render(); } catch (e) { console.error('Tournaments render failed:', e); }
             console.log('All modules rendered.');
 
             Socket.updateLastUpdated();
@@ -678,6 +1011,17 @@ const App = {
             console.error('Error loading initial data:', error);
             // Show demo data even if API fails
             this.loadDemoData();
+        }
+    },
+
+    async refreshAtpRankingsStatus() {
+        try {
+            AppState.atpRankingsStatus = await API.getAtpRankingsStatus();
+        } catch (error) {
+            console.error('Failed to load ATP rankings status:', error);
+        }
+        if (window.RankingsModule && typeof window.RankingsModule.render === 'function') {
+            window.RankingsModule.render();
         }
     },
 
@@ -689,6 +1033,124 @@ const App = {
         }
         if (window.RankingsModule && typeof window.RankingsModule.render === 'function') {
             window.RankingsModule.render();
+        }
+    },
+
+    async refreshRankingsStatus(tour = AppState.currentTour) {
+        const tourName = String(tour || '').toLowerCase() === 'wta' ? 'wta' : 'atp';
+        if (tourName === 'wta') {
+            await this.refreshWtaRankingsStatus();
+        } else {
+            await this.refreshAtpRankingsStatus();
+        }
+    },
+
+    async refreshAtpStatsStatus() {
+        try {
+            AppState.atpStatsStatus = await API.getATPStatsStatus();
+        } catch (error) {
+            console.error('Failed to load ATP stats status:', error);
+        }
+        if (window.StatZoneModule && typeof window.StatZoneModule.syncHeaderState === 'function') {
+            window.StatZoneModule.syncHeaderState();
+        }
+    },
+
+    async refreshWtaStatsStatus() {
+        try {
+            AppState.wtaStatsStatus = await API.getWTAStatsStatus();
+        } catch (error) {
+            console.error('Failed to load WTA stats status:', error);
+        }
+        if (window.StatZoneModule && typeof window.StatZoneModule.syncHeaderState === 'function') {
+            window.StatZoneModule.syncHeaderState();
+        }
+    },
+
+    async refreshAtpStats() {
+        if (AppState.isUpdatingAtpStats) {
+            return;
+        }
+        AppState.isUpdatingAtpStats = true;
+        if (window.StatZoneModule && typeof window.StatZoneModule.syncModalActions === 'function') {
+            window.StatZoneModule.syncModalActions();
+        }
+
+        try {
+            const result = await API.refreshATPStats();
+            AppState.atpStatsStatus = result || null;
+            AppState.atpStatsData = await API.getATPStatsLeaderboard();
+            if (window.StatZoneModule && typeof window.StatZoneModule.render === 'function') {
+                window.StatZoneModule.render();
+            }
+            Socket.updateLastUpdated();
+        } catch (error) {
+            console.error('Error updating ATP stats:', error);
+            alert(`ATP stats update failed: ${error.message}`);
+        } finally {
+            AppState.isUpdatingAtpStats = false;
+            if (window.StatZoneModule && typeof window.StatZoneModule.syncModalActions === 'function') {
+                window.StatZoneModule.syncModalActions();
+            }
+            if (window.StatZoneModule && typeof window.StatZoneModule.syncHeaderState === 'function') {
+                window.StatZoneModule.syncHeaderState();
+            }
+        }
+    },
+
+    async refreshWtaStats() {
+        if (AppState.isUpdatingWtaStats) {
+            return;
+        }
+        AppState.isUpdatingWtaStats = true;
+        if (window.StatZoneModule && typeof window.StatZoneModule.syncModalActions === 'function') {
+            window.StatZoneModule.syncModalActions();
+        }
+
+        try {
+            const result = await API.refreshWTAStats();
+            AppState.wtaStatsStatus = result || null;
+            AppState.wtaStatsData = await API.getWTAStatsLeaderboard();
+            if (window.StatZoneModule && typeof window.StatZoneModule.render === 'function') {
+                window.StatZoneModule.render();
+            }
+            Socket.updateLastUpdated();
+        } catch (error) {
+            console.error('Error updating WTA stats:', error);
+            alert(`WTA stats update failed: ${error.message}`);
+        } finally {
+            AppState.isUpdatingWtaStats = false;
+            if (window.StatZoneModule && typeof window.StatZoneModule.syncModalActions === 'function') {
+                window.StatZoneModule.syncModalActions();
+            }
+            if (window.StatZoneModule && typeof window.StatZoneModule.syncHeaderState === 'function') {
+                window.StatZoneModule.syncHeaderState();
+            }
+        }
+    },
+
+    async refreshAtpRankings() {
+        if (AppState.isUpdatingAtpRankings) {
+            return;
+        }
+        AppState.isUpdatingAtpRankings = true;
+        if (window.RankingsModule && typeof window.RankingsModule.render === 'function') {
+            window.RankingsModule.render();
+        }
+
+        try {
+            const result = await API.refreshAtpRankings();
+            AppState.atpRankingsStatus = result || null;
+            const atpRankings = await API.getRankings('atp', 200);
+            AppState.rankings.atp = atpRankings || [];
+            RankingsModule.render();
+            Socket.updateLastUpdated();
+        } catch (error) {
+            console.error('Error updating ATP rankings:', error);
+            alert(`ATP rankings update failed: ${error.message}`);
+        } finally {
+            AppState.isUpdatingAtpRankings = false;
+            RankingsModule.render();
         }
     },
 
@@ -717,6 +1179,92 @@ const App = {
         }
     },
 
+    async refreshCurrentTourRankings() {
+        const tour = AppState.currentTour === 'wta' ? 'wta' : 'atp';
+        if (tour === 'wta') {
+            await this.refreshWtaRankings();
+        } else {
+            await this.refreshAtpRankings();
+        }
+    },
+
+    formatRelativeTime(isoText, fallback = 'Updated --') {
+        if (!isoText) return fallback;
+        const then = new Date(isoText);
+        if (Number.isNaN(then.getTime())) return fallback;
+        const now = new Date();
+        const diffMs = now - then;
+        if (diffMs < 0) return 'Updated just now';
+        const sec = Math.floor(diffMs / 1000);
+        if (sec < 45) return 'Updated just now';
+        const min = Math.floor(sec / 60);
+        if (min < 60) return `Updated ${min}m ago`;
+        const hr = Math.floor(min / 60);
+        if (hr < 24) return `Updated ${hr}h ago`;
+        const day = Math.floor(hr / 24);
+        return `Updated ${day}d ago`;
+    },
+
+    refreshTournamentsUpdatedAgo() {
+        const tour = AppState.currentTour;
+        const status = AppState.tournamentsStatus[tour] || {};
+        if (DOM.tournamentsUpdatedAgo) {
+            DOM.tournamentsUpdatedAgo.textContent = this.formatRelativeTime(status.updated_at, 'Updated --');
+        }
+    },
+
+    syncTournamentHeaderState() {
+        const tour = AppState.currentTour;
+        const isUpdating = !!(AppState.isUpdatingTournaments[tour]);
+        if (DOM.tournamentsUpdateBtn) {
+            DOM.tournamentsUpdateBtn.disabled = isUpdating;
+            DOM.tournamentsUpdateBtn.innerHTML = isUpdating
+                ? '<i class="fas fa-spinner fa-spin"></i>'
+                : '<i class="fas fa-rotate-right"></i>';
+            const label = isUpdating ? `Updating ${tour.toUpperCase()} tournaments` : `Update ${tour.toUpperCase()} tournaments`;
+            DOM.tournamentsUpdateBtn.setAttribute('aria-label', label);
+            DOM.tournamentsUpdateBtn.setAttribute('title', label);
+        }
+        this.refreshTournamentsUpdatedAgo();
+    },
+
+    async refreshTournamentsStatus(tour = AppState.currentTour) {
+        const tourName = String(tour || '').toLowerCase() === 'wta' ? 'wta' : 'atp';
+        try {
+            AppState.tournamentsStatus[tourName] = await API.getTournamentsStatus(tourName);
+        } catch (error) {
+            console.error(`Failed to load ${tourName.toUpperCase()} tournaments status:`, error);
+        }
+        if (tourName === AppState.currentTour) {
+            this.syncTournamentHeaderState();
+        }
+    },
+
+    async refreshCurrentTourTournaments() {
+        const tour = AppState.currentTour === 'wta' ? 'wta' : 'atp';
+        if (AppState.isUpdatingTournaments[tour]) {
+            return;
+        }
+
+        AppState.isUpdatingTournaments[tour] = true;
+        this.syncTournamentHeaderState();
+
+        try {
+            const year = parseInt(DOM.yearDisplay?.textContent || '', 10) || null;
+            const result = await API.refreshTournaments(tour, year, false);
+            AppState.tournamentsStatus[tour] = result || null;
+            AppState.tournaments[tour] = await API.getTournaments(tour, year);
+            TournamentsModule.render();
+            Socket.updateLastUpdated();
+        } catch (error) {
+            console.error(`Error updating ${tour.toUpperCase()} tournaments:`, error);
+            alert(`${tour.toUpperCase()} tournament update failed: ${error.message}`);
+        } finally {
+            AppState.isUpdatingTournaments[tour] = false;
+            this.syncTournamentHeaderState();
+        }
+    },
+
     /**
      * Load demo data when API is not available
      */
@@ -739,17 +1287,22 @@ const App = {
         // Refresh recent/upcoming blocks every 30 minutes.
         setInterval(async () => {
             try {
-                const [atpUpcoming, wtaUpcoming, atpRecent, wtaRecent] = await Promise.all([
+                const settled = await Promise.allSettled([
                     API.getUpcomingMatches('atp'),
                     API.getUpcomingMatches('wta'),
                     API.getRecentMatches('atp', 15),
                     API.getRecentMatches('wta', 15)
                 ]);
+                const values = settled.map((item) => (item.status === 'fulfilled' ? item.value : null));
+                if (settled[0].status === 'rejected') console.error('Periodic refresh failed: atpUpcoming', settled[0].reason);
+                if (settled[1].status === 'rejected') console.error('Periodic refresh failed: wtaUpcoming', settled[1].reason);
+                if (settled[2].status === 'rejected') console.error('Periodic refresh failed: atpRecent', settled[2].reason);
+                if (settled[3].status === 'rejected') console.error('Periodic refresh failed: wtaRecent', settled[3].reason);
 
-                AppState.upcomingMatches.atp = atpUpcoming || [];
-                AppState.upcomingMatches.wta = wtaUpcoming || [];
-                AppState.recentMatches.atp = atpRecent || [];
-                AppState.recentMatches.wta = wtaRecent || [];
+                AppState.upcomingMatches.atp = values[0] || AppState.upcomingMatches.atp || [];
+                AppState.upcomingMatches.wta = values[1] || AppState.upcomingMatches.wta || [];
+                AppState.recentMatches.atp = values[2] || AppState.recentMatches.atp || [];
+                AppState.recentMatches.wta = values[3] || AppState.recentMatches.wta || [];
                 AppState.upcomingMatchesUpdatedAt = new Date().toISOString();
                 AppState.recentMatchesUpdatedAt = new Date().toISOString();
 
@@ -769,6 +1322,7 @@ const App = {
             if (window.RankingsModule && typeof window.RankingsModule.refreshWtaUpdatedAgo === 'function') {
                 window.RankingsModule.refreshWtaUpdatedAgo();
             }
+            App.refreshTournamentsUpdatedAgo();
         }, 60000);
     },
 
@@ -792,6 +1346,18 @@ const App = {
         if (modal) {
             modal.classList.remove('active');
         }
+    },
+
+    openStatsZoneModal() {
+        if (window.StatZoneModule && typeof window.StatZoneModule.open === 'function') {
+            window.StatZoneModule.open();
+        }
+    },
+
+    closeStatsZoneModal() {
+        if (window.StatZoneModule && typeof window.StatZoneModule.close === 'function') {
+            window.StatZoneModule.close();
+        }
     }
 };
 
@@ -810,5 +1376,11 @@ window.TennisApp.Scores = window.ScoresModule;
 window.TennisApp.BracketModule = window.BracketModule;
 window.TennisApp.H2HModule = window.H2HModule;
 window.TennisApp.PlayerModule = window.PlayerModule;
+window.TennisApp.StatZoneModule = window.StatZoneModule;
+window.TennisApp.StatZone = window.StatZoneModule;
 window.TennisApp.openH2HModal = App.openH2HModal;
 window.TennisApp.closeH2HModal = App.closeH2HModal;
+window.TennisApp.openStatsZoneModal = App.openStatsZoneModal;
+window.TennisApp.closeStatsZoneModal = App.closeStatsZoneModal;
+window.TennisApp.refreshAtpStats = App.refreshAtpStats.bind(App);
+window.TennisApp.refreshWtaStats = App.refreshWtaStats.bind(App);

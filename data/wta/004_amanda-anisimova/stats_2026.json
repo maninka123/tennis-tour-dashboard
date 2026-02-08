@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n44.5%\n1st Return Points Won %\n33.8%\n2nd Return Points Won %\n66.7%\nBreak Points Converted\n50.0%\nReturn Games Won\n35.3%\nReturn Games Played\n17\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:50:27.077579+00:00",
+  "updated_at": "2026-02-07T13:24:00.475286+00:00",
   "records_tab": {
     "summary": [
       {
@@ -161,7 +161,23 @@
         "draw": "128M/64D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Jessica Pegula",
+            "opponent_country": "USA",
+            "opponent_seed": 6,
+            "opponent_entry": "",
+            "score": "6-2, 7-6(1)",
+            "opponent_rank": 6
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Xinyu Wang",
             "opponent_country": "CHN",
@@ -172,6 +188,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Peyton Stearns",
             "opponent_country": "USA",
@@ -182,6 +201,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Katerina Siniakova",
             "opponent_country": "CZE",
@@ -192,6 +214,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Simona Waltert",
             "opponent_country": "SUI",
@@ -199,16 +224,6 @@
             "opponent_entry": "",
             "score": "6-3, 6-2",
             "opponent_rank": 87
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Jessica Pegula",
-            "opponent_country": "USA",
-            "opponent_seed": 6,
-            "opponent_entry": "",
-            "score": "6-2, 7-6(1)",
-            "opponent_rank": 6
           }
         ],
         "summary": {
@@ -235,6 +250,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Marta Kostyuk",
             "opponent_country": "UKR",
@@ -245,6 +263,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Kimberly Birrell",
             "opponent_country": "AUS",
@@ -255,6 +276,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "",
             "opponent_country": "",
@@ -273,6 +297,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:50:27.077545+00:00"
+    "updated_at": "2026-02-07T13:24:00.475215+00:00"
   }
 }

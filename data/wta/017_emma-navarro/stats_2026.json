@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.7%\n1st Return Points Won %\n41.0%\n2nd Return Points Won %\n54.5%\nBreak Points Converted\n50.0%\nReturn Games Won\n40.0%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:51:40.659165+00:00",
+  "updated_at": "2026-02-07T13:25:19.743776+00:00",
   "records_tab": {
     "summary": [
       {
@@ -130,6 +130,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Magda Linette",
             "opponent_country": "POL",
@@ -162,7 +165,23 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Diana Shnaider",
+            "opponent_country": "RUS",
+            "opponent_seed": 9,
+            "opponent_entry": "",
+            "score": "6-3, 6-3",
+            "opponent_rank": 23
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Yulia Putintseva",
             "opponent_country": "KAZ",
@@ -173,6 +192,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Emerson Jones",
             "opponent_country": "AUS",
@@ -180,16 +202,6 @@
             "opponent_entry": "W",
             "score": "6-3, 6-3",
             "opponent_rank": 155
-          },
-          {
-            "round": "Q",
-            "result": "L",
-            "opponent_name": "Diana Shnaider",
-            "opponent_country": "RUS",
-            "opponent_seed": 9,
-            "opponent_entry": "",
-            "score": "6-3, 6-3",
-            "opponent_rank": 23
           }
         ],
         "summary": {
@@ -216,6 +228,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Francesca Jones",
             "opponent_country": "GBR",
@@ -234,6 +249,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:51:40.659149+00:00"
+    "updated_at": "2026-02-07T13:25:19.743730+00:00"
   }
 }

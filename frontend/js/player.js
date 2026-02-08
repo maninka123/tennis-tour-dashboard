@@ -85,8 +85,23 @@ const PlayerModule = {
         const chText = player.career_high ? `CH #${player.career_high}` : 'CH -';
         const playingText = player.is_playing && player.previous ? `${player.previous}` : '';
         const rankBadge = player.rank ? `<div class="rank-badge">#${player.rank}</div>` : '';
+        const parsePoints = (value) => {
+            if (typeof value === 'number' && Number.isFinite(value)) return value;
+            const cleaned = String(value ?? '').replace(/[^\d]/g, '');
+            if (!cleaned) return null;
+            const parsed = Number(cleaned);
+            return Number.isFinite(parsed) ? parsed : null;
+        };
+        const pointsValue = parsePoints(player.points) ?? parsePoints(profile?.points);
+        const pointsBadge = pointsValue !== null
+            ? `<div class="points-badge">${pointsValue.toLocaleString()} PTS</div>`
+            : '';
 
-        const wonLost = this.parseWonLost(player?.stats_2026?.won_lost || profile.wonLost || '');
+        const isAtp = this.isAtpPlayer(player);
+        const seasonWonLostRaw = isAtp
+            ? (player?.ytd_won_lost || player?.stats_2026?.ytd_won_lost || profile.ytdWonLost || profile.wonLost || '')
+            : (player?.stats_2026?.won_lost || profile.wonLost || '');
+        const wonLost = this.parseWonLost(seasonWonLostRaw);
         const winsValue = wonLost.wins ?? stats?.wins ?? 0;
         const lossesValue = wonLost.losses ?? stats?.losses ?? 0;
         const recentTournamentCount = Array.isArray(recentMatches?.tournaments) ? recentMatches.tournaments.length : 0;
@@ -107,6 +122,7 @@ const PlayerModule = {
                             <img src="${Utils.getPlayerImage(player)}" alt="${player.name}">
                             <div class="player-info">
                                 ${rankBadge}
+                                ${pointsBadge}
                                 <h4>
                                     ${player.name}
                                     ${pointsDelta}
@@ -147,7 +163,7 @@ const PlayerModule = {
                         </div>
                     </div>
                     <div class="player-info-cards">
-                        ${this.getInfoCardsHTML(profile)}
+                        ${this.getInfoCardsHTML(profile, player)}
                     </div>
                     <div class="player-bars">
                         <h4>Service & Return Efficiency</h4>
@@ -205,7 +221,8 @@ const PlayerModule = {
         return `<div class="stat-item"><span>${label}</span><span>${value}</span></div>`;
     },
 
-    getInfoCardsHTML(profile) {
+    getInfoCardsHTML(profile, player = null) {
+        const isAtp = this.isAtpPlayer(player);
         const pointsCard = profile.points !== null && profile.points !== undefined
             ? `
             <div class="info-card points-card">
@@ -220,6 +237,12 @@ const PlayerModule = {
                 <span class="value">${this.formatMoneyK(profile.prizeMoney)}</span>
             </div>
         ` : '';
+        const atpPrizeCards = `
+            <div class="info-card money-card">
+                <span class="label">YTD Prize Money</span>
+                <span class="value">${profile.prizeMoneyYtd ? this.formatMoneyK(profile.prizeMoneyYtd) : '-'}</span>
+            </div>
+        `;
         const playingCard = profile.playing ? `<div class="subtext playing-text">${profile.playing}</div>` : '';
 
         return `
@@ -241,7 +264,7 @@ const PlayerModule = {
                 <span class="label">Titles</span>
                 <span class="value">${profile.titles}</span>
             </div>
-            ${prizeCard}
+            ${isAtp ? atpPrizeCards : prizeCard}
         `;
     },
 
@@ -375,7 +398,8 @@ const PlayerModule = {
             `;
         }
 
-        const tournamentCards = tournaments.map((event) => this.renderRecentTournamentCard(event, Utils)).join('');
+        const isAtp = this.isAtpPlayer(player);
+        const tournamentCards = tournaments.map((event) => this.renderRecentTournamentCard(event, Utils, isAtp)).join('');
         const yearText = recentMatches?.year ? `Season ${recentMatches.year}` : 'Recent results';
         return `
             <div class="player-recent-overlay" id="playerRecentMatchesOverlay" onclick="PlayerModule.closeRecentMatchesModal(event)">
@@ -395,22 +419,28 @@ const PlayerModule = {
         `;
     },
 
-    renderRecentTournamentCard(event, Utils) {
+    renderRecentTournamentCard(event, Utils, isAtp = false) {
         const category = event?.category || 'other';
         const categoryClass = Utils.getCategoryClass(category);
         const surfaceClass = this.surfaceClassFromKey(event?.surface_key || event?.surface || '');
         const surfaceLabel = event?.surface || 'HARD';
         const rows = Array.isArray(event?.matches) ? event.matches : [];
-        const rowsHtml = rows.map((row) => this.renderRecentMatchRow(row, Utils)).join('');
+        const rowsHtml = rows.map((row) => this.renderRecentMatchRow(row, Utils, isAtp)).join('');
         const summary = event?.summary || {};
 
-        const metaChips = [
-            this.renderMetaChip('Rank', this.safeDisplay(summary.rank)),
-            this.renderMetaChip('Seed', this.safeDisplay(summary.seed)),
-            this.renderMetaChip('WTA Points Gain', this.safeDisplay(summary.wta_points_gain)),
-            this.renderMetaChip('Prize Money Won', this.safeDisplay(summary.prize_money_won)),
-            this.renderMetaChip('Draw', this.safeDisplay(summary.draw))
-        ].join('');
+        const metaChips = isAtp
+            ? [
+                this.renderMetaChip('Rank', this.safeDisplay(summary.rank)),
+                this.renderMetaChip('ATP Points Gain', this.safeDisplay(summary.atp_points_gain || summary.points)),
+                this.renderMetaChip('Prize Money Won', this.safeDisplay(summary.prize_money_won))
+            ].join('')
+            : [
+                this.renderMetaChip('Rank', this.safeDisplay(summary.rank)),
+                this.renderMetaChip('Seed', this.safeDisplay(summary.seed)),
+                this.renderMetaChip('WTA Points Gain', this.safeDisplay(summary.wta_points_gain)),
+                this.renderMetaChip('Prize Money Won', this.safeDisplay(summary.prize_money_won)),
+                this.renderMetaChip('Draw', this.safeDisplay(summary.draw))
+            ].join('');
 
         return `
             <section class="recent-tournament-card category-${categoryClass} ${surfaceClass}">
@@ -432,7 +462,7 @@ const PlayerModule = {
                                 <th>W-L</th>
                                 <th>Opponent</th>
                                 <th>Match Score</th>
-                                <th>Opponent Rank</th>
+                                ${isAtp ? '' : '<th>Opponent Rank</th>'}
                             </tr>
                         </thead>
                         <tbody>
@@ -445,8 +475,8 @@ const PlayerModule = {
         `;
     },
 
-    renderRecentMatchRow(row, Utils) {
-        const result = row?.result || '-';
+    renderRecentMatchRow(row, Utils, isAtp = false) {
+        const result = this.resolveRecentResult(row, isAtp);
         const resultClass = result === 'W' ? 'win' : (result === 'L' ? 'loss' : 'other');
         const opponentName = row?.opponent_name || '-';
         const opponentFlag = row?.opponent_country ? Utils.getFlag(row.opponent_country) : '';
@@ -454,16 +484,90 @@ const PlayerModule = {
         if (row?.opponent_seed) extras.push(`(${row.opponent_seed})`);
         if (row?.opponent_entry) extras.push(`(${row.opponent_entry})`);
         const extrasText = extras.length ? ` <span class="recent-opponent-meta">${extras.join(' ')}</span>` : '';
+        const roundLabel = this.formatRecentRoundLabel(row?.round);
 
         return `
             <tr>
-                <td>${row?.round || '-'}</td>
+                <td>${roundLabel}</td>
                 <td><span class="recent-result-pill ${resultClass}">${result}</span></td>
                 <td>${opponentFlag} ${opponentName}${extrasText}</td>
                 <td class="recent-score-cell">${row?.score || '-'}</td>
-                <td>${this.safeDisplay(row?.opponent_rank)}</td>
+                ${isAtp ? '' : `<td>${this.safeDisplay(row?.opponent_rank)}</td>`}
             </tr>
         `;
+    },
+
+    resolveRecentResult(row, isAtp = false) {
+        const explicit = String(row?.result || '').trim().toUpperCase();
+        if (explicit === 'W' || explicit === 'L') {
+            return explicit;
+        }
+        if (!isAtp) {
+            return explicit || '-';
+        }
+
+        const sets = this.parseScoreSets(row?.score || row?.score_raw || '');
+        if (!sets.length) return '-';
+        let p1Sets = 0;
+        let p2Sets = 0;
+        sets.forEach(([p1, p2]) => {
+            if (p1 > p2) p1Sets += 1;
+            else if (p2 > p1) p2Sets += 1;
+        });
+        if (p1Sets > p2Sets) return 'W';
+        if (p2Sets > p1Sets) return 'L';
+        return '-';
+    },
+
+    parseScoreSets(scoreText) {
+        const text = String(scoreText || '');
+        const pairs = [];
+        const hyphenPattern = /(\d+)\s*-\s*(\d+)/g;
+        let match;
+        while ((match = hyphenPattern.exec(text)) !== null) {
+            pairs.push([parseInt(match[1], 10), parseInt(match[2], 10)]);
+        }
+        if (pairs.length) {
+            return pairs;
+        }
+
+        const tokens = (text.match(/\d+/g) || []).map((x) => parseInt(x, 10));
+        let i = 0;
+        while (i + 1 < tokens.length) {
+            const p1 = tokens[i];
+            const p2 = tokens[i + 1];
+            i += 2;
+            if (((p1 === 7 && p2 === 6) || (p1 === 6 && p2 === 7)) && i < tokens.length) {
+                const tb = tokens[i];
+                if (Number.isFinite(tb) && tb >= 0 && tb <= 20) {
+                    i += 1;
+                }
+            }
+            pairs.push([p1, p2]);
+        }
+        return pairs;
+    },
+
+    formatRecentRoundLabel(round) {
+        const raw = `${round || ''}`.trim();
+        if (!raw) return '-';
+        const upper = raw.toUpperCase();
+        if (upper === 'Q') return raw;
+
+        const patterns = [
+            /^Q\s*([1-9])$/,
+            /^QUALIF(?:YING|IER)\s+R\s*([1-9])$/,
+            /^QUALIF(?:YING|IER)\s+ROUND\s*([1-9])$/,
+            /^([1-9])(?:ST|ND|RD|TH)\s+ROUND\s+QUALIF(?:YING|IER)$/,
+            /^ROUND\s*([1-9])\s+QUALIF(?:YING|IER)$/
+        ];
+        for (const pattern of patterns) {
+            const match = upper.match(pattern);
+            if (match) {
+                return `Qualifier R${Number(match[1])}`;
+            }
+        }
+        return raw;
     },
 
     renderMetaChip(label, value) {
@@ -524,19 +628,25 @@ const PlayerModule = {
             : (typeof player?.movement === 'number' ? player.movement : null);
         const playingValue = player?.is_playing && player?.previous ? player.previous : null;
         const prizeMoney = player?.prize_money || statsData?.prize_money || null;
+        const prizeMoneyCareer = player?.prize_money_career || statsData?.career_prize_money || prizeMoney || null;
+        const prizeMoneyYtd = player?.prize_money_ytd || statsData?.ytd_prize_money || null;
         const titlesValue = player?.titles || statsData?.singles_titles || (period === 'career' ? 52 : 4);
         const wonLostValue = statsData?.won_lost || '';
+        const ytdWonLostValue = player?.ytd_won_lost || statsData?.ytd_won_lost || '';
         return {
             age: player?.age || (period === 'career' ? 29 : 27),
             height: player?.height || '188 cm',
             hand: player?.plays || 'Right-Handed',
             titles: titlesValue,
             prizeMoney,
+            prizeMoneyCareer,
+            prizeMoneyYtd,
             careerHigh: player?.career_high || 1,
             points: pointsValue,
             rankChange: rankChangeValue,
             playing: playingValue,
-            wonLost: wonLostValue
+            wonLost: wonLostValue,
+            ytdWonLost: ytdWonLostValue
         };
     },
 
@@ -611,7 +721,7 @@ const PlayerModule = {
 
     parseWonLost(value) {
         if (!value) return { wins: 0, losses: 0 };
-        const match = String(value).match(/(\d+)\s*\/\s*(\d+)/);
+        const match = String(value).match(/(\d+)\s*[-/]\s*(\d+)/);
         if (!match) return { wins: 0, losses: 0 };
         return { wins: parseInt(match[1], 10), losses: parseInt(match[2], 10) };
     },
@@ -620,6 +730,14 @@ const PlayerModule = {
         const cls = value > 0 ? 'up' : 'down';
         const sign = value > 0 ? '+' : '';
         return `<span class="snapshot-pill ${cls}">${sign}${value} ${label}</span>`;
+    },
+
+    isAtpPlayer(player = null) {
+        const explicit = String(player?.tour || '').toUpperCase();
+        if (explicit === 'ATP') return true;
+        if (explicit === 'WTA') return false;
+        const currentTour = String(window.TennisApp?.AppState?.currentTour || '').toLowerCase();
+        return currentTour === 'atp';
     },
 
     generateDemoPerformance(player, period = '2026') {

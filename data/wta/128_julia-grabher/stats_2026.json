@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n33.9%\n1st Return Points Won %\n10.3%\n2nd Return Points Won %\n59.3%\nBreak Points Converted\n20.0%\nReturn Games Won\n11.1%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:03:55.625770+00:00",
+  "updated_at": "2026-02-07T13:36:38.978409+00:00",
   "records_tab": {
     "summary": [
       {
@@ -114,6 +114,9 @@
         "matches": [
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Anna Kalinskaya",
             "opponent_country": "RUS",
@@ -124,6 +127,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Elisabetta Cocciaretto",
             "opponent_country": "ITA",
@@ -157,6 +163,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Caty Mcnally",
             "opponent_country": "USA",
@@ -167,6 +176,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Tiantsoa Rakotomanga Rajaonah",
             "opponent_country": "FRA",
@@ -200,6 +212,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Sinja Kraus",
             "opponent_country": "AUT",
@@ -218,6 +233,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:03:55.625740+00:00"
+    "updated_at": "2026-02-07T13:36:38.978294+00:00"
   }
 }

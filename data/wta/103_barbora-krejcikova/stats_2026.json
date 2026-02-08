@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.9%\n1st Return Points Won %\n39.1%\n2nd Return Points Won %\n48.8%\nBreak Points Converted\n55.0%\nReturn Games Won\n32.4%\nReturn Games Played\n34\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T12:01:07.578275+00:00",
+  "updated_at": "2026-02-07T13:34:09.822901+00:00",
   "records_tab": {
     "summary": [
       {
@@ -154,6 +154,9 @@
         "matches": [
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Diana Shnaider",
             "opponent_country": "RUS",
@@ -187,6 +190,9 @@
         "matches": [
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Peyton Stearns",
             "opponent_country": "USA",
@@ -219,7 +225,23 @@
         "draw": "0M/0Q/0D",
         "matches": [
           {
+            "round": "Round 3",
+            "round_name": "",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elise Mertens",
+            "opponent_country": "BEL",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "5-7, 6-1, 7-5",
+            "opponent_rank": 19
+          },
+          {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Malene Helg\u00f8",
             "opponent_country": "NOR",
@@ -230,6 +252,9 @@
           },
           {
             "round": "Round 9",
+            "round_name": "",
+            "tourn_round": 9,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Maya Joint",
             "opponent_country": "AUS",
@@ -237,16 +262,6 @@
             "opponent_entry": "",
             "score": "6-4, 6-1",
             "opponent_rank": 32
-          },
-          {
-            "round": "Round 3",
-            "result": "L",
-            "opponent_name": "Elise Mertens",
-            "opponent_country": "BEL",
-            "opponent_seed": 7,
-            "opponent_entry": "",
-            "score": "5-7, 6-1, 7-5",
-            "opponent_rank": 19
           }
         ],
         "summary": {
@@ -258,6 +273,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T12:01:07.578260+00:00"
+    "updated_at": "2026-02-07T13:34:09.822857+00:00"
   }
 }

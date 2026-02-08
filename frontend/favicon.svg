@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tennis racket and ball">
+  <rect width="64" height="64" rx="14" fill="#f4f8ff"/>
+  <g transform="translate(8 6)">
+    <ellipse cx="21" cy="20" rx="13" ry="16" fill="none" stroke="#1666b7" stroke-width="4"/>
+    <line x1="13" y1="11" x2="29" y2="29" stroke="#7db8e8" stroke-width="1.8"/>
+    <line x1="13" y1="29" x2="29" y2="11" stroke="#7db8e8" stroke-width="1.8"/>
+    <line x1="21" y1="6" x2="21" y2="34" stroke="#7db8e8" stroke-width="1.6"/>
+    <line x1="8" y1="20" x2="34" y2="20" stroke="#7db8e8" stroke-width="1.6"/>
+    <rect x="19" y="33" width="4" height="15" rx="2" fill="#1666b7"/>
+    <rect x="17" y="46" width="8" height="6" rx="3" fill="#0f4f8f"/>
+  </g>
+  <circle cx="50" cy="18" r="8" fill="#f6d64a" stroke="#d5ad16" stroke-width="2"/>
+  <path d="M42 18a8 8 0 0 0 16 0" fill="none" stroke="#fff5c2" stroke-width="1.5"/>
+  <path d="M58 18a8 8 0 0 0-16 0" fill="none" stroke="#fff5c2" stroke-width="1.5"/>
+</svg>

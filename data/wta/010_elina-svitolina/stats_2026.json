@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.9%\n1st Return Points Won %\n35.6%\n2nd Return Points Won %\n50.9%\nBreak Points Converted\n53.2%\nReturn Games Won\n28.9%\nReturn Games Played\n56\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T11:51:00.488029+00:00",
+  "updated_at": "2026-02-07T13:24:37.301122+00:00",
   "records_tab": {
     "summary": [
       {
@@ -202,6 +202,9 @@
         "matches": [
           {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Mirra Andreeva",
             "opponent_country": "RUS",
@@ -212,6 +215,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Diana Shnaider",
             "opponent_country": "RUS",
@@ -222,6 +228,9 @@
           },
           {
             "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Linda Klimovicova",
             "opponent_country": "POL",
@@ -232,6 +241,9 @@
           },
           {
             "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Cristina Bucsa",
             "opponent_country": "ESP",
@@ -265,6 +277,9 @@
         "matches": [
           {
             "round": "Final",
+            "round_name": "F",
+            "tourn_round": 5,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Xinyu Wang",
             "opponent_country": "CHN",
@@ -274,7 +289,36 @@
             "opponent_rank": 57
           },
           {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Iva Jovic",
+            "opponent_country": "USA",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "7-6(5), 6-2",
+            "opponent_rank": 35
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Sonay Kartal",
+            "opponent_country": "GBR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-7(2), 7-6(5)",
+            "opponent_rank": 68
+          },
+          {
             "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Katie Boulter",
             "opponent_country": "GBR",
@@ -285,6 +329,9 @@
           },
           {
             "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
             "result": "W",
             "opponent_name": "Varvara Gracheva",
             "opponent_country": "FRA",
@@ -292,26 +339,6 @@
             "opponent_entry": "",
             "score": "6-3, 6-1",
             "opponent_rank": 75
-          },
-          {
-            "round": "S",
-            "result": "W",
-            "opponent_name": "Iva Jovic",
-            "opponent_country": "USA",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "7-6(5), 6-2",
-            "opponent_rank": 35
-          },
-          {
-            "round": "Q",
-            "result": "W",
-            "opponent_name": "Sonay Kartal",
-            "opponent_country": "GBR",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-4, 6-7(2), 7-6(5)",
-            "opponent_rank": 68
           }
         ],
         "summary": {
@@ -323,6 +350,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T11:51:00.488010+00:00"
+    "updated_at": "2026-02-07T13:24:37.301066+00:00"
   }
 }
