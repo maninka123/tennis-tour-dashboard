@@ -12,14 +12,13 @@ import os
 import threading
 import subprocess
 import json
-import eventlet.wsgi
 from tennis_api import tennis_fetcher
 from config import Config
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tennis_dashboard_secret_2024'
 CORS(app, origins="*", resources={r"/api/*": {"origins": "*"}})
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet', ping_timeout=60, ping_interval=25)
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading', ping_timeout=60, ping_interval=25)
 
 # --- System Update State & Logic ---
 SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts", "Update player stats")
@@ -148,46 +147,7 @@ def start_system_update():
 def get_update_status():
     return jsonify(update_state)
 
-# Keep request logs, but silence known client-disconnect tracebacks from eventlet.
-class QuietEventletLogger:
-    _NOISY_MARKERS = (
-        "ConnectionResetError",
-        "BrokenPipeError",
-        "Errno 54",
-        "Errno 32",
-    )
 
-    def _is_noisy_disconnect(self, msg) -> bool:
-        text = str(msg or "")
-        return any(marker in text for marker in self._NOISY_MARKERS)
-
-    def info(self, msg, *args, **kwargs):
-        if self._is_noisy_disconnect(msg):
-            return
-        line = (msg % args) if args else str(msg)
-        sys.stdout.write(f"{line}\n")
-        sys.stdout.flush()
-
-    def error(self, msg, *args, **kwargs):
-        if self._is_noisy_disconnect(msg):
-            return
-        line = (msg % args) if args else str(msg)
-        sys.stderr.write(f"{line}\n")
-        sys.stderr.flush()
-
-    def debug(self, msg, *args, **kwargs):
-        # Keep debug output path compatible with eventlet logger interface.
-        self.info(msg, *args, **kwargs)
-
-# Suppress noisy BrokenPipe/connection reset logs from client disconnects
-class QuietHttpProtocol(eventlet.wsgi.HttpProtocol):
-    def handle_error(self, *args, **kwargs):
-        exc = sys.exc_info()[1]
-        if isinstance(exc, (BrokenPipeError, ConnectionResetError)):
-            return
-        return super().handle_error(*args, **kwargs)
-
-eventlet.wsgi.HttpProtocol = QuietHttpProtocol
 
 # Dedicated live-score background loop state
 live_scores_thread_started = False
@@ -782,6 +742,5 @@ if __name__ == '__main__':
         host=Config.HOST,
         port=Config.PORT,
         debug=Config.DEBUG,
-        log=QuietEventletLogger(),
         log_output=True,
     )
