@@ -3,7 +3,7 @@ Tennis Dashboard - Flask Backend Server
 Provides REST API and WebSocket for real-time tennis data
 """
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 import time
@@ -22,7 +22,34 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading', ping_
 
 # --- System Update State & Logic ---
 SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts", "Update player stats")
+FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "frontend")
 PYTHON_EXE = sys.executable
+
+# ============== Frontend Routes ==============
+
+@app.route('/')
+def serve_index():
+    """Serve the main dashboard page"""
+    return send_from_directory(FRONTEND_DIR, 'index.html')
+
+
+@app.route('/update')
+def serve_update():
+    """Serve the system update page"""
+    return send_from_directory(FRONTEND_DIR, 'update.html')
+
+
+@app.route('/<path:filename>')
+def serve_frontend(filename):
+    """Serve frontend assets (CSS, JS, images)"""
+    try:
+        return send_from_directory(FRONTEND_DIR, filename)
+    except:
+        # If file not found, return 404
+        return jsonify({'error': 'Not found'}), 404
+
+
+# --- System Update State & Logic ---
 
 update_state = {
     "status": "idle",  # idle, running, completed, error
