@@ -39,6 +39,18 @@ def serve_update():
     return send_from_directory(FRONTEND_DIR, 'update.html')
 
 
+@app.route('/Images/<path:filename>')
+def serve_images(filename):
+    """Serve images from root Images folder"""
+    images_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Images")
+    try:
+        return send_from_directory(images_dir, filename)
+    except FileNotFoundError:
+        return jsonify({'error': 'Image not found'}), 404
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/<path:filename>')
 def serve_frontend(filename):
     """Serve frontend assets (CSS, JS, images)"""

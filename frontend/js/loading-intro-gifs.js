@@ -21,25 +21,34 @@
     };
 
     const buildGifUrl = (file) => {
-        // Use relative path to frontend assets
-        return `assets/images/intro-gifs/${encodeURIComponent(file)}`;
+        // Get the API base from config if available, otherwise build it
+        const apiBase = window.TennisApp?.CONFIG?.API_BASE_URL || 'http://localhost:5001/api';
+        const baseUrl = apiBase.replace('/api', '');  // Get base URL without /api
+        return `${baseUrl}/Images/intro gifs/${encodeURIComponent(file)}`;
     };
 
     /**
-     * Initialize available gif files
+     * Fetch available gif files from backend
      */
-    function initGifFiles() {
-        // Hardcoded list of available GIFs in frontend/assets/images/intro-gifs/
-        GIF_FILES = [
-            'tennis_01.gif', 'tennis_02.gif', 'tennis_03.gif', 'tennis_04.gif',
-            'tennis_05.gif', 'tennis_06.gif', 'tennis_07.gif', 'tennis_08.gif',
-            'tennis_09.gif', 'tennis_10.gif', 'tennis_11.gif', 'tennis_12.gif',
-            'tennis_13.gif', 'tennis_14.gif', 'tennis_15.gif', 'tennis_16.gif',
-            'tennis_17.gif', 'tennis_18.gif', 'tennis_19.gif', 'tennis_20.gif',
-            'tennis_21.gif', 'tennis_22.gif', 'tennis_23.gif', 'tennis_24.gif'
-        ];
+    async function fetchGifFiles() {
+        try {
+            // Use the app's API base URL configuration
+            const apiBase = window.TennisApp?.CONFIG?.API_BASE_URL || 'http://localhost:5001/api';
+            const response = await fetch(`${apiBase.replace('/api', '')}/api/intro-gifs`);
+            const result = await response.json();
+            if (result.success && result.data && result.data.length > 0) {
+                GIF_FILES = result.data;
+                gifsLoaded = true;
+                console.log(`Loaded ${GIF_FILES.length} gifs from backend`);
+                return true;
+            }
+        } catch (error) {
+            console.warn('Could not fetch gif list from backend:', error);
+        }
+        // Fallback: use a minimal default set if fetch fails
+        GIF_FILES = ['tennis_01.gif', 'tennis_02.gif', 'tennis_03.gif'];
         gifsLoaded = true;
-        console.log(`Loaded ${GIF_FILES.length} gifs from frontend assets`);
+        return false;
     }
 
     function getTileCount() {
@@ -49,13 +58,13 @@
         return GIF_FILES.length;
     }
 
-    function buildCollage() {
+    async function buildCollage() {
         const grid = document.getElementById('introGifGrid');
         if (!grid) return;
 
-        // Initialize GIFs if not already loaded
+        // Wait for gifs to be loaded if not already
         if (!gifsLoaded) {
-            initGifFiles();
+            await fetchGifFiles();
         }
 
         if (GIF_FILES.length === 0) {
