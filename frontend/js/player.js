@@ -42,13 +42,20 @@ const PlayerModule = {
                 ? this.buildStatsFromScraped(player.stats_2026)
                 : this.generateDemoStats();
             const profile = this.generateDemoProfile(player, '2026', player?.stats_2026 || {});
-            const yearlyRecords = player?.stats_2026?.records_tab?.yearly
-                || player?.stats_2026?.records
-                || player?.records
-                || [];
-            const performance = yearlyRecords.length
-                ? this.buildPerformanceFromRecords(yearlyRecords)
-                : this.generateDemoPerformance(player);
+
+            const isAtp = this.isAtpPlayer(player);
+            let performance;
+            if (isAtp && player.grandslam_performance) {
+                performance = this.buildPerformanceFromScraped(player.grandslam_performance);
+            } else {
+                const yearlyRecords = player?.stats_2026?.records_tab?.yearly
+                    || player?.stats_2026?.records
+                    || player?.records
+                    || [];
+                performance = yearlyRecords.length
+                    ? this.buildPerformanceFromRecords(yearlyRecords)
+                    : this.generateDemoPerformance(player);
+            }
 
             this.currentPlayer = player;
             const recentMatches = this.extractRecentMatches(player);
@@ -113,7 +120,7 @@ const PlayerModule = {
         let html = `
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3>${player.name} — Performance Snapshot</h3>
+                    ${isAtp ? `<h3 style="max-width: 65%">${player.name} — Performance Snapshot</h3>` : `<h3>${player.name} — Performance Snapshot</h3>`}
                     <button class="close-modal" onclick="PlayerModule.close()">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -173,8 +180,8 @@ const PlayerModule = {
                         ${this.getStatsHTML(stats)}
                     </div>
                     <div class="player-performance">
-                        <h4>Major Events Performance (2020–2025)</h4>
-                        ${this.getPerformanceTableHTML(performance)}
+                        <h4>Major Events Performance (${isAtp ? '2020–2026' : '2020–2025'})</h4>
+                        ${this.getPerformanceTableHTML(performance, isAtp)}
                     </div>
                     ${this.getRecentMatchesModalHTML(player, recentMatches, Utils)}
                 </div>
@@ -287,10 +294,13 @@ const PlayerModule = {
         `;
     },
 
-    getPerformanceTableHTML(performance) {
-        const years = ['2020','2021','2022','2023','2024','2025'];
+    getPerformanceTableHTML(performance, isAtp = false) {
+        const years = isAtp
+            ? ['2020','2021','2022','2023','2024','2025','2026']
+            : ['2020','2021','2022','2023','2024','2025'];
+        const gridStyle = isAtp ? 'style="grid-template-columns: 1.6fr repeat(7, 1fr)"' : '';
         return `
-            <div class="performance-table-grid">
+            <div class="performance-table-grid" ${gridStyle}>
                 <div class="perf-head event">Event</div>
                 ${years.map(y => `<div class="perf-head year">${y}</div>`).join('')}
                 ${performance.map(row => `
@@ -682,6 +692,24 @@ const PlayerModule = {
                 return_games_played: intVal(ret.return_games_played),
             }
         };
+    },
+
+    buildPerformanceFromScraped(gsData) {
+        const buildResults = (eventName) => {
+            const row = gsData[eventName] || {};
+            // If the structure is { year: result }, we return it directly, 
+            // but we might need to normalize keys if they are numbers.
+            // The scraper returns { "2019": "Q1", "2020": "...", ... }
+            return row;
+        };
+        
+        // Map scraped names to display names if needed
+        return [
+            { event: 'Australian Open', surface: 'hard', results: buildResults('Australian Open') },
+            { event: 'Roland Garros', surface: 'clay', results: buildResults('French Open') },
+            { event: 'Wimbledon', surface: 'grass', results: buildResults('Wimbledon') },
+            { event: 'US Open', surface: 'hard', results: buildResults('US Open') }
+        ];
     },
 
     buildPerformanceFromRecords(records) {

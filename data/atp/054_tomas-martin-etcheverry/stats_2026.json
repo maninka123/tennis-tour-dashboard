@@ -3,32 +3,32 @@
   "won_lost": "3 - 3",
   "prize_money": "$5,574,901",
   "singles_serving_stats": {
-    "aces": "",
-    "double_faults": "",
-    "first_serve_pct": "",
-    "first_serve_won": "",
-    "second_serve_won": "",
-    "break_points_faced": "",
-    "break_points_saved": "",
-    "service_games_played": "",
-    "service_games_won": "",
-    "service_points_won_pct": ""
+    "aces": "1234",
+    "double_faults": "330",
+    "first_serve_pct": "64%",
+    "first_serve_won": "71%",
+    "second_serve_won": "51%",
+    "break_points_faced": "1303",
+    "break_points_saved": "64%",
+    "service_games_played": "2404",
+    "service_games_won": "80%",
+    "service_points_won_pct": "64%"
   },
   "singles_return_stats": {
-    "first_return_points_won_pct": "",
-    "second_return_points_won_pct": "",
-    "break_points_opportunities": "",
-    "break_points_converted": "",
-    "return_games_played": "",
-    "return_games_won": "",
-    "return_points_won": "",
-    "total_points_won": ""
+    "first_return_points_won_pct": "28%",
+    "second_return_points_won_pct": "49%",
+    "break_points_opportunities": "1340",
+    "break_points_converted": "37%",
+    "return_games_played": "2417",
+    "return_games_won": "20%",
+    "return_points_won": "36%",
+    "total_points_won": "50%"
   },
   "raw": {
-    "serve_section": "",
-    "return_section": ""
+    "serve_section": "*   Aces 1234\n*   Double Faults 330\n*   1st Serve 64%\n*   1st Serve Points Won 71%\n*   2nd Serve Points Won 51%\n*   Break Points Faced 1303\n*   Break Points Saved 64%\n*   Service Games Played 2404\n*   Service Games Won 80%\n*   Total Service Points Won 64%",
+    "return_section": "*   1st Serve Return Points Won 28%\n*   2nd Serve Return Points Won 49%\n*   Break Points Opportunities 1340\n*   Break Points Converted 37%\n*   Return Games Played 2417\n*   Return Games Won 20%\n*   Return Points Won 36%\n*   Total Points Won 50%\n\n[![Image 22: Lexus](http://www.atptour.com/-/media/sites/atp-tour/header/lexus-atp-head2head_1.png)](https://www.lexus.eu/discover-lexus/lexus-atp-tour-partnership)\n\n[![Image 23: Felix Auger-Aliassime](http://www.atptour.com/-/media/tennis/players/head-shot/2025/11/08/18/50/auger-aliassime_head_2025.png?sc=0&hash=890be4706f9eb7d33872d8275aa7ca0e) Felix Auger-Aliassime CAN](http://www.atptour.com/en/players/felix-auger-aliassime/ag37/overview)\n\n1\n\nVs\n\nwins\n\n1\n\n[Show H2H Detail](http://www.atptour.com/en/players/atp-head-2-head/felix-auger-aliassime-vs-adrian-mannarino/ag37/me82)\n\n[![Image 24: Adrian Mannarino](http://www.atptour.com/-/media/tennis/players/head-shot/2024/02/23/19/43/mannarino_head_2024.png?sc=0&hash=d515ab9337f66c43a17dd6c13078f457) Adrian Mannarino FRA](http://www.atptour.com/en/players/adrian-mannarino/me82/overview)\n\n*   8 Rank 70\n*   25 Age 37\n*   194 lb Weight 174 lb\n*   6'4\"Height 5'11\"\n*   Right-handed Plays Left-handed\n*   2017 Turned Pro 2004\n\nSearch Search Choose Player\n\nHeader 2\n--------"
   },
-  "updated_at": "2026-02-07T17:09:37.471930+00:00",
+  "updated_at": "2026-02-08T14:43:42.075711+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
@@ -52,31 +52,31 @@
         "matches": [
           {
             "round": "R32",
-            "result": "-",
+            "result": "L",
             "opponent_name": "A. Bublik",
             "opponent_seed": 10,
             "opponent_rank": null,
             "opponent_id": "BK92",
             "opponent_url": "http://www.atptour.com/en/players/alexander-bublik/bk92/overview",
-            "score": "6-7, 4-6, 7-5, 4-6",
+            "score": "6-7(4), 6-7(5), 4-6",
             "score_raw": "6 7 4 6 7 5 4 6 Bye",
             "match_stats_url": "http://www.atptour.com/en/scores/match-stats/archive/2026/580/ms018"
           },
           {
             "round": "R64",
-            "result": "-",
+            "result": "W",
             "opponent_name": "A. Fery",
             "opponent_seed": 186,
             "opponent_rank": null,
             "opponent_id": "F0DM",
             "opponent_url": "http://www.atptour.com/en/players/arthur-fery/f0dm/overview",
-            "score": "7 6 4 6 1 6 3",
+            "score": "7-6(4), 6-1, 6-3",
             "score_raw": "7 6 4 6 1 6 3 Bye",
             "match_stats_url": "http://www.atptour.com/en/scores/match-stats/archive/2026/580/ms037"
           },
           {
             "round": "R128",
-            "result": "-",
+            "result": "W",
             "opponent_name": "M. Kecmanovic",
             "opponent_seed": 60,
             "opponent_rank": null,
@@ -109,13 +109,13 @@
         "matches": [
           {
             "round": "R32",
-            "result": "-",
+            "result": "L",
             "opponent_name": "N. Borges",
             "opponent_seed": 46,
             "opponent_rank": null,
             "opponent_id": "BT72",
             "opponent_url": "http://www.atptour.com/en/players/nuno-borges/bt72/overview",
-            "score": "5 7 6 3 6 7 2",
+            "score": "5-7, 6-3, 6-7(2)",
             "score_raw": "5 7 6 3 6 7 2 Bye",
             "match_stats_url": "http://www.atptour.com/en/scores/match-stats/archive/2026/301/ms028"
           }
@@ -142,19 +142,19 @@
         "matches": [
           {
             "round": "R16",
-            "result": "-",
+            "result": "L",
             "opponent_name": "L. Musetti",
             "opponent_seed": 7,
             "opponent_rank": null,
             "opponent_id": "M0EJ",
             "opponent_url": "http://www.atptour.com/en/players/lorenzo-musetti/m0ej/overview",
-            "score": "7 6 3 2 6 4 6",
+            "score": "7-6(3), 2-6, 4-6",
             "score_raw": "7 6 3 2 6 4 6 Bye",
             "match_stats_url": "http://www.atptour.com/en/scores/match-stats/archive/2026/336/ms008"
           },
           {
             "round": "R32",
-            "result": "-",
+            "result": "W",
             "opponent_name": "V. Royer",
             "opponent_seed": 56,
             "opponent_rank": null,
@@ -168,6 +168,8 @@
         "tournament_url": "http://www.atptour.com/en/tournaments/hong-kong/336/overview"
       }
     ],
-    "updated_at": "2026-02-07T17:10:08.618248+00:00"
-  }
+    "updated_at": "2026-02-08T14:43:42.075658+00:00"
+  },
+  "ytd_prize_money": "$238,699",
+  "career_prize_money": "$5,574,901"
 }

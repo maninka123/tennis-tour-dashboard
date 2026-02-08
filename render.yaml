@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: tennis-dashboard
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: |
+      pip install -r backend/requirements.txt
+      playwright install chromium
+    startCommand: cd backend && gunicorn --worker-class eventlet -w 1 --bind 0.0.0.0:$PORT app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.10
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        fromService:
+          type: web
+          name: tennis-dashboard
+          property: port
+      - key: DEBUG
+        value: false

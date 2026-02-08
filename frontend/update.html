@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Update - RallyCourt 2026</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/update-page.css">
+</head>
+<body>
+    <!-- Background Grid -->
+    <div class="update-gif-grid" id="updateGifGrid"></div>
+    <div class="update-grid-overlay"></div>
+
+    <!-- Main Content Card -->
+    <div class="update-page-container">
+        <div class="update-card" id="updateContent">
+            <div class="update-header">
+                <h2><i class="fas fa-sync-alt"></i> Data Update Center</h2>
+            </div>
+            
+            <div class="update-body">
+                <!-- Step 1: Confirmation -->
+                <div id="step-confirmation" class="update-step">
+                    <div class="update-confirmation">
+                        <div class="update-warning-icon"><i class="fas fa-clock"></i></div>
+                        <h3>Perform System Update?</h3>
+                        <p>This process will scan and update player statistics, rankings, and historical data.</p>
+                        <p style="color: #aaa; margin-top: 10px;">Estimated time: <strong>10-20 minutes</strong> depending on internet speed.</p>
+                        
+                        <div class="confirm-actions">
+                            <button class="btn-update-primary" onclick="UpdatePage.startAnalysis()">
+                                <i class="fas fa-check"></i> Yes, Proceed
+                            </button>
+                            <button class="btn-update-secondary" onclick="window.close()">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Analysis Loading -->
+                <div id="step-analysis" class="update-step" style="display: none;">
+                    <div class="analysis-loading">
+                        <div class="spinner"></div>
+                        <h3>Analyzing System Data...</h3>
+                        <p>Scanning files and checking for updates...</p>
+                    </div>
+                </div>
+
+                <!-- Step 3: Results & Selection -->
+                <div id="step-results" class="update-step" style="display: none;">
+                    <div class="analysis-results">
+                        <div class="tour-status-card">
+                            <div class="tour-status-header">
+                                <h3>ATP Tour Data</h3>
+                                <div id="atp-status-icon"></div>
+                            </div>
+                            <div class="status-metric">
+                                <span>Last Updated:</span>
+                                <span id="atp-last-update" class="value">Analyzing...</span>
+                            </div>
+                            <div class="status-metric">
+                                <span>Complete Coverage:</span>
+                                <span class="value">Up to Rank <span id="atp-coverage-rank">--</span></span>
+                            </div>
+                        </div>
+
+                        <div class="tour-status-card">
+                            <div class="tour-status-header">
+                                <h3>WTA Tour Data</h3>
+                                <div id="wta-status-icon"></div>
+                            </div>
+                            <div class="status-metric">
+                                <span>Last Updated:</span>
+                                <span id="wta-last-update" class="value">Analyzing...</span>
+                            </div>
+                            <div class="status-metric">
+                                <span>Complete Coverage:</span>
+                                <span class="value">Up to Rank <span id="wta-coverage-rank">--</span></span>
+                            </div>
+                        </div>
+
+                        <div class="update-selection">
+                            <h4>Select components to update:</h4>
+                            
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="check-atp">
+                                <span>ATP Player Statistics</span>
+                            </label>
+                            
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="check-wta">
+                                <span>WTA Player Statistics</span>
+                            </label>
+                        </div>
+
+                        <div class="confirm-actions">
+                            <button class="btn-update-primary" onclick="UpdatePage.startUpdate()">
+                                <i class="fas fa-cloud-download-alt"></i> Start Update
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Progress -->
+                <div id="step-progress" class="update-step" style="display: none;">
+                    <div class="update-progress-container">
+                        <h3>Updating System...</h3>
+                        <p id="update-status-msg">Please wait while we fetch the latest data. Do not close this window.</p>
+                        
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar-fill" id="update-progress-bar"></div>
+                        </div>
+
+                        <div class="log-terminal" id="update-log">
+                            <div>> Initializing...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/update-page.js"></script>
+</body>
+</html>

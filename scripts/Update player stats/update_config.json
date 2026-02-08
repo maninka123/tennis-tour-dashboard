@@ -1,0 +1,26 @@
+{
+    "common": {
+        "year": 2026,
+        "timeout": 45,
+        "dry_run": false
+    },
+    "atp_stats": {
+        "root": "../../data/atp",
+        "delay": 0.25,
+        "skip_recent": false,
+        "limit": 0
+    },
+    "wta_stats": {
+        "root": "../../data/wta",
+        "delay": 0.35,
+        "skip_recent": false,
+        "skip_records": false,
+        "headful": false,
+        "limit": 0
+    },
+    "atp_grandslam": {
+        "root": "../../data/atp",
+        "delay": 1.0,
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
+    }
+}

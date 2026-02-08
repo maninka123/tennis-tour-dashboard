@@ -10,6 +10,8 @@ import time
 import sys
 import os
 import threading
+import subprocess
+import json
 import eventlet.wsgi
 from tennis_api import tennis_fetcher
 from config import Config
@@ -18,6 +20,133 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tennis_dashboard_secret_2024'
 CORS(app, origins="*", resources={r"/api/*": {"origins": "*"}})
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet', ping_timeout=60, ping_interval=25)
+
+# --- System Update State & Logic ---
+SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts", "Update player stats")
+PYTHON_EXE = sys.executable
+
+update_state = {
+    "status": "idle",  # idle, running, completed, error
+    "current_task": "",
+    "log": [],
+    "progress": 0
+}
+update_lock = threading.Lock()
+update_thread = None  # Handle to the background thread
+
+def run_update_process(targets):
+    global update_state
+    with update_lock:
+        update_state["status"] = "running"
+        update_state["log"] = ["Starting update process..."]
+        update_state["progress"] = 0
+    
+    try:
+        tasks = []
+        if "atp" in targets:
+            tasks.append(("[Update] Atp_player_stats.py", "Updating ATP Player Stats"))
+        if "wta" in targets:
+            tasks.append(("[Update] Wta_player_stats.py", "Updating WTA Player Stats"))
+        if "gs" in targets:
+            tasks.append(("[Update] atp_player_grandslam.py", "Updating ATP Grand Slam Data"))
+            
+        total_tasks = len(tasks)
+        
+        for idx, (script_name, desc) in enumerate(tasks):
+            with update_lock:
+                update_state["current_task"] = desc
+                update_state["log"].append(f"Running: {desc}...")
+                
+            script_path = os.path.join(SCRIPTS_DIR, script_name)
+            
+            # Run script with unbuffered output (-u)
+            process = subprocess.Popen(
+                [PYTHON_EXE, "-u", script_path],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT, # Merge stderr into stdout
+                text=True,
+                cwd=SCRIPTS_DIR,
+                bufsize=1, # Line buffered
+                universal_newlines=True
+            )
+            
+            # Stream output in real-time
+            for line in iter(process.stdout.readline, ''):
+                line = line.strip()
+                if line:
+                    with update_lock:
+                        # Append to log limits size to prevent memory issues if very long
+                        if len(update_state["log"]) > 1000:
+                            update_state["log"] = update_state["log"][-900:]
+                        update_state["log"].append(line)
+            
+            # Wait for completion
+            process.wait()
+            
+            with update_lock:
+                if process.returncode == 0:
+                    update_state["log"].append(f"Completed: {desc}")
+                else:
+                    update_state["log"].append(f"Error in {desc} (Exit Code {process.returncode})")
+                
+                # Update progress
+                update_state["progress"] = int(((idx + 1) / total_tasks) * 100)
+
+        with update_lock:
+            update_state["status"] = "completed"
+            update_state["log"].append("All updates completed successfully.")
+            
+    except Exception as e:
+        with update_lock:
+            update_state["status"] = "error"
+            update_state["log"].append(f"Critical Error: {str(e)}")
+
+@app.route('/api/system/analysis', methods=['GET'])
+def get_system_analysis():
+    script_path = os.path.join(SCRIPTS_DIR, "[Analysis] Update stats.py")
+    try:
+        result = subprocess.run(
+            [PYTHON_EXE, script_path, "--json"],
+            capture_output=True,
+            text=True,
+            cwd=SCRIPTS_DIR
+        )
+        if result.returncode != 0:
+            return jsonify({"error": "Analysis script failed", "details": result.stderr}), 500
+            
+        data = json.loads(result.stdout)
+        return jsonify(data)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/system/update', methods=['POST'])
+def start_system_update():
+    targets = request.json.get('targets', [])
+    if not targets:
+        return jsonify({"error": "No targets specified"}), 400
+        
+    global update_state, update_thread
+    
+    # Check if thread is actually alive to prevent stuck "running" state
+    if update_state["status"] == "running":
+        if update_thread and update_thread.is_alive():
+            return jsonify({"error": "Update already in progress"}), 409
+        else:
+            # Dead thread but status says running -> Reset
+            with update_lock:
+                update_state["status"] = "error"
+                update_state["log"].append("Previous update process died unexpectedly.")
+        
+    # Start background thread
+    update_thread = threading.Thread(target=run_update_process, args=(targets,))
+    update_thread.daemon = True
+    update_thread.start()
+    
+    return jsonify({"status": "started"})
+
+@app.route('/api/system/update/status', methods=['GET'])
+def get_update_status():
+    return jsonify(update_state)
 
 # Keep request logs, but silence known client-disconnect tracebacks from eventlet.
 class QuietEventletLogger:

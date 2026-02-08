@@ -1016,6 +1016,14 @@ class TennisDataFetcher:
                     stats = json.loads(stats_path.read_text(encoding='utf-8'))
                 except Exception:
                     stats = {}
+            
+            gs_path = folder / 'grandslam_performance.json'
+            gs_performance = {}
+            if gs_path.exists():
+                try:
+                    gs_performance = json.loads(gs_path.read_text(encoding='utf-8'))
+                except Exception:
+                    gs_performance = {}
 
             name = (profile.get('name') or '').strip()
             if not name:
@@ -1031,6 +1039,7 @@ class TennisDataFetcher:
                 'last': last,
                 'profile': profile,
                 'stats': stats,
+                'grandslam_performance': gs_performance,
                 'folder': str(folder),
                 'player_code': (profile.get('player_id') or '').strip(),
                 'profile_url': (profile.get('url') or '').strip()
@@ -2914,6 +2923,44 @@ class TennisDataFetcher:
         wta_match_stats_cache[cache_key] = stats
         return stats
 
+    def fetch_atp_match_stats(self, stats_url):
+        """
+        Fetch ATP match stats by running the dedicated script.
+        """
+        script_path = Path(__file__).resolve().parent.parent / 'scripts' / '[Live] atp_match_stats.py'
+        if not script_path.exists():
+            return None
+        
+        # Use the venv python if it exists
+        python_executable = sys.executable
+        venv_python = Path(__file__).resolve().parent / 'venv' / 'bin' / 'python'
+        if venv_python.exists():
+            python_executable = str(venv_python)
+
+        cmd = [
+            python_executable,
+            str(script_path),
+            "--stats-url",
+            stats_url
+        ]
+
+        try:
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=90,
+                check=False 
+            )
+            if result.returncode != 0:
+                print(f"Error in atp_match_stats script: {result.stderr}", file=sys.stderr)
+                return None
+            
+            return json.loads(result.stdout)
+        except (subprocess.TimeoutExpired, json.JSONDecodeError, TypeError) as e:
+            print(f"Failed to fetch or parse ATP match stats: {e}", file=sys.stderr)
+            return None
+
     def _parse_wta_match(self, match):
         tournament = match.get('Tournament') or {}
         group = tournament.get('tournamentGroup') or {}
@@ -3296,6 +3343,10 @@ class TennisDataFetcher:
             or ''
         )
 
+        # Enhance with scraped data (profile, stats, grandslam_performance)
+        scraped = self._match_atp_scraped(player.get('name'))
+        gs_performance = (scraped or {}).get('grandslam_performance') or {}
+
         return {
             **player,
             'id': resolved_id,
@@ -3311,6 +3362,7 @@ class TennisDataFetcher:
             'biography': f"Professional tennis player from {player.get('country', '')}.",
             'image_url': image_url,
             'stats_2026': stats_2026,
+            'grandslam_performance': gs_performance,
             'records': [],
             'records_summary': []
         }
