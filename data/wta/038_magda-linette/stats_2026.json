@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.0%\n1st Return Points Won %\n35.4%\n2nd Return Points Won %\n52.1%\nBreak Points Converted\n46.2%\nReturn Games Won\n32.4%\nReturn Games Played\n37\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:27:21.337568+00:00",
+  "updated_at": "2026-02-08T15:20:45.961498+00:00",
   "records_tab": {
     "summary": [
       {
@@ -213,19 +213,6 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Iva Jovic",
-            "opponent_country": "USA",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-3, 6-7(5), 6-2",
-            "opponent_rank": 30
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -250,6 +237,19 @@
             "opponent_entry": "Q",
             "score": "6-3, 1-6, 6-1",
             "opponent_rank": 98
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Iva Jovic",
+            "opponent_country": "USA",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-3, 6-7(5), 6-2",
+            "opponent_rank": 30
           }
         ],
         "summary": {
@@ -275,19 +275,6 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Alexandra Eala",
-            "opponent_country": "PHI",
-            "opponent_seed": 4,
-            "opponent_entry": "",
-            "score": "6-3, 6-2",
-            "opponent_rank": 53
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -312,6 +299,19 @@
             "opponent_entry": "W",
             "score": "6-4, 4-6, 6-2",
             "opponent_rank": 582
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Alexandra Eala",
+            "opponent_country": "PHI",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 53
           }
         ],
         "summary": {
@@ -323,6 +323,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:27:21.337514+00:00"
+    "updated_at": "2026-02-08T15:20:45.961388+00:00"
   }
 }

@@ -6,31 +6,14 @@
 // ============================================
 // Configuration
 // ============================================
-const PAGE_PROTOCOL = (window.location && window.location.protocol && window.location.protocol.startsWith('http'))
-    ? window.location.protocol
-    : 'http:';
-const PAGE_HOST = (window.location && window.location.hostname)
-    ? window.location.hostname
-    : 'localhost';
-const PAGE_ORIGIN = (window.location && window.location.origin)
-    ? window.location.origin
-    : `${PAGE_PROTOCOL}//${PAGE_HOST}`;
-
-const PAGE_PORT = (window.location && typeof window.location.port === 'string')
-    ? window.location.port
-    : '';
-
-const SAME_ORIGIN_API_BASE = (PAGE_PORT === '5001' || PAGE_PORT === '5000')
-    ? `${PAGE_ORIGIN}/api`
-    : null;
-
+// Use config.js values, but add missing settings
 const CONFIG = {
-    API_BASE_URL: `${PAGE_PROTOCOL}//${PAGE_HOST}:5001/api`,
-    API_BASE_CANDIDATES: [
-        `${PAGE_PROTOCOL}//${PAGE_HOST}:5001/api`,
-        `${PAGE_PROTOCOL}//${PAGE_HOST}:5000/api`
-    ].concat(SAME_ORIGIN_API_BASE ? [SAME_ORIGIN_API_BASE] : []),
-    WS_URL: `${PAGE_PROTOCOL}//${PAGE_HOST}:5001`,
+    // From config.js
+    API_BASE_URL: (window.TennisApp?.CONFIG?.API_BASE_URL) || 'http://localhost:5001/api',
+    IS_LOCAL: (window.TennisApp?.CONFIG?.IS_LOCAL) !== false,
+    WS_URL: (window.TennisApp?.CONFIG?.API_BASE_URL?.replace('/api', '')) || 'http://localhost:5001',
+    
+    // App-specific settings
     UPDATE_INTERVAL: 30000, // 30 seconds (live scores)
     MATCH_LIST_UPDATE_INTERVAL: 1800000, // 30 minutes (recent + upcoming)
     TOURNAMENT_COLORS: {

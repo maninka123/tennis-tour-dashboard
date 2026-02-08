@@ -20,7 +20,12 @@
         return copy;
     };
 
-    const buildGifUrl = (file) => `assets/images/intro-gifs/${encodeURIComponent(file)}`;
+    const buildGifUrl = (file) => {
+        // Get the API base from config if available, otherwise build it
+        const apiBase = window.TennisApp?.CONFIG?.API_BASE_URL || 'http://localhost:5001/api';
+        const baseUrl = apiBase.replace('/api', '');  // Get base URL without /api
+        return `${baseUrl}/Images/intro gifs/${encodeURIComponent(file)}`;
+    };
 
     /**
      * Fetch available gif files from backend

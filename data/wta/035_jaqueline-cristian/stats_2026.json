@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n34.0%\n1st Return Points Won %\n24.3%\n2nd Return Points Won %\n56.2%\nBreak Points Converted\n66.7%\nReturn Games Won\n22.2%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:27:04.034441+00:00",
+  "updated_at": "2026-02-08T15:20:27.331116+00:00",
   "records_tab": {
     "summary": [
       {
@@ -157,33 +157,7 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Kimberly Birrell",
-            "opponent_country": "AUS",
-            "opponent_seed": null,
-            "opponent_entry": "W",
-            "score": "5-7, 6-1, 7-5",
-            "opponent_rank": 107
-          },
-          {
             "round": "Round of 16",
-            "round_name": "R16",
-            "tourn_round": 2,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Anastasia Potapova",
-            "opponent_country": "AUT",
-            "opponent_seed": 7,
-            "opponent_entry": "",
-            "score": "6-1, 6-3",
-            "opponent_rank": 54
-          },
-          {
-            "round": "Qualifying R4",
             "round_name": "R16",
             "tourn_round": 2,
             "draw_level_type": "",
@@ -201,25 +175,51 @@
             "tourn_round": 1,
             "draw_level_type": "",
             "result": "W",
-            "opponent_name": "Sarah Mildren",
-            "opponent_country": "AUS",
-            "opponent_seed": null,
-            "opponent_entry": "W",
-            "score": "7-6(4), 6-2",
-            "opponent_rank": 1078
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
-            "result": "W",
             "opponent_name": "Ekaterina Alexandrova",
             "opponent_country": "RUS",
             "opponent_seed": 4,
             "opponent_entry": "",
             "score": "6-4, 6-4",
             "opponent_rank": 11
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Kimberly Birrell",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "5-7, 6-1, 7-5",
+            "opponent_rank": 107
+          },
+          {
+            "round": "Qualifying R2",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anastasia Potapova",
+            "opponent_country": "AUT",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "6-1, 6-3",
+            "opponent_rank": 54
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Sarah Mildren",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "7-6(4), 6-2",
+            "opponent_rank": 1078
           }
         ],
         "summary": {
@@ -267,6 +267,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:27:04.034382+00:00"
+    "updated_at": "2026-02-08T15:20:27.330974+00:00"
   }
 }

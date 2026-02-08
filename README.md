@@ -1,3 +1,37 @@
+---
+
+## 📸 Image Gallery
+
+<img src="Images/Interface_Live%20results_recent%20scores_upcoming%20matches.png" alt="Main interface" width="900" />
+
+Main interface with live scores, recent results, and upcoming match insights.
+
+<img src="Images/Live%20Rankings%20and%20calender.png" alt="Rankings and calendar" width="900" />
+
+Rankings panel and tournament calendar with surface filters.
+
+<img src="Images/Upcoming%20match%20insights.png" alt="Match insights" width="900" />
+
+Upcoming match insights with win probability and form notes.
+
+<img src="Images/Player_stats_1.png" alt="Player stats overview" width="900" />
+
+Player stats comparison overview.
+
+<img src="Images/Player_stats_2.png" alt="Player stats details" width="900" />
+
+Detailed serve and return breakdowns.
+
+<img src="Images/H2H_1.png" alt="H2H overview" width="900" />
+
+Head-to-head overview with radar charts.
+
+<img src="Images/H2H_2.png" alt="H2H details" width="900" />
+
+Past meetings and surface records.
+
+---
+
 <div align="center">
 
 # 🎾 Tennis Live Dashboard
@@ -52,62 +86,7 @@
 
 ---
 
-## 📸 Screenshots
 
-<details>
-<summary><b>🎮 Main Interface: Live, Recent & Upcoming Matches</b></summary>
-<br>
-
-![Main Interface](Images/Interface_Live%20results_recent%20scores_upcoming%20matches.png)
-
-*Live matches, recent results, and upcoming predictions in one unified view*
-</details>
-
-<details>
-<summary><b>📊 Rankings & Tournament Calendar</b></summary>
-<br>
-
-![Rankings and Calendar](Images/Live%20Rankings%20and%20calender.png)
-
-*Real-time rankings panel with tournament schedule and surface filters*
-</details>
-
-<details>
-<summary><b>🎯 Match Prediction Insights</b></summary>
-<br>
-
-![Upcoming Insights](Images/Upcoming%20match%20insights.png)
-
-*AI-powered win probability analysis with form indicators and H2H context*
-</details>
-
-<details>
-<summary><b>📈 Detailed Player Statistics</b></summary>
-<br>
-
-![Player Stats Overview](Images/Player_stats_1.png)
-
-*Comprehensive match statistics comparison*
-
-![Player Stats Details](Images/Player_stats_2.png)
-
-*Granular stat breakdown with serve/return analytics*
-</details>
-
-<details>
-<summary><b>⚔️ Head-to-Head Analysis</b></summary>
-<br>
-
-![H2H Overview](Images/H2H_1.png)
-
-*Career H2H records with interactive radar charts*
-
-![H2H Details](Images/H2H_2.png)
-
-*Past meetings history and surface performance breakdown*
-</details>
-
----
 
 ## 🚀 Quick Start
 

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n34.8%\n1st Return Points Won %\n23.1%\n2nd Return Points Won %\n51.6%\nBreak Points Converted\n55.6%\nReturn Games Won\n19.2%\nReturn Games Played\n26\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:31:39.344439+00:00",
+  "updated_at": "2026-02-08T15:25:26.613913+00:00",
   "records_tab": {
     "summary": [
       {
@@ -151,19 +151,6 @@
             "round_name": "R128",
             "tourn_round": 1,
             "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Louisa Chirico",
-            "opponent_country": "USA",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "3-6, 6-1, 6-2",
-            "opponent_rank": 178
-          },
-          {
-            "round": "Qualifying R1",
-            "round_name": "R128",
-            "tourn_round": 1,
-            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Iga Swiatek",
             "opponent_country": "POL",
@@ -171,6 +158,19 @@
             "opponent_entry": "",
             "score": "7-6(5), 6-3",
             "opponent_rank": 2
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Louisa Chirico",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "3-6, 6-1, 6-2",
+            "opponent_rank": 178
           }
         ],
         "summary": {
@@ -196,19 +196,6 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Polina Kudermetova",
-            "opponent_country": "UZB",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-1, 6-0",
-            "opponent_rank": 167
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -233,6 +220,19 @@
             "opponent_entry": "",
             "score": "6-3, 6-4",
             "opponent_rank": 125
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Polina Kudermetova",
+            "opponent_country": "UZB",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-1, 6-0",
+            "opponent_rank": 167
           }
         ],
         "summary": {
@@ -244,6 +244,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:31:39.344373+00:00"
+    "updated_at": "2026-02-08T15:25:26.613561+00:00"
   }
 }
