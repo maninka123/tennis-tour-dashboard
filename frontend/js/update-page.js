@@ -4,7 +4,7 @@
  */
 
 const UpdatePage = {
-    backendUrl: window.TennisApp?.CONFIG?.API_BASE_URL || 'http://localhost:5001',
+    backendUrl: window.TennisApp?.CONFIG?.API_BASE_URL || 'http://localhost:5001/api',
     pollingInterval: null,
     gifs: [],
     gsNeedsUpdate: false, // Store system state
