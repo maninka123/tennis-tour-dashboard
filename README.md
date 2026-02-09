@@ -1,10 +1,19 @@
-# 🎾 Tennis Live Dashboard
+<h1 align="center">🎾 Tennis Live Dashboard</h1>
 
-**Real-time ATP & WTA Tennis Tracking for 2026 Season**
+<p align="center">
+  <strong>Real-time ATP & WTA Tennis Tracking for 2026 Season</strong>
+</p>
 
-[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/) [![Flask](https://img.shields.io/badge/Flask-3.0.0-green.svg)](https://flask.palletsprojects.com/) [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen.svg)](https://tennis-tour-dashboard.onrender.com)
+<p align="center">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11+-blue.svg" alt="Python"></a>
+  <a href="https://flask.palletsprojects.com/"><img src="https://img.shields.io/badge/Flask-3.0.0-green.svg" alt="Flask"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License"></a>
+  <a href="https://tennis-tour-dashboard.onrender.com"><img src="https://img.shields.io/badge/Live-Demo-brightgreen.svg" alt="Live Demo"></a>
+</p>
 
-*Your all-in-one tennis companion for live scores, rankings, tournament insights, and head-to-head analytics*
+<p align="center">
+  <em>Your all-in-one tennis companion for live scores, rankings, tournament insights, and head-to-head analytics</em>
+</p>
 
 ---
 
@@ -503,11 +512,14 @@ Created with ❤️ for tennis fans worldwide 🎾
 
 ---
 
-**⭐ Star this repo if you find it useful! ⭐**
+<p align="center"><strong>⭐ Star this repo if you find it useful! ⭐</strong></p>
 
-[![GitHub stars](https://img.shields.io/github/stars/maninka123/Tennis-tour-dashboard?style=social)](https://github.com/maninka123/Tennis-tour-dashboard/stargazers) [![GitHub forks](https://img.shields.io/github/forks/maninka123/Tennis-tour-dashboard?style=social)](https://github.com/maninka123/Tennis-tour-dashboard/network/members)
+<p align="center">
+  <a href="https://github.com/maninka123/Tennis-tour-dashboard/stargazers"><img src="https://img.shields.io/github/stars/maninka123/Tennis-tour-dashboard?style=social" alt="GitHub stars"></a>
+  <a href="https://github.com/maninka123/Tennis-tour-dashboard/network/members"><img src="https://img.shields.io/github/forks/maninka123/Tennis-tour-dashboard?style=social" alt="GitHub forks"></a>
+</p>
 
-Made with 🎾 and ☕ | © 2026 Tennis Dashboard
+<p align="center">Made with 🎾 and ☕ | © 2026 Tennis Dashboard</p>
 
 ---
 
