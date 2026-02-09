@@ -66,7 +66,7 @@ const UpdatePage = {
         this.showStep('analysis');
         
         try {
-            const response = await fetch(`${this.backendUrl}/api/system/analysis`);
+            const response = await fetch(`${this.backendUrl}/system/analysis`);
             const data = await response.json();
             
             if (data.error) throw new Error(data.error);
@@ -145,7 +145,7 @@ const UpdatePage = {
         this.updateLog("Initialising update...");
 
         try {
-            const res = await fetch(`${this.backendUrl}/api/system/update`, {
+            const res = await fetch(`${this.backendUrl}/system/update`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ targets })
@@ -176,7 +176,7 @@ const UpdatePage = {
 
         this.pollingInterval = setInterval(async () => {
             try {
-                const res = await fetch(`${this.backendUrl}/api/system/update/status`);
+                const res = await fetch(`${this.backendUrl}/system/update/status`);
                 const state = await res.json();
                 const logContainer = document.getElementById('update-log');
                 
