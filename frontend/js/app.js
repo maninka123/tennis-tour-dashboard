@@ -111,15 +111,11 @@ const DOM = {
     // Live scores
     liveScoresWrapper: document.getElementById('liveScoresWrapper'),
     liveScoresContainer: document.getElementById('liveScoresContainer'),
-    scrollLiveLeft: document.getElementById('scrollLiveLeft'),
-    scrollLiveRight: document.getElementById('scrollLiveRight'),
     
     // Recent matches
     recentMatchesWrapper: document.getElementById('recentMatchesWrapper'),
     recentMatchesContainer: document.getElementById('recentMatchesContainer'),
     recentUpdatedAgo: document.getElementById('recentUpdatedAgo'),
-    scrollRecentLeft: document.getElementById('scrollRecentLeft'),
-    scrollRecentRight: document.getElementById('scrollRecentRight'),
     
     // Rankings
     rankingsList: document.getElementById('rankingsList'),
@@ -156,6 +152,34 @@ const Utils = {
      * Get country flag emoji from country code
      */
     getFlag(countryCode) {
+        // Map full country names to 3-letter codes (ATP search returns full names)
+        const nameToCode = {
+            'Spain': 'ESP', 'Italy': 'ITA', 'Serbia': 'SRB', 'Germany': 'GER',
+            'Russia': 'RUS', 'Denmark': 'DEN', 'Greece': 'GRE', 'Poland': 'POL',
+            'Norway': 'NOR', 'United States': 'USA', 'Canada': 'CAN',
+            'Great Britain': 'GBR', 'United Kingdom': 'GBR', 'France': 'FRA',
+            'Australia': 'AUS', 'Argentina': 'ARG', 'Belarus': 'BLR',
+            'Kazakhstan': 'KAZ', 'Tunisia': 'TUN', 'Czech Republic': 'CZE',
+            'Czechia': 'CZE', 'China': 'CHN', 'Latvia': 'LAT', 'Brazil': 'BRA',
+            'Japan': 'JPN', 'South Korea': 'KOR', 'Korea': 'KOR',
+            'Bulgaria': 'BUL', 'Chile': 'CHI', 'Switzerland': 'SUI',
+            'Belgium': 'BEL', 'Netherlands': 'NED', 'Sweden': 'SWE',
+            'Austria': 'AUT', 'Colombia': 'COL', 'Croatia': 'CRO',
+            'South Africa': 'RSA', 'Ukraine': 'UKR', 'India': 'IND',
+            'Chinese Taipei': 'TPE', 'Taiwan': 'TPE', 'Romania': 'ROU',
+            'Hungary': 'HUN', 'Portugal': 'POR', 'Georgia': 'GEO',
+            'Finland': 'FIN', 'Slovakia': 'SVK', 'Slovenia': 'SLO',
+            'Mexico': 'MEX', 'Peru': 'PER', 'Uruguay': 'URU',
+            'Israel': 'ISR', 'Turkey': 'TUR', 'Türkiye': 'TUR',
+            'Dominican Republic': 'DOM', 'Thailand': 'THA', 'Indonesia': 'INA',
+            'New Zealand': 'NZL', 'Ireland': 'IRL', 'Egypt': 'EGY',
+            'Moldova': 'MDA', 'Bosnia and Herzegovina': 'BIH', 'Bosnia': 'BIH',
+            'Montenegro': 'MNE', 'North Macedonia': 'MKD', 'Lithuania': 'LTU',
+            'Estonia': 'EST', 'Luxembourg': 'LUX', 'Monaco': 'MON',
+            'Bolivia': 'BOL', 'Ecuador': 'ECU', 'Venezuela': 'VEN',
+            'Paraguay': 'PAR', 'Taiwan, Chinese Taipei': 'TPE'
+        };
+        const code = nameToCode[countryCode] || countryCode;
         const flags = {
             'SRB': '🇷🇸', 'ESP': '🇪🇸', 'ITA': '🇮🇹', 'RUS': '🇷🇺', 'GER': '🇩🇪',
             'DEN': '🇩🇰', 'GRE': '🇬🇷', 'POL': '🇵🇱', 'NOR': '🇳🇴', 'USA': '🇺🇸',
@@ -164,9 +188,16 @@ const Utils = {
             'LAT': '🇱🇻', 'BRA': '🇧🇷', 'JPN': '🇯🇵', 'KOR': '🇰🇷', 'BUL': '🇧🇬',
             'CHI': '🇨🇱', 'SUI': '🇨🇭', 'BEL': '🇧🇪', 'NED': '🇳🇱', 'SWE': '🇸🇪',
             'AUT': '🇦🇹', 'COL': '🇨🇴', 'CRO': '🇭🇷', 'RSA': '🇿🇦', 'UKR': '🇺🇦',
-            'IND': '🇮🇳', 'TPE': '🇹🇼', 'ROU': '🇷🇴', 'HUN': '🇭🇺', 'POR': '🇵🇹'
+            'IND': '🇮🇳', 'TPE': '🇹🇼', 'ROU': '🇷🇴', 'HUN': '🇭🇺', 'POR': '🇵🇹',
+            'GEO': '🇬🇪', 'FIN': '🇫🇮', 'SVK': '🇸🇰', 'SLO': '🇸🇮',
+            'MEX': '🇲🇽', 'PER': '🇵🇪', 'URU': '🇺🇾', 'ISR': '🇮🇱',
+            'TUR': '🇹🇷', 'DOM': '🇩🇴', 'THA': '🇹🇭', 'INA': '🇮🇩',
+            'NZL': '🇳🇿', 'IRL': '🇮🇪', 'EGY': '🇪🇬', 'MDA': '🇲🇩',
+            'BIH': '🇧🇦', 'MNE': '🇲🇪', 'MKD': '🇲🇰', 'LTU': '🇱🇹',
+            'EST': '🇪🇪', 'LUX': '🇱🇺', 'MON': '🇲🇨', 'BOL': '🇧🇴',
+            'ECU': '🇪🇨', 'VEN': '🇻🇪', 'PAR': '🇵🇾'
         };
-        return flags[countryCode] || '🏳️';
+        return flags[code] || '🏳️';
     },
 
     /**
@@ -267,8 +298,37 @@ const Utils = {
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
+    },
+
+    /**
+     * Generate initials SVG data URI for a player name
+     */
+    getPlayerInitialsSvg(name) {
+        const displayName = name || '??';
+        const initials = displayName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        const colors = ['d1e8ff', 'e8f5e9', 'fff4e6', 'f3e5f5', 'e0f7fa', 'fce4ec'];
+        const hash = displayName.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+        const color = colors[hash % colors.length];
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+            <rect width="100%" height="100%" fill="#${color}"/>
+            <text x="50%" y="52%" dominant-baseline="middle" text-anchor="middle"
+                font-family="Arial, sans-serif" font-size="72" fill="#0f172a">${initials}</text>
+        </svg>`;
+        return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
     }
 };
+
+// Global handler: replace broken player images with initials placeholder
+document.addEventListener('error', function(e) {
+    const img = e.target;
+    if (img.tagName !== 'IMG') return;
+    // Avoid infinite loop if the fallback itself fails
+    if (img.dataset.fallbackApplied) return;
+    img.dataset.fallbackApplied = 'true';
+    // Use alt text (player name) to generate initials
+    const name = img.alt || '??';
+    img.src = Utils.getPlayerInitialsSvg(name);
+}, true);
 
 // ============================================
 // API Functions
@@ -619,6 +679,10 @@ const Socket = {
             }
             ScoresModule.renderLiveScores();
             this.updateLastUpdated();
+            if (window.FavouritesModule) {
+                FavouritesModule.render();
+                FavouritesModule.updateIconGlow();
+            }
         });
 
         AppState.socket.on('connected', (data) => {
@@ -714,20 +778,6 @@ const EventHandlers = {
             tab.addEventListener('click', () => this.handleTourSwitch(tab));
         });
 
-        // Scroll controls
-        DOM.scrollLiveLeft?.addEventListener('click', () => {
-            DOM.liveScoresContainer.scrollBy({ left: -300, behavior: 'smooth' });
-        });
-        DOM.scrollLiveRight?.addEventListener('click', () => {
-            DOM.liveScoresContainer.scrollBy({ left: 300, behavior: 'smooth' });
-        });
-        DOM.scrollRecentLeft?.addEventListener('click', () => {
-            DOM.recentMatchesContainer.scrollBy({ left: -300, behavior: 'smooth' });
-        });
-        DOM.scrollRecentRight?.addEventListener('click', () => {
-            DOM.recentMatchesContainer.scrollBy({ left: 300, behavior: 'smooth' });
-        });
-
         // Close bracket panel
         DOM.closeBracket?.addEventListener('click', () => {
             DOM.tournamentDetailsPanel.classList.remove('visible');
@@ -743,11 +793,43 @@ const EventHandlers = {
             await App.refreshCurrentTourTournaments();
         });
 
+        // Helper to extract player info from a DOM element
+        const extractPlayerInfo = (el) => {
+            if (!el) return {};
+            // Try specific rank badge first, then general selectors
+            const rankBadgeEl = el.querySelector('.player-rank-badge, .rank-number');
+            const rankEl = rankBadgeEl || el.querySelector('.player-rank, .rank');
+            const rank = parseInt((rankEl?.textContent || '').replace(/[^\d]/g, ''), 10) || null;
+
+            // Get name: try specific name element, strip out badge/flag text
+            const nameEl = el.querySelector('.player-name, .ranking-name, .name');
+            let name = '';
+            if (nameEl) {
+                // Clone and remove badge/flag children to get clean name text
+                const clone = nameEl.cloneNode(true);
+                clone.querySelectorAll('.player-rank-badge, .country-flag, .career-high-badge, .serve-ball').forEach(c => c.remove());
+                name = clone.textContent.trim();
+            }
+            if (!name) {
+                const imgEl = el.querySelector('img');
+                name = imgEl?.alt?.trim() || '';
+            }
+
+            const imgEl = el.querySelector('img');
+            const flagEl = el.querySelector('.country-flag');
+            return {
+                name: name,
+                rank: rank,
+                country: flagEl?.textContent?.trim() || '',
+                image_url: imgEl?.src || ''
+            };
+        };
+
         // Match card click handlers
         document.addEventListener('click', (e) => {
             const playerRow = e.target.closest('.player-row[data-player-id]');
             if (playerRow && playerRow.dataset.playerId) {
-                PlayerModule.showPlayerStats(playerRow.dataset.playerId);
+                PlayerModule.showPlayerStats(playerRow.dataset.playerId, extractPlayerInfo(playerRow));
                 return;
             }
 
@@ -790,7 +872,7 @@ const EventHandlers = {
         document.addEventListener('click', (e) => {
             const playerElement = e.target.closest('.ranking-item');
             if (playerElement && playerElement.dataset.playerId) {
-                PlayerModule.showPlayerStats(playerElement.dataset.playerId);
+                PlayerModule.showPlayerStats(playerElement.dataset.playerId, extractPlayerInfo(playerElement));
             }
         });
 
@@ -799,7 +881,7 @@ const EventHandlers = {
             const playerRow = e.target.closest('.player-row[data-player-id]');
             if (!playerRow || !playerRow.dataset.playerId) return;
             e.preventDefault();
-            PlayerModule.showPlayerStats(playerRow.dataset.playerId);
+            PlayerModule.showPlayerStats(playerRow.dataset.playerId, extractPlayerInfo(playerRow));
         });
 
         // Keyboard shortcuts
@@ -845,6 +927,14 @@ const EventHandlers = {
         ScoresModule.renderRecentMatches();
         RankingsModule.render();
         TournamentsModule.render();
+
+        // Update favourites panel for the new tour
+        if (window.FavouritesModule) {
+            const favLabel = document.getElementById('favTourLabel');
+            if (favLabel) favLabel.textContent = tour.toUpperCase();
+            FavouritesModule.render();
+            FavouritesModule.updateIconGlow();
+        }
     }
 };
 
@@ -863,6 +953,9 @@ const App = {
         
         // Initialize ATP match stats cache
         ScoresModule.init();
+
+        // Initialize Favourites
+        if (window.FavouritesModule) FavouritesModule.init();
         
         // Initialize WebSocket connection
         Socket.init();
@@ -901,6 +994,7 @@ const App = {
                 AppState.liveScores.wta = scores.filter(m => m.tour === 'WTA');
                 ScoresModule.renderLiveScores();
                 Socket.updateLastUpdated();
+                if (window.FavouritesModule) FavouritesModule.updateIconGlow();
             } catch (error) {
                 console.error('Error refreshing live scores:', error);
             }

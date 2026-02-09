@@ -6,7 +6,7 @@
     <title>RallyCourt 2026</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="vendor/brackets-viewer/brackets-viewer.min.css">
-    <link rel="stylesheet" href="css/styles.css?v=20260204">
+    <link rel="stylesheet" href="css/styles.css?v=20260210f">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,6 +35,10 @@
                     <i class="fas fa-users"></i>
                     H2H
                 </button>
+                <button class="favourites-btn" id="favouritesBtn" title="Favourite Players">
+                    <i class="fas fa-star"></i>
+                    Favourites
+                </button>
                 <button class="update-data-btn" onclick="window.open('update.html', 'RallyCourtUpdater', 'width=1000,height=800')" title="System Update">
                     <i class="fas fa-sync-alt"></i>
                     Update
@@ -51,14 +55,6 @@
         <section class="live-scores-section">
             <div class="section-header">
                 <h2><i class="fas fa-bolt"></i> Live Matches</h2>
-                <div class="scroll-controls">
-                    <button class="scroll-btn scroll-left" id="scrollLiveLeft">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="scroll-btn scroll-right" id="scrollLiveRight">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
             </div>
             <div class="live-scores-container" id="liveScoresContainer">
                 <div class="live-scores-wrapper" id="liveScoresWrapper">
@@ -78,14 +74,7 @@
                     <h2><i class="fas fa-check-circle"></i> Recently Finished</h2>
                     <span class="section-updated-ago" id="recentUpdatedAgo">Updated --</span>
                 </div>
-                <div class="scroll-controls">
-                    <button class="scroll-btn scroll-left" id="scrollRecentLeft">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="scroll-btn scroll-right" id="scrollRecentRight">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
+
             </div>
             <div class="recent-matches-container" id="recentMatchesContainer">
                 <div class="recent-matches-wrapper" id="recentMatchesWrapper">
@@ -325,6 +314,20 @@
         <!-- Player stats content will be inserted here by PlayerModule.js -->
     </div>
 
+    <!-- Favourites Panel -->
+    <div id="favouritesPanel">
+        <div class="fav-panel-header">
+            <h3><i class="fas fa-star"></i> <span id="favTourLabel">ATP</span> Favourites</h3>
+            <button id="favCloseBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="fav-search-box">
+            <i class="fas fa-search fav-search-icon"></i>
+            <input type="text" id="favSearchInput" placeholder="Search player to add..." autocomplete="off">
+            <div id="favSearchResults"></div>
+        </div>
+        <div id="favListContainer"></div>
+    </div>
+
     <!-- JavaScript Files -->
     <script src="js/prediction_wta_upcoming.js?v=20260207"></script>
     <script src="js/scores.js?v=20260204"></script>
@@ -333,9 +336,10 @@
     <script src="js/bracket.js?v=20260204"></script>
     <script src="js/h2h.js?v=20260204"></script>
     <script src="js/stats-zone.js?v=20260208"></script>
-    <script src="js/player.js?v=20260204"></script>
+    <script src="js/player.js?v=20260210f"></script>
+    <script src="js/favourites.js?v=20260210f"></script>
     <script src="js/config.js"></script>
     <script src="js/loading-intro-gifs.js?v=20260208"></script>
-    <script src="js/app.js?v=20260209"></script>
+    <script src="js/app.js?v=20260210f"></script>
 </body>
 </html>

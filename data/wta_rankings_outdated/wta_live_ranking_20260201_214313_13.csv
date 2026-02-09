@@ -17,7 +17,7 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 16,5,5,,no,no,Madison Keys,30,USA,USA,2351,,,,,,no
 17,8,8,,no,no,Karolína Muchová,29,CZE,CZE,2123,+2,+65,Doha R32 (R64 )2178 3058,,,yes
 18,12,12,,no,no,Ludmilla Samsonova,27,RUS,RUS,2105,-1,-11,,Lost in Doha R64,,no
-19,8,8,,no,no,Emma Navarro,24,USA,USA,2100,-1,+5,Doha R32 (R64 )2155 3035,,,yes
+19,8,8,,no,no,Emma Navarro,24,USA,USA,2100,-1,+5,Doha R32 2155 3035,,,yes
 20,CH,20,,yes,no,Iva Jovic,18,USA,USA,2031,,,,,,no
 21,11,11,,no,no,Diana Shnaider,21,RUS,RUS,1953,,,,Lost in Doha R64,,no
 22,12,12,,no,no,Elise Mertens,30,BEL,BEL,1881,,-55,Doha R32 (R64 )1936 2816,,,yes
@@ -37,8 +37,8 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 36,24,24,,no,no,Marie Bouzková,27,CZE,CZE,1285,,+1,,Lost in Doha R64,,no
 37,33,33,,no,no,Ann Li,25,USA,USA,1278,+4,+35,Doha R32 (R64 )1333 2213,,,yes
 38,CH,38,,yes,no,Sára Bejlek,20,CZE,CZE,1277,,,,,,no
-39,NCH (44),39,44,yes,yes,Tereza Valentová,18,CZE,CZE,1270,+9,+95,Doha R32 (R64 )**Qual. Doha W****Qual. Doha W** Doha R32 (R64 )1325 2205,,,yes
-40,21,21,,no,no,Dayana Yastremska,25,UKR,UKR,1265,+2,+40,Doha R32 (R64 )1320 2200,,,yes
+39,NCH (44),39,44,yes,yes,Tereza Valentová,18,CZE,CZE,1270,+9,+95,Doha R32**Qual. Doha W****Qual. Doha W** Doha R32 1325 2205,,,yes
+40,21,21,,no,no,Dayana Yastremska,25,UKR,UKR,1265,+2,+40,Doha R32 1320 2200,,,yes
 41,39,39,,no,no,Hailey Baptiste,24,USA,USA,1264,,-2,,,,no
 42,40,40,,no,no,Alexandra Eala,20,PHI,PHI,1244,,-2,,Lost in Doha R64,,no
 43,27,27,,no,no,Kateřina Siniaková,29,CZE,CZE,1242,+1,+35,Doha R32 (R64 )1297 2177,,,yes
@@ -248,11 +248,11 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 247,196,196,,no,no,Justina Mikulskytė,30,LTU,LTU,278,,+6,Grenoble R32 280 324,,,yes
 248,236,236,,no,no,Anna Sisková,24,CZE,CZE,277,,+8,,,,no
 249,135,135,,no,no,Arianne Hartono,29,NED,NED,276,,+8,,,,no
-250,45,45,,no,no,Nuria Párrizas Díaz,34,ESP,ESP,276,+12,+5,**Qual. Oeiras W** Advertisement,,,yes
-251,166,166,,no,no,Xiaodi You,29,CHN,CHN,275,,+7,,,,no
+250,166,166,,no,no,Xiaodi You,29,CHN,CHN,275,,+8,Advertisement,,,yes
+251,45,45,,no,no,Nuria Párrizas Díaz,34,ESP,ESP,274,+11,+3,Qual. Oeiras R2 276 276,,,yes
 252,176,176,,no,no,Manon Léonard,25,FRA,FRA,274,-14,-18,Grenoble R32 278 322,,,yes
 253,209,209,,no,no,Eva Vedder,26,NED,NED,274,+1,-4,,,,no
-254,142,142,,no,no,Noma Noha Akugue,22,GER,GER,274,,+5,**Qual. Oeiras W**,,,yes
+254,142,142,,no,no,Noma Noha Akugue,22,GER,GER,274,,+5,Qual. Oeiras R2,,,yes
 255,NCH (260),255,260,yes,yes,Sohyun Park,23,KOR,KOR,274,,+5,Pune R32 279 345,,,yes
 256,151,151,,no,no,Anastasia Tikhonova,25,RUS,RUS,273,,+5,,,,no
 257,2,2,,no,no,Ons Jabeur,31,TUN,TUN,272,-111,-215,,,,no
@@ -357,7 +357,7 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 356,2,2,,no,no,Vera Zvonareva,41,RUS,RUS,178,+95,+224,Doha R32 (R64 )**Qual. Doha W**233 1113,,,yes
 357,114,114,,no,no,Sijia Wei,22,CHN,CHN,178,,-1,,,,no
 358,203,203,,no,no,Carlota Martinez Cirez,24,ESP,ESP,177,,-1,Antalya 6 R32,,,yes
-359,150,150,,no,no,En-shuo Liang,25,TWN,TWN,177,,+3,,Lost in Qual. Oeiras R2,,no
+359,150,150,,no,no,En-shuo Liang,25,TWN,TWN,177,,+3,Qual. Oeiras R2 179 179,,,yes
 360,65,65,,no,no,Erika Andreeva,21,RUS,RUS,175,-32,-19,Pune R32 183 249,,,yes
 361,NCH (368),361,368,yes,yes,Eva Bennemann,18,GER,GER,175,+7,+4,,Lost in Sheffield R16,,no
 362,196,196,,no,no,Kristina Dmitruk,22,BLR,BLR,174,,-4,,,,no
@@ -388,7 +388,7 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 387,151,151,,no,no,Mariam Bolkvadze,28,GEO,GEO,161,-58,-32,,,,no
 388,365,365,,no,no,Diletta Cherubini,23,ITA,ITA,161,,-1,Pune R32 166 232,,,yes
 389,292,292,,no,no,Zhibek Kulambayeva,25,KAZ,KAZ,161,,-1,,,,no
-390,199,199,,no,no,Naiktha Bains,28,GBR,GBR,161,+15,+6,,Lost in Sheffield R16 Lost in Qual. Oeiras R2,,no
+390,199,199,,no,no,Naiktha Bains,28,GBR,GBR,161,+15,+6,Qual. Oeiras R2,Lost in Sheffield R16 163 163,,yes
 391,343,343,,no,no,Saki Imamura,23,JPN,JPN,161,,-1,,,,no
 392,342,342,,no,no,Sandra Samir,28,EGY,EGY,161,,-1,,Lost in Sharm El Sheikh 2 R16,,no
 393,262,262,,no,no,Victoria Hu,23,USA,USA,160,,-1,,,,no
@@ -493,7 +493,7 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 492,456,456,,no,no,Maria Urrutia,24,ARG,ARG,109,,+4,,,,no
 493,403,403,,no,no,Radka Zelníčková,22,SVK,SVK,109,-26,-11,,Lost in Monastir 6 R16,,no
 494,169,169,,no,no,Yuki Naito,24,JPN,JPN,109,,+3,Brisbane 2 R32 117 183,,,yes
-495,475,475,,no,no,Marie Vogt,21,GER,GER,109,-2,-1,,Lost in Sheffield R32 Lost in Qual. Prague R2,,no
+495,475,475,,no,no,Marie Vogt,21,GER,GER,109,-2,-1,Qual. Prague R2,Lost in Sheffield R32 111 111,,yes
 496,NCH (497),496,497,yes,yes,Yelyzaveta Kotliar,19,UKR,UKR,108,+21,+5,Qual. Antalya 6 R3,Lost in Antalya 5 SF,,yes
 497,485,485,,no,no,Jiaqi Wang,23,CHN,CHN,108,,+1,,Lost in Monastir 6 R16,,no
 498,NCH (499),498,499,yes,yes,Ena Koike,19,JPN,JPN,108,,+1,,,,no
@@ -519,7 +519,7 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 518,342,342,,no,no,Maria Kozyreva,26,RUS,RUS,103,,-2,,,,no
 519,516,516,,no,no,Gina Dittmann,23,GER,GER,103,,-1,,,,no
 520,427,427,,no,no,Ariana Arseneault,23,CAN,CAN,102,+9,+3,Qual. Prague R2,Lost in Sheffield R16 105 105,,yes
-521,163,163,,no,no,İpek Öz,26,TUR,TUR,102,+5,+2,,Lost in Sheffield R16 Lost in Qual. Prague R2,,no
+521,163,163,,no,no,İpek Öz,26,TUR,TUR,102,+5,+2,Qual. Prague R2,Lost in Sheffield R16 104 104,,yes
 522,395,395,,no,no,Maria Sara Popa,20,ROU,ROU,102,,-2,,,,no
 523,494,494,,no,no,Anna Hertel,25,POL,POL,102,,-2,,Lost in Monastir 6 R16,,no
 524,188,188,,no,no,Sayaka Ishii,20,JPN,JPN,101,,-2,,,,no
@@ -541,7 +541,7 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 540,491,491,,no,no,Jessica Bertoldo,33,ITA,ITA,96,,+1,Qual. Antalya 6 R3,Lost in Antalya 5 R32,,yes
 541,352,352,,no,no,Haruna Arakawa,26,JPN,JPN,96,,+1,,,,no
 542,503,503,,no,no,Katerina Tsygourova,25,SUI,SUI,96,-3,-1,**Qual. Prague W**,,,yes
-543,457,457,,no,no,Arina Bulatova,19,RUS,RUS,96,,,Qual. Antalya 6 R3,,,yes
+543,457,457,,no,no,Arina Bulatova,19,RUS,RUS,96,,,Qual. Antalya 6 R2,,,yes
 544,71,71,,no,no,Vitalia Diatchenko,35,RUS,RUS,95,,+1,,,,no
 545,328,328,,no,no,Lian Tran,23,NED,NED,95,-65,-18,,,,no
 546,461,461,,no,no,Luiza Fullana,24,BRA,BRA,95,,,,Lost in Qual. Sheffield R1 Lost in Qual. Grenoble R1,,no
@@ -647,12 +647,12 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 646,39,39,,no,no,Ana Bogdan,33,ROU,ROU,68,,+2,,,,no
 647,644,644,,no,no,Stefani Webb,20,AUS,AUS,68,,+2,,,,no
 648,296,296,,no,no,Gina Feistel,23,POL,POL,68,,+3,,,,no
-649,637,637,,no,no,Beatrise Zeltiņa,18,LAT,LAT,68,+17,+3,**Qual. Prague W**,,,yes
-650,623,623,,no,no,Elena Korokozidi,22,GRE,GRE,68,,+2,Qual. Antalya 6 R3,,,yes
-651,567,567,,no,no,Rebecca Munk Mortensen,20,DEN,DEN,68,+7,+1,**Qual. Sheffield W**,Lost in Sheffield R32,,yes
-652,538,538,,no,no,Milana Zhabrailova,22,RUS,RUS,68,,+1,,,,no
-653,647,647,,no,no,Mary Lewis,27,USA,USA,67,,+1,,,,no
-654,NCH (655),654,655,yes,yes,Lea Nilsson,17,SWE,SWE,67,,+1,,,,no
+649,623,623,,no,no,Elena Korokozidi,22,GRE,GRE,68,,+3,Qual. Antalya 6 R3,,,yes
+650,567,567,,no,no,Rebecca Munk Mortensen,20,DEN,DEN,68,+8,+1,**Qual. Sheffield W**,Lost in Sheffield R32,,yes
+651,538,538,,no,no,Milana Zhabrailova,22,RUS,RUS,68,,+2,,,,no
+652,647,647,,no,no,Mary Lewis,27,USA,USA,67,,+2,,,,no
+653,NCH (655),653,655,yes,yes,Lea Nilsson,17,SWE,SWE,67,,+2,,,,no
+654,637,637,,no,no,Beatrise Zeltiņa,18,LAT,LAT,67,+12,+2,Qual. Prague R2 68 68,,,yes
 655,484,484,,no,no,Stefania Bojica,20,ROU,ROU,67,,+1,,,,no
 656,639,639,,no,no,Kylie Collins,23,USA,USA,67,,+3,,,,no
 657,504,504,,no,no,Adrienn Nagy,24,HUN,HUN,67,,+3,,,,no
@@ -751,13 +751,13 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 750,748,748,,no,no,Petra Konjikušić,18,SRB,SRB,49,,-2,,,,no
 751,NCH (755),751,755,yes,yes,Dune Vaissaud,18,FRA,FRA,49,+4,+1,Qual. Grenoble R2 50 50,,,yes
 752,398,398,,no,no,Clara Vlasselaer,24,BEL,BEL,49,+5,+1,**Qual. Sheffield W**,Lost in Sheffield R32 Lost in Qual. Grenoble R2,,yes
-753,584,584,,no,no,Nadiya Kolb,33,UKR,UKR,48,+9,+2,**Qual. Prague W**,,,yes
-754,727,727,,no,no,Meng Yi Chen,23,CHN,CHN,48,+16,+3,,Lost in Sharm El Sheikh 2 QF,,no
-755,714,714,,no,no,Sarah Melany Fajmonová,18,CZE,CZE,48,,-3,,,,no
-756,278,278,,no,no,Adithya Karunaratne,24,HKG,HKG,48,+4,+1,Qual. Antalya 6 R3,Lost in Antalya 5 R16,,yes
-757,525,525,,no,no,Ayumi Miyamoto,25,JPN,JPN,48,,-4,,,,no
-758,754,754,,no,no,Vlada Mincheva,19,RUS,RUS,48,,-4,,,,no
-759,685,685,,no,no,Laura Svatíková,31,SVK,SVK,48,,-3,,,,no
+753,727,727,,no,no,Meng Yi Chen,23,CHN,CHN,48,+17,+3,,Lost in Sharm El Sheikh 2 QF,,no
+754,714,714,,no,no,Sarah Melany Fajmonová,18,CZE,CZE,48,,-2,,,,no
+755,278,278,,no,no,Adithya Karunaratne,24,HKG,HKG,48,+5,+1,Qual. Antalya 6 R3,Lost in Antalya 5 R16,,yes
+756,525,525,,no,no,Ayumi Miyamoto,25,JPN,JPN,48,,-3,,,,no
+757,754,754,,no,no,Vlada Mincheva,19,RUS,RUS,48,,-3,,,,no
+758,685,685,,no,no,Laura Svatíková,31,SVK,SVK,48,,-2,,,,no
+759,584,584,,no,no,Nadiya Kolb,33,UKR,UKR,47,+3,+1,Qual. Prague R2 48 48,,,yes
 760,716,716,,no,no,Valentina Mediorreal Arias,18,COL,COL,47,,-2,,,,no
 761,445,445,,no,no,Aneta Laboutková,25,CZE,CZE,47,,-2,,Lost in Qual. Prague R1,,no
 762,442,442,,no,no,Océane Babel,21,FRA,FRA,47,+3,+1,Qual. Grenoble R2 48 48,,,yes
@@ -797,9 +797,9 @@ rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,playe
 796,727,727,,no,no,Victoria Gomez,22,ESP,ESP,41,,,,,,no
 797,180,180,,no,no,Yuliya Hatouka,25,BLR,BLR,41,,+1,,,,no
 798,NCH (799),798,799,yes,yes,Belle Thompson,26,AUS,AUS,41,+4,+1,Brisbane 2 R32 49 115,,,yes
-799,537,537,,no,no,Mana Kawamura,24,JPN,JPN,41,,,,Lost in Antalya 5 R32 Lost in Qual. Antalya 6 R2,,no
+799,537,537,,no,no,Mana Kawamura,24,JPN,JPN,41,,,Qual. Antalya 6 R2,Lost in Antalya 5 R32,,yes
 800,287,287,,no,no,Petra Hule,26,AUS,AUS,40,,,,,,no
-801,772,772,,no,no,Viola Turini,20,ITA,ITA,40,+16,+3,Qual. Antalya 6 R3,Lost in Antalya 5 QF,,yes
+801,772,772,,no,no,Viola Turini,20,ITA,ITA,40,+16,+3,Qual. Antalya 6 R2,Lost in Antalya 5 QF,,yes
 802,725,725,,no,no,Onyu Choi,19,KOR,KOR,40,,-1,,,,no
 803,628,628,,no,no,Romina Ccuno,23,PER,PER,40,,,,,,no
 804,317,317,,no,no,Michaela Bayerlová,27,CZE,CZE,39,,,,,,no

@@ -6,6 +6,30 @@
 const PlayerModule = {
     currentPlayer: null,
     currentRecentMatches: null,
+
+    /**
+     * Clean WTA 'previous' text:
+     *  - Remove anything inside parentheses (including the parens)
+     *  - Remove trailing two numbers (e.g. "7708 8588")
+     *  - Remove "Advertisement" or stray ** markers
+     *  - Collapse extra whitespace
+     */
+    cleanPreviousText(text) {
+        if (!text) return '';
+        let t = text;
+        // Remove (…) blocks
+        t = t.replace(/\([^)]*\)/g, '');
+        // Remove bold markers **…**
+        t = t.replace(/\*\*([^*]*)\*\*/g, '$1');
+        // Remove "Advertisement"
+        t = t.replace(/Advertisement/gi, '');
+        // Remove trailing two numbers like "7708 8588" at the end
+        t = t.replace(/\s+\d{3,}\s+\d{3,}\s*$/, '');
+        // Collapse whitespace
+        t = t.replace(/\s+/g, ' ').trim();
+        return t;
+    },
+
     /**
      * Initialize the module
      */
@@ -17,7 +41,7 @@ const PlayerModule = {
      * Show player stats modal
      * @param {number} playerId - The ID of the player
      */
-    async showPlayerStats(playerId) {
+    async showPlayerStats(playerId, domInfo = {}) {
         const { API, DOM } = window.TennisApp;
 
         try {
@@ -30,28 +54,70 @@ const PlayerModule = {
                 // Fallback to rankings data if API isn't available
                 const { AppState } = window.TennisApp;
                 const tour = AppState.currentTour;
+                // Try current tour first, then the other tour
                 player = AppState.rankings[tour]?.find(p => String(p.id) === String(playerId));
                 if (!player) {
-                    this.renderError();
+                    const otherTour = tour === 'atp' ? 'wta' : 'atp';
+                    player = AppState.rankings[otherTour]?.find(p => String(p.id) === String(playerId));
+                }
+                if (!player) {
+                    // Player not found - use info extracted from the clicked DOM element
+                    this.renderStatsNotAvailable({ 
+                        name: domInfo.name || 'Player', 
+                        rank: domInfo.rank || null, 
+                        country: domInfo.country || '',
+                        image_url: domInfo.image_url || ''
+                    });
                     return;
                 }
             }
 
-            // For demo, we'll generate some stats. In a real app, this would be part of the API response.
-            const stats = player?.stats_2026 && Object.keys(player.stats_2026).length
+            // Check if real stats are available
+            const s2026 = player?.stats_2026 || {};
+            const servingStats = s2026.singles_serving_stats || {};
+            const returnStats = s2026.singles_return_stats || {};
+            
+            // For WTA, stats objects might exist but values are null/empty
+            const hasValidStats = (statsObj) => {
+                if (!statsObj || Object.keys(statsObj).length === 0) return false;
+                // Check if any value is non-null/non-empty
+                return Object.values(statsObj).some(val => val !== null && val !== undefined && val !== '');
+            };
+
+            const hasServingData = hasValidStats(servingStats);
+            const hasReturnData = hasValidStats(returnStats);
+            const hasRealStats = hasServingData || hasReturnData;
+            
+            const isAtp = this.isAtpPlayer(player);
+            const hasGrandSlamPerf = isAtp && player.grandslam_performance && Object.keys(player.grandslam_performance).length > 0;
+            const yearlyRecords = s2026.records_tab?.yearly
+                || s2026.records
+                || player?.records
+                || [];
+
+            // Show "not available" popup if no real serving/return stats
+            // For ATP, grand slam performance can substitute; for WTA we require actual stats
+            if (!hasRealStats && !hasGrandSlamPerf) {
+                // No real data — show a nice "not available" popup
+                this.currentPlayer = player;
+                try {
+                    this.renderStatsNotAvailable(player);
+                } catch (e) {
+                    console.error('Error in renderStatsNotAvailable:', e);
+                    this.renderError();
+                }
+                return;
+            }
+
+            const stats = hasRealStats
                 ? this.buildStatsFromScraped(player.stats_2026)
                 : this.generateDemoStats();
             const profile = this.generateDemoProfile(player, '2026', player?.stats_2026 || {});
 
-            const isAtp = this.isAtpPlayer(player);
             let performance;
-            if (isAtp && player.grandslam_performance) {
+            if (hasGrandSlamPerf) {
                 performance = this.buildPerformanceFromScraped(player.grandslam_performance);
             } else {
-                const yearlyRecords = player?.stats_2026?.records_tab?.yearly
-                    || player?.stats_2026?.records
-                    || player?.records
-                    || [];
                 performance = yearlyRecords.length
                     ? this.buildPerformanceFromRecords(yearlyRecords)
                     : this.generateDemoPerformance(player);
@@ -90,7 +156,9 @@ const PlayerModule = {
 
         const chClass = player.is_new_career_high ? 'ch-highlight nch' : (player.is_career_high ? 'ch-highlight' : '');
         const chText = player.career_high ? `CH #${player.career_high}` : 'CH -';
-        const playingText = player.is_playing && player.previous ? `${player.previous}` : '';
+        const isWta = !this.isAtpPlayer(player);
+        const rawPlayingText = player.is_playing && player.previous ? `${player.previous}` : '';
+        const playingText = isWta ? this.cleanPreviousText(rawPlayingText) : rawPlayingText;
         const rankBadge = player.rank ? `<div class="rank-badge">#${player.rank}</div>` : '';
         const parsePoints = (value) => {
             if (typeof value === 'number' && Number.isFinite(value)) return value;
@@ -353,6 +421,86 @@ const PlayerModule = {
                 </div>
             </div>
         `;
+        modal.classList.add('active');
+    },
+
+    /**
+     * Render artistic "stats not available" popup
+     */
+    renderStatsNotAvailable(player) {
+        const modal = document.getElementById('playerStatsModal');
+        if (!modal) return;
+
+        // Get Utils safely
+        const Utils = window.TennisApp?.Utils || {};
+        const playerImage = typeof Utils.getPlayerImage === 'function' 
+            ? Utils.getPlayerImage(player) 
+            : (player?.image_url || '');
+        const flag = typeof Utils.getFlag === 'function' 
+            ? Utils.getFlag(player?.country) 
+            : '';
+        const rankText = player?.rank ? `#${player.rank}` : '';
+        const isAtp = this.isAtpPlayer(player);
+        const tourLabel = isAtp ? 'ATP' : 'WTA';
+        const playerName = player?.name || 'Player';
+        const playerCountry = player?.country || '';
+
+        // Build initials SVG data URI for fallback
+        const initials = playerName.split(' ').map(n => (n[0] || '')).join('').substring(0, 2).toUpperCase();
+        const svgMarkup = '<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">'
+            + '<rect width="100" height="100" rx="50" fill="%234A90E2"/>'
+            + '<text x="50" y="56" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="36" font-weight="700" font-family="system-ui,sans-serif">' + initials + '</text></svg>';
+        const initialsSrc = 'data:image/svg+xml,' + svgMarkup;
+
+        // Use real image if available, otherwise show initials directly
+        const imgSrc = playerImage || initialsSrc;
+
+        modal.innerHTML = '';
+        const wrapper = document.createElement('div');
+        wrapper.className = 'modal-content stats-na-modal';
+        wrapper.innerHTML = `
+                <button class="close-modal">&times;</button>
+                <div class="stats-na-container">
+                    <div class="stats-na-player-card">
+                        <div class="stats-na-image-wrap">
+                            <img alt="${playerName}">
+                            ${rankText ? `<div class="stats-na-rank">${rankText}</div>` : ''}
+                        </div>
+                        <div class="stats-na-name">${playerName}</div>
+                        <div class="stats-na-country">${flag} ${playerCountry}</div>
+                    </div>
+                    <div class="stats-na-message">
+                        <div class="stats-na-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <circle cx="24" cy="24" r="23" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.35"/>
+                                <path d="M24 14v12M24 30v2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="stats-na-title">Detailed Stats Unavailable</h3>
+                        <p class="stats-na-text">
+                            In-depth performance statistics are currently available for the 
+                            <strong>top 200 ${tourLabel} players</strong>. As rankings evolve, 
+                            more player profiles will be unlocked.
+                        </p>
+                        <div class="stats-na-divider"></div>
+                        <p class="stats-na-subtext">
+                            Basic ranking info for <strong>${playerName}</strong> is still visible on the main dashboard.
+                        </p>
+                    </div>
+                </div>
+        `;
+        modal.appendChild(wrapper);
+
+        // Set image src via JS (avoids HTML encoding issues) with fallback
+        const img = wrapper.querySelector('.stats-na-image-wrap img');
+        if (img) {
+            img.onerror = function() { this.onerror = null; this.src = initialsSrc; };
+            img.src = imgSrc;
+        }
+
+        // Close button
+        wrapper.querySelector('.close-modal').onclick = () => PlayerModule.close();
+
         modal.classList.add('active');
     },
 
@@ -637,6 +785,8 @@ const PlayerModule = {
             ? player.rank_change
             : (typeof player?.movement === 'number' ? player.movement : null);
         const playingValue = player?.is_playing && player?.previous ? player.previous : null;
+        const isWtaDemo = !this.isAtpPlayer(player);
+        const cleanedPlaying = (isWtaDemo && playingValue) ? this.cleanPreviousText(playingValue) : playingValue;
         const prizeMoney = player?.prize_money || statsData?.prize_money || null;
         const prizeMoneyCareer = player?.prize_money_career || statsData?.career_prize_money || prizeMoney || null;
         const prizeMoneyYtd = player?.prize_money_ytd || statsData?.ytd_prize_money || null;
@@ -654,7 +804,7 @@ const PlayerModule = {
             careerHigh: player?.career_high || 1,
             points: pointsValue,
             rankChange: rankChangeValue,
-            playing: playingValue,
+            playing: cleanedPlaying,
             wonLost: wonLostValue,
             ytdWonLost: ytdWonLostValue
         };
