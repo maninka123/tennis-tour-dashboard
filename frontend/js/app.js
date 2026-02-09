@@ -11,7 +11,7 @@ const CONFIG = {
     // From config.js
     API_BASE_URL: (window.TennisApp?.CONFIG?.API_BASE_URL) || 'http://localhost:5001/api',
     IS_LOCAL: (window.TennisApp?.CONFIG?.IS_LOCAL) !== false,
-    WS_URL: (window.TennisApp?.CONFIG?.API_BASE_URL?.replace('/api', '')) || 'http://localhost:5001',
+    WS_URL: (window.TennisApp?.CONFIG?.API_BASE_URL?.replace(/\/api$/, '')) || window.location.origin || 'http://localhost:5001',
     
     // App-specific settings
     UPDATE_INTERVAL: 30000, // 30 seconds (live scores)

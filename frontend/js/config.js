@@ -11,7 +11,7 @@ const isLocal = window.location.hostname === 'localhost' ||
 // Set API base URL based on environment
 const API_BASE_URL = isLocal 
     ? 'http://localhost:5001/api'  // Local development (WITH /api)
-    : '/api';                       // Production (same domain, relative path)
+    : window.location.origin + '/api';  // Production (absolute URL for same domain)
 
 // Make config globally available
 window.TennisApp = window.TennisApp || {};

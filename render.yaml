@@ -7,10 +7,14 @@ services:
     runtime: python-3.11
     buildCommand: |
       pip install -r backend/requirements.txt
-      playwright install chromium
-    startCommand: cd backend && gunicorn --worker-class gthread -w 1 --threads 4 --bind 0.0.0.0:$PORT app:app
+      playwright install --with-deps chromium || true
+    startCommand: cd backend && gunicorn --worker-class gthread -w 1 --threads 8 --bind 0.0.0.0:$PORT --timeout 120 app:app
     envVars:
       - key: HOST
         value: 0.0.0.0
+      - key: PORT
+        value: 10000
       - key: DEBUG
         value: false
+      - key: PYTHONUNBUFFERED
+        value: "1"
