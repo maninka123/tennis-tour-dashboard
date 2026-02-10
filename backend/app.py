@@ -368,7 +368,9 @@ def get_intro_gifs():
 @app.route('/api/live-scores', methods=['GET'])
 def get_live_scores():
     """Get current live match scores"""
-    tour = request.args.get('tour', 'both')  # 'atp', 'wta', or 'both'
+    tour = str(request.args.get('tour', 'both')).strip().lower()  # 'atp', 'wta', or 'both'
+    if tour not in {'atp', 'wta', 'both'}:
+        tour = 'both'
     
     try:
         scores = tennis_fetcher.fetch_live_scores(tour)
@@ -384,7 +386,9 @@ def get_live_scores():
 @app.route('/api/recent-matches', methods=['GET'])
 def get_recent_matches():
     """Get recently completed matches"""
-    tour = request.args.get('tour', 'both')
+    tour = str(request.args.get('tour', 'both')).strip().lower()
+    if tour not in {'atp', 'wta', 'both'}:
+        tour = 'both'
     limit = request.args.get('limit', 20, type=int)
     
     try:
@@ -401,7 +405,9 @@ def get_recent_matches():
 @app.route('/api/upcoming-matches', methods=['GET'])
 def get_upcoming_matches():
     """Get upcoming matches in the next 7 days (or more if requested)"""
-    tour = request.args.get('tour', 'both')
+    tour = str(request.args.get('tour', 'both')).strip().lower()
+    if tour not in {'atp', 'wta', 'both'}:
+        tour = 'both'
     days = request.args.get('days', 7, type=int)
     
     try:
@@ -676,6 +682,7 @@ def get_wta_match_stats():
     event_id = request.args.get('event_id', type=int)
     event_year = request.args.get('event_year', type=int)
     match_id = (request.args.get('match_id') or '').strip()
+    live_flag = str(request.args.get('live') or '').strip().lower() in ('1', 'true', 'yes', 'y')
 
     if not event_id or not event_year or not match_id:
         return jsonify({
@@ -687,7 +694,8 @@ def get_wta_match_stats():
         stats = tennis_fetcher.fetch_wta_match_stats(
             event_id=event_id,
             event_year=event_year,
-            match_id=match_id
+            match_id=match_id,
+            force_refresh=live_flag
         )
         if not stats:
             return jsonify({'success': False, 'error': 'Match stats not available'}), 404
@@ -711,6 +719,22 @@ def get_atp_match_stats():
         if not stats:
             return jsonify({'success': False, 'error': 'Match stats not available'}), 404
         return jsonify({'success': True, 'data': stats})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@app.route('/api/player-schedule', methods=['GET'])
+def get_player_schedule():
+    """Fetch next scheduled match for a player (Flashscore fixtures)."""
+    player_name = (request.args.get('name') or '').strip()
+    tour = (request.args.get('tour') or '').strip().lower()
+
+    if not player_name:
+        return jsonify({'success': False, 'error': 'name is required'}), 400
+
+    try:
+        payload = tennis_fetcher.fetch_player_next_fixture(player_name=player_name, tour=tour)
+        return jsonify({'success': True, 'data': payload})
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
 

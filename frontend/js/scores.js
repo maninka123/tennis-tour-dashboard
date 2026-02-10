@@ -353,13 +353,19 @@ const ScoresModule = {
         this.updateUpcomingUpdatedAgo();
     },
 
+    filterMatchesForActiveTour(matches, tour) {
+        const expected = String(tour || '').toLowerCase() === 'wta' ? 'WTA' : 'ATP';
+        const list = Array.isArray(matches) ? matches : [];
+        return list.filter((m) => String(m?.tour || '').toUpperCase() === expected);
+    },
+
     /**
      * Render live scores
      */
     renderLiveScores() {
         const { AppState, DOM } = window.TennisApp;
         const tour = AppState.currentTour;
-        const matches = AppState.liveScores[tour] || [];
+        const matches = this.filterMatchesForActiveTour(AppState.liveScores[tour] || [], tour);
 
         if (matches.length === 0) {
             DOM.liveScoresWrapper.innerHTML = `
@@ -386,9 +392,9 @@ const ScoresModule = {
         const tour = AppState.currentTour;
         
         // Get data (use demo if empty)
-        let matches = AppState.recentMatches[tour];
+        let matches = this.filterMatchesForActiveTour(AppState.recentMatches[tour], tour);
         if (!matches || matches.length === 0) {
-            matches = this.demoRecentMatches[tour] || [];
+            matches = this.filterMatchesForActiveTour(this.demoRecentMatches[tour] || [], tour);
         }
 
         if (matches.length === 0) {
@@ -604,9 +610,9 @@ const ScoresModule = {
         const tour = AppState.currentTour;
         
         // Get data (use demo if empty)
-        let matches = AppState.upcomingMatches[tour];
+        let matches = this.filterMatchesForActiveTour(AppState.upcomingMatches[tour], tour);
         if (!matches || matches.length === 0) {
-            matches = this.demoUpcomingMatches[tour] || [];
+            matches = this.filterMatchesForActiveTour(this.demoUpcomingMatches[tour] || [], tour);
         }
 
         // Find or create upcoming matches section after live scores
@@ -2060,7 +2066,7 @@ const ScoresModule = {
         const isLive = String(match.status || '').toLowerCase() === 'live';
         const nowMs = Date.now();
         const lastFetchedAt = Number(match._matchStatsFetchedAt || 0);
-        const liveRefreshWindowMs = 30000;
+        const liveRefreshWindowMs = 25000;
         if (match.match_stats) {
             if (!isLive) return;
             if (lastFetchedAt > 0 && nowMs - lastFetchedAt < liveRefreshWindowMs) {
@@ -2101,7 +2107,7 @@ const ScoresModule = {
 
             if (tour === 'WTA') {
                 if (!api?.getWTAMatchStats) return;
-                stats = await api.getWTAMatchStats(ids.eventId, ids.eventYear, ids.matchId);
+                stats = await api.getWTAMatchStats(ids.eventId, ids.eventYear, ids.matchId, isLive);
             } else if (tour === 'ATP') {
                 if (!api?.getATPMatchStats) return;
                 console.log('Fetching ATP match stats from server:', atpStatsUrl);

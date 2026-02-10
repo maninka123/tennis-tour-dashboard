@@ -4509,7 +4509,7 @@ img {
     align-items: flex-start;
     justify-content: center;
     overflow-y: auto;
-    overflow-x: auto;
+    overflow-x: hidden;
     padding: 18px;
     z-index: 1200;
     backdrop-filter: blur(3px);
@@ -4520,9 +4520,9 @@ img {
 }
 
 .player-recent-modal {
-    width: max(1240px, calc(100vw - 20px));
-    max-width: none;
-    max-height: calc(100vh - 24px);
+    width: min(1240px, calc(100vw - 20px));
+    max-width: 100%;
+    max-height: min(calc(100vh - 36px), calc(100dvh - 36px));
     margin: 0 auto;
     background: var(--bg-secondary);
     border-radius: 14px;
@@ -4559,9 +4559,13 @@ img {
 .player-recent-body {
     flex: 1 1 auto;
     min-height: 0;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
     padding: 16px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
     gap: 14px;
 }
 
@@ -4577,10 +4581,13 @@ img {
     border: 1px solid var(--bg-tertiary);
     border-left: 5px solid var(--other);
     border-radius: 12px;
-    overflow: hidden;
+    overflow: visible;
     background: var(--bg-card);
     width: 100%;
     min-width: 0;
+    height: auto;
+    max-height: none;
+    flex: 0 0 auto;
 }
 
 .recent-tournament-card.category-grand-slam { border-left-color: var(--grand-slam); }
@@ -4634,6 +4641,8 @@ img {
 
 .recent-tournament-table-wrap {
     overflow-x: auto;
+    overflow-y: visible;
+    max-height: none;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -4727,7 +4736,7 @@ img {
     .player-recent-modal {
         width: 100%;
         max-width: 100%;
-        max-height: calc(100vh - 24px);
+        max-height: min(calc(100vh - 24px), calc(100dvh - 24px));
     }
 
     .recent-tournament-table {
@@ -4922,8 +4931,9 @@ img {
 
 .performance-table-grid {
     display: grid;
-    grid-template-columns: 1.6fr repeat(6, 1fr);
+    grid-template-columns: 1.5fr repeat(7, 1fr);
     gap: 6px;
+    width: 100%;
 }
 
 .perf-head {
@@ -4946,21 +4956,23 @@ img {
     border-radius: var(--radius-sm);
     font-size: 0.8rem;
     text-align: center;
+    font-weight: 500;
 }
 
 .perf-cell.winner {
-    font-weight: 800;
+    font-weight: 500;
     color: #1f3b2c;
 }
 
 .perf-row .event {
-    text-align: left;
-    font-weight: 700;
+    text-align: center;
+    font-weight: 500;
 }
 
 .perf-row .event .event-name {
-    font-size: 0.85rem;
-    font-weight: 700;
+    font-size: 0.76rem;
+    line-height: 1.2;
+    font-weight: 500;
 }
 
 .perf-row .event .event-summary {
@@ -6653,6 +6665,7 @@ img {
     justify-content: space-between;
     padding: 8px 18px;
     transition: background 0.12s;
+    position: relative;
 }
 .fav-player-row:hover {
     background: var(--bg-secondary);
@@ -6724,6 +6737,346 @@ img {
     letter-spacing: 0.04em;
 }
 
+.fav-live-status {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 2px;
+}
+
+.fav-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e74c3c;
+    animation: favLiveDotPulse 1.1s ease-in-out infinite;
+}
+
+@keyframes favLiveDotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(1.25); }
+}
+
+.fav-live-status .fav-live-badge {
+    animation: favLiveBadgeBlink 1.3s ease-in-out infinite;
+}
+
+@keyframes favLiveBadgeBlink {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.fav-live-tooltip {
+    position: absolute;
+    left: 18px;
+    top: calc(100% + 8px);
+    z-index: 20;
+    min-width: 220px;
+    max-width: 280px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid #e6dccb;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    color: #2b3340;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    opacity: 0;
+    transform: translateY(-2px);
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
+}
+
+.fav-player-row.fav-live:hover .fav-live-tooltip,
+.fav-player-row.fav-live:focus-within .fav-live-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+body.fav-schedule-open .fav-live-tooltip {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.fav-live-tooltip-title {
+    display: block;
+    font-weight: 700;
+    color: #20252f;
+    margin-bottom: 4px;
+}
+
+.fav-live-tooltip-row {
+    display: block;
+    color: #4a5362;
+}
+
+.fav-live-tooltip-row.score {
+    margin-top: 2px;
+    font-weight: 700;
+    color: #1f3a5a;
+}
+
+.fav-live-state {
+    display: inline-block;
+    font-size: 0.66rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+}
+
+.fav-live-state.winning {
+    color: #0f6a36;
+    background: #dff5e7;
+}
+
+.fav-live-state.losing {
+    color: #a62323;
+    background: #fde4e4;
+}
+
+.fav-live-state.balanced {
+    color: #546170;
+    background: #e8edf3;
+}
+
+.fav-schedule-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1300;
+    padding: 18px;
+}
+
+.fav-schedule-overlay.active {
+    display: flex;
+}
+
+.fav-schedule-modal {
+    width: min(420px, 96vw);
+    background: var(--bg-secondary);
+    border: 1px solid #e5dccd;
+    border-radius: 14px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+    padding: 14px 14px 12px;
+}
+
+.fav-schedule-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.fav-schedule-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2a3441;
+}
+
+.fav-schedule-title i {
+    color: #367dcc;
+}
+
+.fav-schedule-close {
+    background: transparent;
+    border: none;
+    color: #617184;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.fav-schedule-close:hover {
+    background: #edf2f7;
+    color: #243447;
+}
+
+.fav-schedule-player {
+    font-size: 0.85rem;
+    color: #5a6677;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.fav-schedule-body {
+    background: #fff;
+    border: 1px solid #ebe2d3;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.fav-schedule-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #5f6b7d;
+    font-size: 0.82rem;
+}
+
+.fav-schedule-card {
+    display: grid;
+    gap: 8px;
+}
+
+.fav-schedule-when {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: #2a3441;
+    font-weight: 500;
+}
+
+.fav-schedule-status {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+}
+
+.fav-schedule-status.scheduled {
+    color: #2f79c6;
+    background: #e7f1fd;
+}
+
+.fav-schedule-status.won {
+    color: #0f6a36;
+    background: #dff5e7;
+}
+
+.fav-schedule-status.lost {
+    color: #a62323;
+    background: #fde4e4;
+}
+
+.fav-schedule-status.neutral {
+    color: #556273;
+    background: #edf2f7;
+}
+
+.fav-schedule-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.fav-schedule-row .label {
+    color: #6b7483;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.fav-schedule-row .value {
+    color: #1e2836;
+    font-size: 0.86rem;
+    font-weight: 500;
+    text-align: right;
+    max-width: 68%;
+    line-height: 1.25;
+}
+
+.fav-schedule-opponent {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2px;
+    border: 1px solid #edf1f5;
+    border-radius: 10px;
+    padding: 8px;
+    background: #fafcfe;
+}
+
+.fav-schedule-opponent img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #dde5ef;
+}
+
+.fav-schedule-opponent-text {
+    min-width: 0;
+}
+
+.fav-schedule-opponent-text .name {
+    font-size: 0.83rem;
+    font-weight: 500;
+    color: #1e2836;
+    line-height: 1.2;
+}
+
+.fav-schedule-opponent-text .meta {
+    margin-top: 2px;
+    font-size: 0.74rem;
+    color: #617084;
+}
+
+.fav-schedule-note {
+    margin-top: 2px;
+    font-size: 0.78rem;
+    color: #5a6779;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+.fav-schedule-links {
+    margin-top: 4px;
+    display: flex;
+    gap: 10px;
+}
+
+.fav-schedule-links a {
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: #2f79c6;
+    text-decoration: none;
+}
+
+.fav-schedule-links a:hover {
+    text-decoration: underline;
+}
+
+.fav-schedule-empty {
+    display: grid;
+    gap: 6px;
+    text-align: center;
+    color: #5f6d7e;
+    padding: 8px 4px;
+}
+
+.fav-schedule-empty i {
+    font-size: 1.2rem;
+    color: #91a0b2;
+}
+
+.fav-schedule-empty-title {
+    color: #2a3441;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.fav-schedule-empty-text {
+    font-size: 0.8rem;
+}
+
 .fav-player-actions {
     display: flex;
     align-items: center;
@@ -6749,4 +7102,3 @@ img {
     color: #e74c3c;
     background: rgba(231, 76, 60, 0.08);
 }
-

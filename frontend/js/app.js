@@ -237,20 +237,57 @@ const Utils = {
     /**
      * Generate player image placeholder URL
      */
-    getPlayerImage(player, tour = 'atp') {
+    getPlayerImage(player, tour = '') {
+        const explicitTour = String(tour || '').trim().toLowerCase();
+        const playerTour = String(player?.tour || '').trim().toLowerCase();
+        const effectiveTour = explicitTour || playerTour;
+        const numericId = Number(player?.id);
+        const resolvedApiBase = AppState.apiBaseResolved
+            || CONFIG.API_BASE_URL
+            || window.TennisApp?.CONFIG?.API_BASE_URL
+            || window.location.origin
+            || '';
+        const resolvedOrigin = String(resolvedApiBase).replace(/\/api\/?$/, '').replace(/\/+$/, '');
+
+        // For WTA always prefer local player-folder image route when ID exists.
+        if (effectiveTour === 'wta' && Number.isInteger(numericId) && numericId > 0) {
+            return `${resolvedOrigin}/api/player/wta/${numericId}/image`;
+        }
+
         // Explicit image_url from API
         if (player && player.image_url) {
-            // Local API image paths need the backend base URL prepended
-            if (player.image_url.startsWith('/api/')) {
-                return API_BASE_URL + player.image_url.substring(4);
+            const rawImage = String(player.image_url || '').trim();
+            if (rawImage) {
+                if (/^https?:\/\//i.test(rawImage) || rawImage.startsWith('data:')) {
+                    return rawImage;
+                }
+
+                // Local API image paths need backend origin prepended.
+                if (rawImage.startsWith('/api/')) {
+                    return `${resolvedOrigin}${rawImage}`;
+                }
+
+                if (rawImage.startsWith('api/')) {
+                    return `${resolvedOrigin}/${rawImage}`;
+                }
+
+                if (rawImage.startsWith('/')) {
+                    return `${resolvedOrigin}${rawImage}`;
+                }
+
+                return rawImage;
             }
-            return player.image_url;
         }
 
         // Resolve known names next
         const name = player?.name || PLAYER_ID_MAP[player] || null;
         if (name && PLAYER_IMAGE_MAP[name]) {
             return PLAYER_IMAGE_MAP[name];
+        }
+
+        // Numeric IDs in live payloads usually map to SofaScore player IDs.
+        if (Number.isInteger(numericId) && numericId > 1000) {
+            return `https://api.sofascore.com/api/v1/player/${numericId}/image`;
         }
         
         // Fallback to a clean placeholder with initials
@@ -558,12 +595,16 @@ const API = {
     /**
      * Get on-demand WTA match statistics
      */
-    async getWTAMatchStats(eventId, eventYear, matchId) {
-        return await this.fetch('/match-stats/wta', {
+    async getWTAMatchStats(eventId, eventYear, matchId, isLive = false) {
+        const params = {
             event_id: eventId,
             event_year: eventYear,
             match_id: matchId
-        });
+        };
+        if (isLive) {
+            params.live = 1;
+        }
+        return await this.fetch('/match-stats/wta', params);
     },
 
     /**
@@ -572,6 +613,16 @@ const API = {
     async getATPMatchStats(statsUrl) {
         return await this.fetch('/match-stats/atp', {
             stats_url: statsUrl
+        });
+    },
+
+    /**
+     * Get next scheduled match for a player (Flashscore fixtures source)
+     */
+    async getPlayerSchedule(playerName, tour = '') {
+        return await this.fetch('/player-schedule', {
+            name: playerName,
+            tour
         });
     },
 

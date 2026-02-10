@@ -185,6 +185,7 @@ const PlayerModule = {
             : 0;
         const recentButtonDisabled = recentMatchCount === 0;
 
+        const recentMatchesModalHTML = this.getRecentMatchesModalHTML(player, recentMatches, Utils);
         let html = `
             <div class="modal-content">
                 <div class="modal-header">
@@ -247,13 +248,13 @@ const PlayerModule = {
                     <div class="stats-container two-col">
                         ${this.getStatsHTML(stats)}
                     </div>
-                    <div class="player-performance">
-                        <h4>Major Events Performance (${isAtp ? '2020–2026' : '2020–2025'})</h4>
+                    <div class="player-performance ${isAtp ? 'is-atp' : 'is-wta'}">
+                        <h4>Major Events Performance (2020–2026)</h4>
                         ${this.getPerformanceTableHTML(performance, isAtp)}
                     </div>
-                    ${this.getRecentMatchesModalHTML(player, recentMatches, Utils)}
                 </div>
             </div>
+            ${recentMatchesModalHTML}
         `;
 
         modal.innerHTML = html;
@@ -363,12 +364,9 @@ const PlayerModule = {
     },
 
     getPerformanceTableHTML(performance, isAtp = false) {
-        const years = isAtp
-            ? ['2020','2021','2022','2023','2024','2025','2026']
-            : ['2020','2021','2022','2023','2024','2025'];
-        const gridStyle = isAtp ? 'style="grid-template-columns: 1.6fr repeat(7, 1fr)"' : '';
+        const years = ['2020','2021','2022','2023','2024','2025','2026'];
         return `
-            <div class="performance-table-grid" ${gridStyle}>
+            <div class="performance-table-grid">
                 <div class="perf-head event">Event</div>
                 ${years.map(y => `<div class="perf-head year">${y}</div>`).join('')}
                 ${performance.map(row => `
@@ -377,7 +375,11 @@ const PlayerModule = {
                             <div class="event-name">${row.event}</div>
                         </div>
                         ${years.map(y => {
-                            const val = row.results[y] || '-';
+                            const rawVal = row.results[y];
+                            const hasValue = rawVal !== undefined && rawVal !== null && String(rawVal).trim() !== '';
+                            let val = hasValue ? String(rawVal).trim() : '';
+                            // Keep current-year cells empty when no result yet; use "-" for prior years.
+                            if (!val) val = (y === '2026') ? '' : '-';
                             const winnerClass = val === 'W' ? ' winner' : '';
                             return `<div class="perf-cell${winnerClass}">${val}</div>`;
                         }).join('')}
@@ -516,16 +518,38 @@ const PlayerModule = {
     },
 
     extractRecentMatches(player) {
-        const raw = player?.stats_2026?.recent_matches_tab || player?.stats_2026?.recent_matches;
-        if (!raw || !Array.isArray(raw.tournaments)) {
+        const stats = player?.stats_2026 || {};
+        const candidates = [
+            stats.recent_matches_tab,
+            stats.recent_matches,
+            stats.recent_matches_from_tournaments,
+            stats.recent_matches_best
+        ];
+
+        let best = null;
+        let bestCount = -1;
+        for (const candidate of candidates) {
+            if (!candidate || !Array.isArray(candidate.tournaments)) continue;
+            const count = candidate.tournaments.reduce((acc, t) => acc + (Array.isArray(t.matches) ? t.matches.length : 0), 0);
+            if (count > bestCount) {
+                best = candidate;
+                bestCount = count;
+            }
+        }
+
+        if (!best) {
             return { year: 2026, tournaments: [], updated_at: null };
         }
-        return raw;
+        return best;
     },
 
     openRecentMatchesModal() {
         const overlay = document.getElementById('playerRecentMatchesOverlay');
         if (!overlay) return;
+        // Reset scroll position each time modal opens so top tournaments are visible.
+        overlay.scrollTop = 0;
+        const body = overlay.querySelector('.player-recent-body');
+        if (body) body.scrollTop = 0;
         overlay.classList.add('active');
     },
 
@@ -582,8 +606,10 @@ const PlayerModule = {
         const categoryClass = Utils.getCategoryClass(category);
         const surfaceClass = this.surfaceClassFromKey(event?.surface_key || event?.surface || '');
         const surfaceLabel = event?.surface || 'HARD';
-        const rows = Array.isArray(event?.matches) ? event.matches : [];
-        const rowsHtml = rows.map((row) => this.renderRecentMatchRow(row, Utils, isAtp)).join('');
+        const rows = (Array.isArray(event?.matches) ? event.matches : []).filter((row) => this.isRenderableRecentRow(row));
+        const rowsHtml = rows.length
+            ? rows.map((row) => this.renderRecentMatchRow(row, Utils, isAtp)).join('')
+            : `<tr><td colspan="${isAtp ? 4 : 5}">No completed singles matches listed.</td></tr>`;
         const summary = event?.summary || {};
 
         const metaChips = isAtp
@@ -601,7 +627,7 @@ const PlayerModule = {
             ].join('');
 
         return `
-            <section class="recent-tournament-card category-${categoryClass} ${surfaceClass}">
+            <section class="recent-tournament-card category-${categoryClass} ${surfaceClass}" style="height:auto;max-height:none;overflow:visible;">
                 <div class="recent-tournament-header">
                     <div class="recent-tournament-title-wrap">
                         <h4>${event?.tournament || 'Tournament'}</h4>
@@ -612,7 +638,7 @@ const PlayerModule = {
                         <span class="recent-surface-badge ${surfaceClass}">${surfaceLabel}</span>
                     </div>
                 </div>
-                <div class="recent-tournament-table-wrap">
+                <div class="recent-tournament-table-wrap" style="max-height:none;overflow-x:auto;overflow-y:visible;">
                     <table class="recent-tournament-table">
                         <thead>
                             <tr>
@@ -631,6 +657,14 @@ const PlayerModule = {
                 <div class="recent-tournament-meta">${metaChips}</div>
             </section>
         `;
+    },
+
+    isRenderableRecentRow(row) {
+        const opponentName = String(row?.opponent_name || '').trim();
+        if (!opponentName) return false;
+        if (opponentName === '-') return false;
+        if (/^bye$/i.test(opponentName)) return false;
+        return true;
     },
 
     renderRecentMatchRow(row, Utils, isAtp = false) {
@@ -862,7 +896,7 @@ const PlayerModule = {
     },
 
     buildPerformanceFromRecords(records) {
-        const years = ['2020','2021','2022','2023','2024','2025'];
+        const years = ['2020','2021','2022','2023','2024','2025','2026'];
         const byYear = {};
         records.forEach(row => {
             if (row && row.year) {
@@ -873,7 +907,8 @@ const PlayerModule = {
             const results = {};
             years.forEach(year => {
                 const row = byYear[year] || {};
-                results[year] = row[key] || (fallbackKey ? row[fallbackKey] : '') || '-';
+                const value = row[key] || (fallbackKey ? row[fallbackKey] : '') || '';
+                results[year] = value || (year === '2026' ? '' : '-');
             });
             return results;
         };

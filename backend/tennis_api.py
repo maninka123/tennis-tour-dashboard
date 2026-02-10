@@ -108,6 +108,7 @@ import difflib
 import shutil
 import subprocess
 import sys
+import time
 import urllib.parse
 import zlib
 from pathlib import Path
@@ -168,6 +169,8 @@ class TennisDataFetcher:
         self._wta_connections_map = None
         self._atp_stats_cache = None
         self._wta_stats_cache = None
+        self._flashscore_rankings_player_urls = {}
+        self._sofascore_player_cache = {}
 
     def _normalize_player_name(self, name):
         if not name:
@@ -186,6 +189,763 @@ class TennisDataFetcher:
 
     def _wta_data_root(self):
         return Path(__file__).resolve().parent.parent / 'data'
+
+    def _flashscore_to_rjina_url(self, url):
+        text = str(url or '').strip()
+        if not text:
+            return ''
+        parsed = urllib.parse.urlparse(text)
+        host = parsed.netloc or parsed.path
+        path = parsed.path if parsed.netloc else ''
+        if not host:
+            return ''
+        if path and not path.startswith('/'):
+            path = f'/{path}'
+        query = f"?{parsed.query}" if parsed.query else ''
+        return f"{RJINA_HTTP_PREFIX}{host}{path}{query}"
+
+    def _extract_ddg_result_urls(self, html):
+        urls = []
+        text = str(html or '')
+        if not text:
+            return urls
+        raw_hits = []
+        raw_hits.extend(re.findall(r'href="([^"]+duckduckgo\.com/l/\?[^"]+)"', text))
+        raw_hits.extend(re.findall(r'\((https?://duckduckgo\.com/l/\?[^)\s]+)\)', text))
+        for match in raw_hits:
+            decoded = urllib.parse.unquote(str(match))
+            uddg = re.search(r'uddg=([^&]+)', decoded)
+            if not uddg:
+                continue
+            target = urllib.parse.unquote(uddg.group(1))
+            if target.startswith('//'):
+                target = f"https:{target}"
+            if target.startswith('http'):
+                urls.append(target)
+        return urls
+
+    def _normalize_flashscore_player_fixtures_url(self, url):
+        text = str(url or '').strip()
+        if not text:
+            return ''
+        if text.startswith('//'):
+            text = f'https:{text}'
+        parsed = urllib.parse.urlparse(text)
+        if not parsed.netloc:
+            return ''
+        host = parsed.netloc.lower()
+        if 'flashscore' not in host:
+            return ''
+        path = parsed.path or ''
+        if '/player/' not in path:
+            return ''
+        parts = [p for p in path.split('/') if p]
+        # Expected shape: /player/{slug}/{id}/[{tab}/]
+        if len(parts) < 3 or parts[0].lower() != 'player':
+            return ''
+        core_path = f"/player/{parts[1]}/{parts[2]}/fixtures/"
+        path = core_path
+        if not path.endswith('/'):
+            path += '/'
+        return urllib.parse.urlunparse(('https', parsed.netloc, path, '', '', ''))
+
+    def _extract_flashscore_player_urls_from_text(self, text):
+        out = []
+        seen = set()
+        for raw in re.findall(r'https?://www\.flashscore[^)\s]*/player/[A-Za-z0-9\-]+/[A-Za-z0-9]+/', str(text or '')):
+            normalized = self._normalize_flashscore_player_fixtures_url(raw)
+            if not normalized or normalized in seen:
+                continue
+            seen.add(normalized)
+            out.append(normalized)
+        return out
+
+    def _load_flashscore_rankings_player_urls(self, tour=''):
+        tour_key = str(tour or '').strip().lower()
+        if tour_key not in {'wta', 'atp'}:
+            return []
+        cached = self._flashscore_rankings_player_urls.get(tour_key)
+        if isinstance(cached, list) and cached:
+            return cached
+
+        ranking_url = f"https://www.flashscore.com.au/tennis/rankings/{tour_key}/"
+        rjina_url = self._flashscore_to_rjina_url(ranking_url)
+        if not rjina_url:
+            return []
+        urls = []
+        try:
+            response = self.session.get(rjina_url, timeout=25)
+            if response.status_code == 200:
+                urls = self._extract_flashscore_player_urls_from_text(response.text)
+        except Exception:
+            urls = []
+        self._flashscore_rankings_player_urls[tour_key] = urls
+        return urls
+
+    def _flashscore_player_slug_score(self, url, player_name):
+        norm_target = self._normalize_player_name(player_name)
+        tokens = [t for t in norm_target.split() if t]
+        if not tokens:
+            return 0
+        parsed = urllib.parse.urlparse(url)
+        parts = [p for p in parsed.path.split('/') if p]
+        slug = ''
+        if len(parts) >= 3 and parts[0].lower() == 'player':
+            slug = parts[1].lower().replace('-', ' ')
+        score = 0
+        for token in tokens:
+            if token in slug:
+                score += 2
+        # Bias for last-name match.
+        last = tokens[-1]
+        if last and last in slug:
+            score += 3
+        return score
+
+    def _search_flashscore_player_fixtures_url(self, player_name, tour=''):
+        name = str(player_name or '').strip()
+        if not name:
+            return ''
+        tour_key = str(tour or '').strip().lower()
+        ranking_candidates = self._load_flashscore_rankings_player_urls(tour=tour_key)
+        if ranking_candidates:
+            ranked_from_rankings = sorted(
+                ranking_candidates,
+                key=lambda u: (self._flashscore_player_slug_score(u, name), len(u)),
+                reverse=True
+            )
+            top = ranked_from_rankings[0]
+            if self._flashscore_player_slug_score(top, name) >= 3:
+                return top
+
+        queries = [
+            f'"{name}" flashscore tennis player fixtures',
+            f'"{name}" flashscore fixtures',
+            f'site:flashscore.com/player "{name}" tennis',
+            f'site:flashscore.com.au/player "{name}" tennis',
+        ]
+        raw_urls = []
+        for query in queries:
+            ddg_url = f"https://duckduckgo.com/html/?q={urllib.parse.quote_plus(query)}"
+            rjina_ddg_url = f"{RJINA_HTTP_PREFIX}duckduckgo.com/html/?q={urllib.parse.quote_plus(query)}"
+            try:
+                response = self.session.get(rjina_ddg_url, timeout=20)
+                if response.status_code == 200:
+                    raw_urls.extend(self._extract_ddg_result_urls(response.text))
+            except Exception:
+                pass
+            if raw_urls:
+                continue
+            # Fallback path: direct DDG HTML.
+            try:
+                response = self.session.get(ddg_url, timeout=20)
+                if response.status_code == 200:
+                    raw_urls.extend(self._extract_ddg_result_urls(response.text))
+            except Exception:
+                continue
+
+        candidates = []
+        seen = set()
+        for raw in raw_urls:
+            normalized = self._normalize_flashscore_player_fixtures_url(raw)
+            if not normalized or normalized in seen:
+                continue
+            seen.add(normalized)
+            candidates.append(normalized)
+        if not candidates:
+            return ''
+
+        ranked = sorted(
+            candidates,
+            key=lambda u: (self._flashscore_player_slug_score(u, name), len(u)),
+            reverse=True
+        )
+        return ranked[0]
+
+    def _parse_flashscore_next_fixture(self, markdown_text, player_name):
+        text = str(markdown_text or '')
+        if not text:
+            return None
+        lines = [line.strip() for line in text.splitlines()]
+        if not lines:
+            return None
+        if re.search(r'\bNo match found\.', text, flags=re.IGNORECASE):
+            return None
+
+        scan_end = len(lines)
+        for idx, line in enumerate(lines):
+            if line.lower() in {'pinned leagues', 'my teams', 'calendar', 'rankings'}:
+                scan_end = idx
+                break
+
+        match_idx = -1
+        match_url = ''
+        for idx, line in enumerate(lines[:scan_end]):
+            if '/tennis/' not in line:
+                continue
+            hit = re.search(r'\((https?://[^)\s]+/(?:match|game)/tennis/[^)\s]+)(?:\s+"[^"]*")?\)', line)
+            if hit:
+                match_idx = idx
+                match_url = hit.group(1)
+                break
+        if match_idx < 0:
+            return None
+
+        tournament_name = ''
+        tournament_url = ''
+        stage = ''
+        for j in range(match_idx - 1, max(-1, match_idx - 20), -1):
+            line = lines[j]
+            m = re.match(r'^\[([^\]]+)\]\((https?://[^)\s]*/tennis/[^)\s]*)(?:\s+"[^"]*")?\)', line)
+            if m:
+                tournament_name = m.group(1).strip()
+                tournament_url = m.group(2).strip()
+                # Stage typically appears right below tournament title.
+                for k in range(j + 1, min(match_idx, j + 6)):
+                    stage_line = lines[k]
+                    if stage_line.endswith(':') and 'SINGLES' in stage_line.upper():
+                        stage = stage_line.rstrip(':').strip()
+                        break
+                break
+
+        date_text = ''
+        date_idx = -1
+        for j in range(match_idx + 1, min(scan_end, match_idx + 14)):
+            line = lines[j]
+            if re.match(r'^\d{2}\.\d{2}\.\s+\d{2}:\d{2}$', line):
+                date_text = line
+                date_idx = j
+                break
+            if re.match(r'^[A-Za-z]{3}\s+\d{1,2}$', line):
+                next_non_empty = ''
+                next_idx = -1
+                for look_ahead in range(j + 1, min(scan_end, j + 4)):
+                    candidate = lines[look_ahead]
+                    if candidate:
+                        next_non_empty = candidate
+                        next_idx = look_ahead
+                        break
+                if re.match(r'^\d{1,2}:\d{2}\s*(AM|PM)$', next_non_empty, flags=re.IGNORECASE):
+                    date_text = f"{line} {next_non_empty}"
+                    date_idx = next_idx
+                    break
+            if re.match(r'^\d{1,2}:\d{2}\s*(AM|PM)$', line, flags=re.IGNORECASE):
+                date_text = line
+                date_idx = j
+                break
+
+        player_lines = []
+        start_idx = (date_idx + 1) if date_idx >= 0 else (match_idx + 1)
+        for j in range(start_idx, min(scan_end, start_idx + 12)):
+            line = lines[j]
+            if not line:
+                continue
+            name_hit = re.search(r'\)([^()\[\]]+)$', line)
+            if not name_hit:
+                continue
+            short_name = name_hit.group(1).strip()
+            if short_name and short_name not in player_lines:
+                player_lines.append(short_name)
+            if len(player_lines) >= 2:
+                break
+
+        me_tokens = [t for t in self._normalize_player_name(player_name).split() if t]
+        me_last = me_tokens[-1] if me_tokens else ''
+        opponent = ''
+        for short_name in player_lines:
+            norm_short = self._normalize_player_name(short_name)
+            if me_last and me_last in norm_short:
+                continue
+            opponent = short_name
+            break
+        if not opponent and player_lines:
+            opponent = player_lines[0]
+
+        return {
+            'tournament': tournament_name or 'Upcoming Match',
+            'tournament_url': tournament_url,
+            'stage': stage,
+            'scheduled_time': date_text,
+            'opponent': opponent or 'TBD',
+            'match_url': match_url,
+        }
+
+    def _parse_flashscore_latest_result(self, markdown_text, player_name):
+        text = str(markdown_text or '')
+        if not text:
+            return None
+        lines = [line.strip() for line in text.splitlines()]
+        if not lines:
+            return None
+
+        scan_end = len(lines)
+        for idx, line in enumerate(lines):
+            if line.lower() in {'latest scores', 'scheduled', 'pinned leagues', 'my teams', 'calendar', 'rankings'}:
+                scan_end = idx
+                break
+
+        match_idx = -1
+        match_url = ''
+        for idx, line in enumerate(lines[:scan_end]):
+            if '/tennis/' not in line:
+                continue
+            hit = re.search(r'\((https?://[^)\s]+/(?:match|game)/tennis/[^)\s]+)(?:\s+"[^"]*")?\)', line)
+            if hit:
+                match_idx = idx
+                match_url = hit.group(1)
+                break
+        if match_idx < 0:
+            return None
+
+        tournament_name = ''
+        tournament_url = ''
+        stage = ''
+        for j in range(match_idx - 1, max(-1, match_idx - 20), -1):
+            line = lines[j]
+            m = re.match(r'^\[([^\]]+)\]\((https?://[^)\s]*/tennis/[^)\s]*)(?:\s+"[^"]*")?\)', line)
+            if m:
+                tournament_name = m.group(1).strip()
+                tournament_url = m.group(2).strip()
+                for k in range(j + 1, min(match_idx, j + 8)):
+                    stage_line = lines[k]
+                    if stage_line.endswith(':') and ('SINGLES' in stage_line.upper() or 'DOUBLES' in stage_line.upper()):
+                        stage = stage_line.rstrip(':').strip()
+                        break
+                break
+
+        date_text = ''
+        date_idx = -1
+        for j in range(match_idx + 1, min(scan_end, match_idx + 14)):
+            line = lines[j]
+            if re.match(r'^\d{2}\.\d{2}\.\s+\d{2}:\d{2}$', line):
+                date_text = line
+                date_idx = j
+                break
+            if re.match(r'^[A-Za-z]{3}\s+\d{1,2}$', line):
+                next_non_empty = ''
+                next_idx = -1
+                for look_ahead in range(j + 1, min(scan_end, j + 4)):
+                    candidate = lines[look_ahead]
+                    if candidate:
+                        next_non_empty = candidate
+                        next_idx = look_ahead
+                        break
+                if re.match(r'^\d{1,2}:\d{2}\s*(AM|PM)$', next_non_empty, flags=re.IGNORECASE):
+                    date_text = f"{line} {next_non_empty}"
+                    date_idx = next_idx
+                    break
+
+        player_lines = []
+        start_idx = (date_idx + 1) if date_idx >= 0 else (match_idx + 1)
+        for j in range(start_idx, min(scan_end, start_idx + 14)):
+            line = lines[j]
+            if not line:
+                continue
+            name_hit = re.search(r'\)([^()\[\]]+)$', line)
+            if not name_hit:
+                continue
+            short_name = name_hit.group(1).strip()
+            if short_name and short_name not in player_lines:
+                player_lines.append(short_name)
+            if len(player_lines) >= 2:
+                break
+
+        me_tokens = [t for t in self._normalize_player_name(player_name).split() if t]
+        me_last = me_tokens[-1] if me_tokens else ''
+        opponent = ''
+        for short_name in player_lines:
+            norm_short = self._normalize_player_name(short_name)
+            if me_last and me_last in norm_short:
+                continue
+            opponent = short_name
+            break
+        if not opponent and player_lines:
+            opponent = player_lines[0]
+
+        outcome = ''
+        for j in range(start_idx, min(scan_end, start_idx + 28)):
+            marker = lines[j].strip().upper()
+            if marker in {'W', 'L'}:
+                outcome = marker
+                break
+
+        return {
+            'tournament': tournament_name or 'Latest Match',
+            'tournament_url': tournament_url,
+            'stage': stage,
+            'finished_time': date_text,
+            'opponent': opponent or 'TBD',
+            'match_url': match_url,
+            'outcome': outcome
+        }
+
+    def fetch_player_next_fixture(self, player_name, tour=''):
+        name = str(player_name or '').strip()
+        if not name:
+            return {
+                'scheduled': False,
+                'message': 'Player name is required.'
+            }
+        tour_key = str(tour or '').strip().lower()
+        if tour_key not in {'atp', 'wta'}:
+            tour_key = ''
+
+        def _extract_json_from_markdown(text):
+            raw = str(text or '')
+            start = raw.find('{')
+            end = raw.rfind('}')
+            if start < 0 or end <= start:
+                return None
+            try:
+                return json.loads(raw[start:end + 1])
+            except Exception:
+                return None
+
+        def _sofascore_api_json(path):
+            path_text = str(path or '').strip()
+            if not path_text:
+                return None
+            if path_text.startswith('http://') or path_text.startswith('https://'):
+                api_url = path_text
+            else:
+                if not path_text.startswith('/'):
+                    path_text = f'/{path_text}'
+                api_url = f'http://api.sofascore.com{path_text}'
+            rjina_url = self._flashscore_to_rjina_url(api_url)
+            if not rjina_url:
+                return None
+            for attempt in range(2):
+                try:
+                    response = self.session.get(rjina_url, timeout=30)
+                    if response.status_code != 200:
+                        if attempt == 0:
+                            time.sleep(0.5)
+                        continue
+                    payload = _extract_json_from_markdown(response.text)
+                    if isinstance(payload, dict):
+                        err = payload.get('error') or {}
+                        if int(err.get('code') or 0) == 429 and attempt == 0:
+                            time.sleep(0.8)
+                            continue
+                    return payload
+                except Exception:
+                    if attempt == 0:
+                        time.sleep(0.5)
+                        continue
+                    return None
+            return None
+
+        def _sofascore_search_player(query_name, expected_tour=''):
+            base_name = str(query_name or '').strip()
+            if not base_name:
+                return None
+            cache_key = f"{expected_tour}:{self._normalize_player_name(base_name)}"
+            cached = self._sofascore_player_cache.get(cache_key)
+            if isinstance(cached, dict) and cached.get('id'):
+                return cached
+            parts = [p for p in re.split(r'\s+', base_name) if p]
+            query_variants = [base_name]
+            if len(parts) >= 2:
+                query_variants.append(f"{parts[-1]} {parts[0]}")
+            norm_name = self._normalize_player_name(base_name)
+            if norm_name and norm_name not in query_variants:
+                query_variants.append(norm_name)
+
+            results = []
+            for variant in query_variants[:3]:
+                query = urllib.parse.quote_plus(variant)
+                payload = _sofascore_api_json(f"/api/v1/search/all?q={query}")
+                if not isinstance(payload, dict):
+                    continue
+                batch = payload.get('results') or []
+                if isinstance(batch, list):
+                    results.extend(batch)
+                if len(results) >= 20:
+                    break
+
+            candidates = []
+            norm_target = self._normalize_player_name(query_name)
+            target_tokens = [t for t in norm_target.split() if t]
+            for row in results:
+                if not isinstance(row, dict) or row.get('type') != 'team':
+                    continue
+                entity = row.get('entity') or {}
+                sport_name = str((entity.get('sport') or {}).get('name') or '').lower()
+                if sport_name != 'tennis':
+                    continue
+                pid = entity.get('id')
+                if not pid:
+                    continue
+                cand_name = str(entity.get('name') or '').strip()
+                cand_slug = str(entity.get('slug') or '').strip()
+                cand_gender = str(entity.get('gender') or '').upper()
+                cand_norm = self._normalize_player_name(cand_name)
+                score = 0
+                if cand_norm == norm_target:
+                    score += 12
+                for token in target_tokens:
+                    if token and token in cand_norm:
+                        score += 2
+                    if token and token in cand_slug.replace('-', ' '):
+                        score += 1
+                if target_tokens:
+                    last = target_tokens[-1]
+                    if last and last in cand_norm:
+                        score += 2
+                if expected_tour == 'wta' and cand_gender == 'F':
+                    score += 4
+                if expected_tour == 'atp' and cand_gender == 'M':
+                    score += 4
+                candidates.append({
+                    'id': int(pid),
+                    'name': cand_name,
+                    'slug': cand_slug,
+                    'country': (entity.get('country') or {}).get('alpha2') or '',
+                    'score': score
+                })
+            if not candidates:
+                return None
+            candidates.sort(key=lambda c: c.get('score', 0), reverse=True)
+            best = candidates[0]
+            self._sofascore_player_cache[cache_key] = best
+            return best
+
+        def _event_matches_player(event_obj, player_id):
+            if not isinstance(event_obj, dict):
+                return False
+            home_id = (event_obj.get('homeTeam') or {}).get('id')
+            away_id = (event_obj.get('awayTeam') or {}).get('id')
+            return int(home_id or -1) == int(player_id) or int(away_id or -1) == int(player_id)
+
+        def _event_matches_tour(event_obj, expected_tour=''):
+            if not expected_tour:
+                return True
+            cat_name = str(((event_obj.get('tournament') or {}).get('category') or {}).get('name') or '').upper()
+            if expected_tour == 'wta':
+                return 'WTA' in cat_name
+            if expected_tour == 'atp':
+                return 'ATP' in cat_name
+            return True
+
+        def _is_doubles_event(event_obj):
+            tournament = event_obj.get('tournament') or {}
+            unique = tournament.get('uniqueTournament') or {}
+            season = event_obj.get('season') or {}
+            home_name = str((event_obj.get('homeTeam') or {}).get('name') or '')
+            away_name = str((event_obj.get('awayTeam') or {}).get('name') or '')
+            text = ' '.join([
+                str(tournament.get('name') or ''),
+                str(unique.get('name') or ''),
+                str(season.get('name') or ''),
+            ]).lower()
+            if 'doubles' in text:
+                return True
+            return '/' in home_name or '/' in away_name
+
+        def _build_event_payload(event_obj, player_obj, expected_tour=''):
+            if not isinstance(event_obj, dict):
+                return None
+            event_id = event_obj.get('id')
+            details = None
+            if event_id:
+                detail_payload = _sofascore_api_json(f"/api/v1/event/{int(event_id)}")
+                if isinstance(detail_payload, dict):
+                    details = detail_payload.get('event')
+            e = details if isinstance(details, dict) else event_obj
+
+            tournament = e.get('tournament') or {}
+            unique = tournament.get('uniqueTournament') or {}
+            category = tournament.get('category') or {}
+            round_info = e.get('roundInfo') or {}
+            venue = e.get('venue') or {}
+            status = e.get('status') or {}
+            start_ts = e.get('startTimestamp')
+            custom_id = e.get('customId') or event_obj.get('customId')
+            slug = e.get('slug') or event_obj.get('slug')
+            player_id = int(player_obj.get('id'))
+
+            home = e.get('homeTeam') or {}
+            away = e.get('awayTeam') or {}
+            is_home = int(home.get('id') or -1) == player_id
+            opponent_name = (away.get('name') if is_home else home.get('name')) or 'TBD'
+
+            winner_code = e.get('winnerCode')
+            outcome = ''
+            if winner_code in (1, 2):
+                outcome = 'W' if ((winner_code == 1 and is_home) or (winner_code == 2 and not is_home)) else 'L'
+
+            cat_name = str(category.get('name') or '').upper()
+            points = unique.get('tennisPoints')
+            level = cat_name
+            if points and cat_name in {'WTA', 'ATP'}:
+                level = f"{cat_name} {points}"
+            round_name = str(round_info.get('name') or '').strip()
+            competition_parts = ['Tennis', level, str(tournament.get('name') or '').strip(), round_name]
+            competition = ', '.join([p for p in competition_parts if p])
+
+            venue_name = str(venue.get('name') or '')
+            city_name = str((venue.get('city') or {}).get('name') or '')
+            country_name = str((venue.get('country') or {}).get('name') or '')
+            location = ', '.join([p for p in [city_name, country_name] if p])
+            if not location:
+                # Fallback from tournament title format: "Doha, Qatar".
+                location = str(tournament.get('name') or '')
+            ground_type = str(e.get('groundType') or unique.get('groundType') or '')
+            status_type = str(status.get('type') or '').lower()
+
+            match_url = ''
+            if slug and custom_id:
+                match_url = f"https://www.sofascore.com/tennis/match/{slug}/{custom_id}"
+            source_url = f"https://www.sofascore.com/tennis/player/{player_obj.get('slug')}/{player_id}"
+
+            payload = {
+                'player': player_obj.get('name') or name,
+                'tour': str(expected_tour or '').upper(),
+                'source': 'sofascore',
+                'source_url': source_url,
+                'sofascore_player_id': player_id,
+                'event_id': event_id,
+                'match_url': match_url,
+                'status_type': status_type,
+                'scheduled': status_type != 'finished',
+                'finished': status_type == 'finished',
+                'is_doubles': _is_doubles_event(e),
+                'start_timestamp': start_ts,
+                'scheduled_time': datetime.utcfromtimestamp(start_ts).strftime('%Y-%m-%d %H:%M') if start_ts else '',
+                'tournament': str(tournament.get('name') or '').strip() or 'Tournament',
+                'stage': round_name or '-',
+                'competition': competition,
+                'opponent': str(opponent_name).strip() or 'TBD',
+                'venue': venue_name,
+                'location': location,
+                'ground_type': ground_type,
+                'outcome': outcome
+            }
+            return payload
+
+        player_obj = _sofascore_search_player(name, expected_tour=tour_key)
+        if not player_obj:
+            return {
+                'scheduled': False,
+                'message': 'No SofaScore player profile found.'
+            }
+
+        now_ts = int(datetime.utcnow().timestamp())
+        today = datetime.utcnow().date()
+
+        upcoming_singles = []
+        upcoming_doubles = []
+        for d in range(0, 15):
+            day = today + timedelta(days=d)
+            day_key = day.strftime('%Y-%m-%d')
+            day_payload = _sofascore_api_json(f"/api/v1/sport/tennis/scheduled-events/{day_key}") or {}
+            day_events = day_payload.get('events') if isinstance(day_payload, dict) else []
+            if not isinstance(day_events, list):
+                continue
+            for event in day_events:
+                if not _event_matches_player(event, player_obj['id']):
+                    continue
+                if not _event_matches_tour(event, expected_tour=tour_key):
+                    continue
+                start_ts = int(event.get('startTimestamp') or 0)
+                status_type = str((event.get('status') or {}).get('type') or '').lower()
+                if status_type == 'finished':
+                    continue
+                if start_ts and start_ts < (now_ts - 3600):
+                    continue
+                if _is_doubles_event(event):
+                    upcoming_doubles.append(event)
+                else:
+                    upcoming_singles.append(event)
+
+        if upcoming_singles:
+            upcoming_singles.sort(key=lambda e: int(e.get('startTimestamp') or 0))
+            next_event = upcoming_singles[0]
+            payload = _build_event_payload(next_event, player_obj, expected_tour=tour_key) or {}
+            status_type = str(payload.get('status_type') or '')
+            if status_type == 'inprogress':
+                payload['message'] = 'Singles match in progress.'
+            else:
+                payload['message'] = 'Scheduled singles match.'
+            return payload
+
+        if upcoming_doubles:
+            upcoming_doubles.sort(key=lambda e: int(e.get('startTimestamp') or 0))
+            next_double = upcoming_doubles[0]
+            payload = _build_event_payload(next_double, player_obj, expected_tour=tour_key) or {}
+            payload['scheduled'] = False
+            payload['doubles_only'] = True
+            payload['message'] = 'No scheduled singles match. Next listed match is doubles.'
+            return payload
+
+        latest_finished = None
+        for d in range(0, 15):
+            day = today - timedelta(days=d)
+            day_key = day.strftime('%Y-%m-%d')
+            day_payload = _sofascore_api_json(f"/api/v1/sport/tennis/scheduled-events/{day_key}") or {}
+            day_events = day_payload.get('events') if isinstance(day_payload, dict) else []
+            if not isinstance(day_events, list):
+                continue
+            for event in day_events:
+                if not _event_matches_player(event, player_obj['id']):
+                    continue
+                if not _event_matches_tour(event, expected_tour=tour_key):
+                    continue
+                if _is_doubles_event(event):
+                    continue
+                status_type = str((event.get('status') or {}).get('type') or '').lower()
+                if status_type != 'finished':
+                    continue
+                if latest_finished is None or int(event.get('startTimestamp') or 0) > int(latest_finished.get('startTimestamp') or 0):
+                    latest_finished = event
+
+        if latest_finished:
+            payload = _build_event_payload(latest_finished, player_obj, expected_tour=tour_key) or {}
+            payload['scheduled'] = False
+            payload['finished'] = True
+            outcome = str(payload.get('outcome') or '').upper()
+            if outcome == 'W':
+                payload['message'] = 'Finished. Player won; waiting for next-round opponent.'
+            elif outcome == 'L':
+                payload['message'] = 'Finished. Player lost; next tournament details loading.'
+            else:
+                payload['message'] = 'Finished. Waiting for next fixture update.'
+            return payload
+
+        return {
+            'scheduled': False,
+            'player': player_obj.get('name') or name,
+            'tour': str(tour_key or '').upper(),
+            'source': 'sofascore',
+            'source_url': f"https://www.sofascore.com/tennis/player/{player_obj.get('slug')}/{player_obj.get('id')}",
+            'message': 'No scheduled singles match right now.'
+        }
+
+    def _recent_match_count(self, stats):
+        if not isinstance(stats, dict):
+            return 0
+        total = 0
+        for key in ('recent_matches_tab', 'recent_matches', 'recent_matches_from_tournaments', 'recent_matches_best'):
+            section = stats.get(key) or {}
+            tournaments = section.get('tournaments') if isinstance(section, dict) else None
+            if not isinstance(tournaments, list):
+                continue
+            for t in tournaments:
+                matches = (t or {}).get('matches') if isinstance(t, dict) else None
+                if isinstance(matches, list):
+                    total += len(matches)
+        return total
+
+    def _entry_quality_score(self, entry):
+        if not isinstance(entry, dict):
+            return (0, 0, 0, 0)
+        profile = entry.get('profile') or {}
+        stats = entry.get('stats') or {}
+        image_score = 1 if str(profile.get('image_url') or '').strip() else 0
+        profile_url_score = 1 if str(profile.get('url') or '').strip() else 0
+        player_id_score = 1 if entry.get('player_id') is not None else 0
+        match_count = self._recent_match_count(stats)
+        return (image_score, profile_url_score, player_id_score, match_count)
 
     def _wta_rankings_csv_path(self):
         return self._wta_data_root() / 'wta_live_ranking.csv'
@@ -323,6 +1083,7 @@ class TennisDataFetcher:
     def invalidate_wta_rankings_cache(self):
         self._wta_rankings_cache = None
         self._wta_rankings_index = None
+        self._wta_scraped_index = None
         self._wta_connections_map = None
         for key in list(rankings_cache.keys()):
             if str(key).startswith('rankings_wta'):
@@ -948,15 +1709,22 @@ class TennisDataFetcher:
                 'folder': str(folder)
             }
             index['players'].append(entry)
-            if norm and norm not in index['by_full']:
-                index['by_full'][norm] = entry
+            if norm:
+                existing = index['by_full'].get(norm)
+                if existing is None or self._entry_quality_score(entry) > self._entry_quality_score(existing):
+                    index['by_full'][norm] = entry
             if first and last:
                 key = f"{last}_{first[0]}"
-                index['by_last_first'][key] = entry
+                existing = index['by_last_first'].get(key)
+                if existing is None or self._entry_quality_score(entry) > self._entry_quality_score(existing):
+                    index['by_last_first'][key] = entry
             if last:
                 index['by_last'].setdefault(last, []).append(entry)
             if entry.get('player_id') is not None:
-                index['by_player_id'][int(entry['player_id'])] = entry
+                pid = int(entry['player_id'])
+                existing = index['by_player_id'].get(pid)
+                if existing is None or self._entry_quality_score(entry) > self._entry_quality_score(existing):
+                    index['by_player_id'][pid] = entry
 
         self._persist_wta_player_connections(index)
         self._wta_scraped_index = index
@@ -1046,11 +1814,15 @@ class TennisDataFetcher:
                 'profile_url': (profile.get('url') or '').strip()
             }
             index['players'].append(entry)
-            if norm and norm not in index['by_full']:
-                index['by_full'][norm] = entry
+            if norm:
+                existing = index['by_full'].get(norm)
+                if existing is None or self._entry_quality_score(entry) > self._entry_quality_score(existing):
+                    index['by_full'][norm] = entry
             if first and last:
                 key = f"{last}_{first[0]}"
-                index['by_last_first'][key] = entry
+                existing = index['by_last_first'].get(key)
+                if existing is None or self._entry_quality_score(entry) > self._entry_quality_score(existing):
+                    index['by_last_first'][key] = entry
             if last:
                 index['by_last'].setdefault(last, []).append(entry)
 
@@ -2628,7 +3400,9 @@ class TennisDataFetcher:
         if resolved_id is None:
             resolved_id = (rank_entry or {}).get('id')
         image_url = ''
-        if rank_entry and rank_entry.get('image_url'):
+        if resolved_id is not None:
+            image_url = f"/api/player/wta/{resolved_id}/image"
+        elif rank_entry and rank_entry.get('image_url'):
             image_url = rank_entry.get('image_url')
         elif scraped_entry:
             image_url = scraped_entry.get('profile', {}).get('image_url') or ''
@@ -2808,6 +3582,65 @@ class TennisDataFetcher:
                 return row
         return rows[0]
 
+    def _pick_or_aggregate_wta_match_stats_row(self, payload):
+        if not isinstance(payload, list):
+            return None
+        rows = [row for row in payload if isinstance(row, dict)]
+        if not rows:
+            return None
+
+        summary_row = None
+        set_rows = []
+        for row in rows:
+            set_num = self._to_int(row.get('setnum'))
+            if set_num == 0 and summary_row is None:
+                summary_row = row
+            elif set_num is not None and set_num > 0:
+                set_rows.append(row)
+
+        # Prefer provided summary row when it already contains match totals.
+        if summary_row is not None:
+            total_a = self._to_int(summary_row.get('totservplayeda'))
+            total_b = self._to_int(summary_row.get('totservplayedb'))
+            if (total_a or 0) > 0 or (total_b or 0) > 0:
+                return summary_row
+
+        # Some live responses occasionally have sparse setnum=0 rows.
+        # In that case, aggregate set rows to reconstruct an overall snapshot.
+        if set_rows:
+            numeric_fields = [
+                'acesa', 'acesb',
+                'dblflta', 'dblfltb',
+                'ptswon1stserva', 'ptswon1stservb',
+                'ptsplayed1stserva', 'ptsplayed1stservb',
+                'ptstotwonserva', 'ptstotwonservb',
+                'totservplayeda', 'totservplayedb',
+                'breakptsconva', 'breakptsconvb',
+                'breakptsplayeda', 'breakptsplayedb',
+                'servgamesplayeda', 'servgamesplayedb',
+                'pts1stservlosta', 'pts1stservlostb',
+                'totptswona', 'totptswonb',
+                'acesssa', 'acesssb',
+            ]
+            aggregated = {
+                'eventyear': (summary_row or set_rows[0]).get('eventyear'),
+                'eventid': (summary_row or set_rows[0]).get('eventid'),
+                'matchid': (summary_row or set_rows[0]).get('matchid'),
+                'setnum': 0,
+                'settime': '',
+                'scorea': '',
+                'scoreb': '',
+                'scoretb': '',
+            }
+            for key in numeric_fields:
+                aggregated[key] = 0
+            for row in set_rows:
+                for key in numeric_fields:
+                    aggregated[key] += self._to_int(row.get(key)) or 0
+            return aggregated
+
+        return summary_row or rows[0]
+
     def _build_wta_detailed_stats_snapshot(self, row, event_id, event_year, match_id):
         if not isinstance(row, dict):
             return None
@@ -2899,7 +3732,7 @@ class TennisDataFetcher:
             'break_points_saved_percent_b': pct(break_saved_b, break_faced_b),
         }
 
-    def fetch_wta_match_stats(self, event_id, event_year, match_id):
+    def fetch_wta_match_stats(self, event_id, event_year, match_id, force_refresh=False):
         event_id_val = self._to_int(event_id)
         event_year_val = self._to_int(event_year)
         match_id_val = str(match_id or '').strip()
@@ -2907,14 +3740,14 @@ class TennisDataFetcher:
             return None
 
         cache_key = f"{event_id_val}|{event_year_val}|{match_id_val}"
-        if cache_key in wta_match_stats_cache:
+        if not force_refresh and cache_key in wta_match_stats_cache:
             return wta_match_stats_cache[cache_key]
 
         try:
             payload = self._wta_api_get_json(
                 f"{WTA_TENNIS_API_BASE}/tournaments/{event_id_val}/{event_year_val}/matches/{match_id_val}/stats"
             )
-            row = self._pick_wta_match_stats_row(payload)
+            row = self._pick_or_aggregate_wta_match_stats_row(payload)
             snapshot = self._build_wta_detailed_stats_snapshot(
                 row=row,
                 event_id=event_id_val,
@@ -3271,6 +4104,10 @@ class TennisDataFetcher:
     
     def fetch_player_details(self, player_id):
         """Fetch player details"""
+        # Player stats come from per-player JSON files on disk; force a fresh scrape index
+        # so newly updated stats_2026.json are reflected without backend restart.
+        self._wta_scraped_index = None
+        self._atp_scraped_index = None
         wta_player = self._get_wta_player_from_csv(player_id)
         if wta_player:
             return wta_player
@@ -3296,7 +4133,7 @@ class TennisDataFetcher:
         plays = player.get('plays') or random.choice(['Right-Handed', 'Left-Handed'])
         titles = player.get('titles') or random.randint(0, 15)
         prize_money = player.get('prize_money') or f"${random.randint(1, 50)},{random.randint(100, 999)},{random.randint(100, 999)}"
-        image_url = player.get('image_url') or f'https://api.sofascore.com/api/v1/player/{resolved_id}/image'
+        image_url = player.get('image_url') or f"/api/player/wta/{resolved_id}/image"
 
         return {
             **player,
@@ -4462,9 +5299,11 @@ class TennisDataFetcher:
                 scraped_player_id = (scraped or {}).get('player_id')
 
                 resolved_id = None
+                source_player_id = None
                 if scraped_player_id is not None:
                     try:
                         resolved_id = int(scraped_player_id)
+                        source_player_id = resolved_id
                     except Exception:
                         resolved_id = None
                 if resolved_id is None and norm_name:
@@ -4473,6 +5312,7 @@ class TennisDataFetcher:
                     if known_pid is not None:
                         try:
                             resolved_id = int(known_pid)
+                            source_player_id = resolved_id
                         except Exception:
                             resolved_id = None
                 if resolved_id is None and norm_name:
@@ -4481,6 +5321,7 @@ class TennisDataFetcher:
                     if conn_pid is not None:
                         try:
                             resolved_id = int(conn_pid)
+                            source_player_id = resolved_id
                         except Exception:
                             resolved_id = None
                 if resolved_id is None:
@@ -4523,7 +5364,7 @@ class TennisDataFetcher:
                 country = (row.get('country') or '').strip() or profile_data.get('country') or 'WHITE'
                 is_playing = (row.get('is_playing') or '').strip().lower() == 'yes'
 
-                image_url = profile_data.get('image_url') or ''
+                image_url = f"/api/player/wta/{resolved_id}/image" if resolved_id else (profile_data.get('image_url') or '')
 
                 height = profile_data.get('height') or ''
                 plays = profile_data.get('plays') or ''
