@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "71",
-  "matches_played": "1",
-  "aces": "3",
-  "service_games_won": "64.3%",
-  "return_games_won": "33.3%",
-  "first_serve_won": "65.8%",
+  "singles_ranking": "68",
+  "matches_played": "7",
+  "aces": "8",
+  "service_games_won": "61.6%",
+  "return_games_won": "40.5%",
+  "first_serve_won": "60.5%",
   "singles_titles": null,
   "won_lost": "2 / 1",
-  "prize_money": "$168,237",
+  "prize_money": "$175,262",
   "singles_serving_stats": {
-    "aces": "3",
-    "double_faults": "6",
-    "first_serve_pct": "70.2%",
-    "first_serve_won": "65.8%",
-    "second_serve_won": "32.3%",
-    "break_points_saved": "66.7%",
-    "service_points_won_pct": "55.8%",
-    "service_games_won": "64.3%",
-    "service_games_played": "14"
+    "aces": "8",
+    "double_faults": "24",
+    "first_serve_pct": "72.5%",
+    "first_serve_won": "60.5%",
+    "second_serve_won": "39.0%",
+    "break_points_saved": "62.2%",
+    "service_points_won_pct": "54.6%",
+    "service_games_won": "61.6%",
+    "service_games_played": "73"
   },
   "singles_return_stats": {
-    "return_points_won": "42.4%",
-    "first_return_points_won_pct": "36.7%",
-    "second_return_points_won_pct": "56.0%",
-    "break_points_converted": "71.4%",
-    "return_games_won": "33.3%",
-    "return_games_played": "15"
+    "return_points_won": "46.5%",
+    "first_return_points_won_pct": "41.9%",
+    "second_return_points_won_pct": "56.6%",
+    "break_points_converted": "50.0%",
+    "return_games_won": "40.5%",
+    "return_games_played": "74"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n3\nDouble Faults\n6\n1st Serve %\n70.2%\n1st Serve Won\n65.8%\n2nd Serve Won\n32.3%\nBreak Points Saved\n66.7%\nService Points Won %\n55.8%\nService Games Won\n64.3%\nService Games Played\n14",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.4%\n1st Return Points Won %\n36.7%\n2nd Return Points Won %\n56.0%\nBreak Points Converted\n71.4%\nReturn Games Won\n33.3%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n8\nDouble Faults\n24\n1st Serve %\n72.5%\n1st Serve Won\n60.5%\n2nd Serve Won\n39.0%\nBreak Points Saved\n62.2%\nService Points Won %\n54.6%\nService Games Won\n61.6%\nService Games Played\n73",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.5%\n1st Return Points Won %\n41.9%\n2nd Return Points Won %\n56.6%\nBreak Points Converted\n50.0%\nReturn Games Won\n40.5%\nReturn Games Played\n74\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:35:56.172145+00:00",
+  "updated_at": "2026-02-09T16:42:45.979777+00:00",
   "records_tab": {
     "summary": [
       {
@@ -211,19 +211,6 @@
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Kaja Juvan",
-            "opponent_country": "SLO",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 7-6(7)",
-            "opponent_rank": 97
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Solana Sierra",
             "opponent_country": "ARG",
@@ -231,6 +218,19 @@
             "opponent_entry": "",
             "score": "1-6, 6-4, 6-1",
             "opponent_rank": 64
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Kaja Juvan",
+            "opponent_country": "SLO",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 7-6(7)",
+            "opponent_rank": 97
           }
         ],
         "summary": {
@@ -278,6 +278,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:35:56.172075+00:00"
+    "updated_at": "2026-02-09T16:42:45.979620+00:00"
   }
 }

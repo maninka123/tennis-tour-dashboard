@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "94",
+  "singles_ranking": "81",
   "matches_played": "3",
-  "aces": "8",
-  "service_games_won": "60.0%",
-  "return_games_won": "40.0%",
-  "first_serve_won": "66.4%",
-  "singles_titles": null,
-  "won_lost": "0 / 1",
-  "prize_money": "$121,616",
+  "aces": "6",
+  "service_games_won": "51.6%",
+  "return_games_won": "24.2%",
+  "first_serve_won": "55.6%",
+  "singles_titles": "0",
+  "won_lost": "6 / 5",
+  "prize_money": "$139,661",
   "singles_serving_stats": {
-    "aces": "8",
-    "double_faults": "24",
-    "first_serve_pct": "53.4%",
-    "first_serve_won": "66.4%",
-    "second_serve_won": "39.2%",
-    "break_points_saved": "50.0%",
-    "service_points_won_pct": "53.7%",
-    "service_games_won": "60.0%",
-    "service_games_played": "40"
+    "aces": "6",
+    "double_faults": "12",
+    "first_serve_pct": "66.0%",
+    "first_serve_won": "55.6%",
+    "second_serve_won": "41.5%",
+    "break_points_saved": "44.4%",
+    "service_points_won_pct": "50.8%",
+    "service_games_won": "51.6%",
+    "service_games_played": "31"
   },
   "singles_return_stats": {
-    "return_points_won": "46.1%",
-    "first_return_points_won_pct": "38.5%",
-    "second_return_points_won_pct": "57.1%",
-    "break_points_converted": "34.8%",
-    "return_games_won": "40.0%",
-    "return_games_played": "40"
+    "return_points_won": "38.3%",
+    "first_return_points_won_pct": "32.7%",
+    "second_return_points_won_pct": "51.6%",
+    "break_points_converted": "50.0%",
+    "return_games_won": "24.2%",
+    "return_games_played": "33"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n8\nDouble Faults\n24\n1st Serve %\n53.4%\n1st Serve Won\n66.4%\n2nd Serve Won\n39.2%\nBreak Points Saved\n50.0%\nService Points Won %\n53.7%\nService Games Won\n60.0%\nService Games Played\n40",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.1%\n1st Return Points Won %\n38.5%\n2nd Return Points Won %\n57.1%\nBreak Points Converted\n34.8%\nReturn Games Won\n40.0%\nReturn Games Played\n40\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n6\nDouble Faults\n12\n1st Serve %\n66.0%\n1st Serve Won\n55.6%\n2nd Serve Won\n41.5%\nBreak Points Saved\n44.4%\nService Points Won %\n50.8%\nService Games Won\n51.6%\nService Games Played\n31",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n38.3%\n1st Return Points Won %\n32.7%\n2nd Return Points Won %\n51.6%\nBreak Points Converted\n50.0%\nReturn Games Won\n24.2%\nReturn Games Played\n33\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:38:14.716616+00:00",
+  "updated_at": "2026-02-09T16:45:05.000088+00:00",
   "records_tab": {
     "summary": [
       {
@@ -98,6 +98,55 @@
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
+      {
+        "tournament": "ABU DHABI",
+        "location": "Abu Dhabi \u2022 United Arab Emirates",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "masters_1000",
+        "category_label": "WTA 1000",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 94,
+        "seed": null,
+        "wta_points_gain": 85.0,
+        "prize_money_won": 18045.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Arina Rodionova",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 1-0",
+            "opponent_rank": 210
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Daria Kasatkina",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-6(5), 3-6, 6-4",
+            "opponent_rank": 62
+          }
+        ],
+        "summary": {
+          "rank": 94,
+          "seed": null,
+          "wta_points_gain": "+85",
+          "prize_money_won": "+$18,045",
+          "draw": "32M/16Q/16D"
+        }
+      },
       {
         "tournament": "MANILA 125",
         "location": "Manila \u2022 Philippines",
@@ -234,19 +283,6 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Daria Snigur",
-            "opponent_country": "UKR",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 6-4",
-            "opponent_rank": 149
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -271,6 +307,19 @@
             "opponent_entry": "",
             "score": "6-7(2), 7-6(0), 6-2",
             "opponent_rank": 142
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Daria Snigur",
+            "opponent_country": "UKR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-4",
+            "opponent_rank": 149
           }
         ],
         "summary": {
@@ -282,6 +331,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:38:14.716553+00:00"
+    "updated_at": "2026-02-09T16:45:04.999980+00:00"
   }
 }

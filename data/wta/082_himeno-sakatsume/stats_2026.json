@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "132",
-  "matches_played": "4",
-  "aces": "15",
-  "service_games_won": "69.6%",
-  "return_games_won": "40.9%",
-  "first_serve_won": "67.2%",
+  "singles_ranking": "133",
+  "matches_played": "1",
+  "aces": "1",
+  "service_games_won": "50.0%",
+  "return_games_won": "0.0%",
+  "first_serve_won": "58.5%",
   "singles_titles": "0",
   "won_lost": "9 / 3",
   "prize_money": "$110,818",
   "singles_serving_stats": {
-    "aces": "15",
-    "double_faults": "13",
-    "first_serve_pct": "63.0%",
-    "first_serve_won": "67.2%",
-    "second_serve_won": "43.3%",
-    "break_points_saved": "53.3%",
-    "service_points_won_pct": "58.4%",
-    "service_games_won": "69.6%",
-    "service_games_played": "46"
+    "aces": "1",
+    "double_faults": "1",
+    "first_serve_pct": "70.7%",
+    "first_serve_won": "58.5%",
+    "second_serve_won": "35.3%",
+    "break_points_saved": "50.0%",
+    "service_points_won_pct": "51.7%",
+    "service_games_won": "50.0%",
+    "service_games_played": "8"
   },
   "singles_return_stats": {
-    "return_points_won": "45.1%",
-    "first_return_points_won_pct": "39.0%",
-    "second_return_points_won_pct": "57.3%",
-    "break_points_converted": "43.9%",
-    "return_games_won": "40.9%",
-    "return_games_played": "44"
+    "return_points_won": "30.8%",
+    "first_return_points_won_pct": "23.7%",
+    "second_return_points_won_pct": "50.0%",
+    "break_points_converted": "0.0%",
+    "return_games_won": "0.0%",
+    "return_games_played": "8"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n15\nDouble Faults\n13\n1st Serve %\n63.0%\n1st Serve Won\n67.2%\n2nd Serve Won\n43.3%\nBreak Points Saved\n53.3%\nService Points Won %\n58.4%\nService Games Won\n69.6%\nService Games Played\n46",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.1%\n1st Return Points Won %\n39.0%\n2nd Return Points Won %\n57.3%\nBreak Points Converted\n43.9%\nReturn Games Won\n40.9%\nReturn Games Played\n44\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n1\nDouble Faults\n1\n1st Serve %\n70.7%\n1st Serve Won\n58.5%\n2nd Serve Won\n35.3%\nBreak Points Saved\n50.0%\nService Points Won %\n51.7%\nService Games Won\n50.0%\nService Games Played\n8",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n30.8%\n1st Return Points Won %\n23.7%\n2nd Return Points Won %\n50.0%\nBreak Points Converted\n0.0%\nReturn Games Won\n0.0%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:31:50.764997+00:00",
+  "updated_at": "2026-02-09T16:38:25.259379+00:00",
   "records_tab": {
     "summary": [
       {
@@ -177,33 +177,7 @@
             "opponent_rank": 167
           },
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Ekaterine Gorgodze",
-            "opponent_country": "GEO",
-            "opponent_seed": null,
-            "opponent_entry": "Q",
-            "score": "3-6, 6-2, 6-0",
-            "opponent_rank": 176
-          },
-          {
             "round": "Round of 16",
-            "round_name": "R16",
-            "tourn_round": 2,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Mary Stoiana",
-            "opponent_country": "USA",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "7-5, 6-2",
-            "opponent_rank": 223
-          },
-          {
-            "round": "Qualifying R4",
             "round_name": "R16",
             "tourn_round": 2,
             "draw_level_type": "",
@@ -230,6 +204,32 @@
           },
           {
             "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Ekaterine Gorgodze",
+            "opponent_country": "GEO",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "3-6, 6-2, 6-0",
+            "opponent_rank": 176
+          },
+          {
+            "round": "Qualifying R2",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Mary Stoiana",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-5, 6-2",
+            "opponent_rank": 223
+          },
+          {
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -251,6 +251,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:31:50.764927+00:00"
+    "updated_at": "2026-02-09T16:38:25.259005+00:00"
   }
 }

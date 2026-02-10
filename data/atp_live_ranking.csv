@@ -1,1001 +1,998 @@
 rank,ch_raw,career_high,prev_career_high,at_career_high,is_new_career_high,player,age,country,flag,points,rank_change,current,previous,next,max,is_playing
-1,CH,1,,yes,no,Carlos Alcaraz,22,ESP,ESP,13150,,-500,,,,no
+1,CH,1,,yes,no,Carlos Alcaraz,22,ESP,ESP,13150,,,,,,no
 2,1,1,,no,no,Jannik Sinner,24,ITA,ITA,10300,,,,,,no
 3,1,1,,no,no,Novak Djoković,38,SRB,SRB,5280,,,,,,no
 4,2,2,,no,no,Alexander Zverev,28,GER,GER,4605,,,,,,no
 5,CH,5,,yes,no,Lorenzo Musetti,23,ITA,ITA,4405,,,,,,no
-6,4,4,,no,no,Taylor Fritz,28,USA,USA,3940,,+1,Dallas R32,,,yes
-7,5,5,,no,no,Félix Auger-Aliassime,25,CAN,CAN,3865,+1,+140,Montpellier F (SF )3950 3950,,,yes
-8,6,6,,no,no,Alex de Minaur,26,AUS,AUS,3835,-2,-245,Rotterdam R32,,,yes
-9,5,5,,no,no,Ben Shelton,23,USA,USA,3560,,-40,Dallas R32,,,yes
-10,CH,10,,yes,no,Alexander Bublik,28,KAZ,KAZ,3235,,,Davis Cup (1 W / 1 L) Advertisement,,,yes
-11,1,1,,no,no,Daniil Medvedev,29,RUS,RUS,3060,,,Rotterdam R32,,,yes
-12,4,4,,no,no,Jack Draper,24,GBR,GBR,2790,,+1,Davis Cup (1 W / 0 L),,,yes
-13,2,2,,no,no,Casper Ruud,27,NOR,NOR,2625,-1,-320,,,,no
-14,CH,14,,yes,no,Alejandro Davidovich Fokina,26,ESP,ESP,2535,,+1,Dallas R32,,,yes
-15,5,5,,no,no,Andrey Rublev,28,RUS,RUS,2510,-1,-90,,,,no
-16,CH,16,,yes,no,Jakub Menšík,20,CZE,CZE,2425,,-20,,,,no
-17,4,4,,no,no,Holger Rune,22,DEN,DEN,2340,,-40,,,,no
-18,8,8,,no,no,Karen Khachanov,29,RUS,RUS,2320,,,Rotterdam R32,,,yes
-19,18,18,,no,no,Francisco Cerúndolo,27,ARG,ARG,2135,,,Buenos Aires R16,,,yes
-20,17,17,,no,no,Flavio Cobolli,23,ITA,ITA,1955,,,Dallas R32,Lost in Montpellier R16 Lost in Montpellier R16 Dallas R32,,yes
-21,16,16,,no,no,Jiří Lehečka,24,CZE,CZE,1860,,-40,Davis Cup (1 W / 0 L),,,yes
-22,NCH (23),22,23,yes,yes,Luciano Darderi,23,ITA,ITA,1789,,+1,Buenos Aires R16,,,yes
-23,NCH (24),23,24,yes,yes,Learner Tien,20,USA,USA,1710,,+1,Dallas R32,,,yes
-24,8,8,,no,no,Tommy Paul,28,USA,USA,1700,-2,-150,Davis Cup (1 W / 0 L),,,yes
-25,NCH (27),25,27,yes,yes,Valentin Vacherot,27,MON,MON,1611,,+2,Davis Cup (2 W / 0 L),,,yes
-26,8,8,,no,no,Cameron Norrie,30,GBR,GBR,1603,,-40,Davis Cup (1 W / 0 L),,,yes
-27,21,21,,no,no,Tallon Griekspoor,29,NED,NED,1565,,+2,Rotterdam R32,Lost in Montpellier QF Lost in Montpellier QF Rotterdam R32,,yes
-28,26,26,,no,no,Arthur Rinderknech,30,FRA,FRA,1542,,+3,Davis Cup (1 W / 0 L),,,yes
-29,CH,29,,yes,no,Brandon Nakashima,24,USA,USA,1535,,+3,Dallas R32,,,yes
-30,10,10,,no,no,Frances Tiafoe,28,USA,USA,1510,,-40,Dallas R32,,,yes
-31,20,20,,no,no,Tomáš Macháč,25,CZE,CZE,1510,-3,-100,,Lost in Montpellier R16,,no
-32,3,3,,no,no,Stefanos Tsitsipas,27,GRE,GRE,1445,+1,-50,Davis Cup (1 W / 0 L),,,yes
-33,24,24,,no,no,João Fonseca,19,BRA,BRA,1440,,+1,Buenos Aires R16,,,yes
-34,18,18,,no,no,Sebastián Báez,25,ARG,ARG,1420,+1,-10,Buenos Aires R16,,,yes
-35,31,31,,no,no,Corentin Moutet,26,FRA,FRA,1383,,+1,,,,no
-36,13,13,,no,no,Ugo Humbert,27,FRA,FRA,1335,+2,+15,Rotterdam R32,Lost in Montpellier R16 Lost in Montpellier R16 Rotterdam R32,,yes
-37,33,33,,no,no,Jaume Munar,28,ESP,ESP,1185,,-190,Rotterdam R32,,,yes
-38,33,33,,no,no,Gabriel Diallo,24,CAN,CAN,1175,,+1,Davis Cup (1 W / 1 L) ( ),,,yes
-39,CH,39,,yes,no,Zizou Bergs,26,BEL,BEL,1170,,+1,Rotterdam R32,,,yes
-40,10,10,,no,no,Denis Shapovalov,26,CAN,CAN,1160,-15,-490,Dallas R32,,,yes
-41,30,30,,no,no,Alex Michelsen,21,USA,USA,1160,,,Dallas R32,,,yes
-42,14,14,,no,no,Arthur Fils,21,FRA,FRA,1110,,,Rotterdam R32,Lost in Montpellier QF Lost in Montpellier QF Rotterdam R32,,yes
-43,3,3,,no,no,Grigor Dimitrov,34,BUL,BUL,1105,,,Dallas R32,,,yes
-44,30,30,,no,no,Nuno Borges,28,POR,POR,1070,,+1,Davis Cup (0 W / 2 L),,,yes
-45,33,33,,no,no,Jenson Brooksby,25,USA,USA,1042,,+2,Dallas R32,,,yes
-46,36,36,,no,no,Fábián Marozsán,26,HUN,HUN,1040,,-25,Davis Cup (0 W / 1 L),,,yes
-47,38,38,,no,no,Alexandre Müller,29,FRA,FRA,1020,,+2,Davis Cup (0 W / 1 L),,,yes
-48,31,31,,no,no,Márton Fucsovics,34,HUN,HUN,1009,,+2,Rotterdam R32,,,yes
-49,19,19,,no,no,Alexei Popyrin,26,AUS,AUS,1000,,+2,Rotterdam R32,,,yes
-50,44,44,,no,no,Daniel Altmaier,27,GER,GER,995,-6,-88,Buenos Aires R32 Advertisement,,,yes
-51,43,43,,no,no,Camilo Ugo Carabelli,26,ARG,ARG,982,-3,-46,Rosario F 1043 1043,,,yes
-52,17,17,,no,no,Adrian Mannarino,37,FRA,FRA,975,+18,+165,Montpellier F (SF )1060 1060,,,yes
-53,15,15,,no,no,Sebastian Korda,25,USA,USA,960,,,Dallas R32,,,yes
-54,27,27,,no,no,Tomás Martín Etcheverry,26,ARG,ARG,945,,,Buenos Aires R32,,,yes
-55,CH,55,,yes,no,Kamil Majchrzak,30,POL,POL,920,,-8,,,,no
-56,29,29,,no,no,Giovanni Mpetshi Perricard,22,FRA,FRA,905,,+1,Rotterdam R32,Lost in Montpellier R32 Lost in Montpellier R32 Rotterdam R32,,yes
-57,56,56,,no,no,Valentin Royer,24,FRA,FRA,897,-1,-23,Rotterdam R32,Lost in Montpellier R32 Lost in Montpellier R32 Rotterdam R32,,yes
-58,6,6,,no,no,Matteo Berrettini,29,ITA,ITA,895,,,Buenos Aires R32,,,yes
-59,37,37,,no,no,Marcos Giron,32,USA,USA,895,,,Dallas R32,,,yes
-60,21,21,,no,no,Lorenzo Sonego,30,ITA,ITA,890,,,,,,no
-61,3,3,,no,no,Marin Čilić,37,CRO,CRO,890,,,Dallas R32,,,yes
-62,23,23,,no,no,Damir Džumhur,33,BIH,BIH,877,,,Buenos Aires R32,,,yes
-63,54,54,,no,no,Francisco Comesaña,25,ARG,ARG,869,,+1,Buenos Aires R32,Lost in Rosario R16 Lost in Rosario R16 Buenos Aires R32,,yes
-64,61,61,,no,no,Térence Atmane,24,FRA,FRA,849,,+2,Dallas R32,,,yes
-65,22,22,,no,no,Botic van de Zandschulp,30,NED,NED,849,,+2,Rotterdam R32,Lost in Montpellier R32 Lost in Montpellier R32 Rotterdam R32,,yes
-66,27,27,,no,no,Miomir Kecmanović,26,SRB,SRB,820,,+3,Dallas R32,Lost in Montpellier R32 Lost in Montpellier R32 Dallas R32,,yes
-67,17,17,,no,no,Reilly Opelka,28,USA,USA,798,-4,-75,Dallas R32,,,yes
-68,NCH (71),68,71,yes,yes,Eliot Spizzirri,24,USA,USA,781,,+3,Dallas R32,,,yes
-69,NCH (72),69,72,yes,yes,Raphaël Collignon,24,BEL,BEL,777,,+3,Davis Cup (1 W / 0 L),,,yes
-70,6,6,,no,no,Hubert Hurkacz,28,POL,POL,775,-18,-190,Rotterdam R32,Lost in Montpellier R32 Lost in Montpellier R32 Rotterdam R32,,yes
-71,19,19,,no,no,Alejandro Tabilo,28,CHI,CHI,774,,+2,Davis Cup (1 W / 0 L),,,yes
-72,30,30,,no,no,Matteo Arnaldi,24,ITA,ITA,765,-7,-93,,,,no
-73,29,29,,no,no,Mariano Navone,24,ARG,ARG,760,,+2,Buenos Aires R32,,,yes
-74,64,64,,no,no,Ethan Quinn,21,USA,USA,758,-6,-62,Davis Cup (1 W / 0 L),,,yes
-75,58,58,,no,no,Arthur Cazaux,23,FRA,FRA,755,,+1,,,,no
-76,NCH (78),76,78,yes,yes,Filip Misolic,24,AUT,AUT,728,,+2,,,,no
-77,46,46,,no,no,Quentin Halys,29,FRA,FRA,725,,+2,Rotterdam R32,,,yes
-78,54,54,,no,no,Aleksandar Kovačević,27,USA,USA,721,+5,+12,Dallas R32,Lost in Montpellier R16 (R32 )Lost in Montpellier R16 (R32 ) Dallas R32,,yes
-79,71,71,,no,no,Juan Manuel Cerúndolo,24,ARG,ARG,719,+6,+21,Buenos Aires R32,Lost in Rosario SF Lost in Rosario SF Buenos Aires R32,,yes
-80,57,57,,no,no,Hamad Medjedović,22,SRB,SRB,717,,,Qual. Rotterdam R2,Lost in Montpellier R32 Lost in Montpellier R32 Qual. Rotterdam R2,,yes
-81,NCH (82),81,82,yes,yes,Emilio Nava,24,USA,USA,710,,+1,Buenos Aires R32,,,yes
-82,21,21,,no,no,Jan Lennard Struff,35,GER,GER,706,,+2,Davis Cup (1 W / 0 L),,,yes
-83,46,46,,no,no,James Duckworth,34,AUS,AUS,691,+3,-3,Davis Cup (0 W / 1 L) ( ),,,yes
-84,45,45,,no,no,Alexander Shevchenko,25,KAZ,KAZ,690,,+3,Davis Cup (0 W / 1 L),,,yes
-85,9,9,,no,no,Roberto Bautista Agut,37,ESP,ESP,685,+4,+15,Rotterdam R32,Lost in Montpellier R16 (R32 )Lost in Montpellier R16 (R32 ) Rotterdam R32,,yes
-86,71,71,,no,no,Jesper de Jong,25,NED,NED,673,,+2,Davis Cup (0 W / 1 L),,,yes
-87,49,49,,no,no,Jacob Fearnley,24,GBR,GBR,668,,+3,Davis Cup (1 W / 0 L),,,yes
-88,48,48,,no,no,Aleksandar Vukic,29,AUS,AUS,656,,+3,Rotterdam R32,,,yes
-89,17,17,,no,no,Cristian Garín,29,CHI,CHI,656,,+3,Buenos Aires R32,,,yes
-90,45,45,,no,no,Yannick Hanfmann,34,GER,GER,653,,+3,Davis Cup (1 W / 0 L),,,yes
-91,27,27,,no,no,Laslo Djere,30,SRB,SRB,651,,+3,Buenos Aires R32,,,yes
-92,90,90,,no,no,Thiago Agustín Tirante,24,ARG,ARG,647,,+3,Davis Cup (1 W / 0 L),,,yes
-93,74,74,,no,no,Adam Walton,26,AUS,AUS,643,-12,-69,Dallas R32,Lost in Brisbane 1 R32 Lost in Brisbane 1 R32 Dallas R32,,yes
-94,36,36,,no,no,Pedro Martínez,28,ESP,ESP,636,-17,-92,Buenos Aires R32,Lost in Montpellier R32 Lost in Montpellier R32 Buenos Aires R32,,yes
-95,78,78,,no,no,Vít Kopřiva,28,CZE,CZE,632,,+2,Buenos Aires R32,,,yes
-96,NCH (98),96,98,yes,yes,Ignacio Buse,21,PER,PER,623,,+2,Buenos Aires R32,,,yes
-97,67,67,,no,no,Luca Nardi,22,ITA,ITA,621,+9,+50,Pau R32,Lost in Montpellier QF Lost in Montpellier QF Pau R32,,yes
-98,86,86,,no,no,Dalibor Svrčina,23,CZE,CZE,618,-2,-25,Davis Cup (1 W / 0 L),,,yes
-99,58,58,,no,no,Hugo Gaston,25,FRA,FRA,616,,,Qual. Rotterdam R2,,,yes
-100,83,83,,no,no,Carlos Taberner,28,ESP,ESP,608,,+1,Advertisement,,,yes
-101,NCH (104),101,104,yes,yes,Adolfo Daniel Vallejo,21,PAR,PAR,580,,+3,Davis Cup (2 W / 0 L),,,yes
-102,95,95,,no,no,Tristan Schoolkate,24,AUS,AUS,570,+12,+36,Brisbane 1 F 601 601,,,yes
-103,95,95,,no,no,Alexander Blockx,20,BEL,BEL,570,+2,-9,Davis Cup (1 W / 0 L),,,yes
-104,103,103,,no,no,Román Andrés Burruchaga,24,ARG,ARG,568,+14,+56,Rosario F 629 629,,,yes
-105,10,10,,no,no,Pablo Carreño Busta,34,ESP,ESP,566,-5,-50,,Lost in Montpellier R16 Lost in Qual. Rotterdam R1,,no
-106,3,3,,no,no,Stan Wawrinka,40,SUI,SUI,562,+7,+25,Rotterdam R32,Lost in Montpellier R16 Lost in Montpellier R16 Rotterdam R32,,yes
-107,63,63,,no,no,Mattia Bellucci,24,ITA,ITA,553,-33,-215,Dallas R32,,,yes
-108,NCH (117),108,117,yes,yes,Francesco Maestrelli,23,ITA,ITA,553,+9,+41,Tenerife 1 F 584 584,,,yes
-109,107,107,,no,no,Patrick Kypson,26,USA,USA,552,,-2,Qual. Dallas R2,,,yes
-110,102,102,,no,no,Zachary Svajda,23,USA,USA,551,,-1,Qual. Dallas R2,,,yes
-111,26,26,,no,no,Jordan Thompson,31,AUS,AUS,548,,-1,,,,no
-112,37,37,,no,no,Mackenzie McDonald,30,USA,USA,547,,-1,,,,no
-113,62,62,,no,no,Rinky Hijikata,24,AUS,AUS,546,-10,-38,Davis Cup (0 W / 1 L),,,yes
-114,93,93,,no,no,Tomás Barrios Vera,28,CHI,CHI,546,,-2,Davis Cup (1 W / 0 L),,,yes
-115,92,92,,no,no,Shintaro Mochizuki,22,JPN,JPN,537,-7,-14,Davis Cup (0 W / 2 L),,,yes
-116,83,83,,no,no,Chun Hsin Tseng,24,TWN,TWN,536,+6,+32,,Lost in Rosario SF,,no
-117,7,7,,no,no,David Goffin,35,BEL,BEL,515,,-2,Pau R32,,,yes
-118,91,91,,no,no,Otto Virtanen,24,FIN,FIN,513,,-2,Davis Cup (1 W / 0 L),,,yes
-119,53,53,,no,no,Christopher O'Connell,31,AUS,AUS,511,,,Qual. Rotterdam R2,Lost in Montpellier R32 Lost in Montpellier R32 Qual. Rotterdam R2,,yes
-120,NCH (130),120,130,yes,yes,Titouan Droguet,24,FRA,FRA,510,+30,+107,Pau R32**Qual. Montpellier W**,Lost in Montpellier SF **Qual. Montpellier W** Lost in Montpellier SF Pau R32,,yes
-121,102,102,,no,no,Elmer Møller,22,DEN,DEN,509,,-1,Davis Cup (1 W / 1 L),,,yes
-122,115,115,,no,no,Dino Prižmić,20,CRO,CRO,507,,-1,Davis Cup (2 W / 0 L),,,yes
-123,23,23,,no,no,Dušan Lajović,35,SRB,SRB,503,,,Davis Cup (0 W / 1 L),,,yes
-124,CH,124,,yes,no,Rafael Jódar,19,ESP,ESP,498,,,Qual. Dallas R2,,,yes
-125,123,123,,no,no,Jan Choinski,29,GBR,GBR,498,,,,Lost in Montpellier R32 Lost in Qual. Rotterdam R1,,no
-126,63,63,,no,no,Luca Van Assche,21,FRA,FRA,493,,+1,Pau R32,,,yes
-127,126,126,,no,no,Vilius Gaubas,21,LTU,LTU,490,-1,-5,Davis Cup (2 W / 0 L),,,yes
-128,102,102,,no,no,Kyrian Jacquet,24,FRA,FRA,489,-26,-100,,Lost in Qual. Rotterdam R1,,no
-129,12,12,,no,no,Borna Ćorić,29,CRO,CRO,488,,+1,,,,no
-130,NCH (160),130,160,yes,yes,Martin Damm,22,USA,USA,486,+30,+113,Pau R32**Qual. Montpellier W**,Lost in Montpellier SF **Qual. Montpellier W** Lost in Montpellier SF Pau R32,,yes
-131,42,42,,no,no,Benjamin Bonzi,29,FRA,FRA,484,-3,-8,Pau R32,,,yes
-132,CH,132,,yes,no,Nicolai Budkov Kjaer,19,NOR,NOR,476,,+1,Davis Cup (0 W / 2 L),,,yes
-133,101,101,,no,no,Billy Harris,31,GBR,GBR,474,-4,-17,,Lost in Qual. Montpellier R1 Lost in Qual. Rotterdam R1,,no
-134,112,112,,no,no,Marco Trungelliti,36,ARG,ARG,472,,,Davis Cup (0 W / 1 L),,,yes
-135,37,37,,no,no,Sebastian Ofner,29,AUT,AUT,471,,,Davis Cup (0 W / 1 L),,,yes
-136,128,128,,no,no,Coleman Wong,21,HKG,HKG,466,,,Davis Cup (1 W / 0 L),,,yes
-137,16,16,,no,no,Nikoloz Basilashvili,33,GEO,GEO,464,,,,Lost in Montpellier R32 Lost in Qual. Rotterdam R1,,no
-138,CH,138,,yes,no,Chris Rodesch,24,LUX,LUX,456,,,Davis Cup (1 W / 0 L),,,yes
-139,99,99,,no,no,Brandon Holt,27,USA,USA,453,-7,-25,,,,no
-140,64,64,,no,no,Yunchaokete Bu,24,CHN,CHN,449,,-1,Davis Cup (0 W / 1 L),,,yes
-141,16,16,,no,no,Nicolás Jarry,30,CHI,CHI,441,,-1,,,,no
-142,135,135,,no,no,Sho Shimabukuro,28,JPN,JPN,441,,-1,Qual. Dallas R2,Lost in Cleveland R32 Lost in Cleveland R32 Qual. Dallas R2,,yes
-143,126,126,,no,no,Andrea Pellegrino,28,ITA,ITA,434,,+3,Qual. Buenos Aires R2,Lost in Rosario QF Lost in Rosario QF Qual. Buenos Aires R2,,yes
-144,134,134,,no,no,Moez Echargui,33,TUN,TUN,434,,-2,Davis Cup (0 W / 1 L),,,yes
-145,NCH (151),145,151,yes,yes,Dane Sweeny,24,AUS,AUS,433,+6,+36,Brisbane 1 F (R32 )464 464,,,yes
-146,54,54,,no,no,Yibing Wu,26,CHN,CHN,427,,-2,Davis Cup (1 W / 0 L),,,yes
-147,87,87,,no,no,Jaime Faria,22,POR,POR,425,,-2,,,,no
-148,113,113,,no,no,Liam Draxl,24,CAN,CAN,422,,-2,Davis Cup (2 W / 0 L) ( ),,,yes
-149,109,109,,no,no,Lukáš Klein,27,SVK,SVK,420,,-2,Pau R32,,,yes
-150,133,133,,no,no,Colton Smith,22,USA,USA,415,+11,+44,Cleveland F 446 446 Advertisement,,,yes
-151,148,148,,no,no,Michael Zheng,22,USA,USA,414,,-3,Dallas R32,,,yes
-152,CH,152,,yes,no,Arthur Fery,23,GBR,GBR,396,,,,,,no
-153,110,110,,no,no,Giulio Zeppieri,24,ITA,ITA,393,,,Pau R32,,,yes
-154,110,110,,no,no,Martin Landaluce,20,ESP,ESP,388,,,Pau R32,Lost in Qual. Montpellier R1 Lost in Qual. Montpellier R1 Pau R32,,yes
-155,NCH (168),155,168,yes,yes,Arthur Géa,21,FRA,FRA,387,+13,+34,,Lost in Montpellier QF,,no
-156,24,24,,no,no,Yoshihito Nishioka,30,JPN,JPN,386,-25,-100,Davis Cup (0 W / 1 L),,,yes
-157,NCH (163),157,163,yes,yes,Daniel Mérida,21,ESP,ESP,380,+26,+44,Tenerife 1 F 411 411,,,yes
-158,145,145,,no,no,Mark Lajal,22,EST,EST,378,,,Pau R32,,,yes
-159,89,89,,no,no,Francesco Passaro,25,ITA,ITA,376,-4,-8,Qual. Buenos Aires R2,,,yes
-160,139,139,,no,no,Ugo Blanchet,27,FRA,FRA,375,+14,+32,,Lost in Qual. Montpellier R2 Lost in Montpellier R16,,no
-161,125,125,,no,no,Matteo Gigante,24,ITA,ITA,367,,+2,,,,no
-162,6,6,,no,no,Gaël Monfils,39,FRA,FRA,360,,+3,,,,no
-163,60,60,,no,no,Stefano Travaglia,34,ITA,ITA,360,+15,+20,Tenerife 2 R32,Lost in Tenerife 1 SF Lost in Tenerife 1 SF Tenerife 2 R32,,yes
-164,159,159,,no,no,Luka Mikrut,21,CRO,CRO,359,,-2,Tenerife 2 R32,,,yes
-165,149,149,,no,no,Henrique Rocha,21,POR,POR,357,-8,-22,Davis Cup (1 W / 0 L),,,yes
-166,72,72,,no,no,Yosuke Watanuki,27,JPN,JPN,356,,,Davis Cup (1 W / 0 L),,,yes
-167,64,64,,no,no,Hugo Dellien,32,BOL,BOL,355,-18,-48,Qual. Buenos Aires R2,Lost in Rosario QF Lost in Rosario QF Qual. Buenos Aires R2,,yes
-168,103,103,,no,no,Harold Mayot,24,FRA,FRA,355,-12,-25,,,,no
-169,147,147,,no,no,Guy Den Ouden,23,NED,NED,355,-7,-16,Davis Cup (1 W / 0 L),,,yes
-170,167,167,,no,no,Daniil Glinka,25,EST,EST,355,,-3,Pau R32,,,yes
-171,36,36,,no,no,Pierre Hugues Herbert,34,FRA,FRA,351,,-2,,,,no
-172,87,87,,no,no,Jurij Rodionov,26,AUT,AUT,350,,-2,Davis Cup (2 W / 0 L),,,yes
-173,117,117,,no,no,Leandro Riedi,24,SUI,SUI,348,,-2,Davis Cup (1 W / 0 L),,,yes
-174,159,159,,no,no,Rei Sakamoto,19,JPN,JPN,344,+10,+12,Brisbane 2 R32,Lost in Brisbane 1 QF Lost in Brisbane 1 QF Brisbane 2 R32,,yes
-175,49,49,,no,no,Roberto Carballés Baena,32,ESP,ESP,343,,,Qual. Rotterdam R2,Lost in Qual. Montpellier R1 Lost in Qual. Montpellier R1 Qual. Rotterdam R2,,yes
-176,106,106,,no,no,Zsombor Piros,26,HUN,HUN,341,,,Davis Cup (0 W / 1 L),,,yes
-177,168,168,,no,no,Nicolás Mejía,25,COL,COL,341,,,Davis Cup (1 W / 0 L),,,yes
-178,125,125,,no,no,Alex Bolt,33,AUS,AUS,339,+10,+12,Brisbane 2 R32,Lost in Brisbane 1 QF Lost in Brisbane 1 QF Brisbane 2 R32,,yes
-179,156,156,,no,no,Vitaliy Sachko,28,UKR,UKR,336,,+3,,Lost in Qual. Rotterdam R1,,no
-180,170,170,,no,no,Alex Barrena,23,ARG,ARG,336,,-1,Buenos Aires R32,Lost in Rosario R32 Lost in Rosario R32 Buenos Aires R32,,yes
-181,173,173,,no,no,Jack Pinnington Jones,22,GBR,GBR,331,-8,-13,Qual. Dallas R2,,,yes
-182,125,125,,no,no,Juan Pablo Ficovich,29,ARG,ARG,331,-10,-16,,,,no
-183,153,153,,no,no,Jay Clarke,27,GBR,GBR,329,+3,-1,Chennai R32,,,yes
-184,36,36,,no,no,Roman Safiullin,28,RUS,RUS,328,,+3,,,,no
-185,105,105,,no,no,Elias Ymer,29,SWE,SWE,327,-26,-49,,Lost in Qual. Montpellier R1,,no
-186,31,31,,no,no,Lloyd Harris,28,RSA,RSA,324,-1,-7,Tenerife 2 R32,,,yes
-187,56,56,,no,no,Daniel Elahi Galán,29,COL,COL,323,,+4,Qual. Buenos Aires R2,,,yes
-188,95,95,,no,no,Hugo Grenier,29,FRA,FRA,323,+1,-1,Qual. Rotterdam R2,Lost in Qual. Montpellier R2 Lost in Qual. Montpellier R2 Qual. Rotterdam R2,,yes
-189,111,111,,no,no,Zdeněk Kolář,29,CZE,CZE,316,-8,-21,Pau R32,Lost in Koblenz R16 Lost in Koblenz R16 Pau R32,,yes
-190,21,21,,no,no,Daniel Evans,35,GBR,GBR,314,,+3,,,,no
-191,123,123,,no,no,Timofey Skatov,25,KAZ,KAZ,314,-1,-10,Pau R32,,,yes
-192,17,17,,no,no,Bernard Tomic,33,AUS,AUS,313,,+2,Qual. Dallas R2,Lost in Cleveland R32 Lost in Cleveland R32 Qual. Dallas R2,,yes
-193,99,99,,no,no,Nishesh Basavareddy,20,USA,USA,310,,+2,,,,no
-194,180,180,,no,no,Justin Engel,18,GER,GER,309,,+2,Davis Cup (1 W / 0 L),,,yes
-195,123,123,,no,no,Jérôme Kym,22,SUI,SUI,307,-3,-8,Davis Cup (1 W / 0 L),,,yes
-196,133,133,,no,no,Federico Agustin Gomez,29,ARG,ARG,306,,+1,Chennai R32,,,yes
-197,58,58,,no,no,Thiago Seyboth Wild,25,BRA,BRA,305,,+1,Qual. Buenos Aires R2,Lost in Rosario R32 Lost in Rosario R32 Qual. Buenos Aires R2,,yes
-198,184,184,,no,no,Clément Chidekh,24,FRA,FRA,304,+4,+6,Pau R32,Lost in Qual. Montpellier R2 Lost in Qual. Montpellier R2 Pau R32,,yes
-199,144,144,,no,no,August Holmgren,27,DEN,DEN,303,,,Davis Cup (0 W / 1 L),,,yes
-200,38,38,,no,no,Alex Molčan,28,SVK,SVK,302,,,Davis Cup (1 W / 0 L) Advertisement,,,yes
-201,194,194,,no,no,Dan Added,26,FRA,FRA,299,+2,+4,Pau R32,Lost in Koblenz QF Lost in Koblenz QF Pau R32,,yes
-202,175,175,,no,no,Álvaro Guillén Meza,23,ECU,ECU,298,,-1,Davis Cup (1 W / 0 L),,,yes
-203,63,63,,no,no,Jason Kubler,32,AUS,AUS,295,-24,-44,,,,no
-204,200,200,,no,no,George Loffhagen,24,GBR,GBR,295,+1,+4,Tenerife 2 R32,Lost in Tenerife 1 QF Lost in Tenerife 1 QF Tenerife 2 R32,,yes
-205,131,131,,no,no,Pablo Llamas Ruiz,23,ESP,ESP,292,,-1,Tenerife 2 R32,Lost in Tenerife 1 R16 Lost in Tenerife 1 R16 Tenerife 2 R32,,yes
-206,127,127,,no,no,Lorenzo Giustino,34,ITA,ITA,292,+3,+8,Tenerife 2 R32,Lost in Tenerife 1 QF Lost in Tenerife 1 QF Tenerife 2 R32,,yes
-207,187,187,,no,no,João Lucas Reis Da Silva,25,BRA,BRA,291,,,Davis Cup (0 W / 1 L),,,yes
-208,164,164,,no,no,James McCabe,22,AUS,AUS,289,,,,Lost in Brisbane 1 QF,,no
-209,61,61,,no,no,Thiago Monteiro,31,BRA,BRA,283,,+1,Qual. Buenos Aires R2,Lost in Rosario R32 Lost in Rosario R32 Qual. Buenos Aires R2,,yes
-210,201,201,,no,no,Gilles Arnaud Bailly,20,BEL,BEL,280,-4,-11,,,,no
+6,5,5,,no,no,Félix Auger-Aliassime,25,CAN,CAN,3950,,,Rotterdam R32 3950 4400,,,yes
+7,4,4,,no,no,Taylor Fritz,28,USA,USA,3925,,-15,Dallas R32 3940 4390,,,yes
+8,6,6,,no,no,Alex de Minaur,26,AUS,AUS,3835,,,Rotterdam R32 3835 4250,,,yes
+9,5,5,,no,no,Ben Shelton,23,USA,USA,3560,,,Dallas R32 3600 4050,,,yes
+10,CH,10,,yes,no,Alexander Bublik,28,KAZ,KAZ,3235,,,Rotterdam R32 3255 3705 Advertisement,,,yes
+11,1,1,,no,no,Daniil Medvedev,29,RUS,RUS,3010,,-50,,Lost in Rotterdam R32,,no
+12,4,4,,no,no,Jack Draper,24,GBR,GBR,2790,,,,,,no
+13,2,2,,no,no,Casper Ruud,27,NOR,NOR,2625,,,,,,no
+14,5,5,,no,no,Andrey Rublev,28,RUS,RUS,2510,,+1,,,,no
+15,NCH (16),15,16,yes,yes,Jakub Menšík,20,CZE,CZE,2425,,+1,,,,no
+16,14,14,,no,no,Alejandro Davidovich Fokina,26,ESP,ESP,2420,-2,-115,Dallas R16 2470 2870,,,yes
+17,4,4,,no,no,Holger Rune,22,DEN,DEN,2340,,,,,,no
+18,8,8,,no,no,Karen Khachanov,29,RUS,RUS,2320,,,Rotterdam R32 2360 2810,,,yes
+19,18,18,,no,no,Francisco Cerúndolo,27,ARG,ARG,2020,,-115,Buenos Aires R16 2020 2220,,,yes
+20,17,17,,no,no,Flavio Cobolli,23,ITA,ITA,1955,,,Dallas R32 1980 2430,,,yes
+21,16,16,,no,no,Jiří Lehečka,24,CZE,CZE,1860,,,,,,no
+22,CH,22,,yes,no,Luciano Darderi,23,ITA,ITA,1789,,,Buenos Aires R16 1789 1989,,,yes
+23,CH,23,,yes,no,Learner Tien,20,USA,USA,1710,,,Dallas R32 1735 2185,,,yes
+24,8,8,,no,no,Tommy Paul,28,USA,USA,1700,,,Dallas R32 1700 2150,,,yes
+25,CH,25,,yes,no,Valentin Vacherot,27,MON,MON,1605,,-6,,,,no
+26,8,8,,no,no,Cameron Norrie,30,GBR,GBR,1603,,,Rotterdam R16 1653 2053,,,yes
+27,21,21,,no,no,Tallon Griekspoor,29,NED,NED,1585,,,Rotterdam R32 1585 2035,,,yes
+28,10,10,,no,no,Frances Tiafoe,28,USA,USA,1550,+2,+40,Dallas R16 1600 2000,,,yes
+29,CH,29,,yes,no,Brandon Nakashima,24,USA,USA,1535,,,Dallas R16 1585 1985,,,yes
+30,26,26,,no,no,Arthur Rinderknech,30,FRA,FRA,1530,-2,-12,Rotterdam R32 1567 2017,,,yes
+31,20,20,,no,no,Tomáš Macháč,25,CZE,CZE,1510,,,,,,no
+32,3,3,,no,no,Stefanos Tsitsipas,27,GRE,GRE,1445,,,Rotterdam R32 1485 1935,,,yes
+33,18,18,,no,no,Sebastián Báez,25,ARG,ARG,1405,+1,-15,Buenos Aires R16 1445 1645,,,yes
+34,31,31,,no,no,Corentin Moutet,26,FRA,FRA,1383,,+1,,,,no
+35,33,33,,no,no,Jaume Munar,28,ESP,ESP,1225,+2,+40,Rotterdam R16 1275 1675,,,yes
+36,24,24,,no,no,João Fonseca,19,BRA,BRA,1190,-3,-250,Buenos Aires R16 1240 1440,,,yes
+37,33,33,,no,no,Gabriel Diallo,24,CAN,CAN,1175,,+1,Dallas R32 1200 1650,,,yes
+38,10,10,,no,no,Denis Shapovalov,26,CAN,CAN,1160,,+2,Dallas R32 1200 1650,,,yes
+39,13,13,,no,no,Ugo Humbert,27,FRA,FRA,1135,-3,-200,Rotterdam R16 (R32 )1185 1585,,,yes
+40,14,14,,no,no,Arthur Fils,21,FRA,FRA,1110,,+2,Rotterdam R32 1160 1610,,,yes
+41,3,3,,no,no,Grigor Dimitrov,34,BUL,BUL,1105,,+2,Dallas R32 1155 1605,,,yes
+42,30,30,,no,no,Alex Michelsen,21,USA,USA,1085,-1,-75,Dallas R32 1110 1560,,,yes
+43,39,39,,no,no,Zizou Bergs,26,BEL,BEL,1080,-4,-90,Rotterdam R32 1120 1570,,,yes
+44,30,30,,no,no,Nuno Borges,28,POR,POR,1070,,,,,,no
+45,33,33,,no,no,Jenson Brooksby,25,USA,USA,1042,,,Dallas R32 1092 1542,,,yes
+46,36,36,,no,no,Fábián Marozsán,26,HUN,HUN,1040,,,Rotterdam R32 1065 1515,,,yes
+47,43,43,,no,no,Camilo Ugo Carabelli,26,ARG,ARG,1028,,,Buenos Aires R32 1043 1268,,,yes
+48,38,38,,no,no,Alexandre Müller,29,FRA,FRA,1020,,,,,,no
+49,19,19,,no,no,Alexei Popyrin,26,AUS,AUS,1000,,+1,Rotterdam R32 1050 1500,,,yes
+50,17,17,,no,no,Adrian Mannarino,37,FRA,FRA,975,,+2,Dallas R32 1025 1475 Advertisement,,,yes
+51,44,44,,no,no,Daniel Altmaier,27,GER,GER,961,,-34,Buenos Aires R32 970 1195,,,yes
+52,15,15,,no,no,Sebastian Korda,25,USA,USA,960,,+1,Dallas R32 970 1420,,,yes
+53,27,27,,no,no,Tomás Martín Etcheverry,26,ARG,ARG,945,,+1,Buenos Aires R16 970 1170,,,yes
+54,NCH (55),54,55,yes,yes,Kamil Majchrzak,30,POL,POL,920,,+1,,,,no
+55,29,29,,no,no,Giovanni Mpetshi Perricard,22,FRA,FRA,905,,+1,Rotterdam R32 930 1380,,,yes
+56,CH,56,,yes,no,Valentin Royer,24,FRA,FRA,897,,+1,,Lost in Rotterdam R32,,no
+57,6,6,,no,no,Matteo Berrettini,29,ITA,ITA,895,,+1,Buenos Aires R32 910 1135,,,yes
+58,31,31,,no,no,Márton Fucsovics,34,HUN,HUN,891,-9,-118,Rotterdam R32 934 1384,,,yes
+59,3,3,,no,no,Marin Čilić,37,CRO,CRO,890,,+2,Dallas R32 940 1390,,,yes
+60,22,22,,no,no,Botic van de Zandschulp,30,NED,NED,886,+5,+37,Rotterdam R16 936 1336,,,yes
+61,23,23,,no,no,Damir Džumhur,33,BIH,BIH,877,,+1,,Lost in Buenos Aires R32,,no
+62,54,54,,no,no,Francisco Comesaña,25,ARG,ARG,869,,+1,Buenos Aires R32 869 1094,,,yes
+63,37,37,,no,no,Marcos Giron,32,USA,USA,855,-4,-40,Dallas R32 895 1345,,,yes
+64,21,21,,no,no,Lorenzo Sonego,30,ITA,ITA,850,-4,-40,,,,no
+65,61,61,,no,no,Térence Atmane,24,FRA,FRA,833,-1,-16,,Lost in Dallas R32,,no
+66,17,17,,no,no,Reilly Opelka,28,USA,USA,786,+1,-12,Dallas R32 823 1273,,,yes
+67,NCH (68),67,68,yes,yes,Eliot Spizzirri,24,USA,USA,781,,+1,Dallas R32 821 1271,,,yes
+68,NCH (69),68,69,yes,yes,Raphaël Collignon,24,BEL,BEL,777,,+1,Pau R32 785 902,,,yes
+69,6,6,,no,no,Hubert Hurkacz,28,POL,POL,775,,+1,Rotterdam R32 815 1265,,,yes
+70,19,19,,no,no,Alejandro Tabilo,28,CHI,CHI,774,,+1,Buenos Aires R32 783 1008,,,yes
+71,58,58,,no,no,Arthur Cazaux,23,FRA,FRA,755,,+4,,,,no
+72,64,64,,no,no,Ethan Quinn,21,USA,USA,736,+2,-22,Dallas R32 776 1226,,,yes
+73,29,29,,no,no,Mariano Navone,24,ARG,ARG,735,,-25,Buenos Aires R32 750 975,,,yes
+74,46,46,,no,no,Quentin Halys,29,FRA,FRA,725,,+3,Rotterdam R32 762 1212,,,yes
+75,54,54,,no,no,Aleksandar Kovačević,27,USA,USA,721,,+3,Dallas R32 746 1196,,,yes
+76,NCH (81),76,81,yes,yes,Emilio Nava,24,USA,USA,710,,+5,Buenos Aires R32 728 953,,,yes
+77,71,71,,no,no,Juan Manuel Cerúndolo,24,ARG,ARG,691,+3,-26,Buenos Aires R32 706 931,,,yes
+78,46,46,,no,no,James Duckworth,34,AUS,AUS,691,,+5,Dallas R32 731 1181,,,yes
+79,45,45,,no,no,Alexander Shevchenko,25,KAZ,KAZ,690,,+5,Pau R32 690 805,,,yes
+80,76,76,,no,no,Filip Misolic,24,AUT,AUT,687,-4,-41,,,,no
+81,9,9,,no,no,Roberto Bautista Agut,37,ESP,ESP,685,,+4,,Lost in Rotterdam R32,,no
+82,49,49,,no,no,Jacob Fearnley,24,GBR,GBR,668,,+5,,,,no
+83,30,30,,no,no,Matteo Arnaldi,24,ITA,ITA,665,-11,-100,,,,no
+84,71,71,,no,no,Jesper de Jong,25,NED,NED,665,+2,-8,Rotterdam R32 715 1165,,,yes
+85,21,21,,no,no,Jan Lennard Struff,35,GER,GER,656,-3,-50,Rotterdam R32 706 1156,,,yes
+86,48,48,,no,no,Aleksandar Vukic,29,AUS,AUS,656,,+2,Rotterdam R32 693 1143,,,yes
+87,17,17,,no,no,Cristian Garín,29,CHI,CHI,656,,+2,,,,no
+88,45,45,,no,no,Yannick Hanfmann,34,GER,GER,653,,+2,,,,no
+89,NCH (90),89,90,yes,yes,Thiago Agustín Tirante,24,ARG,ARG,647,,+3,,,,no
+90,74,74,,no,no,Adam Walton,26,AUS,AUS,643,,+3,Dallas R32 687 1137,,,yes
+91,78,78,,no,no,Vít Kopřiva,28,CZE,CZE,635,+4,+3,Buenos Aires R16 660 860,,,yes
+92,67,67,,no,no,Luca Nardi,22,ITA,ITA,629,+5,+8,Pau R16 637 746,,,yes
+93,NCH (96),93,96,yes,yes,Ignacio Buse,21,PER,PER,623,,+3,Buenos Aires R32 648 873,,,yes
+94,58,58,,no,no,Hugo Gaston,25,FRA,FRA,619,+5,+3,,Lost in Qual. Rotterdam R2,,no
+95,86,86,,no,no,Dalibor Svrčina,23,CZE,CZE,612,+3,-6,,,,no
+96,83,83,,no,no,Carlos Taberner,28,ESP,ESP,608,,+4,,,,no
+97,27,27,,no,no,Miomir Kecmanović,26,SRB,SRB,580,-31,-240,Dallas R32 620 1070,,,yes
+98,NCH (101),98,101,yes,yes,Adolfo Daniel Vallejo,21,PAR,PAR,580,,+3,,,,no
+99,53,53,,no,no,Christopher O'Connell,31,AUS,AUS,576,+20,+65,Rotterdam R16**Qual. Rotterdam W****Qual. Rotterdam W** Rotterdam R16 626 1026,,,yes
+100,95,95,,no,no,Alexander Blockx,20,BEL,BEL,570,,+3,Pau R32 571 688 Advertisement,,,yes
+101,57,57,,no,no,Hamad Medjedović,22,SRB,SRB,565,-22,-152,,Lost in Qual. Rotterdam R2,,no
+102,NCH (107),102,107,yes,yes,Patrick Kypson,26,USA,USA,565,+7,+13,,Lost in Qual. Dallas R2,,no
+103,102,102,,no,no,Zachary Svajda,23,USA,USA,563,+7,+12,**Qual. Dallas W**,Lost in Dallas R32,,yes
+104,103,103,,no,no,Román Andrés Burruchaga,24,ARG,ARG,563,,-5,Buenos Aires R32 580 805,,,yes
+105,3,3,,no,no,Stan Wawrinka,40,SUI,SUI,562,,+1,Rotterdam R32 612 1062,,,yes
+106,36,36,,no,no,Pedro Martínez,28,ESP,ESP,561,-12,-75,Buenos Aires R16 586 786,,,yes
+107,95,95,,no,no,Tristan Schoolkate,24,AUS,AUS,556,-5,-14,,,,no
+108,63,63,,no,no,Mattia Bellucci,24,ITA,ITA,553,,-1,,Lost in Dallas R32,,no
+109,108,108,,no,no,Francesco Maestrelli,23,ITA,ITA,553,,-1,Tenerife 2 R32 553 622,,,yes
+110,26,26,,no,no,Jordan Thompson,31,AUS,AUS,548,,+1,,,,no
+111,62,62,,no,no,Rinky Hijikata,24,AUS,AUS,546,,+2,,,,no
+112,93,93,,no,no,Tomás Barrios Vera,28,CHI,CHI,546,,+2,Buenos Aires R32 563 788,,,yes
+113,27,27,,no,no,Laslo Djere,30,SRB,SRB,538,-22,-113,Buenos Aires R32 563 788,,,yes
+114,83,83,,no,no,Chun Hsin Tseng,24,TWN,TWN,536,,+2,,,,no
+115,37,37,,no,no,Mackenzie McDonald,30,USA,USA,535,-3,-12,,,,no
+116,92,92,,no,no,Shintaro Mochizuki,22,JPN,JPN,525,-1,-12,,,,no
+117,NCH (124),117,124,yes,yes,Rafael Jódar,19,ESP,ESP,523,+7,+25,Dallas R32**Qual. Dallas W****Qual. Dallas W** Dallas R32 573 1023,,,yes
+118,7,7,,no,no,David Goffin,35,BEL,BEL,515,,-1,,Lost in Pau R32,,no
+119,NCH (120),119,120,yes,yes,Titouan Droguet,24,FRA,FRA,510,,+1,,,,no
+120,102,102,,no,no,Elmer Møller,22,DEN,DEN,509,,+1,,,,no
+121,115,115,,no,no,Dino Prižmić,20,CRO,CRO,507,,+1,,,,no
+122,10,10,,no,no,Pablo Carreño Busta,34,ESP,ESP,504,-17,-62,,Lost in Qual. Rotterdam R1,,no
+123,CH,123,,yes,no,Jan Choinski,29,GBR,GBR,498,,+2,,Lost in Qual. Rotterdam R1,,no
+124,NCH (126),124,126,yes,yes,Vilius Gaubas,21,LTU,LTU,490,,+3,,,,no
+125,12,12,,no,no,Borna Ćorić,29,CRO,CRO,488,,+4,,,,no
+126,91,91,,no,no,Otto Virtanen,24,FIN,FIN,488,-8,-25,,,,no
+127,NCH (130),127,130,yes,yes,Martin Damm,22,USA,USA,486,,+3,Pau R32 492 609,,,yes
+128,23,23,,no,no,Dušan Lajović,35,SRB,SRB,485,-5,-18,,,,no
+129,42,42,,no,no,Benjamin Bonzi,29,FRA,FRA,484,,+2,Pau R32 492 609,,,yes
+130,112,112,,no,no,Marco Trungelliti,36,ARG,ARG,472,,+4,,,,no
+131,37,37,,no,no,Sebastian Ofner,29,AUT,AUT,471,,+4,Tenerife 2 R32 477 546,,,yes
+132,CH,132,,yes,no,Nicolai Budkov Kjaer,19,NOR,NOR,470,,-6,,Lost in Rotterdam R32,,no
+133,NCH (135),133,135,yes,yes,Sho Shimabukuro,28,JPN,JPN,466,+11,+25,Dallas R32**Qual. Dallas W****Qual. Dallas W** Dallas R32 516 966,,,yes
+134,16,16,,no,no,Nikoloz Basilashvili,33,GEO,GEO,464,,+3,,Lost in Qual. Rotterdam R1,,no
+135,NCH (138),135,138,yes,yes,Dane Sweeny,24,AUS,AUS,464,,+3,Brisbane 2 R32 464 531,,,yes
+136,63,63,,no,no,Luca Van Assche,21,FRA,FRA,461,-10,-32,Pau R32 469 586,,,yes
+137,128,128,,no,no,Coleman Wong,21,HKG,HKG,458,-1,-8,,,,no
+138,126,126,,no,no,Andrea Pellegrino,28,ITA,ITA,447,+7,+13,**Qual. Buenos Aires W**,Lost in Buenos Aires R32,,yes
+139,133,133,,no,no,Colton Smith,22,USA,USA,446,,+3,,,,no
+140,138,138,,no,no,Chris Rodesch,24,LUX,LUX,446,-1,-10,,,,no
+141,16,16,,no,no,Nicolás Jarry,30,CHI,CHI,441,,+2,,,,no
+142,101,101,,no,no,Billy Harris,31,GBR,GBR,438,-9,-36,,Lost in Qual. Rotterdam R1,,no
+143,134,134,,no,no,Moez Echargui,33,TUN,TUN,434,,+3,Pau R32 441 558,,,yes
+144,54,54,,no,no,Yibing Wu,26,CHN,CHN,427,,+3,,,,no
+145,87,87,,no,no,Jaime Faria,22,POR,POR,425,,+3,,,,no
+146,64,64,,no,no,Yunchaokete Bu,24,CHN,CHN,424,-5,-25,,,,no
+147,113,113,,no,no,Liam Draxl,24,CAN,CAN,422,,+2,,,,no
+148,99,99,,no,no,Brandon Holt,27,USA,USA,418,-8,-35,,,,no
+149,148,148,,no,no,Michael Zheng,22,USA,USA,414,,+2,Dallas R32 464 914,,,yes
+150,102,102,,no,no,Kyrian Jacquet,24,FRA,FRA,414,-22,-75,,Lost in Qual. Rotterdam R1 Advertisement,,no
+151,109,109,,no,no,Lukáš Klein,27,SVK,SVK,413,-1,-7,Pau R32 421 538,,,yes
+152,CH,152,,yes,no,Daniel Mérida,21,ESP,ESP,411,,,Tenerife 2 R32 416 485,,,yes
+153,110,110,,no,no,Giulio Zeppieri,24,ITA,ITA,397,+1,+4,Pau R16 405 514,,,yes
+154,152,152,,no,no,Arthur Fery,23,GBR,GBR,396,,-1,,,,no
+155,64,64,,no,no,Hugo Dellien,32,BOL,BOL,393,+12,+38,Buenos Aires R16**Qual. Buenos Aires W****Qual. Buenos Aires W** Buenos Aires R16 418 618,,,yes
+156,110,110,,no,no,Martin Landaluce,20,ESP,ESP,388,,-1,Pau R32 390 507,,,yes
+157,145,145,,no,no,Mark Lajal,22,EST,EST,378,,+1,Pau R32 380 497,,,yes
+158,156,156,,no,no,Arthur Géa,21,FRA,FRA,377,-2,-10,,,,no
+159,89,89,,no,no,Francesco Passaro,25,ITA,ITA,376,,,Buenos Aires R32**Qual. Buenos Aires W****Qual. Buenos Aires W** Buenos Aires R32 401 626,,,yes
+160,139,139,,no,no,Ugo Blanchet,27,FRA,FRA,375,,,,,,no
+161,125,125,,no,no,Matteo Gigante,24,ITA,ITA,367,,,,,,no
+162,24,24,,no,no,Yoshihito Nishioka,30,JPN,JPN,361,-5,-25,,,,no
+163,6,6,,no,no,Gaël Monfils,39,FRA,FRA,360,,-1,,,,no
+164,60,60,,no,no,Stefano Travaglia,34,ITA,ITA,360,,-1,Tenerife 2 R32 364 433,,,yes
+165,159,159,,no,no,Luka Mikrut,21,CRO,CRO,359,,-1,Tenerife 2 R32 365 434,,,yes
+166,149,149,,no,no,Henrique Rocha,21,POR,POR,357,,-1,,,,no
+167,NCH (173),167,173,yes,yes,Jack Pinnington Jones,22,GBR,GBR,356,+14,+25,Dallas R32**Qual. Dallas W****Qual. Dallas W** Dallas R32 406 856,,,yes
+168,103,103,,no,no,Harold Mayot,24,FRA,FRA,355,,,,,,no
+169,147,147,,no,no,Guy Den Ouden,23,NED,NED,355,,,Rotterdam R32 405 855,,,yes
+170,167,167,,no,no,Daniil Glinka,25,EST,EST,355,,,Pau R32 359 476,,,yes
+171,49,49,,no,no,Roberto Carballés Baena,32,ESP,ESP,350,+4,+7,,Lost in Qual. Rotterdam R2,,no
+172,87,87,,no,no,Jurij Rodionov,26,AUT,AUT,350,,,,,,no
+173,72,72,,no,no,Yosuke Watanuki,27,JPN,JPN,349,-7,-7,,,,no
+174,117,117,,no,no,Leandro Riedi,24,SUI,SUI,348,,-1,Pau R32 356 473,,,yes
+175,125,125,,no,no,Alex Bolt,33,AUS,AUS,345,+3,+6,Brisbane 2 R16 351 414,,,yes
+176,159,159,,no,no,Rei Sakamoto,19,JPN,JPN,342,-2,-2,Brisbane 2 R32 348 417,,,yes
+177,106,106,,no,no,Zsombor Piros,26,HUN,HUN,341,,-1,,,,no
+178,168,168,,no,no,Nicolás Mejía,25,COL,COL,341,,-1,,,,no
+179,170,170,,no,no,Alex Barrena,23,ARG,ARG,336,,+1,,Lost in Buenos Aires R32,,no
+180,156,156,,no,no,Vitaliy Sachko,28,UKR,UKR,333,-1,-3,,Lost in Qual. Rotterdam R1,,no
+181,125,125,,no,no,Juan Pablo Ficovich,29,ARG,ARG,331,,+1,,,,no
+182,56,56,,no,no,Daniel Elahi Galán,29,COL,COL,330,+5,+7,,Lost in Qual. Buenos Aires R2,,no
+183,153,153,,no,no,Jay Clarke,27,GBR,GBR,329,,,Chennai R32 329 373,,,yes
+184,36,36,,no,no,Roman Safiullin,28,RUS,RUS,328,,,,,,no
+185,31,31,,no,no,Lloyd Harris,28,RSA,RSA,324,,+1,Tenerife 2 R32 330 399,,,yes
+186,17,17,,no,no,Bernard Tomic,33,AUS,AUS,319,+6,+6,,Lost in Qual. Dallas R2,,no
+187,105,105,,no,no,Elias Ymer,29,SWE,SWE,315,-2,-12,,,,no
+188,36,36,,no,no,Pierre Hugues Herbert,34,FRA,FRA,313,-17,-38,,,,no
+189,99,99,,no,no,Nishesh Basavareddy,20,USA,USA,310,,+4,,,,no
+190,95,95,,no,no,Hugo Grenier,29,FRA,FRA,310,-2,-13,Rotterdam R32**Qual. Rotterdam W****Qual. Rotterdam W** Rotterdam R32 360 810,,,yes
+191,180,180,,no,no,Justin Engel,18,GER,GER,309,,+3,Pau R32 316 433,,,yes
+192,123,123,,no,no,Timofey Skatov,25,KAZ,KAZ,308,-1,-6,Pau R32 316 433,,,yes
+193,123,123,,no,no,Jérôme Kym,22,SUI,SUI,307,,+2,,Lost in Pau R32,,no
+194,133,133,,no,no,Federico Agustin Gomez,29,ARG,ARG,306,,+2,Chennai R32 310 356,,,yes
+195,21,21,,no,no,Daniel Evans,35,GBR,GBR,306,-5,-8,,,,no
+196,111,111,,no,no,Zdeněk Kolář,29,CZE,CZE,304,-7,-12,Pau R32 308 425,,,yes
+197,144,144,,no,no,August Holmgren,27,DEN,DEN,303,,+2,,,,no
+198,38,38,,no,no,Alex Molčan,28,SVK,SVK,302,,+2,,,,no
+199,194,194,,no,no,Dan Added,26,FRA,FRA,299,,+2,Pau R32 301 418,,,yes
+200,131,131,,no,no,Pablo Llamas Ruiz,23,ESP,ESP,298,+5,+6,Tenerife 2 R16 304 367 Advertisement,,,yes
+201,175,175,,no,no,Álvaro Guillén Meza,23,ECU,ECU,298,,+1,,,,no
+202,63,63,,no,no,Jason Kubler,32,AUS,AUS,295,,+1,,,,no
+203,200,200,,no,no,George Loffhagen,24,GBR,GBR,295,,+1,Tenerife 2 R32 297 366,,,yes
+204,184,184,,no,no,Clément Chidekh,24,FRA,FRA,292,-6,-12,Pau R32 299 416,,,yes
+205,127,127,,no,no,Lorenzo Giustino,34,ITA,ITA,292,,+1,Tenerife 2 R32 294 363,,,yes
+206,187,187,,no,no,João Lucas Reis Da Silva,25,BRA,BRA,291,,+1,,,,no
+207,61,61,,no,no,Thiago Monteiro,31,BRA,BRA,290,+2,+7,,Lost in Qual. Buenos Aires R2,,no
+208,184,184,,no,no,Luka Pavlovic,25,FRA,FRA,286,+11,+24,**Qual. Rotterdam W**,Lost in Rotterdam R32,,yes
+209,164,164,,no,no,James McCabe,22,AUS,AUS,283,-1,-6,,,,no
+210,201,201,,no,no,Gilles Arnaud Bailly,20,BEL,BEL,280,,,,,,no
 211,208,208,,no,no,Juan Carlos Prado Angelo,20,BOL,BOL,279,,,,,,no
-212,CH,212,,yes,no,Remy Bertola,27,SUI,SUI,274,,,Qual. Pau R1,Lost in Cesenatico R32 Lost in Cesenatico R32 Qual. Pau R1,,yes
-213,198,198,,no,no,Clément Tabur,26,FRA,FRA,273,+2,+7,Qual. Pau R1,Lost in Qual. Montpellier R2 Lost in Qual. Montpellier R2 Qual. Pau R1,,yes
-214,CH,214,,yes,no,Ilia Simakin,22,RUS,RUS,273,,,Chennai R32,,,yes
-215,183,183,,no,no,Oliver Crawford,26,GBR,GBR,273,-2,-1,Chennai R32,,,yes
-216,106,106,,no,no,Tristan Boyer,24,USA,USA,268,+2,+6,Qual. Dallas R2,Lost in Cleveland R16 Lost in Cleveland R16 Qual. Dallas R2,,yes
-217,16,16,,no,no,Marco Cecchinato,33,ITA,ITA,266,,-1,Qual. Buenos Aires R2,Lost in Rosario R32 Lost in Rosario R32 Qual. Buenos Aires R2,,yes
-218,205,205,,no,no,Gonzalo Bueno,21,PER,PER,265,,-1,Davis Cup (0 W / 2 L),,,yes
-219,184,184,,no,no,Luka Pavlovic,25,FRA,FRA,262,,,Qual. Rotterdam R2,,,yes
-220,CH,220,,yes,no,Yi Zhou,20,CHN,CHN,261,,,Brisbane 2 R32,,,yes
-221,158,158,,no,no,Yu-hsiou Hsu,26,TWN,TWN,259,,-2,,,,no
-222,196,196,,no,no,Rodrigo Pacheco Mendez,20,MEX,MEX,256,,,Davis Cup (1 W / 0 L),,,yes
-223,157,157,,no,no,Lukas Neumayer,23,AUT,AUT,255,,,Davis Cup (1 W / 0 L),,,yes
-224,191,191,,no,no,Nerman Fatić,31,BIH,BIH,254,,,,,,no
-225,202,202,,no,no,Federico Cina,18,ITA,ITA,252,,,,,,no
-226,155,155,,no,no,Dmitry Popko,29,KAZ,KAZ,248,,+1,,,,no
-227,131,131,,no,no,Genaro Alberto Olivieri,27,ARG,ARG,247,+12,+6,,Lost in Rosario R16 Lost in Qual. Buenos Aires R1,,no
-228,157,157,,no,no,Santiago Taverna,26,ARG,ARG,246,,+2,,Lost in Rosario R32 Lost in Qual. Buenos Aires R1,,no
-229,NCH (231),229,231,yes,yes,Lautaro Midon,21,ARG,ARG,245,,+2,Qual. Buenos Aires R2,Lost in Rosario R32 Lost in Rosario R32 Qual. Buenos Aires R2,,yes
-230,47,47,,no,no,Marc-Andrea Hüsler,29,SUI,SUI,244,,+3,Tenerife 2 R32,Lost in Tenerife 1 R32 Lost in Tenerife 1 R32 Tenerife 2 R32,,yes
-231,123,123,,no,no,Ryan Peniston,30,GBR,GBR,244,,+3,Tenerife 2 R32,,,yes
-232,231,231,,no,no,Matej Dodig,20,CRO,CRO,244,,+3,Davis Cup (0 W / 1 L),,,yes
-233,177,177,,no,no,Andrea Collarini,34,ARG,ARG,244,-4,-2,,Lost in Rosario R32 Lost in Qual. Buenos Aires R1,,no
-234,117,117,,no,no,Felipe Meligeni Alves,27,BRA,BRA,243,-8,-8,,Lost in Rosario R32 Lost in Qual. Buenos Aires R1,,no
-235,NCH (237),235,237,yes,yes,Max Houkes,25,NED,NED,242,,+2,,,,no
-236,153,153,,no,no,Alexis Galarneau,26,CAN,CAN,237,-4,-7,Baton Rouge R32,,,yes
-237,72,72,,no,no,Borna Gojo,27,CRO,CRO,236,+39,+44,Cleveland F 267 267,,,yes
-238,236,236,,no,no,Marko Topo,22,GER,GER,234,,+2,,,,no
-239,212,212,,no,no,Johannus Monday,24,GBR,GBR,233,-3,-11,,Lost in Koblenz R32,,no
-240,147,147,,no,no,Kaichi Uchida,31,JPN,JPN,231,+7,+8,,Lost in Koblenz QF,,no
-241,NCH (242),241,242,yes,yes,Daniel Michalski,26,POL,POL,229,+1,-4,,,,no
-242,172,172,,no,no,Murphy Cassone,23,USA,USA,227,,+2,Qual. Dallas R2,Lost in Cleveland R32 Lost in Cleveland R32 Qual. Dallas R2,,yes
-243,235,235,,no,no,Joel Schwärzler,20,AUT,AUT,226,,-5,,,,no
-244,NCH (245),244,245,yes,yes,Toby Samuel,23,GBR,GBR,224,+1,-1,Tenerife 2 R32,Lost in Tenerife 1 R32 Lost in Tenerife 1 R32 Tenerife 2 R32,,yes
-245,135,135,,no,no,Mitchell Krueger,32,USA,USA,221,,+4,,Lost in Qual. Dallas R1,,no
-246,196,196,,no,no,Rio Noguchi,27,JPN,JPN,221,-5,-13,Chennai R32,,,yes
-247,97,97,,no,no,Kimmer Coppejans,32,BEL,BEL,220,+3,-1,,Lost in Tenerife 1 R32 Lost in Qual. Rotterdam R1,,no
-248,142,142,,no,no,Ivan Gakhov,29,RUS,RUS,219,+12,+11,,Lost in Cesenatico SF,,no
-249,NCH (269),249,269,yes,yes,Tom Gentzsch,22,GER,GER,218,+28,+26,Koblenz F,Lost in Nussloch SF Lost in Nussloch SF Koblenz F 243 243,,yes
-250,210,210,,no,no,Filip Jianu,24,ROU,ROU,218,,+2,Antalya 5 F Advertisement,,,yes
-251,201,201,,no,no,Edas Butvilas,21,LTU,LTU,217,-3,-6,Davis Cup (1 W / 0 L),,,yes
-252,181,181,,no,no,Daniel Rincon,23,ESP,ESP,213,+9,+6,Tenerife 2 R32,Lost in Tenerife 1 R16 Lost in Tenerife 1 R16 Tenerife 2 R32,,yes
-253,NCH (268),253,268,yes,yes,Pedro Boscardin Dias,23,BRA,BRA,213,+15,+12,,Lost in Rosario QF,,no
-254,232,232,,no,no,Andrés Andrade,27,ECU,ECU,211,,+3,Davis Cup (1 W / 0 L) ( ),,,yes
-255,168,168,,no,no,Frederico Ferreira Silva,30,POR,POR,210,,+3,Chennai R32,,,yes
-256,39,39,,no,no,Mikhail Kukushkin,38,KAZ,KAZ,208,-2,-7,Qual. Pau R1,Lost in Tenerife 1 R32 Lost in Tenerife 1 R32 Qual. Pau R1,,yes
-257,142,142,,no,no,Gustavo Heide,23,BRA,BRA,207,-4,-8,Davis Cup (1 W / 1 L) ( ),,,yes
-258,235,235,,no,no,Charles Broom,27,GBR,GBR,206,+38,+29,**Glasgow W**,Lost in Cesenatico R16,,yes
-259,47,47,,no,no,Juncheng Shang,21,CHN,CHN,205,,+3,,,,no
-260,108,108,,no,no,Franco Agamenone,32,ITA,ITA,204,,+4,,Lost in Rosario R32 Lost in Qual. Buenos Aires R1,,no
-261,240,240,,no,no,Patrick Zahraj,26,GER,GER,204,+2,-1,Qual. Pau R1,Lost in Koblenz R16 Lost in Koblenz R16 Qual. Pau R1,,yes
-262,197,197,,no,no,Pol Martín Tiffon,26,ESP,ESP,203,,+3,Tenerife 2 R32,Lost in Tenerife 1 SF Lost in Tenerife 1 SF Tenerife 2 R32,,yes
-263,193,193,,no,no,Sascha Gueymard Wayenburg,22,FRA,FRA,203,,+3,Tenerife 2 R32,,,yes
-264,159,159,,no,no,Dimitar Kuzmanov,32,BUL,BUL,203,,+3,,,,no
-265,198,198,,no,no,Fajing Sun,29,CHN,CHN,202,+8,+6,Brisbane 2 R32,Lost in Brisbane 1 R16 Lost in Brisbane 1 R16 Brisbane 2 R32,,yes
-266,134,134,,no,no,Geoffrey Blancaneaux,27,FRA,FRA,200,-10,-11,Qual. Pau R1,Lost in Qual. Montpellier R1 Lost in Qual. Montpellier R1 Qual. Pau R1,,yes
-267,78,78,,no,no,Nicolás Kicker,33,ARG,ARG,200,,+2,,Lost in Rosario R32 Lost in Qual. Buenos Aires R1,,no
-268,260,260,,no,no,Tiago Pereira,21,POR,POR,200,,+2,Tenerife 2 R32,,,yes
-269,237,237,,no,no,Saba Purtseladze,24,GEO,GEO,199,,+2,,,,no
-270,264,264,,no,no,Andres Martin,24,USA,USA,198,+4,+3,Baton Rouge R32,Lost in Cleveland R16 Lost in Cleveland R16 Baton Rouge R32,,yes
-271,NCH (272),271,272,yes,yes,Florent Bax,26,FRA,FRA,197,,+1,Chennai R32,,,yes
-272,143,143,,no,no,Benjamin Hassan,31,LBN,LBN,196,-13,-12,Davis Cup (1 W / 0 L),,,yes
-273,103,103,,no,no,Stefan Kozlov,28,USA,USA,196,+10,+12,Baton Rouge R32,Lost in Cleveland QF Lost in Cleveland QF Baton Rouge R32,,yes
-274,238,238,,no,no,Nikolás Sánchez Izquierdo,26,ESP,ESP,194,+5,+7,,Lost in Rosario R16,,no
-275,CH,275,,yes,no,Stefanos Sakellaridis,21,GRE,GRE,193,,,Davis Cup (0 W / 1 L),,,yes
-276,142,142,,no,no,Alejandro Moro Cañas,25,ESP,ESP,191,-30,-32,Tenerife 2 R32,Lost in Tenerife 1 QF Lost in Tenerife 1 QF Tenerife 2 R32,,yes
-277,168,168,,no,no,Murkel Dellien,28,BOL,BOL,186,-26,-34,,,,no
-278,60,60,,no,no,Juan Pablo Varillas,30,PER,PER,184,,+6,Davis Cup (0 W / 1 L),,,yes
-279,NCH (285),279,285,yes,yes,Andrej Nedić,21,BIH,BIH,184,,+6,Davis Cup (1 W / 1 L),,,yes
-280,278,278,,no,no,Darwin Blanch,18,USA,USA,184,-2,-3,Brisbane 2 R32,Lost in Brisbane 1 R32 Lost in Brisbane 1 R32 Brisbane 2 R32,,yes
-281,93,93,,no,no,Liam Broady,32,GBR,GBR,184,,+5,,,,no
-282,169,169,,no,no,Henri Squire,25,GER,GER,183,,+5,Qual. Pau R1,Lost in Koblenz R32 Lost in Koblenz R32 Qual. Pau R1,,yes
-283,212,212,,no,no,Michael Geerts,31,BEL,BEL,183,-3,-4,,Lost in Koblenz R32,,no
-284,4,4,,no,no,Kei Nishikori,36,JPN,JPN,182,,+5,,,,no
-285,47,47,,no,no,Facundo Díaz Acosta,25,ARG,ARG,182,+16,+8,Buenos Aires R32,Lost in Rosario R16 Lost in Rosario R16 Buenos Aires R32,,yes
-286,NCH (302),286,302,yes,yes,Petr Brunclík,19,CZE,CZE,181,+16,+7,,Lost in Cesenatico QF,,no
-287,NCH (288),287,288,yes,yes,Hynek Bartoň,21,CZE,CZE,180,+3,-2,Qual. Tenerife 2 R1,,,yes
-288,NCH (289),288,289,yes,yes,Fabrizio Andaloro,25,ITA,ITA,180,,+3,,,,no
-289,190,190,,no,no,Matheus Pucinelli De Almeida,24,BRA,BRA,180,,+3,Davis Cup (0 W / 1 L) ( ),,,yes
-290,260,260,,no,no,Robin Bertrand,22,FRA,FRA,180,,+3,Qual. Pau R1,Lost in Qual. Montpellier R1 Lost in Qual. Montpellier R1 Qual. Pau R1,,yes
-291,NCH (294),291,294,yes,yes,Lilian Marmousez,24,FRA,FRA,179,,+3,,,,no
-292,171,171,,no,no,Beibit Zhukayev,25,KAZ,KAZ,178,,+3,,,,no
-293,68,68,,no,no,Sumit Nagal,28,IND,IND,178,-12,-8,Davis Cup (0 W / 1 L),,,yes
-294,261,261,,no,no,Alex Rybakov,29,USA,USA,177,,+3,,Lost in Cleveland R32 Lost in Qual. Dallas R1,,no
-295,116,116,,no,no,Calvin Hémery,31,FRA,FRA,177,-40,-35,Qual. Pau R1,Lost in Cesenatico R32 Lost in Cesenatico R32 Qual. Pau R1,,yes
-296,254,254,,no,no,Mats Rosenkranz,27,GER,GER,177,,+2,,Lost in Koblenz R32,,no
-297,78,78,,no,no,Yasutaka Uchiyama,33,JPN,JPN,176,+29,+22,Brisbane 2 R32,Lost in Brisbane 1 SF Lost in Brisbane 1 SF Brisbane 2 R32,,yes
-298,80,80,,no,no,Norbert Gombos,35,SVK,SVK,175,,+2,Davis Cup (0 W / 1 L),,,yes
-299,243,243,,no,no,Marat Sharipov,23,RUS,RUS,174,,+4,Qual. Pau R1,,,yes
-300,81,81,,no,no,Michael Mmoh,28,USA,USA,172,-62,-69,Tenerife 2 R32,Lost in Tenerife 1 R16 Lost in Tenerife 1 R16 Tenerife 2 R32,,yes
-301,NCH (304),301,304,yes,yes,Maximus Jones,21,THA,THA,172,,+3,,,,no
-302,299,299,,no,no,Sandro Kopp,25,AUT,AUT,171,,+3,,Lost in Cesenatico R32,,no
-303,279,279,,no,no,Garrett Johns,25,USA,USA,171,-15,-12,Baton Rouge R32,Lost in Cleveland R32,,yes
-304,NCH (309),304,309,yes,yes,Harry Wendelken,24,GBR,GBR,169,+5,+2,Sheffield F,Lost in Glasgow QF,,yes
-305,267,267,,no,no,Petr Bar Biryukov,23,RUS,RUS,169,,+2,Chennai R32,,,yes
-306,298,298,,no,no,Jacopo Berrettini,27,ITA,ITA,168,-7,-7,Tenerife 2 R32,Lost in Tenerife 1 R32,,yes
-307,NCH (310),307,310,yes,yes,Gianluca Cadenasso,21,ITA,ITA,166,+3,+1,,Lost in Antalya 4 QF,,no
-308,NCH (338),308,338,yes,yes,Keegan Smith,27,USA,USA,165,+30,+20,Baton Rouge R32,Lost in Cleveland SF,,yes
-309,144,144,,no,no,Akira Santillan,28,JPN,JPN,165,,+2,Antalya 5 F**Qual. Sharm El Sheikh W**,Lost in Sharm El Sheikh R16,,yes
-310,181,181,,no,no,Abdullah Shelbayh,22,JOR,JOR,164,-4,-6,Qual. Tenerife 2 R1,Lost in Tenerife 1 R16,,yes
-311,222,222,,no,no,Viktor Durasovic,28,NOR,NOR,164,,+2,Davis Cup (0 W / 1 L),,,yes
-312,NCH (314),312,314,yes,yes,Diego Dedura,17,GER,GER,164,,+2,,Lost in Koblenz R32,,no
-313,263,263,,no,no,Eliakim Coulibaly,23,CIV,CIV,163,,+2,,Lost in Monastir 6 R16,,no
-314,NCH (316),314,316,yes,yes,Gabi Adrian Boitan,26,ROU,ROU,161,,+2,,,,no
-315,NCH (317),315,317,yes,yes,Miguel Damas,26,ESP,ESP,161,+6,+3,Qual. Tenerife 2 R1,Lost in Tenerife 1 R16,,yes
-316,307,307,,no,no,Philip Henning,25,RSA,RSA,160,,+1,,,,no
-317,192,192,,no,no,Gauthier Onclin,24,BEL,BEL,160,,+1,,Lost in Tenerife 1 R32,,no
-318,249,249,,no,no,Mathys Erhard,24,FRA,FRA,159,,+1,Qual. Tenerife 2 R1,Lost in Tenerife 1 R32,,yes
-319,71,71,,no,no,Cedrik Marcel Stebe,35,GER,GER,158,,+1,Baton Rouge R32,Lost in Cleveland R32,,yes
-320,289,289,,no,no,Renta Tokuda,27,JPN,JPN,157,,+2,,Lost in Brisbane 1 R32,,no
-321,240,240,,no,no,Matías Soto,26,CHI,CHI,157,,+2,Davis Cup (1 W / 0 L),,,yes
-322,49,49,,no,no,Federico Coria,33,ARG,ARG,156,-10,-8,Buenos Aires R32,,,yes
-323,NCH (324),323,324,yes,yes,Maxim Mrva,18,CZE,CZE,156,,+1,,,,no
-324,207,207,,no,no,Daniel Dutra da Silva,37,BRA,BRA,155,,+1,,Lost in Qual. Dallas R1,,no
-325,170,170,,no,no,James Trotter,26,JPN,JPN,153,,+2,Qual. Pau R1,,,yes
-326,302,302,,no,no,Felix Gill,23,GBR,GBR,152,,+2,Chennai R32,,,yes
-327,105,105,,no,no,Duje Ajduković,25,CRO,CRO,151,,+2,Chennai R32,,,yes
-328,NCH (330),328,330,yes,yes,Sergey Fomin,25,UZB,UZB,151,,+2,Qual. Tenerife 2 R1,Lost in Tenerife 1 R32,,yes
-329,NCH (331),329,331,yes,yes,Oliver Tarvet,22,GBR,GBR,150,,+2,,,,no
-330,278,278,,no,no,Tyler Zink,25,USA,USA,150,,+2,Baton Rouge R32,Lost in Cleveland R32,,yes
-331,93,93,,no,no,Andrej Martin,36,SVK,SVK,149,,+2,,,,no
-332,170,170,,no,no,Mattéo Martineau,27,FRA,FRA,149,,+2,,Lost in Qual. Montpellier R1,,no
-333,252,252,,no,no,Tom Paris,23,FRA,FRA,148,-25,-19,,,,no
-334,127,127,,no,no,Facundo Mena,33,ARG,ARG,145,+20,+8,,Lost in Rosario R16,,no
-335,314,314,,no,no,Martin Krumich,23,CZE,CZE,145,,+4,Qual. Pau R1,Lost in Koblenz R16,,yes
-336,304,304,,no,no,Giles Hussey,28,GBR,GBR,144,+15,+6,Qual. Tenerife 2 R1,Lost in Glasgow SF Lost in Sheffield R32,,yes
-337,159,159,,no,no,Hady Habib,27,LBN,LBN,143,,+4,Davis Cup (0 W / 1 L),,,yes
-338,127,127,,no,no,Jelle Sels,30,NED,NED,143,,+4,,,,no
-339,52,52,,no,no,Soonwoo Kwon,28,KOR,KOR,142,,+4,Davis Cup (1 W / 0 L),,,yes
-340,336,336,,no,no,Franco Roncadelli,26,URU,URU,142,,+4,,,,no
-341,336,336,,no,no,Hamish Stewart,26,GBR,GBR,142,,+4,,,,no
-342,121,121,,no,no,Raúl Brancaccio,28,ITA,ITA,142,+59,+24,Cesenatico F 167 167,,,yes
-343,NCH (348),343,348,yes,yes,Sean Cuenin,21,FRA,FRA,141,,+5,,,,no
-344,260,260,,no,no,Carlos Sánchez Jover,25,ESP,ESP,141,,+6,,Lost in Koblenz R32,,no
-345,226,226,,no,no,Juan Bautista Torres,23,ARG,ARG,141,+8,+3,,Lost in Rosario R16 Lost in Qual. Buenos Aires R1,,no
-346,336,336,,no,no,Antoine Ghibaudo,21,FRA,FRA,140,+10,+6,Baton Rouge R32,Lost in Cleveland R16,,yes
-347,NCH (355),347,355,yes,yes,Florian Broska,28,GER,GER,139,+18,+8,,Lost in Koblenz QF,,no
-348,336,336,,no,no,Guido Iván Justo,28,ARG,ARG,139,-12,-8,**Qual. Rosario W**,Lost in Rosario R32,,yes
-349,258,258,,no,no,Igor Marcondes,28,BRA,BRA,138,+8,+4,**Qual. Rosario W**,Lost in Rosario R32,,yes
-350,211,211,,no,no,Javier Barranco Cosano,27,ESP,ESP,138,+11,+6,Tenerife 2 R32,Lost in Tenerife 1 QF,,yes
-351,NCH (352),351,352,yes,yes,Sanhui Shin,28,KOR,KOR,138,,+1,,,,no
-352,341,341,,no,no,Gabriele Piraino,22,ITA,ITA,137,+10,+5,Qual. Tenerife 2 R1,Lost in Tenerife 1 R16,,yes
-353,268,268,,no,no,Gonzalo Villanueva,31,ARG,ARG,137,,+2,,Lost in Rosario R32,,no
-354,180,180,,no,no,Paul Jubb,26,GBR,GBR,134,+12,+3,Sheffield F,Lost in Glasgow QF,,yes
-355,315,315,,no,no,Alfredo Perez,28,USA,USA,134,-20,-13,,,,no
-356,7,7,,no,no,Richard Gasquet,39,FRA,FRA,133,,+2,,,,no
-357,263,263,,no,no,Christoph Negritu,31,GER,GER,133,+27,+10,,Lost in Koblenz SF,,no
-358,NCH (386),358,386,yes,yes,Juan Manuel La Serna,22,ARG,ARG,132,+28,+10,**Qual. Rosario W**,Lost in Rosario R16 Lost in Qual. Buenos Aires R1,,yes
-359,339,339,,no,no,Andre Ilagan,25,USA,USA,132,-13,-10,Baton Rouge R32,Lost in Cleveland R32,,yes
-360,153,153,,no,no,Denis Yevseyev,32,KAZ,KAZ,132,,+3,Chennai R32,,,yes
-361,NCH (364),361,364,yes,yes,Trevor Svajda,19,USA,USA,131,,+3,Dallas R32,,,yes
-362,217,217,,no,no,Jonáš Forejtek,24,CZE,CZE,131,+9,+4,Qual. Pau R1,Lost in Koblenz R16,,yes
-363,31,31,,no,no,Zhizhen Zhang,29,CHN,CHN,130,,+4,Davis Cup (1 W / 0 L),,,yes
-364,NCH (369),364,369,yes,yes,Max Basing,23,GBR,GBR,128,,+5,,Lost in Sheffield R16,,no
-365,NCH (370),365,370,yes,yes,Viacheslav Bielinskyi,22,UKR,UKR,128,,+5,,,,no
-366,319,319,,no,no,Christian Langmo,29,USA,USA,128,-26,-16,Baton Rouge R32,Lost in Cleveland R16,,yes
-367,180,180,,no,no,Yuta Shimizu,26,JPN,JPN,127,-7,-6,,Lost in Brisbane 1 R16,,no
-368,158,158,,no,no,Tung Lin Wu,27,TWN,TWN,127,,+4,Davis Cup (1 W / 0 L),,,yes
-369,88,88,,no,no,Dominic Stricker,23,SUI,SUI,126,+11,+3,,Lost in Nussloch QF,,no
-370,185,185,,no,no,Aziz Dougaz,28,TUN,TUN,126,,+3,,,,no
-371,288,288,,no,no,Cezar Crețu,24,ROU,ROU,126,,+3,,,,no
-372,NCH (375),372,375,yes,yes,Mert Alkaya,25,TUR,TUR,126,,+3,Davis Cup (1 W / 0 L),,,yes
-373,NCH (378),373,378,yes,yes,Max Alcalá Gurri,23,ESP,ESP,126,+5,+2,,Lost in Antalya 4 SF,,no
-374,345,345,,no,no,Iñaki Montes De La Torre,23,ESP,ESP,125,-6,-4,,,,no
-375,58,58,,no,no,Taro Daniel,33,JPN,JPN,124,+25,+6,Brisbane 2 R32,Lost in Brisbane 1 R16,,yes
-376,271,271,,no,no,Pedro Sakamoto,32,BRA,BRA,124,,,,Lost in Qual. Dallas R1,,no
-377,292,292,,no,no,David Jordá Sanchis,31,ESP,ESP,124,,,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-378,128,128,,no,no,Andrea Vavassori,30,ITA,ITA,123,-96,-62,**Qual. Montpellier W**,Lost in Montpellier R32,,yes
-379,NCH (401),379,401,yes,yes,Raphaël Pérot,24,FRA,FRA,123,+25,+6,Baton Rouge R32,Lost in Cleveland R16,,yes
-380,219,219,,no,no,Nicolás Álvarez Varona,24,ESP,ESP,123,-21,-10,,,,no
-381,116,116,,no,no,Marc Polmans,28,AUS,AUS,123,,+1,Brisbane 2 R32,,,yes
-382,298,298,,no,no,Aidan McHugh,25,GBR,GBR,123,,+1,,,,no
-383,NCH (399),383,399,yes,yes,Dan Martin,26,CAN,CAN,122,+16,+4,,Lost in Cleveland R16,,no
-384,342,342,,no,no,Luciano Emanuel Ambrogi,22,ARG,ARG,122,+40,+11,**Qual. Rosario W**,Lost in Rosario R16,,yes
-385,57,57,,no,no,Gastão Elias,35,POR,POR,121,-4,-2,,,,no
-386,NCH (387),386,387,yes,yes,Ioannis Xilas,24,GRE,GRE,121,,+1,Chennai R32,,,yes
-387,55,55,,no,no,Facundo Bagnis,35,ARG,ARG,120,,+1,,,,no
-388,29,29,,no,no,Christopher Eubanks,29,USA,USA,120,-51,-25,,,,no
-389,289,289,,no,no,Adria Soriano Barrera,26,COL,COL,120,,+1,Davis Cup (0 W / 1 L),,,yes
-390,389,389,,no,no,Carlo Alberto Caniato,20,ITA,ITA,120,,+1,,Lost in Cesenatico R32,,no
-391,257,257,,no,no,Mili Poljičak,21,CRO,CRO,120,,+2,,Lost in Sharm El Sheikh 2 R16,,no
-392,19,19,,no,no,Hyeon Chung,29,KOR,KOR,120,,,Davis Cup (0 W / 1 L),,,yes
-393,183,183,,no,no,Federico Arnaboldi,25,ITA,ITA,120,,+1,,Lost in Cesenatico R32,,no
-394,346,346,,no,no,Kasidit Samrej,25,THA,THA,120,,+1,,,,no
-395,221,221,,no,no,Hernán Casanova,32,ARG,ARG,119,+18,+5,**Qual. Rosario W**,Lost in Rosario R32,,yes
-396,177,177,,no,no,Omar Jasika,28,AUS,AUS,119,-47,-22,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-397,270,270,,no,no,Corentin Denolly,28,FRA,FRA,119,,,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-398,17,17,,no,no,Albert Ramos Viñolas,38,ESP,ESP,118,,,,,,no
-399,385,385,,no,no,Aryan Shah,20,IND,IND,118,,+3,,Lost in Cleveland R32,,no
-400,50,50,,no,no,Pavel Kotov,27,RUS,RUS,117,+70,+25,Koblenz F 142 142,,,yes
-401,189,189,,no,no,Arthur Bouquier,25,FRA,FRA,117,-173,-130,Pau R32,,,yes
-402,331,331,,no,no,Andrea Picchione,27,ITA,ITA,117,-6,-2,,,,no
-403,369,369,,no,no,Daniel Milavsky,24,USA,USA,117,+38,+11,Baton Rouge R32,Lost in Cleveland QF,,yes
-404,360,360,,no,no,Hayato Matsuoka,21,JPN,JPN,117,-1,-1,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-405,229,229,,no,no,Marek Gengel,30,CZE,CZE,117,-20,-6,,,,no
-406,347,347,,no,no,Samir Banerjee,22,USA,USA,116,,,,,,no
-407,237,237,,no,no,Alastair Gray,27,GBR,GBR,116,-60,-25,Chennai R32,,,yes
-408,136,136,,no,no,Alexey Vatutin,33,RUS,RUS,116,,-1,,,,no
-409,402,402,,no,no,Olle Wallin,24,SWE,SWE,116,,-1,Davis Cup (0 W / 1 L),Lost in Glasgow R32,,yes
-410,409,409,,no,no,Michele Ribecai,23,ITA,ITA,116,,-1,Qual. Pau R1,,,yes
-411,334,334,,no,no,Kilian Feldbausch,20,SUI,SUI,115,+12,+4,,Lost in Cesenatico R16,,no
-412,409,409,,no,no,Alex Hernandez,26,MEX,MEX,115,,-2,,,,no
-413,244,244,,no,no,Lucas Poullain,30,FRA,FRA,115,-34,-9,Qual. Pau R1,,,yes
-414,160,160,,no,no,Li Tu,29,AUS,AUS,114,-25,-6,Brisbane 2 R32,Lost in Brisbane 1 R16,,yes
-415,150,150,,no,no,Oriol Roca Batalla,32,ESP,ESP,114,,-4,,Lost in Antalya 4 R32,,no
-416,387,387,,no,no,Mariano Kestelboim,30,ARG,ARG,114,,-4,,,,no
-417,412,412,,no,no,Alex Martinez,24,ESP,ESP,114,,-3,Qual. Tenerife 2 R1,Lost in Cesenatico R32,,yes
-418,168,168,,no,no,Maks Kaśnikowski,22,POL,POL,113,,-2,Davis Cup (1 W / 0 L),,,yes
-419,319,319,,no,no,Patrick Maloney,25,USA,USA,113,,-1,,,,no
-420,280,280,,no,no,Jie Cui,28,CHN,CHN,113,,-1,,,,no
-421,NCH (433),421,433,yes,yes,Buvaysar Gadamauri,25,BEL,BEL,113,+12,+5,**Qual. Koblenz W**,Lost in Koblenz R16,,yes
-422,307,307,,no,no,Oleg Prihodko,28,UKR,UKR,112,+50,+20,Cesenatico F,Lost in Nussloch SF 137 137,,yes
-423,39,39,,no,no,Radu Albot,36,MDA,MDA,112,,-3,,Lost in Cesenatico R32,,no
-424,384,384,,no,no,Neil Oberleitner,26,AUT,AUT,112,,-3,,,,no
-425,346,346,,no,no,Stuart Parker,28,GBR,GBR,111,,-3,,,,no
-426,NCH (428),426,428,yes,yes,Cyril Vandermeersch,26,FRA,FRA,111,+13,+4,Qual. Pau R1,Lost in Cesenatico R16,,yes
-427,357,357,,no,no,Luca Potenza,25,ITA,ITA,111,-12,-3,,,,no
-428,415,415,,no,no,Lorenzo Carboni,19,ITA,ITA,110,,-2,Chennai R32,,,yes
-429,299,299,,no,no,Vadym Ursu,29,UKR,UKR,110,,-2,,Lost in Koblenz R32,,no
-430,303,303,,no,no,Arthur Weber,33,FRA,FRA,109,-13,-4,Brisbane 2 R32,,,yes
-431,321,321,,no,no,Robert Strombachs,26,LAT,LAT,109,,-2,Baton Rouge R32,,,yes
-432,358,358,,no,no,Svyatoslav Gulin,23,RUS,RUS,109,+11,+4,,Lost in Cesenatico R16,,no
-433,176,176,,no,no,Daniel Masur,31,GER,GER,108,+68,+25,**Nussloch W**,Lost in Koblenz R32,,yes
-434,388,388,,no,no,Karan Singh,22,IND,IND,108,,-2,Chennai R32,,,yes
-435,211,211,,no,no,Roberto Cid Subervi,32,DOM,DOM,107,,-1,,,,no
-436,121,121,,no,no,Stefano Napolitano,30,ITA,ITA,107,,-1,,Lost in Cesenatico R32,,no
-437,325,325,,no,no,Yankı Erel,25,TUR,TUR,107,,-1,Davis Cup (1 W / 0 L),,,yes
-438,400,400,,no,no,Luca Castelnuovo,29,SUI,SUI,107,,-1,Chennai R32,,,yes
-439,135,135,,no,no,Antoine Escoffier,33,FRA,FRA,107,,-1,,,,no
-440,430,430,,no,no,Erik Arutiunian,21,BLR,BLR,107,-9,-1,Baton Rouge R32,,,yes
-441,146,146,,no,no,Rudolf Molleker,25,GER,GER,107,+1,+1,,Lost in Koblenz R16,,no
-442,421,421,,no,no,Hikaru Shiraishi,25,JPN,JPN,107,-12,-2,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-443,383,383,,no,no,Lukáš Pokorný,23,SVK,SVK,106,-38,-11,,,,no
-444,NCH (449),444,449,yes,yes,Juan Estevez,20,ARG,ARG,106,+5,+4,**Qual. Rosario W**,Lost in Rosario R32,,yes
-445,382,382,,no,no,Federico Bondioli,20,ITA,ITA,106,-5,-1,Qual. Tenerife 2 R1,Lost in Cesenatico R32,,yes
-446,287,287,,no,no,Marvin Möller,27,GER,GER,105,,-2,,Lost in Koblenz R32,,no
-447,433,433,,no,no,Dali Blanch,22,USA,USA,104,+5,+3,Qual. Tenerife 2 R1**Qual. Tenerife 1 W**,Lost in Tenerife 1 R32,,yes
-448,420,420,,no,no,Stefan Palosi,26,ROU,ROU,104,,-3,Davis Cup (0 W / 1 L),,,yes
-449,NCH (486),449,486,yes,yes,Lui Maxted,22,GBR,GBR,103,+37,+16,,Lost in Glasgow F Lost in Sheffield R16,,no
-450,416,416,,no,no,Étienne Donnet,24,FRA,FRA,102,,-4,,,,no
-451,316,316,,no,no,Eduardo Ribeiro,27,BRA,BRA,102,,-4,,,,no
-452,356,356,,no,no,Miloš Karol,23,SVK,SVK,102,,-4,,,,no
-453,377,377,,no,no,Max Wiskandt,24,GER,GER,102,+6,+5,,Lost in Nussloch R16 Lost in Koblenz R16,,no
-454,161,161,,no,no,Alibek Kachmazov,23,RUS,RUS,101,-26,-8,Qual. Tenerife 2 R1,Lost in Tenerife 1 R32,,yes
-455,438,438,,no,no,Andrew Fenty,25,USA,USA,101,,-4,,Lost in Palm Coast QF,,no
-456,455,455,,no,no,Thomas Faurel,20,FRA,FRA,101,-1,+3,**Qual. Tenerife 1 W**,Lost in Tenerife 1 R32,,yes
-457,455,455,,no,no,James Story,24,GBR,GBR,101,+4,+5,,Lost in Glasgow SF,,no
-458,271,271,,no,no,Blake Ellis,27,AUS,AUS,99,+60,+22,Brisbane 2 R32,Lost in Brisbane 1 SF,,yes
-459,289,289,,no,no,Mika Brunold,21,SUI,SUI,98,,-6,Davis Cup (1 W / 0 L),,,yes
-460,NCH (477),460,477,yes,yes,Pietro Fellin,24,ITA,ITA,98,+17,+7,,Lost in Cesenatico QF,,no
-461,457,457,,no,no,Jack Logé,21,BEL,BEL,98,,-4,,,,no
-462,339,339,,no,no,Andrey Chepelev,27,RUS,RUS,98,,-4,,Lost in Antalya 5 R32,,no
-463,387,387,,no,no,Gianmarco Ferrari,25,ITA,ITA,97,-7,-1,,Lost in Cesenatico R32,,no
-464,368,368,,no,no,Alexandr Binda,24,ITA,ITA,97,-39,-14,Chennai R32,,,yes
-465,288,288,,no,no,Jakub Paul,26,SUI,SUI,96,-15,-5,,,,no
-466,378,378,,no,no,Valerio Aboian,23,ARG,ARG,95,+60,+19,,Lost in Qual. Rosario R2 Lost in Rosario QF,,no
-467,462,462,,no,no,Ognjen Milić,18,SRB,SRB,95,,-5,Davis Cup (0 W / 1 L),,,yes
-468,306,306,,no,no,Blaise Bicknell,24,JAM,JAM,95,,-5,Baton Rouge R32,,,yes
-469,314,314,,no,no,Moerani Bouzige,26,AUS,AUS,95,,-5,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-470,465,465,,no,no,Dhakshineswar Suresh,25,IND,IND,94,,-5,Davis Cup (1 W / 0 L),,,yes
-471,37,37,,no,no,Bernabé Zapata Miralles,29,ESP,ESP,94,,-5,,Lost in Qual. Montpellier R1,,no
-472,373,373,,no,no,Bor Artnak,21,SLO,SLO,94,,-5,Davis Cup (0 W / 1 L),,,yes
-473,331,331,,no,no,Carlos Lopez Montagud,25,ESP,ESP,94,,-5,,Lost in Xabia R16,,no
-474,470,470,,no,no,Filippo Moroni,25,ITA,ITA,92,,-3,,,,no
-475,449,449,,no,no,Takuya Kumasaka,27,JPN,JPN,92,,-2,,,,no
-476,NCH (482),476,482,yes,yes,Dušan Obradović,24,SRB,SRB,92,+6,+3,,Lost in Antalya 4 SF,,no
-477,161,161,,no,no,Filip Peliwo,32,POL,POL,92,,-3,Qual. Tenerife 2 R1,Lost in Sharm El Sheikh R32 Lost in Qual. Tenerife 1 R2,,yes
-478,459,459,,no,no,Nikolay Vylegzhanin,25,RUS,RUS,91,,-3,,,,no
-479,353,353,,no,no,Henry Searle,19,GBR,GBR,91,-19,-5,,Lost in Glasgow QF Lost in Sheffield QF,,no
-480,473,473,,no,no,Eero Vasa,29,FIN,FIN,91,,-4,Davis Cup (0 W / 1 L),,,yes
-481,269,269,,no,no,Giovanni Fonio,27,ITA,ITA,90,-27,-8,Qual. Tenerife 2 R1,Lost in Cesenatico R32,,yes
-482,200,200,,no,no,Yan Bai,36,CHN,CHN,89,,-3,,,,no
-483,NCH (536),483,536,yes,yes,Braden Shick,22,USA,USA,89,+53,+15,Huamantla 2 F**Huamantla W**,,,yes
-484,480,480,,no,no,Andrea Guerrieri,27,ITA,ITA,89,,-4,,Lost in Cesenatico R32,,no
-485,384,384,,no,no,Petr Nesterov,22,BUL,BUL,89,+55,+15,**Monastir 5 W**,,,yes
-486,481,481,,no,no,Manas Dhamne,18,IND,IND,89,,-5,Zahra 2 F,,,yes
-487,458,458,,no,no,Jay Friend,22,JPN,JPN,88,,-4,,Lost in Cleveland R32,,no
-488,424,424,,no,no,Lorenzo Joaquín Rodríguez,26,ARG,ARG,88,,-3,,,,no
-489,433,433,,no,no,Aristotelis Thanos,24,GRE,GRE,87,,-2,,,,no
-490,NCH (496),490,496,yes,yes,Carl Emil Overbeck,24,DEN,DEN,87,+6,+3,,Lost in Nussloch QF,,no
-491,242,242,,no,no,Enrico Dalla Valle,27,ITA,ITA,87,+36,+11,**Qual. Cesenatico W**,Lost in Cesenatico QF,,yes
-492,454,454,,no,no,Edward Winter,21,AUS,AUS,87,,-4,,,,no
-493,474,474,,no,no,Tsung Hao Huang,26,TWN,TWN,87,,-3,Davis Cup (0 W / 1 L),,,yes
-494,74,74,,no,no,Mirza Bašić,34,BIH,BIH,86,,-3,Davis Cup (1 W / 1 L),,,yes
-495,404,404,,no,no,Cannon Kingsley,24,USA,USA,86,,-3,Baton Rouge R32,Lost in Cleveland R32,,yes
-496,318,318,,no,no,Alex Martí Pujolras,26,ESP,ESP,86,,-3,,,,no
-497,434,434,,no,no,Jake Delaney,28,AUS,AUS,85,-28,-8,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-498,167,167,,no,no,Laurent Lokoli,31,FRA,FRA,84,+9,+4,Qual. Pau R1,Lost in Cesenatico R16,,yes
-499,466,466,,no,no,João Eduardo Schiessl,21,BRA,BRA,84,,-2,,,,no
-500,350,350,,no,no,Vladyslav Orlov,30,UKR,UKR,84,,-1,Davis Cup (0 W / 1 L),,,yes
-501,491,491,,no,no,Nicolas Arseneault,19,CAN,CAN,83,-6,-1,,,,no
-502,479,479,,no,no,Henry Bernet,19,SUI,SUI,83,,-2,,,,no
-503,NCH (551),503,551,yes,yes,Moïse Kouamé,16,FRA,FRA,83,+48,+13,Pau R32**Qual. Montpellier W**,Lost in Montpellier R32,,yes
-504,484,484,,no,no,Tristan McCormick,26,USA,USA,83,,+1,Baton Rouge R32,Lost in Naples R32 Lost in Qual. Cleveland R2,,yes
-505,389,389,,no,no,Stefan Dostanic,24,USA,USA,82,+67,+16,Qual. Baton Rouge R1**Qual. Cleveland W**,Lost in Cleveland QF,,yes
-506,238,238,,no,no,Yusuke Takahashi,28,JPN,JPN,82,,-3,,,,no
-507,455,455,,no,no,Olaf Pieczkowski,21,POL,POL,81,-5,-2,Baton Rouge R32,,,yes
-508,285,285,,no,no,Alexander Weis,28,ITA,ITA,81,-24,-7,,,,no
-509,426,426,,no,no,Tommaso Compagnucci,26,ITA,ITA,81,+5,+3,Palm Coast F,Lost in Naples SF,,yes
-510,429,429,,no,no,Tadeáš Paroulek,26,CZE,CZE,81,,-4,,,,no
-511,271,271,,no,no,Mateus Alves,25,BRA,BRA,81,-17,-5,,,,no
-512,225,225,,no,no,Philip Sekulic,22,AUS,AUS,80,,-4,Chennai R32,Lost in Brisbane 1 R32,,yes
-513,229,229,,no,no,Mukund Sasikumar,29,IND,IND,80,,+2,Chennai R32,Lost in Hyderabad 2 QF,,yes
-514,448,448,,no,no,Branko Djurić,20,SRB,SRB,80,-25,-7,Davis Cup (0 W / 1 L),,,yes
-515,NCH (555),515,555,yes,yes,Quinn Vandecasteele,23,USA,USA,80,+66,+15,Baton Rouge R32**Qual. Cleveland W**,Lost in Cleveland QF,,yes
-516,410,410,,no,no,Stefan Popović,22,SRB,SRB,80,+47,+12,**Antalya 4 W**,,,yes
-517,510,510,,no,no,Samuele Pieri,23,ITA,ITA,79,,-7,,Lost in Antalya 5 R16,,no
-518,NCH (537),518,537,yes,yes,Shunsuke Mitsui,23,JPN,JPN,78,+19,+4,**Qual. Brisbane 1 W**,Lost in Brisbane 1 R32,,yes
-519,78,78,,no,no,Renzo Olivo,33,ARG,ARG,78,,-8,,Lost in Rosario R32,,no
-520,280,280,,no,no,Dominik Palán,25,CZE,CZE,78,,-8,,,,no
-521,513,513,,no,no,Stefan Adrian Andreescu,24,ROU,ROU,78,,-4,,,,no
-522,463,463,,no,no,Pedro Vives Marcos,24,ESP,ESP,77,,-3,,,,no
-523,468,468,,no,no,Ryuki Matsuda,26,JPN,JPN,77,,-3,,,,no
-524,483,483,,no,no,Justin Boulais,24,CAN,CAN,77,+36,+9,Baton Rouge R32**Qual. Cleveland W**,Lost in Cleveland R16,,yes
-525,NCH (533),525,533,yes,yes,Tomasz Berkieta,19,POL,POL,77,+31,+8,,Lost in Monastir 5 F Lost in Monastir 6 QF,,no
-526,418,418,,no,no,Maé Malige,19,FRA,FRA,77,-48,-13,,Lost in Koblenz R32,,no
-527,521,521,,no,no,Sergio Callejon Hernando,21,ESP,ESP,77,,-6,Qual. Tenerife 2 R1,Lost in Tenerife 1 R32,,yes
-528,523,523,,no,no,Arthur Nagel,22,FRA,FRA,77,,-5,,Lost in Xabia R16,,no
-529,394,394,,no,no,Bruno Kuzuhara,21,USA,USA,77,,-5,,Lost in Naples R32 Lost in Palm Coast R32,,no
-530,334,334,,no,no,Matthew Dellavedova,25,AUS,AUS,77,,-5,Qual. Brisbane 2 R2,Lost in Brisbane 1 R32,,yes
-531,471,471,,no,no,Yuki Mochizuki,28,JPN,JPN,76,+7,+2,Qual. Brisbane 2 R2,Lost in Qual. Brisbane 1 R2,,yes
-532,182,182,,no,no,Maximilian Neuchrist,34,AUT,AUT,76,,-3,,Lost in Sharm El Sheikh 2 QF,,no
-533,448,448,,no,no,Aleksandre Bakshi,28,GEO,GEO,76,,-5,,,,no
-534,525,525,,no,no,Fares Zakaria,24,EGY,EGY,76,,-4,Davis Cup (0 W / 1 L),,,yes
-535,316,316,,no,no,Alberto Barroso Campos,29,ESP,ESP,76,,-4,Qual. Tenerife 2 R1,Lost in Koblenz R32,,yes
-536,371,371,,no,no,Ryan Nijboer,26,NED,NED,76,-2,+1,,Lost in Antalya 4 QF Lost in Antalya 5 SF,,no
-537,NCH (611),537,611,yes,yes,Joshua Sheehy,29,USA,USA,75,+26,+141,**Qual. Cleveland W**,Lost in Cleveland SF,,yes
-538,NCH (598),538,598,yes,yes,Max Schönhaus,18,GER,GER,75,+60,+14,,Lost in Nussloch R32 Lost in Koblenz SF,,no
-539,143,143,,no,no,Hiroki Moriya,35,JPN,JPN,75,-34,-6,Brisbane 2 R32,Lost in Brisbane 1 R32,,yes
-540,477,477,,no,no,Peter Fajta,23,HUN,HUN,75,,-7,,,,no
-541,449,449,,no,no,Maxim Zhukov,21,RUS,RUS,75,-32,-4,,,,no
-542,357,357,,no,no,Eric Vanshelboim,24,UKR,UKR,75,-27,-3,Chennai R32,Lost in Hyderabad 2 R32,,yes
-543,535,535,,no,no,Ivan Marrero Curbelo,27,ESP,ESP,74,,-4,Qual. Tenerife 2 R1,,,yes
-544,458,458,,no,no,Maxwell Mckennon,23,USA,USA,74,-2,+1,,Lost in Sharm El Sheikh R16,,no
-545,NCH (555),545,555,yes,yes,Pavle Marinkov,20,AUS,AUS,74,+45,+10,Brisbane 2 R32**Qual. Brisbane 1 W**,Lost in Brisbane 1 R16,,yes
-546,296,296,,no,no,Oleksandr Ovcharenko,24,UKR,UKR,74,-48,-10,,Lost in Monastir 5 SF,,no
-547,37,37,,no,no,Emil Ruusuvuori,26,FIN,FIN,73,,-6,,,,no
-548,215,215,,no,no,Khumoyun Sultanov,27,UZB,UZB,73,+67,+15,**Zahra W**,,,yes
-549,331,331,,no,no,Masamichi Imamura,27,JPN,JPN,73,-27,-4,Qual. Brisbane 2 R1,Lost in Qual. Brisbane 1 R2,,yes
-550,383,383,,no,no,Gabriele Pennaforti,25,ITA,ITA,72,,-6,,,,no
-551,517,517,,no,no,Nino Ehrenschneider,24,GER,GER,72,+6,+3,,Lost in Nussloch QF Lost in Monastir 6 R16,,no
-552,170,170,,no,no,Maxime Janvier,29,FRA,FRA,72,-36,-6,Qual. Pau R1,Lost in Qual. Cesenatico R1,,yes
-553,273,273,,no,no,Elmar Ejupovic,33,GER,GER,71,,-8,,,,no
-554,465,465,,no,no,Egor Agafonov,23,RUS,RUS,71,,-8,,Lost in Monastir 5 SF Lost in Monastir 6 QF,,no
-555,547,547,,no,no,Robin Catry,23,FRA,FRA,71,,-8,Qual. Pau R1,Lost in Qual. Koblenz R1,,yes
-556,256,256,,no,no,Johan Nikles,28,SUI,SUI,71,-13,-1,**Qual. Koblenz W**,Lost in Koblenz R32,,yes
-557,NCH (561),557,561,yes,yes,Lucio Ratti,22,ARG,ARG,71,+4,+3,,Lost in Qual. Rosario R2,,no
-558,548,548,,no,no,Paulo Andre Saraiva Dos Santos,25,BRA,BRA,71,,-10,,Lost in Qual. Rosario R1,,no
-559,181,181,,no,no,Tristan Lamasine,32,FRA,FRA,70,,-9,,,,no
-560,NCH (561),560,561,yes,yes,Filippo Romano,20,ITA,ITA,70,+74,+14,,Lost in Nussloch R32 Lost in Cesenatico SF,,no
-561,NCH (586),561,586,yes,yes,Tai Sach,23,AUS,AUS,70,+28,+6,Brisbane 2 R32,Lost in Brisbane 1 R16,,yes
-562,519,519,,no,no,Amr Elsayed,26,EGY,EGY,70,,-9,,,,no
-563,552,552,,no,no,Igor Gimenez,25,BRA,BRA,70,,-9,,,,no
-564,424,424,,no,no,Kokoro Isomura,23,JPN,JPN,70,+7,+3,Qual. Brisbane 2 R2**Qual. Brisbane 1 W**,Lost in Brisbane 1 R32,,yes
-565,555,555,,no,no,Reda Bennani,18,MAR,MAR,69,,-10,Davis Cup (1 W / 0 L),,,yes
-566,371,371,,no,no,Georgii Kravchenko,25,UKR,UKR,69,+4,+2,,Lost in Sharm El Sheikh QF Lost in Sharm El Sheikh 2 SF,,no
-567,438,438,,no,no,Woobin Shin,22,KOR,KOR,69,,-8,,,,no
-568,555,555,,no,no,Sebastian Sorger,20,AUT,AUT,69,,-10,,Lost in Glasgow R32 Lost in Qual. Cesenatico R1,,no
-569,496,496,,no,no,Niels Visker,24,NED,NED,69,+26,+6,**Qual. Cesenatico W**,Lost in Cesenatico R16,,yes
-570,436,436,,no,no,Sebastian Gima,23,ROU,ROU,68,-35,-7,Baton Rouge R32,Lost in Naples R16 Lost in Qual. Cleveland R1,,yes
-571,230,230,,no,no,Max Hans Rehberg,22,GER,GER,67,-39,-8,**Qual. Koblenz W**,Lost in Koblenz QF,,yes
-572,99,99,,no,no,Alexander Ritschard,31,SUI,SUI,67,,-8,,,,no
-573,50,50,,no,no,Ričardas Berankis,35,LTU,LTU,67,,-8,,,,no
-574,541,541,,no,no,Arda Azkara,22,TUR,TUR,67,,-8,Baton Rouge R32,,,yes
-575,509,509,,no,no,Manuel Mazza,26,ITA,ITA,67,,-7,,Lost in Xabia SF,,no
-576,395,395,,no,no,Tibo Colson,25,BEL,BEL,67,,-9,,Lost in Nussloch R32 Lost in Koblenz R16,,no
-577,160,160,,no,no,Oleksii Krutykh,25,UKR,UKR,67,,-8,Davis Cup (0 W / 1 L),,,yes
-578,560,560,,no,no,Taha Baadi,24,MAR,MAR,67,+4,+2,Davis Cup (0 W / 1 L),Lost in Naples QF,,yes
-579,542,542,,no,no,Karl Poling,26,USA,USA,67,-17,-1,Qual. Baton Rouge R1,Lost in Cleveland R32,,yes
-580,462,462,,no,no,Constantin Bittoun Kouzmine,27,FRA,FRA,67,+11,+3,,Lost in Zahra SF Lost in Zahra 2 QF,,no
-581,509,509,,no,no,Radu Mihai Papoe,23,ROU,ROU,66,,-8,,Lost in Antalya 5 QF,,no
-582,574,574,,no,no,Joaquin Aguilar Cardozo,20,URU,URU,66,,-8,,,,no
-583,477,477,,no,no,Kirill Kivattsev,28,RUS,RUS,66,,-8,,Lost in Sharm El Sheikh SF,,no
-584,469,469,,no,no,Juan Sebastián Gómez,33,COL,COL,65,+1,+1,,Lost in Huamantla R16,,no
-585,191,191,,no,no,Dragos Nicolae Madaras,28,SWE,SWE,65,,-9,Davis Cup (0 W / 1 L),,,yes
-586,339,339,,no,no,Govind Nanda,24,USA,USA,65,,-9,,,,no
-587,579,579,,no,no,Alan Fernando Rubio Fierros,27,MEX,MEX,65,,-8,,,,no
-588,545,545,,no,no,Filip Jeff Planinšek,24,SLO,SLO,65,,-10,Davis Cup (1 W / 0 L),Lost in Glasgow R32,,yes
-589,277,277,,no,no,Michael Vrbenský,26,CZE,CZE,65,,-9,,,,no
-590,579,579,,no,no,Michal Krajčí,21,SVK,SVK,65,,-7,,,,no
-591,NCH (599),591,599,yes,yes,Matthew William Donald,21,CZE,CZE,65,+10,+4,,Lost in Nussloch QF **Qual. Koblenz W** Lost in Koblenz R32,,no
-592,485,485,,no,no,Digvijaypratap Singh,25,IND,IND,64,,-6,Chennai R32,,,yes
-593,334,334,,no,no,Leo Borg,22,SWE,SWE,64,,-5,,Lost in Sharm El Sheikh R32,,no
-594,451,451,,no,no,Dan Alexandru Tomescu,26,ROU,ROU,63,,-2,,,,no
-595,251,251,,no,no,Ergi Kırkın,27,TUR,TUR,63,-43,-7,,,,no
-596,591,591,,no,no,Koki Matsuda,25,JPN,JPN,63,,-3,,,,no
-597,NCH (605),597,605,yes,yes,Carlos Maria Zarate,20,ARG,ARG,63,+8,+3,,Lost in Qual. Rosario R2,,no
-598,429,429,,no,no,Alvin Nicholas Tudorica,23,CAN,CAN,62,-11,-2,,,,no
-599,493,493,,no,no,Alejo Sanchez Quilez,20,ESP,ESP,62,+59,+10,Qual. Tenerife 2 R1**Qual. Tenerife 1 W**,Lost in Tenerife 1 R16,,yes
-600,544,544,,no,no,Adhithya Ganesan,20,USA,USA,62,,-4,,,,no
-601,566,566,,no,no,Miguel Tobon,19,COL,COL,62,,-4,,,,no
-602,CH,602,,yes,no,Pawit Sornlaksup,26,THA,THA,61,+15,+101,**Hyderabad 2 W**,,,yes
-603,468,468,,no,no,Dominik Kellovský,29,CZE,CZE,61,-9,-2,,Lost in Sheffield R16,,no
-604,177,177,,no,no,Nick Hardt,25,DOM,DOM,60,,-1,,,,no
-605,604,604,,no,no,Andres Santamarta Roig,19,ESP,ESP,60,,-1,,,,no
-606,508,508,,no,no,Loann Massard,20,FRA,FRA,60,+12,+2,Qual. Pau R1,Lost in Glasgow R16 Lost in Qual. Koblenz R2,,yes
-607,515,515,,no,no,Émilien Demanet,20,BEL,BEL,60,,-1,,,,no
-608,184,184,,no,no,Nicholas David Ionel,23,ROU,ROU,60,,-1,,Lost in Antalya 5 R16,,no
-609,502,502,,no,no,Adrian Ötzbach,28,GER,GER,60,-7,-1,,Lost in Qual. Koblenz R1,,no
-610,533,533,,no,no,Luis Carlos Alvarez,21,MEX,MEX,59,,-2,,,,no
-611,432,432,,no,no,Iliyan Radulov,20,BUL,BUL,59,+52,+8,Davis Cup (0 W / 1 L),Lost in Antalya 4 F,,yes
-612,269,269,,no,no,Aidan Mayo,22,USA,USA,59,,-3,,,,no
-613,483,483,,no,no,Alec Deckers,25,NED,NED,59,+10,+2,,Lost in Glasgow R16 Lost in Qual. Koblenz R2 Lost in Qual. Rotterdam R1,,no
-614,611,611,,no,no,Mees Rottgering,18,NED,NED,59,,-3,Qual. Rotterdam R2,,,yes
-615,318,318,,no,no,Gerard Campana Lee,21,KOR,KOR,59,,-3,Monastir 7 SF,Lost in Monastir 5 R32,,yes
-616,548,548,,no,no,Yassine Dlimi,22,MAR,MAR,58,,-3,,,,no
-617,290,290,,no,no,Shintaro Imai,32,JPN,JPN,58,,-3,,,,no
-618,363,363,,no,no,Damien Wenger,25,SUI,SUI,58,,-2,,,,no
-619,617,617,,no,no,Lorenzo Sciahbasi,20,ITA,ITA,58,,-2,,,,no
-620,526,526,,no,no,Maxence Beaugé,25,FRA,FRA,58,-10,-1,Qual. Pau R1,,,yes
-621,267,267,,no,no,Louis Weßels,27,GER,GER,58,,-1,,Lost in Nussloch R16 Lost in Qual. Koblenz R2,,no
-622,603,603,,no,no,Aziz Ouakaa,26,TUN,TUN,58,,-1,Davis Cup (0 W / 1 L),,,yes
-623,204,204,,no,no,Máté Valkusz,27,HUN,HUN,57,,-1,,,,no
-624,NCH (635),624,635,yes,yes,Jacopo Vasami,18,ITA,ITA,57,+37,+6,Tenerife 2 R32,Lost in Tenerife 1 R16,,yes
-625,624,624,,no,no,Karol Filar,27,POL,POL,57,,-1,Davis Cup (1 W / 0 L),,,yes
-626,447,447,,no,no,Kuan Yi Lee,29,TWN,TWN,57,,-1,,,,no
-627,595,595,,no,no,S D Prajwal Dev,29,IND,IND,57,,-1,Qual. Chennai R2,,,yes
-628,575,575,,no,no,Mario Gonzalez Fernandez,23,ESP,ESP,57,-9,-1,,Lost in Monastir 6 QF,,no
-629,470,470,,no,no,Imanol López Morillo,26,ESP,ESP,57,,-2,,Lost in Xabia R16,,no
-630,107,107,,no,no,Nicolas Moreno De Alboran,28,USA,USA,56,,,,,,no
-631,144,144,,no,no,Cem İlkel,30,TUR,TUR,56,,,,,,no
-632,535,535,,no,no,Kenta Miyoshi,21,JPN,JPN,56,,,,,,no
-633,628,628,,no,no,Yuta Kawahashi,28,JPN,JPN,56,,,,,,no
-634,629,629,,no,no,Juan Cruz Martin Manzano,21,ITA,ITA,56,,+1,,,,no
-635,496,496,,no,no,Denis Klok,27,RUS,RUS,56,+6,+1,,Lost in Antalya 4 R16 Lost in Antalya 5 SF,,no
-636,NCH (638),636,638,yes,yes,Daniel Siniakov,23,CZE,CZE,55,,+2,,,,no
-637,280,280,,no,no,Jakub Nicod,21,CZE,CZE,55,,+2,,,,no
-638,234,234,,no,no,Maxime Chazal,32,FRA,FRA,55,+8,+1,Monastir 6 F,Lost in Monastir 5 R16,,yes
-639,85,85,,no,no,Dennis Novak,32,AUT,AUT,55,-3,-1,,,,no
-640,527,527,,no,no,Ye Cong Mo,25,CHN,CHN,55,,,,,,no
-641,628,628,,no,no,Felix Balshaw,19,FRA,FRA,55,-13,-2,Qual. Pau R1,,,yes
-642,614,614,,no,no,William Grant,24,USA,USA,55,+15,+110,**Naples W**,Lost in Palm Coast R16,,yes
-643,302,302,,no,no,Andrew Paulson,24,CZE,CZE,54,,-1,,,,no
-644,501,501,,no,no,Christian Sigsgaard,28,DEN,DEN,54,,-1,,,,no
-645,638,638,,no,no,Yusuke Kusuhara,28,JPN,JPN,54,,-1,,,,no
-646,395,395,,no,no,Rigele Te,28,CHN,CHN,54,,-1,,Lost in Monastir 6 SF,,no
-647,618,618,,no,no,Santiago De La Fuente,24,ARG,ARG,54,+17,+3,,Lost in Qual. Rosario R2,,no
-648,591,591,,no,no,Massimo Giunta,21,ITA,ITA,54,,,Monastir 6 SF,Lost in Monastir 5 R32,,yes
-649,538,538,,no,no,Johan Alexander Rodriguez,22,COL,COL,53,-12,-2,,,,no
-650,327,327,,no,no,Naoki Nakagawa,29,JPN,JPN,53,+73,+10,Qual. Brisbane 2 R1**Qual. Brisbane 1 W**,Lost in Brisbane 1 R16,,yes
-651,303,303,,no,no,Francesco Forti,26,ITA,ITA,53,+28,+4,,Lost in Cesenatico R16,,no
-652,479,479,,no,no,Felix Corwin,29,USA,USA,53,+13,+2,Qual. Baton Rouge R1,Lost in Qual. Cleveland R2,,yes
-653,321,321,,no,no,Facundo Juárez,28,ITA,ITA,53,,-1,,,,no
-654,NCH (676),654,676,yes,yes,Semen Pankin,26,RUS,RUS,53,+58,+8,,Lost in Sharm El Sheikh F,,no
-655,627,627,,no,no,Ryan Fishback,23,USA,USA,53,-26,-4,Qual. Baton Rouge R1,Lost in Naples R32 Lost in Qual. Cleveland R1,,yes
-656,584,584,,no,no,Kyle Kang,21,USA,USA,52,,-3,,,,no
-657,546,546,,no,no,Aidan Kim,21,USA,USA,52,,-3,,,,no
-658,395,395,,no,no,Alafia Ayeni,26,USA,USA,52,,-3,Huamantla 2 F,,,yes
-659,308,308,,no,no,Toby Kodat,23,USA,USA,52,,-3,,,,no
-660,625,625,,no,no,Igor Kudriashov,22,RUS,RUS,52,-13,-2,,Lost in Sharm El Sheikh 2 R16,,no
-661,505,505,,no,no,Stijn Slump,27,NED,NED,52,+5,+1,,Lost in Qual. Koblenz R2,,no
-662,657,657,,no,no,Jan Kumstát,19,CZE,CZE,52,,-5,,Lost in Monastir 5 R32,,no
-663,443,443,,no,no,Federico Iannaccone,26,ITA,ITA,52,+68,+10,**Qual. Cesenatico W**,Lost in Cesenatico QF,,yes
-664,352,352,,no,no,Giovanni Oradini,28,ITA,ITA,52,+7,+1,,Lost in Monastir 5 R32 Lost in Qual. Cesenatico R2,,no
-665,650,650,,no,no,Duncan Chan,20,CAN,CAN,51,,-5,,,,no
-666,258,258,,no,no,Karue Sell,32,BRA,BRA,51,,-4,,,,no
-667,NCH (722),667,722,yes,yes,Cruz Hewitt,17,AUS,AUS,51,+67,+10,Brisbane 2 R32,Lost in Brisbane 1 QF,,yes
-668,569,569,,no,no,James Watt,25,NZL,NZL,51,-18,-2,Davis Cup (1 W / 1 L),,,yes
-669,652,652,,no,no,Radu David Turcanu,19,ROU,ROU,51,,-2,Davis Cup (1 W / 0 L),,,yes
-670,599,599,,no,no,Giuseppe La Vela,25,ITA,ITA,51,,-1,,Lost in Monastir 5 R32 Lost in Monastir 7 R32,,no
-671,575,575,,no,no,Luca Castagnola,23,ITA,ITA,51,,-1,,Lost in Monastir 5 R16 Lost in Qual. Cesenatico R1,,no
-672,450,450,,no,no,Yurii Dzhavakian,32,UKR,UKR,51,-23,-3,,,,no
-673,407,407,,no,no,Michael Agwi,22,IRL,IRL,50,,,,,,no
-674,CH,674,,yes,no,Tiago Torres,23,POR,POR,50,,,,,,no
-675,NCH (699),675,699,yes,yes,Timofei Derepasko,19,RUS,RUS,50,+24,+4,Qual. Chennai R1,Lost in Hyderabad 2 SF,,yes
-676,668,668,,no,no,Pierre Delage,25,FRA,FRA,50,-8,-1,,Lost in Palm Coast R32,,no
-677,654,654,,no,no,Chase Ferguson,27,AUS,AUS,50,+11,+2,,Lost in Qual. Brisbane 1 R2 Lost in Qual. Brisbane 2 R1,,no
-678,486,486,,no,no,Sergi Perez Contri,28,ESP,ESP,50,+6,+1,,Lost in Monastir 5 QF Lost in Xabia SF,,no
-679,675,675,,no,no,Dimitris Sakellaridis,19,GRE,GRE,50,,-4,,Lost in Monastir 5 R32 Lost in Monastir 6 R16,,no
-680,525,525,,no,no,Alexander Donski,27,BUL,BUL,49,,-4,,,,no
-681,151,151,,no,no,Enzo Couacaud,30,FRA,FRA,49,,-4,,,,no
-682,557,557,,no,no,Pierluigi Basile,19,ITA,ITA,49,+15,+3,,Lost in Glasgow QF Lost in Cesenatico R32,,no
-683,486,486,,no,no,Alex Knaff,28,LUX,LUX,49,+4,+1,Davis Cup (1 W / 0 L),Lost in Glasgow R16,,yes
-684,614,614,,no,no,Alejandro Manzanera Pertusa,22,ESP,ESP,49,,-4,,,,no
-685,680,680,,no,no,Abel Forger,20,NED,NED,49,,-3,,,,no
-686,681,681,,no,no,Ryan Dickerson,28,USA,USA,49,,-5,Qual. Baton Rouge R1,,,yes
-687,683,683,,no,no,Marcel Zieliński,25,POL,POL,49,,-4,,,,no
-688,362,362,,no,no,Tim Handel,29,GER,GER,49,-29,-3,,Lost in Qual. Koblenz R1,,no
-689,NCH (742),689,742,yes,yes,Luca Staeheli,25,SUI,SUI,48,+53,+8,,Lost in Zahra F Lost in Zahra 2 SF,,no
-690,675,675,,no,no,Matisse Bobichon,24,FRA,FRA,48,,-4,,,,no
-691,689,689,,no,no,Rodrigo Alujas,23,MEX,MEX,48,,-2,,,,no
-692,690,690,,no,no,Michael Bassem Sobhy,21,EGY,EGY,48,,-2,Davis Cup (0 W / 1 L),,,yes
-693,80,80,,no,no,Jozef Kovalík,33,SVK,SVK,47,,-2,,,,no
-694,388,388,,no,no,Anton Matusevich,24,GBR,GBR,47,,-2,,Lost in Glasgow R16 Lost in Sheffield QF,,no
-695,460,460,,no,no,Arthur Reymond,26,FRA,FRA,47,-44,-6,,,,no
-696,588,588,,no,no,Yuta Kikuchi,26,JPN,JPN,47,,-3,,,,no
-697,605,605,,no,no,Mitsuki Wei Kang Leong,21,MAS,MAS,47,,-2,Qual. Chennai R2,,,yes
-698,660,660,,no,no,Cooper Williams,20,USA,USA,46,,-2,,,,no
-699,278,278,,no,no,Lucas Gerch,31,GER,GER,46,-15,-100,,Lost in Nussloch R32,,no
-700,660,660,,no,no,Daniel Antonio Núñez,24,CHI,CHI,46,,-2,,,,no
-701,624,624,,no,no,Yaroslav Demin,20,RUS,RUS,46,,-1,Qual. Oberhaching R2,,,yes
-702,640,640,,no,no,Axel Garcian,23,FRA,FRA,46,,-1,,,,no
-703,694,694,,no,no,Daniil Ostapenkov,22,BLR,BLR,46,-9,-1,,,,no
-704,591,591,,no,no,Millen Hurrion,26,GBR,GBR,46,-15,-104,,Lost in Glasgow R16 Lost in Sheffield R32,,no
-705,549,549,,no,no,Tianhui Zhang,19,CHN,CHN,46,,-3,,Lost in Monastir 5 R32 Lost in Monastir 6 R32,,no
-706,62,62,,no,no,Kenny de Schepper,38,FRA,FRA,46,,-2,,Lost in Qual. Koblenz R1,,no
-707,686,686,,no,no,Leo Vithoontien,26,JPN,JPN,46,,-2,,Lost in Qual. Brisbane 1 R1,,no
-708,14,14,,no,no,Kyle Edmund,31,GBR,GBR,45,,-2,,,,no
-709,48,48,,no,no,Constant Lestienne,33,FRA,FRA,45,-25,-160,,,,no
-710,688,688,,no,no,Pablo Martinez Gomez,19,ESP,ESP,45,,-3,,,,no
-711,666,666,,no,no,Tuncay Duran,21,TUR,TUR,45,,-3,,Lost in Zahra 2 R32,,no
-712,461,461,,no,no,Peter Bertran,29,DOM,DOM,45,,-3,,,,no
-713,690,690,,no,no,Kaylan Bigun,19,USA,USA,45,,-3,Qual. Baton Rouge R1,Lost in Cleveland R32,,yes
-714,378,378,,no,no,Sora Fukuda,28,JPN,JPN,45,,-3,,,,no
-715,430,430,,no,no,Sidharth Rawat,32,IND,IND,45,,-2,Chennai R32,,,yes
-716,710,710,,no,no,Gabriel Ghetu,18,ROU,ROU,45,,-2,Davis Cup (0 W / 1 L),,,yes
-717,684,684,,no,no,Ali Yazdani,22,IRI,IRI,45,,-2,,,,no
-718,375,375,,no,no,Strong Kirchheimer,30,USA,USA,45,+2,+1,Qual. Baton Rouge R1,Lost in Qual. Cleveland R2,,yes
-719,48,48,,no,no,Pedro Cachín,30,ARG,ARG,44,-34,-4,,,,no
-720,232,232,,no,no,José Pereira,35,BRA,BRA,44,,-2,,,,no
-721,NCH (725),721,725,yes,yes,Dinko Dinev,21,BUL,BUL,44,+4,+1,,Lost in Zahra R16 Lost in Zahra 2 R16,,no
-722,719,719,,no,no,Yanis Ghazouani Durand,25,FRA,FRA,44,,-3,,,,no
-723,546,546,,no,no,Diego Augusto Barreto Sánchez,23,ESP,ESP,44,,-2,,Lost in Xabia R16,,no
-724,14,14,,no,no,Aslan Karatsev,32,RUS,RUS,43,-52,-7,,,,no
-725,608,608,,no,no,Blu Baker,24,GBR,GBR,43,-8,-1,,,,no
-726,642,642,,no,no,Pedro Rodrigues,19,BRA,BRA,43,,-4,,,,no
-727,546,546,,no,no,Uisung Park,25,KOR,KOR,43,,-3,,,,no
-728,622,622,,no,no,Amaury Raynel,23,FRA,FRA,43,,-2,,,,no
-729,656,656,,no,no,Maik Steiner,31,GER,GER,43,,-2,,Lost in Nussloch R16 Lost in Qual. Koblenz R1,,no
-730,NCH (739),730,739,yes,yes,Mika Petković,19,GER,GER,43,+9,+2,,Lost in Nussloch R16 **Qual. Koblenz W** Lost in Koblenz R32,,no
-731,236,236,,no,no,JiSung Nam,32,KOR,KOR,42,,-3,,,,no
-732,557,557,,no,no,John Echeverria,24,ESP,ESP,42,+3,+1,Monastir 6 SF,Lost in Monastir 5 R16,,yes
-733,NCH (736),733,736,yes,yes,Matyáš Černý,24,CZE,CZE,42,+3,+1,,Lost in Qual. Koblenz R2,,no
-734,694,694,,no,no,Maxence Bertimon,26,FRA,FRA,42,,-4,,Lost in Xabia R32,,no
-735,691,691,,no,no,Matthew Summers,27,GBR,GBR,42,,-6,,Lost in Zahra R32 Lost in Zahra 2 R32,,no
-736,NCH (747),736,747,yes,yes,Matteo Covato,20,ITA,ITA,42,+11,+2,Qual. Baton Rouge R1,Lost in Huamantla QF Lost in Huamantla 2 R32,,yes
-737,476,476,,no,no,Ignacio Monzón,28,ARG,ARG,42,,-5,,Lost in Naples R32 Lost in Palm Coast QF,,no
-738,271,271,,no,no,Evan Zhu,27,USA,USA,42,+13,+2,Qual. Baton Rouge R1,Lost in Qual. Cleveland R2,,yes
-739,520,520,,no,no,Conner Huertas del Pino,30,PER,PER,41,,-6,,Lost in Qual. Rosario R1,,no
-740,514,514,,no,no,Marlon Vankan,25,GER,GER,41,-24,-4,,,,no
-741,725,725,,no,no,Josip Šimundža,21,CRO,CRO,41,+7,+1,,Lost in Qual. Cesenatico R2 Lost in Cesenatico R32,,no
-742,513,513,,no,no,Kai Wehnelt,30,GER,GER,41,+8,+1,,Lost in Nussloch R16 Lost in Qual. Koblenz R1,,no
-743,706,706,,no,no,Nicolas Tepmahc,24,FRA,FRA,41,,-6,Monastir 7 SF,Lost in Monastir 5 R16,,yes
-744,437,437,,no,no,Michiel De Krom,27,NED,NED,41,,-6,,,,no
-745,45,45,,no,no,Maximilian Marterer,30,GER,GER,40,,-5,,,,no
-746,13,13,,no,no,Nick Kyrgios,30,AUS,AUS,40,,-5,,,,no
-747,409,409,,no,no,Juan Carlos Aguilar,27,CAN,CAN,40,,-4,,,,no
-748,447,447,,no,no,Tomás Farjat,24,ARG,ARG,40,,-4,,Lost in Qual. Rosario R1,,no
-749,532,532,,no,no,Adrien Gobat,24,FRA,FRA,40,,-4,,Lost in Sheffield R32,,no
-750,741,741,,no,no,Samuel Alejandro Linde Palacios,18,COL,COL,40,+6,+1,,Lost in Antalya 4 R16 Lost in Xabia R32,,no
-751,443,443,,no,no,Yanaki Milev,21,BUL,BUL,40,,-2,,,,no
-752,620,620,,no,no,Ben Jones,27,GBR,GBR,40,+85,+10,Qual. Baton Rouge R1**Qual. Cleveland W**,Lost in Cleveland R16,,yes
-753,326,326,,no,no,Alexis Gautier,28,FRA,FRA,39,,,,,,no
-754,728,728,,no,no,César Bouchelaghem,21,FRA,FRA,39,,,,Lost in Monastir 7 QF,,no
-755,742,742,,no,no,Léo Raquillet,20,FRA,FRA,39,,,Qual. Pau R1,,,yes
-756,403,403,,no,no,Lorenzo Rottoli,23,ITA,ITA,39,+63,+7,**Qual. Cesenatico W**,Lost in Cesenatico R16,,yes
-757,729,729,,no,no,Tomas Curras Abasolo,25,ESP,ESP,39,,,,,,no
-758,632,632,,no,no,Guillaume Dalmasso,23,FRA,FRA,39,+9,+2,,Lost in Huamantla QF Lost in Huamantla 2 R32,,no
-759,754,754,,no,no,Samuel Heredia,19,COL,COL,39,,-1,,Lost in Antalya 4 R32 Lost in Xabia R32,,no
-760,740,740,,no,no,Pierre Yves Bailly,22,BEL,BEL,38,,-1,,Lost in Monastir 7 R16,,no
-761,760,760,,no,no,Fryderyk Lechno-Wasiutyński,20,POL,POL,38,,-1,,,,no
-762,595,595,,no,no,Théo Papamalamis,20,FRA,FRA,38,,-1,,,,no
-763,440,440,,no,no,Alessandro Pecci,24,ITA,ITA,38,+2,+1,Sharm El Sheikh 2 F,Lost in Sharm El Sheikh R16,,yes
-764,704,704,,no,no,Mwendwa Mbithi,28,USA,USA,38,,-2,,,,no
-765,552,552,,no,no,Keisuke Saitoh,24,JPN,JPN,38,-19,-2,,Lost in Monastir 5 QF,,no
-766,364,364,,no,no,Mikalai Haliak,27,BLR,BLR,38,,-3,,,,no
-767,764,764,,no,no,Daniel De Jonge,26,NED,NED,38,,-3,,,,no
-768,753,753,,no,no,Matt Kuhar,29,USA,USA,38,+29,+4,Qual. Baton Rouge R1**Qual. Cleveland W**,Lost in Cleveland R32,,yes
-769,744,744,,no,no,Attila Boros,22,HUN,HUN,37,+13,+2,,Lost in Antalya 4 QF Lost in Antalya 5 R16,,no
-770,352,352,,no,no,Kris Van Wyk,29,RSA,RSA,37,,-4,,,,no
-771,636,636,,no,no,Aleksandr Braynin,26,UKR,UKR,37,+4,+1,,Lost in Sharm El Sheikh QF Lost in Sharm El Sheikh 2 QF,,no
-772,700,700,,no,no,Jack Anthrop,22,USA,USA,36,,-4,,,,no
-773,NCH (777),773,777,yes,yes,Karim Bennani,18,MAR,MAR,36,+6,+1,,Lost in Antalya 4 R16,,no
-774,497,497,,no,no,Victor Lilov,21,USA,USA,36,,-4,,,,no
-775,655,655,,no,no,Thanapet Chanta,26,THA,THA,36,,-6,,Lost in Hyderabad 2 R32,,no
-776,341,341,,no,no,Wilson Leite,34,BRA,BRA,36,,-5,,Lost in Qual. Rosario R1,,no
-777,675,675,,no,no,Francisco Rocha,26,POR,POR,36,,-5,,,,no
-778,635,635,,no,no,John Sperle,24,GER,GER,36,,-5,,Lost in Qual. Koblenz R2,,no
-779,773,773,,no,no,Menelaos Efstathiou,26,CYP,CYP,36,,-5,,,,no
-780,605,605,,no,no,Leonardo Rossi,23,ITA,ITA,36,,-4,,Lost in Sharm El Sheikh 2 R16,,no
-781,748,748,,no,no,Lucas Andrade Da Silva,21,BRA,BRA,35,,-4,,,,no
-782,603,603,,no,no,Oscar Weightman,24,GBR,GBR,35,+20,+2,,Lost in Qual. Tenerife 1 R2,,no
-783,756,756,,no,no,Roger Pascual Ferra,19,ESP,ESP,35,,-5,,,,no
-784,NCH (802),784,802,yes,yes,Nikita Bilozertsev,17,UKR,UKR,35,+21,+2,,Lost in Qual. Brisbane 1 R2,,no
-785,780,780,,no,no,Ivan Ivanov,17,BUL,BUL,35,,-5,,,,no
-786,547,547,,no,no,Matyas Fuele,27,HUN,HUN,35,,-5,,,,no
-787,677,677,,no,no,Kārlis Ozoliņš,23,LAT,LAT,35,+16,+173,Qual. Baton Rouge R1**Qual. Nussloch W**,Lost in Nussloch F,,yes
-788,520,520,,no,no,Emile Hudd,25,GBR,GBR,35,,-4,,Lost in Sheffield SF,,no
-789,509,509,,no,no,Alec Beckley,24,RSA,RSA,35,,-6,,,,no
-790,530,530,,no,no,M Rifki Fitriadi,27,INA,INA,35,+4,+1,,Lost in Hyderabad 2 R16,,no
-791,NCH (807),791,807,yes,yes,Bruno Fernandez,21,BRA,BRA,35,+24,+3,,Lost in Qual. Rosario R2,,no
-792,786,786,,no,no,Benjamin Torrealba,20,CHI,CHI,35,,-6,,,,no
-793,340,340,,no,no,Colin Sinclair,31,NMI,NMI,35,+16,+2,Qual. Brisbane 2 R2,Lost in Qual. Brisbane 1 R2,,yes
-794,767,767,,no,no,Toufik Sahtali,27,ALG,ALG,35,,-7,Monastir 7 SF,Lost in Monastir 5 R32,,yes
-795,433,433,,no,no,Fausto Tabacco,23,ITA,ITA,35,+6,+1,,Lost in Qual. Cesenatico R2,,no
-796,709,709,,no,no,Iannis Miletich,20,ITA,ITA,35,,-8,,,,no
-797,363,363,,no,no,Oscar Jose Gutierrez,32,ESP,ESP,35,,-8,,Lost in Xabia R16,,no
-798,395,395,,no,no,Wishaya Trongcharoenchaikul,30,THA,THA,35,,-8,,,,no
-799,40,40,,no,no,Ilya Ivashka,31,BLR,BLR,34,,-8,,,,no
-800,211,211,,no,no,Evgeny Karlovskiy,31,RUS,RUS,34,+31,+4,,Lost in Zahra SF Lost in Zahra 2 QF,,no
-801,673,673,,no,no,Gustavo Ribeiro De Almeida,19,BRA,BRA,34,,-9,,,,no
-802,793,793,,no,no,Maximo Zeitune,20,ARG,ARG,34,,-9,,Lost in Qual. Rosario R1,,no
-803,637,637,,no,no,Linang Xiao,25,CHN,CHN,34,,-8,Qual. Brisbane 2 R1,Lost in Qual. Brisbane 1 R1,,yes
-804,601,601,,no,no,Bautista Vilicich,24,ARG,ARG,34,,-8,,,,no
-805,699,699,,no,no,Martin Van Der Meerschen,25,BEL,BEL,34,-20,-1,,,,no
-806,798,798,,no,no,Amir Omarkhanov,18,KAZ,KAZ,34,,-8,Monastir 7 SF,,,yes
-807,390,390,,no,no,Pedro Araújo,23,POR,POR,34,,-7,,,,no
-808,682,682,,no,no,Albert Pedrico Kravtsov,20,ESP,ESP,33,,-5,,,,no
-809,451,451,,no,no,Marko Miladinović,25,SRB,SRB,33,,-5,**Qual. Monastir 5 W**,Lost in Monastir 5 R32,,yes
-810,553,553,,no,no,Pedro Rodenas,21,ESP,ESP,33,,-4,,,,no
-811,805,805,,no,no,Oliver Bonding,18,GBR,GBR,33,,-4,,,,no
-812,130,130,,no,no,Duck-hee Lee,27,KOR,KOR,33,,-4,,Lost in Hyderabad 2 R32,,no
-813,501,501,,no,no,Shinji Hazawa,26,JPN,JPN,33,+10,+102,**Qual. Brisbane 1 W**,Lost in Brisbane 1 R16 Lost in Qual. Brisbane 2 R1,,yes
-814,801,801,,no,no,Alejandro Juan Mano,21,ESP,ESP,33,,-4,,Lost in Xabia R32,,no
-815,773,773,,no,no,Artur Kukasian,21,RUS,RUS,33,,-4,,,,no
-816,265,265,,no,no,Evgenii Tiurnev,28,RUS,RUS,32,,-2,,,,no
-817,748,748,,no,no,Luca Preda,19,ROU,ROU,32,,-1,,,,no
-818,417,417,,no,no,Ajeet Rai,27,NZL,NZL,32,,-1,,,,no
-819,717,717,,no,no,Alan Magadan,24,MEX,MEX,32,,-1,Davis Cup (0 W / 1 L),,,yes
-820,751,751,,no,no,Joshua Charlton,26,AUS,AUS,32,-21,-2,Qual. Brisbane 2 R1,,,yes
-821,745,745,,no,no,Taiyo Yamanaka,24,JPN,JPN,32,,-1,**Qual. Monastir 5 W**,Lost in Monastir 5 R16 Lost in Qual. Brisbane 2 R1,,yes
-822,65,65,,no,no,Egor Gerasimov,33,BLR,BLR,31,,,,,,no
-823,727,727,,no,no,Petros Tsitsipas,25,GRE,GRE,31,,,,Lost in Qual. Tenerife 1 R1,,no
-824,CH,824,,yes,no,Yannik Kelm,20,GER,GER,31,,,Qual. Oberhaching R2,Lost in Qual. Nussloch R3 Lost in Qual. Koblenz R1,,yes
-825,NCH (835),825,835,yes,yes,Jorge Plans,24,ESP,ESP,31,+11,+1,**Qual. Monastir 5 W**,Lost in Monastir 5 R16 Lost in Monastir 7 QF,,yes
-826,812,812,,no,no,Maximilian Homberg,23,GER,GER,31,,-1,,,,no
-827,820,820,,no,no,Michel Hopp,27,GER,GER,31,,-1,,,,no
-828,NCH (854),828,854,yes,yes,Izan Almazan Valiente,19,ESP,ESP,31,+37,+4,Qual. Tenerife 2 R1**Qual. Tenerife 1 W**,Lost in Tenerife 1 R32,,yes
-829,666,666,,no,no,Niccolo Catini,28,ITA,ITA,31,,-2,,Lost in Huamantla R32 Lost in Huamantla 2 R16,,no
-830,688,688,,no,no,Alexandre Aubriot,26,FRA,FRA,31,,-2,,,,no
-831,663,663,,no,no,Samir Hamza Reguig,24,ALG,ALG,31,-19,-2,,Lost in Zahra R32 Lost in Monastir 6 R32,,no
-832,24,24,,no,no,Martin Kližan,36,SVK,SVK,30,,-3,,,,no
-833,826,826,,no,no,Gian Luca Tanner,25,SUI,SUI,30,,-3,,,,no
-834,832,832,,no,no,Matt Ponchet,21,FRA,FRA,30,,-2,,,,no
-835,833,833,,no,no,Pavel Lagutin,20,RUS,RUS,30,,-2,,,,no
-836,810,810,,no,no,Kristijan Juhas,24,SRB,SRB,30,,-2,,,,no
-837,801,801,,no,no,Alejandro Turriziani Álvarez,22,ESP,ESP,30,,-2,,,,no
-838,814,814,,no,no,Jeffrey Von Der Schulenburg,23,SUI,SUI,30,+4,+1,,Lost in Zahra R16,,no
-839,50,50,,no,no,Mikael Ymer,27,SWE,SWE,29,-26,-3,,,,no
-840,839,839,,no,no,Dong Ju Kim,23,KOR,KOR,29,,-1,,Lost in Sharm El Sheikh 2 SF,,no
-841,453,453,,no,no,Arklon Huertas Del Pino Cordova,31,PER,PER,29,,-1,,,,no
-842,49,49,,no,no,Grégoire Barrère,31,FRA,FRA,29,,-1,,,,no
-843,533,533,,no,no,Julio César Porras,27,ARG,ARG,29,,,,,,no
-844,841,841,,no,no,Rafael Izquierdo Luque,26,ESP,ESP,29,,,,,,no
-845,839,839,,no,no,Nikola Slavic,25,SWE,SWE,29,,,,Lost in Sheffield QF,,no
-846,821,821,,no,no,Vincent Marysko,20,GER,GER,29,,,,,,no
-847,811,811,,no,no,Thiago Cigarran,25,ARG,ARG,29,+6,+1,,Lost in Naples R16 Lost in Palm Coast R32,,no
-848,607,607,,no,no,Jacob Brumm,27,USA,USA,29,,-1,,,,no
-849,847,847,,no,no,Patrick Schoen,20,SUI,SUI,28,,-1,,,,no
-850,806,806,,no,no,Hoyoung Roh,19,KOR,KOR,28,,-1,,,,no
-851,850,850,,no,no,Marc Van Der Merwe,31,RSA,RSA,28,,-1,,,,no
-852,NCH (855),852,855,yes,yes,Scott Jones,28,AUS,AUS,28,+18,+2,,Lost in Qual. Brisbane 1 R2,,no
-853,694,694,,no,no,Xiaofei Wang,23,CHN,CHN,28,,-2,,,,no
-854,756,756,,no,no,Ignacio Parisca Romera,20,VEN,VEN,28,+20,+2,,Lost in Antalya 4 QF Lost in Xabia QF,,no
-855,NCH (864),855,864,yes,yes,John Hallquist Lithen,24,SWE,SWE,28,+9,+1,,Lost in Naples R16 Lost in Palm Coast R32,,no
-856,785,785,,no,no,Amit Vales,20,ISR,ISR,28,+20,+2,Davis Cup (0 W / 2 L),Lost in Hyderabad 2 QF,,yes
-857,636,636,,no,no,Taisei Ichikawa,25,JPN,JPN,28,,-3,,,,no
-858,838,838,,no,no,Luca Pow,21,GBR,GBR,27,,-3,,,,no
-859,544,544,,no,no,Luca Wiedenmann,27,GER,GER,27,,-3,,,,no
-860,NCH (884),860,884,yes,yes,Peter Makk,24,HUN,HUN,27,+47,+4,,Lost in Sharm El Sheikh SF Lost in Sharm El Sheikh 2 QF,,no
-861,NCH (869),861,869,yes,yes,Andreja Petrovic,26,NOR,NOR,27,+8,+1,,Lost in Glasgow R16,,no
-862,599,599,,no,no,Giorgio Tabacco,22,ITA,ITA,27,,-4,,,,no
-863,857,857,,no,no,Charlie Robertson,19,GBR,GBR,27,,-4,,,,no
-864,235,235,,no,no,Ivan Nedelko,39,RUS,RUS,27,-12,-1,,Lost in Sharm El Sheikh R32,,no
-865,446,446,,no,no,Jumpei Yamasaki,28,JPN,JPN,27,,-5,,,,no
-866,713,713,,no,no,Lautaro Agustin Falabella,28,ARG,ARG,27,,-4,,Lost in Qual. Rosario R1,,no
-867,736,736,,no,no,Jakub Filip,20,CZE,CZE,27,,-6,Qual. Oberhaching R2,Lost in Nussloch R32,,yes
-868,792,792,,no,no,Mert Naci Türker,27,TUR,TUR,27,+4,+1,,Lost in Zahra R16 Lost in Zahra 2 R32,,no
-869,654,654,,no,no,Noah Schachter,26,USA,USA,27,,-6,Qual. Baton Rouge R1,Lost in Qual. Cleveland R1,,yes
-870,858,858,,no,no,Manuel Plunger,23,ITA,ITA,26,,-4,,,,no
-870,836,836,,no,no,Emon Van Loben Sels,21,USA,USA,26,,-4,,,,no
-872,305,305,,no,no,Kalin Ivanovski,21,MKD,MKD,26,,-4,,,,no
-873,605,605,,no,no,Lorenzo Bocchi,28,ITA,ITA,26,,-2,,,,no
-874,788,788,,no,no,Joao Victor Couto Loureiro,22,BRA,BRA,26,,-1,,,,no
-875,782,782,,no,no,Stefano D'Agostino,22,ITA,ITA,26,,,,,,no
-876,714,714,,no,no,Niklas Schell,27,GER,GER,26,,+1,,Lost in Nussloch R32 Lost in Qual. Koblenz R1,,no
-877,743,743,,no,no,Seydina André,22,SEN,SEN,26,+23,+2,,Lost in Qual. Monastir 5 R3 Lost in Monastir 5 QF,,no
-878,CH,878,,yes,no,Andrea Fiorentini,25,ITA,ITA,26,,,,,,no
-879,763,763,,no,no,Dragos Nicolae Cazacu,21,ROU,ROU,26,+10,+1,,Lost in Naples R16 Lost in Qual. Cleveland R1,,no
-880,8,8,,no,no,Diego Schwartzman,33,ARG,ARG,25,,-1,,,,no
-881,65,65,,no,no,Thanasi Kokkinakis,29,AUS,AUS,25,,-1,,,,no
-882,850,850,,no,no,Nicolas Ian Kotzen,22,USA,USA,25,,-1,,,,no
-883,712,712,,no,no,Aoran Wang,29,CHN,CHN,25,,-1,,Lost in Qual. Brisbane 1 R1 Lost in Qual. Brisbane 2 R1,,no
-884,394,394,,no,no,Tiago Cação,27,POR,POR,25,,-1,,,,no
-885,411,411,,no,no,Micah Braswell,24,USA,USA,25,+20,+2,,Lost in Qual. Cleveland R2,,no
-886,884,884,,no,no,Jack Kennedy,17,USA,USA,25,,-2,Baton Rouge R32,Lost in Cleveland R32,,yes
-887,508,508,,no,no,Manish Sureshkumar,26,IND,IND,25,+70,+6,Chennai R32,Lost in Hyderabad 2 F,,yes
-888,742,742,,no,no,Aleksandr Lobanov,24,RUS,RUS,25,,-3,,,,no
-889,687,687,,no,no,Daisuke Sumizawa,27,JPN,JPN,25,,-3,,,,no
-890,NCH (895),890,895,yes,yes,Anas Mazdrashki,19,BUL,BUL,25,+6,+1,,Lost in Sharm El Sheikh R16 Lost in Sharm El Sheikh 2 R32,,no
-891,837,837,,no,no,Marko Maksimović,19,SRB,SRB,25,,-3,,,,no
-892,620,620,,no,no,Trey Hilderbrand,25,USA,USA,24,,-2,,,,no
-893,479,479,,no,no,Ilya Snițari,23,MDA,MDA,24,,-2,,,,no
-894,252,252,,no,no,Samuel Vincent Ruggeri,23,ITA,ITA,24,+15,+302,Sharm El Sheikh 2 F**Sharm El Sheikh W**,,,yes
-895,845,845,,no,no,Shunsuke Nakagawa,25,JPN,JPN,24,,-3,,,,no
-896,823,823,,no,no,Tomas Serrano Luis,23,POR,POR,24,,-1,,,,no
-897,894,894,,no,no,Marcus Walters,27,GBR,GBR,24,,-3,,Lost in Glasgow R32 Lost in Sheffield R32,,no
-898,774,774,,no,no,Nitin Kumar Sinha,26,IND,IND,24,+16,+1,Qual. Chennai R1,Lost in Hyderabad 2 R16,,yes
-899,730,730,,no,no,Alexander Klintcharov,29,NZL,NZL,24,,-1,,,,no
-900,896,896,,no,no,Finn Murgett,24,GBR,GBR,24,,-1,,Lost in Glasgow R32 Lost in Sheffield R16,,no
-901,NCH (920),901,920,yes,yes,Romain Faucon,23,BEL,BEL,24,+27,+2,,Lost in Sharm El Sheikh QF Lost in Sharm El Sheikh 2 R32,,no
-902,469,469,,no,no,Ezekiel Clark,27,USA,USA,24,+15,+1,,Lost in Naples R16 Lost in Palm Coast R16,,no
-903,851,851,,no,no,Nicolas Jadoun,23,FRA,FRA,24,,-2,Davis Cup (0 W / 1 L),Lost in Qual. Monastir 5 R3,,yes
-904,896,896,,no,no,Matthew Forbes,19,USA,USA,23,,-2,Baton Rouge R32,,,yes
-905,903,903,,no,no,Theodore Dean,23,USA,USA,23,,-2,,,,no
-906,904,904,,no,no,Calvin Müller,25,GER,GER,23,,-2,,Lost in Nussloch R32,,no
-907,904,904,,no,no,Anton Shepp,23,NZL,NZL,23,,-1,Davis Cup (1 W / 1 L),,,yes
-908,714,714,,no,no,Isaiah Strode,28,USA,USA,23,-51,-4,,,,no
-909,907,907,,no,no,Enzo Kohlmann De Freitas,19,BRA,BRA,23,,-1,Qual. Baton Rouge R1,,,yes
-910,478,478,,no,no,Lucas Bouquet,28,FRA,FRA,23,,-1,,,,no
-911,869,869,,no,no,Kasra Rahmani,19,IRI,IRI,23,+11,+1,,Lost in Qual. Cesenatico R2,,no
-912,910,910,,no,no,Marc Majdandzic,21,GER,GER,23,,-2,,,,no
-913,663,663,,no,no,Benjamin Pietri,29,FRA,FRA,23,,-2,,,,no
-914,830,830,,no,no,Carles Hernández,24,ESP,ESP,23,,-2,,Lost in Xabia QF,,no
-915,913,913,,no,no,Nikolai Barsukov,19,GER,GER,23,,-2,,,,no
+212,198,198,,no,no,Clément Tabur,26,FRA,FRA,276,+1,+3,Pau R32**Qual. Pau W****Qual. Pau W** Pau R32 284 401,,,yes
+213,212,212,,no,no,Remy Bertola,27,SUI,SUI,276,-1,+2,Pau R32**Qual. Pau W****Qual. Pau W** Pau R32 284 401,,,yes
+214,183,183,,no,no,Oliver Crawford,26,GBR,GBR,273,,+1,Chennai R32 273 316,,,yes
+215,16,16,,no,no,Marco Cecchinato,33,ITA,ITA,270,+2,+4,,Lost in Qual. Buenos Aires R2,,no
+216,106,106,,no,no,Tristan Boyer,24,USA,USA,268,,,,Lost in Qual. Dallas R2,,no
+217,205,205,,no,no,Gonzalo Bueno,21,PER,PER,265,,+1,,,,no
+218,214,214,,no,no,Ilia Simakin,22,RUS,RUS,263,-4,-10,Chennai R32 264 310,,,yes
+219,58,58,,no,no,Thiago Seyboth Wild,25,BRA,BRA,262,-22,-43,Buenos Aires R32,Lost in Qual. Buenos Aires R2 Lost in Qual. Buenos Aires R2 Buenos Aires R32 287 512,,yes
+220,CH,220,,yes,no,Yi Zhou,20,CHN,CHN,261,,,Brisbane 2 R32 267 336,,,yes
+221,158,158,,no,no,Yu-hsiou Hsu,26,TWN,TWN,259,,,,,,no
+222,157,157,,no,no,Lukas Neumayer,23,AUT,AUT,255,,+1,,,,no
+223,191,191,,no,no,Nerman Fatić,31,BIH,BIH,254,,+1,,,,no
+224,202,202,,no,no,Federico Cina,18,ITA,ITA,252,,+1,,,,no
+225,NCH (229),225,229,yes,yes,Lautaro Midon,21,ARG,ARG,252,+4,+7,**Qual. Buenos Aires W**,Lost in Buenos Aires R32,,yes
+226,196,196,,no,no,Rodrigo Pacheco Mendez,20,MEX,MEX,248,-4,-8,,,,no
+227,131,131,,no,no,Genaro Alberto Olivieri,27,ARG,ARG,247,,,,Lost in Qual. Buenos Aires R1,,no
+228,157,157,,no,no,Santiago Taverna,26,ARG,ARG,246,,,,Lost in Qual. Buenos Aires R1,,no
+229,47,47,,no,no,Marc-Andrea Hüsler,29,SUI,SUI,244,,+1,Tenerife 2 R32 250 319,,,yes
+230,NCH (231),230,231,yes,yes,Matej Dodig,20,CRO,CRO,244,,+2,Tenerife 2 R32 250 319,,,yes
+231,177,177,,no,no,Andrea Collarini,34,ARG,ARG,244,,+2,,Lost in Qual. Buenos Aires R1,,no
+232,123,123,,no,no,Ryan Peniston,30,GBR,GBR,242,-1,-2,Tenerife 2 R32 248 317,,,yes
+233,NCH (235),233,235,yes,yes,Max Houkes,25,NED,NED,242,,+2,,,,no
+234,155,155,,no,no,Dmitry Popko,29,KAZ,KAZ,241,-8,-7,,,,no
+235,72,72,,no,no,Borna Gojo,27,CRO,CRO,236,,+2,,,,no
+236,117,117,,no,no,Felipe Meligeni Alves,27,BRA,BRA,236,-2,-7,,Lost in Qual. Buenos Aires R1,,no
+237,236,236,,no,no,Marko Topo,22,GER,GER,234,,+1,,,,no
+238,212,212,,no,no,Johannus Monday,24,GBR,GBR,233,,+1,,,,no
+239,172,172,,no,no,Murphy Cassone,23,USA,USA,233,+3,+6,,Lost in Qual. Dallas R2,,no
+240,147,147,,no,no,Kaichi Uchida,31,JPN,JPN,231,,,Vila Real De Santo Antonio R32,,,yes
+241,NCH (244),241,244,yes,yes,Toby Samuel,23,GBR,GBR,230,+3,+6,Tenerife 2 R16 236 299,,,yes
+242,235,235,,no,no,Joel Schwärzler,20,AUT,AUT,226,,+1,,,,no
+243,210,210,,no,no,Filip Jianu,24,ROU,ROU,225,+6,+7,Antalya 6 R32**Antalya 5 W****Antalya 5 W** Antalya 6 R32,,,yes
+244,153,153,,no,no,Alexis Galarneau,26,CAN,CAN,221,-8,-16,Baton Rouge R32 225 271,,,yes
+245,135,135,,no,no,Mitchell Krueger,32,USA,USA,221,,,,Lost in Qual. Dallas R1,,no
+246,196,196,,no,no,Rio Noguchi,27,JPN,JPN,221,,,Chennai R32 224 270,,,yes
+247,97,97,,no,no,Kimmer Coppejans,32,BEL,BEL,220,,,,Lost in Qual. Rotterdam R1,,no
+248,142,142,,no,no,Ivan Gakhov,29,RUS,RUS,219,,,,,,no
+249,201,201,,no,no,Edas Butvilas,21,LTU,LTU,217,,+1,,,,no
+250,NCH (251),250,251,yes,yes,Tom Gentzsch,22,GER,GER,217,,+1,Tenerife 2 R32 221 290 Advertisement,,,yes
+251,NCH (253),251,253,yes,yes,Pedro Boscardin Dias,23,BRA,BRA,213,,+2,,,,no
+252,168,168,,no,no,Frederico Ferreira Silva,30,POR,POR,210,,+3,Chennai R32 210 254,,,yes
+253,240,240,,no,no,Patrick Zahraj,26,GER,GER,209,+8,+5,Pau R32**Qual. Pau W****Qual. Pau W** Pau R32 217 334,,,yes
+254,142,142,,no,no,Gustavo Heide,23,BRA,BRA,207,,+3,,,,no
+255,232,232,,no,no,Andrés Andrade,27,ECU,ECU,207,-1,-4,Baton Rouge R32 209 255,,,yes
+256,235,235,,no,no,Charles Broom,27,GBR,GBR,206,,+2,,,,no
+257,241,241,,no,no,Daniel Michalski,26,POL,POL,206,-16,-23,,,,no
+258,47,47,,no,no,Juncheng Shang,21,CHN,CHN,205,,+1,,,,no
+259,108,108,,no,no,Franco Agamenone,32,ITA,ITA,204,,+1,,Lost in Qual. Buenos Aires R1,,no
+260,197,197,,no,no,Pol Martín Tiffon,26,ESP,ESP,203,,+2,Tenerife 2 R32 209 278,,,yes
+261,39,39,,no,no,Mikhail Kukushkin,38,KAZ,KAZ,203,-5,-5,Pau R32,Lost in Qual. Pau R2 Lost in Qual. Pau R2 Pau R32 211 328,,yes
+262,198,198,,no,no,Fajing Sun,29,CHN,CHN,202,,+3,Brisbane 2 R32 208 277,,,yes
+263,159,159,,no,no,Dimitar Kuzmanov,32,BUL,BUL,202,+1,-1,,,,no
+264,134,134,,no,no,Geoffrey Blancaneaux,27,FRA,FRA,201,+2,+1,,Lost in Qual. Pau R2,,no
+265,193,193,,no,no,Sascha Gueymard Wayenburg,22,FRA,FRA,201,-2,-2,Tenerife 2 R32 207 276,,,yes
+266,78,78,,no,no,Nicolás Kicker,33,ARG,ARG,200,,+1,,Lost in Qual. Buenos Aires R1,,no
+267,260,260,,no,no,Tiago Pereira,21,POR,POR,200,,+1,Tenerife 2 R32 204 273,,,yes
+268,264,264,,no,no,Andres Martin,24,USA,USA,198,,+2,Baton Rouge R32 198 244,,,yes
+269,NCH (271),269,271,yes,yes,Florent Bax,26,FRA,FRA,197,,+2,Chennai R32 198 244,,,yes
+270,103,103,,no,no,Stefan Kozlov,28,USA,USA,196,,+3,Baton Rouge R32 200 246,,,yes
+271,238,238,,no,no,Nikolás Sánchez Izquierdo,26,ESP,ESP,194,,+3,,,,no
+272,NCH (275),272,275,yes,yes,Stefanos Sakellaridis,21,GRE,GRE,193,,+3,,,,no
+273,NCH (304),273,304,yes,yes,Harry Wendelken,24,GBR,GBR,193,+31,+24,**Sheffield W**,,,yes
+274,181,181,,no,no,Daniel Rincon,23,ESP,ESP,191,-22,-22,,Lost in Tenerife 2 R32,,no
+275,NCH (278),275,278,yes,yes,Darwin Blanch,18,USA,USA,189,+5,+5,Brisbane 2 R16 195 258,,,yes
+276,169,169,,no,no,Henri Squire,25,GER,GER,188,+6,+5,Pau R32**Qual. Pau W****Qual. Pau W** Pau R32 196 313,,,yes
+277,142,142,,no,no,Alejandro Moro Cañas,25,ESP,ESP,188,-1,-3,Tenerife 2 R32 191 260,,,yes
+278,168,168,,no,no,Murkel Dellien,28,BOL,BOL,186,,-1,,,,no
+279,237,237,,no,no,Saba Purtseladze,24,GEO,GEO,185,-10,-14,,,,no
+280,60,60,,no,no,Juan Pablo Varillas,30,PER,PER,184,,-2,,,,no
+281,279,279,,no,no,Andrej Nedić,21,BIH,BIH,184,,-2,,,,no
+282,93,93,,no,no,Liam Broady,32,GBR,GBR,184,,-1,Vila Real De Santo Antonio R32,,,yes
+283,4,4,,no,no,Kei Nishikori,36,JPN,JPN,182,,+1,,,,no
+284,47,47,,no,no,Facundo Díaz Acosta,25,ARG,ARG,182,,+1,Buenos Aires R32 207 432,,,yes
+285,78,78,,no,no,Yasutaka Uchiyama,33,JPN,JPN,182,+12,+6,Brisbane 2 R16 188 251,,,yes
+286,CH,286,,yes,no,Petr Brunclík,19,CZE,CZE,181,,,,,,no
+287,NCH (288),287,288,yes,yes,Fabrizio Andaloro,25,ITA,ITA,180,,+1,,,,no
+288,190,190,,no,no,Matheus Pucinelli De Almeida,24,BRA,BRA,180,,+1,,,,no
+289,260,260,,no,no,Robin Bertrand,22,FRA,FRA,180,,+1,,Lost in Qual. Pau R2,,no
+290,NCH (291),290,291,yes,yes,Lilian Marmousez,24,FRA,FRA,179,,+1,,,,no
+291,171,171,,no,no,Beibit Zhukayev,25,KAZ,KAZ,178,,+1,,,,no
+292,116,116,,no,no,Calvin Hémery,31,FRA,FRA,177,,+3,,Lost in Qual. Pau R1,,no
+293,254,254,,no,no,Mats Rosenkranz,27,GER,GER,177,,+3,,,,no
+294,261,261,,no,no,Alex Rybakov,29,USA,USA,176,,-1,,Lost in Qual. Dallas R1,,no
+295,80,80,,no,no,Norbert Gombos,35,SVK,SVK,175,,+3,,,,no
+296,143,143,,no,no,Benjamin Hassan,31,LBN,LBN,174,-24,-22,Tenerife 2 R32 180 249,,,yes
+297,212,212,,no,no,Michael Geerts,31,BEL,BEL,173,-14,-10,,,,no
+298,CH,298,,yes,no,Jacopo Berrettini,27,ITA,ITA,172,+8,+4,Tenerife 2 R16 178 241,,,yes
+299,287,287,,no,no,Hynek Bartoň,21,CZE,CZE,172,-12,-8,Tenerife 2 R32,Lost in Qual. Tenerife 2 R2 Lost in Qual. Tenerife 2 R2 Tenerife 2 R32 178 247,,yes
+300,NCH (301),300,301,yes,yes,Maximus Jones,21,THA,THA,172,,+1,,,,no
+301,144,144,,no,no,Akira Santillan,28,JPN,JPN,172,+8,+7,Antalya 6 R32,Lost in Antalya 5 F,,yes
+302,68,68,,no,no,Sumit Nagal,28,IND,IND,171,-9,-7,Chennai R32 175 221,,,yes
+303,299,299,,no,no,Sandro Kopp,25,AUT,AUT,171,,-1,,,,no
+304,NCH (307),304,307,yes,yes,Gianluca Cadenasso,21,ITA,ITA,166,,+3,,,,no
+305,267,267,,no,no,Petr Bar Biryukov,23,RUS,RUS,166,,-3,Chennai R32 168 214,,,yes
+306,279,279,,no,no,Garrett Johns,25,USA,USA,166,-3,-5,,Lost in Baton Rouge R32,,no
+307,NCH (308),307,308,yes,yes,Keegan Smith,27,USA,USA,165,,+1,Baton Rouge R32 167 213,,,yes
+308,263,263,,no,no,Eliakim Coulibaly,23,CIV,CIV,164,+5,+1,Monastir 8 R32,Lost in Monastir 6 R16,,yes
+309,NCH (312),309,312,yes,yes,Diego Dedura,17,GER,GER,164,,+3,,,,no
+310,NCH (315),310,315,yes,yes,Miguel Damas,26,ESP,ESP,162,+5,+1,Tenerife 2 R32**Qual. Tenerife 2 W**168 237,,,yes
+311,307,307,,no,no,Philip Henning,25,RSA,RSA,160,,+5,,,,no
+312,192,192,,no,no,Gauthier Onclin,24,BEL,BEL,160,,+5,Vila Real De Santo Antonio R32,,,yes
+313,NCH (314),313,314,yes,yes,Gabi Adrian Boitan,26,ROU,ROU,159,+1,-2,Antalya 6 R32,,,yes
+314,249,249,,no,no,Mathys Erhard,24,FRA,FRA,159,,+4,,Lost in Qual. Tenerife 2 R1,,no
+315,71,71,,no,no,Cedrik Marcel Stebe,35,GER,GER,158,,+4,,,,no
+316,289,289,,no,no,Renta Tokuda,27,JPN,JPN,157,,+4,,,,no
+317,240,240,,no,no,Matías Soto,26,CHI,CHI,157,,+4,,,,no
+318,181,181,,no,no,Abdullah Shelbayh,22,JOR,JOR,156,-8,-8,Tenerife 2 R32**Qual. Tenerife 2 W**162 231,,,yes
+319,207,207,,no,no,Daniel Dutra da Silva,37,BRA,BRA,155,,+5,,Lost in Qual. Dallas R1,,no
+320,NCH (323),320,323,yes,yes,Maxim Mrva,18,CZE,CZE,154,+3,-2,,,,no
+321,302,302,,no,no,Felix Gill,23,GBR,GBR,152,,+5,Chennai R32 155 201,,,yes
+322,NCH (328),322,328,yes,yes,Sergey Fomin,25,UZB,UZB,151,,+6,,Lost in Qual. Tenerife 2 R2,,no
+323,NCH (329),323,329,yes,yes,Oliver Tarvet,22,GBR,GBR,150,,+6,,,,no
+324,180,180,,no,no,Paul Jubb,26,GBR,GBR,150,+32,+16,Oberhaching R32,Lost in Sheffield F,,yes
+325,222,222,,no,no,Viktor Durasovic,28,NOR,NOR,150,-14,-14,,Lost in Qual. Pau R1,,no
+326,93,93,,no,no,Andrej Martin,36,SVK,SVK,149,,+5,Antalya 6 R32,,,yes
+327,170,170,,no,no,Mattéo Martineau,27,FRA,FRA,149,,+5,,Lost in Qual. Pau R1,,no
+328,252,252,,no,no,Tom Paris,23,FRA,FRA,148,,+5,,,,no
+329,278,278,,no,no,Tyler Zink,25,USA,USA,146,+1,-4,Baton Rouge R32 150 196,,,yes
+330,170,170,,no,no,James Trotter,26,JPN,JPN,145,-5,-8,Pau R32**Qual. Pau W**153 270,,,yes
+331,127,127,,no,no,Facundo Mena,33,ARG,ARG,145,,+3,,,,no
+332,304,304,,no,no,Giles Hussey,28,GBR,GBR,144,+6,+1,Tenerife 2 R32,Lost in Sheffield R32 **Qual. Tenerife 2 W**150 219,,yes
+333,159,159,,no,no,Hady Habib,27,LBN,LBN,143,,+3,,,,no
+334,52,52,,no,no,Soonwoo Kwon,28,KOR,KOR,142,,+5,,,,no
+335,50,50,,no,no,Pavel Kotov,27,RUS,RUS,142,,+5,Pau R32 150 267,,,yes
+336,127,127,,no,no,Jelle Sels,30,NED,NED,142,+1,-1,,,,no
+337,336,336,,no,no,Franco Roncadelli,26,URU,URU,142,,+4,,,,no
+338,336,336,,no,no,Hamish Stewart,26,GBR,GBR,142,,+4,,,,no
+339,121,121,,no,no,Raúl Brancaccio,28,ITA,ITA,142,,+4,Tenerife 2 R32 147 216,,,yes
+340,NCH (344),340,344,yes,yes,Sean Cuenin,21,FRA,FRA,141,,+4,,,,no
+341,260,260,,no,no,Carlos Sánchez Jover,25,ESP,ESP,141,,+4,,,,no
+342,336,336,,no,no,Antoine Ghibaudo,21,FRA,FRA,140,,+5,Baton Rouge R32 144 190,,,yes
+343,314,314,,no,no,Martin Krumich,23,CZE,CZE,140,-8,-5,,Lost in Qual. Pau R2,,no
+344,NCH (348),344,348,yes,yes,Florian Broska,28,GER,GER,139,,+4,,,,no
+345,336,336,,no,no,Guido Iván Justo,28,ARG,ARG,139,,+4,,,,no
+346,258,258,,no,no,Igor Marcondes,28,BRA,BRA,138,,+4,,,,no
+347,NCH (352),347,352,yes,yes,Sanhui Shin,28,KOR,KOR,138,,+5,,,,no
+348,243,243,,no,no,Marat Sharipov,23,RUS,RUS,137,-49,-37,,Lost in Qual. Pau R2,,no
+349,268,268,,no,no,Gonzalo Villanueva,31,ARG,ARG,137,,+5,,,,no
+350,307,307,,no,no,Oleg Prihodko,28,UKR,UKR,136,,+5,Pau R32 144 261,,,yes
+351,105,105,,no,no,Duje Ajduković,25,CRO,CRO,135,-24,-16,Chennai R32 139 185,,,yes
+352,81,81,,no,no,Michael Mmoh,28,USA,USA,134,-52,-38,,,,no
+353,226,226,,no,no,Juan Bautista Torres,23,ARG,ARG,134,-7,-7,,Lost in Qual. Buenos Aires R1,,no
+354,7,7,,no,no,Richard Gasquet,39,FRA,FRA,133,,+4,,,,no
+355,341,341,,no,no,Gabriele Piraino,22,ITA,ITA,133,-2,-4,Tenerife 2 R32**Qual. Tenerife 2 W**139 208,,,yes
+356,NCH (360),356,360,yes,yes,Juan Manuel La Serna,22,ARG,ARG,132,,+4,,Lost in Qual. Buenos Aires R1,,no
+357,153,153,,no,no,Denis Yevseyev,32,KAZ,KAZ,132,,+5,Chennai R32 134 180,,,yes
+358,NCH (363),358,363,yes,yes,Trevor Svajda,19,USA,USA,131,,+5,Dallas R32 181 631,,,yes
+359,217,217,,no,no,Jonáš Forejtek,24,CZE,CZE,131,,+5,,,,no
+360,263,263,,no,no,Christoph Negritu,31,GER,GER,131,-1,-2,,,,no
+361,319,319,,no,no,Christian Langmo,29,USA,USA,131,+8,+3,Baton Rouge R16 135 177,,,yes
+362,NCH (367),362,367,yes,yes,Max Basing,23,GBR,GBR,129,+5,+1,Vila Real De Santo Antonio R32,Lost in Sheffield R16,,yes
+363,NCH (368),363,368,yes,yes,Viacheslav Bielinskyi,22,UKR,UKR,128,,+5,,,,no
+364,116,116,,no,no,Marc Polmans,28,AUS,AUS,128,+19,+5,Brisbane 2 R16 134 197,,,yes
+365,180,180,,no,no,Yuta Shimizu,26,JPN,JPN,127,,+5,,,,no
+366,158,158,,no,no,Tung Lin Wu,27,TWN,TWN,127,,+5,,,,no
+367,88,88,,no,no,Dominic Stricker,23,SUI,SUI,126,,+5,,,,no
+368,211,211,,no,no,Javier Barranco Cosano,27,ESP,ESP,126,-17,-12,,Lost in Tenerife 2 R32,,no
+369,288,288,,no,no,Cezar Crețu,24,ROU,ROU,126,,+5,,,,no
+370,345,345,,no,no,Iñaki Montes De La Torre,23,ESP,ESP,125,,+6,,,,no
+371,177,177,,no,no,Omar Jasika,28,AUS,AUS,125,+27,+6,Brisbane 2 R16 131 194,,,yes
+372,49,49,,no,no,Federico Coria,33,ARG,ARG,124,-50,-32,Buenos Aires R32 149 374,,,yes
+373,271,271,,no,no,Pedro Sakamoto,32,BRA,BRA,124,,+5,,Lost in Qual. Dallas R1,,no
+374,NCH (375),374,375,yes,yes,Mert Alkaya,25,TUR,TUR,124,+1,-2,,,,no
+375,292,292,,no,no,David Jordá Sanchis,31,ESP,ESP,124,,+4,,Lost in Brisbane 2 R32,,no
+376,NCH (381),376,381,yes,yes,Raphaël Pérot,24,FRA,FRA,123,,+5,Baton Rouge R32 127 173,,,yes
+377,NCH (385),377,385,yes,yes,Dan Martin,26,CAN,CAN,122,,+8,,,,no
+378,298,298,,no,no,Aidan McHugh,25,GBR,GBR,122,+6,-1,,,,no
+379,342,342,,no,no,Luciano Emanuel Ambrogi,22,ARG,ARG,122,,+7,,,,no
+380,360,360,,no,no,Hayato Matsuoka,21,JPN,JPN,122,+25,+5,Brisbane 2 R16 128 191,,,yes
+381,57,57,,no,no,Gastão Elias,35,POR,POR,121,,+6,Vila Real De Santo Antonio R32,,,yes
+382,NCH (387),382,387,yes,yes,Ioannis Xilas,24,GRE,GRE,121,,+6,Chennai R32 125 171,,,yes
+383,257,257,,no,no,Mili Poljičak,21,CRO,CRO,121,+11,+1,,Lost in Sharm El Sheikh 2 R16,,no
+384,315,315,,no,no,Alfredo Perez,28,USA,USA,121,-27,-13,,,,no
+385,55,55,,no,no,Facundo Bagnis,35,ARG,ARG,120,,+4,,,,no
+386,29,29,,no,no,Christopher Eubanks,29,USA,USA,120,,+4,,,,no
+387,289,289,,no,no,Adria Soriano Barrera,26,COL,COL,120,,+4,Vila Real De Santo Antonio R32,,,yes
+388,NCH (389),388,389,yes,yes,Carlo Alberto Caniato,20,ITA,ITA,120,,+4,Vila Real De Santo Antonio R32,,,yes
+389,19,19,,no,no,Hyeon Chung,29,KOR,KOR,120,,+4,,,,no
+390,183,183,,no,no,Federico Arnaboldi,25,ITA,ITA,120,,+5,,,,no
+391,346,346,,no,no,Kasidit Samrej,25,THA,THA,120,,+5,,,,no
+392,339,339,,no,no,Andre Ilagan,25,USA,USA,120,-31,-12,Baton Rouge R16 124 166,,,yes
+393,221,221,,no,no,Hernán Casanova,32,ARG,ARG,119,,+4,,,,no
+394,270,270,,no,no,Corentin Denolly,28,FRA,FRA,119,,+5,,Lost in Brisbane 2 R32,,no
+395,17,17,,no,no,Albert Ramos Viñolas,38,ESP,ESP,118,,+5,,,,no
+396,185,185,,no,no,Aziz Dougaz,28,TUN,TUN,118,-23,-8,,,,no
+397,366,366,,no,no,Max Alcalá Gurri,23,ESP,ESP,118,-31,-12,Antalya 6 R32,,,yes
+398,58,58,,no,no,Taro Daniel,33,JPN,JPN,117,-21,-7,Brisbane 2 R32 123 192,,,yes
+399,189,189,,no,no,Arthur Bouquier,25,FRA,FRA,117,,+3,Pau R32 125 242,,,yes
+400,331,331,,no,no,Andrea Picchione,27,ITA,ITA,117,,+3,,,,no
+401,369,369,,no,no,Daniel Milavsky,24,USA,USA,117,,+3,Baton Rouge R32 120 166,,,yes
+402,229,229,,no,no,Marek Gengel,30,CZE,CZE,117,,+4,,,,no
+403,347,347,,no,no,Samir Banerjee,22,USA,USA,116,,+4,,,,no
+404,237,237,,no,no,Alastair Gray,27,GBR,GBR,116,,+4,,Lost in Chennai R32,,no
+405,136,136,,no,no,Alexey Vatutin,33,RUS,RUS,116,,+4,,,,no
+406,402,402,,no,no,Olle Wallin,24,SWE,SWE,116,,+4,Vila Real De Santo Antonio R32,,,yes
+407,385,385,,no,no,Aryan Shah,20,IND,IND,116,-6,-2,,,,no
+408,NCH (409),408,409,yes,yes,Michele Ribecai,23,ITA,ITA,116,,+3,,Lost in Qual. Pau R1,,no
+409,303,303,,no,no,Arthur Weber,33,FRA,FRA,115,+21,+6,Brisbane 2 R16 121 184,,,yes
+410,334,334,,no,no,Kilian Feldbausch,20,SUI,SUI,115,,+2,,,,no
+411,409,409,,no,no,Alex Hernandez,26,MEX,MEX,115,,+2,Sunrise R32,,,yes
+412,CH,412,,yes,no,Alex Martinez,24,ESP,ESP,115,+6,+1,,Lost in Qual. Tenerife 2 R2,,no
+413,244,244,,no,no,Lucas Poullain,30,FRA,FRA,115,,+1,,Lost in Qual. Pau R1,,no
+414,160,160,,no,no,Li Tu,29,AUS,AUS,114,,+1,Brisbane 2 R32 120 189,,,yes
+415,150,150,,no,no,Oriol Roca Batalla,32,ESP,ESP,114,,+1,Antalya 6 R32,,,yes
+416,387,387,,no,no,Mariano Kestelboim,30,ARG,ARG,114,,+1,,,,no
+417,168,168,,no,no,Maks Kaśnikowski,22,POL,POL,113,,+2,Chennai R32 117 163,,,yes
+418,319,319,,no,no,Patrick Maloney,26,USA,USA,113,,+2,,,,no
+419,280,280,,no,no,Jie Cui,28,CHN,CHN,113,,+2,,,,no
+420,NCH (422),420,422,yes,yes,Buvaysar Gadamauri,25,BEL,BEL,113,,+2,,,,no
+421,39,39,,no,no,Radu Albot,36,MDA,MDA,112,,+2,,,,no
+422,219,219,,no,no,Nicolás Álvarez Varona,24,ESP,ESP,111,-40,-12,,,,no
+423,346,346,,no,no,Stuart Parker,28,GBR,GBR,111,,+2,,,,no
+424,384,384,,no,no,Neil Oberleitner,26,AUT,AUT,111,,-1,,,,no
+425,357,357,,no,no,Luca Potenza,25,ITA,ITA,111,,+2,,,,no
+426,CH,426,,yes,no,Cyril Vandermeersch,26,FRA,FRA,111,,,,Lost in Qual. Pau R1,,no
+427,299,299,,no,no,Vadym Ursu,29,UKR,UKR,110,,+2,,,,no
+428,321,321,,no,no,Robert Strombachs,26,LAT,LAT,109,,+3,Baton Rouge R32 113 159,,,yes
+429,176,176,,no,no,Daniel Masur,31,GER,GER,108,,+4,Oberhaching R32,,,yes
+430,358,358,,no,no,Svyatoslav Gulin,23,RUS,RUS,108,+2,-1,,,,no
+431,388,388,,no,no,Karan Singh,22,IND,IND,108,,+3,Chennai R32 112 158,,,yes
+432,121,121,,no,no,Stefano Napolitano,30,ITA,ITA,107,,+4,Oberhaching R32,,,yes
+433,325,325,,no,no,Yankı Erel,25,TUR,TUR,107,,+4,Monastir 9 R32,,,yes
+434,400,400,,no,no,Luca Castelnuovo,29,SUI,SUI,107,,+4,Chennai R32 111 157,,,yes
+435,430,430,,no,no,Erik Arutiunian,21,BLR,BLR,107,,+5,Baton Rouge R32 110 156,,,yes
+436,146,146,,no,no,Rudolf Molleker,25,GER,GER,107,,+5,,,,no
+437,421,421,,no,no,Hikaru Shiraishi,25,JPN,JPN,107,,+5,,Lost in Brisbane 2 R32,,no
+438,211,211,,no,no,Roberto Cid Subervi,32,DOM,DOM,106,-3,-1,,,,no
+439,383,383,,no,no,Lukáš Pokorný,23,SVK,SVK,106,,+4,,,,no
+440,NCH (444),440,444,yes,yes,Juan Estevez,20,ARG,ARG,106,,+4,,,,no
+441,382,382,,no,no,Federico Bondioli,20,ITA,ITA,106,,+4,,Lost in Qual. Tenerife 2 R2,,no
+442,287,287,,no,no,Marvin Möller,27,GER,GER,105,,+4,Oberhaching R32,,,yes
+443,433,433,,no,no,Dali Blanch,22,USA,USA,105,+4,+1,,Lost in Qual. Tenerife 2 R2,,no
+444,NCH (483),444,483,yes,yes,Braden Shick,22,USA,USA,104,+39,+15,Baton Rouge R32**Huamantla 2 W**108 154,,,yes
+445,420,420,,no,no,Stefan Palosi,26,ROU,ROU,104,,+3,,,,no
+446,438,438,,no,no,Andrew Fenty,25,USA,USA,103,+9,+2,Sunrise R32,Lost in Palm Coast QF,,yes
+447,415,415,,no,no,Lorenzo Carboni,19,ITA,ITA,103,-19,-7,Chennai R32 106 152,,,yes
+448,NCH (454),448,454,yes,yes,Lui Maxted,22,GBR,GBR,102,+6,+1,Vila Real De Santo Antonio R32,Lost in Sheffield R16,,yes
+449,416,416,,no,no,Étienne Donnet,24,FRA,FRA,102,,,,,,no
+450,316,316,,no,no,Eduardo Ribeiro,27,BRA,BRA,102,,,,,,no
+451,356,356,,no,no,Miloš Karol,23,SVK,SVK,102,,,,,,no
+452,377,377,,no,no,Max Wiskandt,24,GER,GER,102,,,Monastir 8 R32,,,yes
+453,161,161,,no,no,Alibek Kachmazov,23,RUS,RUS,101,,,,Lost in Qual. Tenerife 2 R1,,no
+454,135,135,,no,no,Antoine Escoffier,33,FRA,FRA,101,-15,-6,,,,no
+455,CH,455,,yes,no,Thomas Faurel,20,FRA,FRA,101,,+1,Monastir 8 R32,,,yes
+456,455,455,,no,no,James Story,24,GBR,GBR,100,,+1,Oberhaching R32,,,yes
+457,271,271,,no,no,Blake Ellis,27,AUS,AUS,99,,+1,Brisbane 2 R32 105 174,,,yes
+458,289,289,,no,no,Mika Brunold,21,SUI,SUI,98,,+1,Oberhaching R32,,,yes
+459,NCH (460),459,460,yes,yes,Pietro Fellin,24,ITA,ITA,98,,+1,,,,no
+460,457,457,,no,no,Jack Logé,21,BEL,BEL,98,,+1,Monastir 8 R32,,,yes
+461,339,339,,no,no,Andrey Chepelev,27,RUS,RUS,98,,+1,Antalya 6 R32,Lost in Antalya 5 R32,,yes
+462,387,387,,no,no,Gianmarco Ferrari,25,ITA,ITA,97,,+1,,,,no
+463,426,426,,no,no,Tommaso Compagnucci,26,ITA,ITA,96,+46,+15,Sunrise R32**Palm Coast W**,,,yes
+464,368,368,,no,no,Alexandr Binda,24,ITA,ITA,96,,-1,Chennai R32 99 145,,,yes
+465,378,378,,no,no,Valerio Aboian,23,ARG,ARG,95,,+1,,,,no
+466,462,462,,no,no,Ognjen Milić,18,SRB,SRB,95,,+1,,,,no
+467,306,306,,no,no,Blaise Bicknell,24,JAM,JAM,95,,+1,Baton Rouge R32 99 145,,,yes
+468,314,314,,no,no,Moerani Bouzige,26,AUS,AUS,95,,+1,Brisbane 2 R32 100 169,,,yes
+469,465,465,,no,no,Dhakshineswar Suresh,25,IND,IND,94,,+1,,,,no
+470,37,37,,no,no,Bernabé Zapata Miralles,29,ESP,ESP,94,,+1,,,,no
+471,373,373,,no,no,Bor Artnak,21,SLO,SLO,94,,+1,,,,no
+472,353,353,,no,no,Henry Searle,19,GBR,GBR,93,+8,+2,,Lost in Sheffield QF,,no
+473,331,331,,no,no,Carlos Lopez Montagud,25,ESP,ESP,93,,-1,Almoradi R32,Lost in Xabia R16,,yes
+474,470,470,,no,no,Filippo Moroni,25,ITA,ITA,92,,,,,,no
+475,449,449,,no,no,Takuya Kumasaka,27,JPN,JPN,92,,,,,,no
+476,CH,476,,yes,no,Dušan Obradović,24,SRB,SRB,92,,,Antalya 6 R32,,,yes
+477,161,161,,no,no,Filip Peliwo,32,POL,POL,92,,,,Lost in Qual. Tenerife 2 R1,,no
+478,459,459,,no,no,Nikolay Vylegzhanin,25,RUS,RUS,91,,,,,,no
+479,473,473,,no,no,Eero Vasa,29,FIN,FIN,90,,-1,,,,no
+480,200,200,,no,no,Yan Bai,36,CHN,CHN,89,,+2,,,,no
+481,480,480,,no,no,Andrea Guerrieri,27,ITA,ITA,89,,+3,,,,no
+482,384,384,,no,no,Petr Nesterov,22,BUL,BUL,89,,+3,,,,no
+483,481,481,,no,no,Manas Dhamne,18,IND,IND,89,,+3,Chennai R32**Zahra 2 W**92 138,,,yes
+484,458,458,,no,no,Jay Friend,22,JPN,JPN,88,,+3,,,,no
+485,269,269,,no,no,Giovanni Fonio,27,ITA,ITA,88,-4,-2,,Lost in Qual. Tenerife 2 R1,,no
+486,433,433,,no,no,Aristotelis Thanos,24,GRE,GRE,87,,+3,,,,no
+487,242,242,,no,no,Enrico Dalla Valle,27,ITA,ITA,87,,+4,,,,no
+488,NCH (490),488,490,yes,yes,Carl Emil Overbeck,24,DEN,DEN,87,,+2,Vila Real De Santo Antonio R32,,,yes
+489,454,454,,no,no,Edward Winter,21,AUS,AUS,87,,+3,,,,no
+490,474,474,,no,no,Tsung Hao Huang,26,TWN,TWN,87,,+3,,,,no
+491,31,31,,no,no,Zhizhen Zhang,29,CHN,CHN,86,-44,-126,Brisbane 2 R16 92 155,,,yes
+492,288,288,,no,no,Jakub Paul,26,SUI,SUI,86,-27,-10,,,,no
+493,74,74,,no,no,Mirza Bašić,34,BIH,BIH,86,,+1,,,,no
+494,389,389,,no,no,Stefan Dostanic,24,USA,USA,85,+11,+3,Baton Rouge R32**Qual. Baton Rouge W**89 135,,,yes
+495,404,404,,no,no,Cannon Kingsley,24,USA,USA,85,,-1,Baton Rouge R32 89 135,,,yes
+496,424,424,,no,no,Lorenzo Joaquín Rodríguez,26,ARG,ARG,85,-8,-3,,,,no
+497,434,434,,no,no,Jake Delaney,28,AUS,AUS,85,,,,Lost in Brisbane 2 R32,,no
+498,167,167,,no,no,Laurent Lokoli,31,FRA,FRA,84,,,,Lost in Qual. Pau R1,,no
+499,225,225,,no,no,Philip Sekulic,22,AUS,AUS,84,+13,+4,Chennai R16 88 130,,,yes
+500,318,318,,no,no,Alex Martí Pujolras,27,ESP,ESP,84,-4,-2,,,,no
+501,NCH (611),501,611,yes,yes,Mees Rottgering,18,NED,NED,84,+25,+113,Rotterdam R32**Qual. Rotterdam W**134 584,,,yes
+502,466,466,,no,no,João Eduardo Schiessl,21,BRA,BRA,84,,-3,,,,no
+503,350,350,,no,no,Vladyslav Orlov,30,UKR,UKR,84,,-3,,,,no
+504,479,479,,no,no,Henry Bernet,19,SUI,SUI,83,,-2,,,,no
+505,503,503,,no,no,Moïse Kouamé,16,FRA,FRA,83,,-2,Pau R32 91 208,,,yes
+506,NCH (515),506,515,yes,yes,Quinn Vandecasteele,23,USA,USA,83,+9,+3,Baton Rouge R16 87 129,,,yes
+507,484,484,,no,no,Tristan McCormick,26,USA,USA,83,,-3,Baton Rouge R32 86 132,,,yes
+508,491,491,,no,no,Nicolas Arseneault,19,CAN,CAN,82,-7,-1,,,,no
+509,238,238,,no,no,Yusuke Takahashi,28,JPN,JPN,82,,-3,,,,no
+510,455,455,,no,no,Olaf Pieczkowski,21,POL,POL,81,,-3,Baton Rouge R32 85 131,,,yes
+511,429,429,,no,no,Tadeáš Paroulek,26,CZE,CZE,81,,-1,,,,no
+512,271,271,,no,no,Mateus Alves,25,BRA,BRA,81,,-1,,,,no
+513,NCH (521),513,521,yes,yes,Sergio Callejon Hernando,21,ESP,ESP,81,+14,+4,Tenerife 2 R32**Qual. Tenerife 2 W**87 156,,,yes
+514,471,471,,no,no,Yuki Mochizuki,28,JPN,JPN,80,+17,+4,Brisbane 2 R32**Qual. Brisbane 2 W**86 155,,,yes
+515,285,285,,no,no,Alexander Weis,28,ITA,ITA,80,-7,-1,,,,no
+516,NCH (525),516,525,yes,yes,Tomasz Berkieta,19,POL,POL,80,+9,+3,Monastir 9 R32,Lost in Monastir 6 QF,,yes
+517,448,448,,no,no,Branko Djurić,21,SRB,SRB,80,,-3,,,,no
+518,331,331,,no,no,Masamichi Imamura,27,JPN,JPN,79,+31,+6,Brisbane 2 R16**Qual. Brisbane 2 W**85 148,,,yes
+519,510,510,,no,no,Samuele Pieri,23,ITA,ITA,79,,-2,Antalya 6 R32,Lost in Antalya 5 R16,,yes
+520,334,334,,no,no,Matthew Dellavedova,25,AUS,AUS,79,+10,+2,**Qual. Brisbane 2 W**,Lost in Brisbane 2 R32,,yes
+521,518,518,,no,no,Shunsuke Mitsui,23,JPN,JPN,78,,-3,,,,no
+522,78,78,,no,no,Renzo Olivo,33,ARG,ARG,78,,-3,,,,no
+523,280,280,,no,no,Dominik Palán,25,CZE,CZE,78,,-3,,,,no
+524,513,513,,no,no,Stefan Adrian Andreescu,24,ROU,ROU,78,,-3,,,,no
+525,371,371,,no,no,Ryan Nijboer,26,NED,NED,78,+11,+2,Almoradi R32,Lost in Antalya 5 SF,,yes
+526,410,410,,no,no,Stefan Popović,22,SRB,SRB,78,-10,-2,Antalya 6 R32,,,yes
+527,463,463,,no,no,Pedro Vives Marcos,24,ESP,ESP,77,,-5,,,,no
+528,468,468,,no,no,Ryuki Matsuda,26,JPN,JPN,77,,-5,,,,no
+529,483,483,,no,no,Justin Boulais,24,CAN,CAN,77,,-5,Baton Rouge R32 81 127,,,yes
+530,418,418,,no,no,Maé Malige,19,FRA,FRA,77,,-4,Oberhaching R32,,,yes
+531,523,523,,no,no,Arthur Nagel,22,FRA,FRA,77,,-3,,Lost in Xabia R16,,no
+532,234,234,,no,no,Maxime Chazal,32,FRA,FRA,76,+21,+106,**Monastir 6 W**,,,yes
+533,182,182,,no,no,Maximilian Neuchrist,34,AUT,AUT,76,,-1,,Lost in Sharm El Sheikh 2 QF,,no
+534,NCH (537),534,537,yes,yes,Joshua Sheehy,29,USA,USA,75,,+3,,,,no
+535,NCH (538),535,538,yes,yes,Max Schönhaus,18,GER,GER,75,,+3,Oberhaching R32,,,yes
+536,143,143,,no,no,Hiroki Moriya,35,JPN,JPN,75,,+3,Brisbane 2 R32 81 150,,,yes
+537,477,477,,no,no,Peter Fajta,23,HUN,HUN,75,,+3,,,,no
+538,449,449,,no,no,Maxim Zhukov,21,RUS,RUS,75,,+3,Monastir 8 R32,,,yes
+539,170,170,,no,no,Maxime Janvier,29,FRA,FRA,75,+13,+3,,Lost in Qual. Pau R2,,no
+540,535,535,,no,no,Ivan Marrero Curbelo,27,ESP,ESP,74,,+3,,Lost in Qual. Tenerife 2 R1,,no
+541,229,229,,no,no,Mukund Sasikumar,29,IND,IND,74,-28,-6,Chennai R32 78 124,,,yes
+542,458,458,,no,no,Maxwell Mckennon,23,USA,USA,74,,+2,Vila Real De Santo Antonio R32,,,yes
+543,525,525,,no,no,Fares Zakaria,24,EGY,EGY,74,-9,-2,,,,no
+544,296,296,,no,no,Oleksandr Ovcharenko,24,UKR,UKR,74,,+2,,,,no
+545,CH,545,,yes,no,Pavle Marinkov,20,AUS,AUS,74,,,,Lost in Brisbane 2 R32,,no
+546,215,215,,no,no,Khumoyun Sultanov,27,UZB,UZB,73,,+2,,,,no
+547,371,371,,no,no,Georgii Kravchenko,25,UKR,UKR,73,+19,+4,,Lost in Sharm El Sheikh 2 SF,,no
+548,316,316,,no,no,Alberto Barroso Campos,29,ESP,ESP,73,-13,-3,,Lost in Qual. Tenerife 2 R1,,no
+549,424,424,,no,no,Kokoro Isomura,23,JPN,JPN,73,+15,+3,**Qual. Brisbane 2 W**,Lost in Brisbane 2 R32,,yes
+550,517,517,,no,no,Nino Ehrenschneider,24,GER,GER,72,,+1,Monastir 8 R32,Lost in Monastir 6 R16,,yes
+551,357,357,,no,no,Eric Vanshelboim,24,UKR,UKR,72,-9,-3,Chennai R32 75 121,,,yes
+552,273,273,,no,no,Elmar Ejupovic,33,GER,GER,71,,+1,,,,no
+553,547,547,,no,no,Robin Catry,23,FRA,FRA,71,,+2,,Lost in Qual. Pau R1,,no
+554,448,448,,no,no,Aleksandre Bakshi,28,GEO,GEO,71,-21,-5,,,,no
+555,NCH (557),555,557,yes,yes,Lucio Ratti,22,ARG,ARG,71,,+2,,,,no
+556,548,548,,no,no,Paulo Andre Saraiva Dos Santos,25,BRA,BRA,71,,+2,,,,no
+557,181,181,,no,no,Tristan Lamasine,32,FRA,FRA,70,,+2,,,,no
+558,NCH (560),558,560,yes,yes,Filippo Romano,20,ITA,ITA,70,,+2,Oberhaching R32,,,yes
+559,NCH (561),559,561,yes,yes,Tai Sach,23,AUS,AUS,70,,+2,Brisbane 2 R32 75 144,,,yes
+560,519,519,,no,no,Amr Elsayed,26,EGY,EGY,70,,+2,,,,no
+561,552,552,,no,no,Igor Gimenez,25,BRA,BRA,70,,+2,,,,no
+562,555,555,,no,no,Reda Bennani,18,MAR,MAR,69,,+3,,,,no
+563,438,438,,no,no,Woobin Shin,22,KOR,KOR,69,,+4,,,,no
+564,555,555,,no,no,Sebastian Sorger,20,AUT,AUT,69,,+4,,,,no
+565,496,496,,no,no,Niels Visker,24,NED,NED,69,,+4,,,,no
+566,NCH (591),566,591,yes,yes,Massimo Giunta,21,ITA,ITA,69,+82,+15,,Lost in Monastir 6 F,,no
+567,509,509,,no,no,Radu Mihai Papoe,23,ROU,ROU,68,+14,+2,Antalya 6 R32,Lost in Antalya 5 QF,,yes
+568,509,509,,no,no,Manuel Mazza,26,ITA,ITA,68,+7,+1,Almoradi R32,Lost in Xabia SF,,yes
+569,436,436,,no,no,Sebastian Gima,23,ROU,ROU,68,,+1,,Lost in Baton Rouge R32,,no
+570,462,462,,no,no,Constantin Bittoun Kouzmine,27,FRA,FRA,68,+10,+1,,Lost in Zahra 2 QF,,no
+571,37,37,,no,no,Emil Ruusuvuori,26,FIN,FIN,67,-24,-6,,,,no
+572,230,230,,no,no,Max Hans Rehberg,22,GER,GER,67,,-1,Oberhaching R32,,,yes
+573,99,99,,no,no,Alexander Ritschard,31,SUI,SUI,67,,-1,,,,no
+574,50,50,,no,no,Ričardas Berankis,35,LTU,LTU,67,,-1,,,,no
+575,541,541,,no,no,Arda Azkara,22,TUR,TUR,67,,-1,Baton Rouge R32 71 117,,,yes
+576,395,395,,no,no,Tibo Colson,25,BEL,BEL,67,,,,,,no
+577,160,160,,no,no,Oleksii Krutykh,25,UKR,UKR,67,,,Oberhaching R32,,,yes
+578,560,560,,no,no,Taha Baadi,24,MAR,MAR,67,,,Sunrise R32,,,yes
+579,574,574,,no,no,Joaquin Aguilar Cardozo,20,URU,URU,66,,+3,,,,no
+580,477,477,,no,no,Kirill Kivattsev,28,RUS,RUS,66,,+3,Monastir 8 R32,,,yes
+581,469,469,,no,no,Juan Sebastián Gómez,33,COL,COL,65,,+3,,,,no
+582,191,191,,no,no,Dragos Nicolae Madaras,28,SWE,SWE,65,,+3,Antalya 6 R32,,,yes
+583,339,339,,no,no,Govind Nanda,24,USA,USA,65,,+3,,,,no
+584,545,545,,no,no,Filip Jeff Planinšek,24,SLO,SLO,65,,+3,Oberhaching R32,,,yes
+585,579,579,,no,no,Alan Fernando Rubio Fierros,27,MEX,MEX,65,,+3,,,,no
+586,277,277,,no,no,Michael Vrbenský,26,CZE,CZE,65,,+3,,,,no
+587,579,579,,no,no,Michal Krajčí,21,SVK,SVK,65,,+3,,,,no
+588,NCH (591),588,591,yes,yes,Matthew William Donald,21,CZE,CZE,65,,+3,Oberhaching R32,,,yes
+589,465,465,,no,no,Egor Agafonov,23,RUS,RUS,64,-35,-7,,Lost in Monastir 6 QF,,no
+590,485,485,,no,no,Digvijaypratap Singh,25,IND,IND,64,,+2,Chennai R32 68 114,,,yes
+591,383,383,,no,no,Gabriele Pennaforti,25,ITA,ITA,64,-41,-8,,,,no
+592,334,334,,no,no,Leo Borg,22,SWE,SWE,64,,+1,Monastir 9 R32,,,yes
+593,451,451,,no,no,Dan Alexandru Tomescu,26,ROU,ROU,63,,+1,Antalya 6 R32,,,yes
+594,251,251,,no,no,Ergi Kırkın,27,TUR,TUR,63,,+1,Monastir 8 R32,,,yes
+595,591,591,,no,no,Koki Matsuda,25,JPN,JPN,63,,+1,,,,no
+596,256,256,,no,no,Johan Nikles,28,SUI,SUI,63,-40,-8,Monastir 8 R32,,,yes
+597,493,493,,no,no,Alejo Sanchez Quilez,20,ESP,ESP,63,+2,+1,,Lost in Qual. Tenerife 2 R2,,no
+598,597,597,,no,no,Carlos Maria Zarate,20,ARG,ARG,63,,-1,,,,no
+599,542,542,,no,no,Karl Poling,26,USA,USA,63,-20,-4,,Lost in Qual. Baton Rouge R1,,no
+600,394,394,,no,no,Bruno Kuzuhara,21,USA,USA,63,-71,-14,Sunrise R32,Lost in Palm Coast R32,,yes
+601,395,395,,no,no,Rigele Te,28,CHN,CHN,62,+45,+8,Monastir 8 R32,Lost in Monastir 6 SF,,yes
+602,544,544,,no,no,Adhithya Ganesan,20,USA,USA,62,,-2,,,,no
+603,566,566,,no,no,Miguel Tobon,19,COL,COL,62,,-2,,,,no
+604,602,602,,no,no,Pawit Sornlaksup,26,THA,THA,61,,-2,,,,no
+605,468,468,,no,no,Dominik Kellovský,29,CZE,CZE,61,,-2,,Lost in Sheffield R16,,no
+606,318,318,,no,no,Gerard Campana Lee,21,KOR,KOR,61,+9,+2,,Lost in Monastir 7 SF,,no
+607,177,177,,no,no,Nick Hardt,25,DOM,DOM,60,,-3,,,,no
+608,395,395,,no,no,Alafia Ayeni,26,USA,USA,60,+50,+8,,Lost in Huamantla 2 F,,no
+609,508,508,,no,no,Loann Massard,20,FRA,FRA,60,,-3,,Lost in Qual. Pau R1,,no
+610,595,595,,no,no,S D Prajwal Dev,29,IND,IND,60,+17,+3,Chennai R32**Qual. Chennai W**64 110,,,yes
+611,496,496,,no,no,Denis Klok,27,RUS,RUS,60,+24,+4,Antalya 6 R32,Lost in Antalya 5 SF,,yes
+612,515,515,,no,no,Émilien Demanet,20,BEL,BEL,60,,-5,,,,no
+613,184,184,,no,no,Nicholas David Ionel,23,ROU,ROU,60,,-5,Antalya 6 R32,Lost in Antalya 5 R16,,yes
+614,128,128,,no,no,Andrea Vavassori,30,ITA,ITA,59,-64,-234,,,,no
+615,533,533,,no,no,Luis Carlos Alvarez,21,MEX,MEX,59,,-5,,,,no
+616,432,432,,no,no,Iliyan Radulov,20,BUL,BUL,59,,-5,,,,no
+617,269,269,,no,no,Aidan Mayo,22,USA,USA,59,,-5,,,,no
+618,483,483,,no,no,Alec Deckers,25,NED,NED,59,,-5,,Lost in Qual. Rotterdam R1,,no
+619,604,604,,no,no,Andres Santamarta Roig,19,ESP,ESP,59,-14,-1,,,,no
+620,NCH (628),620,628,yes,yes,Felix Balshaw,19,FRA,FRA,59,+21,+4,Pau R32**Qual. Pau W**67 184,,,yes
+621,502,502,,no,no,Adrian Ötzbach,28,GER,GER,59,-12,-1,,,,no
+622,548,548,,no,no,Yassine Dlimi,22,MAR,MAR,58,,-6,,,,no
+623,290,290,,no,no,Shintaro Imai,32,JPN,JPN,58,,-6,,,,no
+624,363,363,,no,no,Damien Wenger,25,SUI,SUI,58,,-6,,,,no
+625,617,617,,no,no,Lorenzo Sciahbasi,20,ITA,ITA,58,,-6,,,,no
+626,575,575,,no,no,Mario Gonzalez Fernandez,23,ESP,ESP,58,+2,+1,Monastir 8 R32,Lost in Monastir 6 QF,,yes
+627,470,470,,no,no,Imanol López Morillo,26,ESP,ESP,58,+2,+1,Almoradi R32,Lost in Xabia R16,,yes
+628,267,267,,no,no,Louis Weßels,27,GER,GER,58,,-7,,,,no
+629,603,603,,no,no,Aziz Ouakaa,26,TUN,TUN,58,,-7,,,,no
+630,204,204,,no,no,Máté Valkusz,27,HUN,HUN,57,,-7,,,,no
+631,624,624,,no,no,Jacopo Vasami,18,ITA,ITA,57,,-7,,Lost in Tenerife 2 R32,,no
+632,327,327,,no,no,Naoki Nakagawa,29,JPN,JPN,57,+18,+4,Brisbane 2 R32**Qual. Brisbane 2 W**63 132,,,yes
+633,624,624,,no,no,Karol Filar,27,POL,POL,57,,-8,Oberhaching R32,,,yes
+634,447,447,,no,no,Kuan Yi Lee,29,TWN,TWN,57,,-8,,,,no
+635,526,526,,no,no,Maxence Beaugé,25,FRA,FRA,57,-15,-1,,Lost in Qual. Pau R1,,no
+636,107,107,,no,no,Nicolas Moreno De Alboran,28,USA,USA,56,,-6,,,,no
+637,535,535,,no,no,Kenta Miyoshi,21,JPN,JPN,56,,-5,,,,no
+638,628,628,,no,no,Yuta Kawahashi,28,JPN,JPN,56,,-5,,,,no
+639,629,629,,no,no,Juan Cruz Martin Manzano,21,ITA,ITA,56,,-5,,,,no
+640,479,479,,no,no,Felix Corwin,29,USA,USA,56,+12,+3,Baton Rouge R32**Qual. Baton Rouge W**60 106,,,yes
+641,614,614,,no,no,William Grant,24,USA,USA,56,+1,+1,Sunrise R32,Lost in Palm Coast R16,,yes
+642,636,636,,no,no,Daniel Siniakov,23,CZE,CZE,55,,-6,,,,no
+643,280,280,,no,no,Jakub Nicod,21,CZE,CZE,55,,-6,,,,no
+644,85,85,,no,no,Dennis Novak,32,AUT,AUT,55,,-5,,,,no
+645,527,527,,no,no,Ye Cong Mo,25,CHN,CHN,55,,-5,,,,no
+646,627,627,,no,no,Ryan Fishback,23,USA,USA,55,+9,+2,Baton Rouge R32**Qual. Baton Rouge W**59 105,,,yes
+647,NCH (706),647,706,yes,yes,Nicolas Tepmahc,24,FRA,FRA,55,+96,+14,Monastir 9 R32**Monastir 7 W**,,,yes
+648,302,302,,no,no,Andrew Paulson,24,CZE,CZE,54,,-5,,,,no
+649,501,501,,no,no,Christian Sigsgaard,28,DEN,DEN,54,,-5,,,,no
+650,638,638,,no,no,Yusuke Kusuhara,28,JPN,JPN,54,,-5,,,,no
+651,618,618,,no,no,Santiago De La Fuente,24,ARG,ARG,54,,-4,,,,no
+652,429,429,,no,no,Alvin Nicholas Tudorica,23,CAN,CAN,54,-54,-8,,,,no
+653,538,538,,no,no,Johan Alexander Rodriguez,22,COL,COL,53,,-4,,,,no
+654,303,303,,no,no,Francesco Forti,26,ITA,ITA,53,,-3,,,,no
+655,625,625,,no,no,Igor Kudriashov,22,RUS,RUS,53,+5,+1,,Lost in Sharm El Sheikh 2 R16,,no
+656,321,321,,no,no,Facundo Juárez,28,ITA,ITA,53,,-3,,,,no
+657,654,654,,no,no,Semen Pankin,26,RUS,RUS,53,,-3,,,,no
+658,486,486,,no,no,Sergi Perez Contri,28,ESP,ESP,53,+20,+3,Almoradi R32,Lost in Xabia SF,,yes
+659,584,584,,no,no,Kyle Kang,21,USA,USA,52,,-3,,,,no
+660,546,546,,no,no,Aidan Kim,21,USA,USA,52,,-3,,,,no
+661,NCH (689),661,689,yes,yes,Luca Staeheli,25,SUI,SUI,52,+28,+4,,Lost in Zahra 2 SF,,no
+662,308,308,,no,no,Toby Kodat,23,USA,USA,52,,-3,,,,no
+663,657,657,,no,no,Jan Kumstát,19,CZE,CZE,52,,-1,,,,no
+664,505,505,,no,no,Stijn Slump,27,NED,NED,52,,-3,,,,no
+665,443,443,,no,no,Federico Iannaccone,26,ITA,ITA,52,,-2,Monastir 8 R32,,,yes
+666,352,352,,no,no,Giovanni Oradini,28,ITA,ITA,52,,-2,Oberhaching R32,,,yes
+667,650,650,,no,no,Duncan Chan,20,CAN,CAN,51,,-2,,,,no
+668,258,258,,no,no,Karue Sell,32,BRA,BRA,51,,-2,,,,no
+669,569,569,,no,no,James Watt,25,NZL,NZL,51,,-2,,,,no
+670,668,668,,no,no,Cruz Hewitt,17,AUS,AUS,51,,-2,,Lost in Brisbane 2 R32,,no
+671,652,652,,no,no,Radu David Turcanu,19,ROU,ROU,51,,-2,,,,no
+672,NCH (675),672,675,yes,yes,Timofei Derepasko,19,RUS,RUS,51,+3,+1,,Lost in Qual. Chennai R2,,no
+673,599,599,,no,no,Giuseppe La Vela,25,ITA,ITA,51,,-3,,Lost in Monastir 7 R32,,no
+674,575,575,,no,no,Luca Castagnola,23,ITA,ITA,51,,-3,,,,no
+675,450,450,,no,no,Yurii Dzhavakian,32,UKR,UKR,51,,-3,,,,no
+676,407,407,,no,no,Michael Agwi,22,IRL,IRL,50,,-3,Oberhaching R32,,,yes
+677,674,674,,no,no,Tiago Torres,23,POR,POR,50,,-3,,,,no
+678,388,388,,no,no,Anton Matusevich,24,GBR,GBR,50,+16,+3,,Lost in Sheffield QF,,no
+679,557,557,,no,no,John Echeverria,24,ESP,ESP,50,+53,+8,Monastir 8 R32,Lost in Monastir 6 SF,,yes
+680,668,668,,no,no,Pierre Delage,25,FRA,FRA,50,,-4,Sunrise R32,Lost in Palm Coast R32,,yes
+681,654,654,,no,no,Chase Ferguson,27,AUS,AUS,50,,-4,,Lost in Qual. Brisbane 2 R1,,no
+682,675,675,,no,no,Dimitris Sakellaridis,19,GRE,GRE,50,,-3,Monastir 8 R32,Lost in Monastir 6 R16,,yes
+683,525,525,,no,no,Alexander Donski,27,BUL,BUL,49,,-3,,,,no
+684,557,557,,no,no,Pierluigi Basile,19,ITA,ITA,49,,-2,,,,no
+685,486,486,,no,no,Alex Knaff,28,LUX,LUX,49,,-2,,,,no
+686,683,683,,no,no,Marcel Zieliński,25,POL,POL,49,,+1,Almoradi R32,,,yes
+687,681,681,,no,no,Ryan Dickerson,28,USA,USA,49,,-1,,Lost in Qual. Baton Rouge R1,,no
+688,605,605,,no,no,Mitsuki Wei Kang Leong,21,MAS,MAS,49,+9,+2,Chennai R32**Qual. Chennai W**53 99,,,yes
+689,362,362,,no,no,Tim Handel,29,GER,GER,49,,-1,,,,no
+690,675,675,,no,no,Matisse Bobichon,24,FRA,FRA,48,,,,,,no
+691,689,689,,no,no,Rodrigo Alujas,23,MEX,MEX,48,,,Vila Real De Santo Antonio R32,,,yes
+692,690,690,,no,no,Michael Bassem Sobhy,21,EGY,EGY,48,,,,,,no
+693,151,151,,no,no,Enzo Couacaud,30,FRA,FRA,47,-12,-2,,,,no
+694,80,80,,no,no,Jozef Kovalík,33,SVK,SVK,47,,-1,,,,no
+695,460,460,,no,no,Arthur Reymond,26,FRA,FRA,47,,,,,,no
+696,614,614,,no,no,Alejandro Manzanera Pertusa,22,ESP,ESP,47,-12,-2,,,,no
+697,588,588,,no,no,Yuta Kikuchi,26,JPN,JPN,47,,-1,,Lost in Qual. Antalya 6 R2,,no
+698,680,680,,no,no,Abel Forger,20,NED,NED,47,-13,-2,,,,no
+699,660,660,,no,no,Cooper Williams,20,USA,USA,46,,-1,,,,no
+700,440,440,,no,no,Alessandro Pecci,24,ITA,ITA,46,+63,+8,,Lost in Sharm El Sheikh 2 F,,no
+701,660,660,,no,no,Daniel Antonio Núñez,24,CHI,CHI,46,,-1,,,,no
+702,624,624,,no,no,Yaroslav Demin,20,RUS,RUS,46,,-1,Oberhaching R32**Qual. Oberhaching W**,,,yes
+703,640,640,,no,no,Axel Garcian,23,FRA,FRA,46,,-1,,,,no
+704,591,591,,no,no,Millen Hurrion,26,GBR,GBR,46,,,Oberhaching R32,Lost in Sheffield R32,,yes
+705,549,549,,no,no,Tianhui Zhang,19,CHN,CHN,46,,,,Lost in Monastir 6 R32,,no
+706,62,62,,no,no,Kenny de Schepper,38,FRA,FRA,46,,,,,,no
+707,686,686,,no,no,Leo Vithoontien,26,JPN,JPN,46,,,,,,no
+708,14,14,,no,no,Kyle Edmund,31,GBR,GBR,45,,,,,,no
+709,48,48,,no,no,Constant Lestienne,33,FRA,FRA,45,,,,,,no
+710,688,688,,no,no,Pablo Martinez Gomez,19,ESP,ESP,45,,,,,,no
+711,690,690,,no,no,Kaylan Bigun,19,USA,USA,45,,+2,,Lost in Qual. Baton Rouge R1,,no
+712,378,378,,no,no,Sora Fukuda,28,JPN,JPN,45,,+2,,,,no
+713,710,710,,no,no,Gabriel Ghetu,18,ROU,ROU,45,,+3,,,,no
+714,430,430,,no,no,Sidharth Rawat,32,IND,IND,45,,+1,Chennai R32 49 95,,,yes
+715,684,684,,no,no,Ali Yazdani,22,IRI,IRI,45,,+2,Antalya 6 R32,,,yes
+716,NCH (721),716,721,yes,yes,Dinko Dinev,21,BUL,BUL,45,+5,+1,,Lost in Zahra 2 R16,,no
+717,375,375,,no,no,Strong Kirchheimer,30,USA,USA,45,,+1,,Lost in Qual. Baton Rouge R1,,no
+718,232,232,,no,no,José Pereira,35,BRA,BRA,44,,+2,,,,no
+719,694,694,,no,no,Daniil Ostapenkov,22,BLR,BLR,44,-16,-2,,,,no
+720,719,719,,no,no,Yanis Ghazouani Durand,25,FRA,FRA,44,,+2,,,,no
+721,14,14,,no,no,Aslan Karatsev,32,RUS,RUS,43,,+3,,,,no
+722,608,608,,no,no,Blu Baker,24,GBR,GBR,43,,+3,,,,no
+723,642,642,,no,no,Pedro Rodrigues,19,BRA,BRA,43,,+3,,,,no
+724,278,278,,no,no,Lucas Gerch,31,GER,GER,43,-25,-3,,,,no
+725,546,546,,no,no,Uisung Park,25,KOR,KOR,43,,+2,,,,no
+726,520,520,,no,no,Emile Hudd,25,GBR,GBR,43,+61,+8,,Lost in Sheffield SF,,no
+727,656,656,,no,no,Maik Steiner,31,GER,GER,43,,+2,,,,no
+728,622,622,,no,no,Amaury Raynel,23,FRA,FRA,43,,,,,,no
+729,NCH (767),729,767,yes,yes,Toufik Sahtali,27,ALG,ALG,43,+64,+8,Monastir 8 R32,Lost in Monastir 7 F,,yes
+730,476,476,,no,no,Ignacio Monzón,28,ARG,ARG,43,+7,+1,Sunrise R32,Lost in Palm Coast QF,,yes
+731,730,730,,no,no,Mika Petković,19,GER,GER,43,,-1,,,,no
+732,236,236,,no,no,JiSung Nam,32,KOR,KOR,42,,-1,,,,no
+733,CH,733,,yes,no,Matyáš Černý,24,CZE,CZE,42,,,,,,no
+734,694,694,,no,no,Maxence Bertimon,26,FRA,FRA,42,,,Almoradi R32,Lost in Xabia R32,,yes
+735,691,691,,no,no,Matthew Summers,27,GBR,GBR,42,,,,Lost in Zahra 2 R32,,no
+736,CH,736,,yes,no,Matteo Covato,20,ITA,ITA,42,,,,Lost in Huamantla 2 R32 Lost in Qual. Baton Rouge R1,,no
+737,144,144,,no,no,Cem İlkel,30,TUR,TUR,41,-15,-106,,,,no
+738,520,520,,no,no,Conner Huertas del Pino,30,PER,PER,41,,+1,,,,no
+739,666,666,,no,no,Tuncay Duran,21,TUR,TUR,41,-28,-4,,Lost in Zahra 2 R32,,no
+740,728,728,,no,no,César Bouchelaghem,21,FRA,FRA,41,+14,+2,Monastir 9 R32,Lost in Monastir 7 QF,,yes
+741,461,461,,no,no,Peter Bertran,29,DOM,DOM,41,-29,-4,,,,no
+742,514,514,,no,no,Marlon Vankan,25,GER,GER,41,,-2,Monastir 8 R32,,,yes
+743,725,725,,no,no,Josip Šimundža,21,CRO,CRO,41,,-2,Monastir 9 R32,,,yes
+744,271,271,,no,no,Evan Zhu,27,USA,USA,41,-6,-1,,Lost in Qual. Baton Rouge R1,,no
+745,620,620,,no,no,Ben Jones,27,GBR,GBR,41,+7,+1,Baton Rouge R32,Lost in Qual. Baton Rouge R2 45 91,,yes
+746,546,546,,no,no,Diego Augusto Barreto Sánchez,23,ESP,ESP,41,-23,-3,Almoradi R32,Lost in Xabia R16,,yes
+747,45,45,,no,no,Maximilian Marterer,30,GER,GER,40,,-2,,,,no
+748,13,13,,no,no,Nick Kyrgios,30,AUS,AUS,40,,-2,,,,no
+749,447,447,,no,no,Tomás Farjat,24,ARG,ARG,40,,-1,,,,no
+750,532,532,,no,no,Adrien Gobat,24,FRA,FRA,40,,-1,,Lost in Sheffield R32,,no
+751,513,513,,no,no,Kai Wehnelt,30,GER,GER,40,-9,-1,,,,no
+752,741,741,,no,no,Samuel Alejandro Linde Palacios,18,COL,COL,40,,-2,Almoradi R32,Lost in Xabia R32,,yes
+753,443,443,,no,no,Yanaki Milev,21,BUL,BUL,40,,-2,Antalya 6 R32,,,yes
+754,437,437,,no,no,Michiel De Krom,27,NED,NED,40,-10,-1,,,,no
+755,740,740,,no,no,Pierre Yves Bailly,22,BEL,BEL,39,+5,+1,,Lost in Monastir 7 R16,,no
+756,326,326,,no,no,Alexis Gautier,28,FRA,FRA,39,,-3,,,,no
+757,252,252,,no,no,Samuel Vincent Ruggeri,23,ITA,ITA,39,+15,+137,**Sharm El Sheikh 2 W**,,,yes
+758,409,409,,no,no,Juan Carlos Aguilar,27,CAN,CAN,39,-11,-1,,,,no
+759,403,403,,no,no,Lorenzo Rottoli,23,ITA,ITA,39,,-3,,,,no
+760,742,742,,no,no,Léo Raquillet,20,FRA,FRA,39,,-5,,Lost in Qual. Pau R1,,no
+761,753,753,,no,no,Matt Kuhar,29,USA,USA,39,+7,+1,,Lost in Qual. Baton Rouge R2,,no
+762,729,729,,no,no,Tomas Curras Abasolo,25,ESP,ESP,39,,-5,Vila Real De Santo Antonio R32,,,yes
+763,632,632,,no,no,Guillaume Dalmasso,23,FRA,FRA,39,,-5,,Lost in Huamantla 2 R32,,no
+764,754,754,,no,no,Samuel Heredia,19,COL,COL,39,,-5,Almoradi R32,Lost in Xabia R32,,yes
+765,636,636,,no,no,Aleksandr Braynin,26,UKR,UKR,39,+6,+2,,Lost in Sharm El Sheikh 2 QF,,no
+766,760,760,,no,no,Fryderyk Lechno-Wasiutyński,20,POL,POL,38,,-5,,,,no
+767,595,595,,no,no,Théo Papamalamis,20,FRA,FRA,38,,-5,,,,no
+768,744,744,,no,no,Attila Boros,22,HUN,HUN,38,+1,+1,,Lost in Antalya 5 R16,,no
+769,704,704,,no,no,Mwendwa Mbithi,28,USA,USA,38,,-5,Sunrise R32,,,yes
+770,552,552,,no,no,Keisuke Saitoh,24,JPN,JPN,38,,-5,,,,no
+771,364,364,,no,no,Mikalai Haliak,27,BLR,BLR,38,,-5,,,,no
+772,764,764,,no,no,Daniel De Jonge,26,NED,NED,38,,-5,,,,no
+773,NCH (798),773,798,yes,yes,Amir Omarkhanov,18,KAZ,KAZ,38,+32,+4,Monastir 8 R32,Lost in Monastir 7 SF,,yes
+774,352,352,,no,no,Kris Van Wyk,29,RSA,RSA,37,,-4,,,,no
+775,605,605,,no,no,Leonardo Rossi,23,ITA,ITA,37,+5,+1,,Lost in Sharm El Sheikh 2 R16,,no
+776,700,700,,no,no,Jack Anthrop,22,USA,USA,36,,-4,,,,no
+777,773,773,,no,no,Karim Bennani,18,MAR,MAR,36,,-4,,,,no
+778,677,677,,no,no,Kārlis Ozoliņš,23,LAT,LAT,36,+33,+3,Baton Rouge R32**Qual. Baton Rouge W**40 86,,,yes
+779,497,497,,no,no,Victor Lilov,21,USA,USA,36,,-5,,,,no
+780,655,655,,no,no,Thanapet Chanta,26,THA,THA,36,,-5,,,,no
+781,340,340,,no,no,Colin Sinclair,31,NMI,NMI,36,+11,+1,Brisbane 2 R32**Qual. Brisbane 2 W**42 111,,,yes
+782,341,341,,no,no,Wilson Leite,34,BRA,BRA,36,,-6,,,,no
+783,675,675,,no,no,Francisco Rocha,26,POR,POR,36,,-6,Vila Real De Santo Antonio R32,,,yes
+784,773,773,,no,no,Menelaos Efstathiou,26,CYP,CYP,36,,-5,Monastir 9 R32,,,yes
+785,748,748,,no,no,Lucas Andrade Da Silva,21,BRA,BRA,35,,-4,,,,no
+786,603,603,,no,no,Oscar Weightman,24,GBR,GBR,35,,-4,,,,no
+787,756,756,,no,no,Roger Pascual Ferra,19,ESP,ESP,35,,-4,,,,no
+788,780,780,,no,no,Ivan Ivanov,17,BUL,BUL,35,,-3,Vila Real De Santo Antonio R32,,,yes
+789,547,547,,no,no,Matyas Fuele,27,HUN,HUN,35,,-3,Almoradi R32,,,yes
+790,509,509,,no,no,Alec Beckley,24,RSA,RSA,35,,-2,,,,no
+791,530,530,,no,no,M Rifki Fitriadi,27,INA,INA,35,,-2,,,,no
+792,790,790,,no,no,Bruno Fernandez,21,BRA,BRA,35,,-2,,,,no
+793,786,786,,no,no,Benjamin Torrealba,20,CHI,CHI,35,,-2,,,,no
+794,NCH (828),794,828,yes,yes,Izan Almazan Valiente,19,ESP,ESP,35,+34,+4,Tenerife 2 R32**Qual. Tenerife 2 W**41 110,,,yes
+795,709,709,,no,no,Iannis Miletich,20,ITA,ITA,35,,,,,,no
+796,363,363,,no,no,Oscar Jose Gutierrez,32,ESP,ESP,35,,,Almoradi R32,Lost in Xabia R16,,yes
+797,395,395,,no,no,Wishaya Trongcharoenchaikul,30,THA,THA,35,,,,,,no
+798,48,48,,no,no,Pedro Cachín,30,ARG,ARG,34,-79,-10,,,,no
+799,40,40,,no,no,Ilya Ivashka,31,BLR,BLR,34,,-1,,,,no
+800,784,784,,no,no,Nikita Bilozertsev,17,UKR,UKR,34,-16,-1,,,,no
+801,673,673,,no,no,Gustavo Ribeiro De Almeida,19,BRA,BRA,34,,-1,,,,no
+802,793,793,,no,no,Maximo Zeitune,20,ARG,ARG,34,,-1,,,,no
+803,637,637,,no,no,Linang Xiao,25,CHN,CHN,34,,-1,,Lost in Qual. Brisbane 2 R1,,no
+804,601,601,,no,no,Bautista Vilicich,24,ARG,ARG,34,,-1,,,,no
+805,699,699,,no,no,Martin Van Der Meerschen,25,BEL,BEL,34,,-1,Antalya 6 R32,,,yes
+806,390,390,,no,no,Pedro Araújo,23,POR,POR,34,,,,,,no
+807,433,433,,no,no,Fausto Tabacco,23,ITA,ITA,34,-13,-1,,,,no
+808,682,682,,no,no,Albert Pedrico Kravtsov,20,ESP,ESP,33,,-1,,,,no
+809,451,451,,no,no,Marko Miladinović,25,SRB,SRB,33,,-1,,,,no
+810,NCH (839),810,839,yes,yes,Dong Ju Kim,23,KOR,KOR,33,+30,+4,,Lost in Sharm El Sheikh 2 SF,,no
+811,553,553,,no,no,Pedro Rodenas,21,ESP,ESP,33,,-2,,,,no
+812,805,805,,no,no,Oliver Bonding,18,GBR,GBR,33,,-2,,,,no
+813,130,130,,no,no,Duck-hee Lee,27,KOR,KOR,33,,-1,,,,no
+814,NCH (825),814,825,yes,yes,Jorge Plans,24,ESP,ESP,33,+11,+2,,Lost in Monastir 7 QF,,no
+815,501,501,,no,no,Shinji Hazawa,26,JPN,JPN,33,,-2,,Lost in Qual. Brisbane 2 R1,,no
+816,801,801,,no,no,Alejandro Juan Mano,21,ESP,ESP,33,,-2,Almoradi R32,Lost in Xabia R32,,yes
+817,773,773,,no,no,Artur Kukasian,21,RUS,RUS,33,,-2,,,,no
+818,635,635,,no,no,John Sperle,24,GER,GER,33,-40,-3,Sunrise R32,,,yes
+819,265,265,,no,no,Evgenii Tiurnev,28,RUS,RUS,32,,-3,,,,no
+820,NCH (839),820,839,yes,yes,Nikola Slavic,25,SWE,SWE,32,+25,+3,,Lost in Sheffield QF,,no
+821,748,748,,no,no,Luca Preda,19,ROU,ROU,32,,-4,,,,no
+822,417,417,,no,no,Ajeet Rai,27,NZL,NZL,32,,-4,,,,no
+823,717,717,,no,no,Alan Magadan,24,MEX,MEX,32,,-4,,,,no
+824,751,751,,no,no,Joshua Charlton,26,AUS,AUS,32,,-4,,Lost in Qual. Brisbane 2 R1,,no
+825,745,745,,no,no,Taiyo Yamanaka,24,JPN,JPN,32,,-4,,Lost in Qual. Brisbane 2 R1,,no
+826,666,666,,no,no,Niccolo Catini,28,ITA,ITA,32,+3,+1,,Lost in Huamantla 2 R16,,no
+827,65,65,,no,no,Egor Gerasimov,33,BLR,BLR,31,,-5,,,,no
+828,727,727,,no,no,Petros Tsitsipas,25,GRE,GRE,31,,-5,Monastir 8 R32,,,yes
+829,824,824,,no,no,Yannik Kelm,20,GER,GER,31,,-5,Oberhaching R32**Qual. Oberhaching W**,,,yes
+830,812,812,,no,no,Maximilian Homberg,23,GER,GER,31,,-4,,,,no
+831,820,820,,no,no,Michel Hopp,27,GER,GER,31,,-4,,,,no
+832,688,688,,no,no,Alexandre Aubriot,26,FRA,FRA,31,,-2,Monastir 8 R32,,,yes
+833,663,663,,no,no,Samir Hamza Reguig,24,ALG,ALG,31,,-2,Monastir 8 R32,Lost in Monastir 6 R32,,yes
+834,24,24,,no,no,Martin Kližan,36,SVK,SVK,30,,-2,,,,no
+835,826,826,,no,no,Gian Luca Tanner,25,SUI,SUI,30,,-2,Antalya 6 R32,,,yes
+836,832,832,,no,no,Matt Ponchet,21,FRA,FRA,30,,-2,,,,no
+837,833,833,,no,no,Pavel Lagutin,20,RUS,RUS,30,,-2,,,,no
+838,810,810,,no,no,Kristijan Juhas,24,SRB,SRB,30,,-2,,,,no
+839,801,801,,no,no,Alejandro Turriziani Álvarez,22,ESP,ESP,30,,-2,Vila Real De Santo Antonio R32,,,yes
+840,814,814,,no,no,Jeffrey Von Der Schulenburg,23,SUI,SUI,30,,-2,,,,no
+841,756,756,,no,no,Ignacio Parisca Romera,20,VEN,VEN,30,+13,+2,Almoradi R32,Lost in Xabia QF,,yes
+842,50,50,,no,no,Mikael Ymer,27,SWE,SWE,29,,-3,,,,no
+843,NCH (931),843,931,yes,yes,Ryan Colby,22,USA,USA,29,+88,+8,Sunrise R32,Lost in Palm Coast F,,yes
+844,453,453,,no,no,Arklon Huertas Del Pino Cordova,31,PER,PER,29,,-3,,,,no
+845,49,49,,no,no,Grégoire Barrère,31,FRA,FRA,29,,-3,,,,no
+846,211,211,,no,no,Evgeny Karlovskiy,31,RUS,RUS,29,-47,-5,,Lost in Zahra 2 QF,,no
+847,NCH (860),847,860,yes,yes,Peter Makk,24,HUN,HUN,29,+13,+2,,Lost in Sharm El Sheikh 2 QF,,no
+848,533,533,,no,no,Julio César Porras,27,ARG,ARG,29,,-5,,,,no
+849,841,841,,no,no,Rafael Izquierdo Luque,26,ESP,ESP,29,,-5,Vila Real De Santo Antonio R32,,,yes
+850,821,821,,no,no,Vincent Marysko,20,GER,GER,29,,-4,,,,no
+851,811,811,,no,no,Thiago Cigarran,25,ARG,ARG,29,,-4,,Lost in Palm Coast R32,,no
+852,607,607,,no,no,Jacob Brumm,27,USA,USA,29,,-4,,,,no
+853,847,847,,no,no,Patrick Schoen,20,SUI,SUI,28,,-4,,,,no
+854,806,806,,no,no,Hoyoung Roh,19,KOR,KOR,28,,-4,,,,no
+855,850,850,,no,no,Marc Van Der Merwe,31,RSA,RSA,28,,-4,,,,no
+856,852,852,,no,no,Scott Jones,28,AUS,AUS,28,,-4,,,,no
+857,694,694,,no,no,Xiaofei Wang,23,CHN,CHN,28,,-4,,,,no
+858,654,654,,no,no,Noah Schachter,26,USA,USA,28,+11,+1,Baton Rouge R32**Qual. Baton Rouge W**32 78,,,yes
+859,855,855,,no,no,John Hallquist Lithen,24,SWE,SWE,28,,-4,Sunrise R32,Lost in Palm Coast R32,,yes
+860,785,785,,no,no,Amit Vales,20,ISR,ISR,28,,-4,,,,no
+861,636,636,,no,no,Taisei Ichikawa,25,JPN,JPN,28,,-4,862**NCH 1048**Thijs Boogaard 17 NED 27+186+13,Lost in Qual. Rotterdam R2,,yes
+863,838,838,,no,no,Luca Pow,21,GBR,GBR,27,,-5,,,,no
+864,544,544,,no,no,Luca Wiedenmann,27,GER,GER,27,,-5,,,,no
+865,861,861,,no,no,Andreja Petrovic,26,NOR,NOR,27,,-4,,,,no
+866,599,599,,no,no,Giorgio Tabacco,22,ITA,ITA,27,,-4,,,,no
+867,857,857,,no,no,Charlie Robertson,19,GBR,GBR,27,,-4,,,,no
+868,446,446,,no,no,Jumpei Yamasaki,28,JPN,JPN,27,,-3,,,,no
+869,713,713,,no,no,Lautaro Agustin Falabella,28,ARG,ARG,27,,-3,,,,no
+870,736,736,,no,no,Jakub Filip,20,CZE,CZE,27,,-3,Oberhaching R32**Qual. Oberhaching W**,,,yes
+871,792,792,,no,no,Mert Naci Türker,27,TUR,TUR,27,,-3,,Lost in Zahra 2 R32,,no
+872,774,774,,no,no,Nitin Kumar Sinha,26,IND,IND,27,+26,+3,Chennai R32**Qual. Chennai W**31 77,,,yes
+873,858,858,,no,no,Manuel Plunger,23,ITA,ITA,26,,-3,,,,no
+873,836,836,,no,no,Emon Van Loben Sels,21,USA,USA,26,,-3,,,,no
+875,305,305,,no,no,Kalin Ivanovski,21,MKD,MKD,26,,-3,,,,no
+876,235,235,,no,no,Ivan Nedelko,39,RUS,RUS,26,-12,-1,,,,no
+877,605,605,,no,no,Lorenzo Bocchi,28,ITA,ITA,26,,-4,,,,no
+878,788,788,,no,no,Joao Victor Couto Loureiro,22,BRA,BRA,26,,-4,Sunrise R32,,,yes
+879,782,782,,no,no,Stefano D'Agostino,22,ITA,ITA,26,,-4,,,,no
+880,714,714,,no,no,Niklas Schell,27,GER,GER,26,,-4,Antalya 6 R32,,,yes
+881,878,878,,no,no,Andrea Fiorentini,25,ITA,ITA,26,,-3,,,,no
+882,763,763,,no,no,Dragos Nicolae Cazacu,22,ROU,ROU,26,,-3,Sunrise R32,,,yes
+883,65,65,,no,no,Thanasi Kokkinakis,29,AUS,AUS,25,,-2,,,,no
+884,850,850,,no,no,Nicolas Ian Kotzen,22,USA,USA,25,,-2,,,,no
+885,712,712,,no,no,Aoran Wang,29,CHN,CHN,25,,-2,,Lost in Qual. Brisbane 2 R1,,no
+886,394,394,,no,no,Tiago Cação,27,POR,POR,25,,-2,Vila Real De Santo Antonio R32,,,yes
+887,411,411,,no,no,Micah Braswell,24,USA,USA,25,,-2,,,,no
+888,742,742,,no,no,Aleksandr Lobanov,24,RUS,RUS,25,,,,,,no
+889,508,508,,no,no,Manish Sureshkumar,26,IND,IND,25,,-2,Chennai R32 29 75,,,yes
+890,687,687,,no,no,Daisuke Sumizawa,27,JPN,JPN,25,,-1,,,,no
+891,830,830,,no,no,Carles Hernández,24,ESP,ESP,25,+23,+2,Almoradi R32,Lost in Xabia QF,,yes
+892,890,890,,no,no,Anas Mazdrashki,19,BUL,BUL,25,,-2,,Lost in Sharm El Sheikh 2 R32,,no
+893,NCH (896),893,896,yes,yes,Finn Murgett,24,GBR,GBR,25,+7,+1,Vila Real De Santo Antonio R32,Lost in Sheffield R16,,yes
+894,837,837,,no,no,Marko Maksimović,19,SRB,SRB,25,,-3,,,,no
+895,743,743,,no,no,Seydina André,22,SEN,SEN,25,-18,-1,,,,no
+896,620,620,,no,no,Trey Hilderbrand,25,USA,USA,24,,-4,,,,no
+897,479,479,,no,no,Ilya Snițari,23,MDA,MDA,24,,-4,,,,no
+898,845,845,,no,no,Shunsuke Nakagawa,25,JPN,JPN,24,,-3,,,,no
+899,884,884,,no,no,Jack Kennedy,17,USA,USA,24,-13,-1,Baton Rouge R32 28 74,,,yes
+900,NCH (907),900,907,yes,yes,Enzo Kohlmann De Freitas,19,BRA,BRA,24,+9,+1,,Lost in Qual. Baton Rouge R2,,no
+901,823,823,,no,no,Tomas Serrano Luis,23,POR,POR,24,,-5,Vila Real De Santo Antonio R32,,,yes
+902,894,894,,no,no,Marcus Walters,27,GBR,GBR,24,,-5,,Lost in Sheffield R32,,no
+903,730,730,,no,no,Alexander Klintcharov,29,NZL,NZL,24,,-4,,,,no
+904,469,469,,no,no,Ezekiel Clark,27,USA,USA,24,,-2,Sunrise R32,Lost in Palm Coast R16,,yes
+905,901,901,,no,no,Romain Faucon,23,BEL,BEL,24,,-4,,Lost in Sharm El Sheikh 2 R32,,no
+906,851,851,,no,no,Nicolas Jadoun,23,FRA,FRA,24,,-3,,,,no
+907,641,641,,no,no,Kosuke Ogura,30,JPN,JPN,24,+10,+1,,Lost in Huamantla 2 R16,,no
+908,896,896,,no,no,Matthew Forbes,19,USA,USA,23,,-4,,Lost in Baton Rouge R32,,no
+909,903,903,,no,no,Theodore Dean,23,USA,USA,23,,-4,,,,no
+910,904,904,,no,no,Calvin Müller,25,GER,GER,23,,-4,,,,no
+911,904,904,,no,no,Anton Shepp,23,NZL,NZL,23,,-4,,,,no
+912,869,869,,no,no,Kasra Rahmani,19,IRI,IRI,23,,-1,,,,no
+913,910,910,,no,no,Marc Majdandzic,21,GER,GER,23,,-1,Oberhaching R32,,,yes
+914,663,663,,no,no,Benjamin Pietri,29,FRA,FRA,23,,-1,,,,no
+915,913,913,,no,no,Nikolai Barsukov,19,GER,GER,23,,,Oberhaching R32,,,yes
 916,575,575,,no,no,Nikita Mashtakov,26,UKR,UKR,23,,,,,,no
-917,641,641,,no,no,Kosuke Ogura,29,JPN,JPN,23,-96,-9,,Lost in Huamantla R16 Lost in Huamantla 2 R16,,no
-918,272,272,,no,no,Orlando Luz,28,BRA,BRA,22,,,,,,no
-919,888,888,,no,no,Paul Inchauspe,21,FRA,FRA,22,,,,,,no
-920,479,479,,no,no,Jacob Bradshaw,23,AUS,AUS,22,,,,,,no
-921,911,911,,no,no,Salvador Price,20,COL,COL,22,,+2,,,,no
-922,536,536,,no,no,Ryotaro Taguchi,25,JPN,JPN,22,,-1,,,,no
-923,839,839,,no,no,Yaojie Zeng,24,CHN,CHN,22,,+1,,,,no
-924,883,883,,no,no,Fernando Cavallo,20,ARG,ARG,22,,+1,,Lost in Naples R32 Lost in Palm Coast R32,,no
-925,769,769,,no,no,Miles Jones,25,USA,USA,22,-32,-2,,,,no
-926,604,604,,no,no,Dev Javia,23,IND,IND,22,-29,-2,,Lost in Hyderabad 2 R32,,no
-927,733,733,,no,no,Naoya Honda,19,JPN,JPN,22,,,,,,no
-928,881,881,,no,no,Evan Bynoe,26,USA,USA,22,,-2,,Lost in Naples R32 Lost in Palm Coast R32,,no
-929,833,833,,no,no,Jesse Delaney,27,AUS,AUS,22,,,,Lost in Qual. Brisbane 1 R1 Lost in Qual. Brisbane 2 R1,,no
-930,898,898,,no,no,Zoran Ludoški,20,SRB,SRB,21,,,,,,no
-931,NCH (967),931,967,yes,yes,Ryan Colby,22,USA,USA,21,+53,+4,Palm Coast F,Lost in Naples SF,,yes
-932,666,666,,no,no,Rudy Quan,19,USA,USA,21,,,,,,no
-933,759,759,,no,no,Pablo Masjuan Ginel,23,ESP,ESP,21,,,,,,no
-934,925,925,,no,no,Stijn Paardekooper,22,NED,NED,21,,,Qual. Oberhaching R2,,,yes
-935,859,859,,no,no,Adan Freire Da Silva,26,FRA,FRA,21,,+1,Qual. Vila Real De Santo Antonio R2,,,yes
-936,458,458,,no,no,Nicolas Zanellato,24,BRA,BRA,21,,+1,,,,no
-937,NCH (942),937,942,yes,yes,Lorenzo Angelini,19,ITA,ITA,21,+44,+3,**Qual. Cesenatico W**,Lost in Cesenatico R32,,yes
-938,830,830,,no,no,Mihai Razvan Marinescu,24,ROU,ROU,21,,,Qual. Antalya 6 R1,Lost in Antalya 5 R32,,yes
-939,713,713,,no,no,Grigoriy Lomakin,27,KAZ,KAZ,21,,,Qual. Chennai R1,,,yes
-940,134,134,,no,no,Steven Diez,34,CAN,CAN,20,,,,,,no
-941,921,921,,no,no,Spencer Johnson,23,USA,USA,20,,,,,,no
-942,233,233,,no,no,Yun seong Chung,27,KOR,KOR,20,,,,,,no
-943,866,866,,no,no,Juan Sebastian Osorio,28,COL,COL,20,-8,-1,,Lost in Huamantla R16 Lost in Huamantla 2 R32,,no
-944,927,927,,no,no,Qian Sun,24,CHN,CHN,20,,-1,,,,no
-945,886,886,,no,no,Brian Bozemoj,22,NED,NED,20,,-1,Qual. Vila Real De Santo Antonio R2,,,yes
-946,915,915,,no,no,Younes Lalami,24,MAR,MAR,20,,-1,,Lost in Qual. Antalya 4 R2,,no
-947,625,625,,no,no,Kristjan Tamm,27,EST,EST,20,,-1,,,,no
-948,827,827,,no,no,Pietro Marino,24,ITA,ITA,20,,-1,,,,no
-949,652,652,,no,no,Diego Fernandez Flores,25,CHI,CHI,20,,-1,Qual. Vila Real De Santo Antonio R2,,,yes
-950,660,660,,no,no,Michael Zhu,33,USA,USA,20,,-1,,Lost in Sharm El Sheikh R32,,no
-951,390,390,,no,no,David Pichler,29,AUT,AUT,19,,-1,,,,no
-952,638,638,,no,no,Johannes Ingildsen,28,DEN,DEN,19,,-1,,,,no
-953,612,612,,no,no,Ozan Baris,21,USA,USA,19,,,,,,no
-954,946,946,,no,no,Taym Al Azmeh,21,GER,GER,19,,,,,,no
-955,CH,955,,yes,no,Oskar Brostrom Poulsen,24,DEN,DEN,19,,,,,,no
-956,466,466,,no,no,Jea Moon Lee,32,KOR,KOR,19,,,,,,no
-957,952,952,,no,no,Pietro Romeo Scomparin,24,ITA,ITA,19,,+1,Qual. Monastir 8 R1,Lost in Monastir 7 R32,,yes
-958,950,950,,no,no,Thantub Suksumrarn,24,THA,THA,19,,+1,,,,no
-959,585,585,,no,no,Ewen Lumsden,25,GBR,GBR,19,,+4,Qual. Monastir 8 R1,Lost in Glasgow R32 Lost in Monastir 6 R16,,yes
-960,923,923,,no,no,Justin Schlageter,24,GER,GER,19,,+4,,,,no
-961,846,846,,no,no,Gabriele Bosio,25,ITA,ITA,19,,+6,,Lost in Qual. Cesenatico R1,,no
-962,NCH (966),962,966,yes,yes,Maxim Shin,22,UZB,UZB,19,,+4,,,,no
-963,905,905,,no,no,Ezequiel Monferrer,22,ARG,ARG,19,+38,+2,,Lost in Qual. Rosario R2,,no
-964,906,906,,no,no,Jeremy Gschwendtner,27,GBR,GBR,19,,+4,Qual. Almoradi R2,Lost in Xabia R32,,yes
-965,731,731,,no,no,Axel Nefve,25,USA,USA,19,,+4,,Lost in Huamantla R32 Lost in Huamantla 2 QF,,no
-966,237,237,,no,no,Nicolás Barrientos,38,COL,COL,18,,+4,,,,no
-967,931,931,,no,no,Dante Pagani,17,ARG,ARG,18,,+5,,Lost in Qual. Rosario R1,,no
-968,949,949,,no,no,Ryo Tabata,18,JPN,JPN,18,,+5,Qual. Brisbane 2 R1,,,yes
-969,619,619,,no,no,Benjamin Winter Lopez,27,ESP,ESP,18,+44,+2,,Lost in Qual. Tenerife 1 R2,,no
-970,142,142,,no,no,Joris De Loore,32,BEL,BEL,18,,+4,,,,no
-971,NCH (975),971,975,yes,yes,Markus Malaszszak,21,THA,THA,18,,+4,,Lost in Monastir 6 R32,,no
-972,355,355,,no,no,Karl Friberg,26,SWE,SWE,18,,+4,,Lost in Glasgow R32,,no
-973,639,639,,no,no,Bekkhan Atlangeriev,24,RUS,RUS,18,,+4,Qual. Almoradi R2,,,yes
-974,377,377,,no,no,Marcello Serafini,23,ITA,ITA,18,-13,-1,,,,no
-975,934,934,,no,no,Tomás Martínez,22,ARG,ARG,18,-13,-1,,,,no
-976,826,826,,no,no,Benjamin Thomas George,23,CAN,CAN,18,+85,+4,Qual. Baton Rouge R1,Lost in Huamantla SF Lost in Huamantla 2 R32,,yes
-977,NCH (979),977,979,yes,yes,Daniel Salazar,24,COL,COL,18,,+2,,,,no
-978,NCH (980),978,980,yes,yes,Lorenzo Lorusso,26,ITA,ITA,18,,+2,Qual. Oberhaching R2,Lost in Sheffield R32,,yes
-979,756,756,,no,no,Finn Bass,26,GBR,GBR,18,+43,+2,Qual. Baton Rouge R1,Lost in Qual. Cleveland R2,,yes
-980,939,939,,no,no,Nicolás Villalón,21,CHI,CHI,18,,+2,,,,no
-981,978,978,,no,no,Žiga Šeško,17,SLO,SLO,17,,+2,,,,no
-982,929,929,,no,no,Andrew Delgado,20,USA,USA,17,,+2,,,,no
-983,956,956,,no,no,Kuang Qing Xu,19,CHN,CHN,17,,+3,,,,no
-984,910,910,,no,no,Aleksa Ćirić,25,SRB,SRB,17,-53,-4,,Lost in Palm Coast QF,,no
-985,595,595,,no,no,Mateo Barreiros Reyes,25,BRA,BRA,17,,+2,,,,no
-986,NCH (988),986,988,yes,yes,Suk Hyun Choo,24,KOR,KOR,17,,+2,,,,no
-987,958,958,,no,no,Dominique Rolland,21,USA,USA,17,,+2,,,,no
-987,140,140,,no,no,Mathias Bourgue,32,FRA,FRA,17,,+4,,,,no
-989,736,736,,no,no,Gavin Young,23,USA,USA,17,,+1,,,,no
-990,437,437,,no,no,Kiranpal Pannu,29,NZL,NZL,17,,+2,,,,no
-991,377,377,,no,no,Alejo Lorenzo Lingua Lavallén,24,ARG,ARG,17,,+2,,,,no
-992,453,453,,no,no,Leonardo Aboian,27,ARG,ARG,17,,+2,,,,no
-993,984,984,,no,no,William Rejchtman Vinciguerra,18,SWE,SWE,17,,+2,,Lost in Monastir 7 R32,,no
-994,NCH (996),994,996,yes,yes,Zach Stephens,19,GBR,GBR,17,,+2,,,,no
-995,594,594,,no,no,Enzo Wallart,28,USA,USA,17,-8,-108,,,,no
-996,685,685,,no,no,Peter Buldorini,21,IRL,IRL,17,-18,-1,,Lost in Qual. Nussloch R3,,no
-997,994,994,,no,no,Tymur Bieldiugin,20,UKR,UKR,17,,+1,,Lost in Qual. Rosario R1,,no
-998,759,759,,no,no,Jesse Flores,30,CRC,CRC,17,,-1,,Lost in Naples R32,,no
-999,978,978,,no,no,Mikael Arseneault,19,CAN,CAN,17,,,,,,no
-1000,815,815,,no,no,Chirag Duhan,22,IND,IND,17,-35,-2,"Next In Play : **DAVIS** Davis Cup **ATP500** Dallas,​Rotterdam **ATP250** Buenos Aires,​Montpellier **CH125** Pau,​Rosario **CH75** Brisbane 1,​Brisbane 2,​Cleveland,​Tenerife 1,​Tenerife 2 **CH50** Baton Rouge,​Cesenatico,​Chennai,​Koblenz **M25** Antalya 6,​Monastir 6,​Monastir 8,​Sheffield,​Vila Real De Santo Antonio **M15** Almoradi,​Antalya 5,​Huamantla 2,​Monastir 7,​Oberhaching,​Palm Coast,​Sharm El Sheikh 2,​Zahra 2 Highlight Country :",,,yes
+917,272,272,,no,no,Orlando Luz,28,BRA,BRA,22,,+1,,,,no
+918,888,888,,no,no,Paul Inchauspe,21,FRA,FRA,22,,+1,,,,no
+919,479,479,,no,no,Jacob Bradshaw,23,AUS,AUS,22,,+1,,,,no
+920,714,714,,no,no,Isaiah Strode,28,USA,USA,22,-12,-1,,,,no
+921,911,911,,no,no,Salvador Price,20,COL,COL,22,,,,,,no
+922,536,536,,no,no,Ryotaro Taguchi,25,JPN,JPN,22,,,,,,no
+923,839,839,,no,no,Yaojie Zeng,24,CHN,CHN,22,,,,,,no
+924,769,769,,no,no,Miles Jones,25,USA,USA,22,,+1,,,,no
+925,883,883,,no,no,Fernando Cavallo,20,ARG,ARG,22,,-1,Sunrise R32,Lost in Palm Coast R32,,yes
+926,604,604,,no,no,Dev Javia,23,IND,IND,22,,,,,,no
+927,881,881,,no,no,Evan Bynoe,26,USA,USA,22,,+1,Qual. Sunrise R2,Lost in Palm Coast R32,,yes
+928,833,833,,no,no,Jesse Delaney,27,AUS,AUS,22,,+1,,Lost in Qual. Brisbane 2 R1,,no
+929,898,898,,no,no,Zoran Ludoški,20,SRB,SRB,21,,+1,,,,no
+930,759,759,,no,no,Pablo Masjuan Ginel,23,ESP,ESP,21,,+3,,,,no
+931,666,666,,no,no,Rudy Quan,19,USA,USA,21,,+1,,,,no
+932,925,925,,no,no,Stijn Paardekooper,22,NED,NED,21,,+2,,Lost in Qual. Oberhaching R3,,no
+933,478,478,,no,no,Lucas Bouquet,28,FRA,FRA,21,-23,-2,,,,no
+934,859,859,,no,no,Adan Freire Da Silva,26,FRA,FRA,21,,+1,Qual. Vila Real De Santo Antonio R2,,,yes
+935,458,458,,no,no,Nicolas Zanellato,24,BRA,BRA,21,,+1,,,,no
+936,561,561,,no,no,Fermin Tenti,28,ARG,ARG,21,+66,+4,Qual. Sunrise R2,Lost in Palm Coast SF,,yes
+937,733,733,,no,no,Naoya Honda,19,JPN,JPN,21,-10,-1,,,,no
+938,793,793,,no,no,Gabriele Maria Noce,30,ITA,ITA,21,+8,+144,Almoradi R32,Lost in Xabia F,,yes
+939,731,731,,no,no,Axel Nefve,25,USA,USA,21,+26,+2,Sunrise R32,Lost in Huamantla 2 QF,,yes
+940,937,937,,no,no,Lorenzo Angelini,19,ITA,ITA,21,,-3,Monastir 9 R32,,,yes
+941,830,830,,no,no,Mihai Razvan Marinescu,24,ROU,ROU,21,,-3,Qual. Antalya 6 R3,Lost in Antalya 5 R32,,yes
+942,713,713,,no,no,Grigoriy Lomakin,27,KAZ,KAZ,21,,-3,,Lost in Qual. Chennai R1,,no
+943,921,921,,no,no,Spencer Johnson,23,USA,USA,20,,-2,,,,no
+944,233,233,,no,no,Yun seong Chung,27,KOR,KOR,20,,-2,,,,no
+945,NCH (949),945,949,yes,yes,Ryo Tabata,18,JPN,JPN,20,+23,+2,,Lost in Qual. Brisbane 2 R2 946**NCH 1018**Natan Rodrigues 24 BRA 20+72+4 Lost in Huamantla 2 SF,,no
+947,927,927,,no,no,Qian Sun,24,CHN,CHN,20,,-3,,,,no
+948,886,886,,no,no,Brian Bozemoj,22,NED,NED,20,,-3,Qual. Vila Real De Santo Antonio R2,,,yes
+949,585,585,,no,no,Ewen Lumsden,25,GBR,GBR,20,+10,+1,,Lost in Monastir 6 R16 Lost in Qual. Monastir 8 R2,,no
+950,915,915,,no,no,Younes Lalami,24,MAR,MAR,20,,-4,Almoradi R32,,,yes
+951,625,625,,no,no,Kristjan Tamm,27,EST,EST,20,,-4,,,,no
+952,827,827,,no,no,Pietro Marino,24,ITA,ITA,20,,-4,Monastir 9 R32,,,yes
+953,652,652,,no,no,Diego Fernandez Flores,25,CHI,CHI,20,,-4,Qual. Vila Real De Santo Antonio R2,,,yes
+954,660,660,,no,no,Michael Zhu,33,USA,USA,20,,-4,,,,no
+955,390,390,,no,no,David Pichler,29,AUT,AUT,19,,-4,,,,no
+956,638,638,,no,no,Johannes Ingildsen,28,DEN,DEN,19,,-4,,,,no
+957,612,612,,no,no,Ozan Baris,21,USA,USA,19,,-4,,,,no
+958,946,946,,no,no,Taym Al Azmeh,21,GER,GER,19,,-4,,,,no
+959,910,910,,no,no,Aleksa Ćirić,25,SRB,SRB,19,+25,+2,Qual. Sunrise R2,Lost in Palm Coast QF,,yes
+960,955,955,,no,no,Oskar Brostrom Poulsen,24,DEN,DEN,19,,-5,,,,no
+961,466,466,,no,no,Jea Moon Lee,32,KOR,KOR,19,,-5,,,,no
+962,950,950,,no,no,Thantub Suksumrarn,24,THA,THA,19,,-4,,,,no
+963,866,866,,no,no,Juan Sebastian Osorio,28,COL,COL,19,-20,-1,,Lost in Huamantla 2 R32,,no
+964,952,952,,no,no,Pietro Romeo Scomparin,24,ITA,ITA,19,,-7,,Lost in Monastir 7 R32 Lost in Qual. Monastir 8 R2,,no
+965,923,923,,no,no,Justin Schlageter,24,GER,GER,19,,-5,,,,no
+966,962,962,,no,no,Maxim Shin,22,UZB,UZB,19,,-4,,,,no
+967,768,768,,no,no,Ishaque Eqbal,28,IND,IND,19,+54,+3,Chennai R32**Qual. Chennai W**23 69,,,yes
+968,826,826,,no,no,Benjamin Thomas George,23,CAN,CAN,19,+8,+1,,Lost in Huamantla 2 R32 Lost in Qual. Baton Rouge R2,,no
+969,237,237,,no,no,Nicolás Barrientos,38,COL,COL,18,,-3,,,,no
+970,925,925,,no,no,Alex Kuperstein,27,USA,USA,18,+38,+2,,Lost in Huamantla 2 QF,,no
+971,931,931,,no,no,Dante Pagani,17,ARG,ARG,18,,-4,,,,no
+972,619,619,,no,no,Benjamin Winter Lopez,27,ESP,ESP,18,,-3,,,,no
+973,142,142,,no,no,Joris De Loore,32,BEL,BEL,18,,-3,,,,no
+974,971,971,,no,no,Markus Malaszszak,21,THA,THA,18,,-3,Monastir 9 R32,Lost in Monastir 6 R32,,yes
+975,NCH (992),975,992,yes,yes,Louis Larue,21,FRA,FRA,18,+42,+2,,Lost in Monastir 7 QF,,no
+976,355,355,,no,no,Karl Friberg,26,SWE,SWE,18,,-4,,,,no
+977,639,639,,no,no,Bekkhan Atlangeriev,24,RUS,RUS,18,,-4,,,,no
+978,377,377,,no,no,Marcello Serafini,23,ITA,ITA,18,,-4,,,,no
+979,846,846,,no,no,Gabriele Bosio,25,ITA,ITA,18,-18,-1,Monastir 9 R32,,,yes
+980,905,905,,no,no,Ezequiel Monferrer,22,ARG,ARG,18,-17,-1,,,,no
+981,977,977,,no,no,Daniel Salazar,24,COL,COL,18,,-4,,,,no
+982,756,756,,no,no,Finn Bass,26,GBR,GBR,18,,-3,,Lost in Qual. Baton Rouge R1,,no
+983,978,978,,no,no,Lorenzo Lorusso,26,ITA,ITA,18,,-5,Oberhaching R32,Lost in Sheffield R32 **Qual. Oberhaching W**,,yes
+984,906,906,,no,no,Jeremy Gschwendtner,27,GBR,GBR,18,-20,-1,,Lost in Xabia R32 Lost in Qual. Almoradi R2,,no
+985,939,939,,no,no,Nicolás Villalón,21,CHI,CHI,18,,-5,,,,no
+986,978,978,,no,no,Žiga Šeško,17,SLO,SLO,17,,-5,,,,no
+987,929,929,,no,no,Andrew Delgado,20,USA,USA,17,,-5,,,,no
+988,956,956,,no,no,Kuang Qing Xu,19,CHN,CHN,17,,-5,,,,no
+989,595,595,,no,no,Mateo Barreiros Reyes,25,BRA,BRA,17,,-4,,,,no
+990,986,986,,no,no,Suk Hyun Choo,24,KOR,KOR,17,,-4,,,,no
+991,140,140,,no,no,Mathias Bourgue,32,FRA,FRA,17,,-4,,,,no
+991,958,958,,no,no,Dominique Rolland,21,USA,USA,17,,-4,,,,no
+993,736,736,,no,no,Gavin Young,23,USA,USA,17,,-4,,,,no
+994,377,377,,no,no,Alejo Lorenzo Lingua Lavallén,24,ARG,ARG,17,,-3,,,,no
+995,453,453,,no,no,Leonardo Aboian,27,ARG,ARG,17,,-3,,,,no
+996,984,984,,no,no,William Rejchtman Vinciguerra,19,SWE,SWE,17,,-3,Monastir 9 R32,Lost in Monastir 7 R32,,yes
+997,994,994,,no,no,Zach Stephens,19,GBR,GBR,17,,-3,998**NCH 1496**Carles Cordoba 20 ESP 17+847+15 Almoradi R32**Qual. Xabia W** **Xabia W**,,,yes
+999,594,594,,no,no,Enzo Wallart,28,USA,USA,17,,-4,Monastir 9 R32,,,yes
+1000,685,685,,no,no,Peter Buldorini,21,IRL,IRL,17,,-4,"Next In Play : **ATP500** Dallas,​Rotterdam **ATP250** Buenos Aires **CH125** Pau **CH75** Brisbane 2,​Tenerife 2 **CH50** Baton Rouge,​Chennai **M25** Antalya 6,​Monastir 8,​Vila Real De Santo Antonio **M15** Almoradi,​Monastir 9,​Oberhaching,​Sunrise Highlight Country :",,,yes

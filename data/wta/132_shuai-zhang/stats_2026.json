@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "82",
-  "matches_played": "2",
-  "aces": "6",
-  "service_games_won": "76.9%",
-  "return_games_won": "18.5%",
-  "first_serve_won": "68.8%",
+  "singles_ranking": "86",
+  "matches_played": "3",
+  "aces": "8",
+  "service_games_won": "69.2%",
+  "return_games_won": "25.0%",
+  "first_serve_won": "65.6%",
   "singles_titles": null,
-  "won_lost": "10 / 1",
-  "prize_money": "$442,652",
+  "won_lost": "11 / 2",
+  "prize_money": "$448,227",
   "singles_serving_stats": {
-    "aces": "6",
-    "double_faults": "2",
-    "first_serve_pct": "72.3%",
-    "first_serve_won": "68.8%",
-    "second_serve_won": "48.8%",
-    "break_points_saved": "62.5%",
-    "service_points_won_pct": "63.2%",
-    "service_games_won": "76.9%",
-    "service_games_played": "26"
+    "aces": "8",
+    "double_faults": "4",
+    "first_serve_pct": "67.7%",
+    "first_serve_won": "65.6%",
+    "second_serve_won": "46.7%",
+    "break_points_saved": "52.0%",
+    "service_points_won_pct": "59.5%",
+    "service_games_won": "69.2%",
+    "service_games_played": "39"
   },
   "singles_return_stats": {
-    "return_points_won": "35.3%",
-    "first_return_points_won_pct": "25.0%",
-    "second_return_points_won_pct": "54.2%",
-    "break_points_converted": "33.3%",
-    "return_games_won": "18.5%",
-    "return_games_played": "27"
+    "return_points_won": "39.1%",
+    "first_return_points_won_pct": "29.7%",
+    "second_return_points_won_pct": "55.7%",
+    "break_points_converted": "41.7%",
+    "return_games_won": "25.0%",
+    "return_games_played": "40"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n6\nDouble Faults\n2\n1st Serve %\n72.3%\n1st Serve Won\n68.8%\n2nd Serve Won\n48.8%\nBreak Points Saved\n62.5%\nService Points Won %\n63.2%\nService Games Won\n76.9%\nService Games Played\n26",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n35.3%\n1st Return Points Won %\n25.0%\n2nd Return Points Won %\n54.2%\nBreak Points Converted\n33.3%\nReturn Games Won\n18.5%\nReturn Games Played\n27\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n8\nDouble Faults\n4\n1st Serve %\n67.7%\n1st Serve Won\n65.6%\n2nd Serve Won\n46.7%\nBreak Points Saved\n52.0%\nService Points Won %\n59.5%\nService Games Won\n69.2%\nService Games Played\n39",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.1%\n1st Return Points Won %\n29.7%\n2nd Return Points Won %\n55.7%\nBreak Points Converted\n41.7%\nReturn Games Won\n25.0%\nReturn Games Played\n40\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:37:02.833923+00:00",
+  "updated_at": "2026-02-09T16:43:51.885187+00:00",
   "records_tab": {
     "summary": [
       {
@@ -284,19 +284,6 @@
           {
             "round": "Round of 32",
             "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Fiona Ferro",
-            "opponent_country": "FRA",
-            "opponent_seed": null,
-            "opponent_entry": "A",
-            "score": "6-2, 3-6, 6-4",
-            "opponent_rank": 364
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
             "tourn_round": 2,
             "draw_level_type": "",
             "result": "L",
@@ -319,6 +306,19 @@
             "opponent_entry": "",
             "score": "6-4, 5-7, 6-4",
             "opponent_rank": 49
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Fiona Ferro",
+            "opponent_country": "FRA",
+            "opponent_seed": null,
+            "opponent_entry": "A",
+            "score": "6-2, 3-6, 6-4",
+            "opponent_rank": 364
           }
         ],
         "summary": {
@@ -330,6 +330,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:37:02.833874+00:00"
+    "updated_at": "2026-02-09T16:43:51.885096+00:00"
   }
 }

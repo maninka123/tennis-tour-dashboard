@@ -1,38 +1,38 @@
 {
   "singles_ranking": "72",
-  "matches_played": "1",
-  "aces": "11",
-  "service_games_won": "60.0%",
-  "return_games_won": "28.6%",
-  "first_serve_won": "69.1%",
+  "matches_played": "6",
+  "aces": "16",
+  "service_games_won": "60.9%",
+  "return_games_won": "27.3%",
+  "first_serve_won": "68.8%",
   "singles_titles": "0",
-  "won_lost": "6 / 3",
-  "prize_money": "$236,812",
+  "won_lost": "6 / 4",
+  "prize_money": "$242,072",
   "singles_serving_stats": {
-    "aces": "11",
-    "double_faults": "6",
-    "first_serve_pct": "59.8%",
-    "first_serve_won": "69.1%",
-    "second_serve_won": "40.5%",
-    "break_points_saved": "40.0%",
-    "service_points_won_pct": "57.6%",
-    "service_games_won": "60.0%",
-    "service_games_played": "15"
+    "aces": "16",
+    "double_faults": "24",
+    "first_serve_pct": "58.9%",
+    "first_serve_won": "68.8%",
+    "second_serve_won": "39.8%",
+    "break_points_saved": "41.9%",
+    "service_points_won_pct": "56.9%",
+    "service_games_won": "60.9%",
+    "service_games_played": "64"
   },
   "singles_return_stats": {
-    "return_points_won": "43.8%",
-    "first_return_points_won_pct": "40.3%",
-    "second_return_points_won_pct": "50.0%",
-    "break_points_converted": "50.0%",
-    "return_games_won": "28.6%",
-    "return_games_played": "14"
+    "return_points_won": "41.8%",
+    "first_return_points_won_pct": "36.4%",
+    "second_return_points_won_pct": "51.8%",
+    "break_points_converted": "31.6%",
+    "return_games_won": "27.3%",
+    "return_games_played": "66"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n11\nDouble Faults\n6\n1st Serve %\n59.8%\n1st Serve Won\n69.1%\n2nd Serve Won\n40.5%\nBreak Points Saved\n40.0%\nService Points Won %\n57.6%\nService Games Won\n60.0%\nService Games Played\n15",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n43.8%\n1st Return Points Won %\n40.3%\n2nd Return Points Won %\n50.0%\nBreak Points Converted\n50.0%\nReturn Games Won\n28.6%\nReturn Games Played\n14\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n16\nDouble Faults\n24\n1st Serve %\n58.9%\n1st Serve Won\n68.8%\n2nd Serve Won\n39.8%\nBreak Points Saved\n41.9%\nService Points Won %\n56.9%\nService Games Won\n60.9%\nService Games Played\n64",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.8%\n1st Return Points Won %\n36.4%\n2nd Return Points Won %\n51.8%\nBreak Points Converted\n31.6%\nReturn Games Won\n27.3%\nReturn Games Played\n66\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:36:02.702297+00:00",
+  "updated_at": "2026-02-09T16:42:51.822206+00:00",
   "records_tab": {
     "summary": [
       {
@@ -232,19 +232,6 @@
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Katie Swan",
-            "opponent_country": "GBR",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-7(5), 6-2, 6-3",
-            "opponent_rank": 270
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Anna Kalinskaya",
             "opponent_country": "RUS",
@@ -252,6 +239,19 @@
             "opponent_entry": "",
             "score": "6-0, 6-3",
             "opponent_rank": 33
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Katie Swan",
+            "opponent_country": "GBR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-7(5), 6-2, 6-3",
+            "opponent_rank": 270
           }
         ],
         "summary": {
@@ -325,6 +325,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:36:02.702233+00:00"
+    "updated_at": "2026-02-09T16:42:51.822083+00:00"
   }
 }

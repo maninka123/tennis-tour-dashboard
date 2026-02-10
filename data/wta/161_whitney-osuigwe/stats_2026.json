@@ -1,13 +1,13 @@
 {
-  "singles_ranking": "161",
+  "singles_ranking": "160",
   "matches_played": "1",
   "aces": "3",
   "service_games_won": "61.5%",
   "return_games_won": "23.1%",
   "first_serve_won": "59.7%",
   "singles_titles": "0",
-  "won_lost": "7 / 3",
-  "prize_money": "$59,808",
+  "won_lost": "7 / 4",
+  "prize_money": "$60,191",
   "singles_serving_stats": {
     "aces": "3",
     "double_faults": "3",
@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n34.6%\n1st Return Points Won %\n18.4%\n2nd Return Points Won %\n62.1%\nBreak Points Converted\n75.0%\nReturn Games Won\n23.1%\nReturn Games Played\n13\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:40:05.363519+00:00",
+  "updated_at": "2026-02-09T16:46:59.528045+00:00",
   "records_tab": {
     "summary": [
       {
@@ -126,19 +126,6 @@
             "opponent_rank": 285
           },
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Sachia Vickery",
-            "opponent_country": "USA",
-            "opponent_seed": null,
-            "opponent_entry": "W",
-            "score": "6-3, 6-0",
-            "opponent_rank": 567
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -163,6 +150,19 @@
             "opponent_entry": "",
             "score": "6-3, 6-7(6), 6-2",
             "opponent_rank": 313
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Sachia Vickery",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "6-3, 6-0",
+            "opponent_rank": 567
           }
         ],
         "summary": {
@@ -267,19 +267,6 @@
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Louisa Chirico",
-            "opponent_country": "USA",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "7-6(4), 6-3",
-            "opponent_rank": 173
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Sofia Costoulas",
             "opponent_country": "BEL",
@@ -287,6 +274,19 @@
             "opponent_entry": "Q",
             "score": "6-4, 3-6, 6-1",
             "opponent_rank": 159
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Louisa Chirico",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-6(4), 6-3",
+            "opponent_rank": 173
           }
         ],
         "summary": {
@@ -298,6 +298,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:40:05.363443+00:00"
+    "updated_at": "2026-02-09T16:46:59.527899+00:00"
   }
 }

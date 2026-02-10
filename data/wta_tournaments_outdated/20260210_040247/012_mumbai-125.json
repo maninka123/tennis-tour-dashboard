@@ -1,0 +1,3176 @@
+{
+  "order": 12,
+  "tournament_group_id": 1100,
+  "name": "MUMBAI 125",
+  "title": "L&T Mumbai Open - Mumbai, IND",
+  "level": "WTA 125",
+  "level_number": "WTA 125",
+  "year": 2026,
+  "start_date": "2026-02-02",
+  "end_date": "2026-02-08",
+  "surface": "Hard",
+  "indoor_outdoor": "O",
+  "city": "MUMBAI",
+  "country": "INDIA",
+  "status": "inprogress",
+  "draw_size_singles": 32,
+  "draw_size_doubles": 8,
+  "prize_money": 115000,
+  "prize_money_currency": "USD",
+  "champion": {
+    "id": "326929",
+    "name": "Mananchaya Sawangkaew",
+    "country": "THA"
+  },
+  "runner_up": {
+    "id": "332150",
+    "name": "Lilli Tagger",
+    "country": "AUT"
+  },
+  "draw_year": 2026,
+  "draw": {
+    "draw_size": 32,
+    "surface": "Hard",
+    "event_type": "LS",
+    "draw_type": "Women's Singles",
+    "draw_lines": [
+      {
+        "pos": 1,
+        "seed": "",
+        "rank": 579,
+        "entry_type": "LL",
+        "display": "Ankita Raina",
+        "player": {
+          "id": 317164,
+          "first_name": "Ankita",
+          "last_name": "Raina",
+          "country": "IND"
+        }
+      },
+      {
+        "pos": 2,
+        "seed": "",
+        "rank": 506,
+        "entry_type": "Q",
+        "display": "Misaki Matsuda",
+        "player": {
+          "id": 326780,
+          "first_name": "Misaki",
+          "last_name": "Matsuda",
+          "country": "JPN"
+        }
+      },
+      {
+        "pos": 3,
+        "seed": "",
+        "rank": 247,
+        "entry_type": "",
+        "display": "Mananchaya Sawangkaew",
+        "player": {
+          "id": 326929,
+          "first_name": "Mananchaya",
+          "last_name": "Sawangkaew",
+          "country": "THA"
+        }
+      },
+      {
+        "pos": 4,
+        "seed": "",
+        "rank": 346,
+        "entry_type": "",
+        "display": "Viktoria Morvayova",
+        "player": {
+          "id": 324465,
+          "first_name": "Viktoria",
+          "last_name": "Morvayova",
+          "country": "SVK"
+        }
+      },
+      {
+        "pos": 5,
+        "seed": "",
+        "rank": 453,
+        "entry_type": "WC",
+        "display": "Shrivalli Bhamidipaty",
+        "player": {
+          "id": 328071,
+          "first_name": "Shrivalli",
+          "last_name": "Bhamidipaty",
+          "country": "IND"
+        }
+      },
+      {
+        "pos": 6,
+        "seed": "",
+        "rank": 470,
+        "entry_type": "Q",
+        "display": "Kristiana Sidorova",
+        "player": {
+          "id": 331986,
+          "first_name": "Kristiana",
+          "last_name": "Sidorova",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 7,
+        "seed": "",
+        "rank": 401,
+        "entry_type": "",
+        "display": "Priska Nugroho",
+        "player": {
+          "id": 328797,
+          "first_name": "Priska",
+          "last_name": "Nugroho",
+          "country": "INA"
+        }
+      },
+      {
+        "pos": 8,
+        "seed": 9,
+        "rank": 183,
+        "entry_type": "",
+        "display": "Tatiana Prozorova",
+        "player": {
+          "id": 330723,
+          "first_name": "Tatiana",
+          "last_name": "Prozorova",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 9,
+        "seed": 3,
+        "rank": 102,
+        "entry_type": "",
+        "display": "Leolia Jeanjean",
+        "player": {
+          "id": 320313,
+          "first_name": "Leolia",
+          "last_name": "Jeanjean",
+          "country": "FRA"
+        }
+      },
+      {
+        "pos": 10,
+        "seed": "",
+        "rank": 470,
+        "entry_type": "WC",
+        "display": "Vaidehee Chaudhari",
+        "player": {
+          "id": 322990,
+          "first_name": "Vaidehee",
+          "last_name": "Chaudhari",
+          "country": "IND"
+        }
+      },
+      {
+        "pos": 11,
+        "seed": "",
+        "rank": 400,
+        "entry_type": "LL",
+        "display": "Nicole Fossa Huergo",
+        "player": {
+          "id": 318001,
+          "first_name": "Nicole",
+          "last_name": "Fossa Huergo",
+          "country": "ARG"
+        }
+      },
+      {
+        "pos": 12,
+        "seed": "",
+        "rank": 365,
+        "entry_type": "",
+        "display": "Miho Kuramochi",
+        "player": {
+          "id": 331153,
+          "first_name": "Miho",
+          "last_name": "Kuramochi",
+          "country": "JPN"
+        }
+      },
+      {
+        "pos": 13,
+        "seed": "",
+        "rank": 230,
+        "entry_type": "",
+        "display": "Mingge Xu",
+        "player": {
+          "id": 331725,
+          "first_name": "Mingge",
+          "last_name": "Xu",
+          "country": "GBR"
+        }
+      },
+      {
+        "pos": 14,
+        "seed": "",
+        "rank": 262,
+        "entry_type": "",
+        "display": "Sohyun Park",
+        "player": {
+          "id": 326561,
+          "first_name": "Sohyun",
+          "last_name": "Park",
+          "country": "KOR"
+        }
+      },
+      {
+        "pos": 15,
+        "seed": "",
+        "rank": 650,
+        "entry_type": "WC",
+        "display": "Maaya Rajeshwaran Revathi",
+        "player": {
+          "id": 334512,
+          "first_name": "Maaya",
+          "last_name": "Rajeshwaran Revathi",
+          "country": "IND"
+        }
+      },
+      {
+        "pos": 16,
+        "seed": 5,
+        "rank": 131,
+        "entry_type": "",
+        "display": "Lanlana Tararudee",
+        "player": {
+          "id": 329651,
+          "first_name": "Lanlana",
+          "last_name": "Tararudee",
+          "country": "THA"
+        }
+      },
+      {
+        "pos": 17,
+        "seed": 8,
+        "rank": 163,
+        "entry_type": "",
+        "display": "Polina Iatcenko",
+        "player": {
+          "id": 330466,
+          "first_name": "Polina",
+          "last_name": "Iatcenko",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 18,
+        "seed": "",
+        "rank": 285,
+        "entry_type": "",
+        "display": "Mei Yamaguchi",
+        "player": {
+          "id": 325473,
+          "first_name": "Mei",
+          "last_name": "Yamaguchi",
+          "country": "JPN"
+        }
+      },
+      {
+        "pos": 19,
+        "seed": "",
+        "rank": 429,
+        "entry_type": "LL",
+        "display": "Yasmine Kabbaj",
+        "player": {
+          "id": 330733,
+          "first_name": "Yasmine",
+          "last_name": "Kabbaj",
+          "country": "MAR"
+        }
+      },
+      {
+        "pos": 20,
+        "seed": "",
+        "rank": 828,
+        "entry_type": "Q",
+        "display": "Peangtarn Plipuech",
+        "player": {
+          "id": 316554,
+          "first_name": "Peangtarn",
+          "last_name": "Plipuech",
+          "country": "THA"
+        }
+      },
+      {
+        "pos": 21,
+        "seed": "",
+        "rank": 334,
+        "entry_type": "",
+        "display": "Fangran Tian",
+        "player": {
+          "id": 329397,
+          "first_name": "Fangran",
+          "last_name": "Tian",
+          "country": "CHN"
+        }
+      },
+      {
+        "pos": 22,
+        "seed": "",
+        "rank": 308,
+        "entry_type": "",
+        "display": "Rina Saigo",
+        "player": {
+          "id": 326049,
+          "first_name": "Rina",
+          "last_name": "Saigo",
+          "country": "JPN"
+        }
+      },
+      {
+        "pos": 23,
+        "seed": "",
+        "rank": 441,
+        "entry_type": "Q",
+        "display": "Zuzanna Pawlikowska",
+        "player": {
+          "id": 333753,
+          "first_name": "Zuzanna",
+          "last_name": "Pawlikowska",
+          "country": "POL"
+        }
+      },
+      {
+        "pos": 24,
+        "seed": 4,
+        "rank": 125,
+        "entry_type": "",
+        "display": "Hanne Vandewinkel",
+        "player": {
+          "id": 331102,
+          "first_name": "Hanne",
+          "last_name": "Vandewinkel",
+          "country": "BEL"
+        }
+      },
+      {
+        "pos": 25,
+        "seed": 7,
+        "rank": 154,
+        "entry_type": "",
+        "display": "Lilli Tagger",
+        "player": {
+          "id": 332150,
+          "first_name": "Lilli",
+          "last_name": "Tagger",
+          "country": "AUT"
+        }
+      },
+      {
+        "pos": 26,
+        "seed": "",
+        "rank": 683,
+        "entry_type": "WC",
+        "display": "Vaishnavi Adkar",
+        "player": {
+          "id": 333018,
+          "first_name": "Vaishnavi",
+          "last_name": "Adkar",
+          "country": "IND"
+        }
+      },
+      {
+        "pos": 27,
+        "seed": "",
+        "rank": 378,
+        "entry_type": "",
+        "display": "Sahaja Yamalapalli",
+        "player": {
+          "id": 331152,
+          "first_name": "Sahaja",
+          "last_name": "Yamalapalli",
+          "country": "IND"
+        }
+      },
+      {
+        "pos": 28,
+        "seed": "",
+        "rank": 412,
+        "entry_type": "",
+        "display": "Eri Shimizu",
+        "player": {
+          "id": 325295,
+          "first_name": "Eri",
+          "last_name": "Shimizu",
+          "country": "JPN"
+        }
+      },
+      {
+        "pos": 29,
+        "seed": "",
+        "rank": 242,
+        "entry_type": "",
+        "display": "Mai Hontama",
+        "player": {
+          "id": 324750,
+          "first_name": "Mai",
+          "last_name": "Hontama",
+          "country": "JPN"
+        }
+      },
+      {
+        "pos": 30,
+        "seed": "",
+        "rank": 307,
+        "entry_type": "",
+        "display": "Alevtina Ibragimova",
+        "player": {
+          "id": 332575,
+          "first_name": "Alevtina",
+          "last_name": "Ibragimova",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 31,
+        "seed": "",
+        "rank": 367,
+        "entry_type": "",
+        "display": "Diletta Cherubini",
+        "player": {
+          "id": 328173,
+          "first_name": "Diletta",
+          "last_name": "Cherubini",
+          "country": "ITA"
+        }
+      },
+      {
+        "pos": 32,
+        "seed": 2,
+        "rank": 98,
+        "entry_type": "",
+        "display": "Darja Semenistaja",
+        "player": {
+          "id": 329457,
+          "first_name": "Darja",
+          "last_name": "Semenistaja",
+          "country": "LAT"
+        }
+      }
+    ],
+    "breakdown": [
+      {
+        "name": "Winner",
+        "points": 125,
+        "prize": "USD 15,500",
+        "id": 1
+      },
+      {
+        "name": "Final",
+        "points": 81,
+        "prize": "USD 8,400",
+        "id": 2
+      },
+      {
+        "name": "Semifinals",
+        "points": 49,
+        "prize": "USD 5,300",
+        "id": 3
+      },
+      {
+        "name": "Quarterfinals",
+        "points": 27,
+        "prize": "USD 3,450",
+        "id": 4
+      },
+      {
+        "name": "Round of 16",
+        "points": 15,
+        "prize": "USD 2,000",
+        "id": 5
+      },
+      {
+        "name": "Round of 32",
+        "points": 1,
+        "prize": "USD 1,200",
+        "id": 6
+      }
+    ],
+    "results": [
+      {
+        "round_id": 5,
+        "matches": [
+          {
+            "id": "LS016",
+            "display_name": "MATSUDA, Misaki",
+            "result_score": "64 60",
+            "winner_slot": "B",
+            "result_name_and_score": "Misaki Matsuda d. Ankita Raina 64 60",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Ankita Raina",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 317164,
+                  "first_name": "Ankita",
+                  "last_name": "Raina",
+                  "country": "IND"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Misaki Matsuda",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 326780,
+                  "first_name": "Misaki",
+                  "last_name": "Matsuda",
+                  "country": "JPN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS017",
+            "display_name": "SAWANGKAEW, Mananchaya",
+            "result_score": "62 61",
+            "winner_slot": "A",
+            "result_name_and_score": "Mananchaya Sawangkaew d. Viktoria Morvayova 62 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mananchaya Sawangkaew",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326929,
+                  "first_name": "Mananchaya",
+                  "last_name": "Sawangkaew",
+                  "country": "THA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Viktoria Morvayova",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 324465,
+                  "first_name": "Viktoria",
+                  "last_name": "Morvayova",
+                  "country": "SVK"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS018",
+            "display_name": "SIDOROVA, Kristiana",
+            "result_score": "61 63",
+            "winner_slot": "B",
+            "result_name_and_score": "Kristiana Sidorova d. Shrivalli Bhamidipaty 61 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Shrivalli Bhamidipaty",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 328071,
+                  "first_name": "Shrivalli",
+                  "last_name": "Bhamidipaty",
+                  "country": "IND"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Kristiana Sidorova",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 331986,
+                  "first_name": "Kristiana",
+                  "last_name": "Sidorova",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS019",
+            "display_name": "[9] PROZOROVA, Tatiana",
+            "result_score": "62 61",
+            "winner_slot": "B",
+            "result_name_and_score": "Tatiana Prozorova d. Priska Nugroho 62 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Priska Nugroho",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 328797,
+                  "first_name": "Priska",
+                  "last_name": "Nugroho",
+                  "country": "INA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Tatiana Prozorova",
+                "seed": 9,
+                "entry_type": "",
+                "player": {
+                  "id": 330723,
+                  "first_name": "Tatiana",
+                  "last_name": "Prozorova",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS020",
+            "display_name": "[3] JEANJEAN, Leolia",
+            "result_score": "62 60",
+            "winner_slot": "A",
+            "result_name_and_score": "Leolia Jeanjean d. Vaidehee Chaudhari 62 60",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Leolia Jeanjean",
+                "seed": 3,
+                "entry_type": "",
+                "player": {
+                  "id": 320313,
+                  "first_name": "Leolia",
+                  "last_name": "Jeanjean",
+                  "country": "FRA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Vaidehee Chaudhari",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 322990,
+                  "first_name": "Vaidehee",
+                  "last_name": "Chaudhari",
+                  "country": "IND"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS021",
+            "display_name": "KURAMOCHI, Miho",
+            "result_score": "64 63",
+            "winner_slot": "B",
+            "result_name_and_score": "Miho Kuramochi d. Nicole Fossa Huergo 64 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Nicole Fossa Huergo",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 318001,
+                  "first_name": "Nicole",
+                  "last_name": "Fossa Huergo",
+                  "country": "ARG"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Miho Kuramochi",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 331153,
+                  "first_name": "Miho",
+                  "last_name": "Kuramochi",
+                  "country": "JPN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS022",
+            "display_name": "PARK, Sohyun",
+            "result_score": "61 00",
+            "winner_slot": "B",
+            "result_name_and_score": "Sohyun Park d. Mingge Xu 61 00",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mingge Xu",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 331725,
+                  "first_name": "Mingge",
+                  "last_name": "Xu",
+                  "country": "GBR"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Sohyun Park",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326561,
+                  "first_name": "Sohyun",
+                  "last_name": "Park",
+                  "country": "KOR"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS023",
+            "display_name": "[5] TARARUDEE, Lanlana",
+            "result_score": "63 62",
+            "winner_slot": "B",
+            "result_name_and_score": "Lanlana Tararudee d. Maaya Rajeshwaran Revathi 63 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Maaya Rajeshwaran Revathi",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 334512,
+                  "first_name": "Maaya",
+                  "last_name": "Rajeshwaran Revathi",
+                  "country": "IND"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Lanlana Tararudee",
+                "seed": 5,
+                "entry_type": "",
+                "player": {
+                  "id": 329651,
+                  "first_name": "Lanlana",
+                  "last_name": "Tararudee",
+                  "country": "THA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS024",
+            "display_name": "YAMAGUCHI, Mei",
+            "result_score": "57 63 63",
+            "winner_slot": "B",
+            "result_name_and_score": "Mei Yamaguchi d. Polina Iatcenko 57 63 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Polina Iatcenko",
+                "seed": 8,
+                "entry_type": "",
+                "player": {
+                  "id": 330466,
+                  "first_name": "Polina",
+                  "last_name": "Iatcenko",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Mei Yamaguchi",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 325473,
+                  "first_name": "Mei",
+                  "last_name": "Yamaguchi",
+                  "country": "JPN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS025",
+            "display_name": "KABBAJ, Yasmine",
+            "result_score": "63 63",
+            "winner_slot": "A",
+            "result_name_and_score": "Yasmine Kabbaj d. Peangtarn Plipuech 63 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Yasmine Kabbaj",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 330733,
+                  "first_name": "Yasmine",
+                  "last_name": "Kabbaj",
+                  "country": "MAR"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Peangtarn Plipuech",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 316554,
+                  "first_name": "Peangtarn",
+                  "last_name": "Plipuech",
+                  "country": "THA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS026",
+            "display_name": "TIAN, Fangran",
+            "result_score": "60 63",
+            "winner_slot": "A",
+            "result_name_and_score": "Fangran Tian d. Rina Saigo 60 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Fangran Tian",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 329397,
+                  "first_name": "Fangran",
+                  "last_name": "Tian",
+                  "country": "CHN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Rina Saigo",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326049,
+                  "first_name": "Rina",
+                  "last_name": "Saigo",
+                  "country": "JPN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS027",
+            "display_name": "[4] VANDEWINKEL, Hanne",
+            "result_score": "63 63",
+            "winner_slot": "B",
+            "result_name_and_score": "Hanne Vandewinkel d. Zuzanna Pawlikowska 63 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Zuzanna Pawlikowska",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 333753,
+                  "first_name": "Zuzanna",
+                  "last_name": "Pawlikowska",
+                  "country": "POL"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Hanne Vandewinkel",
+                "seed": 4,
+                "entry_type": "",
+                "player": {
+                  "id": 331102,
+                  "first_name": "Hanne",
+                  "last_name": "Vandewinkel",
+                  "country": "BEL"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS028",
+            "display_name": "[7] TAGGER, Lilli",
+            "result_score": "75 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Lilli Tagger d. Vaishnavi Adkar 75 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Lilli Tagger",
+                "seed": 7,
+                "entry_type": "",
+                "player": {
+                  "id": 332150,
+                  "first_name": "Lilli",
+                  "last_name": "Tagger",
+                  "country": "AUT"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Vaishnavi Adkar",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 333018,
+                  "first_name": "Vaishnavi",
+                  "last_name": "Adkar",
+                  "country": "IND"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS029",
+            "display_name": "SHIMIZU, Eri",
+            "result_score": "75 62",
+            "winner_slot": "B",
+            "result_name_and_score": "Eri Shimizu d. Sahaja Yamalapalli 75 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Sahaja Yamalapalli",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 331152,
+                  "first_name": "Sahaja",
+                  "last_name": "Yamalapalli",
+                  "country": "IND"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Eri Shimizu",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 325295,
+                  "first_name": "Eri",
+                  "last_name": "Shimizu",
+                  "country": "JPN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS030",
+            "display_name": "HONTAMA, Mai",
+            "result_score": "61 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Mai Hontama d. Alevtina Ibragimova 61 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mai Hontama",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 324750,
+                  "first_name": "Mai",
+                  "last_name": "Hontama",
+                  "country": "JPN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Alevtina Ibragimova",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 332575,
+                  "first_name": "Alevtina",
+                  "last_name": "Ibragimova",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS031",
+            "display_name": "[2] SEMENISTAJA, Darja",
+            "result_score": "63 61",
+            "winner_slot": "B",
+            "result_name_and_score": "Darja Semenistaja d. Diletta Cherubini 63 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Diletta Cherubini",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 328173,
+                  "first_name": "Diletta",
+                  "last_name": "Cherubini",
+                  "country": "ITA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Darja Semenistaja",
+                "seed": 2,
+                "entry_type": "",
+                "player": {
+                  "id": 329457,
+                  "first_name": "Darja",
+                  "last_name": "Semenistaja",
+                  "country": "LAT"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 4,
+        "matches": [
+          {
+            "id": "LS008",
+            "display_name": "SAWANGKAEW, Mananchaya",
+            "result_score": "64 61",
+            "winner_slot": "B",
+            "result_name_and_score": "Mananchaya Sawangkaew d. Misaki Matsuda 64 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Misaki Matsuda",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 326780,
+                  "first_name": "Misaki",
+                  "last_name": "Matsuda",
+                  "country": "JPN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Mananchaya Sawangkaew",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326929,
+                  "first_name": "Mananchaya",
+                  "last_name": "Sawangkaew",
+                  "country": "THA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS009",
+            "display_name": "[9] PROZOROVA, Tatiana",
+            "result_score": "64 61",
+            "winner_slot": "B",
+            "result_name_and_score": "Tatiana Prozorova d. Kristiana Sidorova 64 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Kristiana Sidorova",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 331986,
+                  "first_name": "Kristiana",
+                  "last_name": "Sidorova",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Tatiana Prozorova",
+                "seed": 9,
+                "entry_type": "",
+                "player": {
+                  "id": 330723,
+                  "first_name": "Tatiana",
+                  "last_name": "Prozorova",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS010",
+            "display_name": "[3] JEANJEAN, Leolia",
+            "result_score": "63 63",
+            "winner_slot": "A",
+            "result_name_and_score": "Leolia Jeanjean d. Miho Kuramochi 63 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Leolia Jeanjean",
+                "seed": 3,
+                "entry_type": "",
+                "player": {
+                  "id": 320313,
+                  "first_name": "Leolia",
+                  "last_name": "Jeanjean",
+                  "country": "FRA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Miho Kuramochi",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 331153,
+                  "first_name": "Miho",
+                  "last_name": "Kuramochi",
+                  "country": "JPN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS011",
+            "display_name": "[5] TARARUDEE, Lanlana",
+            "result_score": "36 63 60",
+            "winner_slot": "B",
+            "result_name_and_score": "Lanlana Tararudee d. Sohyun Park 36 63 60",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Sohyun Park",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326561,
+                  "first_name": "Sohyun",
+                  "last_name": "Park",
+                  "country": "KOR"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Lanlana Tararudee",
+                "seed": 5,
+                "entry_type": "",
+                "player": {
+                  "id": 329651,
+                  "first_name": "Lanlana",
+                  "last_name": "Tararudee",
+                  "country": "THA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS012",
+            "display_name": "YAMAGUCHI, Mei",
+            "result_score": "46 64 76(5)",
+            "winner_slot": "A",
+            "result_name_and_score": "Mei Yamaguchi d. Yasmine Kabbaj 46 64 76(5)",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mei Yamaguchi",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 325473,
+                  "first_name": "Mei",
+                  "last_name": "Yamaguchi",
+                  "country": "JPN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Yasmine Kabbaj",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 330733,
+                  "first_name": "Yasmine",
+                  "last_name": "Kabbaj",
+                  "country": "MAR"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS013",
+            "display_name": "TIAN, Fangran",
+            "result_score": "26 64 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Fangran Tian d. Hanne Vandewinkel 26 64 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Fangran Tian",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 329397,
+                  "first_name": "Fangran",
+                  "last_name": "Tian",
+                  "country": "CHN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Hanne Vandewinkel",
+                "seed": 4,
+                "entry_type": "",
+                "player": {
+                  "id": 331102,
+                  "first_name": "Hanne",
+                  "last_name": "Vandewinkel",
+                  "country": "BEL"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS014",
+            "display_name": "[7] TAGGER, Lilli",
+            "result_score": "62 62",
+            "winner_slot": "A",
+            "result_name_and_score": "Lilli Tagger d. Eri Shimizu 62 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Lilli Tagger",
+                "seed": 7,
+                "entry_type": "",
+                "player": {
+                  "id": 332150,
+                  "first_name": "Lilli",
+                  "last_name": "Tagger",
+                  "country": "AUT"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Eri Shimizu",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 325295,
+                  "first_name": "Eri",
+                  "last_name": "Shimizu",
+                  "country": "JPN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS015",
+            "display_name": "[2] SEMENISTAJA, Darja",
+            "result_score": "64 76(3)",
+            "winner_slot": "B",
+            "result_name_and_score": "Darja Semenistaja d. Mai Hontama 64 76(3)",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mai Hontama",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 324750,
+                  "first_name": "Mai",
+                  "last_name": "Hontama",
+                  "country": "JPN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Darja Semenistaja",
+                "seed": 2,
+                "entry_type": "",
+                "player": {
+                  "id": 329457,
+                  "first_name": "Darja",
+                  "last_name": "Semenistaja",
+                  "country": "LAT"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 3,
+        "matches": [
+          {
+            "id": "LS004",
+            "display_name": "SAWANGKAEW, Mananchaya",
+            "result_score": "61 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Mananchaya Sawangkaew d. Tatiana Prozorova 61 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mananchaya Sawangkaew",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326929,
+                  "first_name": "Mananchaya",
+                  "last_name": "Sawangkaew",
+                  "country": "THA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Tatiana Prozorova",
+                "seed": 9,
+                "entry_type": "",
+                "player": {
+                  "id": 330723,
+                  "first_name": "Tatiana",
+                  "last_name": "Prozorova",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS005",
+            "display_name": "[5] TARARUDEE, Lanlana",
+            "result_score": "46 63 62",
+            "winner_slot": "B",
+            "result_name_and_score": "Lanlana Tararudee d. Leolia Jeanjean 46 63 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Leolia Jeanjean",
+                "seed": 3,
+                "entry_type": "",
+                "player": {
+                  "id": 320313,
+                  "first_name": "Leolia",
+                  "last_name": "Jeanjean",
+                  "country": "FRA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Lanlana Tararudee",
+                "seed": 5,
+                "entry_type": "",
+                "player": {
+                  "id": 329651,
+                  "first_name": "Lanlana",
+                  "last_name": "Tararudee",
+                  "country": "THA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS006",
+            "display_name": "TIAN, Fangran",
+            "result_score": "62 26 62",
+            "winner_slot": "B",
+            "result_name_and_score": "Fangran Tian d. Mei Yamaguchi 62 26 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mei Yamaguchi",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 325473,
+                  "first_name": "Mei",
+                  "last_name": "Yamaguchi",
+                  "country": "JPN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Fangran Tian",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 329397,
+                  "first_name": "Fangran",
+                  "last_name": "Tian",
+                  "country": "CHN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS007",
+            "display_name": "[7] TAGGER, Lilli",
+            "result_score": "46 64 62",
+            "winner_slot": "A",
+            "result_name_and_score": "Lilli Tagger d. Darja Semenistaja 46 64 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Lilli Tagger",
+                "seed": 7,
+                "entry_type": "",
+                "player": {
+                  "id": 332150,
+                  "first_name": "Lilli",
+                  "last_name": "Tagger",
+                  "country": "AUT"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Darja Semenistaja",
+                "seed": 2,
+                "entry_type": "",
+                "player": {
+                  "id": 329457,
+                  "first_name": "Darja",
+                  "last_name": "Semenistaja",
+                  "country": "LAT"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 2,
+        "matches": [
+          {
+            "id": "LS002",
+            "display_name": "SAWANGKAEW, Mananchaya",
+            "result_score": "62 36 61",
+            "winner_slot": "A",
+            "result_name_and_score": "Mananchaya Sawangkaew d. Lanlana Tararudee 62 36 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mananchaya Sawangkaew",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326929,
+                  "first_name": "Mananchaya",
+                  "last_name": "Sawangkaew",
+                  "country": "THA"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Lanlana Tararudee",
+                "seed": 5,
+                "entry_type": "",
+                "player": {
+                  "id": 329651,
+                  "first_name": "Lanlana",
+                  "last_name": "Tararudee",
+                  "country": "THA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS003",
+            "display_name": "[7] TAGGER, Lilli",
+            "result_score": "62 76(3)",
+            "winner_slot": "B",
+            "result_name_and_score": "Lilli Tagger d. Fangran Tian 62 76(3)",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Fangran Tian",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 329397,
+                  "first_name": "Fangran",
+                  "last_name": "Tian",
+                  "country": "CHN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Lilli Tagger",
+                "seed": 7,
+                "entry_type": "",
+                "player": {
+                  "id": 332150,
+                  "first_name": "Lilli",
+                  "last_name": "Tagger",
+                  "country": "AUT"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 1,
+        "matches": []
+      }
+    ]
+  },
+  "scores_year": 2026,
+  "matches": [
+    {
+      "match_id": "RS011",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T05:15:16.213+00:00",
+      "duration": "00:56:30",
+      "player_a": {
+        "id": "324632",
+        "name": "Zeel Desai",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "331986",
+        "name": "Kristiana Sidorova",
+        "country": "RUS"
+      },
+      "score_string": "6-2,6-0",
+      "result_string": "[6]K. Sidorova d Z. Desai 6-2,6-0",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS013",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T05:18:44.023+00:00",
+      "duration": "00:37:49",
+      "player_a": {
+        "id": "312180",
+        "name": "Naoko Eto",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "323608",
+        "name": "Anastasia Kulikova",
+        "country": "FIN"
+      },
+      "score_string": "6-0,6-0",
+      "result_string": "[7]A. Kulikova d N. Eto 6-0,6-0",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS009",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T06:15:14.927+00:00",
+      "duration": "00:44:44",
+      "player_a": {
+        "id": "321350",
+        "name": "Saumya Vig",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "326780",
+        "name": "Misaki Matsuda",
+        "country": "JPN"
+      },
+      "score_string": "6-0,6-1",
+      "result_string": "[5]M. Matsuda d S. Vig 6-0,6-1",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS012",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T06:35:47.277+00:00",
+      "duration": "02:09:35",
+      "player_a": {
+        "id": "333753",
+        "name": "Zuzanna Pawlikowska",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "336959",
+        "name": "Parthsarthi Aru Mundhe",
+        "country": "IND"
+      },
+      "score_string": "6-7(1),6-2,6-3",
+      "result_string": "[3]Z. Pawlikowska d P. Mundhe 6-7(1),6-2,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS008",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T07:19:09.42+00:00",
+      "duration": "01:12:25",
+      "player_a": {
+        "id": "318001",
+        "name": "Nicole Fossa Huergo",
+        "country": "ARG"
+      },
+      "player_b": {
+        "id": "317821",
+        "name": "Hiroko Kuwata",
+        "country": "JPN"
+      },
+      "score_string": "6-2,6-1",
+      "result_string": "[1]N. Fossa Huergo d H. Kuwata 6-2,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS014",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T08:43:47.017+00:00",
+      "duration": "02:06:10",
+      "player_a": {
+        "id": "330633",
+        "name": "Yara Bartashevich",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "316554",
+        "name": "Peangtarn Plipuech",
+        "country": "THA"
+      },
+      "score_string": "6-2,3-6,6-2",
+      "result_string": "P. Plipuech d [4]Y. Bartashevich 6-2,3-6,6-2",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS010",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T08:58:19.94+00:00",
+      "duration": "01:03:21",
+      "player_a": {
+        "id": "330733",
+        "name": "Yasmine Kabbaj",
+        "country": "MAR"
+      },
+      "player_b": {
+        "id": "333109",
+        "name": "Sonal Patil",
+        "country": "IND"
+      },
+      "score_string": "6-0,6-2",
+      "result_string": "[2]Y. Kabbaj d S. Patil 6-0,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS015",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-31T10:12:37.767+00:00",
+      "duration": "01:10:35",
+      "player_a": {
+        "id": "328099",
+        "name": "Akanksha Nitture",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "317164",
+        "name": "Ankita Raina",
+        "country": "IND"
+      },
+      "score_string": "6-2,6-1",
+      "result_string": "[8]A. Raina d A. Nitture 6-2,6-1",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS006",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-01T05:19:20.55+00:00",
+      "duration": "03:03:50",
+      "player_a": {
+        "id": "333753",
+        "name": "Zuzanna Pawlikowska",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "323608",
+        "name": "Anastasia Kulikova",
+        "country": "FIN"
+      },
+      "score_string": "6-3,4-6,7-6(4)",
+      "result_string": "[3]Z. Pawlikowska d [7]A. Kulikova 6-3,4-6,7-6(4)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS004",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-01T05:32:17.32+00:00",
+      "duration": "01:33:50",
+      "player_a": {
+        "id": "318001",
+        "name": "Nicole Fossa Huergo",
+        "country": "ARG"
+      },
+      "player_b": {
+        "id": "326780",
+        "name": "Misaki Matsuda",
+        "country": "JPN"
+      },
+      "score_string": "7-5,6-4",
+      "result_string": "[5]M. Matsuda d [1]N. Fossa Huergo 7-5,6-4",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS007",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-01T07:17:09.913+00:00",
+      "duration": "02:39:55",
+      "player_a": {
+        "id": "316554",
+        "name": "Peangtarn Plipuech",
+        "country": "THA"
+      },
+      "player_b": {
+        "id": "317164",
+        "name": "Ankita Raina",
+        "country": "IND"
+      },
+      "score_string": "6-2,1-6,6-4",
+      "result_string": "P. Plipuech d [8]A. Raina 6-2,1-6,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS005",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-01T08:41:45.92+00:00",
+      "duration": "01:27:16",
+      "player_a": {
+        "id": "330733",
+        "name": "Yasmine Kabbaj",
+        "country": "MAR"
+      },
+      "player_b": {
+        "id": "331986",
+        "name": "Kristiana Sidorova",
+        "country": "RUS"
+      },
+      "score_string": "6-4,6-2",
+      "result_string": "[6]K. Sidorova d [2]Y. Kabbaj 6-4,6-2",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS030",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-02T06:28:51.427+00:00",
+      "duration": "01:30:01",
+      "player_a": {
+        "id": "324750",
+        "name": "Mai Hontama",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "332575",
+        "name": "Alevtina Ibragimova",
+        "country": "RUS"
+      },
+      "score_string": "6-1,6-4",
+      "result_string": "M. Hontama d A. Ibragimova 6-1,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS017",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-02T08:09:53.453+00:00",
+      "duration": "00:57:59",
+      "player_a": {
+        "id": "326929",
+        "name": "Mananchaya Sawangkaew",
+        "country": "THA"
+      },
+      "player_b": {
+        "id": "324465",
+        "name": "Viktoria Morvayova",
+        "country": "SVK"
+      },
+      "score_string": "6-2,6-1",
+      "result_string": "M. Sawangkaew d V. Morvayova 6-2,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS024",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-02T09:18:22.427+00:00",
+      "duration": "02:14:02",
+      "player_a": {
+        "id": "330466",
+        "name": "Polina Iatcenko",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "325473",
+        "name": "Mei Yamaguchi",
+        "country": "JPN"
+      },
+      "score_string": "5-7,6-3,6-3",
+      "result_string": "M. Yamaguchi d [8]P. Iatcenko 5-7,6-3,6-3",
+      "sets": [
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS016",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-02T09:26:26.273+00:00",
+      "duration": "01:20:44",
+      "player_a": {
+        "id": "317164",
+        "name": "Ankita Raina",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "326780",
+        "name": "Misaki Matsuda",
+        "country": "JPN"
+      },
+      "score_string": "6-4,6-0",
+      "result_string": "M. Matsuda d A. Raina 6-4,6-0",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS021",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-02T11:55:44.953+00:00",
+      "duration": "01:31:00",
+      "player_a": {
+        "id": "318001",
+        "name": "Nicole Fossa Huergo",
+        "country": "ARG"
+      },
+      "player_b": {
+        "id": "331153",
+        "name": "Miho Kuramochi",
+        "country": "JPN"
+      },
+      "score_string": "6-4,6-3",
+      "result_string": "M. Kuramochi d N. Fossa Huergo 6-4,6-3",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS020",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-02T12:21:50.83+00:00",
+      "duration": "01:01:12",
+      "player_a": {
+        "id": "320313",
+        "name": "Leolia Jeanjean",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "322990",
+        "name": "Vaidehee Chaudhari",
+        "country": "IND"
+      },
+      "score_string": "6-2,6-0",
+      "result_string": "[3]L. Jeanjean d V. Chaudhari 6-2,6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS031",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T05:18:50.807+00:00",
+      "duration": "01:07:37",
+      "player_a": {
+        "id": "328173",
+        "name": "Diletta Cherubini",
+        "country": "ITA"
+      },
+      "player_b": {
+        "id": "329457",
+        "name": "Darja Semenistaja",
+        "country": "LAT"
+      },
+      "score_string": "6-3,6-1",
+      "result_string": "[2]D. Semenistaja d D. Cherubini 6-3,6-1",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS025",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T05:23:42.767+00:00",
+      "duration": "01:16:16",
+      "player_a": {
+        "id": "330733",
+        "name": "Yasmine Kabbaj",
+        "country": "MAR"
+      },
+      "player_b": {
+        "id": "316554",
+        "name": "Peangtarn Plipuech",
+        "country": "THA"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "Y. Kabbaj d P. Plipuech 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS029",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T06:47:40.01+00:00",
+      "duration": "01:50:27",
+      "player_a": {
+        "id": "331152",
+        "name": "Sahaja Yamalapalli",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "325295",
+        "name": "Eri Shimizu",
+        "country": "JPN"
+      },
+      "score_string": "7-5,6-2",
+      "result_string": "E. Shimizu d S. Yamalapalli 7-5,6-2",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS022",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T06:58:22.513+00:00",
+      "duration": "00:45:49",
+      "player_a": {
+        "id": "331725",
+        "name": "Mingge Xu",
+        "country": "GBR"
+      },
+      "player_b": {
+        "id": "326561",
+        "name": "Sohyun Park",
+        "country": "KOR"
+      },
+      "score_string": "6-1,0-0 Ret'd",
+      "result_string": "S. Park d M. Xu 6-1,0-0 Ret'd",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "0"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS026",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T08:22:08.9+00:00",
+      "duration": "01:28:17",
+      "player_a": {
+        "id": "329397",
+        "name": "Fangran Tian",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "326049",
+        "name": "Rina Saigo",
+        "country": "JPN"
+      },
+      "score_string": "6-0,6-3",
+      "result_string": "F. Tian d R. Saigo 6-0,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS018",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T08:50:19.58+00:00",
+      "duration": "01:12:23",
+      "player_a": {
+        "id": "328071",
+        "name": "Shrivalli Bhamidipaty",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "331986",
+        "name": "Kristiana Sidorova",
+        "country": "RUS"
+      },
+      "score_string": "6-1,6-3",
+      "result_string": "K. Sidorova d S. Bhamidipaty 6-1,6-3",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS019",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T10:10:23.523+00:00",
+      "duration": "01:12:34",
+      "player_a": {
+        "id": "328797",
+        "name": "Priska Nugroho",
+        "country": "INA"
+      },
+      "player_b": {
+        "id": "330723",
+        "name": "Tatiana Prozorova",
+        "country": "RUS"
+      },
+      "score_string": "6-2,6-1",
+      "result_string": "[9]T. Prozorova d P. Nugroho 6-2,6-1",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS028",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T10:23:32.377+00:00",
+      "duration": "01:40:16",
+      "player_a": {
+        "id": "332150",
+        "name": "Lilli Tagger",
+        "country": "AUT"
+      },
+      "player_b": {
+        "id": "333018",
+        "name": "Vaishnavi Adkar",
+        "country": "IND"
+      },
+      "score_string": "7-5,6-4",
+      "result_string": "[7]L. Tagger d V. Adkar 7-5,6-4",
+      "sets": [
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS027",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T11:40:13.09+00:00",
+      "duration": "01:45:57",
+      "player_a": {
+        "id": "333753",
+        "name": "Zuzanna Pawlikowska",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "331102",
+        "name": "Hanne Vandewinkel",
+        "country": "BEL"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "[4]H. Vandewinkel d Z. Pawlikowska 6-3,6-3",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS023",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-03T12:21:24.433+00:00",
+      "duration": "01:17:23",
+      "player_a": {
+        "id": "334512",
+        "name": "Maaya Rajeshwaran Revathi",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "329651",
+        "name": "Lanlana Tararudee",
+        "country": "THA"
+      },
+      "score_string": "6-3,6-2",
+      "result_string": "[5]L. Tararudee d M. Rajeshwaran Revathi 6-3,6-2",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS015",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-04T09:18:26.21+00:00",
+      "duration": "01:55:45",
+      "player_a": {
+        "id": "324750",
+        "name": "Mai Hontama",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "329457",
+        "name": "Darja Semenistaja",
+        "country": "LAT"
+      },
+      "score_string": "6-4,7-6(3)",
+      "result_string": "[2]D. Semenistaja d M. Hontama 6-4,7-6(3)",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS012",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-04T09:20:07.617+00:00",
+      "duration": "02:40:22",
+      "player_a": {
+        "id": "325473",
+        "name": "Mei Yamaguchi",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "330733",
+        "name": "Yasmine Kabbaj",
+        "country": "MAR"
+      },
+      "score_string": "4-6,6-4,7-6(5)",
+      "result_string": "M. Yamaguchi d Y. Kabbaj 4-6,6-4,7-6(5)",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS010",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-04T11:33:45.643+00:00",
+      "duration": "01:41:17",
+      "player_a": {
+        "id": "320313",
+        "name": "Leolia Jeanjean",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "331153",
+        "name": "Miho Kuramochi",
+        "country": "JPN"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "[3]L. Jeanjean d M. Kuramochi 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS008",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-04T12:21:01.133+00:00",
+      "duration": "01:07:56",
+      "player_a": {
+        "id": "326780",
+        "name": "Misaki Matsuda",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "326929",
+        "name": "Mananchaya Sawangkaew",
+        "country": "THA"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "M. Sawangkaew d M. Matsuda 6-4,6-1",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-04T13:26:49.383+00:00",
+      "duration": "00:52:58",
+      "player_a": {
+        "id": "332575",
+        "name": "Alevtina Ibragimova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "330466",
+        "name": "Polina Iatcenko",
+        "country": "RUS"
+      },
+      "score_string": "6-1,6-1",
+      "result_string": "[2]P. Iatcenko / E. Pridankina d A. Ibragimova / P. Thombare 6-1,6-1",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-04T13:40:52.237+00:00",
+      "duration": "00:55:51",
+      "player_a": {
+        "id": "333753",
+        "name": "Zuzanna Pawlikowska",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "317821",
+        "name": "Hiroko Kuwata",
+        "country": "JPN"
+      },
+      "score_string": "6-0,6-4",
+      "result_string": "H. Kuwata / S. Park d Z. Pawlikowska / D. Semenistaja 6-0,6-4",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS013",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-05T08:19:11.177+00:00",
+      "duration": "02:30:32",
+      "player_a": {
+        "id": "329397",
+        "name": "Fangran Tian",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "331102",
+        "name": "Hanne Vandewinkel",
+        "country": "BEL"
+      },
+      "score_string": "2-6,6-4,6-4",
+      "result_string": "F. Tian d [4]H. Vandewinkel 2-6,6-4,6-4",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS011",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-05T09:22:03.933+00:00",
+      "duration": "02:04:07",
+      "player_a": {
+        "id": "326561",
+        "name": "Sohyun Park",
+        "country": "KOR"
+      },
+      "player_b": {
+        "id": "329651",
+        "name": "Lanlana Tararudee",
+        "country": "THA"
+      },
+      "score_string": "3-6,6-3,6-0",
+      "result_string": "[5]L. Tararudee d S. Park 3-6,6-3,6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS014",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-05T11:13:46.21+00:00",
+      "duration": "01:16:47",
+      "player_a": {
+        "id": "332150",
+        "name": "Lilli Tagger",
+        "country": "AUT"
+      },
+      "player_b": {
+        "id": "325295",
+        "name": "Eri Shimizu",
+        "country": "JPN"
+      },
+      "score_string": "6-2,6-2",
+      "result_string": "[7]L. Tagger d E. Shimizu 6-2,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS009",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-05T11:41:48.72+00:00",
+      "duration": "01:21:16",
+      "player_a": {
+        "id": "331986",
+        "name": "Kristiana Sidorova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "330723",
+        "name": "Tatiana Prozorova",
+        "country": "RUS"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "[9]T. Prozorova d K. Sidorova 6-4,6-1",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-05T12:43:57.767+00:00",
+      "duration": "01:24:29",
+      "player_a": {
+        "id": "318907",
+        "name": "Rutuja Bhosale",
+        "country": "IND"
+      },
+      "player_b": {
+        "id": "318001",
+        "name": "Nicole Fossa Huergo",
+        "country": "ARG"
+      },
+      "score_string": "4-6,6-1,1-0(9)",
+      "result_string": "N. Fossa Huergo / M. Sawangkaew d [1]R. Bhosale / P. Plipuech 4-6,6-1,1-0(9)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-05T14:22:22.903+00:00",
+      "duration": "01:14:00",
+      "player_a": {
+        "id": "320313",
+        "name": "Leolia Jeanjean",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "328071",
+        "name": "Shrivalli Bhamidipaty",
+        "country": "IND"
+      },
+      "score_string": "6-4,6-2",
+      "result_string": "L. Jeanjean / N. Karamoko d S. Bhamidipaty / A. Raina 6-4,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-06T09:20:38.843+00:00",
+      "duration": "01:38:30",
+      "player_a": {
+        "id": "326929",
+        "name": "Mananchaya Sawangkaew",
+        "country": "THA"
+      },
+      "player_b": {
+        "id": "330723",
+        "name": "Tatiana Prozorova",
+        "country": "RUS"
+      },
+      "score_string": "6-1,6-4",
+      "result_string": "M. Sawangkaew d [9]T. Prozorova 6-1,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-06T09:22:35.213+00:00",
+      "duration": "02:17:54",
+      "player_a": {
+        "id": "320313",
+        "name": "Leolia Jeanjean",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "329651",
+        "name": "Lanlana Tararudee",
+        "country": "THA"
+      },
+      "score_string": "4-6,6-3,6-2",
+      "result_string": "[5]L. Tararudee d [3]L. Jeanjean 4-6,6-3,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-06T11:21:51.503+00:00",
+      "duration": "02:17:41",
+      "player_a": {
+        "id": "332150",
+        "name": "Lilli Tagger",
+        "country": "AUT"
+      },
+      "player_b": {
+        "id": "329457",
+        "name": "Darja Semenistaja",
+        "country": "LAT"
+      },
+      "score_string": "4-6,6-4,6-2",
+      "result_string": "[7]L. Tagger d [2]D. Semenistaja 4-6,6-4,6-2",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-06T11:58:34.98+00:00",
+      "duration": "02:38:45",
+      "player_a": {
+        "id": "325473",
+        "name": "Mei Yamaguchi",
+        "country": "JPN"
+      },
+      "player_b": {
+        "id": "329397",
+        "name": "Fangran Tian",
+        "country": "CHN"
+      },
+      "score_string": "6-2,2-6,6-2",
+      "result_string": "F. Tian d M. Yamaguchi 6-2,2-6,6-2",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-06T13:54:15.443+00:00",
+      "duration": "01:46:08",
+      "player_a": {
+        "id": "318001",
+        "name": "Nicole Fossa Huergo",
+        "country": "ARG"
+      },
+      "player_b": {
+        "id": "317821",
+        "name": "Hiroko Kuwata",
+        "country": "JPN"
+      },
+      "score_string": "6-4,6-7(4),1-0(5)",
+      "result_string": "N. Fossa Huergo / M. Sawangkaew d H. Kuwata / S. Park 6-4,6-7(4),1-0(5)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "1",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-07T09:20:12.79+00:00",
+      "duration": "01:53:33",
+      "player_a": {
+        "id": "326929",
+        "name": "Mananchaya Sawangkaew",
+        "country": "THA"
+      },
+      "player_b": {
+        "id": "329651",
+        "name": "Lanlana Tararudee",
+        "country": "THA"
+      },
+      "score_string": "6-2,3-6,6-1",
+      "result_string": "M. Sawangkaew d [5]L. Tararudee 6-2,3-6,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-07T11:34:28.193+00:00",
+      "duration": "01:59:50",
+      "player_a": {
+        "id": "329397",
+        "name": "Fangran Tian",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "332150",
+        "name": "Lilli Tagger",
+        "country": "AUT"
+      },
+      "score_string": "6-2,7-6(3)",
+      "result_string": "[7]L. Tagger d F. Tian 6-2,7-6(3)",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-07T13:49:34.933+00:00",
+      "duration": "01:28:14",
+      "player_a": {
+        "id": "320313",
+        "name": "Leolia Jeanjean",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "330466",
+        "name": "Polina Iatcenko",
+        "country": "RUS"
+      },
+      "score_string": "2-6,6-4,1-0(2)",
+      "result_string": "[2]P. Iatcenko / E. Pridankina d L. Jeanjean / N. Karamoko 2-6,6-4,1-0(2)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-08T10:18:36.86+00:00",
+      "duration": "01:25:00",
+      "player_a": {
+        "id": "326929",
+        "name": "Mananchaya Sawangkaew",
+        "country": "THA"
+      },
+      "player_b": {
+        "id": "332150",
+        "name": "Lilli Tagger",
+        "country": "AUT"
+      },
+      "score_string": "6-4,6-3",
+      "result_string": "M. Sawangkaew d [7]L. Tagger 6-4,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-08T12:26:29.877+00:00",
+      "duration": "01:28:12",
+      "player_a": {
+        "id": "318001",
+        "name": "Nicole Fossa Huergo",
+        "country": "ARG"
+      },
+      "player_b": {
+        "id": "330466",
+        "name": "Polina Iatcenko",
+        "country": "RUS"
+      },
+      "score_string": "7-6(3),1-6,1-0(5)",
+      "result_string": "[2]P. Iatcenko / E. Pridankina d N. Fossa Huergo / M. Sawangkaew 7-6(3),1-6,1-0(5)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    }
+  ]
+}

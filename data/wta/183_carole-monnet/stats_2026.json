@@ -1,12 +1,12 @@
 {
-  "singles_ranking": "183",
+  "singles_ranking": "179",
   "matches_played": "1",
   "aces": "2",
   "service_games_won": "57.1%",
   "return_games_won": "20.0%",
   "first_serve_won": "56.9%",
-  "singles_titles": null,
-  "won_lost": "0 / 2",
+  "singles_titles": "0",
+  "won_lost": "2 / 4",
   "prize_money": "$30,555",
   "singles_serving_stats": {
     "aces": "2",
@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.8%\n1st Return Points Won %\n31.6%\n2nd Return Points Won %\n56.4%\nBreak Points Converted\n20.0%\nReturn Games Won\n20.0%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:42:26.565766+00:00",
+  "updated_at": "2026-02-09T16:49:27.789403+00:00",
   "records_tab": {
     "summary": [
       {
@@ -149,19 +149,6 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Arantxa Rus",
-            "opponent_country": "NED",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-4, 3-6, 6-1",
-            "opponent_rank": 133
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -186,6 +173,19 @@
             "opponent_entry": "Q",
             "score": "6-3, 6-1",
             "opponent_rank": 306
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Arantxa Rus",
+            "opponent_country": "NED",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-4, 3-6, 6-1",
+            "opponent_rank": 133
           }
         ],
         "summary": {
@@ -260,7 +260,7 @@
             "opponent_rank": 141
           },
           {
-            "round": "Qualifying R3",
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -282,6 +282,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:42:26.565695+00:00"
+    "updated_at": "2026-02-09T16:49:27.789310+00:00"
   }
 }

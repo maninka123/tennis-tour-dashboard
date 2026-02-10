@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "25",
-  "matches_played": "2",
-  "aces": "0",
-  "service_games_won": "42.9%",
-  "return_games_won": "0.0%",
-  "first_serve_won": "48.0%",
+  "singles_ranking": "27",
+  "matches_played": "6",
+  "aces": "6",
+  "service_games_won": "65.9%",
+  "return_games_won": "15.9%",
+  "first_serve_won": "63.1%",
   "singles_titles": "0",
-  "won_lost": "0 / 3",
-  "prize_money": "$143,366",
+  "won_lost": "1 / 4",
+  "prize_money": "$164,811",
   "singles_serving_stats": {
-    "aces": "0",
-    "double_faults": "7",
-    "first_serve_pct": "59.5%",
-    "first_serve_won": "48.0%",
-    "second_serve_won": "41.2%",
-    "break_points_saved": "60.0%",
-    "service_points_won_pct": "45.2%",
-    "service_games_won": "42.9%",
-    "service_games_played": "7"
+    "aces": "6",
+    "double_faults": "26",
+    "first_serve_pct": "56.7%",
+    "first_serve_won": "63.1%",
+    "second_serve_won": "50.8%",
+    "break_points_saved": "57.1%",
+    "service_points_won_pct": "57.8%",
+    "service_games_won": "65.9%",
+    "service_games_played": "44"
   },
   "singles_return_stats": {
-    "return_points_won": "21.4%",
-    "first_return_points_won_pct": "18.5%",
-    "second_return_points_won_pct": "26.7%",
-    "break_points_converted": "0.0%",
-    "return_games_won": "0.0%",
-    "return_games_played": "8"
+    "return_points_won": "34.8%",
+    "first_return_points_won_pct": "23.0%",
+    "second_return_points_won_pct": "51.8%",
+    "break_points_converted": "28.0%",
+    "return_games_won": "15.9%",
+    "return_games_played": "44"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n0\nDouble Faults\n7\n1st Serve %\n59.5%\n1st Serve Won\n48.0%\n2nd Serve Won\n41.2%\nBreak Points Saved\n60.0%\nService Points Won %\n45.2%\nService Games Won\n42.9%\nService Games Played\n7",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n21.4%\n1st Return Points Won %\n18.5%\n2nd Return Points Won %\n26.7%\nBreak Points Converted\n0.0%\nReturn Games Won\n0.0%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n6\nDouble Faults\n26\n1st Serve %\n56.7%\n1st Serve Won\n63.1%\n2nd Serve Won\n50.8%\nBreak Points Saved\n57.1%\nService Points Won %\n57.8%\nService Games Won\n65.9%\nService Games Played\n44",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n34.8%\n1st Return Points Won %\n23.0%\n2nd Return Points Won %\n51.8%\nBreak Points Converted\n28.0%\nReturn Games Won\n15.9%\nReturn Games Played\n44\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-08T15:19:25.270913+00:00",
+  "updated_at": "2026-02-09T16:29:40.413939+00:00",
   "records_tab": {
     "summary": [
       {
@@ -122,6 +122,55 @@
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
+      {
+        "tournament": "ABU DHABI",
+        "location": "Abu Dhabi \u2022 United Arab Emirates",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "masters_1000",
+        "category_label": "WTA 1000",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 25,
+        "seed": 6,
+        "wta_points_gain": 60.0,
+        "prize_money_won": 18045.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Mccartney Kessler",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 32
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Chloe Paquet",
+            "opponent_country": "FRA",
+            "opponent_seed": null,
+            "opponent_entry": "L",
+            "score": "6-0, 6-3",
+            "opponent_rank": 220
+          }
+        ],
+        "summary": {
+          "rank": 25,
+          "seed": 6,
+          "wta_points_gain": "+60",
+          "prize_money_won": "+$18,045",
+          "draw": "32M/16Q/16D"
+        }
+      },
       {
         "tournament": "AUSTRALIAN OPEN",
         "location": "Melbourne \u2022 Australia",
@@ -244,6 +293,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-08T15:19:25.270848+00:00"
+    "updated_at": "2026-02-09T16:29:40.413682+00:00"
   }
 }

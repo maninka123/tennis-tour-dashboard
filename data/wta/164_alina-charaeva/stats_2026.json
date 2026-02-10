@@ -6,8 +6,8 @@
   "return_games_won": "11.1%",
   "first_serve_won": "50.0%",
   "singles_titles": "0",
-  "won_lost": "0 / 3",
-  "prize_money": "$28,880",
+  "won_lost": "0 / 4",
+  "prize_money": "$30,860",
   "singles_serving_stats": {
     "aces": "0",
     "double_faults": "1",
@@ -32,10 +32,46 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n31.5%\n1st Return Points Won %\n32.5%\n2nd Return Points Won %\n28.6%\nBreak Points Converted\n100.0%\nReturn Games Won\n11.1%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:40:24.445702+00:00",
+  "updated_at": "2026-02-09T16:47:20.101951+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
+      {
+        "tournament": "CLUJ-NAPOCA",
+        "location": "Cluj-Napoca \u2022 Romania",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 164,
+        "seed": null,
+        "wta_points_gain": 1.0,
+        "prize_money_won": 1980.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Kaitlin Quevedo",
+            "opponent_country": "ESP",
+            "opponent_seed": 1,
+            "opponent_entry": "",
+            "score": "7-6(3), 6-2",
+            "opponent_rank": 134
+          }
+        ],
+        "summary": {
+          "rank": 164,
+          "seed": null,
+          "wta_points_gain": "+1",
+          "prize_money_won": "+$1,980",
+          "draw": "32M/16Q/16D"
+        }
+      },
       {
         "tournament": "MANILA 125",
         "location": "Manila \u2022 Philippines",
@@ -136,7 +172,7 @@
             "opponent_rank": 189
           },
           {
-            "round": "Qualifying R3",
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -158,6 +194,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:40:24.445657+00:00"
+    "updated_at": "2026-02-09T16:47:20.101882+00:00"
   }
 }

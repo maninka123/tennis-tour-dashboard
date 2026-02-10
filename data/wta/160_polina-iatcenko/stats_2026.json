@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "160",
-  "matches_played": "2",
-  "aces": "10",
-  "service_games_won": "72.2%",
-  "return_games_won": "42.1%",
-  "first_serve_won": "73.2%",
+  "singles_ranking": "163",
+  "matches_played": "3",
+  "aces": "12",
+  "service_games_won": "63.6%",
+  "return_games_won": "38.2%",
+  "first_serve_won": "63.1%",
   "singles_titles": "0",
-  "won_lost": "3 / 3",
-  "prize_money": "$32,318",
+  "won_lost": "3 / 4",
+  "prize_money": "$36,518",
   "singles_serving_stats": {
-    "aces": "10",
-    "double_faults": "4",
-    "first_serve_pct": "58.7%",
-    "first_serve_won": "73.2%",
-    "second_serve_won": "42.0%",
-    "break_points_saved": "44.4%",
-    "service_points_won_pct": "60.3%",
-    "service_games_won": "72.2%",
-    "service_games_played": "18"
+    "aces": "12",
+    "double_faults": "5",
+    "first_serve_pct": "61.6%",
+    "first_serve_won": "63.1%",
+    "second_serve_won": "46.9%",
+    "break_points_saved": "45.5%",
+    "service_points_won_pct": "56.9%",
+    "service_games_won": "63.6%",
+    "service_games_played": "33"
   },
   "singles_return_stats": {
-    "return_points_won": "45.3%",
-    "first_return_points_won_pct": "36.8%",
-    "second_return_points_won_pct": "60.5%",
-    "break_points_converted": "57.1%",
-    "return_games_won": "42.1%",
-    "return_games_played": "19"
+    "return_points_won": "43.1%",
+    "first_return_points_won_pct": "34.3%",
+    "second_return_points_won_pct": "61.9%",
+    "break_points_converted": "44.8%",
+    "return_games_won": "38.2%",
+    "return_games_played": "34"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n10\nDouble Faults\n4\n1st Serve %\n58.7%\n1st Serve Won\n73.2%\n2nd Serve Won\n42.0%\nBreak Points Saved\n44.4%\nService Points Won %\n60.3%\nService Games Won\n72.2%\nService Games Played\n18",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.3%\n1st Return Points Won %\n36.8%\n2nd Return Points Won %\n60.5%\nBreak Points Converted\n57.1%\nReturn Games Won\n42.1%\nReturn Games Played\n19\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n12\nDouble Faults\n5\n1st Serve %\n61.6%\n1st Serve Won\n63.1%\n2nd Serve Won\n46.9%\nBreak Points Saved\n45.5%\nService Points Won %\n56.9%\nService Games Won\n63.6%\nService Games Played\n33",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n43.1%\n1st Return Points Won %\n34.3%\n2nd Return Points Won %\n61.9%\nBreak Points Converted\n44.8%\nReturn Games Won\n38.2%\nReturn Games Played\n34\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:39:59.464280+00:00",
+  "updated_at": "2026-02-09T16:46:53.588968+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
@@ -136,19 +136,6 @@
             "opponent_rank": 129
           },
           {
-            "round": "Qualifying R4",
-            "round_name": "R16",
-            "tourn_round": 2,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Ena Shibahara",
-            "opponent_country": "JPN",
-            "opponent_seed": 11,
-            "opponent_entry": "",
-            "score": "4-6, 7-6(1), 6-2",
-            "opponent_rank": 190
-          },
-          {
             "round": "Round of 32",
             "round_name": "R32",
             "tourn_round": 1,
@@ -162,7 +149,20 @@
             "opponent_rank": 235
           },
           {
-            "round": "Qualifying R3",
+            "round": "Qualifying R2",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Ena Shibahara",
+            "opponent_country": "JPN",
+            "opponent_seed": 11,
+            "opponent_entry": "",
+            "score": "4-6, 7-6(1), 6-2",
+            "opponent_rank": 190
+          },
+          {
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -184,6 +184,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:39:59.464222+00:00"
+    "updated_at": "2026-02-09T16:46:53.588866+00:00"
   }
 }

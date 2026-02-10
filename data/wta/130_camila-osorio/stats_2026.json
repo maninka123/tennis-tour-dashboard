@@ -1,38 +1,38 @@
 {
   "singles_ranking": "80",
-  "matches_played": "1",
-  "aces": "0",
-  "service_games_won": "71.4%",
-  "return_games_won": "42.9%",
-  "first_serve_won": "65.2%",
+  "matches_played": "3",
+  "aces": "5",
+  "service_games_won": "66.7%",
+  "return_games_won": "29.3%",
+  "first_serve_won": "64.4%",
   "singles_titles": "0",
   "won_lost": "5 / 3",
   "prize_money": "$132,986",
   "singles_serving_stats": {
-    "aces": "0",
-    "double_faults": "4",
-    "first_serve_pct": "62.3%",
-    "first_serve_won": "65.2%",
-    "second_serve_won": "47.5%",
-    "break_points_saved": "81.0%",
-    "service_points_won_pct": "58.5%",
-    "service_games_won": "71.4%",
-    "service_games_played": "14"
+    "aces": "5",
+    "double_faults": "14",
+    "first_serve_pct": "62.9%",
+    "first_serve_won": "64.4%",
+    "second_serve_won": "45.9%",
+    "break_points_saved": "68.9%",
+    "service_points_won_pct": "57.5%",
+    "service_games_won": "66.7%",
+    "service_games_played": "42"
   },
   "singles_return_stats": {
-    "return_points_won": "46.6%",
-    "first_return_points_won_pct": "36.4%",
-    "second_return_points_won_pct": "63.6%",
-    "break_points_converted": "66.7%",
-    "return_games_won": "42.9%",
-    "return_games_played": "14"
+    "return_points_won": "40.7%",
+    "first_return_points_won_pct": "32.5%",
+    "second_return_points_won_pct": "53.2%",
+    "break_points_converted": "54.5%",
+    "return_games_won": "29.3%",
+    "return_games_played": "41"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n0\nDouble Faults\n4\n1st Serve %\n62.3%\n1st Serve Won\n65.2%\n2nd Serve Won\n47.5%\nBreak Points Saved\n81.0%\nService Points Won %\n58.5%\nService Games Won\n71.4%\nService Games Played\n14",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.6%\n1st Return Points Won %\n36.4%\n2nd Return Points Won %\n63.6%\nBreak Points Converted\n66.7%\nReturn Games Won\n42.9%\nReturn Games Played\n14\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n5\nDouble Faults\n14\n1st Serve %\n62.9%\n1st Serve Won\n64.4%\n2nd Serve Won\n45.9%\nBreak Points Saved\n68.9%\nService Points Won %\n57.5%\nService Games Won\n66.7%\nService Games Played\n42",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.7%\n1st Return Points Won %\n32.5%\n2nd Return Points Won %\n53.2%\nBreak Points Converted\n54.5%\nReturn Games Won\n29.3%\nReturn Games Played\n41\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:36:50.502902+00:00",
+  "updated_at": "2026-02-09T16:43:40.047980+00:00",
   "records_tab": {
     "summary": [
       {
@@ -155,19 +155,6 @@
             "opponent_rank": 63
           },
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Alexandra Eala",
-            "opponent_country": "PHI",
-            "opponent_seed": 2,
-            "opponent_entry": "W",
-            "score": "6-4, 6-4",
-            "opponent_rank": 49
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -192,6 +179,19 @@
             "opponent_entry": "Q",
             "score": "6-4, 6-3",
             "opponent_rank": 298
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Alexandra Eala",
+            "opponent_country": "PHI",
+            "opponent_seed": 2,
+            "opponent_entry": "W",
+            "score": "6-4, 6-4",
+            "opponent_rank": 49
           }
         ],
         "summary": {
@@ -311,6 +311,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:36:50.502788+00:00"
+    "updated_at": "2026-02-09T16:43:40.047895+00:00"
   }
 }

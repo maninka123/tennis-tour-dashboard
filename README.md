@@ -43,14 +43,12 @@
 
 ### ⭐ Favourites System
 
-- **Per-tour favourites** — separate lists for ATP and WTA
-- **Search-to-add** with autocomplete powered by the H2H search API
-- **Live match detection** — favourite icon glows when any favourite is currently playing
-- **Red blink highlight** on individual players who are live
-- **Player images** served from local data folders
-- **Persistent storage** via localStorage across sessions
-- **Click to open** player stats card directly from favourites
-- **Schedule button** placeholder for future upcoming match view
+Quickly track and access your favourite players with live match notifications:
+
+- **Separate ATP/WTA lists** with search-powered autocomplete
+- **Live indicators** — glowing icon when any favourite is playing, red blink on active player rows
+- **One-click access** to player stats and profile cards
+- **Persistent tracking** via localStorage across sessions
 
 ### 🎯 Advanced H2H Analytics
 
@@ -88,8 +86,16 @@ Visit the live deployment: **[tennis-tour-dashboard.onrender.com](https://tennis
 
 #### Option A: Quick Start Script
 
+**For macOS/Linux/Ubuntu:**
+
 ```bash
 ./start.sh
+```
+
+**For Windows (using Git Bash or WSL):**
+
+```bash
+bash start.sh
 ```
 
 - 🌐 Frontend: `http://localhost:8080`
@@ -363,16 +369,13 @@ The upcoming match predictions use a multi-factor algorithm:
 
 ### ⭐ Favourites System
 
-The favourites panel provides quick access to your tracked players:
+Track your favourite players with instant access and live match alerts:
 
-- **Slide-in panel** from the right side (360px width)
-- **Per-tour storage** — ATP and WTA favourites are maintained separately
-- **Search autocomplete** — reuses the H2H search API for fast player lookup
-- **Live detection** — checks `AppState.liveScores` to identify live players
-- **Icon glow** — the star button pulses amber when any favourite is currently playing
-- **Red blink** — individual player rows blink red if they're in a live match
-- **Player images** — served from local `data/<tour>/<folder>/image.jpg` via backend API
-- **Persistent** — stored in `localStorage` under `rallycourt_favourites`
+- **Slide-in panel** (360px) with separate ATP/WTA storage
+- **Smart search** with autocomplete for quick player lookup
+- **Live indicators** — amber glow on star icon when any favourite is playing, red blink on active players
+- **Player images** from local data served via backend API
+- **Persistent storage** in `localStorage` as `rallycourt_favourites`
 
 ### 🔄 System Update UI
 

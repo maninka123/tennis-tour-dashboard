@@ -6,8 +6,8 @@
   "return_games_won": "0.0%",
   "first_serve_won": "93.1%",
   "singles_titles": "0",
-  "won_lost": "1 / 3",
-  "prize_money": "$29,410",
+  "won_lost": "2 / 4",
+  "prize_money": "$31,410",
   "singles_serving_stats": {
     "aces": "6",
     "double_faults": "4",
@@ -32,10 +32,59 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n26.7%\n1st Return Points Won %\n15.6%\n2nd Return Points Won %\n39.3%\nBreak Points Converted\n0.0%\nReturn Games Won\n0.0%\nReturn Games Played\n10\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:32:13.305726+00:00",
+  "updated_at": "2026-02-09T16:38:49.302402+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
+      {
+        "tournament": "MUMBAI 125",
+        "location": "Mumbai \u2022 India",
+        "date_range": "2 Feb - 8 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 135,
+        "seed": 4,
+        "wta_points_gain": 15.0,
+        "prize_money_won": 2000.0,
+        "draw": "32M/16Q/8D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Fangran Tian",
+            "opponent_country": "CHN",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "2-6, 6-4, 6-4",
+            "opponent_rank": 325
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Zuzanna Pawlikowska",
+            "opponent_country": "POL",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-3, 6-3",
+            "opponent_rank": 429
+          }
+        ],
+        "summary": {
+          "rank": 135,
+          "seed": 4,
+          "wta_points_gain": "+15",
+          "prize_money_won": "+$2,000",
+          "draw": "32M/16Q/8D"
+        }
+      },
       {
         "tournament": "MANAMA",
         "location": "Bahrain",
@@ -158,6 +207,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:32:13.305683+00:00"
+    "updated_at": "2026-02-09T16:38:49.302299+00:00"
   }
 }

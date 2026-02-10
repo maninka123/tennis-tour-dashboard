@@ -1,13 +1,13 @@
 {
-  "singles_ranking": "170",
+  "singles_ranking": "168",
   "matches_played": "3",
   "aces": "8",
   "service_games_won": "63.9%",
   "return_games_won": "41.7%",
   "first_serve_won": "57.4%",
   "singles_titles": null,
-  "won_lost": "2 / 3",
-  "prize_money": "$37,022",
+  "won_lost": "3 / 4",
+  "prize_money": "$40,312",
   "singles_serving_stats": {
     "aces": "8",
     "double_faults": "8",
@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n45.4%\n1st Return Points Won %\n35.8%\n2nd Return Points Won %\n58.7%\nBreak Points Converted\n44.1%\nReturn Games Won\n41.7%\nReturn Games Played\n36\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:40:59.620623+00:00",
+  "updated_at": "2026-02-09T16:47:59.533051+00:00",
   "records_tab": {
     "summary": [
       {
@@ -169,33 +169,7 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Himeno Sakatsume",
-            "opponent_country": "JPN",
-            "opponent_seed": null,
-            "opponent_entry": "Q",
-            "score": "3-6, 6-2, 6-0",
-            "opponent_rank": 151
-          },
-          {
             "round": "Round of 16",
-            "round_name": "R16",
-            "tourn_round": 2,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Anouk Koevermans",
-            "opponent_country": "NED",
-            "opponent_seed": 12,
-            "opponent_entry": "",
-            "score": "7-5, 4-6, 6-3",
-            "opponent_rank": 194
-          },
-          {
-            "round": "Qualifying R4",
             "round_name": "R16",
             "tourn_round": 2,
             "draw_level_type": "",
@@ -213,25 +187,51 @@
             "tourn_round": 1,
             "draw_level_type": "",
             "result": "W",
-            "opponent_name": "Selena Janicijevic",
-            "opponent_country": "FRA",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-3, 6-3",
-            "opponent_rank": 221
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
-            "result": "W",
             "opponent_name": "Elvina Kalieva",
             "opponent_country": "USA",
             "opponent_seed": null,
             "opponent_entry": "Q",
             "score": "6-2, 6-7(2), 7-6(3)",
             "opponent_rank": 203
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Himeno Sakatsume",
+            "opponent_country": "JPN",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "3-6, 6-2, 6-0",
+            "opponent_rank": 151
+          },
+          {
+            "round": "Qualifying R2",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anouk Koevermans",
+            "opponent_country": "NED",
+            "opponent_seed": 12,
+            "opponent_entry": "",
+            "score": "7-5, 4-6, 6-3",
+            "opponent_rank": 194
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Selena Janicijevic",
+            "opponent_country": "FRA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-3",
+            "opponent_rank": 221
           }
         ],
         "summary": {
@@ -243,6 +243,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:40:59.620571+00:00"
+    "updated_at": "2026-02-09T16:47:59.532950+00:00"
   }
 }

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n48.3%\n1st Return Points Won %\n42.1%\n2nd Return Points Won %\n60.2%\nBreak Points Converted\n52.9%\nReturn Games Won\n50.0%\nReturn Games Played\n36\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:32:48.705817+00:00",
+  "updated_at": "2026-02-09T16:39:34.256391+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
@@ -50,19 +50,6 @@
         "prize_money_won": 1543.0,
         "draw": "32M/32Q/16D",
         "matches": [
-          {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Alina Korneeva",
-            "opponent_country": "RUS",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-3, 6-1",
-            "opponent_rank": 212
-          },
           {
             "round": "Round of 16",
             "round_name": "R16",
@@ -88,6 +75,19 @@
             "opponent_entry": "Q",
             "score": "6-3, 4-6, 6-2",
             "opponent_rank": 342
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Alina Korneeva",
+            "opponent_country": "RUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-1",
+            "opponent_rank": 212
           }
         ],
         "summary": {
@@ -149,19 +149,6 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Iva Jovic",
-            "opponent_country": "USA",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-2, 7-6(6)",
-            "opponent_rank": 35
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -175,7 +162,33 @@
             "opponent_rank": 103
           },
           {
-            "round": "Qualifying R4",
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Whitney Osuigwe",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-4, 3-6, 6-1",
+            "opponent_rank": 152
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Iva Jovic",
+            "opponent_country": "USA",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-2, 7-6(6)",
+            "opponent_rank": 35
+          },
+          {
+            "round": "Qualifying R2",
             "round_name": "R16",
             "tourn_round": 2,
             "draw_level_type": "",
@@ -188,7 +201,7 @@
             "opponent_rank": 141
           },
           {
-            "round": "Round of 32",
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -201,7 +214,7 @@
             "opponent_rank": 984
           },
           {
-            "round": "Qualifying R3",
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -212,19 +225,6 @@
             "opponent_entry": "W",
             "score": "6-0, 6-1",
             "opponent_rank": 984
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Whitney Osuigwe",
-            "opponent_country": "USA",
-            "opponent_seed": null,
-            "opponent_entry": "Q",
-            "score": "6-4, 3-6, 6-1",
-            "opponent_rank": 152
           }
         ],
         "summary": {
@@ -236,6 +236,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:32:48.705738+00:00"
+    "updated_at": "2026-02-09T16:39:34.255947+00:00"
   }
 }

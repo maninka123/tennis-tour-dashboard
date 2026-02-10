@@ -11,8 +11,8 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
 
 
 def main():
-    server = ThreadingHTTPServer(("0.0.0.0", 8080), NoCacheHandler)
-    print("Serving frontend on http://localhost:8080 (no-cache)")
+    server = ThreadingHTTPServer(("0.0.0.0", 8085), NoCacheHandler)
+    print("Serving frontend on http://localhost:8085 (no-cache)")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

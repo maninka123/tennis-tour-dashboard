@@ -1,13 +1,13 @@
 {
-  "singles_ranking": "190",
+  "singles_ranking": "188",
   "matches_played": "2",
   "aces": "3",
   "service_games_won": "66.7%",
   "return_games_won": "23.8%",
   "first_serve_won": "64.5%",
   "singles_titles": "0",
-  "won_lost": "2 / 2",
-  "prize_money": "$29,285",
+  "won_lost": "3 / 3",
+  "prize_money": "$31,905",
   "singles_serving_stats": {
     "aces": "3",
     "double_faults": "8",
@@ -32,10 +32,59 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n36.4%\n1st Return Points Won %\n31.9%\n2nd Return Points Won %\n42.9%\nBreak Points Converted\n62.5%\nReturn Games Won\n23.8%\nReturn Games Played\n21\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:43:23.283817+00:00",
+  "updated_at": "2026-02-09T16:50:26.481867+00:00",
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
+      {
+        "tournament": "OSTRAVA",
+        "location": "Ostrava \u2022 Czech Republic",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 190,
+        "seed": 4,
+        "wta_points_gain": 12.0,
+        "prize_money_won": 2620.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anastasiia Sobolieva",
+            "opponent_country": "UKR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-1, 6-3",
+            "opponent_rank": 264
+          },
+          {
+            "round": "Qualifying R2",
+            "round_name": "Q",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Vendula Valdmannova",
+            "opponent_country": "CZE",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 5-7, 6-3",
+            "opponent_rank": 300
+          }
+        ],
+        "summary": {
+          "rank": 190,
+          "seed": 4,
+          "wta_points_gain": "+12",
+          "prize_money_won": "+$2,620",
+          "draw": "32M/16Q/16D"
+        }
+      },
       {
         "tournament": "AUSTRALIAN OPEN",
         "location": "Melbourne \u2022 Australia",
@@ -113,7 +162,7 @@
             "opponent_rank": 35
           },
           {
-            "round": "Qualifying R3",
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -126,7 +175,7 @@
             "opponent_rank": 140
           },
           {
-            "round": "Qualifying R3",
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -148,6 +197,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:43:23.283686+00:00"
+    "updated_at": "2026-02-09T16:50:26.481768+00:00"
   }
 }

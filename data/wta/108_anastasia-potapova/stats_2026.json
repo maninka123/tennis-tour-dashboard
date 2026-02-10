@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "58",
-  "matches_played": "2",
-  "aces": "11",
-  "service_games_won": "62.5%",
-  "return_games_won": "25.0%",
-  "first_serve_won": "67.7%",
+  "singles_ranking": "76",
+  "matches_played": "9",
+  "aces": "25",
+  "service_games_won": "61.6%",
+  "return_games_won": "36.0%",
+  "first_serve_won": "63.2%",
   "singles_titles": "0",
-  "won_lost": "4 / 4",
-  "prize_money": "$259,344",
+  "won_lost": "6 / 5",
+  "prize_money": "$266,369",
   "singles_serving_stats": {
-    "aces": "11",
-    "double_faults": "12",
-    "first_serve_pct": "60.8%",
-    "first_serve_won": "67.7%",
-    "second_serve_won": "38.7%",
-    "break_points_saved": "50.0%",
-    "service_points_won_pct": "56.3%",
-    "service_games_won": "62.5%",
-    "service_games_played": "24"
+    "aces": "25",
+    "double_faults": "56",
+    "first_serve_pct": "57.7%",
+    "first_serve_won": "63.2%",
+    "second_serve_won": "41.3%",
+    "break_points_saved": "60.2%",
+    "service_points_won_pct": "53.9%",
+    "service_games_won": "61.6%",
+    "service_games_played": "112"
   },
   "singles_return_stats": {
-    "return_points_won": "41.8%",
-    "first_return_points_won_pct": "28.8%",
-    "second_return_points_won_pct": "62.1%",
-    "break_points_converted": "27.3%",
-    "return_games_won": "25.0%",
-    "return_games_played": "24"
+    "return_points_won": "42.9%",
+    "first_return_points_won_pct": "37.7%",
+    "second_return_points_won_pct": "50.5%",
+    "break_points_converted": "51.9%",
+    "return_games_won": "36.0%",
+    "return_games_played": "111"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n11\nDouble Faults\n12\n1st Serve %\n60.8%\n1st Serve Won\n67.7%\n2nd Serve Won\n38.7%\nBreak Points Saved\n50.0%\nService Points Won %\n56.3%\nService Games Won\n62.5%\nService Games Played\n24",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.8%\n1st Return Points Won %\n28.8%\n2nd Return Points Won %\n62.1%\nBreak Points Converted\n27.3%\nReturn Games Won\n25.0%\nReturn Games Played\n24\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n25\nDouble Faults\n56\n1st Serve %\n57.7%\n1st Serve Won\n63.2%\n2nd Serve Won\n41.3%\nBreak Points Saved\n60.2%\nService Points Won %\n53.9%\nService Games Won\n61.6%\nService Games Played\n112",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.9%\n1st Return Points Won %\n37.7%\n2nd Return Points Won %\n50.5%\nBreak Points Converted\n51.9%\nReturn Games Won\n36.0%\nReturn Games Played\n111\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:34:40.688021+00:00",
+  "updated_at": "2026-02-09T16:41:24.917788+00:00",
   "records_tab": {
     "summary": [
       {
@@ -240,19 +240,6 @@
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Xiaodi You",
-            "opponent_country": "CHN",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 7-6(1)",
-            "opponent_rank": 282
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "R32",
-            "tourn_round": 1,
-            "draw_level_type": "",
             "result": "L",
             "opponent_name": "Kimberly Birrell",
             "opponent_country": "AUS",
@@ -260,6 +247,19 @@
             "opponent_entry": "W",
             "score": "6-4, 6-4",
             "opponent_rank": 107
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Xiaodi You",
+            "opponent_country": "CHN",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 7-6(1)",
+            "opponent_rank": 282
           }
         ],
         "summary": {
@@ -320,6 +320,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:34:40.687954+00:00"
+    "updated_at": "2026-02-09T16:41:24.917411+00:00"
   }
 }

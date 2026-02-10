@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "153",
-  "matches_played": "3",
-  "aces": "3",
-  "service_games_won": "71.1%",
-  "return_games_won": "28.9%",
-  "first_serve_won": "69.9%",
+  "singles_ranking": "144",
+  "matches_played": "2",
+  "aces": "0",
+  "service_games_won": "60.0%",
+  "return_games_won": "26.7%",
+  "first_serve_won": "57.9%",
   "singles_titles": "0",
-  "won_lost": "6 / 2",
-  "prize_money": "$61,440",
+  "won_lost": "8 / 4",
+  "prize_money": "$65,725",
   "singles_serving_stats": {
-    "aces": "3",
-    "double_faults": "21",
-    "first_serve_pct": "55.9%",
-    "first_serve_won": "69.9%",
-    "second_serve_won": "40.9%",
-    "break_points_saved": "52.2%",
-    "service_points_won_pct": "57.1%",
-    "service_games_won": "71.1%",
-    "service_games_played": "38"
+    "aces": "0",
+    "double_faults": "0",
+    "first_serve_pct": "65.5%",
+    "first_serve_won": "57.9%",
+    "second_serve_won": "50.0%",
+    "break_points_saved": "25.0%",
+    "service_points_won_pct": "55.2%",
+    "service_games_won": "60.0%",
+    "service_games_played": "15"
   },
   "singles_return_stats": {
-    "return_points_won": "42.0%",
-    "first_return_points_won_pct": "32.0%",
-    "second_return_points_won_pct": "52.5%",
-    "break_points_converted": "42.3%",
-    "return_games_won": "28.9%",
-    "return_games_played": "38"
+    "return_points_won": "36.9%",
+    "first_return_points_won_pct": "32.7%",
+    "second_return_points_won_pct": "42.9%",
+    "break_points_converted": "100.0%",
+    "return_games_won": "26.7%",
+    "return_games_played": "15"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n3\nDouble Faults\n21\n1st Serve %\n55.9%\n1st Serve Won\n69.9%\n2nd Serve Won\n40.9%\nBreak Points Saved\n52.2%\nService Points Won %\n57.1%\nService Games Won\n71.1%\nService Games Played\n38",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.0%\n1st Return Points Won %\n32.0%\n2nd Return Points Won %\n52.5%\nBreak Points Converted\n42.3%\nReturn Games Won\n28.9%\nReturn Games Played\n38\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n0\nDouble Faults\n0\n1st Serve %\n65.5%\n1st Serve Won\n57.9%\n2nd Serve Won\n50.0%\nBreak Points Saved\n25.0%\nService Points Won %\n55.2%\nService Games Won\n60.0%\nService Games Played\n15",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n36.9%\n1st Return Points Won %\n32.7%\n2nd Return Points Won %\n42.9%\nBreak Points Converted\n100.0%\nReturn Games Won\n26.7%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:39:08.124438+00:00",
+  "updated_at": "2026-02-09T16:46:04.331952+00:00",
   "records_tab": {
     "summary": [
       {
@@ -131,6 +131,42 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "CLUJ-NAPOCA",
+        "location": "Cluj-Napoca \u2022 Romania",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 153,
+        "seed": 7,
+        "wta_points_gain": 42.0,
+        "prize_money_won": 4285.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Ekaterine Gorgodze",
+            "opponent_country": "GEO",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-7(7), 6-2, 6-1",
+            "opponent_rank": 170
+          }
+        ],
+        "summary": {
+          "rank": 153,
+          "seed": 7,
+          "wta_points_gain": "+42",
+          "prize_money_won": "+$4,285",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
         "tournament": "AUSTRALIAN OPEN",
         "location": "Melbourne \u2022 Australia",
         "date_range": "18 Jan - 1 Feb 2026",
@@ -207,19 +243,6 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Joanna Garland",
-            "opponent_country": "TPE",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 6-4",
-            "opponent_rank": 129
-          },
-          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -231,19 +254,6 @@
             "opponent_entry": "",
             "score": "7-6(5), 2-6, 6-3",
             "opponent_rank": 131
-          },
-          {
-            "round": "Qualifying R4",
-            "round_name": "R16",
-            "tourn_round": 2,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Miriam Bulgaru",
-            "opponent_country": "ROU",
-            "opponent_seed": 14,
-            "opponent_entry": "",
-            "score": "6-2, 6-3",
-            "opponent_rank": 196
           },
           {
             "round": "Round of 32",
@@ -260,6 +270,32 @@
           },
           {
             "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Joanna Garland",
+            "opponent_country": "TPE",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-4",
+            "opponent_rank": 129
+          },
+          {
+            "round": "Qualifying R2",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Miriam Bulgaru",
+            "opponent_country": "ROU",
+            "opponent_seed": 14,
+            "opponent_entry": "",
+            "score": "6-2, 6-3",
+            "opponent_rank": 196
+          },
+          {
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -281,6 +317,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:39:08.124381+00:00"
+    "updated_at": "2026-02-09T16:46:04.331682+00:00"
   }
 }

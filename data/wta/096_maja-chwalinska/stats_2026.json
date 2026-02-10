@@ -1,13 +1,13 @@
 {
-  "singles_ranking": "146",
+  "singles_ranking": "134",
   "matches_played": "1",
   "aces": "0",
   "service_games_won": "87.5%",
   "return_games_won": "62.5%",
   "first_serve_won": "66.7%",
   "singles_titles": "0",
-  "won_lost": "3 / 2",
-  "prize_money": "$56,320",
+  "won_lost": "7 / 3",
+  "prize_money": "$64,655",
   "singles_serving_stats": {
     "aces": "0",
     "double_faults": "0",
@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n53.4%\n1st Return Points Won %\n44.1%\n2nd Return Points Won %\n66.7%\nBreak Points Converted\n62.5%\nReturn Games Won\n62.5%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:33:23.178285+00:00",
+  "updated_at": "2026-02-09T16:40:09.011184+00:00",
   "records_tab": {
     "summary": [
       {
@@ -98,6 +98,68 @@
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
+      {
+        "tournament": "CLUJ-NAPOCA",
+        "location": "Cluj-Napoca \u2022 Romania",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 146,
+        "seed": null,
+        "wta_points_gain": 72.0,
+        "prize_money_won": 7025.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Olga Danilovic",
+            "opponent_country": "SRB",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "6-1, 1-6, 6-2",
+            "opponent_rank": 88
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Ana Bogdan",
+            "opponent_country": "ROU",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "6-3, 6-2",
+            "opponent_rank": 538
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R16",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Mara Gae",
+            "opponent_country": "ROU",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "6-2, 6-3",
+            "opponent_rank": 837
+          }
+        ],
+        "summary": {
+          "rank": 146,
+          "seed": null,
+          "wta_points_gain": "+72",
+          "prize_money_won": "+$7,025",
+          "draw": "32M/16Q/16D"
+        }
+      },
       {
         "tournament": "AUSTRALIAN OPEN",
         "location": "Melbourne \u2022 Australia",
@@ -201,7 +263,7 @@
             "opponent_rank": 171
           },
           {
-            "round": "Qualifying R3",
+            "round": "Qualifying R1",
             "round_name": "R32",
             "tourn_round": 1,
             "draw_level_type": "",
@@ -223,6 +285,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:33:23.178093+00:00"
+    "updated_at": "2026-02-09T16:40:09.010882+00:00"
   }
 }

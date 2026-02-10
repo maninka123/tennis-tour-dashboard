@@ -1,13 +1,13 @@
 {
-  "singles_ranking": "152",
+  "singles_ranking": "145",
   "matches_played": "2",
   "aces": "0",
   "service_games_won": "36.8%",
   "return_games_won": "26.3%",
   "first_serve_won": "50.0%",
   "singles_titles": "0",
-  "won_lost": "4 / 4",
-  "prize_money": "$123,935",
+  "won_lost": "7 / 5",
+  "prize_money": "$126,618",
   "singles_serving_stats": {
     "aces": "0",
     "double_faults": "2",
@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n37.4%\n1st Return Points Won %\n28.6%\n2nd Return Points Won %\n55.3%\nBreak Points Converted\n45.5%\nReturn Games Won\n26.3%\nReturn Games Played\n19\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-07T13:39:01.804448+00:00",
+  "updated_at": "2026-02-09T16:45:57.764511+00:00",
   "records_tab": {
     "summary": [
       {
@@ -155,6 +155,42 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "BRISBANE",
+        "location": "Australia",
+        "date_range": "2 Feb - 8 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 152,
+        "seed": 4,
+        "wta_points_gain": 29.0,
+        "prize_money_won": 2683.0,
+        "draw": "32M/16D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Elena Micic",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 369
+          }
+        ],
+        "summary": {
+          "rank": 152,
+          "seed": 4,
+          "wta_points_gain": "+29",
+          "prize_money_won": "+$2,683",
+          "draw": "32M/16D"
+        }
+      },
+      {
         "tournament": "MANILA 125",
         "location": "Manila \u2022 Philippines",
         "date_range": "26 Jan - 31 Jan 2026",
@@ -168,19 +204,6 @@
         "prize_money_won": 3450.0,
         "draw": "32M/16Q/16D",
         "matches": [
-          {
-            "round": "Quarterfinals",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Donna Vekic",
-            "opponent_country": "CRO",
-            "opponent_seed": 4,
-            "opponent_entry": "",
-            "score": "6-4, 6-3",
-            "opponent_rank": 72
-          },
           {
             "round": "Round of 16",
             "round_name": "R16",
@@ -206,6 +229,19 @@
             "opponent_entry": "",
             "score": "7-5, 6-4",
             "opponent_rank": 86
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Donna Vekic",
+            "opponent_country": "CRO",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-4, 6-3",
+            "opponent_rank": 72
           }
         ],
         "summary": {
@@ -328,6 +364,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-07T13:39:01.804389+00:00"
+    "updated_at": "2026-02-09T16:45:57.764415+00:00"
   }
 }

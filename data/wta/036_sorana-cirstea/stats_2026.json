@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "36",
-  "matches_played": "3",
-  "aces": "22",
-  "service_games_won": "81.5%",
-  "return_games_won": "29.6%",
-  "first_serve_won": "75.8%",
-  "singles_titles": "0",
-  "won_lost": "5 / 2",
-  "prize_money": "$188,421",
+  "singles_ranking": "31",
+  "matches_played": "10",
+  "aces": "57",
+  "service_games_won": "82.3%",
+  "return_games_won": "62.0%",
+  "first_serve_won": "77.5%",
+  "singles_titles": "1",
+  "won_lost": "10 / 2",
+  "prize_money": "$225,811",
   "singles_serving_stats": {
-    "aces": "22",
-    "double_faults": "7",
-    "first_serve_pct": "55.3%",
-    "first_serve_won": "75.8%",
-    "second_serve_won": "47.5%",
-    "break_points_saved": "70.6%",
-    "service_points_won_pct": "63.1%",
-    "service_games_won": "81.5%",
-    "service_games_played": "27"
+    "aces": "57",
+    "double_faults": "15",
+    "first_serve_pct": "54.5%",
+    "first_serve_won": "77.5%",
+    "second_serve_won": "54.3%",
+    "break_points_saved": "31.4%",
+    "service_points_won_pct": "66.8%",
+    "service_games_won": "82.3%",
+    "service_games_played": "97"
   },
   "singles_return_stats": {
-    "return_points_won": "42.3%",
-    "first_return_points_won_pct": "29.7%",
-    "second_return_points_won_pct": "62.9%",
-    "break_points_converted": "88.9%",
-    "return_games_won": "29.6%",
-    "return_games_played": "27"
+    "return_points_won": "53.6%",
+    "first_return_points_won_pct": "44.0%",
+    "second_return_points_won_pct": "72.8%",
+    "break_points_converted": "44.4%",
+    "return_games_won": "62.0%",
+    "return_games_played": "96"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n22\nDouble Faults\n7\n1st Serve %\n55.3%\n1st Serve Won\n75.8%\n2nd Serve Won\n47.5%\nBreak Points Saved\n70.6%\nService Points Won %\n63.1%\nService Games Won\n81.5%\nService Games Played\n27",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.3%\n1st Return Points Won %\n29.7%\n2nd Return Points Won %\n62.9%\nBreak Points Converted\n88.9%\nReturn Games Won\n29.6%\nReturn Games Played\n27\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n57\nDouble Faults\n15\n1st Serve %\n54.5%\n1st Serve Won\n77.5%\n2nd Serve Won\n54.3%\nBreak Points Saved\n31.4%\nService Points Won %\n66.8%\nService Games Won\n82.3%\nService Games Played\n97",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n53.6%\n1st Return Points Won %\n44.0%\n2nd Return Points Won %\n72.8%\nBreak Points Converted\n44.4%\nReturn Games Won\n62.0%\nReturn Games Played\n96\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-08T15:20:33.343472+00:00",
+  "updated_at": "2026-02-09T16:32:04.153592+00:00",
   "records_tab": {
     "summary": [
       {
@@ -219,6 +219,55 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "CLUJ-NAPOCA",
+        "location": "Cluj-Napoca \u2022 Romania",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 36,
+        "seed": 3,
+        "wta_points_gain": 250.0,
+        "prize_money_won": 37390.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Tamara Zidansek",
+            "opponent_country": "SLO",
+            "opponent_seed": null,
+            "opponent_entry": "L",
+            "score": "6-1, 6-0",
+            "opponent_rank": 153
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Kamilla Rakhimova",
+            "opponent_country": "UZB",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 93
+          }
+        ],
+        "summary": {
+          "rank": 36,
+          "seed": 3,
+          "wta_points_gain": "+250",
+          "prize_money_won": "+$37,390",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
         "tournament": "AUSTRALIAN OPEN",
         "location": "Melbourne \u2022 Australia",
         "date_range": "18 Jan - 1 Feb 2026",
@@ -379,6 +428,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-08T15:20:33.343224+00:00"
+    "updated_at": "2026-02-09T16:32:04.135277+00:00"
   }
 }

@@ -1,38 +1,38 @@
 {
-  "singles_ranking": "119",
-  "matches_played": "1",
-  "aces": "12",
-  "service_games_won": "53.3%",
-  "return_games_won": "33.3%",
-  "first_serve_won": "68.2%",
+  "singles_ranking": "107",
+  "matches_played": "4",
+  "aces": "18",
+  "service_games_won": "85.3%",
+  "return_games_won": "44.1%",
+  "first_serve_won": "73.9%",
   "singles_titles": "0",
-  "won_lost": "2 / 3",
-  "prize_money": "$31,048",
+  "won_lost": "5 / 4",
+  "prize_money": "$43,379",
   "singles_serving_stats": {
-    "aces": "12",
-    "double_faults": "11",
-    "first_serve_pct": "51.2%",
-    "first_serve_won": "68.2%",
-    "second_serve_won": "31.0%",
-    "break_points_saved": "50.0%",
-    "service_points_won_pct": "50.0%",
-    "service_games_won": "53.3%",
-    "service_games_played": "15"
+    "aces": "18",
+    "double_faults": "5",
+    "first_serve_pct": "57.8%",
+    "first_serve_won": "73.9%",
+    "second_serve_won": "56.0%",
+    "break_points_saved": "54.5%",
+    "service_points_won_pct": "66.3%",
+    "service_games_won": "85.3%",
+    "service_games_played": "34"
   },
   "singles_return_stats": {
-    "return_points_won": "40.0%",
-    "first_return_points_won_pct": "39.0%",
-    "second_return_points_won_pct": "41.9%",
-    "break_points_converted": "71.4%",
-    "return_games_won": "33.3%",
-    "return_games_played": "15"
+    "return_points_won": "46.6%",
+    "first_return_points_won_pct": "37.1%",
+    "second_return_points_won_pct": "57.0%",
+    "break_points_converted": "42.9%",
+    "return_games_won": "44.1%",
+    "return_games_played": "34"
   },
   "raw": {
-    "serving_section": "SINGLES SERVING STATS\nAces\n12\nDouble Faults\n11\n1st Serve %\n51.2%\n1st Serve Won\n68.2%\n2nd Serve Won\n31.0%\nBreak Points Saved\n50.0%\nService Points Won %\n50.0%\nService Games Won\n53.3%\nService Games Played\n15",
-    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.0%\n1st Return Points Won %\n39.0%\n2nd Return Points Won %\n41.9%\nBreak Points Converted\n71.4%\nReturn Games Won\n33.3%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+    "serving_section": "SINGLES SERVING STATS\nAces\n18\nDouble Faults\n5\n1st Serve %\n57.8%\n1st Serve Won\n73.9%\n2nd Serve Won\n56.0%\nBreak Points Saved\n54.5%\nService Points Won %\n66.3%\nService Games Won\n85.3%\nService Games Played\n34",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.6%\n1st Return Points Won %\n37.1%\n2nd Return Points Won %\n57.0%\nBreak Points Converted\n42.9%\nReturn Games Won\n44.1%\nReturn Games Played\n34\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-08T15:24:18.034937+00:00",
+  "updated_at": "2026-02-09T16:36:49.514755+00:00",
   "records_tab": {
     "summary": [
       {
@@ -122,6 +122,81 @@
   "recent_matches_tab": {
     "year": 2026,
     "tournaments": [
+      {
+        "tournament": "OSTRAVA",
+        "location": "Ostrava \u2022 Czech Republic",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 119,
+        "seed": null,
+        "wta_points_gain": 98.0,
+        "prize_money_won": 12331.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Tamara Korpatsch",
+            "opponent_country": "GER",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 124
+          },
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Panna Udvardy",
+            "opponent_country": "HUN",
+            "opponent_seed": 8,
+            "opponent_entry": "",
+            "score": "6-1, 6-2",
+            "opponent_rank": 98
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Oceane Dodin",
+            "opponent_country": "FRA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-1, 6-4",
+            "opponent_rank": 686
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Nikola Bartunkova",
+            "opponent_country": "CZE",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-1, 6-3",
+            "opponent_rank": 108
+          }
+        ],
+        "summary": {
+          "rank": 119,
+          "seed": null,
+          "wta_points_gain": "+98",
+          "prize_money_won": "+$12,331",
+          "draw": "32M/16Q/16D"
+        }
+      },
       {
         "tournament": "FUJAIRAH",
         "location": "United Arab Emirates",
@@ -257,6 +332,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-08T15:24:18.034313+00:00"
+    "updated_at": "2026-02-09T16:36:49.514662+00:00"
   }
 }
