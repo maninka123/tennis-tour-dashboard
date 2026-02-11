@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n35.6%\n1st Return Points Won %\n31.4%\n2nd Return Points Won %\n44.9%\nBreak Points Converted\n74.8%\nReturn Games Won\n25.3%\nReturn Games Played\n129\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:28:10.744409+00:00",
+  "updated_at": "2026-02-10T15:23:15.284893+00:00",
   "records_tab": {
     "summary": [
       {
@@ -96,6 +96,32 @@
         "prize_money_won": 310761.0,
         "draw": "128M/64D",
         "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Aryna Sabalenka",
+            "opponent_country": "BLR",
+            "opponent_seed": 1,
+            "opponent_entry": "",
+            "score": "6-1, 7-6(1)",
+            "opponent_rank": 1
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Clara Tauson",
+            "opponent_country": "DEN",
+            "opponent_seed": 14,
+            "opponent_entry": "",
+            "score": "7-6(5), 5-7, 6-3",
+            "opponent_rank": 14
+          },
           {
             "round": "Round of 64",
             "round_name": "R64",
@@ -172,6 +198,19 @@
             "opponent_rank": 107
           },
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Madison Keys",
+            "opponent_country": "USA",
+            "opponent_seed": 2,
+            "opponent_entry": "",
+            "score": "6-4, 4-6, 6-2",
+            "opponent_rank": 9
+          },
+          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -196,19 +235,6 @@
             "opponent_entry": "",
             "score": "5-7, 6-3, 6-2",
             "opponent_rank": 59
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Madison Keys",
-            "opponent_country": "USA",
-            "opponent_seed": 2,
-            "opponent_entry": "",
-            "score": "6-4, 4-6, 6-2",
-            "opponent_rank": 9
           }
         ],
         "summary": {
@@ -269,6 +295,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:28:10.744179+00:00"
+    "updated_at": "2026-02-10T15:23:16.848237+00:00"
   }
 }

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.5%\n1st Return Points Won %\n36.9%\n2nd Return Points Won %\n53.3%\nBreak Points Converted\n40.8%\nReturn Games Won\n30.3%\nReturn Games Played\n66\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:32:13.223239+00:00",
+  "updated_at": "2026-02-10T15:27:15.077230+00:00",
   "records_tab": {
     "summary": [
       {
@@ -152,6 +152,19 @@
         "prize_money_won": 145669.0,
         "draw": "128M/64D",
         "matches": [
+          {
+            "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Iga Swiatek",
+            "opponent_country": "POL",
+            "opponent_seed": 2,
+            "opponent_entry": "",
+            "score": "6-2, 6-3",
+            "opponent_rank": 2
+          },
           {
             "round": "Round of 128",
             "round_name": "R128",
@@ -299,6 +312,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:32:13.221141+00:00"
+    "updated_at": "2026-02-10T15:27:16.494423+00:00"
   }
 }

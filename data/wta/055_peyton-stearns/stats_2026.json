@@ -1,0 +1,259 @@
+{
+  "singles_ranking": "55",
+  "matches_played": "6",
+  "aces": "37",
+  "service_games_won": "63.9%",
+  "return_games_won": "29.5%",
+  "first_serve_won": "72.0%",
+  "singles_titles": null,
+  "won_lost": "2 / 1",
+  "prize_money": "$249,323",
+  "singles_serving_stats": {
+    "aces": "37",
+    "double_faults": "23",
+    "first_serve_pct": "57.0%",
+    "first_serve_won": "72.0%",
+    "second_serve_won": "38.9%",
+    "break_points_saved": "47.6%",
+    "service_points_won_pct": "57.7%",
+    "service_games_won": "63.9%",
+    "service_games_played": "61"
+  },
+  "singles_return_stats": {
+    "return_points_won": "40.0%",
+    "first_return_points_won_pct": "29.6%",
+    "second_return_points_won_pct": "56.7%",
+    "break_points_converted": "42.9%",
+    "return_games_won": "29.5%",
+    "return_games_played": "61"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n37\nDouble Faults\n23\n1st Serve %\n57.0%\n1st Serve Won\n72.0%\n2nd Serve Won\n38.9%\nBreak Points Saved\n47.6%\nService Points Won %\n57.7%\nService Games Won\n63.9%\nService Games Played\n61",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n40.0%\n1st Return Points Won %\n29.6%\n2nd Return Points Won %\n56.7%\nBreak Points Converted\n42.9%\nReturn Games Won\n29.5%\nReturn Games Played\n61\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:29:37.723186+00:00",
+  "records_tab": {
+    "summary": [
+      {
+        "event": "Australian Open",
+        "best_result": "R32",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "Roland Garros",
+        "best_result": "R32",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "Wimbledon",
+        "best_result": "R128",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "US Open",
+        "best_result": "R32",
+        "best_years": "",
+        "total_wl": ""
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2026",
+        "australian_open": "R32",
+        "roland_garros": "-",
+        "french_open": "-",
+        "wimbledon": "-",
+        "us_open": "-"
+      },
+      {
+        "year": "2025",
+        "australian_open": "R128",
+        "roland_garros": "R128",
+        "french_open": "R128",
+        "wimbledon": "R128",
+        "us_open": "R64"
+      },
+      {
+        "year": "2024",
+        "australian_open": "R128",
+        "roland_garros": "R32",
+        "french_open": "R32",
+        "wimbledon": "R128",
+        "us_open": "R32"
+      },
+      {
+        "year": "2023",
+        "australian_open": "-",
+        "roland_garros": "R32",
+        "french_open": "R32",
+        "wimbledon": "R128",
+        "us_open": "R16"
+      },
+      {
+        "year": "2022",
+        "australian_open": "-",
+        "roland_garros": "-",
+        "french_open": "-",
+        "wimbledon": "-",
+        "us_open": "R128"
+      }
+    ]
+  },
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 68,
+        "seed": null,
+        "wta_points_gain": 130.0,
+        "prize_money_won": 212192.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Amanda Anisimova",
+            "opponent_country": "USA",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-1, 6-4",
+            "opponent_rank": 4
+          },
+          {
+            "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Petra Marcinko",
+            "opponent_country": "CRO",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 7-5",
+            "opponent_rank": 81
+          },
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Sofia Kenin",
+            "opponent_country": "USA",
+            "opponent_seed": 27,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 30
+          }
+        ],
+        "summary": {
+          "rank": 68,
+          "seed": null,
+          "wta_points_gain": "+130",
+          "prize_money_won": "+$212,192",
+          "draw": "128M/64D"
+        }
+      },
+      {
+        "tournament": "HOBART",
+        "location": "Hobart \u2022 Australia",
+        "date_range": "12 Jan - 17 Jan 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 67,
+        "seed": null,
+        "wta_points_gain": 30.0,
+        "prize_money_won": 4285.0,
+        "draw": "32M/24Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Olga Danilovic",
+            "opponent_country": "SRB",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-6(2), 6-1",
+            "opponent_rank": 68
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Barbora Krejcikova",
+            "opponent_country": "CZE",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 1-6, 7-6(4)",
+            "opponent_rank": 55
+          }
+        ],
+        "summary": {
+          "rank": 67,
+          "seed": null,
+          "wta_points_gain": "+30",
+          "prize_money_won": "+$4,285",
+          "draw": "32M/24Q/16D"
+        }
+      },
+      {
+        "tournament": "AUCKLAND",
+        "location": "Auckland \u2022 New Zealand",
+        "date_range": "5 Jan - 11 Jan 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 64,
+        "seed": 8,
+        "wta_points_gain": 1.0,
+        "prize_money_won": 3065.0,
+        "draw": "32M/24Q/16D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Kaitlin Quevedo",
+            "opponent_country": "ESP",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-2, 7-5",
+            "opponent_rank": 141
+          }
+        ],
+        "summary": {
+          "rank": 64,
+          "seed": 8,
+          "wta_points_gain": "+1",
+          "prize_money_won": "+$3,065",
+          "draw": "32M/24Q/16D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:29:39.240526+00:00"
+  }
+}

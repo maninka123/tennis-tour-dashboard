@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.5%\n1st Return Points Won %\n38.5%\n2nd Return Points Won %\n46.2%\nBreak Points Converted\n47.6%\nReturn Games Won\n36.3%\nReturn Games Played\n132\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:29:02.830561+00:00",
+  "updated_at": "2026-02-10T15:24:05.563013+00:00",
   "records_tab": {
     "summary": [
       {
@@ -91,6 +91,94 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 27,
+        "seed": 29,
+        "wta_points_gain": 430.0,
+        "prize_money_won": 485565.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Aryna Sabalenka",
+            "opponent_country": "BLR",
+            "opponent_seed": 1,
+            "opponent_entry": "",
+            "score": "6-3, 6-0",
+            "opponent_rank": 1
+          },
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Yulia Putintseva",
+            "opponent_country": "KAZ",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-0, 6-1",
+            "opponent_rank": 94
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Jasmine Paolini",
+            "opponent_country": "ITA",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "6-2, 7-6(3)",
+            "opponent_rank": 8
+          },
+          {
+            "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Priscilla Hon",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "6-1, 6-2",
+            "opponent_rank": 121
+          },
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Katie Volynets",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-3",
+            "opponent_rank": 96
+          }
+        ],
+        "summary": {
+          "rank": 27,
+          "seed": 29,
+          "wta_points_gain": "+430",
+          "prize_money_won": "+$485,565",
+          "draw": "128M/64D"
+        }
+      },
+      {
         "tournament": "HOBART",
         "location": "Hobart \u2022 Australia",
         "date_range": "12 Jan - 17 Jan 2026",
@@ -104,6 +192,45 @@
         "prize_money_won": 22125.0,
         "draw": "32M/24Q/16D",
         "matches": [
+          {
+            "round": "Final",
+            "round_name": "F",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elisabetta Cocciaretto",
+            "opponent_country": "ITA",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-4, 6-4",
+            "opponent_rank": 80
+          },
+          {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Taylah Preston",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "4-6, 6-4, 6-1",
+            "opponent_rank": 204
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Magda Linette",
+            "opponent_country": "POL",
+            "opponent_seed": 8,
+            "opponent_entry": "",
+            "score": "6-3, 6-7(5), 6-2",
+            "opponent_rank": 53
+          },
           {
             "round": "Round of 16",
             "round_name": "R16",
@@ -129,19 +256,6 @@
             "opponent_entry": "",
             "score": "6-0, 6-1",
             "opponent_rank": 56
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Magda Linette",
-            "opponent_country": "POL",
-            "opponent_seed": 8,
-            "opponent_entry": "",
-            "score": "6-3, 6-7(5), 6-2",
-            "opponent_rank": 53
           }
         ],
         "summary": {
@@ -180,6 +294,19 @@
             "opponent_rank": 13
           },
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Sofia Costoulas",
+            "opponent_country": "BEL",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-2, 7-6(6)",
+            "opponent_rank": 159
+          },
+          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -204,19 +331,6 @@
             "opponent_entry": "Q",
             "score": "4-6, 6-1, 6-0",
             "opponent_rank": 182
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Sofia Costoulas",
-            "opponent_country": "BEL",
-            "opponent_seed": null,
-            "opponent_entry": "Q",
-            "score": "6-2, 7-6(6)",
-            "opponent_rank": 159
           }
         ],
         "summary": {
@@ -228,6 +342,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:29:02.830312+00:00"
+    "updated_at": "2026-02-10T15:24:07.132305+00:00"
   }
 }

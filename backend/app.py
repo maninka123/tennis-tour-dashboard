@@ -3,7 +3,7 @@ Tennis Dashboard - Flask Backend Server
 Provides REST API and WebSocket for real-time tennis data
 """
 
-from flask import Flask, jsonify, request, send_from_directory, redirect
+from flask import Flask, Response, jsonify, request, send_from_directory, redirect
 from flask_cors import CORS
 from flask_socketio import SocketIO, emit
 import time
@@ -13,6 +13,7 @@ import threading
 import subprocess
 import json
 import re
+import requests
 from tennis_api import tennis_fetcher
 from config import Config
 
@@ -95,7 +96,8 @@ class PlayerImageManager:
                 
         return None
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(REPO_ROOT, "data")
 image_manager = PlayerImageManager(DATA_DIR)
 # Start scanning in background
 threading.Thread(target=image_manager.scan_players, daemon=True).start()
@@ -107,8 +109,14 @@ CORS(app, origins="*", resources={r"/api/*": {"origins": "*"}})
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading', ping_timeout=60, ping_interval=25)
 
 # --- System Update State & Logic ---
-SCRIPTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "scripts", "Update player stats")
-FRONTEND_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "frontend")
+SCRIPTS_DIR = os.path.join(REPO_ROOT, "scripts", "Update player stats")
+FRONTEND_DIR = os.path.join(REPO_ROOT, "frontend")
+DATA_ANALYSIS_ATP_DIR = os.path.join(REPO_ROOT, "data_analysis")
+DATA_ANALYSIS_WTA_DIR = os.path.join(REPO_ROOT, "data_analysis", "wta")
+HISTORIC_DATA_ATP_DIR = os.path.join(REPO_ROOT, "historic data")
+HISTORIC_DATA_WTA_DIR = os.path.join(REPO_ROOT, "historic data_wta")
+DATA_ATP_DIR = os.path.join(REPO_ROOT, "data", "atp")
+DATA_WTA_DIR = os.path.join(REPO_ROOT, "data", "wta")
 PYTHON_EXE = sys.executable
 
 # ============== Frontend Routes ==============
@@ -128,13 +136,31 @@ def serve_update():
 @app.route('/Images/<path:filename>')
 def serve_images(filename):
     """Serve images from root Images folder"""
-    images_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "Images")
+    images_dir = os.path.join(REPO_ROOT, "Images")
     try:
         return send_from_directory(images_dir, filename)
     except FileNotFoundError:
         return jsonify({'error': 'Image not found'}), 404
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+def _analysis_root_for_tour(tour):
+    tour_name = str(tour or '').strip().lower()
+    if tour_name == 'atp':
+        return DATA_ANALYSIS_ATP_DIR
+    if tour_name == 'wta':
+        return DATA_ANALYSIS_WTA_DIR
+    return None
+
+
+def _serve_file(directory, filename, not_found_message='Not found'):
+    try:
+        return send_from_directory(directory, filename)
+    except FileNotFoundError:
+        return jsonify({'error': not_found_message}), 404
+    except Exception as exc:
+        return jsonify({'error': str(exc)}), 500
 
 
 @app.route('/api/player/<tour>/<player_id>/image')
@@ -156,16 +182,63 @@ def serve_player_image(tour, player_id):
     return jsonify({'error': 'Image not found'}), 404
 
 
+@app.route('/analysis')
+@app.route('/analysis/')
+def serve_analysis_root():
+    """Redirect to ATP analysis app by default."""
+    return redirect('/analysis/atp/')
+
+
+@app.route('/analysis/<tour>/')
+def serve_analysis_index(tour):
+    """Serve ATP or WTA analysis app index."""
+    app_root = _analysis_root_for_tour(tour)
+    if not app_root:
+        return jsonify({'error': 'Unknown analysis tour'}), 404
+    return _serve_file(app_root, 'index.html', 'Analysis app not found')
+
+
+@app.route('/analysis/historic data/<path:filename>')
+@app.route('/historic data/<path:filename>')
+def serve_atp_historic_data(filename):
+    """Serve ATP historic CSV archive for analysis app."""
+    return _serve_file(HISTORIC_DATA_ATP_DIR, filename, 'ATP historic file not found')
+
+
+@app.route('/analysis/historic data_wta/<path:filename>')
+@app.route('/historic data_wta/<path:filename>')
+def serve_wta_historic_data(filename):
+    """Serve WTA historic CSV archive for analysis app."""
+    return _serve_file(HISTORIC_DATA_WTA_DIR, filename, 'WTA historic file not found')
+
+
+@app.route('/analysis/data/atp/<path:filename>')
+@app.route('/data/atp/<path:filename>')
+def serve_atp_player_archive(filename):
+    """Serve ATP per-player data files for analysis app."""
+    return _serve_file(DATA_ATP_DIR, filename, 'ATP data file not found')
+
+
+@app.route('/analysis/data/wta/<path:filename>')
+@app.route('/data/wta/<path:filename>')
+def serve_wta_player_archive(filename):
+    """Serve WTA per-player data files for analysis app."""
+    return _serve_file(DATA_WTA_DIR, filename, 'WTA data file not found')
+
+
+@app.route('/analysis/<tour>/<path:filename>')
+def serve_analysis_assets(tour, filename):
+    """Serve ATP/WTA analysis static assets."""
+    app_root = _analysis_root_for_tour(tour)
+    if not app_root:
+        return jsonify({'error': 'Unknown analysis tour'}), 404
+    return _serve_file(app_root, filename, 'Analysis asset not found')
+
+
 @app.route('/<path:filename>')
 def serve_frontend(filename):
     """Serve frontend assets (CSS, JS, images)"""
-    try:
-        return send_from_directory(FRONTEND_DIR, filename)
-    except FileNotFoundError:
-        # If file not found, return 404
-        return jsonify({'error': 'Not found'}), 404
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    return _serve_file(FRONTEND_DIR, filename)
 
 
 # --- System Update State & Logic ---
@@ -340,6 +413,39 @@ ensure_live_scores_thread()
 def health_check():
     """Health check endpoint"""
     return jsonify({'status': 'healthy', 'message': 'Tennis Dashboard API is running'})
+
+
+@app.route('/api/historic-data/atp/<int:year>.csv', methods=['GET'])
+def proxy_historic_atp_csv(year):
+    """Proxy ATP yearly historic CSV from stats.tennismylife.org."""
+    if year < 1968 or year > 2100:
+        return jsonify({'success': False, 'error': 'year out of supported range'}), 400
+
+    source_url = f'https://stats.tennismylife.org/data/{year}.csv'
+    timeout = request.args.get('timeout', default=45, type=int)
+
+    try:
+        upstream = requests.get(source_url, timeout=max(5, min(timeout, 120)))
+        if upstream.status_code != 200:
+            return jsonify({
+                'success': False,
+                'error': f'upstream returned {upstream.status_code}',
+                'url': source_url
+            }), upstream.status_code
+
+        response = Response(upstream.content, mimetype='text/csv')
+        response.headers['Cache-Control'] = 'no-store'
+        response.headers['X-Source-Url'] = source_url
+        last_modified = upstream.headers.get('Last-Modified')
+        if last_modified:
+            response.headers['Last-Modified'] = last_modified
+        return response
+    except Exception as exc:
+        return jsonify({
+            'success': False,
+            'error': str(exc),
+            'url': source_url
+        }), 502
 
 
 @app.route('/api/intro-gifs', methods=['GET'])

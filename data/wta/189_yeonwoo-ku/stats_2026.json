@@ -1,0 +1,140 @@
+{
+  "singles_ranking": "189",
+  "matches_played": "1",
+  "aces": "1",
+  "service_games_won": "88.9%",
+  "return_games_won": "50.0%",
+  "first_serve_won": "67.5%",
+  "singles_titles": "0",
+  "won_lost": "1 / 2",
+  "prize_money": "$28,480",
+  "singles_serving_stats": {
+    "aces": "1",
+    "double_faults": "1",
+    "first_serve_pct": "74.1%",
+    "first_serve_won": "67.5%",
+    "second_serve_won": "71.4%",
+    "break_points_saved": "0.0%",
+    "service_points_won_pct": "68.5%",
+    "service_games_won": "88.9%",
+    "service_games_played": "9"
+  },
+  "singles_return_stats": {
+    "return_points_won": "52.5%",
+    "first_return_points_won_pct": "50.0%",
+    "second_return_points_won_pct": "57.1%",
+    "break_points_converted": "57.1%",
+    "return_games_won": "50.0%",
+    "return_games_played": "8"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n1\nDouble Faults\n1\n1st Serve %\n74.1%\n1st Serve Won\n67.5%\n2nd Serve Won\n71.4%\nBreak Points Saved\n0.0%\nService Points Won %\n68.5%\nService Games Won\n88.9%\nService Games Played\n9",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n52.5%\n1st Return Points Won %\n50.0%\n2nd Return Points Won %\n57.1%\nBreak Points Converted\n57.1%\nReturn Games Won\n50.0%\nReturn Games Played\n8\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:47:22.395590+00:00",
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 188,
+        "seed": null,
+        "wta_points_gain": 2.0,
+        "prize_money_won": 26220.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Qualifying R1",
+            "round_name": "Q",
+            "tourn_round": 1,
+            "draw_level_type": "Q",
+            "result": "L",
+            "opponent_name": "Fiona Ferro",
+            "opponent_country": "FRA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 369
+          }
+        ],
+        "summary": {
+          "rank": 188,
+          "seed": null,
+          "wta_points_gain": "+2",
+          "prize_money_won": "+$26,220",
+          "draw": "128M/64D"
+        }
+      },
+      {
+        "tournament": "AUCKLAND",
+        "location": "Auckland \u2022 New Zealand",
+        "date_range": "5 Jan - 11 Jan 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 189,
+        "seed": null,
+        "wta_points_gain": 12.0,
+        "prize_money_won": 2260.0,
+        "draw": "32M/24Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Kaitlin Quevedo",
+            "opponent_country": "ESP",
+            "opponent_seed": 6,
+            "opponent_entry": "",
+            "score": "1-6, 6-4, 6-1",
+            "opponent_rank": 141
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Alina Charaeva",
+            "opponent_country": "RUS",
+            "opponent_seed": 12,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 160
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Alina Charaeva",
+            "opponent_country": "RUS",
+            "opponent_seed": 12,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 160
+          }
+        ],
+        "summary": {
+          "rank": 189,
+          "seed": null,
+          "wta_points_gain": "+12",
+          "prize_money_won": "+$2,260",
+          "draw": "32M/24Q/16D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:47:26.379332+00:00"
+  }
+}

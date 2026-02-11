@@ -28,6 +28,18 @@ DEFAULT_DELAY = 0.35
 DEFAULT_LIMIT = 0
 DEFAULT_START = 0
 SCRAPER_FILE = "[Only once] wta_scrape_wtatennis.py"
+CONFIG_FILE = "update_config.json"
+
+
+def load_config(script_dir: Path) -> Dict[str, Any]:
+    config_path = script_dir / CONFIG_FILE
+    if not config_path.exists():
+        return {}
+    try:
+        return json.loads(config_path.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"Warning: Failed to load config file: {e}")
+        return {}
 
 
 def now_iso() -> str:
@@ -64,10 +76,15 @@ def extract_player_id(player_url: str) -> str:
 
 
 def load_scraper_module(script_dir: Path):
-    scraper_path = script_dir / SCRAPER_FILE
-    if not scraper_path.exists():
+    # Prefer the parent scripts/ scraper so app updates always use the latest fixed implementation.
+    candidate_paths = [
+        script_dir.parent / SCRAPER_FILE,
+        script_dir / SCRAPER_FILE,
+    ]
+    scraper_path = next((p for p in candidate_paths if p.exists()), None)
+    if not scraper_path:
         raise FileNotFoundError(
-            f"Missing required scraper file: {scraper_path}"
+            f"Missing required scraper file: {candidate_paths[0]}"
         )
 
     spec = importlib.util.spec_from_file_location("wta_scrape_once", scraper_path)
@@ -172,29 +189,48 @@ def update_player_folder(
 
 
 def main() -> int:
+    script_dir = Path(__file__).resolve().parent
+    config = load_config(script_dir)
+    cfg_common = config.get("common", {})
+    cfg_wta = config.get("wta_stats", {})
+
+    # Resolve config defaults
+    conf_root = cfg_wta.get("root", DEFAULT_ROOT)
+    if conf_root.startswith(".."):
+        conf_root = str((script_dir / conf_root).resolve())
+
+    conf_year = cfg_common.get("year", DEFAULT_YEAR)
+    conf_delay = cfg_wta.get("delay", DEFAULT_DELAY)
+    conf_limit = cfg_wta.get("limit", DEFAULT_LIMIT)
+    conf_dry_run = cfg_common.get("dry_run", False)
+    conf_skip_records = cfg_wta.get("skip_records", False)
+    conf_skip_recent = cfg_wta.get("skip_recent", False)
+    conf_headful = cfg_wta.get("headful", False)
+
     parser = argparse.ArgumentParser(
         description="Update WTA stats/recent matches in existing player folders only."
     )
-    parser.add_argument("--root", default=DEFAULT_ROOT, help="Base folder (default: data/wta)")
-    parser.add_argument("--year", type=int, default=DEFAULT_YEAR, help="Recent matches year")
-    parser.add_argument("--delay", type=float, default=DEFAULT_DELAY, help="Delay between players")
-    parser.add_argument("--limit", type=int, default=DEFAULT_LIMIT, help="Max folders to process (0 = all)")
+    parser.add_argument("--root", default=conf_root, help=f"Base folder (default: {conf_root})")
+    parser.add_argument("--year", type=int, default=conf_year, help=f"Recent matches year (default: {conf_year})")
+    parser.add_argument("--delay", type=float, default=conf_delay, help=f"Delay between players (default: {conf_delay})")
+    parser.add_argument("--limit", type=int, default=conf_limit, help=f"Max folders to process (0 = all, default: {conf_limit})")
     parser.add_argument("--start", type=int, default=DEFAULT_START, help="Start index offset")
     parser.add_argument("--filter", default="", help="Process folders matching substring")
-    parser.add_argument("--headful", action="store_true", help="Run browser in visible mode")
-    parser.add_argument("--dry-run", action="store_true", help="Show actions only, do not write files")
-    parser.add_argument("--skip-records", action="store_true", help="Skip records_tab refresh")
-    parser.add_argument("--skip-recent", action="store_true", help="Skip recent_matches_tab refresh")
+    parser.add_argument("--headful", action="store_true", default=conf_headful, help="Run browser in visible mode")
+    parser.add_argument("--dry-run", action="store_true", default=conf_dry_run, help="Show actions only, do not write files")
+    parser.add_argument("--skip-records", action="store_true", default=conf_skip_records, help="Skip records_tab refresh")
+    parser.add_argument("--skip-recent", action="store_true", default=conf_skip_recent, help="Skip recent_matches_tab refresh")
     args = parser.parse_args()
 
     root = Path(args.root)
-    script_dir = Path(__file__).resolve().parent
+    # script_dir is already defined above
 
     try:
         scraper = load_scraper_module(script_dir)
     except Exception as exc:
         print(red(f"[ERROR] {exc}"))
         return 1
+    print(green(f"Using scraper: {Path(getattr(scraper, '__file__', 'unknown'))}"))
 
     folders = list(iter_player_folders(root))
     if args.filter:

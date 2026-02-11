@@ -1,0 +1,202 @@
+{
+  "singles_ranking": "106",
+  "matches_played": "4",
+  "aces": "13",
+  "service_games_won": "63.6%",
+  "return_games_won": "37.8%",
+  "first_serve_won": "71.9%",
+  "singles_titles": "0",
+  "won_lost": "3 / 3",
+  "prize_money": "$33,570",
+  "singles_serving_stats": {
+    "aces": "13",
+    "double_faults": "14",
+    "first_serve_pct": "52.2%",
+    "first_serve_won": "71.9%",
+    "second_serve_won": "40.0%",
+    "break_points_saved": "55.6%",
+    "service_points_won_pct": "56.7%",
+    "service_games_won": "63.6%",
+    "service_games_played": "44"
+  },
+  "singles_return_stats": {
+    "return_points_won": "43.4%",
+    "first_return_points_won_pct": "38.5%",
+    "second_return_points_won_pct": "52.3%",
+    "break_points_converted": "43.6%",
+    "return_games_won": "37.8%",
+    "return_games_played": "45"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n13\nDouble Faults\n14\n1st Serve %\n52.2%\n1st Serve Won\n71.9%\n2nd Serve Won\n40.0%\nBreak Points Saved\n55.6%\nService Points Won %\n56.7%\nService Games Won\n63.6%\nService Games Played\n44",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n43.4%\n1st Return Points Won %\n38.5%\n2nd Return Points Won %\n52.3%\nBreak Points Converted\n43.6%\nReturn Games Won\n37.8%\nReturn Games Played\n45\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:36:31.675870+00:00",
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "OSTRAVA",
+        "location": "Ostrava \u2022 Czech Republic",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 104,
+        "seed": null,
+        "wta_points_gain": 1.0,
+        "prize_money_won": 3065.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Viktorija Golubic",
+            "opponent_country": "SUI",
+            "opponent_seed": 5,
+            "opponent_entry": "",
+            "score": "6-4, 6-0",
+            "opponent_rank": 89
+          }
+        ],
+        "summary": {
+          "rank": 104,
+          "seed": null,
+          "wta_points_gain": "+1",
+          "prize_money_won": "+$3,065",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 106,
+        "seed": 4,
+        "wta_points_gain": 2.0,
+        "prize_money_won": 26220.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Qualifying R1",
+            "round_name": "Q",
+            "tourn_round": 1,
+            "draw_level_type": "Q",
+            "result": "L",
+            "opponent_name": "Lina Gjorcheska",
+            "opponent_country": "MKD",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-5, 6-0",
+            "opponent_rank": 206
+          }
+        ],
+        "summary": {
+          "rank": 106,
+          "seed": 4,
+          "wta_points_gain": "+2",
+          "prize_money_won": "+$26,220",
+          "draw": "128M/64D"
+        }
+      },
+      {
+        "tournament": "AUCKLAND",
+        "location": "Auckland \u2022 New Zealand",
+        "date_range": "5 Jan - 11 Jan 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 108,
+        "seed": 3,
+        "wta_points_gain": 48.0,
+        "prize_money_won": 4285.0,
+        "draw": "32M/24Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Francesca Jones",
+            "opponent_country": "GBR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "1-6, 6-4, 6-1",
+            "opponent_rank": 72
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Julia Grabher",
+            "opponent_country": "AUT",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-3",
+            "opponent_rank": 92
+          },
+          {
+            "round": "Qualifying R2",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Kristina Mladenovic",
+            "opponent_country": "FRA",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "7-5, 7-5",
+            "opponent_rank": 934
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anastasija Sevastova",
+            "opponent_country": "LAT",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-7(7), 6-3",
+            "opponent_rank": 185
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anastasija Sevastova",
+            "opponent_country": "LAT",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-7(7), 6-3",
+            "opponent_rank": 185
+          }
+        ],
+        "summary": {
+          "rank": 108,
+          "seed": 3,
+          "wta_points_gain": "+48",
+          "prize_money_won": "+$4,285",
+          "draw": "32M/24Q/16D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:36:35.812200+00:00"
+  }
+}

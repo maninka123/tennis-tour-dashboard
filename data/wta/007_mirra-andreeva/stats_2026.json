@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n51.7%\n1st Return Points Won %\n47.5%\n2nd Return Points Won %\n61.1%\nBreak Points Converted\n48.6%\nReturn Games Won\n52.5%\nReturn Games Played\n109\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:27:29.213738+00:00",
+  "updated_at": "2026-02-10T15:22:32.624408+00:00",
   "records_tab": {
     "summary": [
       {
@@ -99,6 +99,81 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 7,
+        "seed": 8,
+        "wta_points_gain": 240.0,
+        "prize_money_won": 310761.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elina Svitolina",
+            "opponent_country": "UKR",
+            "opponent_seed": 12,
+            "opponent_entry": "",
+            "score": "6-2, 6-4",
+            "opponent_rank": 12
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Elena-Gabriela Ruse",
+            "opponent_country": "ROU",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-4",
+            "opponent_rank": 79
+          },
+          {
+            "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Maria Sakkari",
+            "opponent_country": "GRE",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-0, 6-4",
+            "opponent_rank": 53
+          },
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Donna Vekic",
+            "opponent_country": "CRO",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "4-6, 6-3, 6-0",
+            "opponent_rank": 72
+          }
+        ],
+        "summary": {
+          "rank": 7,
+          "seed": 8,
+          "wta_points_gain": "+240",
+          "prize_money_won": "+$310,761",
+          "draw": "128M/64D"
+        }
+      },
+      {
         "tournament": "ADELAIDE",
         "location": "Adelaide \u2022 Australia",
         "date_range": "12 Jan - 17 Jan 2026",
@@ -113,6 +188,19 @@
         "draw": "32M/24Q/16D",
         "matches": [
           {
+            "round": "Final",
+            "round_name": "F",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Victoria Mboko",
+            "opponent_country": "CAN",
+            "opponent_seed": 8,
+            "opponent_entry": "",
+            "score": "6-3, 6-1",
+            "opponent_rank": 17
+          },
+          {
             "round": "Semifinals",
             "round_name": "S",
             "tourn_round": 4,
@@ -124,6 +212,19 @@
             "opponent_entry": "",
             "score": "6-3, 6-2",
             "opponent_rank": 23
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Maya Joint",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-0",
+            "opponent_rank": 32
           },
           {
             "round": "Round of 16",
@@ -150,19 +251,6 @@
             "opponent_entry": "",
             "score": "",
             "opponent_rank": 0
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Maya Joint",
-            "opponent_country": "AUS",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-2, 6-0",
-            "opponent_rank": 32
           }
         ],
         "summary": {
@@ -249,6 +337,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:27:29.199681+00:00"
+    "updated_at": "2026-02-10T15:22:33.623159+00:00"
   }
 }

@@ -71,13 +71,14 @@ def write_json(path: Path, payload: Dict[str, Any]) -> None:
 
 
 def load_scraper_module(script_dir: Path):
-    scraper_path = script_dir / SCRAPER_FILE
-    if not scraper_path.exists():
-        # Try parent directory
-        scraper_path = script_dir.parent / SCRAPER_FILE
-
-    if not scraper_path.exists():
-        raise FileNotFoundError(f"Missing required scraper file: {scraper_path}")
+    # Prefer the parent scripts/ scraper so app updates always use the latest fixed implementation.
+    candidate_paths = [
+        script_dir.parent / SCRAPER_FILE,
+        script_dir / SCRAPER_FILE,
+    ]
+    scraper_path = next((p for p in candidate_paths if p.exists()), None)
+    if not scraper_path:
+        raise FileNotFoundError(f"Missing required scraper file: {candidate_paths[0]}")
 
     spec = importlib.util.spec_from_file_location("atp_scrape_once", scraper_path)
     if not spec or not spec.loader:
@@ -219,6 +220,7 @@ def main() -> int:
     except Exception as exc:
         print(red(f"[ERROR] {exc}"))
         return 1
+    print(green(f"Using scraper: {Path(getattr(scraper, '__file__', 'unknown'))}"))
 
     folders = list(iter_player_folders(root))
     if args.filter:

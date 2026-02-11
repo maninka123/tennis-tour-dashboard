@@ -1,0 +1,168 @@
+{
+  "singles_ranking": "99",
+  "matches_played": "1",
+  "aces": "2",
+  "service_games_won": "40.0%",
+  "return_games_won": "36.4%",
+  "first_serve_won": "60.0%",
+  "singles_titles": "0",
+  "won_lost": "0 / 2",
+  "prize_money": "$98,313",
+  "singles_serving_stats": {
+    "aces": "2",
+    "double_faults": "7",
+    "first_serve_pct": "50.0%",
+    "first_serve_won": "60.0%",
+    "second_serve_won": "32.5%",
+    "break_points_saved": "53.8%",
+    "service_points_won_pct": "46.2%",
+    "service_games_won": "40.0%",
+    "service_games_played": "10"
+  },
+  "singles_return_stats": {
+    "return_points_won": "42.3%",
+    "first_return_points_won_pct": "28.9%",
+    "second_return_points_won_pct": "65.4%",
+    "break_points_converted": "100.0%",
+    "return_games_won": "36.4%",
+    "return_games_played": "11"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n2\nDouble Faults\n7\n1st Serve %\n50.0%\n1st Serve Won\n60.0%\n2nd Serve Won\n32.5%\nBreak Points Saved\n53.8%\nService Points Won %\n46.2%\nService Games Won\n40.0%\nService Games Played\n10",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n42.3%\n1st Return Points Won %\n28.9%\n2nd Return Points Won %\n65.4%\nBreak Points Converted\n100.0%\nReturn Games Won\n36.4%\nReturn Games Played\n11\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:35:38.735296+00:00",
+  "records_tab": {
+    "summary": [
+      {
+        "event": "Australian Open",
+        "best_result": "R128",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "Roland Garros",
+        "best_result": "R128",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "Wimbledon",
+        "best_result": "Quarter-Finalist",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "US Open",
+        "best_result": "R64",
+        "best_years": "",
+        "total_wl": ""
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2026",
+        "australian_open": "R128",
+        "roland_garros": "-",
+        "french_open": "-",
+        "wimbledon": "-",
+        "us_open": "-"
+      },
+      {
+        "year": "2025",
+        "australian_open": "R128",
+        "roland_garros": "R128",
+        "french_open": "R128",
+        "wimbledon": "R128",
+        "us_open": "R64"
+      },
+      {
+        "year": "2024",
+        "australian_open": "R128",
+        "roland_garros": "-",
+        "french_open": "-",
+        "wimbledon": "QF",
+        "us_open": "R128"
+      }
+    ]
+  },
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "MANILA 125",
+        "location": "Manila \u2022 Philippines",
+        "date_range": "26 Jan - 31 Jan 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 86,
+        "seed": 6,
+        "wta_points_gain": 1.0,
+        "prize_money_won": 1200.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Lin Zhu",
+            "opponent_country": "CHN",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-5, 6-4",
+            "opponent_rank": 164
+          }
+        ],
+        "summary": {
+          "rank": 86,
+          "seed": 6,
+          "wta_points_gain": "+1",
+          "prize_money_won": "+$1,200",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 86,
+        "seed": null,
+        "wta_points_gain": 10.0,
+        "prize_money_won": 97113.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Linda Fruhvirtova",
+            "opponent_country": "CZE",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-3, 7-5",
+            "opponent_rank": 132
+          }
+        ],
+        "summary": {
+          "rank": 86,
+          "seed": null,
+          "wta_points_gain": "+10",
+          "prize_money_won": "+$97,113",
+          "draw": "128M/64D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:35:40.593291+00:00"
+  }
+}

@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n46.5%\n1st Return Points Won %\n39.0%\n2nd Return Points Won %\n58.8%\nBreak Points Converted\n44.7%\nReturn Games Won\n41.6%\nReturn Games Played\n101\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:27:23.142854+00:00",
+  "updated_at": "2026-02-10T15:22:26.235731+00:00",
   "records_tab": {
     "summary": [
       {
@@ -176,6 +176,32 @@
         "prize_money_won": 809275.0,
         "draw": "128M/64D",
         "matches": [
+          {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 6,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elena Rybakina",
+            "opponent_country": "KAZ",
+            "opponent_seed": 5,
+            "opponent_entry": "",
+            "score": "6-3, 7-6(7)",
+            "opponent_rank": 5
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Amanda Anisimova",
+            "opponent_country": "USA",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-2, 7-6(1)",
+            "opponent_rank": 4
+          },
           {
             "round": "Round of 16",
             "round_name": "R16",
@@ -326,6 +352,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:27:23.142667+00:00"
+    "updated_at": "2026-02-10T15:22:27.857280+00:00"
   }
 }

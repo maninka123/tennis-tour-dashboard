@@ -1,0 +1,140 @@
+{
+  "singles_ranking": "139",
+  "matches_played": "2",
+  "aces": "15",
+  "service_games_won": "80.0%",
+  "return_games_won": "23.8%",
+  "first_serve_won": "71.4%",
+  "singles_titles": "0",
+  "won_lost": "2 / 2",
+  "prize_money": "$40,798",
+  "singles_serving_stats": {
+    "aces": "15",
+    "double_faults": "6",
+    "first_serve_pct": "56.5%",
+    "first_serve_won": "71.4%",
+    "second_serve_won": "50.0%",
+    "break_points_saved": "60.0%",
+    "service_points_won_pct": "62.1%",
+    "service_games_won": "80.0%",
+    "service_games_played": "20"
+  },
+  "singles_return_stats": {
+    "return_points_won": "39.2%",
+    "first_return_points_won_pct": "26.2%",
+    "second_return_points_won_pct": "54.4%",
+    "break_points_converted": "31.2%",
+    "return_games_won": "23.8%",
+    "return_games_played": "21"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n15\nDouble Faults\n6\n1st Serve %\n56.5%\n1st Serve Won\n71.4%\n2nd Serve Won\n50.0%\nBreak Points Saved\n60.0%\nService Points Won %\n62.1%\nService Games Won\n80.0%\nService Games Played\n20",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.2%\n1st Return Points Won %\n26.2%\n2nd Return Points Won %\n54.4%\nBreak Points Converted\n31.2%\nReturn Games Won\n23.8%\nReturn Games Played\n21\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:40:40.816002+00:00",
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 137,
+        "seed": 27,
+        "wta_points_gain": 20.0,
+        "prize_money_won": 36903.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Qualifying R2",
+            "round_name": "Q",
+            "tourn_round": 2,
+            "draw_level_type": "Q",
+            "result": "L",
+            "opponent_name": "Storm Hunter",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "6-4, 7-6(1)",
+            "opponent_rank": 367
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "Q",
+            "tourn_round": 1,
+            "draw_level_type": "Q",
+            "result": "W",
+            "opponent_name": "Alana Subasic",
+            "opponent_country": "AUS",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "3-6, 6-1, 6-4",
+            "opponent_rank": 549
+          }
+        ],
+        "summary": {
+          "rank": 137,
+          "seed": 27,
+          "wta_points_gain": "+20",
+          "prize_money_won": "+$36,903",
+          "draw": "128M/64D"
+        }
+      },
+      {
+        "tournament": "CANBERRA 125",
+        "location": "Canberra \u2022 Australia",
+        "date_range": "5 Jan - 10 Jan 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 137,
+        "seed": null,
+        "wta_points_gain": 15.0,
+        "prize_money_won": 3895.0,
+        "draw": "32M/32Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Polina Kudermetova",
+            "opponent_country": "UZB",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-3, 7-6(1)",
+            "opponent_rank": 167
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Teodora Kostovic",
+            "opponent_country": "SRB",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-4, 6-4",
+            "opponent_rank": 175
+          }
+        ],
+        "summary": {
+          "rank": 137,
+          "seed": null,
+          "wta_points_gain": "+15",
+          "prize_money_won": "+$3,895",
+          "draw": "32M/32Q/16D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:40:44.632704+00:00"
+  }
+}

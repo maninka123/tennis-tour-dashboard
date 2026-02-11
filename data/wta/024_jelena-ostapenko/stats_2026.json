@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.6%\n1st Return Points Won %\n34.3%\n2nd Return Points Won %\n54.9%\nBreak Points Converted\n44.2%\nReturn Games Won\n33.3%\nReturn Games Played\n69\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:29:34.418286+00:00",
+  "updated_at": "2026-02-10T15:25:40.529881+00:00",
   "records_tab": {
     "summary": [
       {
@@ -163,6 +163,104 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "ABU DHABI",
+        "location": "Abu Dhabi \u2022 United Arab Emirates",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "masters_1000",
+        "category_label": "WTA 1000",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 24,
+        "seed": 7,
+        "wta_points_gain": 60.0,
+        "prize_money_won": 18045.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Sara Bejlek",
+            "opponent_country": "CZE",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-4, 6-3",
+            "opponent_rank": 101
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Oksana Selekhmeteva",
+            "opponent_country": "RUS",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "5-7, 7-6(4), 6-2",
+            "opponent_rank": 76
+          }
+        ],
+        "summary": {
+          "rank": 24,
+          "seed": 7,
+          "wta_points_gain": "+60",
+          "prize_money_won": "+$18,045",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 24,
+        "seed": 24,
+        "wta_points_gain": 70.0,
+        "prize_money_won": 145669.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Xinyu Wang",
+            "opponent_country": "CHN",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "4-6, 6-4, 6-4",
+            "opponent_rank": 46
+          },
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Rebecca Sramkova",
+            "opponent_country": "SVK",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 73
+          }
+        ],
+        "summary": {
+          "rank": 24,
+          "seed": 24,
+          "wta_points_gain": "+70",
+          "prize_money_won": "+$145,669",
+          "draw": "128M/64D"
+        }
+      },
+      {
         "tournament": "ADELAIDE",
         "location": "Adelaide \u2022 Australia",
         "date_range": "12 Jan - 17 Jan 2026",
@@ -248,6 +346,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:29:34.418148+00:00"
+    "updated_at": "2026-02-10T15:25:42.859204+00:00"
   }
 }

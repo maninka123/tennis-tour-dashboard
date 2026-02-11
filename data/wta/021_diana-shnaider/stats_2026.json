@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n43.2%\n1st Return Points Won %\n35.4%\n2nd Return Points Won %\n55.6%\nBreak Points Converted\n50.0%\nReturn Games Won\n33.3%\nReturn Games Played\n105\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:29:09.866173+00:00",
+  "updated_at": "2026-02-10T15:24:13.147148+00:00",
   "records_tab": {
     "summary": [
       {
@@ -113,6 +113,19 @@
         "draw": "128M/64D",
         "matches": [
           {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elina Svitolina",
+            "opponent_country": "UKR",
+            "opponent_seed": 12,
+            "opponent_entry": "",
+            "score": "7-6(4), 6-3",
+            "opponent_rank": 12
+          },
+          {
             "round": "Round of 64",
             "round_name": "R64",
             "tourn_round": 2,
@@ -175,6 +188,19 @@
             "opponent_rank": 8
           },
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Emma Navarro",
+            "opponent_country": "USA",
+            "opponent_seed": 6,
+            "opponent_entry": "",
+            "score": "6-3, 6-3",
+            "opponent_rank": 15
+          },
+          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -199,19 +225,6 @@
             "opponent_entry": "",
             "score": "7-5, 6-3",
             "opponent_rank": 22
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Emma Navarro",
-            "opponent_country": "USA",
-            "opponent_seed": 6,
-            "opponent_entry": "",
-            "score": "6-3, 6-3",
-            "opponent_rank": 15
           }
         ],
         "summary": {
@@ -285,6 +298,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:29:09.861901+00:00"
+    "updated_at": "2026-02-10T15:24:14.592072+00:00"
   }
 }

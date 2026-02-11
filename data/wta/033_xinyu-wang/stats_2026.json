@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n38.9%\n1st Return Points Won %\n32.6%\n2nd Return Points Won %\n51.2%\nBreak Points Converted\n19.4%\nReturn Games Won\n19.0%\nReturn Games Played\n153\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:31:39.649756+00:00",
+  "updated_at": "2026-02-10T15:26:45.993391+00:00",
   "records_tab": {
     "summary": [
       {
@@ -139,6 +139,143 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "CLUJ-NAPOCA",
+        "location": "Cluj-Napoca \u2022 Romania",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 33,
+        "seed": 4,
+        "wta_points_gain": 54.0,
+        "prize_money_won": 7025.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Oleksandra Oliynykova",
+            "opponent_country": "UKR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 91
+          },
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Rebeka Masarova",
+            "opponent_country": "SUI",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-2",
+            "opponent_rank": 114
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Kaitlin Quevedo",
+            "opponent_country": "ESP",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-3, 6-0",
+            "opponent_rank": 134
+          }
+        ],
+        "summary": {
+          "rank": 33,
+          "seed": 4,
+          "wta_points_gain": "+54",
+          "prize_money_won": "+$7,025",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 46,
+        "seed": null,
+        "wta_points_gain": 240.0,
+        "prize_money_won": 310761.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Amanda Anisimova",
+            "opponent_country": "USA",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "7-6(4), 6-4",
+            "opponent_rank": 4
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Linda Noskova",
+            "opponent_country": "CZE",
+            "opponent_seed": 13,
+            "opponent_entry": "",
+            "score": "7-5, 6-4",
+            "opponent_rank": 13
+          },
+          {
+            "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Jelena Ostapenko",
+            "opponent_country": "LAT",
+            "opponent_seed": 24,
+            "opponent_entry": "",
+            "score": "4-6, 6-4, 6-4",
+            "opponent_rank": 24
+          },
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anhelina Kalinina",
+            "opponent_country": "UKR",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-3, 6-3",
+            "opponent_rank": 179
+          }
+        ],
+        "summary": {
+          "rank": 46,
+          "seed": null,
+          "wta_points_gain": "+240",
+          "prize_money_won": "+$310,761",
+          "draw": "128M/64D"
+        }
+      },
+      {
         "tournament": "HOBART",
         "location": "Hobart \u2022 Australia",
         "date_range": "12 Jan - 17 Jan 2026",
@@ -228,6 +365,19 @@
             "opponent_rank": 53
           },
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Francesca Jones",
+            "opponent_country": "GBR",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 4-3",
+            "opponent_rank": 72
+          },
+          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -252,19 +402,6 @@
             "opponent_entry": "",
             "score": "2-6, 6-3, 7-5",
             "opponent_rank": 83
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Francesca Jones",
-            "opponent_country": "GBR",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-4, 4-3",
-            "opponent_rank": 72
           }
         ],
         "summary": {
@@ -276,6 +413,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:31:39.643243+00:00"
+    "updated_at": "2026-02-10T15:26:48.007797+00:00"
   }
 }

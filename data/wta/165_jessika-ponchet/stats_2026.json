@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n36.8%\n1st Return Points Won %\n31.6%\n2nd Return Points Won %\n47.4%\nBreak Points Converted\n28.6%\nReturn Games Won\n22.2%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:47:26.564158+00:00",
+  "updated_at": "2026-02-10T15:44:10.568551+00:00",
   "records_tab": {
     "summary": [
       {
@@ -137,6 +137,19 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Carol Young Suh Lee",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-1, 5-7, 6-4",
+            "opponent_rank": 210
+          },
+          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -161,19 +174,6 @@
             "opponent_entry": "W",
             "score": "6-2, 6-0",
             "opponent_rank": 691
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Carol Young Suh Lee",
-            "opponent_country": "USA",
-            "opponent_seed": null,
-            "opponent_entry": "",
-            "score": "6-1, 5-7, 6-4",
-            "opponent_rank": 210
           }
         ],
         "summary": {
@@ -199,10 +199,10 @@
         "draw": "128M/64D",
         "matches": [
           {
-            "round": "Round of 128",
-            "round_name": "R128",
+            "round": "Qualifying R1",
+            "round_name": "Q",
             "tourn_round": 1,
-            "draw_level_type": "",
+            "draw_level_type": "Q",
             "result": "L",
             "opponent_name": "Tamara Zidansek",
             "opponent_country": "SLO",
@@ -270,6 +270,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:47:26.564079+00:00"
+    "updated_at": "2026-02-10T15:44:12.026537+00:00"
   }
 }

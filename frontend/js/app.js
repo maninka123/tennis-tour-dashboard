@@ -141,7 +141,10 @@ const DOM = {
     
     // Loading & status
     loadingOverlay: document.getElementById('loadingOverlay'),
-    lastUpdated: document.getElementById('lastUpdated')
+    lastUpdated: document.getElementById('lastUpdated'),
+
+    // Analysis launchers
+    analysisLaunchLinks: document.querySelectorAll('.analysis-launch-btn[data-analysis-tour]')
 };
 
 // ============================================
@@ -996,6 +999,44 @@ const EventHandlers = {
 // Application Initialization
 // ============================================
 const App = {
+    resolveBackendOrigin() {
+        const candidates = [
+            AppState.apiBaseResolved,
+            CONFIG.API_BASE_URL,
+            window.TennisApp?.CONFIG?.API_BASE_URL,
+            window.location.origin
+        ];
+
+        for (const raw of candidates) {
+            const value = String(raw || '').trim();
+            if (!value) continue;
+
+            try {
+                const parsed = new URL(value, window.location.origin);
+                const normalized = parsed.origin + parsed.pathname;
+                return normalized.replace(/\/api\/?$/, '').replace(/\/+$/, '');
+            } catch (error) {
+                // Skip invalid candidate and continue.
+            }
+        }
+
+        return window.location.origin;
+    },
+
+    setupAnalysisLaunchers() {
+        if (!DOM.analysisLaunchLinks || !DOM.analysisLaunchLinks.length) {
+            return;
+        }
+
+        const backendOrigin = this.resolveBackendOrigin();
+
+        DOM.analysisLaunchLinks.forEach((link) => {
+            const requestedTour = String(link.dataset.analysisTour || '').trim().toLowerCase();
+            const safeTour = requestedTour === 'wta' ? 'wta' : 'atp';
+            link.href = `${backendOrigin}/analysis/${safeTour}/`;
+        });
+    },
+
     /**
      * Initialize the application
      */
@@ -1004,6 +1045,7 @@ const App = {
         
         // Initialize event handlers
         EventHandlers.init();
+        this.setupAnalysisLaunchers();
         
         // Initialize ATP match stats cache
         ScoresModule.init();
@@ -1016,6 +1058,7 @@ const App = {
         
         // Load initial data
         await this.loadInitialData();
+        this.setupAnalysisLaunchers();
         await this.refreshAtpRankingsStatus();
         await this.refreshWtaRankingsStatus();
         await this.refreshAtpStatsStatus();
@@ -1498,6 +1541,13 @@ const App = {
         if (window.StatZoneModule && typeof window.StatZoneModule.close === 'function') {
             window.StatZoneModule.close();
         }
+    },
+
+    openDataAnalysis(tour = 'atp') {
+        const safeTour = String(tour || '').trim().toLowerCase() === 'wta' ? 'wta' : 'atp';
+        const backendOrigin = this.resolveBackendOrigin();
+        const targetUrl = `${backendOrigin}/analysis/${safeTour}/`;
+        window.open(targetUrl, '_blank', 'noopener,noreferrer');
     }
 };
 
@@ -1524,3 +1574,4 @@ window.TennisApp.openStatsZoneModal = App.openStatsZoneModal;
 window.TennisApp.closeStatsZoneModal = App.closeStatsZoneModal;
 window.TennisApp.refreshAtpStats = App.refreshAtpStats.bind(App);
 window.TennisApp.refreshWtaStats = App.refreshWtaStats.bind(App);
+window.TennisApp.openDataAnalysis = App.openDataAnalysis.bind(App);

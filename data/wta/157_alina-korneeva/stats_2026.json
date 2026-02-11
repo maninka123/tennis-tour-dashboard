@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n44.6%\n1st Return Points Won %\n44.7%\n2nd Return Points Won %\n44.4%\nBreak Points Converted\n37.5%\nReturn Games Won\n33.3%\nReturn Games Played\n9\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:46:31.412590+00:00",
+  "updated_at": "2026-02-10T15:43:04.626241+00:00",
   "records_tab": {
     "summary": [
       {
@@ -75,6 +75,81 @@
     "year": 2026,
     "tournaments": [
       {
+        "tournament": "FUJAIRAH",
+        "location": "United Arab Emirates",
+        "date_range": "26 Jan - 1 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 212,
+        "seed": null,
+        "wta_points_gain": 39.0,
+        "prize_money_won": 4473.0,
+        "draw": "32M/32Q/16D",
+        "matches": [
+          {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Harriet Dart",
+            "opponent_country": "GBR",
+            "opponent_seed": 7,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 170
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Carol Young Suh Lee",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-2",
+            "opponent_rank": 210
+          },
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Erika Andreeva",
+            "opponent_country": "RUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "3-6, 6-1, 7-6(5)",
+            "opponent_rank": 273
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Carole Monnet",
+            "opponent_country": "FRA",
+            "opponent_seed": 8,
+            "opponent_entry": "",
+            "score": "6-0, 7-5",
+            "opponent_rank": 175
+          }
+        ],
+        "summary": {
+          "rank": 212,
+          "seed": null,
+          "wta_points_gain": "+39",
+          "prize_money_won": "+$4,473",
+          "draw": "32M/32Q/16D"
+        }
+      },
+      {
         "tournament": "MANAMA",
         "location": "Bahrain",
         "date_range": "19 Jan - 25 Jan 2026",
@@ -89,6 +164,19 @@
         "draw": "32M/32Q/16D",
         "matches": [
           {
+            "round": "Final",
+            "round_name": "F",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Fiona Ferro",
+            "opponent_country": "FRA",
+            "opponent_seed": null,
+            "opponent_entry": "Q",
+            "score": "6-4, 6-0",
+            "opponent_rank": 369
+          },
+          {
             "round": "Semifinals",
             "round_name": "S",
             "tourn_round": 4,
@@ -100,6 +188,19 @@
             "opponent_entry": "",
             "score": "3-6, 6-4, 6-4",
             "opponent_rank": 210
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Sofia Costoulas",
+            "opponent_country": "BEL",
+            "opponent_seed": 5,
+            "opponent_entry": "",
+            "score": "6-3, 6-1",
+            "opponent_rank": 143
           },
           {
             "round": "Round of 16",
@@ -126,19 +227,6 @@
             "opponent_entry": "W",
             "score": "6-1, 6-0",
             "opponent_rank": 1490
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "W",
-            "opponent_name": "Sofia Costoulas",
-            "opponent_country": "BEL",
-            "opponent_seed": 5,
-            "opponent_entry": "",
-            "score": "6-3, 6-1",
-            "opponent_rank": 143
           }
         ],
         "summary": {
@@ -164,10 +252,10 @@
         "draw": "128M/64D",
         "matches": [
           {
-            "round": "Round of 128",
-            "round_name": "R128",
+            "round": "Qualifying R1",
+            "round_name": "Q",
             "tourn_round": 1,
-            "draw_level_type": "",
+            "draw_level_type": "Q",
             "result": "L",
             "opponent_name": "Zhuoxuan Bai",
             "opponent_country": "CHN",
@@ -222,6 +310,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:46:31.412467+00:00"
+    "updated_at": "2026-02-10T15:43:06.477232+00:00"
   }
 }

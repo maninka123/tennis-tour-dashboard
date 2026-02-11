@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n43.0%\n1st Return Points Won %\n35.9%\n2nd Return Points Won %\n54.1%\nBreak Points Converted\n41.9%\nReturn Games Won\n34.2%\nReturn Games Played\n76\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:31:26.946824+00:00",
+  "updated_at": "2026-02-10T15:26:38.746581+00:00",
   "records_tab": {
     "summary": [
       {
@@ -105,6 +105,19 @@
         "draw": "32M/16Q/16D",
         "matches": [
           {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Clara Tauson",
+            "opponent_country": "DEN",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-3, 6-4",
+            "opponent_rank": 16
+          },
+          {
             "round": "Round of 16",
             "round_name": "R16",
             "tourn_round": 2,
@@ -129,19 +142,6 @@
             "opponent_entry": "",
             "score": "6-3, 6-3",
             "opponent_rank": 100
-          },
-          {
-            "round": "Qualifying R3",
-            "round_name": "Q",
-            "tourn_round": 3,
-            "draw_level_type": "",
-            "result": "L",
-            "opponent_name": "Clara Tauson",
-            "opponent_country": "DEN",
-            "opponent_seed": 3,
-            "opponent_entry": "",
-            "score": "6-3, 6-4",
-            "opponent_rank": 16
           }
         ],
         "summary": {
@@ -287,6 +287,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:31:26.946502+00:00"
+    "updated_at": "2026-02-10T15:26:40.104251+00:00"
   }
 }

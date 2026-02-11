@@ -6,7 +6,7 @@
     <title>RallyCourt 2026</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="vendor/brackets-viewer/brackets-viewer.min.css">
-    <link rel="stylesheet" href="css/styles.css?v=20260210f">
+    <link rel="stylesheet" href="css/styles.css?v=20260212a">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,6 +35,42 @@
                     <i class="fas fa-users"></i>
                     H2H
                 </button>
+                <div class="analysis-launchers" id="analysisLaunchers">
+                    <a class="analysis-launch-btn analysis-launch-atp" data-analysis-tour="atp" href="/analysis/atp/" target="_blank" rel="noopener noreferrer" title="Open ATP Data Analysis">
+                        <i class="fas fa-chart-area"></i>
+                        <span class="launch-label">ATP Data Lab</span>
+                        <div class="analysis-launch-preview" aria-hidden="true">
+                            <div class="preview-title">ATP Analysis</div>
+                            <div class="preview-player">
+                                <span class="preview-avatar">CA</span>
+                                <div class="preview-player-copy">
+                                    <strong>Carlos Alcaraz</strong>
+                                    <small>Player explorer + timeline</small>
+                                </div>
+                            </div>
+                            <svg class="preview-chart" viewBox="0 0 140 42" preserveAspectRatio="none">
+                                <polyline points="0,36 20,35 36,30 48,23 62,19 80,11 96,7 112,9 130,6 140,7"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                    <a class="analysis-launch-btn analysis-launch-wta" data-analysis-tour="wta" href="/analysis/wta/" target="_blank" rel="noopener noreferrer" title="Open WTA Data Analysis">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="launch-label">WTA Data Lab</span>
+                        <div class="analysis-launch-preview" aria-hidden="true">
+                            <div class="preview-title">WTA Analysis</div>
+                            <div class="preview-player">
+                                <span class="preview-avatar">AS</span>
+                                <div class="preview-player-copy">
+                                    <strong>Aryna Sabalenka</strong>
+                                    <small>Records + tournament trends</small>
+                                </div>
+                            </div>
+                            <svg class="preview-chart" viewBox="0 0 140 42" preserveAspectRatio="none">
+                                <polyline points="0,34 18,31 32,28 50,18 66,15 86,13 104,10 122,8 140,9"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
                 <button class="favourites-btn" id="favouritesBtn" title="Favourite Players">
                     <i class="fas fa-star"></i>
                     Favourites
@@ -340,6 +376,6 @@
     <script src="js/favourites.js?v=20260210f"></script>
     <script src="js/config.js"></script>
     <script src="js/loading-intro-gifs.js?v=20260208"></script>
-    <script src="js/app.js?v=20260210f"></script>
+    <script src="js/app.js?v=20260212a"></script>
 </body>
 </html>

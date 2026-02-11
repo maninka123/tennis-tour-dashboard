@@ -31,6 +31,7 @@ DEFAULT_YEAR = 2026
 DEFAULT_HEADLESS = True
 DEFAULT_LOAD_MORE_CLICKS = 6
 DEFAULT_REQUEST_TIMEOUT_SECONDS = 30
+DEFAULT_RECENT_MATCHES_PAGE_SIZE = 500
 
 # Playwright waits (milliseconds)
 DEFAULT_WAIT_INITIAL_LIST_MS = 1200
@@ -653,12 +654,6 @@ def _round_label(round_name: str, tourn_round: Any, draw_level_type: Any = None)
             return f"Qualifying R{q_round}"
         return raw or "Qualifying"
 
-    # "Q" can be qualifying (Q1 shorthand) or quarterfinals.
-    if upper == "Q" and draw_level != "M":
-        q_round = _qualifying_round_number(raw, tourn_round)
-        if q_round and q_round <= 3:
-            return f"Qualifying R{q_round}"
-
     if draw_level == "Q":
         if upper in {"Q", "Q1", "Q2", "Q3"}:
             q_round = _qualifying_round_number(raw, tourn_round)
@@ -820,6 +815,74 @@ def _opponent_strength_rank(row: Dict[str, Any]) -> int:
     return 10**6
 
 
+def _extract_event_points_gain(event: Dict[str, Any]) -> Optional[float]:
+    if not isinstance(event, dict):
+        return None
+
+    direct = _to_float(event.get("wta_points_gain"))
+    if direct is not None:
+        return direct
+
+    summary = event.get("summary")
+    if isinstance(summary, dict):
+        text_value = str(summary.get("wta_points_gain") or "").strip()
+        if text_value:
+            cleaned = re.sub(r"[^\d\.\-]", "", text_value)
+            if cleaned:
+                parsed = _to_float(cleaned)
+                if parsed is not None:
+                    return parsed
+    return None
+
+
+def _relabel_likely_grand_slam_qualifying_run(event: Dict[str, Any], matches: List[Dict[str, Any]]) -> None:
+    """Relabel API-misclassified GS qualifying runs.
+
+    WTA API occasionally returns GS qualifying rounds as R128/R64/R32 with empty
+    draw-level metadata. For players with GS qualifying-point outcomes
+    (2, 20, 30), map these rounds back to Qualifying R1/R2/R3.
+    """
+    if not isinstance(event, dict) or not isinstance(matches, list) or not matches:
+        return
+
+    category = str(event.get("category") or "").strip().lower()
+    if category != "grand_slam":
+        return
+
+    points_gain = _extract_event_points_gain(event)
+    if points_gain is None or points_gain not in {2.0, 20.0, 30.0}:
+        return
+
+    for row in matches:
+        if not isinstance(row, dict):
+            return
+        label_upper = str(row.get("round") or "").strip().upper()
+        draw_level = str(row.get("draw_level_type") or "").strip().upper()
+        if draw_level == "Q" or label_upper.startswith("QUALIFY"):
+            return
+        if label_upper not in {"ROUND OF 128", "ROUND OF 64", "ROUND OF 32", "R128", "R64", "R32"}:
+            return
+
+    mapping = {
+        "ROUND OF 128": 1,
+        "R128": 1,
+        "ROUND OF 64": 2,
+        "R64": 2,
+        "ROUND OF 32": 3,
+        "R32": 3,
+    }
+
+    for row in matches:
+        label_upper = str(row.get("round") or "").strip().upper()
+        q_round = mapping.get(label_upper)
+        if q_round is None:
+            continue
+        row["round"] = f"Qualifying R{q_round}"
+        row["round_name"] = "Q"
+        row["tourn_round"] = q_round
+        row["draw_level_type"] = "Q"
+
+
 def _resolve_duplicate_qualifying_rows(matches: List[Dict[str, Any]]) -> None:
     """Resolve duplicate round rows where API merges qualifying/main draws.
 
@@ -883,6 +946,7 @@ def _normalize_recent_rounds_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
             )
 
         _resolve_duplicate_qualifying_rows(matches)
+        _relabel_likely_grand_slam_qualifying_run(event, matches)
 
         # Sort after normalization so qualifying rounds stay grouped after main draw rounds.
         matches.sort(key=lambda row: _recent_round_sort_key(row) if isinstance(row, dict) else (9, 0))
@@ -917,7 +981,7 @@ def _flip_score_for_player_perspective(score_text: str, player_side: int) -> str
 
 
 def scrape_player_recent_matches(player_id: str, year: int, session: requests.Session) -> Dict[str, Any]:
-    url = f"{TENNIS_API_BASE}/players/{player_id}/matches?year={year}"
+    url = f"{TENNIS_API_BASE}/players/{player_id}/matches?year={year}&pageSize={DEFAULT_RECENT_MATCHES_PAGE_SIZE}"
     payload = fetch_json(url, session, headers={"account": "wta"},)
     matches = payload.get("matches") if isinstance(payload, dict) else []
     if not isinstance(matches, list):

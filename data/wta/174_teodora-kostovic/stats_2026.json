@@ -1,0 +1,225 @@
+{
+  "singles_ranking": "174",
+  "matches_played": "1",
+  "aces": "4",
+  "service_games_won": "64.3%",
+  "return_games_won": "26.7%",
+  "first_serve_won": "65.7%",
+  "singles_titles": "0",
+  "won_lost": "3 / 4",
+  "prize_money": "$56,489",
+  "singles_serving_stats": {
+    "aces": "4",
+    "double_faults": "5",
+    "first_serve_pct": "62.6%",
+    "first_serve_won": "65.7%",
+    "second_serve_won": "40.0%",
+    "break_points_saved": "66.7%",
+    "service_points_won_pct": "56.1%",
+    "service_games_won": "64.3%",
+    "service_games_played": "14"
+  },
+  "singles_return_stats": {
+    "return_points_won": "39.8%",
+    "first_return_points_won_pct": "31.0%",
+    "second_return_points_won_pct": "56.7%",
+    "break_points_converted": "80.0%",
+    "return_games_won": "26.7%",
+    "return_games_played": "15"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n4\nDouble Faults\n5\n1st Serve %\n62.6%\n1st Serve Won\n65.7%\n2nd Serve Won\n40.0%\nBreak Points Saved\n66.7%\nService Points Won %\n56.1%\nService Games Won\n64.3%\nService Games Played\n14",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n39.8%\n1st Return Points Won %\n31.0%\n2nd Return Points Won %\n56.7%\nBreak Points Converted\n80.0%\nReturn Games Won\n26.7%\nReturn Games Played\n15\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:45:21.142991+00:00",
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "ABU DHABI",
+        "location": "Abu Dhabi \u2022 United Arab Emirates",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "masters_1000",
+        "category_label": "WTA 1000",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 171,
+        "seed": null,
+        "wta_points_gain": 1.0,
+        "prize_money_won": 13005.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Hailey Baptiste",
+            "opponent_country": "USA",
+            "opponent_seed": null,
+            "opponent_entry": "W",
+            "score": "4-6, 6-3, 6-4",
+            "opponent_rank": 56
+          }
+        ],
+        "summary": {
+          "rank": 171,
+          "seed": null,
+          "wta_points_gain": "+1",
+          "prize_money_won": "+$13,005",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
+        "tournament": "FUJAIRAH",
+        "location": "United Arab Emirates",
+        "date_range": "26 Jan - 1 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 177,
+        "seed": null,
+        "wta_points_gain": 1.0,
+        "prize_money_won": 926.0,
+        "draw": "32M/32Q/16D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Lilli Tagger",
+            "opponent_country": "AUT",
+            "opponent_seed": 3,
+            "opponent_entry": "",
+            "score": "6-1, 6-1",
+            "opponent_rank": 155
+          }
+        ],
+        "summary": {
+          "rank": 177,
+          "seed": null,
+          "wta_points_gain": "+1",
+          "prize_money_won": "+$926",
+          "draw": "32M/32Q/16D"
+        }
+      },
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 177,
+        "seed": null,
+        "wta_points_gain": 20.0,
+        "prize_money_won": 36903.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Qualifying R2",
+            "round_name": "Q",
+            "tourn_round": 2,
+            "draw_level_type": "Q",
+            "result": "L",
+            "opponent_name": "Marina Stakusic",
+            "opponent_country": "CAN",
+            "opponent_seed": 17,
+            "opponent_entry": "",
+            "score": "6-0, 6-2",
+            "opponent_rank": 127
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "Q",
+            "tourn_round": 1,
+            "draw_level_type": "Q",
+            "result": "W",
+            "opponent_name": "Tereza Mrdeza",
+            "opponent_country": "CRO",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-0, 6-3",
+            "opponent_rank": 0
+          }
+        ],
+        "summary": {
+          "rank": 177,
+          "seed": null,
+          "wta_points_gain": "+20",
+          "prize_money_won": "+$36,903",
+          "draw": "128M/64D"
+        }
+      },
+      {
+        "tournament": "CANBERRA 125",
+        "location": "Canberra \u2022 Australia",
+        "date_range": "5 Jan - 10 Jan 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 175,
+        "seed": 5,
+        "wta_points_gain": 6.0,
+        "prize_money_won": 2255.0,
+        "draw": "32M/32Q/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Elena Pridankina",
+            "opponent_country": "RUS",
+            "opponent_seed": 10,
+            "opponent_entry": "",
+            "score": "7-5, 6-7(6), 6-2",
+            "opponent_rank": 187
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Lola Radivojevic",
+            "opponent_country": "SRB",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 137
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Camilla Rosatello",
+            "opponent_country": "ITA",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-1",
+            "opponent_rank": 215
+          }
+        ],
+        "summary": {
+          "rank": 175,
+          "seed": 5,
+          "wta_points_gain": "+6",
+          "prize_money_won": "+$2,255",
+          "draw": "32M/32Q/16D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:45:25.442616+00:00"
+  }
+}

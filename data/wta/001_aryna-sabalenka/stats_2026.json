@@ -32,7 +32,7 @@
     "return_section": "SINGLES RETURN STATS\nReturn Points Won\n44.6%\n1st Return Points Won %\n36.8%\n2nd Return Points Won %\n55.2%\nBreak Points Converted\n38.6%\nReturn Games Won\n34.5%\nReturn Games Played\n109\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
   },
   "records": [],
-  "updated_at": "2026-02-09T16:26:52.753825+00:00",
+  "updated_at": "2026-02-10T15:21:51.476137+00:00",
   "records_tab": {
     "summary": [
       {
@@ -160,6 +160,71 @@
         "prize_money_won": 1391952.0,
         "draw": "128M/64D",
         "matches": [
+          {
+            "round": "Final",
+            "round_name": "F",
+            "tourn_round": 7,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elena Rybakina",
+            "opponent_country": "KAZ",
+            "opponent_seed": 5,
+            "opponent_entry": "",
+            "score": "6-4, 4-6, 6-4",
+            "opponent_rank": 5
+          },
+          {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 6,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Elina Svitolina",
+            "opponent_country": "UKR",
+            "opponent_seed": 12,
+            "opponent_entry": "",
+            "score": "6-2, 6-3",
+            "opponent_rank": 12
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 5,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Iva Jovic",
+            "opponent_country": "USA",
+            "opponent_seed": 29,
+            "opponent_entry": "",
+            "score": "6-3, 6-0",
+            "opponent_rank": 27
+          },
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Victoria Mboko",
+            "opponent_country": "CAN",
+            "opponent_seed": 17,
+            "opponent_entry": "",
+            "score": "6-1, 7-6(1)",
+            "opponent_rank": 16
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anastasia Potapova",
+            "opponent_country": "AUT",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "7-6(4), 7-6(7)",
+            "opponent_rank": 55
+          },
           {
             "round": "Round of 64",
             "round_name": "R64",
@@ -297,6 +362,6 @@
         }
       }
     ],
-    "updated_at": "2026-02-09T16:26:52.753666+00:00"
+    "updated_at": "2026-02-10T15:21:53.061865+00:00"
   }
 }

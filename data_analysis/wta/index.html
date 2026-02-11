@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WTA Historic Data Analysis</title>
+  <meta name="description" content="Standalone WTA historic data analysis app built from local CSV archives.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/app.css">
+</head>
+<body>
+  <div class="analysis-app">
+    <header class="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-content">
+        <p class="hero-tag">Separate Module • WTA Historic Engine</p>
+        <h1>🎾 WTA Historic Data Analysis Lab</h1>
+        <p id="heroSubtitle" class="hero-subtitle">Player Explorer, Tournament Explorer, and Records Book powered by your local WTA CSV archive (1968-2024 static).</p>
+      </div>
+      <div class="hero-actions">
+        <button id="loadDataBtn" class="primary-btn">⚡ Load Historic Dataset</button>
+        <div class="load-status" id="loadStatus">Waiting to load data…</div>
+        <div class="progress-wrap">
+          <div id="loadProgress" class="progress-bar"></div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="main-tabs" id="mainTabs">
+      <button class="tab-btn active" data-tab="players">👤 Player Explorer</button>
+      <button class="tab-btn" data-tab="tournaments">🏟️ Tournament Explorer</button>
+      <button class="tab-btn" data-tab="records">🏆 Records Book</button>
+    </nav>
+
+    <main>
+      <section id="playersPanel" class="tab-panel active">
+        <div class="panel-card">
+          <div class="panel-head">
+            <h2>Player Explorer</h2>
+            <p>Search any WTA player and inspect profile, results, and rivalries.</p>
+          </div>
+          <div class="player-search-wrap">
+            <label for="playerSearch" class="label">Search Player</label>
+            <input id="playerSearch" autocomplete="off" placeholder="Type player name…">
+            <div id="playerSuggestions" class="suggestions"></div>
+          </div>
+
+          <article class="player-hero" id="playerHero">
+            <div class="empty-placeholder">Load data and select a player to start.</div>
+          </article>
+
+          <div class="subtabs" id="playerSubtabs">
+            <button class="subtab-btn active" data-subtab="overview">Overview</button>
+            <button class="subtab-btn" data-subtab="matches">Matches</button>
+            <button class="subtab-btn" data-subtab="rivalries">Rivalries</button>
+            <button class="subtab-btn" data-subtab="ranking">Ranking Timeline</button>
+          </div>
+
+          <section id="playerOverview" class="player-subpanel active"></section>
+
+          <section id="playerMatches" class="player-subpanel">
+            <div class="filter-grid compact">
+              <label>Year
+                <select id="playerYearFilter"><option value="all">All years</option></select>
+              </label>
+              <label>Surface
+                <select id="playerSurfaceFilter">
+                  <option value="all">All surfaces</option>
+                  <option value="surface-hard">Hard</option>
+                  <option value="surface-clay">Clay</option>
+                  <option value="surface-grass">Grass</option>
+                  <option value="surface-indoor">Indoor</option>
+                  <option value="surface-carpet">Carpet</option>
+                </select>
+              </label>
+              <label>Tournament Type
+                <select id="playerCategoryFilter">
+                  <option value="all">All types</option>
+                  <option value="grand-slam">Grand Slam</option>
+                  <option value="masters-1000">WTA 1000</option>
+                  <option value="finals">WTA Finals</option>
+                  <option value="atp-500">WTA 500</option>
+                  <option value="atp-250">WTA 250</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label>Result
+                <select id="playerResultFilter">
+                  <option value="all">All results</option>
+                  <option value="W">Wins</option>
+                  <option value="L">Losses</option>
+                </select>
+              </label>
+              <label>Quick Search
+                <input id="playerMatchSearch" placeholder="Tournament, opponent, round">
+              </label>
+            </div>
+            <div id="playerMatchesTable" class="table-wrap"></div>
+          </section>
+
+          <section id="playerRivalries" class="player-subpanel">
+            <div id="playerRivalriesTable" class="table-wrap"></div>
+          </section>
+
+          <section id="playerRanking" class="player-subpanel">
+            <div class="filter-grid compact ranking-controls">
+              <label>Scale
+                <select id="rankingScaleFilter">
+                  <option value="log">Log Scale (Ranking style)</option>
+                  <option value="linear">Linear Scale</option>
+                </select>
+              </label>
+              <label>Range
+                <select id="rankingRangeFilter">
+                  <option value="all">All career</option>
+                  <option value="10y">Last 10 years</option>
+                  <option value="5y">Last 5 years</option>
+                  <option value="3y">Last 3 years</option>
+                  <option value="1y">Last 1 year</option>
+                </select>
+              </label>
+              <label>Line Mode
+                <select id="rankingModeFilter">
+                  <option value="lines+markers">Line + Markers</option>
+                  <option value="lines">Line only</option>
+                  <option value="markers">Markers only</option>
+                </select>
+              </label>
+            </div>
+
+            <div id="rankingSummaryTiles" class="tiles-grid"></div>
+            <div id="rankingChartWrap" class="ranking-chart-wrap">
+              <div id="rankingChart" class="ranking-chart"></div>
+            </div>
+            <div id="rankingTimelineTable" class="table-wrap"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="tournamentsPanel" class="tab-panel">
+        <div class="panel-card">
+          <div class="panel-head">
+            <h2>Tournament Explorer</h2>
+            <p>Analyze tournaments by level, surface, champion trends, and final history.</p>
+          </div>
+
+          <div class="filter-grid">
+            <label>Search
+              <input id="tournamentSearch" placeholder="Tournament name">
+            </label>
+            <label>Type
+              <select id="tournamentCategoryFilter">
+                <option value="all">All types</option>
+                <option value="grand-slam">Grand Slam</option>
+                  <option value="masters-1000">WTA 1000</option>
+                  <option value="finals">WTA Finals</option>
+                  <option value="atp-500">WTA 500</option>
+                  <option value="atp-250">WTA 250</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+            <label>Surface
+              <select id="tournamentSurfaceFilter">
+                <option value="all">All surfaces</option>
+                <option value="surface-hard">Hard</option>
+                <option value="surface-clay">Clay</option>
+                <option value="surface-grass">Grass</option>
+                <option value="surface-indoor">Indoor</option>
+                <option value="surface-carpet">Carpet</option>
+              </select>
+            </label>
+            <label>Year
+              <select id="tournamentYearFilter"><option value="all">All years</option></select>
+            </label>
+          </div>
+
+          <div class="split-layout">
+            <div id="tournamentTable" class="table-wrap"></div>
+            <aside id="tournamentDetail" class="side-detail">
+              <div class="empty-placeholder">Select a tournament row to see details.</div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="recordsPanel" class="tab-panel">
+        <div class="panel-card">
+          <div class="panel-head">
+            <h2>Records Book</h2>
+            <p>Fast leaderboard snapshots built from all loaded WTA match rows.</p>
+          </div>
+
+          <div class="filter-grid compact">
+            <label>Category
+              <select id="recordCategoryFilter">
+                <option value="all">All records</option>
+                <option value="titles">Titles</option>
+                <option value="wins">Wins</option>
+                <option value="surfaces">Surfaces</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="recordsTable" class="table-wrap"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>

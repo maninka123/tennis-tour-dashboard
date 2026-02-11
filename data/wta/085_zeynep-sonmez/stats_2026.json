@@ -1,0 +1,282 @@
+{
+  "singles_ranking": "85",
+  "matches_played": "4",
+  "aces": "6",
+  "service_games_won": "58.3%",
+  "return_games_won": "39.2%",
+  "first_serve_won": "57.7%",
+  "singles_titles": "0",
+  "won_lost": "6 / 3",
+  "prize_money": "$235,152",
+  "singles_serving_stats": {
+    "aces": "6",
+    "double_faults": "11",
+    "first_serve_pct": "58.3%",
+    "first_serve_won": "57.7%",
+    "second_serve_won": "46.7%",
+    "break_points_saved": "50.0%",
+    "service_points_won_pct": "53.1%",
+    "service_games_won": "58.3%",
+    "service_games_played": "48"
+  },
+  "singles_return_stats": {
+    "return_points_won": "44.5%",
+    "first_return_points_won_pct": "32.9%",
+    "second_return_points_won_pct": "64.8%",
+    "break_points_converted": "46.5%",
+    "return_games_won": "39.2%",
+    "return_games_played": "51"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n6\nDouble Faults\n11\n1st Serve %\n58.3%\n1st Serve Won\n57.7%\n2nd Serve Won\n46.7%\nBreak Points Saved\n50.0%\nService Points Won %\n53.1%\nService Games Won\n58.3%\nService Games Played\n48",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n44.5%\n1st Return Points Won %\n32.9%\n2nd Return Points Won %\n64.8%\nBreak Points Converted\n46.5%\nReturn Games Won\n39.2%\nReturn Games Played\n51\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:33:31.054783+00:00",
+  "records_tab": {
+    "summary": [
+      {
+        "event": "Australian Open",
+        "best_result": "R32",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "Roland Garros",
+        "best_result": "R128",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "Wimbledon",
+        "best_result": "R32",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "US Open",
+        "best_result": "R64",
+        "best_years": "",
+        "total_wl": ""
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2026",
+        "australian_open": "R32",
+        "roland_garros": "-",
+        "french_open": "-",
+        "wimbledon": "-",
+        "us_open": "-"
+      },
+      {
+        "year": "2025",
+        "australian_open": "R128",
+        "roland_garros": "R128",
+        "french_open": "R128",
+        "wimbledon": "R32",
+        "us_open": "R64"
+      },
+      {
+        "year": "2024",
+        "australian_open": "-",
+        "roland_garros": "R128",
+        "french_open": "R128",
+        "wimbledon": "-",
+        "us_open": "-"
+      }
+    ]
+  },
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "ABU DHABI",
+        "location": "Abu Dhabi \u2022 United Arab Emirates",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "masters_1000",
+        "category_label": "WTA 1000",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 79,
+        "seed": null,
+        "wta_points_gain": 1.0,
+        "prize_money_won": 13005.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Alexandra Eala",
+            "opponent_country": "PHI",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-4, 6-3",
+            "opponent_rank": 45
+          }
+        ],
+        "summary": {
+          "rank": 79,
+          "seed": null,
+          "wta_points_gain": "+1",
+          "prize_money_won": "+$13,005",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 112,
+        "seed": null,
+        "wta_points_gain": 170.0,
+        "prize_money_won": 212192.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Yulia Putintseva",
+            "opponent_country": "KAZ",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-7(3), 6-3",
+            "opponent_rank": 94
+          },
+          {
+            "round": "Round of 64",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anna Bondar",
+            "opponent_country": "HUN",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-4",
+            "opponent_rank": 74
+          },
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Ekaterina Alexandrova",
+            "opponent_country": "RUS",
+            "opponent_seed": 11,
+            "opponent_entry": "",
+            "score": "7-5, 4-6, 6-4",
+            "opponent_rank": 11
+          },
+          {
+            "round": "Qualifying R3",
+            "round_name": "R32",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anastasia Gasanova",
+            "opponent_country": "RUS",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-2",
+            "opponent_rank": 213
+          },
+          {
+            "round": "Qualifying R2",
+            "round_name": "R64",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Julia Riera",
+            "opponent_country": "ARG",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-3, 6-1",
+            "opponent_rank": 181
+          },
+          {
+            "round": "Qualifying R1",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Laura Samson",
+            "opponent_country": "CZE",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-2, 6-2",
+            "opponent_rank": 205
+          }
+        ],
+        "summary": {
+          "rank": 112,
+          "seed": null,
+          "wta_points_gain": "+170",
+          "prize_money_won": "+$212,192",
+          "draw": "128M/64D"
+        }
+      },
+      {
+        "tournament": "BRISBANE",
+        "location": "Brisbane \u2022 Australia",
+        "date_range": "4 Jan - 11 Jan 2026",
+        "category": "masters_1000",
+        "category_label": "WTA 1000",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 110,
+        "seed": 11,
+        "wta_points_gain": 13.0,
+        "prize_money_won": 9955.0,
+        "draw": "48M/16D",
+        "matches": [
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Elena-Gabriela Ruse",
+            "opponent_country": "ROU",
+            "opponent_seed": 6,
+            "opponent_entry": "",
+            "score": "3-6, 6-4, 6-0",
+            "opponent_rank": 85
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Victoria Jimenez Kasintseva",
+            "opponent_country": "AND",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-1, 3-6, 7-6(3)",
+            "opponent_rank": 114
+          }
+        ],
+        "summary": {
+          "rank": 110,
+          "seed": 11,
+          "wta_points_gain": "+13",
+          "prize_money_won": "+$9,955",
+          "draw": "48M/16D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:33:32.759793+00:00"
+  }
+}

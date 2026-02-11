@@ -1,0 +1,185 @@
+{
+  "singles_ranking": "71",
+  "matches_played": "5",
+  "aces": "2",
+  "service_games_won": "70.5%",
+  "return_games_won": "33.3%",
+  "first_serve_won": "62.7%",
+  "singles_titles": "0",
+  "won_lost": "3 / 2",
+  "prize_money": "$109,444",
+  "singles_serving_stats": {
+    "aces": "2",
+    "double_faults": "13",
+    "first_serve_pct": "74.7%",
+    "first_serve_won": "62.7%",
+    "second_serve_won": "45.0%",
+    "break_points_saved": "67.3%",
+    "service_points_won_pct": "58.2%",
+    "service_games_won": "70.5%",
+    "service_games_played": "61"
+  },
+  "singles_return_stats": {
+    "return_points_won": "41.7%",
+    "first_return_points_won_pct": "35.9%",
+    "second_return_points_won_pct": "57.4%",
+    "break_points_converted": "41.7%",
+    "return_games_won": "33.3%",
+    "return_games_played": "60"
+  },
+  "raw": {
+    "serving_section": "SINGLES SERVING STATS\nAces\n2\nDouble Faults\n13\n1st Serve %\n74.7%\n1st Serve Won\n62.7%\n2nd Serve Won\n45.0%\nBreak Points Saved\n67.3%\nService Points Won %\n58.2%\nService Games Won\n70.5%\nService Games Played\n61",
+    "return_section": "SINGLES RETURN STATS\nReturn Points Won\n41.7%\n1st Return Points Won %\n35.9%\n2nd Return Points Won %\n57.4%\nBreak Points Converted\n41.7%\nReturn Games Won\n33.3%\nReturn Games Played\n60\n\n* For purposes of the player profile, individual player stats are cumulative for the calendar year and not calculated using a minimum match requirement.\n\nRANK HISTORY\nYEARLY RANKINGS\nWEEK BY WEEK\nSINGLES"
+  },
+  "records": [],
+  "updated_at": "2026-02-10T15:31:43.533211+00:00",
+  "records_tab": {
+    "summary": [
+      {
+        "event": "Roland Garros",
+        "best_result": "",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "Wimbledon",
+        "best_result": "",
+        "best_years": "",
+        "total_wl": ""
+      },
+      {
+        "event": "US Open",
+        "best_result": "R128",
+        "best_years": "",
+        "total_wl": ""
+      }
+    ],
+    "yearly": [
+      {
+        "year": "2026",
+        "australian_open": "R128",
+        "roland_garros": "-",
+        "french_open": "-",
+        "wimbledon": "-",
+        "us_open": "-"
+      }
+    ]
+  },
+  "recent_matches_tab": {
+    "year": 2026,
+    "tournaments": [
+      {
+        "tournament": "CLUJ-NAPOCA",
+        "location": "Cluj-Napoca \u2022 Romania",
+        "date_range": "1 Feb - 7 Feb 2026",
+        "category": "other",
+        "category_label": "Tour",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 91,
+        "seed": null,
+        "wta_points_gain": 98.0,
+        "prize_money_won": 12331.0,
+        "draw": "32M/16Q/16D",
+        "matches": [
+          {
+            "round": "Semifinals",
+            "round_name": "S",
+            "tourn_round": 4,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Emma Raducanu",
+            "opponent_country": "GBR",
+            "opponent_seed": 1,
+            "opponent_entry": "",
+            "score": "7-5, 3-6, 6-3",
+            "opponent_rank": 30
+          },
+          {
+            "round": "Quarterfinals",
+            "round_name": "Q",
+            "tourn_round": 3,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Xinyu Wang",
+            "opponent_country": "CHN",
+            "opponent_seed": 4,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 33
+          },
+          {
+            "round": "Round of 16",
+            "round_name": "R16",
+            "tourn_round": 2,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Anna Bondar",
+            "opponent_country": "HUN",
+            "opponent_seed": 8,
+            "opponent_entry": "",
+            "score": "6-4, 6-4",
+            "opponent_rank": 64
+          },
+          {
+            "round": "Round of 32",
+            "round_name": "R32",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "W",
+            "opponent_name": "Mayar Sherif",
+            "opponent_country": "EGY",
+            "opponent_seed": null,
+            "opponent_entry": "",
+            "score": "6-7(6), 6-4, 6-4",
+            "opponent_rank": 106
+          }
+        ],
+        "summary": {
+          "rank": 91,
+          "seed": null,
+          "wta_points_gain": "+98",
+          "prize_money_won": "+$12,331",
+          "draw": "32M/16Q/16D"
+        }
+      },
+      {
+        "tournament": "AUSTRALIAN OPEN",
+        "location": "Melbourne \u2022 Australia",
+        "date_range": "18 Jan - 1 Feb 2026",
+        "category": "grand_slam",
+        "category_label": "Grand Slam",
+        "surface": "HARD",
+        "surface_key": "hard",
+        "rank": 92,
+        "seed": null,
+        "wta_points_gain": 10.0,
+        "prize_money_won": 97113.0,
+        "draw": "128M/64D",
+        "matches": [
+          {
+            "round": "Round of 128",
+            "round_name": "R128",
+            "tourn_round": 1,
+            "draw_level_type": "",
+            "result": "L",
+            "opponent_name": "Madison Keys",
+            "opponent_country": "USA",
+            "opponent_seed": 9,
+            "opponent_entry": "",
+            "score": "7-6(6), 6-1",
+            "opponent_rank": 9
+          }
+        ],
+        "summary": {
+          "rank": 92,
+          "seed": null,
+          "wta_points_gain": "+10",
+          "prize_money_won": "+$97,113",
+          "draw": "128M/64D"
+        }
+      }
+    ],
+    "updated_at": "2026-02-10T15:31:46.542486+00:00"
+  }
+}

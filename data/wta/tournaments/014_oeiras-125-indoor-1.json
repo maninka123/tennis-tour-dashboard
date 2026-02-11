@@ -12,7 +12,7 @@
   "indoor_outdoor": "I",
   "city": "OEIRAS",
   "country": "PORTUGAL",
-  "status": "inprogress",
+  "status": "in_progress",
   "draw_size_singles": 32,
   "draw_size_doubles": 16,
   "prize_money": 115000,
@@ -2165,36 +2165,13 @@
       "winner_side": "A"
     },
     {
-      "match_id": "LS025",
-      "round_id": 5,
-      "draw_level_type": "M",
-      "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T11:00+00:00",
-      "duration": null,
-      "player_a": {
-        "id": "325639",
-        "name": "Maja Chwalinska",
-        "country": "POL"
-      },
-      "player_b": {
-        "id": "328631",
-        "name": "Noma Noha Akugue",
-        "country": "GER"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
       "match_id": "LS028",
-      "round_id": 5,
+      "round_id": "1",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T11:00+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-10T10:43:48.85+00:00",
+      "duration": "01:26:40",
       "player_a": {
         "id": "329061",
         "name": "Linda Klimovicova",
@@ -2205,19 +2182,64 @@
         "name": "Francisca Jorge",
         "country": "POR"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-1,6-2",
+      "result_string": "F. Jorge d [8]L. Klimovicova 6-1,6-2",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS025",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-10T10:51:07.76+00:00",
+      "duration": "02:19:38",
+      "player_a": {
+        "id": "325639",
+        "name": "Maja Chwalinska",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "328631",
+        "name": "Noma Noha Akugue",
+        "country": "GER"
+      },
+      "score_string": "6-2,3-6,6-1",
+      "result_string": "M. Chwalinska d N. Noha Akugue 6-2,3-6,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
     },
     {
       "match_id": "LS021",
-      "round_id": 5,
+      "round_id": "1",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T11:00+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-10T10:53:16.363+00:00",
+      "duration": "01:29:24",
       "player_a": {
         "id": "330149",
         "name": "Dominika Salkova",
@@ -2228,65 +2250,28 @@
         "name": "Lola Radivojevic",
         "country": "SRB"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
-      "match_id": "LS024",
-      "round_id": 5,
-      "draw_level_type": "M",
-      "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T12:30+00:00",
-      "duration": null,
-      "player_a": {
-        "id": "330970",
-        "name": "Tiantsoa Rakotomanga Rajaonah",
-        "country": "FRA"
-      },
-      "player_b": {
-        "id": "314359",
-        "name": "Nuria Parrizas Diaz",
-        "country": "ESP"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
-      "match_id": "LS019",
-      "round_id": 5,
-      "draw_level_type": "M",
-      "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
-      "player_a": {
-        "id": "317584",
-        "name": "Viktoriya Tomova",
-        "country": "BUL"
-      },
-      "player_b": {
-        "id": "331742",
-        "name": "Kaitlin Quevedo",
-        "country": "ESP"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-4,6-3",
+      "result_string": "L. Radivojevic d D. Salkova 6-4,6-3",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
     },
     {
       "match_id": "LS018",
-      "round_id": 5,
+      "round_id": "1",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-10T12:31:51.943+00:00",
+      "duration": "01:42:53",
       "player_a": {
         "id": "328730",
         "name": "Matilde Jorge",
@@ -2297,65 +2282,28 @@
         "name": "Varvara Lepchenko",
         "country": "USA"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
-      "match_id": "LS031",
-      "round_id": 5,
-      "draw_level_type": "M",
-      "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
-      "player_a": {
-        "id": "327781",
-        "name": "Fiona Crawley",
-        "country": "USA"
-      },
-      "player_b": {
-        "id": "321106",
-        "name": "Dalma Galfi",
-        "country": "HUN"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
-      "match_id": "LS020",
-      "round_id": 5,
-      "draw_level_type": "M",
-      "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
-      "player_a": {
-        "id": "330352",
-        "name": "Victoria Jimenez Kasintseva",
-        "country": "AND"
-      },
-      "player_b": {
-        "id": "326891",
-        "name": "Leyre Romero Gormaz",
-        "country": "ESP"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-0,7-5",
+      "result_string": "M. Jorge d V. Lepchenko 6-0,7-5",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        }
+      ],
+      "winner_side": "A"
     },
     {
       "match_id": "LS030",
-      "round_id": 5,
+      "round_id": "1",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-10T12:39:46.573+00:00",
+      "duration": "01:08:51",
       "player_a": {
         "id": "324830",
         "name": "En-Shuo Liang",
@@ -2366,88 +2314,128 @@
         "name": "Anhelina Kalinina",
         "country": "UKR"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-1,6-4",
+      "result_string": "A. Kalinina d E. Liang 6-1,6-4",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
     },
     {
-      "match_id": "LD014",
-      "round_id": 4,
+      "match_id": "LS024",
+      "round_id": "1",
       "draw_level_type": "M",
-      "draw_match_type": "D",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-10T13:36:03.693+00:00",
+      "duration": "02:25:47",
       "player_a": {
+        "id": "330970",
+        "name": "Tiantsoa Rakotomanga Rajaonah",
+        "country": "FRA"
+      },
+      "player_b": {
+        "id": "314359",
+        "name": "Nuria Parrizas Diaz",
+        "country": "ESP"
+      },
+      "score_string": "6-7(4),6-3,6-4",
+      "result_string": "N. Parrizas Diaz d [5]T. Rakotomanga Rajaonah 6-7(4),6-3,6-4",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS020",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-10T14:06:29.093+00:00",
+      "duration": "02:08:07",
+      "player_a": {
+        "id": "330352",
+        "name": "Victoria Jimenez Kasintseva",
+        "country": "AND"
+      },
+      "player_b": {
+        "id": "326891",
+        "name": "Leyre Romero Gormaz",
+        "country": "ESP"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "L. Romero Gormaz d [4]V. Jimenez Kasintseva 6-4,6-4",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS031",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-10T14:25:42.317+00:00",
+      "duration": "01:09:31",
+      "player_a": {
+        "id": "327781",
+        "name": "Fiona Crawley",
+        "country": "USA"
+      },
+      "player_b": {
         "id": "321106",
         "name": "Dalma Galfi",
         "country": "HUN"
       },
-      "player_b": {
-        "id": "324948",
-        "name": "Francisca Jorge",
-        "country": "POR"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
-      "match_id": "LD012",
-      "round_id": 4,
-      "draw_level_type": "M",
-      "draw_match_type": "D",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
-      "player_a": {
-        "id": "323183",
-        "name": "I-Hsuan Cho",
-        "country": "TPE"
-      },
-      "player_b": {
-        "id": "318352",
-        "name": "Irina Bara",
-        "country": "ROU"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
-      "match_id": "LD010",
-      "round_id": 4,
-      "draw_level_type": "M",
-      "draw_match_type": "D",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
-      "player_a": {
-        "id": "316942",
-        "name": "Yvonne Cavalle-Reimers",
-        "country": "ESP"
-      },
-      "player_b": {
-        "id": "318181",
-        "name": "Estelle Cascino",
-        "country": "FRA"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-0,6-3",
+      "result_string": "[2]D. Galfi d F. Crawley 6-0,6-3",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
     },
     {
       "match_id": "LS022",
-      "round_id": 5,
+      "round_id": "1",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-10T15:47:20.51+00:00",
+      "duration": "01:48:16",
       "player_a": {
         "id": "319091",
         "name": "Anna-Lena Friedsam",
@@ -2458,19 +2446,32 @@
         "name": "Alina Korneeva",
         "country": "RUS"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "3-6,6-0,6-0",
+      "result_string": "A. Korneeva d A. Friedsam 3-6,6-0,6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
     },
     {
       "match_id": "LS023",
-      "round_id": 5,
+      "round_id": "1",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-10T23:59+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-10T16:16:53.713+00:00",
+      "duration": "01:12:41",
       "player_a": {
         "id": "315294",
         "name": "Dalila Jakupovic",
@@ -2481,10 +2482,143 @@
         "name": "Greet Minnen",
         "country": "BEL"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-0,6-3",
+      "result_string": "[7]G. Minnen d D. Jakupovic 6-0,6-3",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS019",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-10T16:24:27.123+00:00",
+      "duration": "00:50:13",
+      "player_a": {
+        "id": "317584",
+        "name": "Viktoriya Tomova",
+        "country": "BUL"
+      },
+      "player_b": {
+        "id": "331742",
+        "name": "Kaitlin Quevedo",
+        "country": "ESP"
+      },
+      "score_string": "6-0,6-1",
+      "result_string": "[9]K. Quevedo d V. Tomova 6-0,6-1",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD010",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "P",
+      "scheduled": "2026-02-10T17:30:56.397+00:00",
+      "duration": "00:52:44",
+      "player_a": {
+        "id": "316942",
+        "name": "Yvonne Cavalle-Reimers",
+        "country": "ESP"
+      },
+      "player_b": {
+        "id": "318181",
+        "name": "Estelle Cascino",
+        "country": "FRA"
+      },
+      "score_string": "6-1,5-2",
+      "result_string": "",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "5"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD012",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "P",
+      "scheduled": "2026-02-10T17:46:04.277+00:00",
+      "duration": "00:32:08",
+      "player_a": {
+        "id": "323183",
+        "name": "I-Hsuan Cho",
+        "country": "TPE"
+      },
+      "player_b": {
+        "id": "318352",
+        "name": "Irina Bara",
+        "country": "ROU"
+      },
+      "score_string": "4-3",
+      "result_string": "",
+      "sets": [
+        {
+          "a": "4",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD014",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "P",
+      "scheduled": "2026-02-10T17:47:24.897+00:00",
+      "duration": "00:34:26",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "324948",
+        "name": "Francisca Jorge",
+        "country": "POR"
+      },
+      "score_string": "6-1,1-0",
+      "result_string": "",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
     }
   ]
 }
