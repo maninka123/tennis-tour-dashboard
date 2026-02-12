@@ -95,6 +95,7 @@ const AppState = {
     tournaments: { atp: [], wta: [] },
     selectedTournament: null,
     socket: null,
+    socketPollingTimer: null,
     isConnected: false,
     livePollingBySocket: false,
     lastUpdated: null,
@@ -144,7 +145,9 @@ const DOM = {
     lastUpdated: document.getElementById('lastUpdated'),
 
     // Analysis launchers
-    analysisLaunchLinks: document.querySelectorAll('.analysis-launch-btn[data-analysis-tour]')
+    analysisLaunchCurrentBtn: document.getElementById('analysisLaunchCurrentBtn'),
+    analysisLaunchTourPill: document.getElementById('analysisLaunchTourPill'),
+    analysisLaunchLabel: document.getElementById('analysisLaunchLabel')
 };
 
 // ============================================
@@ -695,11 +698,15 @@ const Socket = {
      */
     init() {
         try {
+            const isLocalHost = /localhost|127\.0\.0\.1/i.test(window.location.hostname || '');
             AppState.socket = io(CONFIG.WS_URL, {
-                transports: ['websocket', 'polling'],
+                // Start with polling in local/dev, then upgrade when possible.
+                transports: isLocalHost ? ['polling', 'websocket'] : ['websocket', 'polling'],
+                upgrade: true,
                 reconnection: true,
                 reconnectionDelay: 1000,
-                reconnectionAttempts: 10
+                reconnectionAttempts: 10,
+                timeout: 15000
             });
 
             this.setupEventListeners();
@@ -718,11 +725,21 @@ const Socket = {
         AppState.socket.on('connect', () => {
             console.log('Connected to WebSocket');
             AppState.isConnected = true;
+            if (AppState.socketPollingTimer) {
+                clearInterval(AppState.socketPollingTimer);
+                AppState.socketPollingTimer = null;
+            }
+            AppState.livePollingBySocket = false;
         });
 
         AppState.socket.on('disconnect', () => {
             console.log('Disconnected from WebSocket');
             AppState.isConnected = false;
+        });
+
+        AppState.socket.on('connect_error', (error) => {
+            console.warn('Socket connection error, falling back to polling:', error?.message || error);
+            this.startPolling();
         });
 
         AppState.socket.on('live_scores_update', (data) => {
@@ -798,8 +815,9 @@ const Socket = {
      * Start polling if WebSocket is not available
      */
     startPolling() {
+        if (AppState.socketPollingTimer) return;
         AppState.livePollingBySocket = true;
-        setInterval(async () => {
+        AppState.socketPollingTimer = setInterval(async () => {
             try {
                 const scores = await API.getLiveScores('both');
                 AppState.liveScores.atp = scores.filter(m => m.tour === 'ATP');
@@ -974,6 +992,7 @@ const EventHandlers = {
         App.refreshRankingsStatus(tour);
         App.refreshTournamentsStatus(tour);
         App.syncTournamentHeaderState();
+        App.setupAnalysisLaunchers(tour);
         if (window.StatZoneModule && typeof window.StatZoneModule.syncHeaderState === 'function') {
             window.StatZoneModule.syncHeaderState();
         }
@@ -1023,18 +1042,40 @@ const App = {
         return window.location.origin;
     },
 
-    setupAnalysisLaunchers() {
-        if (!DOM.analysisLaunchLinks || !DOM.analysisLaunchLinks.length) {
+    setupAnalysisLaunchers(tour = AppState.currentTour) {
+        const launchBtn = DOM.analysisLaunchCurrentBtn;
+        if (!launchBtn) {
             return;
         }
 
+        const safeTour = String(tour || '').trim().toLowerCase() === 'wta' ? 'wta' : 'atp';
+        const tourLabel = safeTour.toUpperCase();
         const backendOrigin = this.resolveBackendOrigin();
+        launchBtn.href = `${backendOrigin}/analysis/${safeTour}/`;
+        launchBtn.dataset.analysisTour = safeTour;
+        launchBtn.title = `Open ${tourLabel} Data Lab`;
 
-        DOM.analysisLaunchLinks.forEach((link) => {
-            const requestedTour = String(link.dataset.analysisTour || '').trim().toLowerCase();
-            const safeTour = requestedTour === 'wta' ? 'wta' : 'atp';
-            link.href = `${backendOrigin}/analysis/${safeTour}/`;
-        });
+        launchBtn.classList.toggle('analysis-launch-atp', safeTour === 'atp');
+        launchBtn.classList.toggle('analysis-launch-wta', safeTour === 'wta');
+
+        if (DOM.analysisLaunchTourPill) {
+            DOM.analysisLaunchTourPill.textContent = tourLabel;
+        }
+
+        if (DOM.analysisLaunchLabel) {
+            DOM.analysisLaunchLabel.textContent = `Open ${tourLabel} Data Lab`;
+        }
+
+        const previewTitle = launchBtn.querySelector('.preview-title');
+        if (previewTitle) {
+            previewTitle.textContent = `${tourLabel} Data Analysis Workspace`;
+        }
+
+        const icon = launchBtn.querySelector('.fas');
+        if (icon) {
+            icon.classList.remove('fa-chart-area', 'fa-chart-line');
+            icon.classList.add(safeTour === 'wta' ? 'fa-chart-line' : 'fa-chart-area');
+        }
     },
 
     /**

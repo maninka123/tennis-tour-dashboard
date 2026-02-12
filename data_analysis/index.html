@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ATP Historic Data Analysis</title>
   <meta name="description" content="Standalone ATP historic data analysis app built from local CSV archives.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -128,6 +129,13 @@
                   <option value="markers">Markers only</option>
                 </select>
               </label>
+              <label>Chart View
+                <select id="rankingSeriesFilter">
+                  <option value="overlay">Rank + Points Overlay</option>
+                  <option value="rank">Rank Only</option>
+                  <option value="points">Points Only</option>
+                </select>
+              </label>
             </div>
 
             <div id="rankingSummaryTiles" class="tiles-grid"></div>
@@ -176,7 +184,13 @@
             </label>
           </div>
 
-          <div class="split-layout">
+          <div class="split-layout-toolbar">
+            <button id="tournamentDetailToggle" class="detail-toggle-btn" type="button" aria-expanded="true">
+              <span class="detail-toggle-arrow">◀</span>
+              <span class="detail-toggle-label">Hide details</span>
+            </button>
+          </div>
+          <div id="tournamentSplitLayout" class="split-layout">
             <div id="tournamentTable" class="table-wrap"></div>
             <aside id="tournamentDetail" class="side-detail">
               <div class="empty-placeholder">Select a tournament row to see details.</div>
@@ -207,6 +221,20 @@
         </div>
       </section>
     </main>
+
+    <div id="tournamentModal" class="modal-shell" aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close></div>
+      <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="tournamentModalTitle">
+        <header class="modal-head">
+          <div>
+            <h3 id="tournamentModalTitle">Tournament Details</h3>
+            <p id="tournamentModalMeta" class="small-note">Historic finals and champions</p>
+          </div>
+          <button id="tournamentModalClose" class="modal-close" type="button" aria-label="Close tournament details">✕</button>
+        </header>
+        <div id="tournamentModalBody" class="modal-body"></div>
+      </section>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>

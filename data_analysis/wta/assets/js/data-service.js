@@ -539,16 +539,22 @@ export class DataService {
         name: match.winner.name,
         countryCode: match.winner.countryCode,
         count: 0,
+        firstYear: match.year,
+        lastYear: match.year,
       };
       champ.count += 1;
+      champ.firstYear = Math.min(champ.firstYear || match.year, match.year);
+      champ.lastYear = Math.max(champ.lastYear || match.year, match.year);
       tournament.champions.set(match.winner.key, champ);
 
       tournament.finals.push({
         dateSort: match.dateSort,
         dateIso: match.dateIso,
+        year: match.year,
         winnerKey: match.winner.key,
         winnerName: match.winner.name,
         winnerCountryCode: match.winner.countryCode,
+        loserKey: match.loser.key,
         loserName: match.loser.name,
         loserCountryCode: match.loser.countryCode,
         score: match.score,

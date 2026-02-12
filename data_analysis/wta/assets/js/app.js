@@ -32,7 +32,9 @@ const state = {
     scale: 'log',
     range: 'all',
     mode: 'lines+markers',
+    series: 'overlay',
   },
+  tournamentDetailCollapsed: false,
   tournamentFilters: {
     search: '',
     category: 'all',
@@ -77,13 +79,21 @@ const dom = {
   rankingScaleFilter: document.getElementById('rankingScaleFilter'),
   rankingRangeFilter: document.getElementById('rankingRangeFilter'),
   rankingModeFilter: document.getElementById('rankingModeFilter'),
+  rankingSeriesFilter: document.getElementById('rankingSeriesFilter'),
 
   tournamentSearch: document.getElementById('tournamentSearch'),
   tournamentCategoryFilter: document.getElementById('tournamentCategoryFilter'),
   tournamentSurfaceFilter: document.getElementById('tournamentSurfaceFilter'),
   tournamentYearFilter: document.getElementById('tournamentYearFilter'),
+  tournamentSplitLayout: document.getElementById('tournamentSplitLayout'),
+  tournamentDetailToggle: document.getElementById('tournamentDetailToggle'),
   tournamentTable: document.getElementById('tournamentTable'),
   tournamentDetail: document.getElementById('tournamentDetail'),
+  tournamentModal: document.getElementById('tournamentModal'),
+  tournamentModalTitle: document.getElementById('tournamentModalTitle'),
+  tournamentModalMeta: document.getElementById('tournamentModalMeta'),
+  tournamentModalBody: document.getElementById('tournamentModalBody'),
+  tournamentModalClose: document.getElementById('tournamentModalClose'),
 
   recordCategoryFilter: document.getElementById('recordCategoryFilter'),
   recordsTable: document.getElementById('recordsTable'),
@@ -442,6 +452,13 @@ function getRangeStartDate(points, rangeKey) {
   return Number(`${y}${m}${d}`);
 }
 
+function getRankingChartHeightPx() {
+  if (window.matchMedia && window.matchMedia('(max-width: 720px)').matches) {
+    return 442;
+  }
+  return 560;
+}
+
 function renderPlayerRanking() {
   const timeline = service.getPlayerRankingTimeline(state.activePlayerKey);
   if (!timeline || !timeline.points.length) {
@@ -457,6 +474,15 @@ function renderPlayerRanking() {
 
   const rangeStart = getRangeStartDate(timeline.points, state.rankingFilters.range);
   const filtered = timeline.points.filter((row) => !rangeStart || row.dateSort >= rangeStart);
+  if (!filtered.length) {
+    renderEmptyTable(dom.rankingSummaryTiles, 'No ranking events found in this range.');
+    renderEmptyTable(dom.rankingTimelineTable, 'No ranking checkpoints in this range.');
+    if (window.Plotly && dom.rankingChart) {
+      window.Plotly.purge(dom.rankingChart);
+      dom.rankingChart.innerHTML = '<div class="empty-placeholder">No ranking chart points available for the selected range.</div>';
+    }
+    return;
+  }
 
   const best = filtered.reduce((acc, row) => (!acc || row.rank < acc.rank ? row : acc), null);
   const worst = filtered.reduce((acc, row) => (!acc || row.rank > acc.rank ? row : acc), null);
@@ -472,8 +498,10 @@ function renderPlayerRanking() {
     return acc;
   }, null);
 
+  const currentPoints = Number.isFinite(current?.rankPoints) ? current.rankPoints : null;
   const summaryTiles = [
     { label: '📌 Current Rank', value: current ? `#${current.rank}` : '-', note: current ? formatDate(current.dateIso) : '-' },
+    { label: '💠 Current Points', value: Number.isFinite(currentPoints) ? formatNumber(currentPoints) : '-', note: current ? cappedText(current.tournament || '-', 24) : '-' },
     { label: '🚀 Best Rank', value: best ? `#${best.rank}` : '-', note: best ? `${formatDate(best.dateIso)} • ${best.tournament}` : '-' },
     { label: '🧭 Worst Rank', value: worst ? `#${worst.rank}` : '-', note: worst ? `${formatDate(worst.dateIso)} • ${worst.tournament}` : '-' },
     { label: '📉 Biggest Rise', value: biggestRise ? formatSignedDelta(biggestRise.deltaFromPrev) : '-', note: biggestRise ? `${formatDate(biggestRise.dateIso)} • #${biggestRise.rank}` : '-' },
@@ -490,8 +518,12 @@ function renderPlayerRanking() {
   `).join('');
 
   if (window.Plotly && dom.rankingChart) {
+    const showRank = state.rankingFilters.series !== 'points';
+    const showPoints = state.rankingFilters.series !== 'rank';
+    const includeMarkers = state.rankingFilters.mode.includes('markers');
     const x = filtered.map((row) => row.dateIso);
-    const y = filtered.map((row) => row.rank);
+    const rankY = filtered.map((row) => row.rank);
+    const pointsY = filtered.map((row) => (Number.isFinite(row.rankPoints) && row.rankPoints > 0 ? row.rankPoints : null));
     const custom = filtered.map((row) => [
       row.tournament,
       row.round || '-',
@@ -499,63 +531,135 @@ function renderPlayerRanking() {
       row.rankPoints ?? '-',
       row.opponentName || '-',
       formatSignedDelta(row.deltaFromPrev || 0),
+      row.rank,
     ]);
 
-    const trace = {
-      x,
-      y,
-      mode: state.rankingFilters.mode,
-      type: 'scatter',
-      line: {
-        shape: 'hv',
-        color: '#2f71bc',
-        width: 3,
-      },
-      marker: {
-        size: state.rankingFilters.mode.includes('markers') ? 6 : 0,
-        color: '#4db4e7',
-        line: { color: '#1f4f86', width: 1 },
-      },
-      customdata: custom,
-      hovertemplate:
-        '<b>%{x}</b><br>' +
-        'Rank: <b>#%{y}</b><br>' +
-        'Points: %{customdata[3]}<br>' +
-        'Tournament: %{customdata[0]}<br>' +
-        'Round: %{customdata[1]} (%{customdata[2]})<br>' +
-        'Opponent: %{customdata[4]}<br>' +
-        'Change: %{customdata[5]}<extra></extra>',
-    };
+    const traces = [];
+    if (showRank) {
+      traces.push({
+        x,
+        y: rankY,
+        name: 'Rank',
+        mode: state.rankingFilters.mode,
+        type: 'scatter',
+        yaxis: 'y',
+        line: {
+          shape: 'hv',
+          color: '#2f71bc',
+          width: 3,
+        },
+        marker: {
+          size: includeMarkers ? 7 : 0,
+          color: '#f8fbff',
+          line: { color: '#2f71bc', width: 2 },
+        },
+        customdata: custom,
+        hovertemplate:
+          '<b>%{x}</b><br>' +
+          'Rank: <b>#%{y}</b><br>' +
+          'Points: %{customdata[3]}<br>' +
+          'Tournament: %{customdata[0]}<br>' +
+          'Round: %{customdata[1]} (%{customdata[2]})<br>' +
+          'Opponent: %{customdata[4]}<br>' +
+          'Change: %{customdata[5]}<extra>Rank</extra>',
+      });
+    }
+    if (showPoints) {
+      traces.push({
+        x,
+        y: pointsY,
+        name: 'Ranking Points',
+        mode: state.rankingFilters.mode,
+        type: 'scatter',
+        yaxis: 'y2',
+        line: {
+          shape: 'hv',
+          color: '#cf8a2b',
+          width: 2.5,
+          dash: 'solid',
+        },
+        marker: {
+          size: includeMarkers ? 7 : 0,
+          color: '#fff9ef',
+          line: { color: '#cf8a2b', width: 2 },
+        },
+        customdata: custom,
+        hovertemplate:
+          '<b>%{x}</b><br>' +
+          'Points: <b>%{y}</b><br>' +
+          `Rank: #%{customdata[6]}<br>` +
+          'Tournament: %{customdata[0]}<br>' +
+          'Round: %{customdata[1]} (%{customdata[2]})<br>' +
+          'Opponent: %{customdata[4]}<br>' +
+          'Change: %{customdata[5]}<extra>Points</extra>',
+      });
+    }
 
     const isLog = state.rankingFilters.scale === 'log';
+    const chartHeight = getRankingChartHeightPx();
     const layout = {
-      margin: { l: 72, r: 24, t: 18, b: 76 },
+      autosize: false,
+      height: chartHeight,
+      margin: { l: showRank ? 78 : 18, r: showPoints ? 78 : 22, t: 18, b: 92 },
       paper_bgcolor: '#ffffff',
       plot_bgcolor: '#f7fbff',
       font: { family: 'Manrope, sans-serif', color: '#223141' },
       hovermode: 'closest',
+      hoverlabel: {
+        bgcolor: '#ffffff',
+        bordercolor: '#8fa9c5',
+        font: { family: 'Manrope, sans-serif', size: 13, color: '#223141' },
+        align: 'left',
+      },
       xaxis: {
         title: { text: 'Date', standoff: 16 },
         automargin: true,
         gridcolor: '#dce7f3',
+        showspikes: true,
+        spikemode: 'across',
+        spikecolor: '#b6cbe1',
+        spikethickness: 1,
         zeroline: false,
       },
       yaxis: {
         title: { text: `${TOUR_NAME} Ranking (Lower is better)`, standoff: 12 },
+        visible: showRank,
         automargin: true,
         autorange: 'reversed',
         type: isLog ? 'log' : 'linear',
         gridcolor: '#dce7f3',
         zeroline: false,
-        tickvals: isLog ? [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000] : undefined,
+        tickvals: showRank && isLog ? [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000] : undefined,
       },
-      showlegend: false,
+      yaxis2: {
+        title: { text: 'Ranking Points', standoff: 10, font: { color: '#9c640e' } },
+        visible: showPoints,
+        overlaying: 'y',
+        side: 'right',
+        automargin: true,
+        rangemode: 'tozero',
+        showgrid: false,
+        zeroline: false,
+        tickformat: ',d',
+        tickfont: { color: '#9c640e' },
+      },
+      showlegend: showRank && showPoints,
+      legend: {
+        orientation: 'h',
+        x: 1,
+        xanchor: 'right',
+        y: 1.14,
+        bgcolor: 'rgba(255,255,255,0.86)',
+        bordercolor: '#d9e4f0',
+        borderwidth: 1,
+      },
     };
 
-    window.Plotly.react(dom.rankingChart, [trace], layout, {
+    window.Plotly.react(dom.rankingChart, traces, layout, {
       responsive: true,
       displaylogo: false,
       modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+      doubleClick: 'reset',
       toImageButtonOptions: {
         filename: `${timeline.player.name.replace(/\s+/g, '_')}_ranking_timeline`,
         format: 'png',
@@ -619,8 +723,28 @@ function renderPlayerPanel() {
   renderPlayerRanking();
 }
 
+function syncTournamentDetailVisibility() {
+  if (!dom.tournamentSplitLayout || !dom.tournamentDetailToggle) return;
+  const collapsed = !!state.tournamentDetailCollapsed;
+
+  dom.tournamentSplitLayout.classList.toggle('collapsed', collapsed);
+  dom.tournamentDetailToggle.classList.toggle('collapsed', collapsed);
+  dom.tournamentDetailToggle.setAttribute('aria-expanded', String(!collapsed));
+
+  const labelEl = dom.tournamentDetailToggle.querySelector('.detail-toggle-label');
+  if (labelEl) {
+    labelEl.textContent = collapsed ? 'Show details' : 'Hide details';
+  }
+
+  const arrowEl = dom.tournamentDetailToggle.querySelector('.detail-toggle-arrow');
+  if (arrowEl) {
+    arrowEl.textContent = collapsed ? '▶' : '◀';
+  }
+}
+
 function renderTournamentTable() {
   const rows = service.getTournamentRows(state.tournamentFilters);
+  syncTournamentDetailVisibility();
   if (!rows.length) {
     renderEmptyTable(dom.tournamentTable, 'No tournaments match these filters.');
     dom.tournamentDetail.innerHTML = '<div class="empty-placeholder">Select a tournament row to see details.</div>';
@@ -717,7 +841,133 @@ function renderTournamentDetail() {
       <h4 style="margin:0 0 .45rem;">Recent Finals</h4>
       <div class="final-list">${finalRows || '<div class="small-note">No final rows available.</div>'}</div>
     </div>
+
+    <button id="openTournamentModalBtn" class="detail-action-btn" type="button">Open Full Results Popup</button>
   `;
+}
+
+function getDatasetLatestYear() {
+  const years = service.getAllYears();
+  return years.length ? years[0] : new Date().getFullYear();
+}
+
+function getYearFromDateSort(dateSort) {
+  const date = String(dateSort || '');
+  if (!/^\d{8}$/.test(date)) return null;
+  const year = Number(date.slice(0, 4));
+  return Number.isFinite(year) ? year : null;
+}
+
+function isLikelyInactivePlayer(player, latestDatasetYear) {
+  if (!player || !Number.isFinite(latestDatasetYear)) return false;
+  const lastYear = getYearFromDateSort(player.lastDateSort);
+  if (!Number.isFinite(lastYear)) return false;
+  return lastYear <= latestDatasetYear - 2;
+}
+
+function renderTournamentPlayerCell(playerKey, fallbackName, fallbackCountryCode, latestDatasetYear) {
+  const player = playerKey ? service.getPlayerByKey(playerKey) : null;
+  const name = player?.name || fallbackName || 'Unknown player';
+  const countryCode = player?.countryCode || fallbackCountryCode || '';
+  const image = player?.image || '';
+  const inactive = isLikelyInactivePlayer(player, latestDatasetYear);
+  const lastYear = getYearFromDateSort(player?.lastDateSort);
+  const inactiveHint = inactive && Number.isFinite(lastYear) ? `Last active ${lastYear}` : '';
+
+  return `
+    <span class="modal-player-cell">
+      <span class="modal-avatar-wrap ${inactive ? 'inactive' : ''}">
+        ${image ? `<img class="modal-avatar" src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="lazy">` : '<span class="modal-avatar placeholder">?</span>'}
+        ${inactive ? '<span class="inactive-watermark">INACTIVE</span>' : ''}
+      </span>
+      <span class="modal-player-meta">
+        <span class="name-line">${getFlagHtml(countryCode)} <span class="name">${escapeHtml(name)}</span></span>
+        ${inactiveHint ? `<span class="small-note">${escapeHtml(inactiveHint)}</span>` : ''}
+      </span>
+    </span>
+  `;
+}
+
+function renderTournamentModal() {
+  const detail = service.getTournamentDetails(state.selectedTournamentKey);
+  if (!detail || !dom.tournamentModalBody) return;
+
+  const latestDatasetYear = getDatasetLatestYear();
+  const yearsText = detail.years.length ? `${detail.years[0]}-${detail.years[detail.years.length - 1]}` : '-';
+
+  if (dom.tournamentModalTitle) {
+    dom.tournamentModalTitle.textContent = detail.name;
+  }
+  if (dom.tournamentModalMeta) {
+    dom.tournamentModalMeta.textContent = `${yearsText} • ${formatNumber(detail.matchCount)} matches • ${formatNumber(detail.eventCount)} events`;
+  }
+
+  const championsRows = detail.topChampions.map((row, index) => {
+    const yearSpan = Number.isFinite(row.firstYear) && Number.isFinite(row.lastYear)
+      ? row.firstYear === row.lastYear ? `${row.firstYear}` : `${row.firstYear}-${row.lastYear}`
+      : '-';
+    return `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${renderTournamentPlayerCell(row.key, row.name, row.countryCode, latestDatasetYear)}</td>
+        <td><strong>${formatNumber(row.count)}</strong></td>
+        <td>${escapeHtml(yearSpan)}</td>
+      </tr>
+    `;
+  }).join('');
+
+  const finalsRows = detail.finals.map((row) => `
+    <tr>
+      <td>${row.year || '-'}</td>
+      <td>${escapeHtml(formatDate(row.dateIso))}</td>
+      <td>${renderTournamentPlayerCell(row.winnerKey, row.winnerName, row.winnerCountryCode, latestDatasetYear)}</td>
+      <td>${renderTournamentPlayerCell(row.loserKey, row.loserName, row.loserCountryCode, latestDatasetYear)}</td>
+      <td><strong>${escapeHtml(row.score || '-')}</strong></td>
+      <td><span class="category-badge ${row.category}">${escapeHtml(getCategoryLabel(row.category))}</span></td>
+      <td><span class="surface-pill ${row.surfaceClass}">${escapeHtml(getSurfaceLabel(row.surfaceClass))}</span></td>
+    </tr>
+  `).join('');
+
+  dom.tournamentModalBody.innerHTML = `
+    <section class="section-block" style="margin-top:0;">
+      <h4>Top Champions</h4>
+      <div class="table-wrap modal-table-wrap">
+        <table class="data-table modal-data-table">
+          <thead>
+            <tr><th>#</th><th>Champion</th><th>Titles</th><th>Years</th></tr>
+          </thead>
+          <tbody>${championsRows || '<tr><td colspan="4">No champions found.</td></tr>'}</tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h4>Recent Finals</h4>
+      <div class="table-wrap modal-table-wrap">
+        <table class="data-table modal-data-table">
+          <thead>
+            <tr><th>Year</th><th>Date</th><th>Champion</th><th>Finalist</th><th>Score</th><th>Type</th><th>Surface</th></tr>
+          </thead>
+          <tbody>${finalsRows || '<tr><td colspan="7">No finals rows available.</td></tr>'}</tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function openTournamentModal() {
+  if (!dom.tournamentModal) return;
+  renderTournamentModal();
+  dom.tournamentModal.classList.add('open');
+  dom.tournamentModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+}
+
+function closeTournamentModal() {
+  if (!dom.tournamentModal) return;
+  dom.tournamentModal.classList.remove('open');
+  dom.tournamentModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
 }
 
 function renderHolderPills(holders) {
@@ -909,6 +1159,13 @@ function bindEvents() {
     renderPlayerRanking();
   });
 
+  if (dom.rankingSeriesFilter) {
+    dom.rankingSeriesFilter.addEventListener('change', () => {
+      state.rankingFilters.series = dom.rankingSeriesFilter.value;
+      renderPlayerRanking();
+    });
+  }
+
   dom.tournamentSearch.addEventListener('input', () => {
     state.tournamentFilters.search = dom.tournamentSearch.value;
     renderTournamentTable();
@@ -934,11 +1191,41 @@ function bindEvents() {
     if (!row?.dataset.tournamentKey) return;
     state.selectedTournamentKey = row.dataset.tournamentKey;
     renderTournamentTable();
+    openTournamentModal();
   });
+
+  dom.tournamentDetail.addEventListener('click', (event) => {
+    if (!event.target.closest('#openTournamentModalBtn')) return;
+    openTournamentModal();
+  });
+
+  if (dom.tournamentDetailToggle) {
+    dom.tournamentDetailToggle.addEventListener('click', () => {
+      state.tournamentDetailCollapsed = !state.tournamentDetailCollapsed;
+      syncTournamentDetailVisibility();
+    });
+  }
+
+  if (dom.tournamentModalClose) {
+    dom.tournamentModalClose.addEventListener('click', closeTournamentModal);
+  }
+  if (dom.tournamentModal) {
+    dom.tournamentModal.addEventListener('click', (event) => {
+      if (event.target.closest('[data-modal-close]')) {
+        closeTournamentModal();
+      }
+    });
+  }
 
   dom.recordCategoryFilter.addEventListener('change', () => {
     state.recordCategory = dom.recordCategoryFilter.value;
     renderRecords();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && dom.tournamentModal?.classList.contains('open')) {
+      closeTournamentModal();
+    }
   });
 
   dom.loadButton.addEventListener('click', async () => {
@@ -1012,6 +1299,10 @@ function bindEvents() {
 
 function init() {
   bindEvents();
+  if (dom.rankingSeriesFilter) {
+    dom.rankingSeriesFilter.value = state.rankingFilters.series;
+  }
+  syncTournamentDetailVisibility();
   renderMainTab();
   renderPlayerSubtab();
   renderHeroSubtitle();

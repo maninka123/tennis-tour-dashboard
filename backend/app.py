@@ -17,6 +17,12 @@ import requests
 from tennis_api import tennis_fetcher
 from config import Config
 
+try:
+    import simple_websocket  # noqa: F401
+    HAS_SIMPLE_WEBSOCKET = True
+except Exception:
+    HAS_SIMPLE_WEBSOCKET = False
+
 
 # --- Player Image Manager ---
 class PlayerImageManager:
@@ -106,7 +112,28 @@ threading.Thread(target=image_manager.scan_players, daemon=True).start()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tennis_dashboard_secret_2024'
 CORS(app, origins="*", resources={r"/api/*": {"origins": "*"}})
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading', ping_timeout=60, ping_interval=25)
+
+
+def _env_bool(name, default):
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return str(value).strip().lower() in {'1', 'true', 'yes', 'on'}
+
+
+# Werkzeug + threading mode can crash on websocket upgrade in local debug sessions.
+# Prefer long-polling locally unless explicitly overridden.
+allow_upgrades_default = HAS_SIMPLE_WEBSOCKET and not Config.DEBUG
+allow_socket_upgrades = _env_bool('SOCKETIO_ALLOW_UPGRADES', allow_upgrades_default)
+
+socketio = SocketIO(
+    app,
+    cors_allowed_origins="*",
+    async_mode='threading',
+    ping_timeout=60,
+    ping_interval=25,
+    allow_upgrades=allow_socket_upgrades,
+)
 
 # --- System Update State & Logic ---
 SCRIPTS_DIR = os.path.join(REPO_ROOT, "scripts", "Update player stats")
@@ -1012,6 +1039,7 @@ if __name__ == '__main__':
     print("=" * 50)
     print(f"Starting server on http://{Config.HOST}:{Config.PORT}")
     print("WebSocket enabled for real-time updates")
+    print(f"SocketIO mode: threading | simple_websocket={HAS_SIMPLE_WEBSOCKET} | allow_upgrades={allow_socket_upgrades}")
     print("=" * 50)
     socketio.run(
         app,
