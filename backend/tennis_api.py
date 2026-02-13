@@ -3220,6 +3220,35 @@ class TennisDataFetcher:
             label='ATP match'
         )
 
+    def _atp_matches_cache_path(self, kind):
+        safe_kind = 'upcoming' if str(kind).lower().strip() == 'upcoming' else 'recent'
+        return Path(__file__).resolve().parent.parent / 'data' / f'atp_{safe_kind}_matches_cache.json'
+
+    def _load_atp_matches_cache(self, kind):
+        cache_path = self._atp_matches_cache_path(kind)
+        try:
+            if not cache_path.exists():
+                return []
+            payload = json.loads(cache_path.read_text(encoding='utf-8'))
+            if isinstance(payload, list):
+                return payload
+        except Exception:
+            pass
+        return []
+
+    def _save_atp_matches_cache(self, kind, matches):
+        if not isinstance(matches, list) or not matches:
+            return
+        cache_path = self._atp_matches_cache_path(kind)
+        try:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            cache_path.write_text(
+                json.dumps(matches, ensure_ascii=False, indent=2),
+                encoding='utf-8'
+            )
+        except Exception:
+            pass
+
     def _format_wta_duration(self, value):
         if not value:
             return None
@@ -4001,7 +4030,12 @@ class TennisDataFetcher:
                 timeout=90
             )
             if atp_raw is None:
-                print('ATP recent: script failed, returning empty')
+                cached = self._load_atp_matches_cache('recent')
+                if cached:
+                    print(f'ATP recent: script failed, using cached snapshot ({len(cached)} matches)')
+                    matches.extend(cached[:max(1, int(limit) if isinstance(limit, int) else 20)])
+                else:
+                    print('ATP recent: script failed, returning empty')
             else:
                 parsed = []
                 for match in atp_raw:
@@ -4010,7 +4044,14 @@ class TennisDataFetcher:
                     enriched = self._enrich_atp_match(match)
                     if enriched:
                         parsed.append(enriched)
-                matches.extend(parsed)
+                if parsed:
+                    self._save_atp_matches_cache('recent', parsed)
+                    matches.extend(parsed)
+                else:
+                    cached = self._load_atp_matches_cache('recent')
+                    if cached:
+                        print(f'ATP recent: scraper empty, using cached snapshot ({len(cached)} matches)')
+                        matches.extend(cached[:max(1, int(limit) if isinstance(limit, int) else 20)])
 
         return matches[:limit] if tour == 'both' else matches
     
@@ -4048,9 +4089,19 @@ class TennisDataFetcher:
                 timeout=90
             )
             if atp_raw is None:
-                print(f"ATP upcoming: script failed, returning empty")
+                cached = self._load_atp_matches_cache('upcoming')
+                if cached:
+                    print(f"ATP upcoming: script failed, using cached snapshot ({len(cached)} matches)")
+                    matches.extend(cached)
+                else:
+                    print(f"ATP upcoming: script failed, returning empty")
             elif len(atp_raw) == 0:
-                print(f"ATP upcoming: scraper returned empty, no matches found")
+                cached = self._load_atp_matches_cache('upcoming')
+                if cached:
+                    print(f"ATP upcoming: scraper empty, using cached snapshot ({len(cached)} matches)")
+                    matches.extend(cached)
+                else:
+                    print(f"ATP upcoming: scraper returned empty, no matches found")
             else:
                 parsed = []
                 for match in atp_raw:
@@ -4059,8 +4110,15 @@ class TennisDataFetcher:
                     enriched = self._enrich_atp_match(match)
                     if enriched:
                         parsed.append(enriched)
-                print(f"ATP upcoming: loaded {len(parsed)} real matches from scraper")
-                matches.extend(parsed)
+                if parsed:
+                    self._save_atp_matches_cache('upcoming', parsed)
+                    print(f"ATP upcoming: loaded {len(parsed)} real matches from scraper")
+                    matches.extend(parsed)
+                else:
+                    cached = self._load_atp_matches_cache('upcoming')
+                    if cached:
+                        print(f"ATP upcoming: no parsed matches, using cached snapshot ({len(cached)} matches)")
+                        matches.extend(cached)
 
         print(f"fetch_upcoming_matches(tour={tour}): returning {len(matches)} total matches")
         return self._attach_upcoming_h2h(matches)
