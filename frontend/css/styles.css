@@ -453,21 +453,34 @@ body {
     color: var(--accent-primary);
 }
 
-.live-section-header {
+.season-progress-header {
+    display: flex;
+    align-items: center;
     gap: 12px;
+    margin-bottom: 13px;
+}
+
+.live-section-header {
+    margin-bottom: 13px;
 }
 
 .season-progress-strip {
     --season-progress-bg: linear-gradient(94deg, #2d74b8 0%, #2d74b8 100%);
     flex: 1;
+    width: 100%;
     min-width: 360px;
-    margin: 0 8px;
+    margin: 0;
     padding: 10px 14px;
     border-radius: 14px;
     border: 1px solid rgba(56, 92, 126, 0.2);
     background: var(--season-progress-bg);
     color: #f4f8ff;
     box-shadow: 0 8px 18px rgba(21, 40, 61, 0.18);
+}
+
+.season-progress-header .analysis-launch-current {
+    margin-left: 0;
+    flex-shrink: 0;
 }
 
 .season-progress-topline {
@@ -4171,15 +4184,13 @@ img {
 }
 
 @media (max-width: 1200px) {
-    .live-section-header {
+    .season-progress-header {
         align-items: flex-start;
         flex-wrap: wrap;
     }
 
     .season-progress-strip {
         min-width: 100%;
-        margin: 2px 0 0;
-        order: 3;
     }
 
     .analysis-launch-current {
@@ -4204,7 +4215,13 @@ img {
 }
 
 @media (max-width: 768px) {
+    .season-progress-header .analysis-launch-current {
+        order: 2;
+        align-self: flex-start;
+    }
+
     .season-progress-strip {
+        order: 1;
         padding: 9px 10px;
     }
 

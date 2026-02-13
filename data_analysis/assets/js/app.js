@@ -36,6 +36,7 @@ const state = {
     series: 'overlay',
   },
   tournamentDetailCollapsed: false,
+  matchesInsightCollapsed: false,
   tournamentFilters: {
     search: '',
     category: 'all',
@@ -1960,22 +1961,68 @@ function renderMatchesInsightCharts() {
   if (!dom.playerMatchesInsights) return;
   const rows = getPlayerRowsAll();
   dom.playerMatchesInsights.innerHTML = `
-    <section class="section-block analytics-block">
-      <h4>Interactive Match Intelligence</h4>
-      <div class="analytics-grid two-col">
+    <section class="section-block analytics-block matches-insight-block${state.matchesInsightCollapsed ? ' collapsed' : ''}">
+      <div class="matches-insight-head">
+        <h4>Interactive Match Intelligence</h4>
+        <button type="button" class="matches-insight-toggle" data-matches-insight-toggle aria-expanded="${state.matchesInsightCollapsed ? 'false' : 'true'}" aria-label="${state.matchesInsightCollapsed ? 'Show Interactive Match Intelligence charts' : 'Hide Interactive Match Intelligence charts'}">
+          <span class="matches-insight-toggle-text">${state.matchesInsightCollapsed ? 'Show' : 'Hide'}</span>
+          <span class="matches-insight-toggle-icon" aria-hidden="true">${state.matchesInsightCollapsed ? '&#9660;' : '&#9650;'}</span>
+        </button>
+      </div>
+      <div class="analytics-grid two-col matches-insight-content">
         ${createAnalyticsCard('Opponent Quality Plot', 'Win % vs opponent rank buckets with sample size', 'matchesOpponentQualityChart')}
         ${createAnalyticsCard('Round Performance Funnel', 'Round-to-round conversion profile', 'matchesRoundFunnelChart')}
       </div>
     </section>
   `;
+  const sectionEl = dom.playerMatchesInsights.querySelector('.matches-insight-block');
+  const toggleEl = sectionEl?.querySelector('[data-matches-insight-toggle]');
   const opponentEl = dom.playerMatchesInsights.querySelector('#matchesOpponentQualityChart');
   const funnelEl = dom.playerMatchesInsights.querySelector('#matchesRoundFunnelChart');
+  if (toggleEl && sectionEl) {
+    toggleEl.addEventListener('click', () => {
+      state.matchesInsightCollapsed = !state.matchesInsightCollapsed;
+      applyMatchesInsightCollapseState(sectionEl, true);
+    });
+  }
+  applyMatchesInsightCollapseState(sectionEl, false);
   renderOpponentQualityChart(opponentEl, rows);
   renderRoundFunnelChart(funnelEl, rows);
   window.requestAnimationFrame(() => {
     resizePlotIfVisible(opponentEl);
     resizePlotIfVisible(funnelEl);
   });
+}
+
+function applyMatchesInsightCollapseState(sectionEl, resizeCharts = false) {
+  if (!sectionEl) return;
+  const collapsed = !!state.matchesInsightCollapsed;
+  sectionEl.classList.toggle('collapsed', collapsed);
+
+  const toggleEl = sectionEl.querySelector('[data-matches-insight-toggle]');
+  if (!toggleEl) return;
+  toggleEl.setAttribute('aria-expanded', String(!collapsed));
+  toggleEl.setAttribute(
+    'aria-label',
+    collapsed ? 'Show Interactive Match Intelligence charts' : 'Hide Interactive Match Intelligence charts',
+  );
+  const textEl = toggleEl.querySelector('.matches-insight-toggle-text');
+  if (textEl) {
+    textEl.textContent = collapsed ? 'Show' : 'Hide';
+  }
+  const iconEl = toggleEl.querySelector('.matches-insight-toggle-icon');
+  if (iconEl) {
+    iconEl.innerHTML = collapsed ? '&#9660;' : '&#9650;';
+  }
+
+  if (!collapsed && resizeCharts) {
+    const opponentEl = sectionEl.querySelector('#matchesOpponentQualityChart');
+    const funnelEl = sectionEl.querySelector('#matchesRoundFunnelChart');
+    window.requestAnimationFrame(() => {
+      resizePlotIfVisible(opponentEl);
+      resizePlotIfVisible(funnelEl);
+    });
+  }
 }
 
 function renderRankingInsightCharts() {
@@ -3201,7 +3248,7 @@ function init() {
   renderEmptyTable(dom.recordsTable, 'Load data to generate records.');
 
   if (dom.rankingChart) {
-    dom.rankingChart.innerHTML = '<div class="empty-placeholder">Ranking chart will appear here after loading data.</div>';
+    dom.rankingChart.innerHTML = '';
   }
 
   setLoadStatus(`Ready. Manifest expects ${APP_CONFIG.csvManifestPath}; ${APP_CONFIG.liveYear}.csv will refresh online when you load.`);

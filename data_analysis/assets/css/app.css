@@ -477,6 +477,57 @@ select:focus {
   background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
 }
 
+.matches-insight-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.matches-insight-head h4 {
+  margin: 0;
+}
+
+.matches-insight-toggle {
+  border: 1px solid #c7d7ea;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #1d456f;
+  padding: 0.2rem 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.matches-insight-toggle:hover {
+  background: #e1eeff;
+  border-color: #aac4e4;
+}
+
+.matches-insight-toggle:focus-visible {
+  outline: 2px solid #7ea5d5;
+  outline-offset: 2px;
+}
+
+.matches-insight-toggle-icon {
+  font-size: 0.7rem;
+  transform: translateY(-1px);
+}
+
+.matches-insight-block.collapsed .matches-insight-content {
+  display: none;
+}
+
+.matches-insight-block.collapsed {
+  padding-bottom: 0.65rem;
+}
+
 .analytics-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
