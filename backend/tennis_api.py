@@ -3173,7 +3173,17 @@ class TennisDataFetcher:
         cmd = [sys.executable, str(script_path)]
         for arg in args or []:
             cmd.append(str(arg))
-        attempts = 2 if str(label or '').upper().startswith('ATP') else 1
+        is_atp = str(label or '').upper().startswith('ATP')
+        production_mode = not bool(getattr(Config, 'DEBUG', False))
+        # Render-safe behavior:
+        # ATP match scripts can be slow and were timing out on the frontend first.
+        # In production, fail fast and let API routes return cached ATP snapshots.
+        if is_atp and production_mode:
+            attempts = 1
+            effective_timeout = min(max(int(timeout or 35), 10), 35)
+        else:
+            attempts = 2 if is_atp else 1
+            effective_timeout = timeout
         last_error = None
 
         for attempt in range(1, attempts + 1):
@@ -3182,7 +3192,7 @@ class TennisDataFetcher:
                     cmd,
                     capture_output=True,
                     text=True,
-                    timeout=timeout
+                    timeout=effective_timeout
                 )
             except Exception as exc:
                 last_error = exc
