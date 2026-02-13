@@ -225,6 +225,14 @@ def _load_json_list(path):
 def serve_player_image(tour, player_id):
     """Serve player image from local data or redirect"""
     info = image_manager.get_player_info(tour, player_id)
+    if not info:
+        # Render/Gunicorn safety: if worker started before background scan completed
+        # (or index became stale), rebuild once on-demand and retry.
+        try:
+            image_manager.scan_players()
+        except Exception:
+            pass
+        info = image_manager.get_player_info(tour, player_id)
     
     if info:
         if info['type'] == 'local':
