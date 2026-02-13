@@ -8,6 +8,9 @@ const state = {
     tour: 'both',
   },
   openDropdown: null,
+  editingRuleEnabled: true,
+  builderStep: 1,
+  scopeLinkOps: ['all', 'all'],
 };
 
 const COUNTRY_ALPHA3_TO_ALPHA2 = {
@@ -21,17 +24,17 @@ const COUNTRY_ALPHA3_TO_ALPHA2 = {
 const EVENT_TYPE_META = {
   upcoming_match: {
     hint: 'Alert for scheduled matches that satisfy your filters.',
-    scopes: ['categories', 'tournaments', 'players', 'round_filters', 'extra_conditions'],
+    scopes: ['categories', 'tournaments', 'players', 'round_filters'],
     params: [],
   },
   live_match_starts: {
     hint: 'Alert once when a selected match becomes live.',
-    scopes: ['categories', 'tournaments', 'players', 'extra_conditions'],
+    scopes: ['categories', 'tournaments', 'players'],
     params: [],
   },
   set_completed: {
     hint: 'Alert when selected match completes a set threshold.',
-    scopes: ['categories', 'tournaments', 'players', 'extra_conditions'],
+    scopes: ['categories', 'tournaments', 'players', 'round_filters'],
     params: ['set_number'],
   },
   match_result: {
@@ -41,7 +44,7 @@ const EVENT_TYPE_META = {
   },
   upset_alert: {
     hint: 'Alert for result upsets where lower-ranked player beats higher-ranked player.',
-    scopes: ['categories', 'tournaments', 'players', 'extra_conditions'],
+    scopes: ['categories', 'tournaments', 'players'],
     params: ['upset_min_rank_gap'],
   },
   close_match_deciding_set: {
@@ -107,7 +110,6 @@ const el = {
   smtpStatusPill: document.getElementById('smtpStatusPill'),
   schedulerPill: document.getElementById('schedulerPill'),
   emailInput: document.getElementById('emailInput'),
-  enabledInput: document.getElementById('enabledInput'),
   saveSettingsBtn: document.getElementById('saveSettingsBtn'),
   runNowBtn: document.getElementById('runNowBtn'),
   testEmailBtn: document.getElementById('testEmailBtn'),
@@ -122,7 +124,6 @@ const el = {
   roundModeInput: document.getElementById('roundModeInput'),
   roundValueInput: document.getElementById('roundValueInput'),
   conditionGroupInput: document.getElementById('conditionGroupInput'),
-  ruleEnabledInput: document.getElementById('ruleEnabledInput'),
   stepChip1: document.getElementById('stepChip1'),
   stepChip2: document.getElementById('stepChip2'),
   stepChip3: document.getElementById('stepChip3'),
@@ -130,6 +131,12 @@ const el = {
   layerCore: document.getElementById('layerCore'),
   layerScope: document.getElementById('layerScope'),
   layerDelivery: document.getElementById('layerDelivery'),
+  scopeLogicSection: document.getElementById('scopeLogicSection'),
+  scopeFiltersSection: document.getElementById('scopeFiltersSection'),
+  eventParamsSection: document.getElementById('eventParamsSection'),
+  step1ConfirmBtn: document.getElementById('step1ConfirmBtn'),
+  step2NextBtn: document.getElementById('step2NextBtn'),
+  step2SkipBtn: document.getElementById('step2SkipBtn'),
   categoriesInput: document.getElementById('categoriesInput'),
   tournamentsInput: document.getElementById('tournamentsInput'),
   playersInput: document.getElementById('playersInput'),
@@ -155,6 +162,8 @@ const el = {
   timezoneOffsetInput: document.getElementById('timezoneOffsetInput'),
 
   paramSetNumber: document.getElementById('paramSetNumber'),
+  paramSetThresholdRow: document.getElementById('paramSetThresholdRow'),
+  paramSetThresholdButtons: [...document.querySelectorAll('.set-threshold-btn')],
   paramUpsetGap: document.getElementById('paramUpsetGap'),
   paramDecidingMode: document.getElementById('paramDecidingMode'),
   paramRankingMilestone: document.getElementById('paramRankingMilestone'),
@@ -173,6 +182,11 @@ const el = {
   historyContainer: document.getElementById('historyContainer'),
   clearHistoryBtn: document.getElementById('clearHistoryBtn'),
   conditionValueSuggestions: document.getElementById('conditionValueSuggestions'),
+  confirmDialog: document.getElementById('confirmDialog'),
+  confirmDialogTitle: document.getElementById('confirmDialogTitle'),
+  confirmDialogBody: document.getElementById('confirmDialogBody'),
+  confirmCancelBtn: document.getElementById('confirmCancelBtn'),
+  confirmOkBtn: document.getElementById('confirmOkBtn'),
 
   categoriesDropdownBtn: document.getElementById('categoriesDropdownBtn'),
   categoriesDropdown: document.getElementById('categoriesDropdown'),
@@ -186,8 +200,176 @@ const el = {
   paramRivalPlayerDropdown: document.getElementById('paramRivalPlayerDropdown'),
 };
 
+let confirmDialogResolver = null;
+
 function splitCsv(text) {
   return String(text || '').split(',').map((x) => x.trim()).filter(Boolean);
+}
+
+function iso2ToFlagEmoji(iso2) {
+  const value = String(iso2 || '').trim().toUpperCase();
+  if (!/^[A-Z]{2}$/.test(value)) return '';
+  return String.fromCodePoint(value.charCodeAt(0) + 127397, value.charCodeAt(1) + 127397);
+}
+
+function stripLeadingFlagEmoji(text) {
+  return String(text || '').replace(/^[\u{1F1E6}-\u{1F1FF}]{2}\s*/u, '').trim();
+}
+
+function parseTournamentLabel(rawName, rawCountryCode = '') {
+  let name = String(rawName || '').trim();
+  if (!name) return { label: '', flagIso2: '', countryCode: '' };
+
+  let countryCode = String(rawCountryCode || '').trim().toUpperCase();
+  let flagIso2 = countryToIso2(countryCode);
+
+  const prefixedMatch = name.match(/^([A-Za-z]{2,3})\s*,\s*(.+)$/);
+  if (prefixedMatch) {
+    const maybeCountry = prefixedMatch[1].toUpperCase();
+    const maybeIso2 = countryToIso2(maybeCountry);
+    if (maybeIso2) {
+      countryCode = maybeCountry;
+      flagIso2 = maybeIso2;
+      name = prefixedMatch[2].trim();
+    }
+  }
+
+  return { label: name, flagIso2, countryCode };
+}
+
+function normalizeTournamentToken(token) {
+  let value = stripLeadingFlagEmoji(token);
+  value = String(value || '').trim();
+  if (!value) return '';
+
+  const prefixedMatch = value.match(/^([A-Za-z]{2,3})\s*,\s*(.+)$/);
+  if (prefixedMatch && countryToIso2(prefixedMatch[1])) {
+    value = prefixedMatch[2].trim();
+  }
+  return value;
+}
+
+function normalizePlayerToken(token) {
+  let value = stripLeadingFlagEmoji(token);
+  value = String(value || '').trim();
+  if (!value) return '';
+  const prefixedMatch = value.match(/^([A-Za-z]{2,3})\s*,\s*(.+)$/);
+  if (prefixedMatch) {
+    value = prefixedMatch[2].trim();
+  }
+  return value;
+}
+
+function getBestPlayerMetaByName(name) {
+  const key = normalizeLookup(name);
+  if (!key) return null;
+  let best = null;
+  (state.options.players || []).forEach((item) => {
+    if (normalizeLookup(item.name) !== key) return;
+    if (!best) {
+      best = item;
+      return;
+    }
+    const bestRank = Number.isFinite(best.rank) ? best.rank : 10_000;
+    const nextRank = Number.isFinite(item.rank) ? item.rank : 10_000;
+    const bestHasImage = best.image_url ? 1 : 0;
+    const nextHasImage = item.image_url ? 1 : 0;
+    if (nextRank < bestRank || (nextRank === bestRank && nextHasImage > bestHasImage)) {
+      best = item;
+    }
+  });
+  return best;
+}
+
+function formatPlayerDisplayToken(token) {
+  const cleanName = normalizePlayerToken(token);
+  if (!cleanName) return '';
+  const meta = getBestPlayerMetaByName(cleanName);
+  const flagIso2 = countryToIso2(meta?.country || '');
+  const flag = iso2ToFlagEmoji(flagIso2);
+  return flag ? `${flag} ${cleanName}` : cleanName;
+}
+
+function canonicalizeToken(value, kind = '') {
+  if (kind === 'tournaments') return normalizeLookup(normalizeTournamentToken(value));
+  if (kind === 'players') return normalizeLookup(normalizePlayerToken(value));
+  return normalizeLookup(value);
+}
+
+function uniqueCsvTokens(values, kind = '') {
+  const seen = new Set();
+  const out = [];
+  values.forEach((value) => {
+    const token = String(value || '').trim();
+    if (!token) return;
+    const canonical = canonicalizeToken(token, kind);
+    if (!canonical || seen.has(canonical)) return;
+    seen.add(canonical);
+    out.push(token);
+  });
+  return out;
+}
+
+function normalizeTournamentInputDisplay() {
+  if (!el.tournamentsInput) return;
+  const rawTokens = splitCsv(el.tournamentsInput.value);
+  const normalized = [];
+
+  for (let i = 0; i < rawTokens.length; i += 1) {
+    const token = rawTokens[i];
+    const cleanToken = normalizeTournamentToken(token);
+    if (!cleanToken) continue;
+
+    if (/^[A-Za-z]{2,3}$/.test(cleanToken) && i + 1 < rawTokens.length) {
+      const iso2 = countryToIso2(cleanToken);
+      const nextName = normalizeTournamentToken(rawTokens[i + 1]);
+      if (iso2 && nextName) {
+        const flag = iso2ToFlagEmoji(iso2);
+        normalized.push(flag ? `${flag} ${nextName}` : nextName);
+        i += 1;
+        continue;
+      }
+    }
+
+    normalized.push(cleanToken);
+  }
+
+  const deduped = uniqueCsvTokens(normalized, 'tournaments');
+  const nextValue = deduped.join(', ');
+  if (nextValue !== el.tournamentsInput.value) {
+    el.tournamentsInput.value = nextValue;
+  }
+}
+
+function normalizePlayersInputDisplay() {
+  if (!el.playersInput) return;
+  const rawTokens = splitCsv(el.playersInput.value);
+  const normalized = [];
+
+  for (let i = 0; i < rawTokens.length; i += 1) {
+    const token = rawTokens[i];
+    const cleanToken = normalizePlayerToken(token);
+    if (!cleanToken) continue;
+
+    if (cleanToken.length <= 3 && i + 1 < rawTokens.length) {
+      const nextName = normalizePlayerToken(rawTokens[i + 1]);
+      const shortKey = normalizeLookup(cleanToken).replace(/\s+/g, '');
+      const nextKey = normalizeLookup(nextName).replace(/\s+/g, '');
+      if (shortKey && nextKey && nextKey.startsWith(shortKey) && nextName.length > cleanToken.length) {
+        normalized.push(formatPlayerDisplayToken(nextName));
+        i += 1;
+        continue;
+      }
+    }
+
+    normalized.push(formatPlayerDisplayToken(cleanToken));
+  }
+
+  const deduped = uniqueCsvTokens(normalized, 'players');
+  const nextValue = deduped.join(', ');
+  if (nextValue !== el.playersInput.value) {
+    el.playersInput.value = nextValue;
+  }
 }
 
 function parseIntSafe(value, fallback = 0) {
@@ -195,21 +377,49 @@ function parseIntSafe(value, fallback = 0) {
   return Number.isFinite(out) ? out : fallback;
 }
 
-function appendCsvValue(input, value) {
-  const current = splitCsv(input.value);
-  if (!value || current.includes(value)) return;
-  current.push(value);
-  input.value = current.join(', ');
+function appendCsvValue(input, value, kind = '') {
+  if (!value) return;
+  const candidate = String(value).trim();
+  if (!candidate) return;
+
+  const raw = String(input.value || '');
+  const cursor = typeof input.selectionStart === 'number' ? input.selectionStart : raw.length;
+  const left = raw.slice(0, cursor);
+  const right = raw.slice(cursor);
+  const start = left.lastIndexOf(',') + 1;
+  const nextComma = right.indexOf(',');
+  const end = nextComma === -1 ? raw.length : cursor + nextComma;
+
+  const before = splitCsv(raw.slice(0, start));
+  const after = splitCsv(raw.slice(end));
+  const merged = uniqueCsvTokens([...before, candidate, ...after], kind);
+
+  input.value = merged.join(', ');
   input.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
-function isoFlag(countryCode) {
+function countryToIso2(countryCode) {
   const raw = String(countryCode || '').trim().toUpperCase();
-  if (!raw) return '🎾';
+  if (!raw) return '';
   const code = raw.length === 3 ? COUNTRY_ALPHA3_TO_ALPHA2[raw] || '' : raw;
-  if (code.length !== 2) return '🎾';
-  const cps = [...code].map((c) => 127397 + c.charCodeAt(0));
-  return String.fromCodePoint(...cps);
+  if (code.length !== 2) return '';
+  return code.toLowerCase();
+}
+
+function normalizeLookup(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
+}
+
+function getInitials(name) {
+  const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+  if (!parts.length) return '?';
+  return parts.slice(0, 2).map((part) => part[0].toUpperCase()).join('');
 }
 
 function setMessage(target, text, isError = false) {
@@ -224,6 +434,33 @@ function escapeHtml(text) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function closeConfirmDialog(confirmed = false) {
+  if (!el.confirmDialog || !confirmDialogResolver) return;
+  el.confirmDialog.classList.add('is-hidden');
+  document.body.classList.remove('confirm-open');
+  const resolve = confirmDialogResolver;
+  confirmDialogResolver = null;
+  resolve(!!confirmed);
+}
+
+function openDeleteRuleConfirm(ruleName = '') {
+  if (!el.confirmDialog) return Promise.resolve(false);
+  if (confirmDialogResolver) {
+    const resolvePrevious = confirmDialogResolver;
+    confirmDialogResolver = null;
+    resolvePrevious(false);
+  }
+  const safeName = String(ruleName || '').trim() || 'Untitled rule';
+  el.confirmDialogTitle.textContent = `Delete "${safeName}"?`;
+  el.confirmDialogBody.textContent = 'This permanently removes the rule and cannot be undone.';
+  el.confirmDialog.classList.remove('is-hidden');
+  document.body.classList.add('confirm-open');
+  el.confirmCancelBtn.focus();
+  return new Promise((resolve) => {
+    confirmDialogResolver = resolve;
+  });
 }
 
 async function api(path, options = {}) {
@@ -248,8 +485,14 @@ function debounce(fn, wait = 220) {
 }
 
 function getTokenForInput(inputEl) {
-  const parts = String(inputEl.value || '').split(',');
-  return parts[parts.length - 1].trim().toLowerCase();
+  const raw = String(inputEl?.value || '');
+  const cursor = typeof inputEl?.selectionStart === 'number' ? inputEl.selectionStart : raw.length;
+  const left = raw.slice(0, cursor);
+  const right = raw.slice(cursor);
+  const start = left.lastIndexOf(',') + 1;
+  const nextComma = right.indexOf(',');
+  const end = nextComma === -1 ? raw.length : cursor + nextComma;
+  return raw.slice(start, end).trim().toLowerCase();
 }
 
 function setConditionSuggestionList(values = []) {
@@ -349,7 +592,6 @@ function toggleGroup(node, enabled) {
   if (!node) return;
   node.classList.toggle('disabled', !enabled);
   node.querySelectorAll('input, select, textarea, button').forEach((ctrl) => {
-    if (ctrl.id === 'ruleEnabledInput') return;
     ctrl.disabled = !enabled;
   });
 }
@@ -365,6 +607,33 @@ function setStepChipState(node, { active = false, completed = false } = {}) {
   node.classList.toggle('completed', !!completed);
 }
 
+function setLayerState(node, state = 'pending') {
+  if (!node) return;
+  node.classList.toggle('is-current', state === 'current');
+  node.classList.toggle('is-completed', state === 'completed');
+}
+
+function syncScopeLinkUi({ notify = true } = {}) {
+  const toggles = [...document.querySelectorAll('.scope-link-toggle')];
+  toggles.forEach((toggleEl, index) => {
+    const op = state.scopeLinkOps[index] === 'any' ? 'any' : 'all';
+    toggleEl.querySelectorAll('.scope-link-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.value === op);
+    });
+  });
+  const merged = state.scopeLinkOps.includes('any') ? 'any' : 'all';
+  if (el.conditionGroupInput) {
+    el.conditionGroupInput.value = merged;
+    if (notify) el.conditionGroupInput.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
+
+function resetScopeLinkOps(mode = 'all', { notify = true } = {}) {
+  const normalized = mode === 'any' ? 'any' : 'all';
+  state.scopeLinkOps = [normalized, normalized];
+  syncScopeLinkUi({ notify });
+}
+
 function summarizeMissing(values) {
   const unique = [...new Set(values.filter(Boolean))];
   if (!unique.length) return '';
@@ -372,17 +641,85 @@ function summarizeMissing(values) {
   return `${unique.slice(0, 3).join(', ')} +${unique.length - 3} more`;
 }
 
+function normalizeBuilderStep(value) {
+  const step = parseIntSafe(value, 1);
+  if (step < 1) return 1;
+  if (step > 3) return 3;
+  return step;
+}
+
+function scrollToBuilderStep(step) {
+  const map = {
+    1: el.layerCore,
+    2: el.layerScope,
+    3: el.layerDelivery,
+  };
+  const node = map[normalizeBuilderStep(step)];
+  if (!node || node.classList.contains('is-hidden')) return;
+  node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function setBuilderStep(nextStep, { scroll = false } = {}) {
+  state.builderStep = normalizeBuilderStep(nextStep);
+  updateGuidedFlowUi();
+  if (scroll) scrollToBuilderStep(state.builderStep);
+}
+
 function updateRoundUi() {
   const mode = el.roundModeInput.value;
   const anyMode = mode === 'any';
+  const roundValueRow = el.roundValueInput.closest('.field-row');
   if (anyMode) el.roundValueInput.value = '';
+  el.roundValueInput.disabled = anyMode;
   el.roundValueInput.classList.toggle('soft-disabled', anyMode);
+  if (roundValueRow) roundValueRow.classList.toggle('soft-disabled-row', anyMode);
   updateGuidedFlowUi();
+}
+
+function updateSetThresholdUi() {
+  const selected = parseIntSafe(el.paramSetNumber?.value, 1);
+  (el.paramSetThresholdButtons || []).forEach((btn) => {
+    const value = parseIntSafe(btn.dataset.setValue, 0);
+    btn.classList.toggle('active', value > 0 && value <= selected);
+    btn.setAttribute('aria-pressed', value > 0 && value <= selected ? 'true' : 'false');
+  });
+}
+
+function setSetThreshold(value, { notify = true } = {}) {
+  const threshold = Math.min(5, Math.max(1, parseIntSafe(value, 1)));
+  if (el.paramSetNumber) {
+    el.paramSetNumber.value = String(threshold);
+  }
+  updateSetThresholdUi();
+  if (notify) updateGuidedFlowUi();
 }
 
 function updateQuietHoursUi() {
   const enabled = !!el.quietHoursEnabledInput.checked;
   document.querySelectorAll('.quiet-hours-group').forEach((node) => toggleGroup(node, enabled));
+}
+
+function hasEnabledChildren(rootNode, selector) {
+  if (!rootNode) return false;
+  return [...rootNode.querySelectorAll(selector)].some((node) => !node.classList.contains('disabled'));
+}
+
+function updateScopeSectionVisibility() {
+  setHidden(el.scopeFiltersSection, !hasEnabledChildren(el.scopeFiltersSection, '.scope-group'));
+  setHidden(el.eventParamsSection, !hasEnabledChildren(el.eventParamsSection, '.param-group'));
+}
+
+function updateScopeLinkVisibility() {
+  const link0 = document.querySelector('.scope-link-toggle[data-link-index="0"]')?.closest('.scope-link-box');
+  const link1 = document.querySelector('.scope-link-toggle[data-link-index="1"]')?.closest('.scope-link-box');
+  const catRow = el.categoriesInput?.closest('.field-row');
+  const tourRow = el.tournamentsInput?.closest('.field-row');
+  const playerRow = el.playersInput?.closest('.field-row');
+  const catOn = !!catRow && !catRow.classList.contains('disabled');
+  const tourOn = !!tourRow && !tourRow.classList.contains('disabled');
+  const playerOn = !!playerRow && !playerRow.classList.contains('disabled');
+  setHidden(link0, !(catOn && tourOn));
+  setHidden(link1, !(tourOn && playerOn));
 }
 
 function getRuleBuilderRequiredStatus() {
@@ -438,31 +775,52 @@ function getRuleBuilderRequiredStatus() {
 
 function updateGuidedFlowUi() {
   const status = getRuleBuilderRequiredStatus();
+  const step = normalizeBuilderStep(state.builderStep);
 
-  setHidden(el.layerScope, !status.coreReady);
-  setHidden(el.layerDelivery, !(status.coreReady && status.focusReady));
-  setHidden(el.saveActions, !status.saveReady);
+  setHidden(el.layerScope, step < 2);
+  setHidden(el.layerDelivery, step < 3);
+  setHidden(el.saveActions, step < 3);
 
   if (el.saveRuleBtn) el.saveRuleBtn.disabled = !status.saveReady;
+  if (el.step1ConfirmBtn) el.step1ConfirmBtn.disabled = !status.coreReady;
+  if (el.step2NextBtn) el.step2NextBtn.disabled = !status.focusReady;
 
   setStepChipState(el.stepChip1, {
-    active: !status.coreReady,
-    completed: status.coreReady,
+    active: step === 1,
+    completed: step > 1,
   });
   setStepChipState(el.stepChip2, {
-    active: status.coreReady && !status.focusReady,
-    completed: status.coreReady && status.focusReady,
+    active: step === 2,
+    completed: step > 2,
   });
   setStepChipState(el.stepChip3, {
-    active: status.coreReady && status.focusReady && !status.saveReady,
-    completed: status.saveReady,
+    active: step === 3,
+    completed: step === 3 && status.saveReady,
   });
 
+  if (step === 1) {
+    setLayerState(el.layerCore, 'current');
+    setLayerState(el.layerScope, 'pending');
+    setLayerState(el.layerDelivery, 'pending');
+  } else if (step === 2) {
+    setLayerState(el.layerCore, 'completed');
+    setLayerState(el.layerScope, 'current');
+    setLayerState(el.layerDelivery, 'pending');
+  } else {
+    setLayerState(el.layerCore, 'completed');
+    setLayerState(el.layerScope, 'completed');
+    setLayerState(el.layerDelivery, 'current');
+  }
+
   if (el.builderProgressHint) {
-    if (!status.coreReady) {
-      el.builderProgressHint.textContent = `Step 1: complete required trigger fields (${summarizeMissing(status.coreMissing)}).`;
-    } else if (!status.focusReady) {
-      el.builderProgressHint.textContent = `Step 2: finish required event settings (${summarizeMissing(status.focusMissing)}).`;
+    if (step === 1) {
+      el.builderProgressHint.textContent = status.coreReady
+        ? 'Step 1 ready. Click "Confirm Step 1" to continue.'
+        : `Step 1: complete required trigger fields (${summarizeMissing(status.coreMissing)}).`;
+    } else if (step === 2) {
+      el.builderProgressHint.textContent = status.focusReady
+        ? 'Step 2 ready. Click "Confirm Step 2" to continue, or skip.'
+        : `Step 2: finish required event settings (${summarizeMissing(status.focusMissing)}), then confirm or skip.`;
     } else if (!status.deliveryReady) {
       el.builderProgressHint.textContent = `Step 3: pick at least one delivery channel (${summarizeMissing(status.deliveryMissing)}).`;
     } else {
@@ -471,11 +829,42 @@ function updateGuidedFlowUi() {
   }
 
   if (el.ruleRequiredHint) {
-    const missingAll = [...status.coreMissing, ...status.focusMissing, ...status.deliveryMissing];
+    const missingAll = step === 1
+      ? status.coreMissing
+      : step === 2
+        ? status.focusMissing
+        : [...status.coreMissing, ...status.focusMissing, ...status.deliveryMissing];
     el.ruleRequiredHint.textContent = missingAll.length
       ? `Required now: ${summarizeMissing(missingAll)}.`
       : 'Required fields complete.';
   }
+}
+
+function confirmStep1() {
+  const status = getRuleBuilderRequiredStatus();
+  if (!status.coreReady) {
+    setMessage(el.ruleMessage, `Complete required fields first: ${summarizeMissing(status.coreMissing)}.`, true);
+    updateGuidedFlowUi();
+    return;
+  }
+  setMessage(el.ruleMessage, '');
+  setBuilderStep(2, { scroll: true });
+}
+
+function confirmStep2() {
+  const status = getRuleBuilderRequiredStatus();
+  if (!status.focusReady) {
+    setMessage(el.ruleMessage, `Step 2 still has required fields: ${summarizeMissing(status.focusMissing)}.`, true);
+    updateGuidedFlowUi();
+    return;
+  }
+  setMessage(el.ruleMessage, '');
+  setBuilderStep(3, { scroll: true });
+}
+
+function skipStep2() {
+  setMessage(el.ruleMessage, 'Step 2 skipped. You can still adjust filters later before saving.', false);
+  setBuilderStep(3, { scroll: true });
 }
 
 function updateEventUi() {
@@ -504,6 +893,8 @@ function updateEventUi() {
     el.roundModeInput.value = 'any';
     el.roundValueInput.value = '';
   }
+  updateScopeLinkVisibility();
+  updateScopeSectionVisibility();
   updateRoundUi();
 }
 
@@ -531,7 +922,7 @@ function getRuleParams() {
     deciding_mode: el.paramDecidingMode.value,
     ranking_milestone: el.paramRankingMilestone.value,
     title_target: parseIntSafe(el.paramTitleTarget.value, 1),
-    rival_player: String(el.paramRivalPlayerInput.value || '').trim(),
+    rival_player: normalizePlayerToken(el.paramRivalPlayerInput.value),
     h2h_min_losses: parseIntSafe(el.paramH2HLosses.value, 2),
     surface_value: String(el.paramSurfaceValue.value || '').trim(),
     window_hours: parseIntSafe(el.paramWindowHours.value, 24),
@@ -558,11 +949,15 @@ function getRuleFormPayload() {
     round_mode: activeScopes.has('round_filters') ? el.roundModeInput.value : 'any',
     round_value: activeScopes.has('round_filters') ? el.roundValueInput.value : '',
     condition_group: el.conditionGroupInput.value,
-    enabled: el.ruleEnabledInput.checked,
+    enabled: el.ruleIdInput.value.trim() ? state.editingRuleEnabled : true,
     categories: activeScopes.has('categories') ? splitCsv(el.categoriesInput.value) : [],
-    tournaments: activeScopes.has('tournaments') ? splitCsv(el.tournamentsInput.value) : [],
-    players: activeScopes.has('players') ? splitCsv(el.playersInput.value) : [],
-    tracked_player: activeScopes.has('tracked_player') ? el.trackedPlayerInput.value.trim() : '',
+    tournaments: activeScopes.has('tournaments')
+      ? uniqueCsvTokens(splitCsv(el.tournamentsInput.value).map((token) => normalizeTournamentToken(token)), 'tournaments')
+      : [],
+    players: activeScopes.has('players')
+      ? uniqueCsvTokens(splitCsv(el.playersInput.value).map((token) => normalizePlayerToken(token)), 'players')
+      : [],
+    tracked_player: activeScopes.has('tracked_player') ? normalizePlayerToken(el.trackedPlayerInput.value) : '',
     conditions: activeScopes.has('extra_conditions') ? serializeConditions() : [],
     severity: el.severityInput.value,
     cooldown_minutes: parseIntSafe(el.cooldownInput.value, 0),
@@ -578,14 +973,18 @@ function getRuleFormPayload() {
 function resetRuleForm() {
   el.ruleForm.reset();
   el.ruleIdInput.value = '';
-  el.ruleEnabledInput.checked = true;
+  state.editingRuleEnabled = true;
+  state.builderStep = 1;
+  setSetThreshold(1, { notify: false });
   el.channelEmail.checked = true;
   el.conditionsList.innerHTML = '';
   refreshConditionButtonState();
   closeAllDropdowns();
   setMessage(el.ruleMessage, '');
+  resetScopeLinkOps('all', { notify: false });
   updateQuietHoursUi();
   updateEventUi();
+  updateGuidedFlowUi();
 }
 
 function populateRuleForm(rule) {
@@ -595,12 +994,16 @@ function populateRuleForm(rule) {
   el.tourInput.value = rule.tour || 'both';
   el.roundModeInput.value = rule.round_mode || 'any';
   el.roundValueInput.value = rule.round_value || '';
-  el.conditionGroupInput.value = rule.condition_group || 'all';
-  el.ruleEnabledInput.checked = !!rule.enabled;
+  resetScopeLinkOps(rule.condition_group || 'all', { notify: false });
+  state.editingRuleEnabled = !!rule.enabled;
+  state.builderStep = 3;
   el.categoriesInput.value = (rule.categories || []).join(', ');
   el.tournamentsInput.value = (rule.tournaments || []).join(', ');
   el.playersInput.value = (rule.players || []).join(', ');
   el.trackedPlayerInput.value = rule.tracked_player || '';
+  normalizeTournamentInputDisplay();
+  normalizePlayersInputDisplay();
+  el.trackedPlayerInput.value = formatPlayerDisplayToken(el.trackedPlayerInput.value);
 
   el.severityInput.value = rule.severity || 'normal';
   el.cooldownInput.value = rule.cooldown_minutes || 0;
@@ -616,11 +1019,13 @@ function populateRuleForm(rule) {
 
   const params = rule.params || {};
   el.paramSetNumber.value = String(params.set_number ?? 1);
+  setSetThreshold(el.paramSetNumber.value, { notify: false });
   el.paramUpsetGap.value = String(params.upset_min_rank_gap ?? 20);
   el.paramDecidingMode.value = params.deciding_mode || 'deciding_set';
   el.paramRankingMilestone.value = params.ranking_milestone || 'top_100';
   el.paramTitleTarget.value = String(params.title_target ?? 1);
   el.paramRivalPlayerInput.value = params.rival_player || '';
+  el.paramRivalPlayerInput.value = formatPlayerDisplayToken(el.paramRivalPlayerInput.value);
   el.paramH2HLosses.value = String(params.h2h_min_losses ?? 2);
   el.paramSurfaceValue.value = params.surface_value || '';
   el.paramWindowHours.value = String(params.window_hours ?? 24);
@@ -635,6 +1040,7 @@ function populateRuleForm(rule) {
   refreshConditionButtonState();
   updateQuietHoursUi();
   updateEventUi();
+  updateGuidedFlowUi();
 }
 
 function renderRules() {
@@ -646,7 +1052,7 @@ function renderRules() {
   el.rulesContainer.innerHTML = '';
   state.rules.forEach((rule) => {
     const card = document.createElement('div');
-    card.className = 'rule-card';
+    card.className = `rule-card ${rule.enabled ? 'rule-card-active' : 'rule-card-inactive'}`;
     const tags = [
       rule.event_type,
       rule.tour,
@@ -688,7 +1094,8 @@ function renderRules() {
       }
     });
     card.querySelector('[data-action="delete"]').addEventListener('click', async () => {
-      if (!window.confirm(`Delete rule "${rule.name}"?`)) return;
+      const confirmed = await openDeleteRuleConfirm(rule.name);
+      if (!confirmed) return;
       try {
         await api(`/api/rules/${encodeURIComponent(rule.id)}`, { method: 'DELETE' });
         await loadState();
@@ -728,7 +1135,6 @@ async function loadState() {
   state.rules = data.rules || [];
   state.history = data.history || [];
   el.emailInput.value = data.email || '';
-  el.enabledInput.checked = !!data.enabled;
   renderStatusPills(data);
   renderRules();
   renderHistory();
@@ -765,25 +1171,35 @@ function normalizeOptionItem(raw, kind) {
   if (kind === 'tournaments') {
     const category = raw.category || '';
     const surface = raw.surface || '';
+    const parsed = parseTournamentLabel(raw.name, raw.country);
+    const flagEmoji = iso2ToFlagEmoji(parsed.flagIso2);
+    const displayValue = flagEmoji ? `${flagEmoji} ${parsed.label}` : parsed.label;
     return {
-      label: raw.name,
-      value: raw.name,
+      label: parsed.label,
+      value: displayValue,
+      normalizedValue: parsed.label,
+      flagIso2: parsed.flagIso2,
+      countryCode: parsed.countryCode,
       emoji: '🏟',
       sub: [category, surface].filter(Boolean).join(' · '),
       pill: String(raw.tour || '').toUpperCase(),
     };
   }
   const countryCode = String(raw.country || '').toUpperCase();
-  const flag = isoFlag(countryCode);
+  const flagIso2 = countryToIso2(countryCode);
+  const flagEmoji = iso2ToFlagEmoji(flagIso2);
+  const displayValue = flagEmoji ? `${flagEmoji} ${raw.name}` : raw.name;
   return {
     label: raw.name,
-    value: raw.name,
-    emoji: flag,
-    flag,
+    value: displayValue,
+    normalizedValue: raw.name,
+    flagIso2,
     countryCode,
     sub: `Rank ${raw.rank || '-'} · ${String(raw.tour || '').toUpperCase()}`,
     pill: '',
     image: raw.image_url || '',
+    rank: Number.isFinite(raw.rank) ? raw.rank : null,
+    initials: getInitials(raw.name),
   };
 }
 
@@ -793,12 +1209,57 @@ function getItemsForDropdown(kind, query = '') {
   if (kind === 'categories') items = (state.options.categories || []).map((c) => normalizeOptionItem(c, kind));
   else if (kind === 'tournaments') items = (state.options.tournaments || []).map((t) => normalizeOptionItem(t, kind));
   else items = (state.options.players || []).map((p) => normalizeOptionItem(p, 'players'));
+
+  if (kind === 'tournaments') {
+    const byTournament = new Map();
+    items.forEach((item) => {
+      const key = canonicalizeToken(item.normalizedValue || item.label, 'tournaments');
+      if (!key) return;
+      const current = byTournament.get(key);
+      if (!current) {
+        byTournament.set(key, item);
+        return;
+      }
+      const currentHasFlag = current.flagIso2 ? 1 : 0;
+      const nextHasFlag = item.flagIso2 ? 1 : 0;
+      const currentSubLen = String(current.sub || '').length;
+      const nextSubLen = String(item.sub || '').length;
+      if (nextHasFlag > currentHasFlag || (nextHasFlag === currentHasFlag && nextSubLen > currentSubLen)) {
+        byTournament.set(key, item);
+      }
+    });
+    items = [...byTournament.values()];
+  }
+
+  if (kind === 'players') {
+    const byName = new Map();
+    items.forEach((item) => {
+      const key = normalizeLookup(item.label);
+      if (!key) return;
+      const current = byName.get(key);
+      if (!current) {
+        byName.set(key, item);
+        return;
+      }
+      const currentRank = Number.isFinite(current.rank) ? current.rank : 10_000;
+      const nextRank = Number.isFinite(item.rank) ? item.rank : 10_000;
+      const currentHasImage = current.image ? 1 : 0;
+      const nextHasImage = item.image ? 1 : 0;
+      if (nextRank < currentRank || (nextRank === currentRank && nextHasImage > currentHasImage)) {
+        byName.set(key, item);
+      }
+    });
+    items = [...byName.values()];
+  }
+
   if (!q) return items.slice(0, 40);
-  return items.filter((item) => item.label.toLowerCase().includes(q)).slice(0, 40);
+  return items.filter((item) => normalizeLookup(item.label).includes(normalizeLookup(q))).slice(0, 40);
 }
 
 function renderDropdown(kind, inputEl, panelEl, multi = true) {
-  const query = multi ? getTokenForInput(inputEl) : inputEl.value.trim().toLowerCase();
+  let query = multi ? getTokenForInput(inputEl) : inputEl.value.trim().toLowerCase();
+  if (kind === 'tournaments') query = normalizeTournamentToken(query);
+  if (kind === 'players') query = normalizePlayerToken(query);
   const items = getItemsForDropdown(kind, query);
   const head = `<div class="dropdown-head">${items.length} suggestion${items.length === 1 ? '' : 's'} · ${String(state.options.tour || '').toUpperCase()}</div>`;
   if (!items.length) {
@@ -809,26 +1270,28 @@ function renderDropdown(kind, inputEl, panelEl, multi = true) {
     ${head}
     ${items.map((item, idx) => `
       <button class="dropdown-item ${idx === 0 ? 'active' : ''}" type="button" data-value="${escapeHtml(item.value)}">
-        ${item.image
-          ? `<span class="drop-media">
-              <img class="drop-avatar" src="${escapeHtml(item.image)}" alt="" loading="lazy" onerror="this.style.display='none'; const fb=this.nextElementSibling; if (fb) fb.style.display='inline-flex';">
-              <span class="drop-emoji drop-emoji-fallback">${escapeHtml(item.emoji)}</span>
-            </span>`
-          : `<span class="drop-emoji">${escapeHtml(item.emoji)}</span>`}
+        ${kind === 'players'
+          ? (item.image
+            ? `<span class="drop-media">
+                <img class="drop-avatar" src="${escapeHtml(item.image)}" alt="" loading="lazy" onerror="this.style.display='none'; const fb=this.nextElementSibling; if (fb) fb.style.display='inline-flex';">
+                <span class="drop-initials drop-avatar-fallback">${escapeHtml(item.initials || '?')}</span>
+              </span>`
+            : `<span class="drop-media"><span class="drop-initials">${escapeHtml(item.initials || '?')}</span></span>`)
+          : (kind === 'tournaments' && item.flagIso2
+            ? `<span class="drop-media"><img class="drop-flag-icon" src="https://flagcdn.com/w40/${escapeHtml(item.flagIso2)}.png" srcset="https://flagcdn.com/w80/${escapeHtml(item.flagIso2)}.png 2x" alt="${escapeHtml(item.countryCode || '')}" loading="lazy" onerror="this.style.display='none'; const fb=this.nextElementSibling; if (fb) fb.style.display='inline-flex';"><span class="drop-emoji drop-emoji-fallback">${escapeHtml(item.emoji || '🏟')}</span></span>`
+            : `<span class="drop-emoji">${escapeHtml(item.emoji || '•')}</span>`)}
         <span class="drop-main">
-          <span class="drop-title">${item.flag ? `<span class="drop-title-flag">${escapeHtml(item.flag)}</span>` : ''}${escapeHtml(item.label)}</span>
+          <span class="drop-title">${kind === 'players' && item.flagIso2 ? `<span class="drop-title-flag"><img class="drop-flag-icon" src="https://flagcdn.com/w40/${escapeHtml(item.flagIso2)}.png" srcset="https://flagcdn.com/w80/${escapeHtml(item.flagIso2)}.png 2x" alt="${escapeHtml(item.countryCode || '')}" loading="lazy" onerror="this.style.display='none';"></span>` : ''}${escapeHtml(item.label)}</span>
           <span class="drop-sub">${escapeHtml(item.sub || '')}</span>
         </span>
-        ${item.flag
-          ? `<span class="drop-pill drop-pill-flag" title="${escapeHtml(item.countryCode || '')}">${escapeHtml(item.flag)}</span>`
-          : (item.pill ? `<span class="drop-pill">${escapeHtml(item.pill)}</span>` : '<span></span>')}
+        ${(item.pill ? `<span class="drop-pill">${escapeHtml(item.pill)}</span>` : '<span></span>')}
       </button>
     `).join('')}
   `;
   panelEl.querySelectorAll('.dropdown-item').forEach((btn) => {
     btn.addEventListener('click', () => {
       const value = btn.getAttribute('data-value') || '';
-      if (multi) appendCsvValue(inputEl, value);
+      if (multi) appendCsvValue(inputEl, value, kind);
       else {
         inputEl.value = value;
         inputEl.dispatchEvent(new Event('input', { bubbles: true }));
@@ -876,7 +1339,20 @@ const debouncedSuggestRefresh = debounce(async (kind) => {
   const query = kind === 'categories'
     ? getTokenForInput(inputEl)
     : (kind === 'trackedPlayer' || kind === 'rivalPlayer' ? inputEl.value.trim() : getTokenForInput(inputEl));
-  if (query.length >= 2) await loadOptions(query);
+  const normalizedQuery = kind === 'tournaments'
+    ? normalizeTournamentToken(query)
+    : (kind === 'players' || kind === 'trackedPlayer' || kind === 'rivalPlayer'
+      ? normalizePlayerToken(query)
+      : query);
+
+  // Category suggestions are local/static; do not refresh global options from backend.
+  if (kind === 'categories') {
+    openDropdown(kind);
+    return;
+  }
+
+  if (normalizedQuery.length >= 2) await loadOptions(normalizedQuery);
+  else await loadOptions('');
   openDropdown(kind);
 }, 260);
 
@@ -886,7 +1362,6 @@ async function saveSettings() {
       method: 'POST',
       body: JSON.stringify({
         email: el.emailInput.value.trim(),
-        enabled: el.enabledInput.checked,
       }),
     });
     setMessage(el.settingsMessage, 'Settings saved.');
@@ -975,19 +1450,37 @@ function bindQuickChips() {
 }
 
 function bindDropdown(inputEl, kind, buttonEl) {
-  inputEl.addEventListener('focus', () => openDropdown(kind));
-  inputEl.addEventListener('input', () => debouncedSuggestRefresh(kind));
-  buttonEl.addEventListener('click', async () => {
-    if (state.openDropdown === kind) {
-      closeAllDropdowns();
-      return;
+  inputEl.addEventListener('focus', async () => {
+    if (kind !== 'categories' && (!state.options.players.length || !state.options.tournaments.length)) {
+      await loadOptions('');
     }
-    const query = kind === 'trackedPlayer' || kind === 'rivalPlayer'
-      ? inputEl.value.trim()
-      : getTokenForInput(inputEl);
-    if (query.length >= 2) await loadOptions(query);
     openDropdown(kind);
   });
+  inputEl.addEventListener('click', async () => {
+    if (kind !== 'categories' && (!state.options.players.length || !state.options.tournaments.length)) {
+      await loadOptions('');
+    }
+    openDropdown(kind);
+  });
+  inputEl.addEventListener('input', () => debouncedSuggestRefresh(kind));
+  if (buttonEl) {
+    buttonEl.addEventListener('click', async () => {
+      if (state.openDropdown === kind) {
+        closeAllDropdowns();
+        return;
+      }
+      const query = kind === 'trackedPlayer' || kind === 'rivalPlayer'
+        ? inputEl.value.trim()
+        : getTokenForInput(inputEl);
+      const normalizedQuery = kind === 'tournaments'
+        ? normalizeTournamentToken(query)
+        : (kind === 'players' || kind === 'trackedPlayer' || kind === 'rivalPlayer'
+          ? normalizePlayerToken(query)
+          : query);
+      if (normalizedQuery.length >= 2) await loadOptions(normalizedQuery);
+      openDropdown(kind);
+    });
+  }
 }
 
 function bindEvents() {
@@ -995,12 +1488,43 @@ function bindEvents() {
   el.runNowBtn.addEventListener('click', runNow);
   el.testEmailBtn.addEventListener('click', sendTestEmail);
   el.ruleForm.addEventListener('submit', saveRule);
-  el.resetFormBtn.addEventListener('click', resetRuleForm);
+  if (el.resetFormBtn) el.resetFormBtn.addEventListener('click', resetRuleForm);
   el.clearHistoryBtn.addEventListener('click', clearHistory);
+  if (el.confirmCancelBtn) el.confirmCancelBtn.addEventListener('click', () => closeConfirmDialog(false));
+  if (el.confirmOkBtn) el.confirmOkBtn.addEventListener('click', () => closeConfirmDialog(true));
+  if (el.confirmDialog) {
+    el.confirmDialog.addEventListener('click', (event) => {
+      if (event.target === el.confirmDialog) closeConfirmDialog(false);
+    });
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && confirmDialogResolver) {
+      closeConfirmDialog(false);
+    }
+  });
 
   el.eventTypeInput.addEventListener('change', updateEventUi);
   el.roundModeInput.addEventListener('change', updateRoundUi);
   el.quietHoursEnabledInput.addEventListener('change', updateQuietHoursUi);
+  (el.paramSetThresholdButtons || []).forEach((btn) => {
+    btn.addEventListener('click', () => {
+      setSetThreshold(btn.dataset.setValue);
+    });
+  });
+  if (el.step1ConfirmBtn) el.step1ConfirmBtn.addEventListener('click', confirmStep1);
+  if (el.step2NextBtn) el.step2NextBtn.addEventListener('click', confirmStep2);
+  if (el.step2SkipBtn) el.step2SkipBtn.addEventListener('click', skipStep2);
+  document.querySelectorAll('.scope-link-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const toggle = btn.closest('.scope-link-toggle');
+      if (!toggle) return;
+      const index = Number.parseInt(toggle.dataset.linkIndex || '-1', 10);
+      if (index < 0 || index > 1) return;
+      state.scopeLinkOps[index] = btn.dataset.value === 'any' ? 'any' : 'all';
+      syncScopeLinkUi();
+      updateGuidedFlowUi();
+    });
+  });
   el.tourInput.addEventListener('change', async () => {
     await loadOptions('');
     refreshConditionOptionSources();
@@ -1021,7 +1545,6 @@ function bindEvents() {
 
   const guidedChangeWatch = [
     el.conditionGroupInput,
-    el.ruleEnabledInput,
     el.paramSetNumber,
     el.paramUpsetGap,
     el.paramDecidingMode,
@@ -1052,6 +1575,22 @@ function bindEvents() {
   bindDropdown(el.playersInput, 'players', el.playersDropdownBtn);
   bindDropdown(el.trackedPlayerInput, 'trackedPlayer', el.trackedPlayerDropdownBtn);
   bindDropdown(el.paramRivalPlayerInput, 'rivalPlayer', el.paramRivalPlayerDropdownBtn);
+  if (el.tournamentsInput) {
+    el.tournamentsInput.addEventListener('blur', normalizeTournamentInputDisplay);
+  }
+  if (el.playersInput) {
+    el.playersInput.addEventListener('blur', normalizePlayersInputDisplay);
+  }
+  if (el.trackedPlayerInput) {
+    el.trackedPlayerInput.addEventListener('blur', () => {
+      el.trackedPlayerInput.value = formatPlayerDisplayToken(el.trackedPlayerInput.value);
+    });
+  }
+  if (el.paramRivalPlayerInput) {
+    el.paramRivalPlayerInput.addEventListener('blur', () => {
+      el.paramRivalPlayerInput.value = formatPlayerDisplayToken(el.paramRivalPlayerInput.value);
+    });
+  }
 
   document.addEventListener('click', (event) => {
     if (!event.target.closest('.smart-input-wrap')) closeAllDropdowns();
@@ -1063,5 +1602,6 @@ function bindEvents() {
 (async function init() {
   bindEvents();
   resetRuleForm();
+  resetScopeLinkOps('all', { notify: false });
   await Promise.all([loadState(), loadOptions('')]);
 })();

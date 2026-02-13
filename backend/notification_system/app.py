@@ -3,6 +3,7 @@ import json
 import os
 import smtplib
 import threading
+import unicodedata
 from datetime import datetime, timedelta, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -135,6 +136,22 @@ def normalize_image_url(raw_url: str) -> str:
     if value.startswith('/'):
         return f'{TENNIS_API_ORIGIN}{value}'
     return f'{TENNIS_API_ORIGIN}/{value.lstrip("/")}'
+
+
+def normalize_lookup_token(value: str) -> str:
+    text = unicodedata.normalize('NFKD', str(value or '').strip().lower())
+    text = ''.join(ch for ch in text if not unicodedata.combining(ch))
+    text = ''.join(ch if ch.isalnum() else ' ' for ch in text)
+    return ' '.join(text.split())
+
+
+def category_options_for_tour(tour: str) -> List[str]:
+    selected = str(tour or '').strip().lower()
+    if selected == 'atp':
+        return [c for c in STATIC_CATEGORY_OPTIONS if c == 'grand_slam' or c.startswith('atp_')]
+    if selected == 'wta':
+        return [c for c in STATIC_CATEGORY_OPTIONS if c == 'grand_slam' or c.startswith('wta_')]
+    return list(STATIC_CATEGORY_OPTIONS)
 
 
 def now_iso() -> str:
@@ -1268,13 +1285,10 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
     try:
         store = load_store()
         email = str(store.get('email') or '').strip()
-        enabled = bool(store.get('enabled'))
         rules = [r for r in (store.get('rules') or []) if isinstance(r, dict) and r.get('enabled')]
         rule_state = store.setdefault('rule_state', {}) if isinstance(store.get('rule_state'), dict) else {}
         store['rule_state'] = rule_state
 
-        if not enabled:
-            return {'ok': True, 'message': 'Notification system is disabled.', 'sent': 0, 'matched': 0}
         if not email:
             return {'ok': False, 'message': 'No recipient email configured.', 'sent': 0, 'matched': 0}
 
@@ -1427,7 +1441,7 @@ def api_state():
     store = load_store()
     safe_store = {
         'email': store.get('email', ''),
-        'enabled': bool(store.get('enabled')),
+        'enabled': True,
         'rules': store.get('rules', []),
         'history': (store.get('history') or [])[:80],
         'updated_at': store.get('updated_at'),
@@ -1456,35 +1470,55 @@ def api_options():
         tournaments.extend(loaded.get('tournaments') or [])
         players.extend(_search_players_from_api(t, query, limit=30 if tour != 'both' else 20))
 
+    def _player_sort_rank(item: Dict[str, Any]) -> int:
+        rank = item.get('rank')
+        return rank if isinstance(rank, int) and rank > 0 else 10_000
+
+    def _player_quality_score(item: Dict[str, Any]) -> Tuple[int, int, int, str]:
+        return (
+            _player_sort_rank(item),
+            0 if str(item.get('image_url') or '').strip() else 1,
+            0 if str(item.get('country') or '').strip() else 1,
+            str(item.get('name') or ''),
+        )
+
     def dedupe_players(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        seen = set()
-        out = []
+        best_by_key: Dict[str, Dict[str, Any]] = {}
         for item in items:
-            key = str(item.get('name') or '').strip().lower()
-            if not key or key in seen:
+            key = normalize_lookup_token(item.get('name') or '')
+            if not key:
                 continue
-            seen.add(key)
-            out.append(item)
-        return out
+            current = best_by_key.get(key)
+            if current is None or _player_quality_score(item) < _player_quality_score(current):
+                best_by_key[key] = item
+        return list(best_by_key.values())
 
     def dedupe_tournaments(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        seen = set()
-        out = []
+        best_by_key: Dict[str, Dict[str, Any]] = {}
         for item in items:
             name = str(item.get('name') or '').strip()
-            key = name.lower()
-            if not key or key in seen:
+            key = normalize_lookup_token(name)
+            if not key:
                 continue
-            seen.add(key)
-            out.append(item)
-        return out
+            current = best_by_key.get(key)
+            if current is None:
+                best_by_key[key] = item
+                continue
+            current_category = str(current.get('category') or '').strip()
+            current_surface = str(current.get('surface') or '').strip()
+            next_category = str(item.get('category') or '').strip()
+            next_surface = str(item.get('surface') or '').strip()
+            if (not current_category and next_category) or (not current_surface and next_surface):
+                best_by_key[key] = item
+        return list(best_by_key.values())
 
     players = dedupe_players(players)
     tournaments = dedupe_tournaments(tournaments)
 
     if query:
-        players = [p for p in players if query in str(p.get('name') or '').lower()]
-        tournaments = [t for t in tournaments if query in str(t.get('name') or '').lower()]
+        query_key = normalize_lookup_token(query)
+        players = [p for p in players if query_key in normalize_lookup_token(p.get('name') or '')]
+        tournaments = [t for t in tournaments if query_key in normalize_lookup_token(t.get('name') or '')]
 
     players = sorted(
         players,
@@ -1500,7 +1534,7 @@ def api_options():
         'data': {
             'tour': tour,
             'query': query,
-            'categories': STATIC_CATEGORY_OPTIONS,
+            'categories': category_options_for_tour(tour),
             'players': players,
             'tournaments': tournaments,
             'event_types': sorted(ALLOWED_EVENT_TYPES),
@@ -1517,12 +1551,11 @@ def api_options():
 def api_settings_update():
     payload = request.get_json(silent=True) or {}
     email = str(payload.get('email') or '').strip()
-    enabled = bool(payload.get('enabled', False))
 
     store = load_store()
     store['email'] = email
-    store['enabled'] = enabled
-    append_history(store, 'info', 'Settings updated.', {'email': email, 'enabled': enabled})
+    store['enabled'] = True
+    append_history(store, 'info', 'Settings updated.', {'email': email, 'enabled': True})
     save_store(store)
     return jsonify({'success': True, 'message': 'Settings saved.'})
 

@@ -31,14 +31,8 @@
           <label for="emailInput">Recipient Email</label>
           <input id="emailInput" type="email" placeholder="you@example.com">
         </div>
-        <div class="field-row inline">
-          <label class="checkbox-wrap">
-            <input id="enabledInput" type="checkbox">
-            <span>Enable automatic notifications</span>
-          </label>
-        </div>
         <div class="actions">
-          <button id="saveSettingsBtn" class="btn primary with-tip" data-tip="Save recipient + automation status.">Save Settings</button>
+          <button id="saveSettingsBtn" class="btn primary with-tip" data-tip="Save recipient email and delivery setup.">Save Settings</button>
           <button id="runNowBtn" class="btn with-tip" data-tip="Run all enabled rules immediately and send matching notifications.">Run Rules Now</button>
           <button id="testEmailBtn" class="btn with-tip" data-tip="Send a sample email to confirm SMTP is working.">Send Test Email</button>
         </div>
@@ -58,7 +52,7 @@
           </div>
           <div class="tip-card">
             <h3>3. Go Live</h3>
-            <p>Save, test email, then enable automatic notifications.</p>
+            <p>Save and test email. Active rules run automatically.</p>
           </div>
         </div>
       </article>
@@ -67,10 +61,10 @@
     <section class="card rule-builder-card">
       <div class="card-head">
         <h2>Rule Builder</h2>
-        <span class="muted">Intuitive builder with suggestions and hover help.</span>
       </div>
       <form id="ruleForm" class="rule-form" novalidate>
         <input id="ruleIdInput" type="hidden">
+        <input id="conditionGroupInput" type="hidden" value="all">
 
         <div class="step-flow" aria-label="Rule builder flow">
           <div id="stepChip1" class="step-chip active"><span>1</span>Core Trigger</div>
@@ -83,7 +77,7 @@
 
         <div id="layerCore" class="builder-layer">
           <div class="section-title">Core Trigger <span class="field-status required">Required</span></div>
-          <div class="grid three-col">
+          <div class="grid three-col core-trigger-grid">
             <div class="field-row">
               <label for="ruleNameInput">Rule Name <span class="field-status required">Required</span></label>
               <input id="ruleNameInput" type="text" placeholder="Example: ATP Finals + SF and above" required>
@@ -117,196 +111,201 @@
               </select>
             </div>
           </div>
+          <div class="wizard-actions">
+            <button id="step1ConfirmBtn" type="button" class="btn primary">✓ Confirm Step 1</button>
+          </div>
         </div>
 
         <div id="layerScope" class="builder-layer is-hidden">
           <div class="section-title">Scope & Event Settings <span class="field-status conditional">Required/Optional</span></div>
 
-          <div class="grid three-col">
-            <div class="field-row scope-group" data-scope="round_filters">
-              <label for="roundModeInput">Round Filter Mode <span class="field-status optional">Optional</span></label>
-              <select id="roundModeInput">
-                <option value="any">Any Round</option>
-                <option value="min">Round or Above</option>
-                <option value="exact">Exact Round</option>
-              </select>
-            </div>
-            <div class="field-row scope-group" data-scope="round_filters">
-              <label for="roundValueInput">Round Value <span class="field-status conditional">Required for Min/Exact</span></label>
-              <select id="roundValueInput">
-                <option value="">🎯 Optional</option>
-                <option value="R128">R128 · Round of 128</option>
-                <option value="R64">R64 · Round of 64</option>
-                <option value="R32">R32 · Round of 32</option>
-                <option value="R16">R16 · Round of 16</option>
-                <option value="QF">QF · Quarterfinal</option>
-                <option value="SF">SF · Semifinal</option>
-                <option value="F">F · Final</option>
-              </select>
-            </div>
-            <div class="field-row">
-              <label for="conditionGroupInput">Condition Group <span class="field-status optional">Optional</span></label>
-              <select id="conditionGroupInput">
-                <option value="all">All filters (AND)</option>
-                <option value="any">Any filter (OR)</option>
-              </select>
-            </div>
-            <div class="field-row">
-              <label class="checkbox-wrap compact">
-                <input id="ruleEnabledInput" type="checkbox" checked>
-                <span>Rule enabled</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="section-title">Scope Filters <span class="field-status optional">Optional</span></div>
-          <div class="grid three-col">
-            <div class="field-row scope-group" data-scope="categories">
-              <label for="categoriesInput">Tournament Categories <span class="field-status optional">Optional</span></label>
-              <div class="smart-input-wrap">
-                <input id="categoriesInput" type="text" autocomplete="off" placeholder="grand_slam, atp_1000, wta_500">
-                <button id="categoriesDropdownBtn" class="smart-toggle with-tip" data-tip="Pick category filters. You can select multiple." type="button">▾</button>
-                <div id="categoriesDropdown" class="smart-dropdown"></div>
+          <div id="scopeLogicSection" class="ghost-section">
+            <div class="ghost-heading">Trigger Logic</div>
+            <div class="grid two-col trigger-logic-grid">
+              <div class="field-row scope-group" data-scope="round_filters">
+                <label for="roundModeInput">Round Filter Mode <span class="field-status optional">Optional</span></label>
+                <select id="roundModeInput">
+                  <option value="any">Any Round</option>
+                  <option value="min">Round or Above</option>
+                  <option value="exact">Exact Round</option>
+                </select>
               </div>
-              <div class="chip-row">
-                <button type="button" class="chip quick-chip" data-target="categoriesInput" data-value="grand_slam">grand_slam</button>
-                <button type="button" class="chip quick-chip" data-target="categoriesInput" data-value="atp_1000">atp_1000</button>
-                <button type="button" class="chip quick-chip" data-target="categoriesInput" data-value="wta_1000">wta_1000</button>
-                <button type="button" class="chip quick-chip" data-target="categoriesInput" data-value="atp_500">atp_500</button>
-                <button type="button" class="chip quick-chip" data-target="categoriesInput" data-value="wta_500">wta_500</button>
-              </div>
-            </div>
-            <div class="field-row scope-group" data-scope="tournaments">
-              <label for="tournamentsInput">Specific Tournaments <span class="field-status optional">Optional</span></label>
-              <div class="smart-input-wrap">
-                <input id="tournamentsInput" type="text" autocomplete="off" placeholder="Australian Open, Indian Wells">
-                <button id="tournamentsDropdownBtn" class="smart-toggle with-tip" data-tip="Tour-based tournament suggestions." type="button">▾</button>
-                <div id="tournamentsDropdown" class="smart-dropdown"></div>
-              </div>
-            </div>
-            <div class="field-row scope-group" data-scope="players">
-              <label for="playersInput">Players <span class="field-status optional">Optional</span></label>
-              <div class="smart-input-wrap">
-                <input id="playersInput" type="text" autocomplete="off" placeholder="Carlos Alcaraz, Iga Swiatek">
-                <button id="playersDropdownBtn" class="smart-toggle with-tip" data-tip="Type to search ATP/WTA players with flags and images." type="button">▾</button>
-                <div id="playersDropdown" class="smart-dropdown"></div>
+              <div class="field-row scope-group" data-scope="round_filters">
+                <label for="roundValueInput">Round Value <span class="field-status conditional">Required for Min/Exact</span></label>
+                <select id="roundValueInput">
+                  <option value="">🎯 Optional</option>
+                  <option value="R128">R128 · Round of 128</option>
+                  <option value="R64">R64 · Round of 64</option>
+                  <option value="R32">R32 · Round of 32</option>
+                  <option value="R16">R16 · Round of 16</option>
+                  <option value="QF">QF · Quarterfinal</option>
+                  <option value="SF">SF · Semifinal</option>
+                  <option value="F">F · Final</option>
+                </select>
               </div>
             </div>
           </div>
 
-          <div class="grid two-col">
-            <div id="trackedPlayerField" class="field-row scope-group" data-scope="tracked_player">
-              <label for="trackedPlayerInput">Tracked Player <span class="field-status conditional">Conditional</span></label>
-              <div class="smart-input-wrap">
-                <input id="trackedPlayerInput" type="text" autocomplete="off" placeholder="Optional: Novak Djokovic">
-                <button id="trackedPlayerDropdownBtn" class="smart-toggle with-tip" data-tip="Single player for player-round alerts." type="button">▾</button>
-                <div id="trackedPlayerDropdown" class="smart-dropdown"></div>
+          <div id="scopeFiltersSection" class="ghost-section">
+            <div class="ghost-heading">Scope Filters</div>
+            <div class="scope-filter-logic-row">
+              <div class="field-row scope-group" data-scope="categories">
+                <label for="categoriesInput">Tournament Categories <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Tip: use commas to add multiple categories. Example: grand_slam, atp_1000, wta_500">i</span></label>
+                <div class="smart-input-wrap">
+                  <input id="categoriesInput" type="text" autocomplete="off" placeholder="grand_slam, atp_1000, wta_500">
+                  <div id="categoriesDropdown" class="smart-dropdown"></div>
+                </div>
+              </div>
+              <div class="scope-link-box">
+                <span class="scope-link-label">Logic</span>
+                <div class="scope-link-toggle" data-link-index="0">
+                  <button type="button" class="scope-link-btn active" data-value="all">AND</button>
+                  <button type="button" class="scope-link-btn" data-value="any">OR</button>
+                </div>
+              </div>
+              <div class="field-row scope-group" data-scope="tournaments">
+                <label for="tournamentsInput">Specific Tournaments <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Tip: use commas to add multiple tournaments. Example: Australian Open, Indian Wells">i</span></label>
+                <div class="smart-input-wrap">
+                  <input id="tournamentsInput" type="text" autocomplete="off" placeholder="Australian Open, Indian Wells">
+                  <div id="tournamentsDropdown" class="smart-dropdown"></div>
+                </div>
+              </div>
+              <div class="scope-link-box">
+                <span class="scope-link-label">Logic</span>
+                <div class="scope-link-toggle" data-link-index="1">
+                  <button type="button" class="scope-link-btn active" data-value="all">AND</button>
+                  <button type="button" class="scope-link-btn" data-value="any">OR</button>
+                </div>
+              </div>
+              <div class="field-row scope-group" data-scope="players">
+                <label for="playersInput">Players <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Tip: use commas to add multiple players. Example: Novak Djokovic, Iga Swiatek">i</span></label>
+                <div class="smart-input-wrap">
+                  <input id="playersInput" type="text" autocomplete="off" placeholder="Carlos Alcaraz, Iga Swiatek">
+                  <div id="playersDropdown" class="smart-dropdown"></div>
+                </div>
               </div>
             </div>
-            <div class="field-row scope-group" data-scope="extra_conditions">
-              <label>Extra Filters (max 3) <span class="field-status optional">Optional</span></label>
-              <div id="conditionsList" class="condition-list"></div>
-              <button id="addConditionBtn" type="button" class="btn small with-tip" data-tip="Add advanced condition like surface, player name, or round rank.">+ Add Filter</button>
+
+            <div class="grid two-col">
+              <div id="trackedPlayerField" class="field-row scope-group" data-scope="tracked_player">
+                <label for="trackedPlayerInput">Tracked Player <span class="field-status conditional">Conditional</span></label>
+                <div class="smart-input-wrap">
+                  <input id="trackedPlayerInput" type="text" autocomplete="off" placeholder="Optional: Novak Djokovic">
+                  <div id="trackedPlayerDropdown" class="smart-dropdown"></div>
+                </div>
+              </div>
+              <div class="field-row scope-group" data-scope="extra_conditions">
+                <label>Extra Filters (max 3) <span class="field-status optional">Optional</span></label>
+                <div id="conditionsList" class="condition-list"></div>
+                <button id="addConditionBtn" type="button" class="btn small with-tip" data-tip="Add advanced condition like surface, player name, or round rank.">+ Add Filter</button>
+              </div>
             </div>
           </div>
 
-          <div class="section-title">Event Parameters <span class="field-status conditional">Depends on Event Type</span></div>
-          <div id="eventParamsGrid" class="grid three-col">
-            <div class="field-row param-group" data-param="set_number">
-              <label for="paramSetNumber">Set Number <span class="field-status optional">Optional</span></label>
-              <select id="paramSetNumber">
-                <option value="1">Set 1</option>
-                <option value="2">Set 2</option>
-                <option value="3">Set 3</option>
-                <option value="4">Set 4</option>
-                <option value="5">Set 5</option>
-              </select>
-            </div>
-            <div class="field-row param-group" data-param="upset_min_rank_gap">
-              <label for="paramUpsetGap">Min Rank Gap <span class="field-status optional">Optional</span></label>
-              <select id="paramUpsetGap">
-                <option value="10">10</option>
-                <option value="20" selected>20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-              </select>
-            </div>
-            <div class="field-row param-group" data-param="deciding_mode">
-              <label for="paramDecidingMode">Close-Match Mode <span class="field-status optional">Optional</span></label>
-              <select id="paramDecidingMode">
-                <option value="deciding_set">Deciding Set</option>
-                <option value="third_or_fifth">Third or Fifth Set</option>
-                <option value="tiebreak">Any Tiebreak Set</option>
-              </select>
-            </div>
-            <div class="field-row param-group" data-param="ranking_milestone">
-              <label for="paramRankingMilestone">Ranking Milestone <span class="field-status optional">Optional</span></label>
-              <select id="paramRankingMilestone">
-                <option value="top_100">Top 100</option>
-                <option value="top_50">Top 50</option>
-                <option value="top_20">Top 20</option>
-                <option value="top_10">Top 10</option>
-                <option value="career_high">Career High</option>
-              </select>
-            </div>
-            <div class="field-row param-group" data-param="title_target">
-              <label for="paramTitleTarget">Title Target <span class="field-status optional">Optional</span></label>
-              <input id="paramTitleTarget" type="number" min="1" max="200" value="1">
-            </div>
-            <div class="field-row param-group" data-param="rival_player">
-              <label for="paramRivalPlayerInput">Rival Player <span class="field-status required">Required</span></label>
-              <div class="smart-input-wrap">
-                <input id="paramRivalPlayerInput" type="text" autocomplete="off" placeholder="Type rival name">
-                <button id="paramRivalPlayerDropdownBtn" class="smart-toggle" type="button">▾</button>
-                <div id="paramRivalPlayerDropdown" class="smart-dropdown"></div>
+          <div id="eventParamsSection" class="ghost-section">
+            <div class="ghost-heading">Event Parameters</div>
+            <div id="eventParamsGrid" class="grid three-col">
+              <div class="field-row param-group" data-param="set_number">
+                <label for="paramSetNumber">Set Number <span class="field-status optional">Optional</span></label>
+                <input id="paramSetNumber" type="hidden" value="1">
+                <div id="paramSetThresholdRow" class="set-threshold-row" role="group" aria-label="Completed set threshold">
+                  <button type="button" class="set-threshold-btn" data-set-value="1">1</button>
+                  <button type="button" class="set-threshold-btn" data-set-value="2">2</button>
+                  <button type="button" class="set-threshold-btn" data-set-value="3">3</button>
+                  <button type="button" class="set-threshold-btn" data-set-value="4">4</button>
+                  <button type="button" class="set-threshold-btn" data-set-value="5">5</button>
+                </div>
+                <p class="hint-text">Select one or more boxes. 1 + 2 means alert when 2 sets are completed.</p>
+              </div>
+              <div class="field-row param-group" data-param="upset_min_rank_gap">
+                <label for="paramUpsetGap">Min Rank Gap <span class="field-status optional">Optional</span></label>
+                <select id="paramUpsetGap">
+                  <option value="10">10</option>
+                  <option value="20" selected>20</option>
+                  <option value="30">30</option>
+                  <option value="40">40</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+              <div class="field-row param-group" data-param="deciding_mode">
+                <label for="paramDecidingMode">Close-Match Mode <span class="field-status optional">Optional</span></label>
+                <select id="paramDecidingMode">
+                  <option value="deciding_set">Deciding Set</option>
+                  <option value="third_or_fifth">Third or Fifth Set</option>
+                  <option value="tiebreak">Any Tiebreak Set</option>
+                </select>
+              </div>
+              <div class="field-row param-group" data-param="ranking_milestone">
+                <label for="paramRankingMilestone">Ranking Milestone <span class="field-status optional">Optional</span></label>
+                <select id="paramRankingMilestone">
+                  <option value="top_100">Top 100</option>
+                  <option value="top_50">Top 50</option>
+                  <option value="top_20">Top 20</option>
+                  <option value="top_10">Top 10</option>
+                  <option value="career_high">Career High</option>
+                </select>
+              </div>
+              <div class="field-row param-group" data-param="title_target">
+                <label for="paramTitleTarget">Title Target <span class="field-status optional">Optional</span></label>
+                <input id="paramTitleTarget" type="number" min="1" max="200" value="1">
+              </div>
+              <div class="field-row param-group" data-param="rival_player">
+                <label for="paramRivalPlayerInput">Rival Player <span class="field-status required">Required</span></label>
+                <div class="smart-input-wrap">
+                  <input id="paramRivalPlayerInput" type="text" autocomplete="off" placeholder="Type rival name">
+                  <div id="paramRivalPlayerDropdown" class="smart-dropdown"></div>
+                </div>
+              </div>
+              <div class="field-row param-group" data-param="h2h_min_losses">
+                <label for="paramH2HLosses">Min Prior H2H Losses <span class="field-status optional">Optional</span></label>
+                <select id="paramH2HLosses">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="field-row param-group" data-param="surface_value">
+                <label for="paramSurfaceValue">Surface <span class="field-status required">Required</span></label>
+                <select id="paramSurfaceValue">
+                  <option value="">Select surface</option>
+                  <option value="hard">Hard</option>
+                  <option value="clay">Clay</option>
+                  <option value="grass">Grass</option>
+                  <option value="indoor">Indoor</option>
+                  <option value="carpet">Carpet</option>
+                </select>
+              </div>
+              <div class="field-row param-group" data-param="window_hours">
+                <label for="paramWindowHours">Window Hours <span class="field-status optional">Optional</span></label>
+                <select id="paramWindowHours">
+                  <option value="2">2 Hours</option>
+                  <option value="6">6 Hours</option>
+                  <option value="12">12 Hours</option>
+                  <option value="24" selected>24 Hours</option>
+                  <option value="48">48 Hours</option>
+                </select>
               </div>
             </div>
-            <div class="field-row param-group" data-param="h2h_min_losses">
-              <label for="paramH2HLosses">Min Prior H2H Losses <span class="field-status optional">Optional</span></label>
-              <select id="paramH2HLosses">
-                <option value="1">1</option>
-                <option value="2" selected>2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>
-            <div class="field-row param-group" data-param="surface_value">
-              <label for="paramSurfaceValue">Surface <span class="field-status required">Required</span></label>
-              <select id="paramSurfaceValue">
-                <option value="">Select surface</option>
-                <option value="hard">Hard</option>
-                <option value="clay">Clay</option>
-                <option value="grass">Grass</option>
-                <option value="indoor">Indoor</option>
-                <option value="carpet">Carpet</option>
-              </select>
-            </div>
-            <div class="field-row param-group" data-param="window_hours">
-              <label for="paramWindowHours">Window Hours <span class="field-status optional">Optional</span></label>
-              <select id="paramWindowHours">
-                <option value="2">2 Hours</option>
-                <option value="6">6 Hours</option>
-                <option value="12">12 Hours</option>
-                <option value="24" selected>24 Hours</option>
-                <option value="48">48 Hours</option>
-              </select>
+
+            <div class="grid two-col">
+              <div class="field-row param-group" data-param="stage_rounds">
+                <label>Tournament Stages <span class="field-status required">Required</span></label>
+                <div class="inline-check-row">
+                  <label class="checkbox-wrap"><input id="paramStageQF" type="checkbox" checked><span>QF</span></label>
+                  <label class="checkbox-wrap"><input id="paramStageSF" type="checkbox" checked><span>SF</span></label>
+                  <label class="checkbox-wrap"><input id="paramStageF" type="checkbox" checked><span>F</span></label>
+                </div>
+              </div>
+              <div class="field-row param-group" data-param="emit_on_first_seen">
+                <label class="checkbox-wrap compact"><input id="paramEmitFirstSeen" type="checkbox" checked><span>Trigger immediately if milestone already met</span></label>
+              </div>
             </div>
           </div>
-
-          <div class="grid two-col">
-            <div class="field-row param-group" data-param="stage_rounds">
-              <label>Tournament Stages <span class="field-status required">Required</span></label>
-              <div class="inline-check-row">
-                <label class="checkbox-wrap"><input id="paramStageQF" type="checkbox" checked><span>QF</span></label>
-                <label class="checkbox-wrap"><input id="paramStageSF" type="checkbox" checked><span>SF</span></label>
-                <label class="checkbox-wrap"><input id="paramStageF" type="checkbox" checked><span>F</span></label>
-              </div>
-            </div>
-            <div class="field-row param-group" data-param="emit_on_first_seen">
-              <label class="checkbox-wrap compact"><input id="paramEmitFirstSeen" type="checkbox" checked><span>Trigger immediately if milestone already met</span></label>
-            </div>
+          <div class="wizard-actions">
+            <button id="step2NextBtn" type="button" class="btn primary">✓ Confirm Step 2</button>
+            <button id="step2SkipBtn" type="button" class="btn">Skip to Step 3</button>
           </div>
         </div>
 
@@ -336,8 +335,8 @@
             </div>
           </div>
 
-          <div class="grid three-col">
-            <div class="field-row">
+          <div class="grid quiet-hours-grid">
+            <div class="field-row quiet-toggle-cell">
               <label class="checkbox-wrap compact">
                 <input id="quietHoursEnabledInput" type="checkbox">
                 <span>Quiet Hours Enabled</span>
@@ -361,8 +360,6 @@
                 <option value="8">08:00</option>
               </select>
             </div>
-          </div>
-          <div class="grid three-col">
             <div class="field-row quiet-hours-group">
               <label for="timezoneOffsetInput">Timezone Offset <span class="field-status optional">Optional</span></label>
               <select id="timezoneOffsetInput">
@@ -377,9 +374,6 @@
         </div>
 
         <p id="ruleRequiredHint" class="feedback hint-text"></p>
-        <div class="actions">
-          <button id="resetFormBtn" type="button" class="btn">Clear Form</button>
-        </div>
         <div id="saveActions" class="actions is-hidden">
           <button id="saveRuleBtn" type="submit" class="btn primary with-tip" data-tip="Save or update this rule.">Save Rule</button>
         </div>
@@ -387,7 +381,7 @@
       </form>
     </section>
 
-    <section class="grid two-col">
+    <section class="grid two-col rules-history-layout">
       <article class="card">
         <div class="card-head">
           <h2>Saved Rules</h2>
@@ -405,6 +399,18 @@
       </article>
     </section>
   </main>
+
+  <div id="confirmDialog" class="confirm-dialog is-hidden" role="dialog" aria-modal="true" aria-labelledby="confirmDialogTitle">
+    <div class="confirm-card">
+      <p class="confirm-kicker">Rule Deletion</p>
+      <h3 id="confirmDialogTitle" class="confirm-title">Delete this rule?</h3>
+      <p id="confirmDialogBody" class="confirm-body">This action removes the rule permanently.</p>
+      <div class="confirm-actions">
+        <button id="confirmCancelBtn" type="button" class="btn">Keep Rule</button>
+        <button id="confirmOkBtn" type="button" class="btn danger">Delete Rule</button>
+      </div>
+    </div>
+  </div>
 
   <datalist id="conditionValueSuggestions"></datalist>
 
