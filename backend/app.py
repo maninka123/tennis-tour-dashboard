@@ -91,15 +91,30 @@ class PlayerImageManager:
             info = self.mapping.get(tour, {}).get(pid)
         
         if info:
-            # Check for local image file
-            for ext in ['.jpg', '.png', '.jpeg']:
-                img_path = os.path.join(info['path'], f'image{ext}')
-                if os.path.exists(img_path):
-                    return {'type': 'local', 'path': img_path}
+            # Check for local image file (case-insensitive, Linux-safe).
+            # Accept common web formats beyond jpg/png to avoid false misses.
+            try:
+                for entry in os.scandir(info['path']):
+                    if not entry.is_file():
+                        continue
+                    lower_name = entry.name.lower()
+                    if not lower_name.startswith('image.'):
+                        continue
+                    ext = os.path.splitext(lower_name)[1]
+                    if ext in {'.jpg', '.jpeg', '.png', '.webp', '.avif'}:
+                        return {'type': 'local', 'path': entry.path}
+            except Exception:
+                pass
             
             # Fallback to external URL if known
             if info.get('external_url'):
-                return {'type': 'external', 'url': info['external_url']}
+                url = str(info['external_url']).strip()
+                if url.startswith('//'):
+                    url = f'https:{url}'
+                elif url.startswith('http://'):
+                    # Prevent mixed-content blocking on HTTPS deployments (Render).
+                    url = f"https://{url[len('http://'):]}"
+                return {'type': 'external', 'url': url}
                 
         return None
 
@@ -211,7 +226,12 @@ def serve_player_image(tour, player_id):
     # Check fallback param
     fallback = request.args.get('fallback')
     if fallback:
-        return redirect(fallback)
+        fallback_url = str(fallback).strip()
+        if fallback_url.startswith('//'):
+            fallback_url = f'https:{fallback_url}'
+        elif fallback_url.startswith('http://'):
+            fallback_url = f"https://{fallback_url[len('http://'):]}"
+        return redirect(fallback_url)
         
     return jsonify({'error': 'Image not found'}), 404
 
