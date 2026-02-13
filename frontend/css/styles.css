@@ -472,9 +472,16 @@ body {
 
 .season-progress-topline {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 8px;
+}
+
+.season-progress-badges {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 6px;
 }
 
 .season-progress-kicker {
@@ -485,11 +492,21 @@ body {
 }
 
 .season-progress-count {
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    padding: 2px 8px;
+    padding: 4px 10px;
     border-radius: 999px;
     background: rgba(12, 24, 38, 0.28);
+}
+
+.season-progress-percent {
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    color: #ffe8ea;
+    border: 1px solid rgba(255, 163, 171, 0.42);
+    background: rgba(181, 46, 65, 0.26);
 }
 
 .season-progress-track {

@@ -153,6 +153,7 @@ const DOM = {
     seasonProgressStrip: document.getElementById('seasonProgressStrip'),
     seasonProgressTrack: document.getElementById('seasonProgressTrack'),
     seasonProgressCount: document.getElementById('seasonProgressCount'),
+    seasonProgressPercent: document.getElementById('seasonProgressPercent'),
     seasonActivePill: document.getElementById('seasonActivePill'),
     seasonSurfacePill: document.getElementById('seasonSurfacePill')
 };
@@ -1173,7 +1174,10 @@ const App = {
         const progressPct = Math.round(((activeIndex + activeProgress) / swings.length) * 100);
 
         if (DOM.seasonProgressCount) {
-            DOM.seasonProgressCount.textContent = `${activeIndex + 1} / ${swings.length} • ${progressPct}%`;
+            DOM.seasonProgressCount.textContent = `${activeIndex + 1} / ${swings.length}`;
+        }
+        if (DOM.seasonProgressPercent) {
+            DOM.seasonProgressPercent.textContent = `${progressPct}%`;
         }
         if (DOM.seasonActivePill) {
             DOM.seasonActivePill.textContent = activeSwing.name;
