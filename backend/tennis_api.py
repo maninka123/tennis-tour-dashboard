@@ -1484,6 +1484,18 @@ class TennisDataFetcher:
             stderr = (result.stderr or '').strip()
             stdout = (result.stdout or '').strip()
             message = stderr or stdout or f"Failed to refresh {tour_name.upper()} tournaments."
+            # ATP source intermittently blocks calendar fetches (HTTP 403).
+            # If we already have local tournament files, keep serving them and
+            # surface this as a non-fatal warning instead of hard failing.
+            status = self.get_tournaments_status(tour_name)
+            has_local_files = bool(status.get('file_count'))
+            blocked_403 = ('403' in message) or ('forbidden' in message.lower())
+            if has_local_files and blocked_403:
+                status['year'] = year
+                status['warning'] = message
+                status['stdout'] = stdout
+                status['used_cached_files'] = True
+                return status
             raise RuntimeError(message)
 
         self.invalidate_tournaments_cache(tour_name)
@@ -3313,6 +3325,15 @@ class TennisDataFetcher:
             rid = int(round_id)
             if is_grand_slam:
                 gs_rounds = ['R128', 'R64', 'R32', 'R16', 'QF', 'SF', 'F']
+                # Most WTA draw feeds expose numeric rounds with no "winner" row:
+                # 1=Final, 2=Semifinal ... last=opening round.
+                desc_idx = len(gs_rounds) - rid
+                if 0 <= desc_idx < len(gs_rounds):
+                    return gs_rounds[desc_idx]
+                # Some feeds include winner row: 1=Winner, 2=Final ...
+                desc_idx_with_winner = (len(gs_rounds) + 1) - rid
+                if 0 <= desc_idx_with_winner < len(gs_rounds):
+                    return gs_rounds[desc_idx_with_winner]
                 if 1 <= rid <= len(gs_rounds):
                     return gs_rounds[rid - 1]
             else:
@@ -3334,6 +3355,15 @@ class TennisDataFetcher:
                 elif opening_round == 'R32':
                     rounds.append('R16')
                 rounds.extend(['QF', 'SF', 'F'])
+                # Most WTA draw feeds expose numeric rounds with no "winner" row:
+                # 1=Final, 2=Semifinal ... last=opening round.
+                desc_idx = len(rounds) - rid
+                if 0 <= desc_idx < len(rounds):
+                    return rounds[desc_idx]
+                # Some feeds include winner row: 1=Winner, 2=Final ...
+                desc_idx_with_winner = (len(rounds) + 1) - rid
+                if 0 <= desc_idx_with_winner < len(rounds):
+                    return rounds[desc_idx_with_winner]
                 if 1 <= rid <= len(rounds):
                     return rounds[rid - 1]
 

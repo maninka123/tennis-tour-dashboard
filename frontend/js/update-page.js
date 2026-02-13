@@ -19,12 +19,9 @@ const UpdatePage = {
         const grid = document.getElementById('updateGifGrid');
         if (!grid) return;
 
-        // Generate list of gifs tennis_01.gif to tennis_30.gif
-        this.gifs = [];
-        for(let i=1; i<=30; i++) {
-            const num = i.toString().padStart(2, '0');
-            this.gifs.push(`assets/images/intro-gifs/tennis_${num}.gif`);
-        }
+        const baseUrl = this.backendUrl.replace('/api', '');
+        this.gifs = await this.fetchGifFiles();
+        if (!this.gifs.length) return;
         
         // Create a large pool of tiles by shuffling multiple copies of the gif list
         // This ensures we have enough tiles to fill large screens (30 * 4 = 120 tiles)
@@ -39,12 +36,30 @@ const UpdatePage = {
             tile.className = 'update-gif-tile';
             
             const img = document.createElement('img');
-            img.src = file;
+            img.src = `${baseUrl}/Images/intro gifs/${encodeURIComponent(file)}`;
             img.loading = 'lazy';
+            img.alt = 'Tennis update background animation';
+            img.onerror = () => {
+                tile.style.background = 'linear-gradient(140deg, rgba(18,28,43,0.95), rgba(12,20,33,0.88))';
+                img.remove();
+            };
             
             tile.appendChild(img);
             grid.appendChild(tile);
         });
+    },
+
+    async fetchGifFiles() {
+        try {
+            const response = await fetch(`${this.backendUrl.replace('/api', '')}/api/intro-gifs`);
+            const result = await response.json();
+            if (result.success && Array.isArray(result.data) && result.data.length) {
+                return result.data;
+            }
+        } catch (error) {
+            console.warn('Could not fetch update GIF list from backend:', error);
+        }
+        return ['tennis_01.gif', 'tennis_02.gif', 'tennis_03.gif'];
     },
 
     shuffleArray(arr) {

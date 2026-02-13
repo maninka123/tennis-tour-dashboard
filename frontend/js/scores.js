@@ -391,16 +391,16 @@ const ScoresModule = {
         const { AppState, DOM } = window.TennisApp;
         const tour = AppState.currentTour;
         
-        // Get data (use demo if empty)
+        // Get data (demo fallback only for WTA to avoid synthetic ATP history)
         let matches = this.filterMatchesForActiveTour(AppState.recentMatches[tour], tour);
-        if (!matches || matches.length === 0) {
+        if ((!matches || matches.length === 0) && tour === 'wta') {
             matches = this.filterMatchesForActiveTour(this.demoRecentMatches[tour] || [], tour);
         }
 
         if (matches.length === 0) {
             DOM.recentMatchesWrapper.innerHTML = `
                 <div class="no-matches-message">
-                    <p>No recent matches</p>
+                    <p>${tour === 'atp' ? 'No recent ATP matches available right now.' : 'No recent matches'}</p>
                 </div>
             `;
             this.updateRecentUpdatedAgo();
@@ -934,7 +934,7 @@ const ScoresModule = {
         const surfaceClass = this.getSurfaceClass(match);
         const matchKey = this.getMatchKey(match);
         const tournamentName = this.sanitizeTournamentName(match.tournament);
-        const roundLabel = this.getRoundLabelWithPoints(match);
+        const roundLabel = this.getRoundLabelWithPoints(match) || 'Round TBD';
         const courtLabel = match.court || match.court_name || match.stadium || 'Stadium TBA';
         const scheduledTime = new Date(match.scheduled_time);
         const timeStr = scheduledTime.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
@@ -957,8 +957,10 @@ const ScoresModule = {
                             <span class="category-badge ${categoryClass}">${categoryLabel}</span>
                         </div>
                         <div class="match-round-row">
-                            ${roundLabel ? `<span class="match-stage-pill">${roundLabel}</span>` : ''}
-                            ${courtLabel ? `<span class="match-court">${courtLabel}</span>` : ''}
+                            <span class="match-stage-pill">${roundLabel}</span>
+                        </div>
+                        <div class="match-court-row">
+                            <span class="match-court">${courtLabel}</span>
                         </div>
                     </div>
                     <div class="scheduled-pill-group">

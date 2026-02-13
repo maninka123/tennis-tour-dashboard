@@ -9,6 +9,7 @@ from flask_socketio import SocketIO, emit
 import time
 import sys
 import os
+import logging
 import threading
 import subprocess
 import json
@@ -112,6 +113,12 @@ threading.Thread(target=image_manager.scan_players, daemon=True).start()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tennis_dashboard_secret_2024'
 CORS(app, origins="*", resources={r"/api/*": {"origins": "*"}})
+
+# Keep console output focused on warnings/errors instead of per-request 200 logs.
+# Override with QUIET_HTTP_LOGS=false if detailed HTTP access logs are needed.
+if os.getenv('QUIET_HTTP_LOGS', 'true').strip().lower() in {'1', 'true', 'yes', 'on'}:
+    logging.getLogger('werkzeug').setLevel(logging.WARNING)
+    app.logger.setLevel(logging.WARNING)
 
 
 def _env_bool(name, default):

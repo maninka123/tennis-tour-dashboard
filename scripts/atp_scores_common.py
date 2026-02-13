@@ -9,7 +9,11 @@ from datetime import datetime, timedelta
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 from urllib.parse import urljoin
 
-import cloudscraper
+import requests
+try:
+    import cloudscraper
+except Exception:
+    cloudscraper = None
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.atptour.com"
@@ -143,7 +147,11 @@ def _build_location(tournament: Dict[str, Any]) -> str:
 
 
 def make_scraper() -> Any:
-    scraper = cloudscraper.create_scraper(browser={"browser": "chrome", "platform": "windows", "mobile": False})
+    if cloudscraper:
+        scraper = cloudscraper.create_scraper(browser={"browser": "chrome", "platform": "windows", "mobile": False})
+    else:
+        # Keep ATP feeds working even when cloudscraper is unavailable.
+        scraper = requests.Session()
     scraper.headers.update(HEADERS)
     return scraper
 

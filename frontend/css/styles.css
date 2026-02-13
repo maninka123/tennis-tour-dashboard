@@ -453,6 +453,162 @@ body {
     color: var(--accent-primary);
 }
 
+.live-section-header {
+    gap: 12px;
+}
+
+.season-progress-strip {
+    --season-progress-bg: linear-gradient(94deg, #2d74b8 0%, #2d74b8 100%);
+    flex: 1;
+    min-width: 360px;
+    margin: 0 8px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(56, 92, 126, 0.2);
+    background: var(--season-progress-bg);
+    color: #f4f8ff;
+    box-shadow: 0 8px 18px rgba(21, 40, 61, 0.18);
+}
+
+.season-progress-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.season-progress-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.season-progress-count {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(12, 24, 38, 0.28);
+}
+
+.season-progress-track {
+    margin-top: 7px;
+    display: grid;
+    gap: 7px;
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+}
+
+.season-segment {
+    min-width: 0;
+}
+
+.season-segment-bar {
+    position: relative;
+    height: 4px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.22);
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    overflow: visible;
+}
+
+.season-segment.done .season-segment-bar {
+    background: rgba(255, 255, 255, 0.76);
+}
+
+.season-segment.active .season-segment-bar {
+    background: #ffe083;
+    transform: scaleY(1.14);
+}
+
+.season-now-marker {
+    position: absolute;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #0f1f34;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 0 2px rgba(255, 224, 131, 0.55);
+    transform: translate(-50%, -50%);
+}
+
+.season-segment-label {
+    margin-top: 5px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(247, 252, 255, 0.96);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.season-segment-name {
+    margin-top: 1px;
+    font-size: 0.81rem;
+    font-weight: 600;
+    color: rgba(248, 253, 255, 0.98);
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.season-segment.active .season-segment-name {
+    color: #fffef2;
+    font-weight: 700;
+}
+
+.season-progress-meta {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.season-active-pill,
+.season-surface-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.season-active-pill {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+.season-surface-pill {
+    background: rgba(12, 24, 38, 0.22);
+    color: #f7fbff;
+}
+
+.season-surface-pill.surface-hard {
+    border-color: rgba(168, 215, 255, 0.72);
+}
+
+.season-surface-pill.surface-clay {
+    border-color: rgba(255, 204, 166, 0.72);
+}
+
+.season-surface-pill.surface-grass {
+    border-color: rgba(178, 239, 203, 0.72);
+}
+
+.season-surface-pill.surface-indoor {
+    border-color: rgba(205, 214, 236, 0.72);
+}
+
 .section-title-stack {
     display: flex;
     flex-direction: column;
@@ -1481,6 +1637,12 @@ body {
     align-items: center;
     gap: var(--space-xs);
     flex-wrap: wrap;
+}
+
+.match-court-row {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
 }
 
 .match-stage-pill {
@@ -3992,6 +4154,21 @@ img {
 }
 
 @media (max-width: 1200px) {
+    .live-section-header {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .season-progress-strip {
+        min-width: 100%;
+        margin: 2px 0 0;
+        order: 3;
+    }
+
+    .analysis-launch-current {
+        margin-left: 0;
+    }
+
     .analysis-launch-current .launch-label {
         display: none;
     }
@@ -4010,6 +4187,19 @@ img {
 }
 
 @media (max-width: 768px) {
+    .season-progress-strip {
+        padding: 9px 10px;
+    }
+
+    .season-progress-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .season-segment-name {
+        font-size: 0.68rem;
+    }
+
     .match-card {
         width: 250px;
     }

@@ -1,0 +1,3541 @@
+{
+  "order": 5,
+  "tournament_group_id": 2014,
+  "name": "ADELAIDE",
+  "title": "Adelaide International - Adelaide, AUS",
+  "level": "WTA 500",
+  "level_number": "WTA 500",
+  "year": 2026,
+  "start_date": "2026-01-12",
+  "end_date": "2026-01-17",
+  "surface": "Hard",
+  "indoor_outdoor": "O",
+  "city": "ADELAIDE",
+  "country": "AUSTRALIA",
+  "status": "finished",
+  "draw_size_singles": 30,
+  "draw_size_doubles": 16,
+  "prize_money": 1206446,
+  "prize_money_currency": "USD",
+  "champion": {
+    "id": "331809",
+    "name": "Mirra Andreeva",
+    "country": "RUS"
+  },
+  "runner_up": {
+    "id": "331006",
+    "name": "Victoria Mboko",
+    "country": "CAN"
+  },
+  "draw_year": 2026,
+  "draw": {
+    "draw_size": 32,
+    "surface": "Hard",
+    "event_type": "LS",
+    "draw_type": "Women's Singles",
+    "draw_lines": [
+      {
+        "pos": 1,
+        "seed": 3,
+        "rank": 9,
+        "entry_type": "",
+        "display": "Mirra Andreeva",
+        "player": {
+          "id": 331809,
+          "first_name": "Mirra",
+          "last_name": "Andreeva",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 2,
+        "seed": "",
+        "rank": "",
+        "entry_type": "",
+        "display": "Bye",
+        "player": {
+          "id": 0,
+          "first_name": "Bye",
+          "last_name": "Bye",
+          "country": ""
+        }
+      },
+      {
+        "pos": 3,
+        "seed": "",
+        "rank": 25,
+        "entry_type": "",
+        "display": "Paula Badosa",
+        "player": {
+          "id": 320124,
+          "first_name": "Paula",
+          "last_name": "Badosa",
+          "country": "ESP"
+        }
+      },
+      {
+        "pos": 4,
+        "seed": "",
+        "rank": 42,
+        "entry_type": "LL",
+        "display": "Marie Bouzkova",
+        "player": {
+          "id": 320983,
+          "first_name": "Marie",
+          "last_name": "Bouzkova",
+          "country": "CZE"
+        }
+      },
+      {
+        "pos": 5,
+        "seed": "",
+        "rank": 32,
+        "entry_type": "",
+        "display": "Maya Joint",
+        "player": {
+          "id": 330544,
+          "first_name": "Maya",
+          "last_name": "Joint",
+          "country": "AUS"
+        }
+      },
+      {
+        "pos": 6,
+        "seed": "",
+        "rank": 28,
+        "entry_type": "",
+        "display": "Sofia Kenin",
+        "player": {
+          "id": 320942,
+          "first_name": "Sofia",
+          "last_name": "Kenin",
+          "country": "USA"
+        }
+      },
+      {
+        "pos": 7,
+        "seed": "",
+        "rank": 76,
+        "entry_type": "WC",
+        "display": "Ajla Tomljanovic",
+        "player": {
+          "id": 315232,
+          "first_name": "Ajla",
+          "last_name": "Tomljanovic",
+          "country": "AUS"
+        }
+      },
+      {
+        "pos": 8,
+        "seed": 5,
+        "rank": 12,
+        "entry_type": "",
+        "display": "Clara Tauson",
+        "player": {
+          "id": 327793,
+          "first_name": "Clara",
+          "last_name": "Tauson",
+          "country": "DEN"
+        }
+      },
+      {
+        "pos": 9,
+        "seed": 9,
+        "rank": 21,
+        "entry_type": "",
+        "display": "Diana Shnaider",
+        "player": {
+          "id": 330482,
+          "first_name": "Diana",
+          "last_name": "Shnaider",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 10,
+        "seed": "",
+        "rank": 22,
+        "entry_type": "",
+        "display": "Leylah Fernandez",
+        "player": {
+          "id": 326735,
+          "first_name": "Leylah",
+          "last_name": "Fernandez",
+          "country": "CAN"
+        }
+      },
+      {
+        "pos": 11,
+        "seed": "",
+        "rank": 48,
+        "entry_type": "LL",
+        "display": "Katerina Siniakova",
+        "player": {
+          "id": 320301,
+          "first_name": "Katerina",
+          "last_name": "Siniakova",
+          "country": "CZE"
+        }
+      },
+      {
+        "pos": 12,
+        "seed": "",
+        "rank": 27,
+        "entry_type": "",
+        "display": "Dayana Yastremska",
+        "player": {
+          "id": 324261,
+          "first_name": "Dayana",
+          "last_name": "Yastremska",
+          "country": "UKR"
+        }
+      },
+      {
+        "pos": 13,
+        "seed": "",
+        "rank": 71,
+        "entry_type": "Q",
+        "display": "Yulia Putintseva",
+        "player": {
+          "id": 317683,
+          "first_name": "Yulia",
+          "last_name": "Putintseva",
+          "country": "KAZ"
+        }
+      },
+      {
+        "pos": 14,
+        "seed": "",
+        "rank": 99,
+        "entry_type": "Q",
+        "display": "Dalma Galfi",
+        "player": {
+          "id": 321106,
+          "first_name": "Dalma",
+          "last_name": "Galfi",
+          "country": "HUN"
+        }
+      },
+      {
+        "pos": 15,
+        "seed": "",
+        "rank": 147,
+        "entry_type": "WC",
+        "display": "Emerson Jones",
+        "player": {
+          "id": 333111,
+          "first_name": "Emerson",
+          "last_name": "Jones",
+          "country": "AUS"
+        }
+      },
+      {
+        "pos": 16,
+        "seed": 6,
+        "rank": 15,
+        "entry_type": "",
+        "display": "Emma Navarro",
+        "player": {
+          "id": 325410,
+          "first_name": "Emma",
+          "last_name": "Navarro",
+          "country": "USA"
+        }
+      },
+      {
+        "pos": 17,
+        "seed": 7,
+        "rank": 17,
+        "entry_type": "",
+        "display": "Liudmila Samsonova",
+        "player": {
+          "id": 322222,
+          "first_name": "Liudmila",
+          "last_name": "Samsonova",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 18,
+        "seed": "",
+        "rank": 18,
+        "entry_type": "",
+        "display": "Marketa Vondrousova",
+        "player": {
+          "id": 323027,
+          "first_name": "Marketa",
+          "last_name": "Vondrousova",
+          "country": "CZE"
+        }
+      },
+      {
+        "pos": 19,
+        "seed": "",
+        "rank": 106,
+        "entry_type": "WC",
+        "display": "Kimberly Birrell",
+        "player": {
+          "id": 320728,
+          "first_name": "Kimberly",
+          "last_name": "Birrell",
+          "country": "AUS"
+        }
+      },
+      {
+        "pos": 20,
+        "seed": "",
+        "rank": 50,
+        "entry_type": "LL",
+        "display": "Anastasia Potapova",
+        "player": {
+          "id": 325601,
+          "first_name": "Anastasia",
+          "last_name": "Potapova",
+          "country": "AUT"
+        }
+      },
+      {
+        "pos": 21,
+        "seed": "",
+        "rank": 40,
+        "entry_type": "",
+        "display": "Daria Kasatkina",
+        "player": {
+          "id": 322082,
+          "first_name": "Daria",
+          "last_name": "Kasatkina",
+          "country": "AUS"
+        }
+      },
+      {
+        "pos": 22,
+        "seed": "",
+        "rank": 51,
+        "entry_type": "WC",
+        "display": "Maria Sakkari",
+        "player": {
+          "id": 318312,
+          "first_name": "Maria",
+          "last_name": "Sakkari",
+          "country": "GRE"
+        }
+      },
+      {
+        "pos": 23,
+        "seed": "",
+        "rank": 39,
+        "entry_type": "Q",
+        "display": "Jaqueline Cristian",
+        "player": {
+          "id": 320319,
+          "first_name": "Jaqueline",
+          "last_name": "Cristian",
+          "country": "ROU"
+        }
+      },
+      {
+        "pos": 24,
+        "seed": 4,
+        "rank": 10,
+        "entry_type": "",
+        "display": "Ekaterina Alexandrova",
+        "player": {
+          "id": 319007,
+          "first_name": "Ekaterina",
+          "last_name": "Alexandrova",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 25,
+        "seed": 8,
+        "rank": 18,
+        "entry_type": "",
+        "display": "Victoria Mboko",
+        "player": {
+          "id": 331006,
+          "first_name": "Victoria",
+          "last_name": "Mboko",
+          "country": "CAN"
+        }
+      },
+      {
+        "pos": 26,
+        "seed": "",
+        "rank": 30,
+        "entry_type": "",
+        "display": "Beatriz Haddad Maia",
+        "player": {
+          "id": 318176,
+          "first_name": "Beatriz",
+          "last_name": "Haddad Maia",
+          "country": "BRA"
+        }
+      },
+      {
+        "pos": 27,
+        "seed": "",
+        "rank": 33,
+        "entry_type": "",
+        "display": "Anna Kalinskaya",
+        "player": {
+          "id": 323942,
+          "first_name": "Anna",
+          "last_name": "Kalinskaya",
+          "country": "RUS"
+        }
+      },
+      {
+        "pos": 28,
+        "seed": "",
+        "rank": 88,
+        "entry_type": "Q",
+        "display": "Elena-Gabriela Ruse",
+        "player": {
+          "id": 320408,
+          "first_name": "Elena-Gabriela",
+          "last_name": "Ruse",
+          "country": "ROU"
+        }
+      },
+      {
+        "pos": 29,
+        "seed": "",
+        "rank": 23,
+        "entry_type": "",
+        "display": "Jelena Ostapenko",
+        "player": {
+          "id": 319939,
+          "first_name": "Jelena",
+          "last_name": "Ostapenko",
+          "country": "LAT"
+        }
+      },
+      {
+        "pos": 30,
+        "seed": "",
+        "rank": 60,
+        "entry_type": "Q",
+        "display": "Tereza Valentova",
+        "player": {
+          "id": 330808,
+          "first_name": "Tereza",
+          "last_name": "Valentova",
+          "country": "CZE"
+        }
+      },
+      {
+        "pos": 31,
+        "seed": "",
+        "rank": "",
+        "entry_type": "",
+        "display": "Bye",
+        "player": {
+          "id": 0,
+          "first_name": "Bye",
+          "last_name": "Bye",
+          "country": ""
+        }
+      },
+      {
+        "pos": 32,
+        "seed": 2,
+        "rank": 7,
+        "entry_type": "",
+        "display": "Madison Keys",
+        "player": {
+          "id": 316959,
+          "first_name": "Madison",
+          "last_name": "Keys",
+          "country": "USA"
+        }
+      }
+    ],
+    "breakdown": [
+      {
+        "name": "Winner",
+        "points": 500,
+        "prize": "USD 185,500",
+        "id": 1
+      },
+      {
+        "name": "Final",
+        "points": 325,
+        "prize": "USD 114,500",
+        "id": 2
+      },
+      {
+        "name": "Semifinals",
+        "points": 195,
+        "prize": "USD 66,000",
+        "id": 3
+      },
+      {
+        "name": "Quarterfinals",
+        "points": 108,
+        "prize": "USD 33,470",
+        "id": 4
+      },
+      {
+        "name": "Round of 16",
+        "points": 60,
+        "prize": "USD 17,235",
+        "id": 5
+      },
+      {
+        "name": "Round of 32",
+        "points": 1,
+        "prize": "USD 11,250",
+        "id": 6
+      }
+    ],
+    "results": [
+      {
+        "round_id": 5,
+        "matches": [
+          {
+            "id": "LS016",
+            "display_name": "[3] ANDREEVA, Mirra",
+            "result_score": "",
+            "winner_slot": "A",
+            "result_name_and_score": "",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mirra Andreeva",
+                "seed": 3,
+                "entry_type": "",
+                "player": {
+                  "id": 331809,
+                  "first_name": "Mirra",
+                  "last_name": "Andreeva",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Bye",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": "",
+                  "first_name": "BYE",
+                  "last_name": "BYE",
+                  "country": ""
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS017",
+            "display_name": "BOUZKOVA, Marie",
+            "result_score": "36 63 64",
+            "winner_slot": "B",
+            "result_name_and_score": "Marie Bouzkova d. Paula Badosa 36 63 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Paula Badosa",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 320124,
+                  "first_name": "Paula",
+                  "last_name": "Badosa",
+                  "country": "ESP"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Marie Bouzkova",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 320983,
+                  "first_name": "Marie",
+                  "last_name": "Bouzkova",
+                  "country": "CZE"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS018",
+            "display_name": "JOINT, Maya",
+            "result_score": "76(3) 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Maya Joint d. Sofia Kenin 76(3) 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Maya Joint",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 330544,
+                  "first_name": "Maya",
+                  "last_name": "Joint",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Sofia Kenin",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 320942,
+                  "first_name": "Sofia",
+                  "last_name": "Kenin",
+                  "country": "USA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS019",
+            "display_name": "TOMLJANOVIC, Ajla",
+            "result_score": "76(5) 00",
+            "winner_slot": "A",
+            "result_name_and_score": "Ajla Tomljanovic d. Clara Tauson 76(5) 00",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Ajla Tomljanovic",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 315232,
+                  "first_name": "Ajla",
+                  "last_name": "Tomljanovic",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Clara Tauson",
+                "seed": 5,
+                "entry_type": "",
+                "player": {
+                  "id": 327793,
+                  "first_name": "Clara",
+                  "last_name": "Tauson",
+                  "country": "DEN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS020",
+            "display_name": "[9] SHNAIDER, Diana",
+            "result_score": "75 63",
+            "winner_slot": "A",
+            "result_name_and_score": "Diana Shnaider d. Leylah Fernandez 75 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Diana Shnaider",
+                "seed": 9,
+                "entry_type": "",
+                "player": {
+                  "id": 330482,
+                  "first_name": "Diana",
+                  "last_name": "Shnaider",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Leylah Fernandez",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 326735,
+                  "first_name": "Leylah",
+                  "last_name": "Fernandez",
+                  "country": "CAN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS021",
+            "display_name": "SINIAKOVA, Katerina",
+            "result_score": "60 61",
+            "winner_slot": "A",
+            "result_name_and_score": "Katerina Siniakova d. Dayana Yastremska 60 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Katerina Siniakova",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 320301,
+                  "first_name": "Katerina",
+                  "last_name": "Siniakova",
+                  "country": "CZE"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Dayana Yastremska",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 324261,
+                  "first_name": "Dayana",
+                  "last_name": "Yastremska",
+                  "country": "UKR"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS022",
+            "display_name": "PUTINTSEVA, Yulia",
+            "result_score": "64 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Yulia Putintseva d. Dalma Galfi 64 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Yulia Putintseva",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 317683,
+                  "first_name": "Yulia",
+                  "last_name": "Putintseva",
+                  "country": "KAZ"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Dalma Galfi",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 321106,
+                  "first_name": "Dalma",
+                  "last_name": "Galfi",
+                  "country": "HUN"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS023",
+            "display_name": "[6] NAVARRO, Emma",
+            "result_score": "63 63",
+            "winner_slot": "B",
+            "result_name_and_score": "Emma Navarro d. Emerson Jones 63 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Emerson Jones",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 333111,
+                  "first_name": "Emerson",
+                  "last_name": "Jones",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Emma Navarro",
+                "seed": 6,
+                "entry_type": "",
+                "player": {
+                  "id": 325410,
+                  "first_name": "Emma",
+                  "last_name": "Navarro",
+                  "country": "USA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS024",
+            "display_name": "VONDROUSOVA, Marketa",
+            "result_score": "61 46 62",
+            "winner_slot": "B",
+            "result_name_and_score": "Marketa Vondrousova d. Liudmila Samsonova 61 46 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Liudmila Samsonova",
+                "seed": 7,
+                "entry_type": "",
+                "player": {
+                  "id": 322222,
+                  "first_name": "Liudmila",
+                  "last_name": "Samsonova",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Marketa Vondrousova",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 323027,
+                  "first_name": "Marketa",
+                  "last_name": "Vondrousova",
+                  "country": "CZE"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS025",
+            "display_name": "BIRRELL, Kimberly",
+            "result_score": "64 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Kimberly Birrell d. Anastasia Potapova 64 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Kimberly Birrell",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 320728,
+                  "first_name": "Kimberly",
+                  "last_name": "Birrell",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Anastasia Potapova",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 325601,
+                  "first_name": "Anastasia",
+                  "last_name": "Potapova",
+                  "country": "AUT"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS026",
+            "display_name": "KASATKINA, Daria",
+            "result_score": "76(2) 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Daria Kasatkina d. Maria Sakkari 76(2) 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Daria Kasatkina",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 322082,
+                  "first_name": "Daria",
+                  "last_name": "Kasatkina",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Maria Sakkari",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 318312,
+                  "first_name": "Maria",
+                  "last_name": "Sakkari",
+                  "country": "GRE"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS027",
+            "display_name": "CRISTIAN, Jaqueline",
+            "result_score": "64 64",
+            "winner_slot": "A",
+            "result_name_and_score": "Jaqueline Cristian d. Ekaterina Alexandrova 64 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Jaqueline Cristian",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 320319,
+                  "first_name": "Jaqueline",
+                  "last_name": "Cristian",
+                  "country": "ROU"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Ekaterina Alexandrova",
+                "seed": 4,
+                "entry_type": "",
+                "player": {
+                  "id": 319007,
+                  "first_name": "Ekaterina",
+                  "last_name": "Alexandrova",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS028",
+            "display_name": "[8] MBOKO, Victoria",
+            "result_score": "57 63 62",
+            "winner_slot": "A",
+            "result_name_and_score": "Victoria Mboko d. Beatriz Haddad Maia 57 63 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Victoria Mboko",
+                "seed": 8,
+                "entry_type": "",
+                "player": {
+                  "id": 331006,
+                  "first_name": "Victoria",
+                  "last_name": "Mboko",
+                  "country": "CAN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Beatriz Haddad Maia",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 318176,
+                  "first_name": "Beatriz",
+                  "last_name": "Haddad Maia",
+                  "country": "BRA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS029",
+            "display_name": "KALINSKAYA, Anna",
+            "result_score": "60 63",
+            "winner_slot": "A",
+            "result_name_and_score": "Anna Kalinskaya d. Elena-Gabriela Ruse 60 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Anna Kalinskaya",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 323942,
+                  "first_name": "Anna",
+                  "last_name": "Kalinskaya",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Elena-Gabriela Ruse",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 320408,
+                  "first_name": "Elena-Gabriela",
+                  "last_name": "Ruse",
+                  "country": "ROU"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS030",
+            "display_name": "VALENTOVA, Tereza",
+            "result_score": "75 32",
+            "winner_slot": "B",
+            "result_name_and_score": "Tereza Valentova d. Jelena Ostapenko 75 32",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Jelena Ostapenko",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 319939,
+                  "first_name": "Jelena",
+                  "last_name": "Ostapenko",
+                  "country": "LAT"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Tereza Valentova",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 330808,
+                  "first_name": "Tereza",
+                  "last_name": "Valentova",
+                  "country": "CZE"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS031",
+            "display_name": "[2] KEYS, Madison",
+            "result_score": "",
+            "winner_slot": "B",
+            "result_name_and_score": "",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Bye",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": "",
+                  "first_name": "BYE",
+                  "last_name": "BYE",
+                  "country": ""
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Madison Keys",
+                "seed": 2,
+                "entry_type": "",
+                "player": {
+                  "id": 316959,
+                  "first_name": "Madison",
+                  "last_name": "Keys",
+                  "country": "USA"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 4,
+        "matches": [
+          {
+            "id": "LS008",
+            "display_name": "[3] ANDREEVA, Mirra",
+            "result_score": "63 61",
+            "winner_slot": "A",
+            "result_name_and_score": "Mirra Andreeva d. Marie Bouzkova 63 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mirra Andreeva",
+                "seed": 3,
+                "entry_type": "",
+                "player": {
+                  "id": 331809,
+                  "first_name": "Mirra",
+                  "last_name": "Andreeva",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Marie Bouzkova",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 320983,
+                  "first_name": "Marie",
+                  "last_name": "Bouzkova",
+                  "country": "CZE"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS009",
+            "display_name": "JOINT, Maya",
+            "result_score": "02",
+            "winner_slot": "A",
+            "result_name_and_score": "Maya Joint d. Ajla Tomljanovic 02",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Maya Joint",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 330544,
+                  "first_name": "Maya",
+                  "last_name": "Joint",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Ajla Tomljanovic",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 315232,
+                  "first_name": "Ajla",
+                  "last_name": "Tomljanovic",
+                  "country": "AUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS010",
+            "display_name": "[9] SHNAIDER, Diana",
+            "result_score": "61 26 75",
+            "winner_slot": "A",
+            "result_name_and_score": "Diana Shnaider d. Katerina Siniakova 61 26 75",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Diana Shnaider",
+                "seed": 9,
+                "entry_type": "",
+                "player": {
+                  "id": 330482,
+                  "first_name": "Diana",
+                  "last_name": "Shnaider",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Katerina Siniakova",
+                "seed": "",
+                "entry_type": "LL",
+                "player": {
+                  "id": 320301,
+                  "first_name": "Katerina",
+                  "last_name": "Siniakova",
+                  "country": "CZE"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS011",
+            "display_name": "[6] NAVARRO, Emma",
+            "result_score": "61 64",
+            "winner_slot": "B",
+            "result_name_and_score": "Emma Navarro d. Yulia Putintseva 61 64",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Yulia Putintseva",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 317683,
+                  "first_name": "Yulia",
+                  "last_name": "Putintseva",
+                  "country": "KAZ"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Emma Navarro",
+                "seed": 6,
+                "entry_type": "",
+                "player": {
+                  "id": 325410,
+                  "first_name": "Emma",
+                  "last_name": "Navarro",
+                  "country": "USA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS012",
+            "display_name": "BIRRELL, Kimberly",
+            "result_score": "wo.",
+            "winner_slot": "B",
+            "result_name_and_score": "Kimberly Birrell d. Marketa Vondrousova W/O",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Marketa Vondrousova",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 323027,
+                  "first_name": "Marketa",
+                  "last_name": "Vondrousova",
+                  "country": "CZE"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Kimberly Birrell",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 320728,
+                  "first_name": "Kimberly",
+                  "last_name": "Birrell",
+                  "country": "AUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS013",
+            "display_name": "CRISTIAN, Jaqueline",
+            "result_score": "64 60",
+            "winner_slot": "B",
+            "result_name_and_score": "Jaqueline Cristian d. Daria Kasatkina 64 60",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Daria Kasatkina",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 322082,
+                  "first_name": "Daria",
+                  "last_name": "Kasatkina",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Jaqueline Cristian",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 320319,
+                  "first_name": "Jaqueline",
+                  "last_name": "Cristian",
+                  "country": "ROU"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS014",
+            "display_name": "[8] MBOKO, Victoria",
+            "result_score": "62 36 76(6)",
+            "winner_slot": "A",
+            "result_name_and_score": "Victoria Mboko d. Anna Kalinskaya 62 36 76(6)",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Victoria Mboko",
+                "seed": 8,
+                "entry_type": "",
+                "player": {
+                  "id": 331006,
+                  "first_name": "Victoria",
+                  "last_name": "Mboko",
+                  "country": "CAN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Anna Kalinskaya",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 323942,
+                  "first_name": "Anna",
+                  "last_name": "Kalinskaya",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS015",
+            "display_name": "[2] KEYS, Madison",
+            "result_score": "64 61",
+            "winner_slot": "B",
+            "result_name_and_score": "Madison Keys d. Tereza Valentova 64 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Tereza Valentova",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 330808,
+                  "first_name": "Tereza",
+                  "last_name": "Valentova",
+                  "country": "CZE"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Madison Keys",
+                "seed": 2,
+                "entry_type": "",
+                "player": {
+                  "id": 316959,
+                  "first_name": "Madison",
+                  "last_name": "Keys",
+                  "country": "USA"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 3,
+        "matches": [
+          {
+            "id": "LS004",
+            "display_name": "[3] ANDREEVA, Mirra",
+            "result_score": "62 60",
+            "winner_slot": "A",
+            "result_name_and_score": "Mirra Andreeva d. Maya Joint 62 60",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mirra Andreeva",
+                "seed": 3,
+                "entry_type": "",
+                "player": {
+                  "id": 331809,
+                  "first_name": "Mirra",
+                  "last_name": "Andreeva",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Maya Joint",
+                "seed": "",
+                "entry_type": "",
+                "player": {
+                  "id": 330544,
+                  "first_name": "Maya",
+                  "last_name": "Joint",
+                  "country": "AUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS005",
+            "display_name": "[9] SHNAIDER, Diana",
+            "result_score": "63 63",
+            "winner_slot": "A",
+            "result_name_and_score": "Diana Shnaider d. Emma Navarro 63 63",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Diana Shnaider",
+                "seed": 9,
+                "entry_type": "",
+                "player": {
+                  "id": 330482,
+                  "first_name": "Diana",
+                  "last_name": "Shnaider",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Emma Navarro",
+                "seed": 6,
+                "entry_type": "",
+                "player": {
+                  "id": 325410,
+                  "first_name": "Emma",
+                  "last_name": "Navarro",
+                  "country": "USA"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS006",
+            "display_name": "BIRRELL, Kimberly",
+            "result_score": "57 61 75",
+            "winner_slot": "A",
+            "result_name_and_score": "Kimberly  Birrell d. Jaqueline Cristian 57 61 75",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Kimberly  Birrell",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 320728,
+                  "first_name": "Kimberly",
+                  "last_name": "Birrell",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Jaqueline Cristian",
+                "seed": "",
+                "entry_type": "Q",
+                "player": {
+                  "id": 320319,
+                  "first_name": "Jaqueline",
+                  "last_name": "Cristian",
+                  "country": "ROU"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS007",
+            "display_name": "[8] MBOKO, Victoria",
+            "result_score": "64 46 62",
+            "winner_slot": "A",
+            "result_name_and_score": "Victoria Mboko d. Madison Keys 64 46 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Victoria Mboko",
+                "seed": 8,
+                "entry_type": "",
+                "player": {
+                  "id": 331006,
+                  "first_name": "Victoria",
+                  "last_name": "Mboko",
+                  "country": "CAN"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Madison Keys",
+                "seed": 2,
+                "entry_type": "",
+                "player": {
+                  "id": 316959,
+                  "first_name": "Madison",
+                  "last_name": "Keys",
+                  "country": "USA"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 2,
+        "matches": [
+          {
+            "id": "LS002",
+            "display_name": "[3] ANDREEVA, Mirra",
+            "result_score": "63 62",
+            "winner_slot": "A",
+            "result_name_and_score": "Mirra Andreeva d. Diana Shnaider 63 62",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Mirra Andreeva",
+                "seed": 3,
+                "entry_type": "",
+                "player": {
+                  "id": 331809,
+                  "first_name": "Mirra",
+                  "last_name": "Andreeva",
+                  "country": "RUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Diana Shnaider",
+                "seed": 9,
+                "entry_type": "",
+                "player": {
+                  "id": 330482,
+                  "first_name": "Diana",
+                  "last_name": "Shnaider",
+                  "country": "RUS"
+                }
+              }
+            ]
+          },
+          {
+            "id": "LS003",
+            "display_name": "[8] MBOKO, Victoria",
+            "result_score": "62 61",
+            "winner_slot": "B",
+            "result_name_and_score": "Victoria Mboko d. Kimberly  Birrell 62 61",
+            "players": [
+              {
+                "slot": "A",
+                "display": "Kimberly  Birrell",
+                "seed": "",
+                "entry_type": "WC",
+                "player": {
+                  "id": 320728,
+                  "first_name": "Kimberly",
+                  "last_name": "Birrell",
+                  "country": "AUS"
+                }
+              },
+              {
+                "slot": "B",
+                "display": "Victoria Mboko",
+                "seed": 8,
+                "entry_type": "",
+                "player": {
+                  "id": 331006,
+                  "first_name": "Victoria",
+                  "last_name": "Mboko",
+                  "country": "CAN"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "round_id": 1,
+        "matches": []
+      }
+    ]
+  },
+  "scores_year": 2026,
+  "matches": [
+    {
+      "match_id": "RS026",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-09T23:18:44.7+00:00",
+      "duration": "01:55:06",
+      "player_a": {
+        "id": "329409",
+        "name": "Ashlyn Krueger",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "score_string": "3-6,6-1,6-4",
+      "result_string": "D. Galfi d [6]A. Krueger 3-6,6-1,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS024",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-09T23:20:38.827+00:00",
+      "duration": "00:54:19",
+      "player_a": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "336560",
+        "name": "Emilie Chen",
+        "country": "AUS"
+      },
+      "score_string": "6-2,6-0",
+      "result_string": "[5]K. Siniakova d E. Chen 6-2,6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS025",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-09T23:21:14.99+00:00",
+      "duration": "02:15:06",
+      "player_a": {
+        "id": "323145",
+        "name": "Katie Swan",
+        "country": "GBR"
+      },
+      "player_b": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "score_string": "6-7(5),6-2,6-3",
+      "result_string": "[12]E. Ruse d K. Swan 6-7(5),6-2,6-3",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS019",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-09T23:25:01.09+00:00",
+      "duration": "02:35:45",
+      "player_a": {
+        "id": "325936",
+        "name": "Kamilla Rakhimova",
+        "country": "UZB"
+      },
+      "player_b": {
+        "id": "311779",
+        "name": "Shuai Zhang",
+        "country": "CHN"
+      },
+      "score_string": "7-5,5-7,6-4",
+      "result_string": "K. Rakhimova d [11]S. Zhang 7-5,5-7,6-4",
+      "sets": [
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS023",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T00:36:59.387+00:00",
+      "duration": "01:02:37",
+      "player_a": {
+        "id": "336364",
+        "name": "Tori Russell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "317683",
+        "name": "Yulia Putintseva",
+        "country": "KAZ"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "[10]Y. Putintseva d T. Russell 6-4,6-1",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS021",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T01:38:57.85+00:00",
+      "duration": "01:14:05",
+      "player_a": {
+        "id": "332736",
+        "name": "Laquisa Khan",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "score_string": "6-2,6-3",
+      "result_string": "[8]T. Valentova d L. Khan 6-2,6-3",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS020",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T01:51:18.883+00:00",
+      "duration": "01:46:13",
+      "player_a": {
+        "id": "310926",
+        "name": "Laura Siegemund",
+        "country": "GER"
+      },
+      "player_b": {
+        "id": "260142",
+        "name": "Vera Zvonareva",
+        "country": "RUS"
+      },
+      "score_string": "7-5,4-0 Ret'd",
+      "result_string": "V. Zvonareva d [3]L. Siegemund 7-5,4-0 Ret'd",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "0",
+          "b": "4"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS027",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T02:01:02.07+00:00",
+      "duration": "01:25:30",
+      "player_a": {
+        "id": "326113",
+        "name": "Mina Hodzic",
+        "country": "GER"
+      },
+      "player_b": {
+        "id": "324267",
+        "name": "Anna Blinkova",
+        "country": "RUS"
+      },
+      "score_string": "6-2,7-5",
+      "result_string": "M. Hodzic d [9]A. Blinkova 6-2,7-5",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS018",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T02:22:11.053+00:00",
+      "duration": "01:13:22",
+      "player_a": {
+        "id": "312469",
+        "name": "Sorana Cirstea",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "315314",
+        "name": "Ulrikke Eikeri",
+        "country": "NOR"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "[2]S. Cirstea d U. Eikeri 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS017",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T03:08:33.66+00:00",
+      "duration": "01:45:38",
+      "player_a": {
+        "id": "322451",
+        "name": "Xiaodi You",
+        "country": "CHN"
+      },
+      "player_b": {
+        "id": "325601",
+        "name": "Anastasia Potapova",
+        "country": "AUT"
+      },
+      "score_string": "6-2,7-6(1)",
+      "result_string": "[7]A. Potapova d X. You 6-2,7-6(1)",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS022",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T03:39:59.933+00:00",
+      "duration": "00:58:40",
+      "player_a": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "316344",
+        "name": "Aleksandra Krunic",
+        "country": "SRB"
+      },
+      "score_string": "6-2,6-2",
+      "result_string": "[4]M. Bouzkova d A. Krunic 6-2,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS016",
+      "round_id": "1",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T03:46:28.28+00:00",
+      "duration": "01:39:01",
+      "player_a": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "332865",
+        "name": "Sarah Mildren",
+        "country": "AUS"
+      },
+      "score_string": "7-6(4),6-2",
+      "result_string": "[1]J. Cristian d S. Mildren 7-6(4),6-2",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS012",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T23:17:33.567+00:00",
+      "duration": "01:57:45",
+      "player_a": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "score_string": "3-6,6-3,6-2",
+      "result_string": "[12]E. Ruse d [5]K. Siniakova 3-6,6-3,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS013",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-10T23:19:19.64+00:00",
+      "duration": "00:55:43",
+      "player_a": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "326113",
+        "name": "Mina Hodzic",
+        "country": "GER"
+      },
+      "score_string": "6-2,6-2",
+      "result_string": "D. Galfi d M. Hodzic 6-2,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS010",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-11T00:37:11.517+00:00",
+      "duration": "01:29:57",
+      "player_a": {
+        "id": "260142",
+        "name": "Vera Zvonareva",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "score_string": "7-6(2),6-0",
+      "result_string": "[8]T. Valentova d V. Zvonareva 7-6(2),6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS009",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-11T01:39:37.547+00:00",
+      "duration": "01:59:34",
+      "player_a": {
+        "id": "312469",
+        "name": "Sorana Cirstea",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "325936",
+        "name": "Kamilla Rakhimova",
+        "country": "UZB"
+      },
+      "score_string": "7-6(5),6-3",
+      "result_string": "[2]S. Cirstea d K. Rakhimova 7-6(5),6-3",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "RS011",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-11T02:27:05.867+00:00",
+      "duration": "02:18:47",
+      "player_a": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "317683",
+        "name": "Yulia Putintseva",
+        "country": "KAZ"
+      },
+      "score_string": "6-4,7-6(0)",
+      "result_string": "[10]Y. Putintseva d [4]M. Bouzkova 6-4,7-6(0)",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "RS008",
+      "round_id": "2",
+      "draw_level_type": "Q",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-11T03:53:22.76+00:00",
+      "duration": "01:34:38",
+      "player_a": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "325601",
+        "name": "Anastasia Potapova",
+        "country": "AUT"
+      },
+      "score_string": "6-1,6-3",
+      "result_string": "[1]J. Cristian d [7]A. Potapova 6-1,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD014",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-12T00:14:18.14+00:00",
+      "duration": "01:19:11",
+      "player_a": {
+        "id": "317070",
+        "name": "Timea Babos",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "320942",
+        "name": "Sofia Kenin",
+        "country": "USA"
+      },
+      "score_string": "6-3,0-6,1-0(6)",
+      "result_string": "T. Babos / L. Fernandez d S. Kenin / L. Siegemund 6-3,0-6,1-0(6)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS028",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-12T00:14:57.773+00:00",
+      "duration": "02:09:41",
+      "player_a": {
+        "id": "331006",
+        "name": "Victoria Mboko",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "318176",
+        "name": "Beatriz Haddad Maia",
+        "country": "BRA"
+      },
+      "score_string": "5-7,6-3,6-2",
+      "result_string": "[8]V. Mboko d B. Haddad Maia 5-7,6-3,6-2",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS023",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-12T00:19:04.33+00:00",
+      "duration": "01:18:32",
+      "player_a": {
+        "id": "333111",
+        "name": "Emerson Jones",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "325410",
+        "name": "Emma Navarro",
+        "country": "USA"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "[6]E. Navarro d E. Jones 6-3,6-3",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS019",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-12T02:01:03.953+00:00",
+      "duration": "01:13:31",
+      "player_a": {
+        "id": "315232",
+        "name": "Ajla Tomljanovic",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "327793",
+        "name": "Clara Tauson",
+        "country": "DEN"
+      },
+      "score_string": "7-6(5),0-0 Ret'd",
+      "result_string": "A. Tomljanovic d [5]C. Tauson 7-6(5),0-0 Ret'd",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS029",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-12T02:06:30.62+00:00",
+      "duration": "01:15:59",
+      "player_a": {
+        "id": "323942",
+        "name": "Anna Kalinskaya",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "320408",
+        "name": "Elena-Gabriela Ruse",
+        "country": "ROU"
+      },
+      "score_string": "6-0,6-3",
+      "result_string": "A. Kalinskaya d E. Ruse 6-0,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS017",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-12T02:52:35.197+00:00",
+      "duration": "02:28:50",
+      "player_a": {
+        "id": "320124",
+        "name": "Paula Badosa",
+        "country": "ESP"
+      },
+      "player_b": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "score_string": "3-6,6-3,6-4",
+      "result_string": "M. Bouzkova d P. Badosa 3-6,6-3,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD015",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-12T03:41:03.54+00:00",
+      "duration": "01:20:23",
+      "player_a": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "[2]K. Siniakova / S. Zhang d K. Birrell / M. Joint 6-4,6-4",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD008",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-12T05:17:24.33+00:00",
+      "duration": "01:12:47",
+      "player_a": {
+        "id": "310053",
+        "name": "Su-Wei Hsieh",
+        "country": "TPE"
+      },
+      "player_b": {
+        "id": "317612",
+        "name": "Miyu Kato",
+        "country": "JPN"
+      },
+      "score_string": "6-4,6-3",
+      "result_string": "[1]S. Hsieh / J. Ostapenko d M. Kato / F. Stollar 6-4,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD013",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-12T05:24:46.46+00:00",
+      "duration": "01:37:54",
+      "player_a": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "319731",
+        "name": "Anna Danilina",
+        "country": "KAZ"
+      },
+      "score_string": "6-3,6-7(5),1-0(9)",
+      "result_string": "[4]A. Danilina / A. Krunic d T. Valentova / M. Vondrousova 6-3,6-7(5),1-0(9)",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS027",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-12T05:42:43.63+00:00",
+      "duration": "01:50:01",
+      "player_a": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "player_b": {
+        "id": "319007",
+        "name": "Ekaterina Alexandrova",
+        "country": "RUS"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "J. Cristian d [4]E. Alexandrova 6-4,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD012",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-12T07:05:35.057+00:00",
+      "duration": "01:00:54",
+      "player_a": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "315314",
+        "name": "Ulrikke Eikeri",
+        "country": "NOR"
+      },
+      "score_string": "6-3,6-0",
+      "result_string": "M. Bouzkova / L. Stefani d U. Eikeri / I. Neel 6-3,6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD009",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-12T07:15:21.347+00:00",
+      "duration": "01:30:32",
+      "player_a": {
+        "id": "314701",
+        "name": "Lyudmyla Kichenok",
+        "country": "UKR"
+      },
+      "player_b": {
+        "id": "317915",
+        "name": "Irina Khromacheva",
+        "country": "RUS"
+      },
+      "score_string": "4-6,6-4,1-0(6)",
+      "result_string": "L. Kichenok / D. Krawczyk d I. Khromacheva / A. Panova 4-6,6-4,1-0(6)",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "1",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS026",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-12T07:47:26.027+00:00",
+      "duration": "01:55:42",
+      "player_a": {
+        "id": "322082",
+        "name": "Daria Kasatkina",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "318312",
+        "name": "Maria Sakkari",
+        "country": "GRE"
+      },
+      "score_string": "7-6(2),6-4",
+      "result_string": "D. Kasatkina d M. Sakkari 7-6(2),6-4",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD010",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-13T00:17:42.47+00:00",
+      "duration": "01:34:14",
+      "player_a": {
+        "id": "313919",
+        "name": "Asia Muhammad",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "321158",
+        "name": "Cristina Bucsa",
+        "country": "ESP"
+      },
+      "score_string": "6-4,3-6,1-0(6)",
+      "result_string": "[3]A. Muhammad / E. Routliffe d C. Bucsa / N. Melichar-Martinez 6-4,3-6,1-0(6)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS020",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T00:30:56.56+00:00",
+      "duration": "01:37:17",
+      "player_a": {
+        "id": "330482",
+        "name": "Diana Shnaider",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "326735",
+        "name": "Leylah Fernandez",
+        "country": "CAN"
+      },
+      "score_string": "7-5,6-3",
+      "result_string": "[9]D. Shnaider d L. Fernandez 7-5,6-3",
+      "sets": [
+        {
+          "a": "7",
+          "b": "5"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS024",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T02:22:05.997+00:00",
+      "duration": "02:01:57",
+      "player_a": {
+        "id": "322222",
+        "name": "Liudmila Samsonova",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "323027",
+        "name": "Marketa Vondrousova",
+        "country": "CZE"
+      },
+      "score_string": "6-1,4-6,6-2",
+      "result_string": "M. Vondrousova d [7]L. Samsonova 6-1,4-6,6-2",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS025",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T02:23:59.593+00:00",
+      "duration": "01:35:00",
+      "player_a": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "325601",
+        "name": "Anastasia Potapova",
+        "country": "AUT"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "K. Birrell d A. Potapova 6-4,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS018",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T03:46:56.513+00:00",
+      "duration": "01:36:26",
+      "player_a": {
+        "id": "330544",
+        "name": "Maya Joint",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "320942",
+        "name": "Sofia Kenin",
+        "country": "USA"
+      },
+      "score_string": "7-6(3),6-4",
+      "result_string": "M. Joint d S. Kenin 7-6(3),6-4",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS030",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T04:11:38.553+00:00",
+      "duration": "01:22:22",
+      "player_a": {
+        "id": "319939",
+        "name": "Jelena Ostapenko",
+        "country": "LAT"
+      },
+      "player_b": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "score_string": "7-5,3-2 Ret'd",
+      "result_string": "T. Valentova d J. Ostapenko 7-5,3-2 Ret'd",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "2",
+          "b": "3"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS022",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T06:00:37.627+00:00",
+      "duration": "01:30:26",
+      "player_a": {
+        "id": "317683",
+        "name": "Yulia Putintseva",
+        "country": "KAZ"
+      },
+      "player_b": {
+        "id": "321106",
+        "name": "Dalma Galfi",
+        "country": "HUN"
+      },
+      "score_string": "6-4,6-4",
+      "result_string": "Y. Putintseva d D. Galfi 6-4,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS021",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T07:56:50.927+00:00",
+      "duration": "00:53:21",
+      "player_a": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "324261",
+        "name": "Dayana Yastremska",
+        "country": "UKR"
+      },
+      "score_string": "6-0,6-1",
+      "result_string": "K. Siniakova d D. Yastremska 6-0,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD011",
+      "round_id": "1",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-13T08:22:36.477+00:00",
+      "duration": "01:11:06",
+      "player_a": {
+        "id": "318001",
+        "name": "Nicole Fossa Huergo",
+        "country": "ARG"
+      },
+      "player_b": {
+        "id": "319960",
+        "name": "Ellen Perez",
+        "country": "AUS"
+      },
+      "score_string": "6-3,6-4",
+      "result_string": "E. Perez / D. Schuurs d N. Fossa Huergo / D. Galfi 6-3,6-4",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS014",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T08:45:14.957+00:00",
+      "duration": "02:22:07",
+      "player_a": {
+        "id": "331006",
+        "name": "Victoria Mboko",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "323942",
+        "name": "Anna Kalinskaya",
+        "country": "RUS"
+      },
+      "score_string": "6-2,3-6,7-6(6)",
+      "result_string": "[8]V. Mboko d A. Kalinskaya 6-2,3-6,7-6(6)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "6"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-13T09:15:08.967+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "310053",
+        "name": "Su-Wei Hsieh",
+        "country": "TPE"
+      },
+      "player_b": {
+        "id": "314701",
+        "name": "Lyudmyla Kichenok",
+        "country": "UKR"
+      },
+      "score_string": " W/O",
+      "result_string": "L. Kichenok / D. Krawczyk d [1]S. Hsieh / J. Ostapenko  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS008",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-13T10:10:00.3+00:00",
+      "duration": "01:09:40",
+      "player_a": {
+        "id": "331809",
+        "name": "Mirra Andreeva",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "score_string": "6-3,6-1",
+      "result_string": "[3]M. Andreeva d M. Bouzkova 6-3,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS013",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-14T00:14:26.9+00:00",
+      "duration": "01:31:11",
+      "player_a": {
+        "id": "322082",
+        "name": "Daria Kasatkina",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "score_string": "6-4,6-0",
+      "result_string": "J. Cristian d D. Kasatkina 6-4,6-0",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS012",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-14T00:17:16.57+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "323027",
+        "name": "Marketa Vondrousova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "score_string": " W/O",
+      "result_string": "K. Birrell d M. Vondrousova  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS015",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-14T02:18:58.347+00:00",
+      "duration": "01:24:16",
+      "player_a": {
+        "id": "330808",
+        "name": "Tereza Valentova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "316959",
+        "name": "Madison Keys",
+        "country": "USA"
+      },
+      "score_string": "6-4,6-1",
+      "result_string": "[2]M. Keys d T. Valentova 6-4,6-1",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS010",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-14T04:43:45.253+00:00",
+      "duration": "01:52:29",
+      "player_a": {
+        "id": "330482",
+        "name": "Diana Shnaider",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "score_string": "6-1,2-6,7-5",
+      "result_string": "[9]D. Shnaider d K. Siniakova 6-1,2-6,7-5",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-14T06:21:10.873+00:00",
+      "duration": "00:00:00",
+      "player_a": {
+        "id": "320983",
+        "name": "Marie Bouzkova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "319731",
+        "name": "Anna Danilina",
+        "country": "KAZ"
+      },
+      "score_string": " W/O",
+      "result_string": "[4]A. Danilina / A. Krunic d M. Bouzkova / L. Stefani  W/O",
+      "sets": [],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS011",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-14T06:49:10.45+00:00",
+      "duration": "01:24:25",
+      "player_a": {
+        "id": "317683",
+        "name": "Yulia Putintseva",
+        "country": "KAZ"
+      },
+      "player_b": {
+        "id": "325410",
+        "name": "Emma Navarro",
+        "country": "USA"
+      },
+      "score_string": "6-1,6-4",
+      "result_string": "[6]E. Navarro d Y. Putintseva 6-1,6-4",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-14T07:49:58.82+00:00",
+      "duration": "01:59:41",
+      "player_a": {
+        "id": "317070",
+        "name": "Timea Babos",
+        "country": "HUN"
+      },
+      "player_b": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "score_string": "6-7(3),7-6(6),1-0(6)",
+      "result_string": "[2]K. Siniakova / S. Zhang d T. Babos / L. Fernandez 6-7(3),7-6(6),1-0(6)",
+      "sets": [
+        {
+          "a": "7",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-14T08:29:08.83+00:00",
+      "duration": "01:39:34",
+      "player_a": {
+        "id": "313919",
+        "name": "Asia Muhammad",
+        "country": "USA"
+      },
+      "player_b": {
+        "id": "319960",
+        "name": "Ellen Perez",
+        "country": "AUS"
+      },
+      "score_string": "3-6,6-4,1-0(3)",
+      "result_string": "E. Perez / D. Schuurs d [3]A. Muhammad / E. Routliffe 3-6,6-4,1-0(3)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS009",
+      "round_id": "2",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-14T09:41:16.883+00:00",
+      "duration": "00:20:44",
+      "player_a": {
+        "id": "330544",
+        "name": "Maya Joint",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "315232",
+        "name": "Ajla Tomljanovic",
+        "country": "AUS"
+      },
+      "score_string": "2-0 Ret'd",
+      "result_string": "M. Joint d A. Tomljanovic 2-0 Ret'd",
+      "sets": [
+        {
+          "a": "0",
+          "b": "2"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS006",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-15T00:24:24.39+00:00",
+      "duration": "03:04:33",
+      "player_a": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "320319",
+        "name": "Jaqueline Cristian",
+        "country": "ROU"
+      },
+      "score_string": "5-7,6-1,7-5",
+      "result_string": "K. Birrell d J. Cristian 5-7,6-1,7-5",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "7",
+          "b": "5"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS007",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-15T03:49:07.953+00:00",
+      "duration": "01:53:14",
+      "player_a": {
+        "id": "331006",
+        "name": "Victoria Mboko",
+        "country": "CAN"
+      },
+      "player_b": {
+        "id": "316959",
+        "name": "Madison Keys",
+        "country": "USA"
+      },
+      "score_string": "6-4,4-6,6-2",
+      "result_string": "[8]V. Mboko d [2]M. Keys 6-4,4-6,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS005",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-15T04:20:11.42+00:00",
+      "duration": "01:18:08",
+      "player_a": {
+        "id": "330482",
+        "name": "Diana Shnaider",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "325410",
+        "name": "Emma Navarro",
+        "country": "USA"
+      },
+      "score_string": "6-3,6-3",
+      "result_string": "[9]D. Shnaider d [6]E. Navarro 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-15T07:43:21.17+00:00",
+      "duration": "01:22:48",
+      "player_a": {
+        "id": "319731",
+        "name": "Anna Danilina",
+        "country": "KAZ"
+      },
+      "player_b": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "score_string": "6-4,2-6,1-0(8)",
+      "result_string": "[2]K. Siniakova / S. Zhang d [4]A. Danilina / A. Krunic 6-4,2-6,1-0(8)",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS004",
+      "round_id": "Q",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-15T07:55:30.083+00:00",
+      "duration": "01:07:17",
+      "player_a": {
+        "id": "331809",
+        "name": "Mirra Andreeva",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "330544",
+        "name": "Maya Joint",
+        "country": "AUS"
+      },
+      "score_string": "6-2,6-0",
+      "result_string": "[3]M. Andreeva d M. Joint 6-2,6-0",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "6",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-15T07:58:06.363+00:00",
+      "duration": "01:26:57",
+      "player_a": {
+        "id": "314701",
+        "name": "Lyudmyla Kichenok",
+        "country": "UKR"
+      },
+      "player_b": {
+        "id": "319960",
+        "name": "Ellen Perez",
+        "country": "AUS"
+      },
+      "score_string": "6-2,3-6,1-0(7)",
+      "result_string": "L. Kichenok / D. Krawczyk d E. Perez / D. Schuurs 6-2,3-6,1-0(7)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "0"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-16T00:15:21.03+00:00",
+      "duration": "00:59:11",
+      "player_a": {
+        "id": "320728",
+        "name": "Kimberly Birrell",
+        "country": "AUS"
+      },
+      "player_b": {
+        "id": "331006",
+        "name": "Victoria Mboko",
+        "country": "CAN"
+      },
+      "score_string": "6-2,6-1",
+      "result_string": "[8]V. Mboko d K. Birrell 6-2,6-1",
+      "sets": [
+        {
+          "a": "2",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-16T04:36:50.083+00:00",
+      "duration": "01:24:00",
+      "player_a": {
+        "id": "331809",
+        "name": "Mirra Andreeva",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "330482",
+        "name": "Diana Shnaider",
+        "country": "RUS"
+      },
+      "score_string": "6-3,6-2",
+      "result_string": "[3]M. Andreeva d [9]D. Shnaider 6-3,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LD001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-01-16T10:47:30.21+00:00",
+      "duration": "01:10:46",
+      "player_a": {
+        "id": "314701",
+        "name": "Lyudmyla Kichenok",
+        "country": "UKR"
+      },
+      "player_b": {
+        "id": "320301",
+        "name": "Katerina Siniakova",
+        "country": "CZE"
+      },
+      "score_string": "6-1,6-4",
+      "result_string": "[2]K. Siniakova / S. Zhang d L. Kichenok / D. Krawczyk 6-1,6-4",
+      "sets": [
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-01-17T01:51:40.04+00:00",
+      "duration": "01:04:05",
+      "player_a": {
+        "id": "331809",
+        "name": "Mirra Andreeva",
+        "country": "RUS"
+      },
+      "player_b": {
+        "id": "331006",
+        "name": "Victoria Mboko",
+        "country": "CAN"
+      },
+      "score_string": "6-3,6-1",
+      "result_string": "[3]M. Andreeva d [8]V. Mboko 6-3,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    }
+  ]
+}

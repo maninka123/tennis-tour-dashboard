@@ -147,7 +147,14 @@ const DOM = {
     // Analysis launchers
     analysisLaunchCurrentBtn: document.getElementById('analysisLaunchCurrentBtn'),
     analysisLaunchTourPill: document.getElementById('analysisLaunchTourPill'),
-    analysisLaunchLabel: document.getElementById('analysisLaunchLabel')
+    analysisLaunchLabel: document.getElementById('analysisLaunchLabel'),
+
+    // Season progress strip
+    seasonProgressStrip: document.getElementById('seasonProgressStrip'),
+    seasonProgressTrack: document.getElementById('seasonProgressTrack'),
+    seasonProgressCount: document.getElementById('seasonProgressCount'),
+    seasonActivePill: document.getElementById('seasonActivePill'),
+    seasonSurfacePill: document.getElementById('seasonSurfacePill')
 };
 
 // ============================================
@@ -993,6 +1000,7 @@ const EventHandlers = {
         App.refreshTournamentsStatus(tour);
         App.syncTournamentHeaderState();
         App.setupAnalysisLaunchers(tour);
+        App.renderSeasonProgress(tour);
         if (window.StatZoneModule && typeof window.StatZoneModule.syncHeaderState === 'function') {
             window.StatZoneModule.syncHeaderState();
         }
@@ -1078,6 +1086,107 @@ const App = {
         }
     },
 
+    getSeasonSwingConfig(tour = AppState.currentTour) {
+        const safeTour = String(tour || '').trim().toLowerCase() === 'wta' ? 'wta' : 'atp';
+        const coreSwings = [
+            { name: 'Australian Swing', months: 'JAN', startMonth: 0, surface: 'hard', typeLabel: 'Hard' },
+            { name: 'Middle East Swing', months: 'FEB', startMonth: 1, surface: 'hard', typeLabel: 'Hard' },
+            { name: 'Sunshine Swing', months: 'MAR', startMonth: 2, surface: 'hard', typeLabel: 'Hard' },
+            { name: 'Clay Swing', months: 'APR-MAY', startMonth: 3, surface: 'clay', typeLabel: 'Clay' },
+            { name: 'Grass Swing', months: 'JUN-JUL', startMonth: 5, surface: 'grass', typeLabel: 'Grass' },
+            { name: 'North American Hard Swing', months: 'JUL-AUG', startMonth: 6, surface: 'hard', typeLabel: 'Hard' },
+            { name: 'Asian Swing', months: 'SEP-OCT', startMonth: 8, surface: 'hard', typeLabel: 'Hard' }
+        ];
+
+        if (safeTour === 'wta') {
+            return [
+                ...coreSwings,
+                { name: 'WTA Finals', months: 'NOV', startMonth: 10, surface: 'indoor', typeLabel: 'Indoor Hard' }
+            ];
+        }
+
+        return [
+            ...coreSwings,
+            { name: 'Indoor European Swing', months: 'OCT-NOV', startMonth: 9, surface: 'indoor', typeLabel: 'Indoor Hard' },
+            { name: 'ATP Finals', months: 'NOV', startMonth: 10, surface: 'indoor', typeLabel: 'Indoor Hard' }
+        ];
+    },
+
+    getSeasonGradient(swings) {
+        const colorBySurface = {
+            hard: '#2d74b8',
+            clay: '#c77a2a',
+            grass: '#2c9b61',
+            indoor: '#566176'
+        };
+        if (!Array.isArray(swings) || swings.length === 0) {
+            return 'linear-gradient(94deg, #2d74b8 0%, #2d74b8 100%)';
+        }
+        const stops = swings.map((swing, idx) => {
+            const pct = swings.length === 1 ? 0 : (idx / (swings.length - 1)) * 100;
+            return `${colorBySurface[swing.surface] || colorBySurface.hard} ${pct.toFixed(1)}%`;
+        });
+        return `linear-gradient(94deg, ${stops.join(', ')})`;
+    },
+
+    renderSeasonProgress(tour = AppState.currentTour) {
+        if (!DOM.seasonProgressStrip || !DOM.seasonProgressTrack) return;
+        const swings = this.getSeasonSwingConfig(tour);
+        if (!swings.length) return;
+
+        const now = new Date();
+        const currentMonth = now.getMonth();
+        let activeIndex = 0;
+        for (let i = 0; i < swings.length; i += 1) {
+            if (currentMonth >= swings[i].startMonth) {
+                activeIndex = i;
+            }
+        }
+
+        const activeSwing = swings[activeIndex];
+        const year = now.getFullYear();
+        const nowDayStart = new Date(year, now.getMonth(), now.getDate()).getTime();
+        const activeStart = new Date(year, activeSwing.startMonth, 1).getTime();
+        const nextStart = activeIndex < swings.length - 1
+            ? new Date(year, swings[activeIndex + 1].startMonth, 1).getTime()
+            : new Date(year + 1, 0, 1).getTime();
+        const msPerDay = 24 * 60 * 60 * 1000;
+        const totalDays = Math.max(1, Math.round((nextStart - activeStart) / msPerDay));
+        const elapsedDays = Math.max(1, Math.min(totalDays, Math.round((nowDayStart - activeStart) / msPerDay) + 1));
+        const activeProgress = elapsedDays / totalDays;
+        const activeProgressPct = Math.round(activeProgress * 100);
+
+        DOM.seasonProgressTrack.innerHTML = swings.map((swing, idx) => {
+            const stateClass = idx < activeIndex ? 'done' : (idx === activeIndex ? 'active' : '');
+            const marker = idx === activeIndex
+                ? `<span class="season-now-marker" style="left:${activeProgressPct}%" aria-hidden="true"></span>`
+                : '';
+            return `
+                <div class="season-segment ${stateClass}">
+                    <div class="season-segment-bar">${marker}</div>
+                    <div class="season-segment-label">${swing.months}</div>
+                    <div class="season-segment-name">${swing.name}</div>
+                </div>
+            `;
+        }).join('');
+
+        const progressPct = Math.round(((activeIndex + activeProgress) / swings.length) * 100);
+
+        if (DOM.seasonProgressCount) {
+            DOM.seasonProgressCount.textContent = `${activeIndex + 1} / ${swings.length} • ${progressPct}%`;
+        }
+        if (DOM.seasonActivePill) {
+            DOM.seasonActivePill.textContent = activeSwing.name;
+        }
+        if (DOM.seasonSurfacePill) {
+            DOM.seasonSurfacePill.classList.remove('surface-hard', 'surface-clay', 'surface-grass', 'surface-indoor');
+            DOM.seasonSurfacePill.classList.add(`surface-${activeSwing.surface}`);
+            DOM.seasonSurfacePill.innerHTML = `<i class="fas fa-table-cells"></i> ${activeSwing.typeLabel.toUpperCase()}`;
+        }
+
+        DOM.seasonProgressStrip.style.setProperty('--season-progress-bg', this.getSeasonGradient(swings));
+    },
+
     /**
      * Initialize the application
      */
@@ -1087,6 +1196,7 @@ const App = {
         // Initialize event handlers
         EventHandlers.init();
         this.setupAnalysisLaunchers();
+        this.renderSeasonProgress();
         
         // Initialize ATP match stats cache
         ScoresModule.init();
@@ -1100,6 +1210,7 @@ const App = {
         // Load initial data
         await this.loadInitialData();
         this.setupAnalysisLaunchers();
+        this.renderSeasonProgress();
         await this.refreshAtpRankingsStatus();
         await this.refreshWtaRankingsStatus();
         await this.refreshAtpStatsStatus();
