@@ -212,6 +212,15 @@ def _serve_file(directory, filename, not_found_message='Not found'):
         return jsonify({'error': str(exc)}), 500
 
 
+def _load_json_list(path):
+    try:
+        with open(path, 'r', encoding='utf-8') as fh:
+            payload = json.load(fh)
+        return payload if isinstance(payload, list) else []
+    except Exception:
+        return []
+
+
 @app.route('/api/player/<tour>/<player_id>/image')
 def serve_player_image(tour, player_id):
     """Serve player image from local data or redirect"""
@@ -553,12 +562,26 @@ def get_recent_matches():
     
     try:
         matches = tennis_fetcher.fetch_recent_matches(tour, limit)
+        # Render safety net: if ATP feed is empty, reuse last cached ATP snapshot.
+        if not matches and tour in {'atp', 'both'}:
+            cached = _load_json_list(os.path.join(REPO_ROOT, 'data', 'atp_recent_matches_cache.json'))
+            if cached:
+                matches = cached[:max(1, int(limit) if isinstance(limit, int) else 20)]
         return jsonify({
             'success': True,
             'data': matches,
             'count': len(matches)
         })
     except Exception as e:
+        if tour in {'atp', 'both'}:
+            cached = _load_json_list(os.path.join(REPO_ROOT, 'data', 'atp_recent_matches_cache.json'))
+            if cached:
+                return jsonify({
+                    'success': True,
+                    'data': cached[:max(1, int(limit) if isinstance(limit, int) else 20)],
+                    'count': min(len(cached), max(1, int(limit) if isinstance(limit, int) else 20)),
+                    'warning': f'Using cached ATP recent matches due to fetch error: {str(e)}'
+                })
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
@@ -572,12 +595,26 @@ def get_upcoming_matches():
     
     try:
         matches = tennis_fetcher.fetch_upcoming_matches(tour, days=days)
+        # Render safety net: if ATP feed is empty, reuse last cached ATP snapshot.
+        if not matches and tour in {'atp', 'both'}:
+            cached = _load_json_list(os.path.join(REPO_ROOT, 'data', 'atp_upcoming_matches_cache.json'))
+            if cached:
+                matches = cached
         return jsonify({
             'success': True,
             'data': matches,
             'count': len(matches)
         })
     except Exception as e:
+        if tour in {'atp', 'both'}:
+            cached = _load_json_list(os.path.join(REPO_ROOT, 'data', 'atp_upcoming_matches_cache.json'))
+            if cached:
+                return jsonify({
+                    'success': True,
+                    'data': cached,
+                    'count': len(cached),
+                    'warning': f'Using cached ATP upcoming matches due to fetch error: {str(e)}'
+                })
         return jsonify({'success': False, 'error': str(e)}), 500
 
 

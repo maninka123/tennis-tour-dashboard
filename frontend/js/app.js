@@ -256,6 +256,7 @@ const Utils = {
         const playerTour = String(player?.tour || '').trim().toLowerCase();
         const effectiveTour = explicitTour || playerTour;
         const numericId = Number(player?.id);
+        const playerCode = String(player?.player_code || '').trim().toUpperCase();
         const resolvedApiBase = AppState.apiBaseResolved
             || CONFIG.API_BASE_URL
             || window.TennisApp?.CONFIG?.API_BASE_URL
@@ -268,11 +269,20 @@ const Utils = {
             return `${resolvedOrigin}/api/player/wta/${numericId}/image`;
         }
 
+        // For ATP in main app, prefer backend proxy route when player_code exists.
+        // This avoids Render mixed-content and third-party hotlink issues.
+        if (effectiveTour === 'atp' && /^[A-Z0-9]{3,6}$/.test(playerCode)) {
+            return `${resolvedOrigin}/api/player/atp/${playerCode}/image`;
+        }
+
         // Explicit image_url from API
         if (player && player.image_url) {
             const rawImage = String(player.image_url || '').trim();
             if (rawImage) {
                 if (/^https?:\/\//i.test(rawImage) || rawImage.startsWith('data:')) {
+                    if (rawImage.startsWith('http://') && window.location.protocol === 'https:') {
+                        return `https://${rawImage.slice('http://'.length)}`;
+                    }
                     return rawImage;
                 }
 
