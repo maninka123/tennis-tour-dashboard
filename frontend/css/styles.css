@@ -237,11 +237,11 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 12px;
+    padding: 9px 13px;
     border-radius: 12px;
     border: 1px solid var(--bg-tertiary);
     text-decoration: none;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-primary);
     box-shadow: var(--shadow-sm);
@@ -262,10 +262,29 @@ body {
     margin-left: auto;
 }
 
+.season-launch-group {
+    margin-left: auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.season-launch-group .analysis-launch-btn {
+    width: 235px;
+    justify-content: flex-start;
+}
+
+.notification-launch-btn {
+    border-color: rgba(35, 126, 112, 0.36);
+    background: linear-gradient(180deg, #ebfbf7 0%, #ddf6f1 100%);
+}
+
 .analysis-launch-btn:hover,
 .analysis-launch-btn:focus-visible {
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
+    z-index: 220;
 }
 
 .analysis-tour-pill {
@@ -295,6 +314,7 @@ body {
     pointer-events: none;
     position: absolute;
     top: calc(100% + 9px);
+    bottom: auto;
     right: 0;
     width: 322px;
     padding: 12px;
@@ -354,6 +374,11 @@ body {
     color: #7a1f55;
 }
 
+.notification-launch-btn .preview-chip {
+    background: #e8f7f2;
+    color: #176d60;
+}
+
 .preview-chip i {
     font-size: 0.65rem;
 }
@@ -381,6 +406,10 @@ body {
     stroke: #d64a93;
 }
 
+.notification-launch-btn .preview-line polyline {
+    stroke: #1f9d88;
+}
+
 .preview-bars rect {
     fill: #71a8e5;
     opacity: 0.9;
@@ -389,6 +418,10 @@ body {
 
 .analysis-launch-wta .preview-bars rect {
     fill: #e98abc;
+}
+
+.notification-launch-btn .preview-bars rect {
+    fill: #69c8b7;
 }
 
 .preview-footnote {
@@ -4308,7 +4341,7 @@ img {
         min-width: 100%;
     }
 
-    .analysis-launch-current {
+    .season-launch-group {
         margin-left: 0;
     }
 
@@ -4330,9 +4363,13 @@ img {
 }
 
 @media (max-width: 768px) {
-    .season-progress-header .analysis-launch-current {
+    .season-progress-header .season-launch-group {
         order: 2;
         align-self: flex-start;
+    }
+
+    .season-launch-group {
+        align-items: flex-start;
     }
 
     .season-progress-strip {

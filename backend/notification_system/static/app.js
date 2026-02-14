@@ -54,9 +54,8 @@ const EVENT_TYPE_META = {
   },
   player_reaches_round: {
     hint: 'Track when a specific player reaches selected round or above.',
-    scopes: ['categories', 'tournaments', 'players', 'tracked_player', 'round_filters', 'extra_conditions'],
+    scopes: ['categories', 'tournaments', 'players', 'round_filters', 'extra_conditions'],
     params: [],
-    requiresTracked: true,
   },
   tournament_stage_reminder: {
     hint: 'Alert for QF/SF/F upcoming or live matches in selected events.',
@@ -75,21 +74,20 @@ const EVENT_TYPE_META = {
   },
   ranking_milestone: {
     hint: 'Track ranking milestones (Top 100/50/20/10 or career high).',
-    scopes: ['players', 'tracked_player'],
+    scopes: ['players'],
     params: ['ranking_milestone', 'emit_on_first_seen'],
     requiresPlayerSelection: true,
   },
   title_milestone: {
     hint: 'Track title count milestones for selected players.',
-    scopes: ['players', 'tracked_player'],
+    scopes: ['players'],
     params: ['title_target', 'emit_on_first_seen'],
     requiresPlayerSelection: true,
   },
   head_to_head_breaker: {
-    hint: 'Alert when tracked player breaks a losing streak against rival.',
-    scopes: ['tracked_player', 'categories', 'tournaments', 'extra_conditions'],
+    hint: 'Alert when first player in Players list breaks a losing streak against rival.',
+    scopes: ['players', 'categories', 'tournaments', 'extra_conditions'],
     params: ['rival_player', 'h2h_min_losses'],
-    requiresTracked: true,
   },
   tournament_completed: {
     hint: 'Alert when tournament finals are completed.',
@@ -144,7 +142,6 @@ const el = {
   tournamentsInput: document.getElementById('tournamentsInput'),
   playersInput: document.getElementById('playersInput'),
   trackedPlayerInput: document.getElementById('trackedPlayerInput'),
-  trackedPlayerField: document.getElementById('trackedPlayerField'),
   conditionsList: document.getElementById('conditionsList'),
   addConditionBtn: document.getElementById('addConditionBtn'),
   resetFormBtn: document.getElementById('resetFormBtn'),
@@ -203,8 +200,6 @@ const el = {
   tournamentsDropdown: document.getElementById('tournamentsDropdown'),
   playersDropdownBtn: document.getElementById('playersDropdownBtn'),
   playersDropdown: document.getElementById('playersDropdown'),
-  trackedPlayerDropdownBtn: document.getElementById('trackedPlayerDropdownBtn'),
-  trackedPlayerDropdown: document.getElementById('trackedPlayerDropdown'),
   paramRivalPlayerDropdownBtn: document.getElementById('paramRivalPlayerDropdownBtn'),
   paramRivalPlayerDropdown: document.getElementById('paramRivalPlayerDropdown'),
 };
@@ -929,14 +924,14 @@ function getRuleBuilderRequiredStatus() {
     if (!payload.round_value) focusMissing.push('Round Value');
   }
 
-  if (eventType === 'player_reaches_round' && !(payload.tracked_player || (payload.players || []).length)) {
-    focusMissing.push('Tracked Player or Players');
+  if (eventType === 'player_reaches_round' && !(payload.players || []).length) {
+    focusMissing.push('Players');
   }
-  if ((eventType === 'ranking_milestone' || eventType === 'title_milestone') && !(payload.tracked_player || (payload.players || []).length)) {
+  if ((eventType === 'ranking_milestone' || eventType === 'title_milestone') && !(payload.players || []).length) {
     focusMissing.push('Player Selection');
   }
   if (eventType === 'head_to_head_breaker') {
-    if (!payload.tracked_player) focusMissing.push('Tracked Player');
+    if (!(payload.players || []).length) focusMissing.push('Players (first player is tracked)');
     if (!payload.params.rival_player) focusMissing.push('Rival Player');
   }
   if (eventType === 'surface_specific_result' && !payload.params.surface_value) {
@@ -1077,10 +1072,6 @@ function updateEventUi() {
     toggleGroup(node, activeParams.has(param));
   });
 
-  el.trackedPlayerInput.required = !!meta.requiresTracked;
-  if (!activeScopes.has('tracked_player')) {
-    el.trackedPlayerInput.value = '';
-  }
   if (!activeScopes.has('round_filters')) {
     el.roundModeInput.value = 'any';
     el.roundValueInput.value = '';
@@ -1123,6 +1114,11 @@ function getRuleParams() {
   };
 }
 
+function deriveTrackedPlayerFromPlayers(players = []) {
+  if (!Array.isArray(players) || !players.length) return '';
+  return normalizePlayerToken(players[0]);
+}
+
 function getRuleFormPayload() {
   const eventType = el.eventTypeInput.value;
   const meta = EVENT_TYPE_META[eventType] || EVENT_TYPE_META.upcoming_match;
@@ -1132,6 +1128,14 @@ function getRuleFormPayload() {
   Object.keys(params).forEach((key) => {
     if (!activeParams.has(key)) delete params[key];
   });
+
+  const selectedPlayers = activeScopes.has('players')
+    ? uniqueCsvTokens(splitCsv(el.playersInput.value).map((token) => normalizePlayerToken(token)), 'players')
+    : [];
+  const derivedTrackedPlayer = deriveTrackedPlayerFromPlayers(selectedPlayers);
+  if (el.trackedPlayerInput) {
+    el.trackedPlayerInput.value = derivedTrackedPlayer;
+  }
 
   return {
     id: el.ruleIdInput.value.trim() || undefined,
@@ -1146,10 +1150,8 @@ function getRuleFormPayload() {
     tournaments: activeScopes.has('tournaments')
       ? uniqueCsvTokens(splitCsv(el.tournamentsInput.value).map((token) => normalizeTournamentToken(token)), 'tournaments')
       : [],
-    players: activeScopes.has('players')
-      ? uniqueCsvTokens(splitCsv(el.playersInput.value).map((token) => normalizePlayerToken(token)), 'players')
-      : [],
-    tracked_player: activeScopes.has('tracked_player') ? normalizePlayerToken(el.trackedPlayerInput.value) : '',
+    players: selectedPlayers,
+    tracked_player: derivedTrackedPlayer,
     conditions: activeScopes.has('extra_conditions') ? serializeConditions() : [],
     severity: el.severityInput.value,
     cooldown_minutes: parseIntSafe(el.cooldownInput.value, 0),
@@ -1191,11 +1193,14 @@ function populateRuleForm(rule) {
   state.builderStep = 3;
   el.categoriesInput.value = (rule.categories || []).join(', ');
   el.tournamentsInput.value = (rule.tournaments || []).join(', ');
-  el.playersInput.value = (rule.players || []).join(', ');
-  el.trackedPlayerInput.value = rule.tracked_player || '';
+  const playerValues = [...(rule.players || [])];
+  if (!playerValues.length && rule.tracked_player) playerValues.push(rule.tracked_player);
+  el.playersInput.value = playerValues.join(', ');
+  if (el.trackedPlayerInput) {
+    el.trackedPlayerInput.value = rule.tracked_player || (playerValues[0] || '');
+  }
   normalizeTournamentInputDisplay();
   normalizePlayersInputDisplay();
-  el.trackedPlayerInput.value = formatPlayerDisplayToken(el.trackedPlayerInput.value);
 
   el.severityInput.value = rule.severity || 'normal';
   el.cooldownInput.value = rule.cooldown_minutes || 0;
@@ -1500,7 +1505,6 @@ function openDropdown(kind) {
     categories: { input: el.categoriesInput, panel: el.categoriesDropdown, multi: true, dataKind: 'categories' },
     tournaments: { input: el.tournamentsInput, panel: el.tournamentsDropdown, multi: true, dataKind: 'tournaments' },
     players: { input: el.playersInput, panel: el.playersDropdown, multi: true, dataKind: 'players' },
-    trackedPlayer: { input: el.trackedPlayerInput, panel: el.trackedPlayerDropdown, multi: false, dataKind: 'players' },
     rivalPlayer: { input: el.paramRivalPlayerInput, panel: el.paramRivalPlayerDropdown, multi: false, dataKind: 'players' },
   };
   const cfg = map[kind];
@@ -1513,7 +1517,7 @@ function openDropdown(kind) {
 function closeAllDropdowns() {
   [
     el.categoriesDropdown, el.tournamentsDropdown, el.playersDropdown,
-    el.trackedPlayerDropdown, el.paramRivalPlayerDropdown,
+    el.paramRivalPlayerDropdown,
   ].forEach((panel) => panel && panel.classList.remove('open'));
   state.openDropdown = null;
 }
@@ -1523,17 +1527,16 @@ const debouncedSuggestRefresh = debounce(async (kind) => {
     categories: el.categoriesInput,
     tournaments: el.tournamentsInput,
     players: el.playersInput,
-    trackedPlayer: el.trackedPlayerInput,
     rivalPlayer: el.paramRivalPlayerInput,
   };
   const inputEl = map[kind];
   if (!inputEl) return;
   const query = kind === 'categories'
     ? getTokenForInput(inputEl)
-    : (kind === 'trackedPlayer' || kind === 'rivalPlayer' ? inputEl.value.trim() : getTokenForInput(inputEl));
+    : (kind === 'rivalPlayer' ? inputEl.value.trim() : getTokenForInput(inputEl));
   const normalizedQuery = kind === 'tournaments'
     ? normalizeTournamentToken(query)
-    : (kind === 'players' || kind === 'trackedPlayer' || kind === 'rivalPlayer'
+    : (kind === 'players' || kind === 'rivalPlayer'
       ? normalizePlayerToken(query)
       : query);
 
@@ -1709,12 +1712,12 @@ function bindDropdown(inputEl, kind, buttonEl) {
         closeAllDropdowns();
         return;
       }
-      const query = kind === 'trackedPlayer' || kind === 'rivalPlayer'
+      const query = kind === 'rivalPlayer'
         ? inputEl.value.trim()
         : getTokenForInput(inputEl);
       const normalizedQuery = kind === 'tournaments'
         ? normalizeTournamentToken(query)
-        : (kind === 'players' || kind === 'trackedPlayer' || kind === 'rivalPlayer'
+        : (kind === 'players' || kind === 'rivalPlayer'
           ? normalizePlayerToken(query)
           : query);
       if (normalizedQuery.length >= 2) await loadOptions(normalizedQuery);
@@ -1786,7 +1789,6 @@ function bindEvents() {
     el.ruleNameInput,
     el.roundValueInput,
     el.playersInput,
-    el.trackedPlayerInput,
     el.paramRivalPlayerInput,
     el.cooldownInput,
     el.paramTitleTarget,
@@ -1823,18 +1825,12 @@ function bindEvents() {
   bindDropdown(el.categoriesInput, 'categories', el.categoriesDropdownBtn);
   bindDropdown(el.tournamentsInput, 'tournaments', el.tournamentsDropdownBtn);
   bindDropdown(el.playersInput, 'players', el.playersDropdownBtn);
-  bindDropdown(el.trackedPlayerInput, 'trackedPlayer', el.trackedPlayerDropdownBtn);
   bindDropdown(el.paramRivalPlayerInput, 'rivalPlayer', el.paramRivalPlayerDropdownBtn);
   if (el.tournamentsInput) {
     el.tournamentsInput.addEventListener('blur', normalizeTournamentInputDisplay);
   }
   if (el.playersInput) {
     el.playersInput.addEventListener('blur', normalizePlayersInputDisplay);
-  }
-  if (el.trackedPlayerInput) {
-    el.trackedPlayerInput.addEventListener('blur', () => {
-      el.trackedPlayerInput.value = formatPlayerDisplayToken(el.trackedPlayerInput.value);
-    });
   }
   if (el.paramRivalPlayerInput) {
     el.paramRivalPlayerInput.addEventListener('blur', () => {

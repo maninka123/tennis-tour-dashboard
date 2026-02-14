@@ -12,7 +12,7 @@
   "indoor_outdoor": "I",
   "city": "OEIRAS",
   "country": "POR",
-  "status": "inprogress",
+  "status": "in_progress",
   "draw_size_singles": 32,
   "draw_size_doubles": 16,
   "prize_money": 115000,
@@ -1289,10 +1289,10 @@
         "matches": [
           {
             "id": "LS004",
-            "display_name": "",
-            "result_score": "",
-            "winner_slot": "",
-            "result_name_and_score": "",
+            "display_name": "JORGE, Matilde",
+            "result_score": "26 61 76(6)",
+            "winner_slot": "B",
+            "result_name_and_score": "Matilde Jorge d. Lucrezia Stefanini 26 61 76(6)",
             "players": [
               {
                 "slot": "A",
@@ -1322,10 +1322,10 @@
           },
           {
             "id": "LS005",
-            "display_name": "",
-            "result_score": "",
-            "winner_slot": "",
-            "result_name_and_score": "",
+            "display_name": "KORNEEVA, Alina",
+            "result_score": "76(1) 76(4)",
+            "winner_slot": "B",
+            "result_name_and_score": "Alina Korneeva d. Leyre Romero Gormaz 76(1) 76(4)",
             "players": [
               {
                 "slot": "A",
@@ -1355,10 +1355,10 @@
           },
           {
             "id": "LS006",
-            "display_name": "",
-            "result_score": "",
-            "winner_slot": "",
-            "result_name_and_score": "",
+            "display_name": "CHWALINSKA, Maja",
+            "result_score": "61 62",
+            "winner_slot": "A",
+            "result_name_and_score": "Maja Chwalinska d. Suzan Lamens 61 62",
             "players": [
               {
                 "slot": "A",
@@ -1388,10 +1388,10 @@
           },
           {
             "id": "LS007",
-            "display_name": "",
-            "result_score": "",
-            "winner_slot": "",
-            "result_name_and_score": "",
+            "display_name": "VIDMANOVA, Darja",
+            "result_score": "64 57 61",
+            "winner_slot": "A",
+            "result_name_and_score": "Darja Vidmanova d. Dalma Galfi 64 57 61",
             "players": [
               {
                 "slot": "A",
@@ -1433,26 +1433,26 @@
             "players": [
               {
                 "slot": "A",
-                "display": "N/A",
+                "display": "Matilde Jorge",
                 "seed": "",
-                "entry_type": "",
+                "entry_type": "WC",
                 "player": {
-                  "id": "",
-                  "first_name": "",
-                  "last_name": "",
-                  "country": ""
+                  "id": 328730,
+                  "first_name": "Matilde",
+                  "last_name": "Jorge",
+                  "country": "POR"
                 }
               },
               {
                 "slot": "B",
-                "display": "N/A",
+                "display": "Alina Korneeva",
                 "seed": "",
-                "entry_type": "",
+                "entry_type": "WC",
                 "player": {
-                  "id": "",
-                  "first_name": "",
-                  "last_name": "",
-                  "country": ""
+                  "id": 331330,
+                  "first_name": "Alina",
+                  "last_name": "Korneeva",
+                  "country": "RUS"
                 }
               }
             ]
@@ -1466,26 +1466,26 @@
             "players": [
               {
                 "slot": "A",
-                "display": "N/A",
+                "display": "Maja Chwalinska",
                 "seed": "",
                 "entry_type": "",
                 "player": {
-                  "id": "",
-                  "first_name": "",
-                  "last_name": "",
-                  "country": ""
+                  "id": 325639,
+                  "first_name": "Maja",
+                  "last_name": "Chwalinska",
+                  "country": "POL"
                 }
               },
               {
                 "slot": "B",
-                "display": "N/A",
+                "display": "Darja Vidmanova",
                 "seed": "",
                 "entry_type": "",
                 "player": {
-                  "id": "",
-                  "first_name": "",
-                  "last_name": "",
-                  "country": ""
+                  "id": 329057,
+                  "first_name": "Darja",
+                  "last_name": "Vidmanova",
+                  "country": "CZE"
                 }
               }
             ]
@@ -3094,12 +3094,12 @@
     },
     {
       "match_id": "LS005",
-      "round_id": 3,
+      "round_id": "Q",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-13T11:00+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T10:47:32.657+00:00",
+      "duration": "01:53:26",
       "player_a": {
         "id": "326891",
         "name": "Leyre Romero Gormaz",
@@ -3110,19 +3110,28 @@
         "name": "Alina Korneeva",
         "country": "RUS"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "7-6(1),7-6(4)",
+      "result_string": "A. Korneeva d L. Romero Gormaz 7-6(1),7-6(4)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
     },
     {
       "match_id": "LD002",
-      "round_id": 2,
+      "round_id": "S",
       "draw_level_type": "M",
       "draw_match_type": "D",
-      "match_state": "U",
-      "scheduled": "2026-02-13T12:00+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T11:49:55.517+00:00",
+      "duration": "01:02:44",
       "player_a": {
         "id": "323694",
         "name": "Emily Appleton",
@@ -3133,19 +3142,28 @@
         "name": "Estelle Cascino",
         "country": "FRA"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-3,6-3",
+      "result_string": "[1]E. Appleton / M. Ninomiya d E. Cascino / S. Feng 6-3,6-3",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        }
+      ],
+      "winner_side": "A"
     },
     {
       "match_id": "LS004",
-      "round_id": 3,
+      "round_id": "Q",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-13T12:00+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T13:00:19.437+00:00",
+      "duration": "02:50:37",
       "player_a": {
         "id": "323149",
         "name": "Lucrezia Stefanini",
@@ -3156,19 +3174,32 @@
         "name": "Matilde Jorge",
         "country": "POR"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "2-6,6-1,7-6(6)",
+      "result_string": "M. Jorge d L. Stefanini 2-6,6-1,7-6(6)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "2"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
     },
     {
       "match_id": "LS006",
-      "round_id": 3,
+      "round_id": "Q",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-13T14:00+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T13:50:46.7+00:00",
+      "duration": "01:06:06",
       "player_a": {
         "id": "325639",
         "name": "Maja Chwalinska",
@@ -3179,19 +3210,28 @@
         "name": "Suzan Lamens",
         "country": "NED"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-1,6-2",
+      "result_string": "M. Chwalinska d [3]S. Lamens 6-1,6-2",
+      "sets": [
+        {
+          "a": "6",
+          "b": "1"
+        },
+        {
+          "a": "6",
+          "b": "2"
+        }
+      ],
+      "winner_side": "A"
     },
     {
       "match_id": "LS007",
-      "round_id": 3,
+      "round_id": "Q",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-13T23:59+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T16:04:11.28+00:00",
+      "duration": "02:18:45",
       "player_a": {
         "id": "329057",
         "name": "Darja Vidmanova",
@@ -3202,19 +3242,68 @@
         "name": "Dalma Galfi",
         "country": "HUN"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-4,5-7,6-1",
+      "result_string": "D. Vidmanova d [2]D. Galfi 6-4,5-7,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "4"
+        },
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "1"
+        }
+      ],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS003",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "F",
+      "scheduled": "2026-02-14T11:00:32.37+00:00",
+      "duration": "02:50:18",
+      "player_a": {
+        "id": "325639",
+        "name": "Maja Chwalinska",
+        "country": "POL"
+      },
+      "player_b": {
+        "id": "329057",
+        "name": "Darja Vidmanova",
+        "country": "CZE"
+      },
+      "score_string": "6-4,3-6,7-6(5)",
+      "result_string": "D. Vidmanova d M. Chwalinska 6-4,3-6,7-6(5)",
+      "sets": [
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        }
+      ],
+      "winner_side": "B"
     },
     {
       "match_id": "LD003",
-      "round_id": 2,
+      "round_id": "S",
       "draw_level_type": "M",
       "draw_match_type": "D",
-      "match_state": "U",
-      "scheduled": "2026-02-13T23:59+00:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-14T13:59:26.617+00:00",
+      "duration": "00:00:00",
       "player_a": {
         "id": "327764",
         "name": "Carmen Corley",
@@ -3224,6 +3313,61 @@
         "id": "324948",
         "name": "Francisca Jorge",
         "country": "POR"
+      },
+      "score_string": " W/O",
+      "result_string": "C. Corley / I. Corley d F. Jorge / M. Jorge  W/O",
+      "sets": [],
+      "winner_side": "A"
+    },
+    {
+      "match_id": "LS002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "P",
+      "scheduled": "2026-02-14T14:00:48.243+00:00",
+      "duration": "01:06:06",
+      "player_a": {
+        "id": "328730",
+        "name": "Matilde Jorge",
+        "country": "POR"
+      },
+      "player_b": {
+        "id": "331330",
+        "name": "Alina Korneeva",
+        "country": "RUS"
+      },
+      "score_string": "6-0,4-3",
+      "result_string": "",
+      "sets": [
+        {
+          "a": "0",
+          "b": "6"
+        },
+        {
+          "a": "3",
+          "b": "4"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD001",
+      "round_id": 1,
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "U",
+      "scheduled": "2026-02-14T15:00+00:00",
+      "duration": null,
+      "player_a": {
+        "id": "323694",
+        "name": "Emily Appleton",
+        "country": "GBR"
+      },
+      "player_b": {
+        "id": "327764",
+        "name": "Carmen Corley",
+        "country": "USA"
       },
       "score_string": null,
       "result_string": null,

@@ -2197,4 +2197,5 @@ startup()
 
 if __name__ == '__main__':
     port = int(os.getenv('NOTIFY_PORT', '5090'))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    debug_enabled = str(os.getenv('NOTIFY_DEBUG', '1')).strip().lower() in {'1', 'true', 'yes', 'on'}
+    app.run(host='0.0.0.0', port=port, debug=debug_enabled)

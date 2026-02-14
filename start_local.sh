@@ -10,7 +10,7 @@ echo "=========================================="
 # Start backend
 cd "$PROJECT_DIR/backend"
 echo "Starting backend on port 5001..."
-python app.py &
+PORT=5001 DEBUG=False NOTIFICATION_PORT=5090 NOTIFY_DEBUG=0 python app.py &
 BACKEND_PID=$!
 
 sleep 2

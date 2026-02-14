@@ -9,7 +9,8 @@ class Config:
     # Server settings
     HOST = os.getenv('HOST', '0.0.0.0')
     PORT = int(os.getenv('PORT', 5001))
-    DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
+    # Default OFF to avoid Flask reloader double-start in local scripts.
+    DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
     
     # API Keys (if needed for premium data sources)
     RAPID_API_KEY = os.getenv('RAPID_API_KEY', '')

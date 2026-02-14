@@ -153,6 +153,8 @@ const DOM = {
     analysisLaunchCurrentBtn: document.getElementById('analysisLaunchCurrentBtn'),
     analysisLaunchTourPill: document.getElementById('analysisLaunchTourPill'),
     analysisLaunchLabel: document.getElementById('analysisLaunchLabel'),
+    notificationLaunchBtn: document.getElementById('notificationLaunchBtn'),
+    notificationLaunchLabel: document.getElementById('notificationLaunchLabel'),
 
     // Season progress strip
     seasonProgressStrip: document.getElementById('seasonProgressStrip'),
@@ -1110,37 +1112,49 @@ const App = {
 
     setupAnalysisLaunchers(tour = AppState.currentTour) {
         const launchBtn = DOM.analysisLaunchCurrentBtn;
-        if (!launchBtn) {
+        const notificationBtn = DOM.notificationLaunchBtn;
+        if (!launchBtn && !notificationBtn) {
             return;
         }
 
         const safeTour = String(tour || '').trim().toLowerCase() === 'wta' ? 'wta' : 'atp';
         const tourLabel = safeTour.toUpperCase();
         const backendOrigin = this.resolveBackendOrigin();
-        launchBtn.href = `${backendOrigin}/analysis/${safeTour}/`;
-        launchBtn.dataset.analysisTour = safeTour;
-        launchBtn.title = `Open ${tourLabel} Data Lab`;
+        if (launchBtn) {
+            launchBtn.href = `${backendOrigin}/analysis/${safeTour}/`;
+            launchBtn.dataset.analysisTour = safeTour;
+            launchBtn.title = `Open ${tourLabel} Data Lab`;
 
-        launchBtn.classList.toggle('analysis-launch-atp', safeTour === 'atp');
-        launchBtn.classList.toggle('analysis-launch-wta', safeTour === 'wta');
+            launchBtn.classList.toggle('analysis-launch-atp', safeTour === 'atp');
+            launchBtn.classList.toggle('analysis-launch-wta', safeTour === 'wta');
 
-        if (DOM.analysisLaunchTourPill) {
-            DOM.analysisLaunchTourPill.textContent = tourLabel;
+            if (DOM.analysisLaunchTourPill) {
+                DOM.analysisLaunchTourPill.textContent = tourLabel;
+            }
+
+            if (DOM.analysisLaunchLabel) {
+                DOM.analysisLaunchLabel.textContent = `Open ${tourLabel} Data Lab`;
+            }
+
+            const previewTitle = launchBtn.querySelector('.preview-title');
+            if (previewTitle) {
+                previewTitle.textContent = `${tourLabel} Data Analysis Workspace`;
+            }
+
+            const icon = launchBtn.querySelector('.fas');
+            if (icon) {
+                icon.classList.remove('fa-chart-area', 'fa-chart-line');
+                icon.classList.add(safeTour === 'wta' ? 'fa-chart-line' : 'fa-chart-area');
+            }
         }
 
-        if (DOM.analysisLaunchLabel) {
-            DOM.analysisLaunchLabel.textContent = `Open ${tourLabel} Data Lab`;
-        }
+        if (notificationBtn) {
+            notificationBtn.href = `${backendOrigin}/notifications/open`;
+            notificationBtn.title = 'Open Notification System';
 
-        const previewTitle = launchBtn.querySelector('.preview-title');
-        if (previewTitle) {
-            previewTitle.textContent = `${tourLabel} Data Analysis Workspace`;
-        }
-
-        const icon = launchBtn.querySelector('.fas');
-        if (icon) {
-            icon.classList.remove('fa-chart-area', 'fa-chart-line');
-            icon.classList.add(safeTour === 'wta' ? 'fa-chart-line' : 'fa-chart-area');
+            if (DOM.notificationLaunchLabel) {
+                DOM.notificationLaunchLabel.textContent = 'Open Notification System';
+            }
         }
     },
 

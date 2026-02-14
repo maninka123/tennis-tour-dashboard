@@ -15,6 +15,8 @@ import subprocess
 import json
 import re
 import requests
+import atexit
+from datetime import datetime
 from tennis_api import tennis_fetcher
 from config import Config
 
@@ -162,11 +164,37 @@ SCRIPTS_DIR = os.path.join(REPO_ROOT, "scripts", "Update player stats")
 FRONTEND_DIR = os.path.join(REPO_ROOT, "frontend")
 DATA_ANALYSIS_ATP_DIR = os.path.join(REPO_ROOT, "data_analysis")
 DATA_ANALYSIS_WTA_DIR = os.path.join(REPO_ROOT, "data_analysis", "wta")
+NOTIFICATION_APP_DIR = os.path.join(REPO_ROOT, "backend", "notification_system")
 HISTORIC_DATA_ATP_DIR = os.path.join(REPO_ROOT, "historic data")
 HISTORIC_DATA_WTA_DIR = os.path.join(REPO_ROOT, "historic data_wta")
 DATA_ATP_DIR = os.path.join(REPO_ROOT, "data", "atp")
 DATA_WTA_DIR = os.path.join(REPO_ROOT, "data", "wta")
 PYTHON_EXE = sys.executable
+NOTIFICATION_APP_HOST = os.getenv('NOTIFICATION_HOST', '127.0.0.1').strip() or '127.0.0.1'
+NOTIFICATION_APP_PORT = int(os.getenv('NOTIFICATION_PORT', '5090'))
+NOTIFICATION_EXTERNAL_URL = os.getenv('NOTIFICATION_EXTERNAL_URL', '').strip()
+notification_process = None
+notification_process_lock = threading.Lock()
+last_notification_launch_error = ''
+NOTIFICATION_LAUNCH_LOG = os.path.join(REPO_ROOT, 'backend', 'notification_system', 'storage', 'launcher.log')
+
+
+def _notification_python_candidates():
+    candidates = [PYTHON_EXE]
+    project_venv_python = os.path.join(REPO_ROOT, 'backend', 'venv', 'bin', 'python')
+    if os.path.exists(project_venv_python):
+        candidates.append(project_venv_python)
+    candidates.extend(['python3', 'python'])
+    # Preserve order but remove duplicates.
+    seen = set()
+    unique = []
+    for item in candidates:
+        key = str(item).strip()
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        unique.append(key)
+    return unique
 
 # ============== Frontend Routes ==============
 
@@ -210,6 +238,204 @@ def _serve_file(directory, filename, not_found_message='Not found'):
         return jsonify({'error': not_found_message}), 404
     except Exception as exc:
         return jsonify({'error': str(exc)}), 500
+
+
+def _notification_base_url():
+    if NOTIFICATION_EXTERNAL_URL:
+        return NOTIFICATION_EXTERNAL_URL.rstrip('/')
+    return f'http://{NOTIFICATION_APP_HOST}:{_notification_effective_port()}'
+
+
+def _notification_effective_port():
+    port = NOTIFICATION_APP_PORT
+    if port == Config.PORT:
+        return 5090
+    return port
+
+
+def _notification_healthcheck(timeout=1.2):
+    base_url = _notification_base_url()
+    candidate_urls = [f'{base_url}/api/state']
+    # Local robustness: if one loopback name is unavailable, try the other.
+    if base_url.startswith('http://127.0.0.1:'):
+        candidate_urls.append(base_url.replace('127.0.0.1', 'localhost', 1) + '/api/state')
+    elif base_url.startswith('http://localhost:'):
+        candidate_urls.append(base_url.replace('localhost', '127.0.0.1', 1) + '/api/state')
+
+    for url in candidate_urls:
+        try:
+            probe = requests.get(url, timeout=timeout)
+            if probe.status_code == 200:
+                return True
+        except Exception:
+            continue
+    return False
+
+
+def _clear_notification_port_listeners():
+    if NOTIFICATION_EXTERNAL_URL:
+        return
+    if NOTIFICATION_APP_PORT == Config.PORT:
+        return
+    try:
+        output = subprocess.check_output(
+            ['lsof', '-tiTCP:%s' % NOTIFICATION_APP_PORT, '-sTCP:LISTEN'],
+            stderr=subprocess.DEVNULL,
+            text=True,
+        )
+    except Exception:
+        return
+
+    pids = []
+    for token in output.split():
+        try:
+            pid = int(token.strip())
+        except Exception:
+            continue
+        if pid <= 0 or pid == os.getpid():
+            continue
+        pids.append(pid)
+
+    for pid in pids:
+        try:
+            os.kill(pid, 15)
+        except Exception:
+            pass
+    if pids:
+        time.sleep(0.4)
+        for pid in pids:
+            try:
+                os.kill(pid, 9)
+            except Exception:
+                pass
+
+
+def _start_notification_process_if_needed(wait_seconds=6.0):
+    global notification_process
+    global last_notification_launch_error
+
+    if NOTIFICATION_EXTERNAL_URL:
+        return _notification_healthcheck(timeout=2.0)
+
+    if _notification_healthcheck():
+        return True
+
+    with notification_process_lock:
+        if _notification_healthcheck():
+            return True
+
+        _clear_notification_port_listeners()
+        if _notification_healthcheck():
+            return True
+
+        # If we own a running process but healthcheck is failing, recycle it.
+        if notification_process is not None and notification_process.poll() is None:
+            try:
+                notification_process.terminate()
+                notification_process.wait(timeout=1.5)
+            except Exception:
+                try:
+                    notification_process.kill()
+                except Exception:
+                    pass
+            finally:
+                notification_process = None
+
+        env = os.environ.copy()
+        env['NOTIFY_PORT'] = str(_notification_effective_port())
+        env['NOTIFY_DEBUG'] = '0'
+        env['PYTHONUNBUFFERED'] = '1'
+        # Prevent Flask/Werkzeug inherited FD reuse from the parent dev server.
+        env.pop('WERKZEUG_SERVER_FD', None)
+        env.pop('WERKZEUG_RUN_MAIN', None)
+        env.pop('FLASK_RUN_FROM_CLI', None)
+        launchers = _notification_python_candidates()
+        launch_errors = []
+        try:
+            os.makedirs(os.path.dirname(NOTIFICATION_LAUNCH_LOG), exist_ok=True)
+        except Exception:
+            pass
+        for py_exe in launchers:
+            log_handle = None
+            try:
+                log_handle = open(NOTIFICATION_LAUNCH_LOG, 'a', encoding='utf-8')
+                log_handle.write(f'\n[{datetime.now().isoformat()}] launching via {py_exe} on port {_notification_effective_port()}\n')
+                log_handle.flush()
+                notification_process = subprocess.Popen(
+                    [py_exe, '-u', 'app.py'],
+                    cwd=NOTIFICATION_APP_DIR,
+                    env=env,
+                    stdout=log_handle,
+                    stderr=log_handle,
+                    start_new_session=True,
+                )
+            except Exception:
+                launch_errors.append(f'{py_exe}: spawn_failed')
+                notification_process = None
+                if log_handle is not None:
+                    try:
+                        log_handle.close()
+                    except Exception:
+                        pass
+                continue
+
+            deadline = time.time() + max(2.0, float(wait_seconds))
+            while time.time() < deadline:
+                if _notification_healthcheck(timeout=0.9):
+                    last_notification_launch_error = ''
+                    if log_handle is not None:
+                        try:
+                            log_handle.close()
+                        except Exception:
+                            pass
+                    return True
+                if notification_process.poll() is not None:
+                    launch_errors.append(f'{py_exe}: exited_{notification_process.poll()}')
+                    break
+                time.sleep(0.25)
+            if log_handle is not None:
+                try:
+                    log_handle.close()
+                except Exception:
+                    pass
+
+            if notification_process.poll() is None:
+                # Process is alive but still not healthy, keep trying remaining launchers.
+                try:
+                    notification_process.terminate()
+                    notification_process.wait(timeout=1.0)
+                except Exception:
+                    try:
+                        notification_process.kill()
+                    except Exception:
+                        pass
+                notification_process = None
+                continue
+
+        if launch_errors:
+            last_notification_launch_error = '; '.join(launch_errors)
+
+    return _notification_healthcheck(timeout=1.5)
+
+
+def _stop_notification_process():
+    global notification_process
+    with notification_process_lock:
+        process = notification_process
+        notification_process = None
+    if not process or process.poll() is not None:
+        return
+    try:
+        process.terminate()
+        process.wait(timeout=1.5)
+    except Exception:
+        try:
+            process.kill()
+        except Exception:
+            pass
+
+
+atexit.register(_stop_notification_process)
 
 
 def _load_json_list(path):
@@ -317,6 +543,47 @@ def serve_analysis_assets(tour, filename):
     if not app_root:
         return jsonify({'error': 'Unknown analysis tour'}), 404
     return _serve_file(app_root, filename, 'Analysis asset not found')
+
+
+@app.route('/api/notifications/status', methods=['GET'])
+def notification_status():
+    return jsonify({
+        'success': True,
+        'running': _notification_healthcheck(timeout=1.0),
+        'url': _notification_base_url(),
+        'launch_error': last_notification_launch_error,
+        'launch_log': NOTIFICATION_LAUNCH_LOG,
+    })
+
+
+@app.route('/api/notifications/launch', methods=['POST'])
+def launch_notification_app():
+    started = _start_notification_process_if_needed()
+    if not started:
+        return jsonify({
+            'success': False,
+            'error': 'Notification system is not reachable.',
+            'url': _notification_base_url(),
+            'launch_error': last_notification_launch_error,
+        }), 503
+    return jsonify({
+        'success': True,
+        'url': _notification_base_url(),
+    })
+
+
+@app.route('/notifications/open')
+def open_notification_app():
+    started = _start_notification_process_if_needed()
+    if not started:
+        return jsonify({
+            'success': False,
+            'error': 'Notification system is not reachable.',
+            'hint': f'Run manually with: cd {NOTIFICATION_APP_DIR} && {PYTHON_EXE} app.py',
+            'launch_error': last_notification_launch_error,
+        }), 503
+
+    return redirect(_notification_base_url(), code=302)
 
 
 @app.route('/<path:filename>')

@@ -12,13 +12,21 @@
   "indoor_outdoor": "O",
   "city": "DOHA",
   "country": "QAT",
-  "status": "inprogress",
+  "status": "in_progress",
   "draw_size_singles": 56,
   "draw_size_doubles": 28,
   "prize_money": 4088211,
   "prize_money_currency": "USD",
-  "champion": null,
-  "runner_up": null,
+  "champion": {
+    "id": "331006",
+    "name": "Victoria Mboko",
+    "country": "CAN"
+  },
+  "runner_up": {
+    "id": "322191",
+    "name": "Karolina Muchova",
+    "country": "CZE"
+  },
   "draw_year": 2026,
   "draw": {
     "draw_size": 64,
@@ -2909,10 +2917,10 @@
         "matches": [
           {
             "id": "LS002",
-            "display_name": "",
-            "result_score": "",
-            "winner_slot": "",
-            "result_name_and_score": "",
+            "display_name": "[14] MUCHOVA, Karolina",
+            "result_score": "36 64 61",
+            "winner_slot": "B",
+            "result_name_and_score": "Karolina Muchova d. Maria Sakkari 36 64 61",
             "players": [
               {
                 "slot": "A",
@@ -2942,10 +2950,10 @@
           },
           {
             "id": "LS003",
-            "display_name": "",
-            "result_score": "",
-            "winner_slot": "",
-            "result_name_and_score": "",
+            "display_name": "[10] MBOKO, Victoria",
+            "result_score": "63 62",
+            "winner_slot": "B",
+            "result_name_and_score": "Victoria Mboko d. Jelena Ostapenko 63 62",
             "players": [
               {
                 "slot": "A",
@@ -6333,12 +6341,12 @@
     },
     {
       "match_id": "LD003",
-      "round_id": 2,
+      "round_id": "S",
       "draw_level_type": "M",
       "draw_match_type": "D",
-      "match_state": "U",
-      "scheduled": "2026-02-13T15:30+03:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T12:25:31.4+00:00",
+      "duration": "01:20:16",
       "player_a": {
         "id": "319731",
         "name": "Anna Danilina",
@@ -6349,19 +6357,28 @@
         "name": "Gabriela Dabrowski",
         "country": "CAN"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-3,6-4",
+      "result_string": "[4]A. Danilina / A. Krunic d [5]G. Dabrowski / L. Stefani 6-3,6-4",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "6",
+          "b": "4"
+        }
+      ],
+      "winner_side": "A"
     },
     {
       "match_id": "LS003",
-      "round_id": 2,
+      "round_id": "S",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-13T18:00+03:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T14:48:46.483+00:00",
+      "duration": "01:14:37",
       "player_a": {
         "id": "319939",
         "name": "Jelena Ostapenko",
@@ -6372,42 +6389,28 @@
         "name": "Victoria Mboko",
         "country": "CAN"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
-    },
-    {
-      "match_id": "LD002",
-      "round_id": 2,
-      "draw_level_type": "M",
-      "draw_match_type": "D",
-      "match_state": "U",
-      "scheduled": "2026-02-13T23:59+03:00",
-      "duration": null,
-      "player_a": {
-        "id": "310761",
-        "name": "Sara Errani",
-        "country": "ITA"
-      },
-      "player_b": {
-        "id": "310053",
-        "name": "Su-Wei Hsieh",
-        "country": "TPE"
-      },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "6-3,6-2",
+      "result_string": "[10]V. Mboko d J. Ostapenko 6-3,6-2",
+      "sets": [
+        {
+          "a": "3",
+          "b": "6"
+        },
+        {
+          "a": "2",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
     },
     {
       "match_id": "LS002",
-      "round_id": 2,
+      "round_id": "S",
       "draw_level_type": "M",
       "draw_match_type": "S",
-      "match_state": "U",
-      "scheduled": "2026-02-13T23:59+03:00",
-      "duration": null,
+      "match_state": "F",
+      "scheduled": "2026-02-13T16:27:07.913+00:00",
+      "duration": "02:13:13",
       "player_a": {
         "id": "318312",
         "name": "Maria Sakkari",
@@ -6418,10 +6421,123 @@
         "name": "Karolina Muchova",
         "country": "CZE"
       },
-      "score_string": null,
-      "result_string": null,
-      "sets": [],
-      "winner_side": null
+      "score_string": "3-6,6-4,6-1",
+      "result_string": "[14]K. Muchova d M. Sakkari 3-6,6-4,6-1",
+      "sets": [
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "4",
+          "b": "6"
+        },
+        {
+          "a": "1",
+          "b": "6"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD002",
+      "round_id": "S",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-13T17:14:43.757+00:00",
+      "duration": "01:40:24",
+      "player_a": {
+        "id": "310761",
+        "name": "Sara Errani",
+        "country": "ITA"
+      },
+      "player_b": {
+        "id": "310053",
+        "name": "Su-Wei Hsieh",
+        "country": "TPE"
+      },
+      "score_string": "7-5,3-6,1-0(6)",
+      "result_string": "[3]S. Hsieh / J. Ostapenko d [1]S. Errani / J. Paolini 7-5,3-6,1-0(6)",
+      "sets": [
+        {
+          "a": "5",
+          "b": "7"
+        },
+        {
+          "a": "6",
+          "b": "3"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LD001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "D",
+      "match_state": "F",
+      "scheduled": "2026-02-14T12:12:31.557+00:00",
+      "duration": "01:34:23",
+      "player_a": {
+        "id": "310053",
+        "name": "Su-Wei Hsieh",
+        "country": "TPE"
+      },
+      "player_b": {
+        "id": "319731",
+        "name": "Anna Danilina",
+        "country": "KAZ"
+      },
+      "score_string": "0-6,7-6(3),1-0(8)",
+      "result_string": "[4]A. Danilina / A. Krunic d [3]S. Hsieh / J. Ostapenko 0-6,7-6(3),1-0(8)",
+      "sets": [
+        {
+          "a": "6",
+          "b": "0"
+        },
+        {
+          "a": "6",
+          "b": "7"
+        },
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
+    },
+    {
+      "match_id": "LS001",
+      "round_id": "F",
+      "draw_level_type": "M",
+      "draw_match_type": "S",
+      "match_state": "P",
+      "scheduled": "2026-02-14T14:42:34.15+00:00",
+      "duration": "00:01:56",
+      "player_a": {
+        "id": "322191",
+        "name": "Karolina Muchova",
+        "country": "CZE"
+      },
+      "player_b": {
+        "id": "331006",
+        "name": "Victoria Mboko",
+        "country": "CAN"
+      },
+      "score_string": "0-1",
+      "result_string": "",
+      "sets": [
+        {
+          "a": "0",
+          "b": "1"
+        }
+      ],
+      "winner_side": "B"
     }
   ]
 }

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tennis Notification System</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -71,6 +72,7 @@
       <form id="ruleForm" class="rule-form" novalidate>
         <input id="ruleIdInput" type="hidden">
         <input id="conditionGroupInput" type="hidden" value="all">
+        <input id="trackedPlayerInput" type="hidden" value="">
 
         <div class="step-flow" aria-label="Rule builder flow">
           <div id="stepChip1" class="step-chip active"><span>1</span>Core Trigger</div>
@@ -184,7 +186,7 @@
                 </div>
               </div>
               <div class="field-row scope-group" data-scope="players">
-                <label for="playersInput">Players <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Tip: use commas to add multiple players. Example: Novak Djokovic, Iga Swiatek">i</span></label>
+                <label for="playersInput">Players <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Tip: use commas to add multiple players. For tracked-player events, the first player is treated as the tracked player.">i</span></label>
                 <div class="smart-input-wrap">
                   <input id="playersInput" type="text" autocomplete="off" placeholder="Carlos Alcaraz, Iga Swiatek">
                   <div id="playersDropdown" class="smart-dropdown"></div>
@@ -193,13 +195,6 @@
             </div>
 
             <div class="grid two-col">
-              <div id="trackedPlayerField" class="field-row scope-group" data-scope="tracked_player">
-                <label for="trackedPlayerInput">Tracked Player <span class="field-status conditional">Conditional</span></label>
-                <div class="smart-input-wrap">
-                  <input id="trackedPlayerInput" type="text" autocomplete="off" placeholder="Optional: Novak Djokovic">
-                  <div id="trackedPlayerDropdown" class="smart-dropdown"></div>
-                </div>
-              </div>
               <div class="field-row scope-group" data-scope="extra_conditions">
                 <label>Extra Filters (max 3) <span class="field-status optional">Optional</span></label>
                 <div id="conditionsList" class="condition-list"></div>
@@ -212,7 +207,7 @@
             <div class="ghost-heading">Event Parameters</div>
             <div id="eventParamsGrid" class="grid three-col">
               <div class="field-row param-group" data-param="set_number">
-                <label for="paramSetNumber">Set Number <span class="field-status optional">Optional</span></label>
+                <label for="paramSetNumber">Set Number <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Set completion threshold. Example: 2 means alert when at least 2 sets are completed.">i</span></label>
                 <input id="paramSetNumber" type="hidden" value="1">
                 <div id="paramSetThresholdRow" class="set-threshold-row" role="group" aria-label="Completed set threshold">
                   <button type="button" class="set-threshold-btn" data-set-value="1">1</button>
@@ -224,7 +219,7 @@
                 <p class="hint-text">Select one or more boxes. 1 + 2 means alert when 2 sets are completed.</p>
               </div>
               <div class="field-row param-group" data-param="upset_min_rank_gap">
-                <label for="paramUpsetGap">Min Rank Gap <span class="field-status optional">Optional</span></label>
+                <label for="paramUpsetGap">Min Rank Gap <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Minimum ranking difference for an upset alert. Higher value = only bigger upsets.">i</span></label>
                 <select id="paramUpsetGap">
                   <option value="10">10</option>
                   <option value="20" selected>20</option>
@@ -234,7 +229,7 @@
                 </select>
               </div>
               <div class="field-row param-group" data-param="deciding_mode">
-                <label for="paramDecidingMode">Close-Match Mode <span class="field-status optional">Optional</span></label>
+                <label for="paramDecidingMode">Close-Match Mode <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Choose how to detect close matches: deciding set, third/fifth set, or any tiebreak.">i</span></label>
                 <select id="paramDecidingMode">
                   <option value="deciding_set">Deciding Set</option>
                   <option value="third_or_fifth">Third or Fifth Set</option>
@@ -242,7 +237,7 @@
                 </select>
               </div>
               <div class="field-row param-group" data-param="ranking_milestone">
-                <label for="paramRankingMilestone">Ranking Milestone <span class="field-status optional">Optional</span></label>
+                <label for="paramRankingMilestone">Ranking Milestone <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Trigger when selected players reach Top 100/50/20/10 or Career High.">i</span></label>
                 <select id="paramRankingMilestone">
                   <option value="top_100">Top 100</option>
                   <option value="top_50">Top 50</option>
@@ -252,18 +247,18 @@
                 </select>
               </div>
               <div class="field-row param-group" data-param="title_target">
-                <label for="paramTitleTarget">Title Target <span class="field-status optional">Optional</span></label>
+                <label for="paramTitleTarget">Title Target <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Total career titles target for Title Milestone alerts.">i</span></label>
                 <input id="paramTitleTarget" type="number" min="1" max="200" value="1">
               </div>
               <div class="field-row param-group" data-param="rival_player">
-                <label for="paramRivalPlayerInput">Rival Player <span class="field-status required">Required</span></label>
+                <label for="paramRivalPlayerInput">Rival Player <span class="field-status required">Required</span><span class="field-help with-tip" data-tip="Opponent used in Head-to-Head Breaker rules.">i</span></label>
                 <div class="smart-input-wrap">
                   <input id="paramRivalPlayerInput" type="text" autocomplete="off" placeholder="Type rival name">
                   <div id="paramRivalPlayerDropdown" class="smart-dropdown"></div>
                 </div>
               </div>
               <div class="field-row param-group" data-param="h2h_min_losses">
-                <label for="paramH2HLosses">Min Prior H2H Losses <span class="field-status optional">Optional</span></label>
+                <label for="paramH2HLosses">Min Prior H2H Losses <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="How many consecutive losses must be broken before alerting.">i</span></label>
                 <select id="paramH2HLosses">
                   <option value="1">1</option>
                   <option value="2" selected>2</option>
@@ -273,7 +268,7 @@
                 </select>
               </div>
               <div class="field-row param-group" data-param="surface_value">
-                <label for="paramSurfaceValue">Surface <span class="field-status required">Required</span></label>
+                <label for="paramSurfaceValue">Surface <span class="field-status required">Required</span><span class="field-help with-tip" data-tip="Only match results on this surface will trigger the rule.">i</span></label>
                 <select id="paramSurfaceValue">
                   <option value="">Select surface</option>
                   <option value="hard">Hard</option>
@@ -284,7 +279,7 @@
                 </select>
               </div>
               <div class="field-row param-group" data-param="window_hours">
-                <label for="paramWindowHours">Window Hours <span class="field-status optional">Optional</span></label>
+                <label for="paramWindowHours">Window Hours <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Alert when upcoming matches start within the next N hours.">i</span></label>
                 <select id="paramWindowHours">
                   <option value="2">2 Hours</option>
                   <option value="6">6 Hours</option>
@@ -297,7 +292,7 @@
 
             <div class="grid two-col">
               <div class="field-row param-group" data-param="stage_rounds">
-                <label>Tournament Stages <span class="field-status required">Required</span></label>
+                <label>Tournament Stages <span class="field-status required">Required</span><span class="field-help with-tip" data-tip="Choose which stages (QF/SF/F) should trigger stage-reminder alerts.">i</span></label>
                 <div class="inline-check-row">
                   <label class="checkbox-wrap"><input id="paramStageQF" type="checkbox" checked><span>QF</span></label>
                   <label class="checkbox-wrap"><input id="paramStageSF" type="checkbox" checked><span>SF</span></label>
@@ -305,7 +300,7 @@
                 </div>
               </div>
               <div class="field-row param-group" data-param="emit_on_first_seen">
-                <label class="checkbox-wrap compact"><input id="paramEmitFirstSeen" type="checkbox" checked><span>Trigger immediately if milestone already met</span></label>
+                <label class="checkbox-wrap compact"><input id="paramEmitFirstSeen" type="checkbox" checked><span>Trigger immediately if milestone already met</span><span class="field-help with-tip" data-tip="If ON, sends right away when the milestone is already satisfied at first evaluation.">i</span></label>
               </div>
             </div>
           </div>

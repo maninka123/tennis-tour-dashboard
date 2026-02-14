@@ -115,7 +115,7 @@ fi
 
 # Start the backend server in background
 echo "🚀 Starting backend server..."
-PORT=$BACKEND_PORT $VENV_PYTHON app.py &
+PORT=$BACKEND_PORT DEBUG=False NOTIFICATION_PORT=5090 NOTIFY_DEBUG=0 $VENV_PYTHON app.py &
 BACKEND_PID=$!
 
 # Wait for server to start

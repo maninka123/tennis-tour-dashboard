@@ -16,6 +16,31 @@ const BracketModule = {
         return (this.currentBracket?.tournament_tour || window.TennisApp?.AppState?.currentTour || 'atp').toLowerCase();
     },
 
+    resolveChampionFromTournamentRecord(bracket = {}) {
+        const appState = window.TennisApp?.AppState;
+        const activeTour = this.getActiveTour();
+        const tournaments = appState?.tournaments?.[activeTour];
+        if (!Array.isArray(tournaments) || tournaments.length === 0) return null;
+
+        const byId = tournaments.find((t) => `${t?.id}` === `${bracket.tournament_id}`);
+        const byName = tournaments.find((t) => {
+            const left = String(t?.name || '').trim().toLowerCase();
+            const right = String(bracket?.tournament_name || '').trim().toLowerCase();
+            return left && right && left === right;
+        });
+        const source = byId || byName;
+        if (!source) return null;
+
+        const winner = source.winner;
+        if (!winner || !winner.name) return null;
+        return {
+            id: winner.id || null,
+            name: winner.name,
+            country: winner.country || '',
+            image_url: winner.image_url || '',
+        };
+    },
+
     logBracketDebug(bracket, category, drawMeta, drawSizeDisplay) {
         if (!this.debug) return;
         try {
@@ -617,10 +642,11 @@ const BracketModule = {
             titleEl.textContent = bracket.tournament_name || 'Tournament Draw';
         }
         
-        // Check if tournament is completed (has a champion)
+        // Resolve champion block (match winner, API champion, or calendar winner metadata).
         const finalMatch = bracket.matches[bracket.matches.length - 1]?.matches[0];
         const finalWinner = finalMatch ? this.resolveMatchWinner(finalMatch, category) : null;
-        const championCandidate = finalWinner || bracket.champion || null;
+        const championFromCalendar = this.resolveChampionFromTournamentRecord(bracket);
+        const championCandidate = finalWinner || bracket.champion || championFromCalendar || null;
         const hasChampion = !!championCandidate;
         
         const tourLabel = bracket.tournament_tour || window.TennisApp?.AppState?.currentTour || 'atp';
@@ -653,9 +679,12 @@ const BracketModule = {
             }
         }
         const yearBadge = displayYear ? `<span class="tournament-year-badge">${displayYear}</span>` : '';
+        const championLabel = (bracketStatus === 'upcoming' || bracketStatus === 'scheduled')
+            ? 'Previous Champion'
+            : 'Championship';
         const championHtml = hasChampion ? `
             <div class="bracket-champion-summary">
-                <div class="champion-label">Championship</div>
+                <div class="champion-label">${championLabel}</div>
                 <div class="champion-avatar">
                     <img src="${Utils.getPlayerImage(championCandidate)}" alt="${championCandidate.name || 'Champion'}" onerror="this.src='data:image/svg+xml;utf8,${encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"80\" viewBox=\"0 0 80 80\"><rect width=\"80\" height=\"80\" fill=\"#f5e6cf\"/><text x=\"40\" y=\"46\" text-anchor=\"middle\" font-family=\"Arial\" font-size=\"28\" fill=\"#b07a2a\">🏆</text></svg>')}'">
                 </div>
