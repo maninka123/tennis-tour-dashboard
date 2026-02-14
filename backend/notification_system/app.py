@@ -1623,8 +1623,12 @@ def api_rules_delete(rule_id: str):
 @app.route('/api/run-now', methods=['POST'])
 def api_run_now():
     result = process_notifications(manual=True)
-    status = 200 if result.get('ok') else 500
-    return jsonify({'success': result.get('ok', False), 'data': result}), status
+    ok = bool(result.get('ok'))
+    status = 200 if ok else 500
+    payload = {'success': ok, 'data': result}
+    if not ok:
+        payload['error'] = str(result.get('message') or 'Notification run failed.')
+    return jsonify(payload), status
 
 
 @app.route('/api/test-email', methods=['POST'])

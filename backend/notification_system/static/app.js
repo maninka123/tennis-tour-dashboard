@@ -468,9 +468,25 @@ async function api(path, options = {}) {
     headers: { 'Content-Type': 'application/json' },
     ...options,
   });
-  const payload = await response.json().catch(() => ({}));
+  let payload = {};
+  let rawText = '';
+  try {
+    payload = await response.json();
+  } catch (_error) {
+    try {
+      rawText = await response.text();
+    } catch (_readError) {
+      rawText = '';
+    }
+  }
   if (!response.ok || payload.success === false) {
-    const message = payload.error || payload.message || `Request failed: ${response.status}`;
+    const nestedMessage = payload?.data?.message;
+    const textMessage = String(rawText || '').trim();
+    const message =
+      payload.error ||
+      payload.message ||
+      nestedMessage ||
+      (textMessage ? `Request failed: ${response.status} - ${textMessage}` : `Request failed: ${response.status}`);
     throw new Error(message);
   }
   return payload;
