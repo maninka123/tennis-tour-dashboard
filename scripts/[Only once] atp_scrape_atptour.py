@@ -549,18 +549,15 @@ def scrape_player_recent_matches(player_url: str, year: int, session: requests.S
     activity_url = f"{player_url.replace('/overview', '/player-activity')}?year={year}"
     md = _fetch_markdown(session, activity_url, timeout)
 
-    anchor = md.find("### Player activity")
-    if anchor == -1:
-        return {"year": year, "tournaments": [], "updated_at": _iso_now()}
-
-    body = md[anchor:]
-    news_idx = body.find("\n### News")
-    if news_idx != -1:
-        body = body[:news_idx]
+    anchor_match = re.search(r"^###\s+Player activity\s*$", md, flags=re.IGNORECASE | re.MULTILINE)
+    body = md[anchor_match.start() :] if anchor_match else md
+    news_match = re.search(r"\n###\s+News\b", body, flags=re.IGNORECASE)
+    if news_match:
+        body = body[: news_match.start()]
 
     header_iter = list(
         re.finditer(
-            r"\[Header\s+2\s+-+\s+###\s+(?P<header>.+?)\]\((?P<link>https?://[^)]+)\)",
+            r"\[Header\s+\d+\s+-+\s+###\s+(?P<header>.+?)\]\((?P<link>https?://[^)]+)\)",
             body,
             flags=re.IGNORECASE,
         )

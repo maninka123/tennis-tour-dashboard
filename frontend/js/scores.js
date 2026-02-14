@@ -471,9 +471,9 @@ const ScoresModule = {
 
     renderTournamentGroup(group, isLive, renderFn = null) {
         const { Utils } = window.TennisApp;
-        const categoryClass = Utils.getCategoryClass(group.category);
-        const categoryLabel = this.getCategoryLabel(group.category);
         const sampleMatch = Array.isArray(group.matches) && group.matches.length > 0 ? group.matches[0] : null;
+        const categoryClass = Utils.getCategoryClass(group.category, sampleMatch?.tour || '');
+        const categoryLabel = this.getCategoryLabel(group.category);
         const surfaceClass = sampleMatch ? this.getSurfaceClass(sampleMatch) : '';
         const surfaceLabel = sampleMatch ? this.getSurfaceLabel(sampleMatch) : '';
         const cardRenderer = renderFn || ((match) => this.createMatchCard(match, isLive));
@@ -662,7 +662,13 @@ const ScoresModule = {
             upcomingSection.innerHTML = `
                 <div class="section-header">
                     <div class="section-title-stack">
-                        <h2><i class="fas fa-calendar"></i> Upcoming Matches</h2>
+                        <h2>
+                            <i class="fas fa-calendar"></i>
+                            Upcoming Matches
+                            <button class="match-reload-btn" id="upcomingMatchesReloadBtn" type="button" aria-label="Reload upcoming matches" title="Reload upcoming matches">
+                                <i class="fas fa-rotate-right"></i>
+                            </button>
+                        </h2>
                         <span class="section-updated-ago" id="upcomingUpdatedAgo">Updated --</span>
                     </div>
                 </div>
@@ -671,6 +677,9 @@ const ScoresModule = {
                 </div>
             `;
             this.updateUpcomingUpdatedAgo();
+            if (window.TennisApp && typeof window.TennisApp.syncMatchSectionReloadButtons === 'function') {
+                window.TennisApp.syncMatchSectionReloadButtons();
+            }
             return;
         }
 
@@ -678,7 +687,13 @@ const ScoresModule = {
         const upcomingHTML = `
             <div class="section-header">
                 <div class="section-title-stack">
-                    <h2><i class="fas fa-calendar"></i> Upcoming Matches (Next 2 Days)</h2>
+                    <h2>
+                        <i class="fas fa-calendar"></i>
+                        Upcoming Matches (Next 2 Days)
+                        <button class="match-reload-btn" id="upcomingMatchesReloadBtn" type="button" aria-label="Reload upcoming matches" title="Reload upcoming matches">
+                            <i class="fas fa-rotate-right"></i>
+                        </button>
+                    </h2>
                     <span class="section-updated-ago" id="upcomingUpdatedAgo">Updated --</span>
                 </div>
             </div>
@@ -690,6 +705,9 @@ const ScoresModule = {
         upcomingSection.innerHTML = upcomingHTML;
         this.updateUpcomingUpdatedAgo();
         this.attachUpcomingInsights(matches);
+        if (window.TennisApp && typeof window.TennisApp.syncMatchSectionReloadButtons === 'function') {
+            window.TennisApp.syncMatchSectionReloadButtons();
+        }
     },
 
     attachUpcomingInsights(matches) {
@@ -734,7 +752,7 @@ const ScoresModule = {
         const favPct = p1Fav ? winEdge.p1 : winEdge.p2;
         const dogPct = 100 - favPct;
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
-        const categoryClass = Utils.getCategoryClass(match.tournament_category);
+        const categoryClass = Utils.getCategoryClass(match.tournament_category, match.tour);
         const surfaceClass = this.getSurfaceClass(match);
         const surfaceLabel = this.getSurfaceLabel(match);
         const previewRoundLabel = this.getRoundLabel(match.round);
@@ -929,7 +947,7 @@ const ScoresModule = {
      */
     createUpcomingMatchCard(match) {
         const { Utils } = window.TennisApp;
-        const categoryClass = Utils.getCategoryClass(match.tournament_category);
+        const categoryClass = Utils.getCategoryClass(match.tournament_category, match.tour);
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
         const surfaceClass = this.getSurfaceClass(match);
         const matchKey = this.getMatchKey(match);
@@ -1058,7 +1076,7 @@ const ScoresModule = {
      */
     createMatchCard(match, isLive) {
         const { Utils } = window.TennisApp;
-        const categoryClass = Utils.getCategoryClass(match.tournament_category);
+        const categoryClass = Utils.getCategoryClass(match.tournament_category, match.tour);
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
         const surfaceClass = this.getSurfaceClass(match);
         const matchKey = this.getMatchKey(match);
@@ -1147,6 +1165,7 @@ const ScoresModule = {
         const labels = {
             'grand_slam': 'Grand Slam',
             'masters_1000': '1000',
+            'atp_1000': '1000',
             'wta_1000': '1000',
             'atp_500': '500',
             'wta_500': '500',
@@ -1154,6 +1173,8 @@ const ScoresModule = {
             'wta_250': '250',
             'atp_125': '125',
             'wta_125': '125',
+            'atp_finals': 'Finals',
+            'wta_finals': 'Finals',
             'tour': 'Tour',
             'finals': 'Finals',
             'other': 'Other'
@@ -1435,7 +1456,7 @@ const ScoresModule = {
         const roundName = match.round || context.round || '';
         const roundLabel = this.getRoundLabel(roundName);
         const categoryLabel = this.getCategoryLabel(match.tournament_category);
-        const categoryClass = window.TennisApp.Utils.getCategoryClass(match.tournament_category);
+        const categoryClass = window.TennisApp.Utils.getCategoryClass(match.tournament_category, match.tour);
         const setSummary = this.formatSetSummary(score, match);
         const setLines = this.formatSetLines(score);
         const player1ModalId = this.resolvePlayerModalId(match.player1);

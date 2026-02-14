@@ -248,6 +248,123 @@ body {
     text-align: center;
 }
 
+.update-progress-container h3 {
+    margin: 0;
+    font-size: 28px;
+    letter-spacing: 0.3px;
+}
+
+.update-progress-container #update-status-msg {
+    margin: 10px auto 0;
+    max-width: 640px;
+    color: rgba(236, 230, 218, 0.9);
+    font-size: 14px;
+}
+
+.tour-progress-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.tour-progress-card {
+    background: linear-gradient(155deg, rgba(22, 34, 51, 0.94), rgba(18, 28, 43, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: left;
+    transition: transform 0.2s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 20px rgba(0, 0, 0, 0.22);
+}
+
+.tour-progress-card.is-enabled:hover {
+    transform: translateY(-1px);
+}
+
+.tour-progress-card.status-idle {
+    opacity: 0.68;
+}
+
+.tour-progress-card.status-queued {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tour-progress-card.status-running {
+    border-color: rgba(45, 211, 199, 0.5);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 14px 26px rgba(13, 56, 71, 0.25);
+}
+
+.tour-progress-card.status-completed {
+    border-color: rgba(46, 204, 113, 0.5);
+}
+
+.tour-progress-card.status-error {
+    border-color: rgba(231, 76, 60, 0.58);
+}
+
+.tour-progress-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tour-progress-card-header h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.tour-progress-eta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #f1f5f9;
+    background: rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    white-space: nowrap;
+}
+
+.tour-progress-meta {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(236, 230, 218, 0.9);
+}
+
+.tour-progress-state {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: rgba(236, 230, 218, 0.75);
+}
+
+.tour-progress-state.status-running {
+    color: #4ade80;
+}
+
+.tour-progress-state.status-completed {
+    color: #86efac;
+}
+
+.tour-progress-state.status-error {
+    color: #fca5a5;
+}
+
+.tour-progress-state.status-queued {
+    color: #bfdbfe;
+}
+
 .progress-bar-wrapper {
     width: 100%;
     height: 12px;
@@ -262,6 +379,42 @@ body {
     background: linear-gradient(90deg, #3498db, #2ecc71);
     width: 0%;
     transition: width 0.3s ease;
+}
+
+.tour-progress-bar {
+    position: relative;
+    height: 22px;
+    border-radius: 999px;
+    background: rgba(10, 16, 25, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 10px 0 0;
+}
+
+.tour-progress-fill {
+    border-radius: 999px;
+    transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tour-progress-fill.atp {
+    background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+}
+
+.tour-progress-fill.wta {
+    background: linear-gradient(90deg, #f97316, #f59e0b);
+}
+
+.tour-progress-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: #f8fafc;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
 }
 
 .log-terminal {
@@ -285,3 +438,22 @@ body {
 .log-error { color: #e74c3c; font-weight: bold; } /* Red */
 .log-warning { color: #f39c12; } /* Orange/Yellow */
 .log-info { color: #3498db; } /* Blue */
+
+@media (max-width: 760px) {
+    .update-card {
+        width: calc(100% - 20px);
+    }
+
+    .update-body {
+        padding: 18px;
+    }
+
+    .tour-progress-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .log-terminal {
+        height: 240px;
+    }
+}

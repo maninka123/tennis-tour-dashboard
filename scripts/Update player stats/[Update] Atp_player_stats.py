@@ -18,7 +18,7 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, Iterable, Optional
+from typing import Any, Dict, Iterable, Optional, Tuple
 
 import requests
 
@@ -107,6 +107,52 @@ def iter_player_folders(root: Path) -> Iterable[Path]:
     return folders
 
 
+def fetch_recent_matches_with_retry(
+    scraper: Any,
+    player_url: str,
+    year: int,
+    session: requests.Session,
+    timeout: int,
+) -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+    """Fetch recent matches with retries and a final fresh-session fallback."""
+    last_error: Optional[str] = None
+    attempts = 3
+
+    for attempt in range(1, attempts + 1):
+        try:
+            recent = scraper.scrape_player_recent_matches(
+                player_url,
+                year=year,
+                session=session,
+                timeout=timeout,
+            )
+            if isinstance(recent, dict):
+                return recent, None
+            last_error = f"unexpected payload type: {type(recent).__name__}"
+        except Exception as exc:
+            last_error = str(exc)
+
+        if attempt < attempts:
+            time.sleep(min(2.0, 0.4 * attempt))
+
+    try:
+        fresh_session = requests.Session()
+        fresh_session.headers.update(dict(session.headers))
+        recent = scraper.scrape_player_recent_matches(
+            player_url,
+            year=year,
+            session=fresh_session,
+            timeout=timeout,
+        )
+        if isinstance(recent, dict):
+            return recent, None
+        last_error = f"unexpected payload type on fresh session: {type(recent).__name__}"
+    except Exception as exc:
+        last_error = str(exc)
+
+    return None, (last_error or "unknown error")
+
+
 def update_player_folder(
     folder: Path,
     scraper: Any,
@@ -157,18 +203,30 @@ def update_player_folder(
     merged.update(new_stats)
 
     if refresh_recent:
-        try:
-            recent = scraper.scrape_player_recent_matches(
-                player_url,
-                year=year,
-                session=session,
-                timeout=timeout,
-            )
-            if isinstance(recent, dict):
+        recent, recent_error = fetch_recent_matches_with_retry(
+            scraper=scraper,
+            player_url=player_url,
+            year=year,
+            session=session,
+            timeout=timeout,
+        )
+        previous_recent = existing_stats.get("recent_matches_tab") if isinstance(existing_stats, dict) else None
+        previous_tournaments = []
+        if isinstance(previous_recent, dict):
+            previous_tournaments = previous_recent.get("tournaments") or []
+
+        if isinstance(recent, dict):
+            new_tournaments = recent.get("tournaments") or []
+            # Avoid replacing good existing data with an empty parse.
+            if len(new_tournaments) == 0 and len(previous_tournaments) > 0:
+                print(yellow(f"[WARN] {folder.name}: parsed empty recent matches; keeping previous recent_matches_tab"))
+            else:
                 merged["recent_matches_tab"] = recent
-        except Exception:
-            # Keep previous recent_matches_tab if refresh fails.
-            pass
+        else:
+            # If no old recent data exists, fail this player so the issue is visible in logs.
+            if len(previous_tournaments) == 0:
+                return f"error:recent-fetch-failed ({recent_error})"
+            print(yellow(f"[WARN] {folder.name}: recent matches refresh failed ({recent_error}); keeping previous recent_matches_tab"))
 
     merged["updated_at"] = now_iso()
 

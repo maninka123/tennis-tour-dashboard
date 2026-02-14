@@ -114,6 +114,9 @@ const el = {
   runNowBtn: document.getElementById('runNowBtn'),
   testEmailBtn: document.getElementById('testEmailBtn'),
   settingsMessage: document.getElementById('settingsMessage'),
+  taskProgressInline: document.getElementById('taskProgressInline'),
+  taskProgressBar: document.getElementById('taskProgressBar'),
+  taskProgressText: document.getElementById('taskProgressText'),
 
   ruleForm: document.getElementById('ruleForm'),
   ruleIdInput: document.getElementById('ruleIdInput'),
@@ -187,6 +190,12 @@ const el = {
   confirmDialogBody: document.getElementById('confirmDialogBody'),
   confirmCancelBtn: document.getElementById('confirmCancelBtn'),
   confirmOkBtn: document.getElementById('confirmOkBtn'),
+  resultDialog: document.getElementById('resultDialog'),
+  resultDialogTitle: document.getElementById('resultDialogTitle'),
+  resultDialogBody: document.getElementById('resultDialogBody'),
+  resultSummaryList: document.getElementById('resultSummaryList'),
+  resultDialogTimer: document.getElementById('resultDialogTimer'),
+  resultCloseBtn: document.getElementById('resultCloseBtn'),
 
   categoriesDropdownBtn: document.getElementById('categoriesDropdownBtn'),
   categoriesDropdown: document.getElementById('categoriesDropdown'),
@@ -201,6 +210,10 @@ const el = {
 };
 
 let confirmDialogResolver = null;
+let resultDialogAutoCloseTimer = null;
+let resultDialogCountdownTimer = null;
+let taskProgressTicker = null;
+let taskProgressValue = 0;
 
 function splitCsv(text) {
   return String(text || '').split(',').map((x) => x.trim()).filter(Boolean);
@@ -436,10 +449,173 @@ function escapeHtml(text) {
     .replace(/'/g, '&#39;');
 }
 
+function syncModalBodyLock() {
+  const confirmOpen = !!(el.confirmDialog && !el.confirmDialog.classList.contains('is-hidden'));
+  const resultOpen = !!(el.resultDialog && !el.resultDialog.classList.contains('is-hidden'));
+  document.body.classList.toggle('confirm-open', confirmOpen || resultOpen);
+}
+
+function setTaskProgress(value = 0, text = '') {
+  if (!el.taskProgressInline || !el.taskProgressBar || !el.taskProgressText) return;
+  const bounded = Math.max(0, Math.min(100, Number(value) || 0));
+  el.taskProgressBar.style.width = `${bounded}%`;
+  el.taskProgressText.textContent = text || el.taskProgressText.textContent || 'Working...';
+}
+
+function startTaskProgress(text = 'Working...') {
+  if (!el.taskProgressInline) return;
+  if (taskProgressTicker) {
+    clearInterval(taskProgressTicker);
+    taskProgressTicker = null;
+  }
+  taskProgressValue = 8;
+  el.taskProgressInline.classList.remove('is-hidden', 'is-success', 'is-error');
+  setTaskProgress(taskProgressValue, text);
+  taskProgressTicker = setInterval(() => {
+    taskProgressValue = Math.min(90, taskProgressValue + (Math.random() * 7 + 2));
+    setTaskProgress(taskProgressValue);
+  }, 220);
+}
+
+function finishTaskProgress(text = 'Completed', { error = false } = {}) {
+  if (!el.taskProgressInline) return;
+  if (taskProgressTicker) {
+    clearInterval(taskProgressTicker);
+    taskProgressTicker = null;
+  }
+  taskProgressValue = 100;
+  el.taskProgressInline.classList.toggle('is-error', !!error);
+  el.taskProgressInline.classList.toggle('is-success', !error);
+  setTaskProgress(taskProgressValue, text);
+  setTimeout(() => {
+    if (!el.taskProgressInline) return;
+    el.taskProgressInline.classList.add('is-hidden');
+    el.taskProgressInline.classList.remove('is-success', 'is-error');
+    setTaskProgress(0, 'Working...');
+  }, 1400);
+}
+
+function setActionButtonsBusy(isBusy) {
+  if (el.runNowBtn) el.runNowBtn.disabled = !!isBusy;
+  if (el.testEmailBtn) el.testEmailBtn.disabled = !!isBusy;
+}
+
+function statusLabel(status = '') {
+  const key = String(status || '').trim().toLowerCase();
+  if (key === 'sent') return 'Sent';
+  if (key === 'error') return 'Error';
+  if (key === 'skipped') return 'Skipped';
+  if (key === 'deduped') return 'Already Sent';
+  if (key === 'no_match') return 'No Match';
+  return key ? key : 'Info';
+}
+
+function renderResultSummaryRows(items = []) {
+  if (!el.resultSummaryList) return;
+  if (!items.length) {
+    el.resultSummaryList.innerHTML = `
+      <div class="result-item">
+        <div class="result-item-meta">No rule-level details were returned.</div>
+      </div>
+    `;
+    return;
+  }
+  el.resultSummaryList.innerHTML = items
+    .map((item) => `
+      <div class="result-item status-${escapeHtml(item.status || '')}">
+        <div class="result-item-title">${escapeHtml(item.title || 'Summary')}</div>
+        <div class="result-item-meta">${escapeHtml(item.meta || '')}</div>
+      </div>
+    `)
+    .join('');
+}
+
+function closeResultDialog() {
+  if (!el.resultDialog) return;
+  if (resultDialogAutoCloseTimer) {
+    clearTimeout(resultDialogAutoCloseTimer);
+    resultDialogAutoCloseTimer = null;
+  }
+  if (resultDialogCountdownTimer) {
+    clearInterval(resultDialogCountdownTimer);
+    resultDialogCountdownTimer = null;
+  }
+  el.resultDialog.classList.add('is-hidden');
+  if (el.resultDialogTimer) el.resultDialogTimer.textContent = '';
+  syncModalBodyLock();
+}
+
+function openResultDialog({ title = 'Completed', body = '', items = [], autoCloseSeconds = 20 } = {}) {
+  if (!el.resultDialog) return;
+  if (resultDialogAutoCloseTimer) {
+    clearTimeout(resultDialogAutoCloseTimer);
+    resultDialogAutoCloseTimer = null;
+  }
+  if (resultDialogCountdownTimer) {
+    clearInterval(resultDialogCountdownTimer);
+    resultDialogCountdownTimer = null;
+  }
+  if (el.resultDialogTitle) el.resultDialogTitle.textContent = title;
+  if (el.resultDialogBody) el.resultDialogBody.textContent = body;
+  renderResultSummaryRows(items);
+
+  let remaining = Math.max(1, parseIntSafe(autoCloseSeconds, 20));
+  if (el.resultDialogTimer) {
+    el.resultDialogTimer.textContent = `Auto-close in ${remaining}s`;
+  }
+  resultDialogCountdownTimer = setInterval(() => {
+    remaining -= 1;
+    if (remaining <= 0) {
+      if (el.resultDialogTimer) el.resultDialogTimer.textContent = '';
+      clearInterval(resultDialogCountdownTimer);
+      resultDialogCountdownTimer = null;
+      return;
+    }
+    if (el.resultDialogTimer) el.resultDialogTimer.textContent = `Auto-close in ${remaining}s`;
+  }, 1000);
+  resultDialogAutoCloseTimer = setTimeout(() => {
+    closeResultDialog();
+  }, remaining * 1000);
+
+  el.resultDialog.classList.remove('is-hidden');
+  syncModalBodyLock();
+  if (el.resultCloseBtn) el.resultCloseBtn.focus();
+}
+
+function buildRunNowSummaryItems(data = {}) {
+  const rows = Array.isArray(data.rules) ? data.rules : [];
+  const sentRules = rows.filter((row) => String(row.status) === 'sent').length;
+  const errorRules = rows.filter((row) => String(row.status) === 'error').length;
+  const base = [{
+    status: errorRules ? 'error' : 'sent',
+    title: 'Run Totals',
+    meta: `Enabled rules: ${rows.length} | Sent alerts: ${parseIntSafe(data.sent, 0)} | Matched alerts: ${parseIntSafe(data.matched, 0)} | Rules fired: ${sentRules}`,
+  }];
+  const perRule = rows.slice(0, 14).map((row) => {
+    const status = String(row.status || '').toLowerCase();
+    const metaParts = [
+      `Status: ${statusLabel(status)}`,
+      `Matched: ${parseIntSafe(row.matched, 0)}`,
+      `New: ${parseIntSafe(row.new_events, 0)}`,
+      `Sent: ${parseIntSafe(row.sent_events, 0)}`,
+    ];
+    if (Array.isArray(row.channels) && row.channels.length) {
+      metaParts.push(`Channels: ${row.channels.join(', ')}`);
+    }
+    if (row.reason) metaParts.push(`Reason: ${row.reason}`);
+    return {
+      status,
+      title: row.rule_name || row.rule_id || 'Rule',
+      meta: metaParts.join(' | '),
+    };
+  });
+  return [...base, ...perRule];
+}
+
 function closeConfirmDialog(confirmed = false) {
   if (!el.confirmDialog || !confirmDialogResolver) return;
   el.confirmDialog.classList.add('is-hidden');
-  document.body.classList.remove('confirm-open');
+  syncModalBodyLock();
   const resolve = confirmDialogResolver;
   confirmDialogResolver = null;
   resolve(!!confirmed);
@@ -456,7 +632,7 @@ function openDeleteRuleConfirm(ruleName = '') {
   el.confirmDialogTitle.textContent = `Delete "${safeName}"?`;
   el.confirmDialogBody.textContent = 'This permanently removes the rule and cannot be undone.';
   el.confirmDialog.classList.remove('is-hidden');
-  document.body.classList.add('confirm-open');
+  syncModalBodyLock();
   el.confirmCancelBtn.focus();
   return new Promise((resolve) => {
     confirmDialogResolver = resolve;
@@ -1422,26 +1598,74 @@ async function saveRule(event) {
 }
 
 async function runNow() {
+  setActionButtonsBusy(true);
+  startTaskProgress('Running rules...');
   try {
     const payload = await api('/api/run-now', { method: 'POST' });
     const data = payload.data || {};
+    finishTaskProgress(`Completed · Sent ${parseIntSafe(data.sent, 0)} alert(s)`);
     setMessage(el.settingsMessage, `${data.message} Sent: ${data.sent}, matched: ${data.matched}`);
     await loadState();
+    openResultDialog({
+      title: 'Rule Run Completed',
+      body: `${data.message || 'Notification run completed.'} Sent ${parseIntSafe(data.sent, 0)} alert(s), matched ${parseIntSafe(data.matched, 0)}.`,
+      items: buildRunNowSummaryItems(data),
+      autoCloseSeconds: 20,
+    });
   } catch (error) {
+    finishTaskProgress(`Failed · ${error.message}`, { error: true });
     setMessage(el.settingsMessage, error.message, true);
+    openResultDialog({
+      title: 'Rule Run Failed',
+      body: error.message || 'Notification run failed.',
+      items: [{
+        status: 'error',
+        title: 'Execution Error',
+        meta: error.message || 'Unable to complete run.',
+      }],
+      autoCloseSeconds: 20,
+    });
+  } finally {
+    setActionButtonsBusy(false);
   }
 }
 
 async function sendTestEmail() {
+  setActionButtonsBusy(true);
+  startTaskProgress('Sending test email...');
   try {
     const payload = await api('/api/test-email', {
       method: 'POST',
       body: JSON.stringify({ email: el.emailInput.value.trim() }),
     });
+    finishTaskProgress('Completed · Test email sent');
     setMessage(el.settingsMessage, payload.message || 'Test email sent.');
     await loadState();
+    openResultDialog({
+      title: 'Test Email Sent',
+      body: payload.message || 'Test email sent successfully.',
+      items: [{
+        status: 'sent',
+        title: 'Delivery Check',
+        meta: `Recipient: ${el.emailInput.value.trim() || 'Saved email'} | SMTP test completed`,
+      }],
+      autoCloseSeconds: 20,
+    });
   } catch (error) {
+    finishTaskProgress(`Failed · ${error.message}`, { error: true });
     setMessage(el.settingsMessage, error.message, true);
+    openResultDialog({
+      title: 'Test Email Failed',
+      body: error.message || 'Failed to send test email.',
+      items: [{
+        status: 'error',
+        title: 'Delivery Check',
+        meta: error.message || 'Unable to deliver test email.',
+      }],
+      autoCloseSeconds: 20,
+    });
+  } finally {
+    setActionButtonsBusy(false);
   }
 }
 
@@ -1513,9 +1737,19 @@ function bindEvents() {
       if (event.target === el.confirmDialog) closeConfirmDialog(false);
     });
   }
+  if (el.resultCloseBtn) el.resultCloseBtn.addEventListener('click', closeResultDialog);
+  if (el.resultDialog) {
+    el.resultDialog.addEventListener('click', (event) => {
+      if (event.target === el.resultDialog) closeResultDialog();
+    });
+  }
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && confirmDialogResolver) {
       closeConfirmDialog(false);
+      return;
+    }
+    if (event.key === 'Escape' && el.resultDialog && !el.resultDialog.classList.contains('is-hidden')) {
+      closeResultDialog();
     }
   });
 

@@ -1,33 +1,486 @@
 [
   {
-    "id": "atp_2026_407_MS013",
+    "id": "atp_2026_451_QS008",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS008",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand 1",
+    "player1": {
+      "id": 734160,
+      "player_code": "HB64",
+      "name": "Quentin Halys",
+      "country": "FRA",
+      "rank": 72,
+      "points": 762,
+      "image_url": "/api/player/atp/HB64/image"
+    },
+    "player2": {
+      "id": 795434,
+      "player_code": "A09Q",
+      "name": "Mert Alkaya",
+      "country": "TUR",
+      "rank": 379,
+      "points": 124,
+      "image_url": "/api/player/atp/A09Q/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:18",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs008",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_451_QS010",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS010",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand 2",
+    "player1": {
+      "id": 766978,
+      "player_code": "H996",
+      "name": "Pierre Hugues Herbert",
+      "country": "FRA",
+      "rank": 189,
+      "points": 313,
+      "image_url": "/api/player/atp/H996/image"
+    },
+    "player2": {
+      "id": 728938,
+      "player_code": "V832",
+      "name": "Aleksandar Vukic",
+      "country": "AUS",
+      "rank": 88,
+      "points": 656,
+      "image_url": "/api/player/atp/V832/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:27",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs010",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_451_QS012",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS012",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand 1",
+    "player1": {
+      "id": 752545,
+      "player_code": "CD85",
+      "name": "Pablo Carreño Busta",
+      "country": "ESP",
+      "rank": 122,
+      "points": 504,
+      "image_url": "/api/player/atp/CD85/image"
+    },
+    "player2": {
+      "id": 766737,
+      "player_code": "B0PU",
+      "name": "Reda Bennani",
+      "country": "MAR",
+      "rank": 562,
+      "points": 69,
+      "image_url": "/api/player/atp/B0PU/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:17",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs012",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_451_QS014",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS014",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand 3",
+    "player1": {
+      "id": 766688,
+      "player_code": "M0HU",
+      "name": "Shintaro Mochizuki",
+      "country": "JPN",
+      "rank": 116,
+      "points": 525,
+      "image_url": "/api/player/atp/M0HU/image"
+    },
+    "player2": {
+      "id": null,
+      "player_code": "A0K8",
+      "name": "Ghanim Al Sulaiti",
+      "country": "QAT",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/A0K8/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 0
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "0:50",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs014",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_451_QS009",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS009",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Court 4",
+    "player1": {
+      "id": 794677,
+      "player_code": "CH12",
+      "name": "Jan Choinski",
+      "country": "GBR",
+      "rank": 124,
+      "points": 498,
+      "image_url": "/api/player/atp/CH12/image"
+    },
+    "player2": {
+      "id": 778660,
+      "player_code": "M0OQ",
+      "name": "James McCabe",
+      "country": "AUS",
+      "rank": 210,
+      "points": 283,
+      "image_url": "/api/player/atp/M0OQ/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:23",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs009",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_451_QS013",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS013",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Court 4",
+    "player1": {
+      "id": 755689,
+      "player_code": "HD68",
+      "name": "Billy Harris",
+      "country": "GBR",
+      "rank": 144,
+      "points": 438,
+      "image_url": "/api/player/atp/HD68/image"
+    },
+    "player2": {
+      "id": 766103,
+      "player_code": "TA29",
+      "name": "Marco Trungelliti",
+      "country": "ARG",
+      "rank": 131,
+      "points": 472,
+      "image_url": "/api/player/atp/TA29/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:21",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs013",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_451_QS015",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS015",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand 2",
+    "player1": {
+      "id": 719379,
+      "player_code": "CF59",
+      "name": "Roberto Carballés Baena",
+      "country": "ESP",
+      "rank": 174,
+      "points": 350,
+      "image_url": "/api/player/atp/CF59/image"
+    },
+    "player2": {
+      "id": null,
+      "player_code": "MO55",
+      "name": "Lucas Miedler",
+      "country": "AUT",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/MO55/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:27",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs015",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_451_QS011",
+    "tour": "ATP",
+    "tournament": "Qatar ExxonMobil Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "451",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS011",
+    "location": "Doha, Qatar",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand 3",
+    "player1": {
+      "id": 716598,
+      "player_code": "Y218",
+      "name": "Elias Ymer",
+      "country": "SWE",
+      "rank": 187,
+      "points": 315,
+      "image_url": "/api/player/atp/Y218/image"
+    },
+    "player2": {
+      "id": 700216,
+      "player_code": "BG23",
+      "name": "Nikoloz Basilashvili",
+      "country": "GEO",
+      "rank": 136,
+      "points": 464,
+      "image_url": "/api/player/atp/BG23/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "1:34",
+    "scheduled_time": "2026-02-15T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/451/qs011",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS004",
     "tour": "ATP",
     "tournament": "ABN AMRO Open",
     "tournament_category": "atp_500",
     "atp_event_id": "407",
     "atp_event_year": "2026",
-    "atp_match_id": "MS013",
+    "atp_match_id": "MS004",
     "location": "Rotterdam, Netherlands",
     "surface": "",
-    "round": "Round of 16",
+    "round": "Quarterfinals",
     "court": "Centre Court",
     "player1": {
-      "id": 721185,
-      "player_code": "BK92",
-      "name": "Alexander Bublik",
-      "country": "KAZ",
-      "rank": 10,
-      "points": 3305,
-      "image_url": "/api/player/atp/BK92/image"
+      "id": 725846,
+      "player_code": "DH58",
+      "name": "Alex de Minaur",
+      "country": "AUS",
+      "rank": 8,
+      "points": 3850,
+      "image_url": "/api/player/atp/DH58/image"
     },
     "player2": {
-      "id": 752075,
-      "player_code": "SL28",
-      "name": "Jan Lennard Struff",
-      "country": "GER",
-      "rank": 77,
-      "points": 706,
-      "image_url": "/api/player/atp/SL28/image"
+      "id": 769480,
+      "player_code": "V812",
+      "name": "Botic van de Zandschulp",
+      "country": "NED",
+      "rank": 55,
+      "points": 936,
+      "image_url": "/api/player/atp/V812/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 4
+          }
+        },
+        {
+          "p1": 7,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "2:44",
+    "scheduled_time": "2026-02-14T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms004",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS007",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS007",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Centre Court",
+    "player1": {
+      "id": 769294,
+      "player_code": "AG37",
+      "name": "Félix Auger-Aliassime",
+      "country": "CAN",
+      "rank": 6,
+      "points": 4000,
+      "image_url": "/api/player/atp/AG37/image"
+    },
+    "player2": {
+      "id": 715713,
+      "player_code": "GJ37",
+      "name": "Tallon Griekspoor",
+      "country": "NED",
+      "rank": 25,
+      "points": 1635,
+      "image_url": "/api/player/atp/GJ37/image"
     },
     "status": "finished",
     "winner": 1,
@@ -42,8 +495,281 @@
           }
         },
         {
-          "p1": 4,
-          "p2": 6
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:44",
+    "scheduled_time": "2026-02-14T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms007",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS006",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS006",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Centre Court",
+    "player1": {
+      "id": 721185,
+      "player_code": "BK92",
+      "name": "Alexander Bublik",
+      "country": "KAZ",
+      "rank": 10,
+      "points": 3305,
+      "image_url": "/api/player/atp/BK92/image"
+    },
+    "player2": {
+      "id": 748376,
+      "player_code": "MU94",
+      "name": "Jaume Munar",
+      "country": "ESP",
+      "rank": 35,
+      "points": 1275,
+      "image_url": "/api/player/atp/MU94/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 7,
+          "tiebreak": {
+            "p1": 4,
+            "p2": 7
+          }
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        }
+      ]
+    },
+    "match_duration": "2:42",
+    "scheduled_time": "2026-02-14T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms006",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS005",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS005",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Centre Court",
+    "player1": {
+      "id": 738670,
+      "player_code": "HH26",
+      "name": "Ugo Humbert",
+      "country": "FRA",
+      "rank": 38,
+      "points": 1185,
+      "image_url": "/api/player/atp/HH26/image"
+    },
+    "player2": {
+      "id": 748742,
+      "player_code": "O483",
+      "name": "Christopher O'Connell",
+      "country": "AUS",
+      "rank": 95,
+      "points": 626,
+      "image_url": "/api/player/atp/O483/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:17",
+    "scheduled_time": "2026-02-14T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms005",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS004",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS004",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Center Court",
+    "player1": {
+      "id": 702791,
+      "player_code": "FB98",
+      "name": "Taylor Fritz",
+      "country": "USA",
+      "rank": 7,
+      "points": 3990,
+      "image_url": "/api/player/atp/FB98/image"
+    },
+    "player2": {
+      "id": 719500,
+      "player_code": "K0AH",
+      "name": "Sebastian Korda",
+      "country": "USA",
+      "rank": 49,
+      "points": 1020,
+      "image_url": "/api/player/atp/K0AH/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 7,
+          "tiebreak": {
+            "p1": 2,
+            "p2": 7
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        }
+      ]
+    },
+    "match_duration": "2:29",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms004",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS007",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS007",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Center Court",
+    "player1": {
+      "id": 724447,
+      "player_code": "S0S1",
+      "name": "Ben Shelton",
+      "country": "USA",
+      "rank": 9,
+      "points": 3650,
+      "image_url": "/api/player/atp/S0S1/image"
+    },
+    "player2": {
+      "id": 709574,
+      "player_code": "KI95",
+      "name": "Miomir Kecmanović",
+      "country": "SRB",
+      "rank": 83,
+      "points": 670,
+      "image_url": "/api/player/atp/KI95/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:58",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms007",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS006",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS006",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Center Court",
+    "player1": {
+      "id": 703150,
+      "player_code": "SU55",
+      "name": "Denis Shapovalov",
+      "country": "CAN",
+      "rank": 36,
+      "points": 1250,
+      "image_url": "/api/player/atp/SU55/image"
+    },
+    "player2": {
+      "id": 704420,
+      "player_code": "DH50",
+      "name": "Alejandro Davidovich Fokina",
+      "country": "ESP",
+      "rank": 15,
+      "points": 2470,
+      "image_url": "/api/player/atp/DH50/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 6,
+          "p2": 4
         },
         {
           "p1": 6,
@@ -51,9 +777,58 @@
         }
       ]
     },
-    "match_duration": "2:05",
+    "match_duration": "1:57",
     "scheduled_time": "2026-02-13T00:00:00",
-    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms013",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms006",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS005",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS005",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Center Court",
+    "player1": {
+      "id": 799867,
+      "player_code": "C977",
+      "name": "Marin Čilić",
+      "country": "CRO",
+      "rank": 52,
+      "points": 990,
+      "image_url": "/api/player/atp/C977/image"
+    },
+    "player2": {
+      "id": 792436,
+      "player_code": "P0HT",
+      "name": "Jack Pinnington Jones",
+      "country": "GBR",
+      "rank": 138,
+      "points": 456,
+      "image_url": "/api/player/atp/P0HT/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:17",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms005",
     "h2h_text": "N/A"
   },
   {
@@ -152,6 +927,63 @@
     "match_duration": "1:30",
     "scheduled_time": "2026-02-13T00:00:00",
     "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms015",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS013",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS013",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Centre Court",
+    "player1": {
+      "id": 721185,
+      "player_code": "BK92",
+      "name": "Alexander Bublik",
+      "country": "KAZ",
+      "rank": 10,
+      "points": 3305,
+      "image_url": "/api/player/atp/BK92/image"
+    },
+    "player2": {
+      "id": 752075,
+      "player_code": "SL28",
+      "name": "Jan Lennard Struff",
+      "country": "GER",
+      "rank": 77,
+      "points": 706,
+      "image_url": "/api/player/atp/SL28/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 2
+          }
+        },
+        {
+          "p1": 4,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "2:05",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms013",
     "h2h_text": "N/A"
   },
   {
@@ -314,46 +1146,197 @@
     "h2h_text": "N/A"
   },
   {
-    "id": "atp_2026_424_MS014",
+    "id": "atp_2026_506_MS004",
     "tour": "ATP",
-    "tournament": "Nexo Dallas Open",
-    "tournament_category": "atp_500",
-    "atp_event_id": "424",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
     "atp_event_year": "2026",
-    "atp_match_id": "MS014",
-    "location": "Dallas, United States",
+    "atp_match_id": "MS004",
+    "location": "Buenos Aires, Argentina",
     "surface": "",
-    "round": "Round of 16",
-    "court": "Center Court",
+    "round": "Quarterfinals",
+    "court": "Cancha Guillermo Vilas",
     "player1": {
-      "id": 709574,
-      "player_code": "KI95",
-      "name": "Miomir Kecmanović",
-      "country": "SRB",
-      "rank": 83,
-      "points": 670,
-      "image_url": "/api/player/atp/KI95/image"
+      "id": 760346,
+      "player_code": "C0AU",
+      "name": "Francisco Cerúndolo",
+      "country": "ARG",
+      "rank": 19,
+      "points": 2020,
+      "image_url": "/api/player/atp/C0AU/image"
     },
     "player2": {
-      "id": 753093,
-      "player_code": "PL56",
-      "name": "Tommy Paul",
-      "country": "USA",
-      "rank": 24,
-      "points": 1700,
-      "image_url": "/api/player/atp/PL56/image"
+      "id": 791876,
+      "player_code": "KI82",
+      "name": "Vít Kopřiva",
+      "country": "CZE",
+      "rank": 87,
+      "points": 660,
+      "image_url": "/api/player/atp/KI82/image"
     },
     "status": "finished",
     "winner": 1,
     "final_score": {
       "sets": [
         {
-          "p1": 5,
-          "p2": 7
+          "p1": 6,
+          "p2": 4
         },
         {
           "p1": 6,
-          "p2": 4
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:37",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms004",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS007",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS007",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 773937,
+      "player_code": "D0FJ",
+      "name": "Luciano Darderi",
+      "country": "ITA",
+      "rank": 22,
+      "points": 1789,
+      "image_url": "/api/player/atp/D0FJ/image"
+    },
+    "player2": {
+      "id": 732883,
+      "player_code": "MO44",
+      "name": "Pedro Martínez",
+      "country": "ESP",
+      "rank": 101,
+      "points": 586,
+      "image_url": "/api/player/atp/MO44/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 5
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:31",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms007",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS006",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS006",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 770931,
+      "player_code": "B0BI",
+      "name": "Sebastián Báez",
+      "country": "ARG",
+      "rank": 33,
+      "points": 1445,
+      "image_url": "/api/player/atp/B0BI/image"
+    },
+    "player2": {
+      "id": 704160,
+      "player_code": "U182",
+      "name": "Camilo Ugo Carabelli",
+      "country": "ARG",
+      "rank": 45,
+      "points": 1068,
+      "image_url": "/api/player/atp/U182/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:59",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms006",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS005",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS005",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Quarterfinals",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 775024,
+      "player_code": "EA24",
+      "name": "Tomás Martín Etcheverry",
+      "country": "ARG",
+      "rank": 53,
+      "points": 970,
+      "image_url": "/api/player/atp/EA24/image"
+    },
+    "player2": {
+      "id": 708654,
+      "player_code": "TE30",
+      "name": "Alejandro Tabilo",
+      "country": "CHI",
+      "rank": 67,
+      "points": 808,
+      "image_url": "/api/player/atp/TE30/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 1,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 3
         },
         {
           "p1": 6,
@@ -361,9 +1344,9 @@
         }
       ]
     },
-    "match_duration": "2:00",
-    "scheduled_time": "2026-02-12T00:00:00",
-    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms014",
+    "match_duration": "2:06",
+    "scheduled_time": "2026-02-13T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms005",
     "h2h_text": "N/A"
   },
   {
@@ -425,6 +1408,59 @@
     "match_duration": "2:40",
     "scheduled_time": "2026-02-12T00:00:00",
     "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms015",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS014",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS014",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Center Court",
+    "player1": {
+      "id": 709574,
+      "player_code": "KI95",
+      "name": "Miomir Kecmanović",
+      "country": "SRB",
+      "rank": 83,
+      "points": 670,
+      "image_url": "/api/player/atp/KI95/image"
+    },
+    "player2": {
+      "id": 753093,
+      "player_code": "PL56",
+      "name": "Tommy Paul",
+      "country": "USA",
+      "rank": 24,
+      "points": 1700,
+      "image_url": "/api/player/atp/PL56/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:00",
+    "scheduled_time": "2026-02-12T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms014",
     "h2h_text": "N/A"
   },
   {
@@ -1011,6 +2047,104 @@
     "h2h_text": "N/A"
   },
   {
+    "id": "atp_2026_506_MS015",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS015",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 773937,
+      "player_code": "D0FJ",
+      "name": "Luciano Darderi",
+      "country": "ITA",
+      "rank": 22,
+      "points": 1789,
+      "image_url": "/api/player/atp/D0FJ/image"
+    },
+    "player2": {
+      "id": 708785,
+      "player_code": "BS86",
+      "name": "Tomás Barrios Vera",
+      "country": "CHI",
+      "rank": 107,
+      "points": 563,
+      "image_url": "/api/player/atp/BS86/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:22",
+    "scheduled_time": "2026-02-12T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms015",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS013",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS013",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 770931,
+      "player_code": "B0BI",
+      "name": "Sebastián Báez",
+      "country": "ARG",
+      "rank": 33,
+      "points": 1445,
+      "image_url": "/api/player/atp/B0BI/image"
+    },
+    "player2": {
+      "id": 772229,
+      "player_code": "B0ID",
+      "name": "Ignacio Buse",
+      "country": "PER",
+      "rank": 91,
+      "points": 648,
+      "image_url": "/api/player/atp/B0ID/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:23",
+    "scheduled_time": "2026-02-12T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms013",
+    "h2h_text": "N/A"
+  },
+  {
     "id": "atp_2026_506_MS012",
     "tour": "ATP",
     "tournament": "IEB+ Argentina Open",
@@ -1057,6 +2191,4056 @@
     "match_duration": "2:02",
     "scheduled_time": "2026-02-12T00:00:00",
     "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms012",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS014",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS014",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 732883,
+      "player_code": "MO44",
+      "name": "Pedro Martínez",
+      "country": "ESP",
+      "rank": 101,
+      "points": 586,
+      "image_url": "/api/player/atp/MO44/image"
+    },
+    "player2": {
+      "id": 758933,
+      "player_code": "C0C8",
+      "name": "Juan Manuel Cerúndolo",
+      "country": "ARG",
+      "rank": 78,
+      "points": 706,
+      "image_url": "/api/player/atp/C0C8/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:03",
+    "scheduled_time": "2026-02-12T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms014",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS008",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS008",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Center Court",
+    "player1": {
+      "id": 702791,
+      "player_code": "FB98",
+      "name": "Taylor Fritz",
+      "country": "USA",
+      "rank": 7,
+      "points": 3990,
+      "image_url": "/api/player/atp/FB98/image"
+    },
+    "player2": {
+      "id": 764227,
+      "player_code": "N0AE",
+      "name": "Brandon Nakashima",
+      "country": "USA",
+      "rank": 29,
+      "points": 1535,
+      "image_url": "/api/player/atp/N0AE/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:09",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms008",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS013",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS013",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Center Court",
+    "player1": {
+      "id": 704420,
+      "player_code": "DH50",
+      "name": "Alejandro Davidovich Fokina",
+      "country": "ESP",
+      "rank": 15,
+      "points": 2470,
+      "image_url": "/api/player/atp/DH50/image"
+    },
+    "player2": {
+      "id": 718455,
+      "player_code": "M0QI",
+      "name": "Alex Michelsen",
+      "country": "USA",
+      "rank": 41,
+      "points": 1110,
+      "image_url": "/api/player/atp/M0QI/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:18",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms013",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS009",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS009",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Center Court",
+    "player1": {
+      "id": 719500,
+      "player_code": "K0AH",
+      "name": "Sebastian Korda",
+      "country": "USA",
+      "rank": 49,
+      "points": 1020,
+      "image_url": "/api/player/atp/K0AH/image"
+    },
+    "player2": {
+      "id": 759049,
+      "player_code": "TD51",
+      "name": "Frances Tiafoe",
+      "country": "USA",
+      "rank": 28,
+      "points": 1550,
+      "image_url": "/api/player/atp/TD51/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 5
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:08",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms009",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS028",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS028",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 753093,
+      "player_code": "PL56",
+      "name": "Tommy Paul",
+      "country": "USA",
+      "rank": 24,
+      "points": 1700,
+      "image_url": "/api/player/atp/PL56/image"
+    },
+    "player2": {
+      "id": 752143,
+      "player_code": "B0CD",
+      "name": "Jenson Brooksby",
+      "country": "USA",
+      "rank": 46,
+      "points": 1042,
+      "image_url": "/api/player/atp/B0CD/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 4,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 4
+          }
+        }
+      ]
+    },
+    "match_duration": "2:22",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms028",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS030",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS030",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Grandstand",
+    "player1": {
+      "id": 779900,
+      "player_code": "ME82",
+      "name": "Adrian Mannarino",
+      "country": "FRA",
+      "rank": 48,
+      "points": 1025,
+      "image_url": "/api/player/atp/ME82/image"
+    },
+    "player2": {
+      "id": 751402,
+      "player_code": "W09E",
+      "name": "Adam Walton",
+      "country": "AUS",
+      "rank": 93,
+      "points": 643,
+      "image_url": "/api/player/atp/W09E/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:24",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms030",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS022",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS022",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Grandstand",
+    "player1": {
+      "id": 763769,
+      "player_code": "Q02L",
+      "name": "Ethan Quinn",
+      "country": "USA",
+      "rank": 70,
+      "points": 776,
+      "image_url": "/api/player/atp/Q02L/image"
+    },
+    "player2": {
+      "id": 702216,
+      "player_code": "S0VM",
+      "name": "Trevor Svajda",
+      "country": "USA",
+      "rank": 359,
+      "points": 131,
+      "image_url": "/api/player/atp/S0VM/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        },
+        {
+          "p1": 7,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "1:46",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms022",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS021",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS021",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Grandstand",
+    "player1": {
+      "id": 750835,
+      "player_code": "S0JA",
+      "name": "Eliot Spizzirri",
+      "country": "USA",
+      "rank": 66,
+      "points": 821,
+      "image_url": "/api/player/atp/S0JA/image"
+    },
+    "player2": {
+      "id": 776950,
+      "player_code": "D994",
+      "name": "James Duckworth",
+      "country": "AUS",
+      "rank": 80,
+      "points": 691,
+      "image_url": "/api/player/atp/D994/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:19",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms021",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS016",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS016",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 725846,
+      "player_code": "DH58",
+      "name": "Alex de Minaur",
+      "country": "AUS",
+      "rank": 8,
+      "points": 3850,
+      "image_url": "/api/player/atp/DH58/image"
+    },
+    "player2": {
+      "id": 708870,
+      "player_code": "F0F1",
+      "name": "Arthur Fils",
+      "country": "FRA",
+      "rank": 40,
+      "points": 1110,
+      "image_url": "/api/player/atp/F0F1/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:32",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms016",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS028",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS028",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 715713,
+      "player_code": "GJ37",
+      "name": "Tallon Griekspoor",
+      "country": "NED",
+      "rank": 25,
+      "points": 1635,
+      "image_url": "/api/player/atp/GJ37/image"
+    },
+    "player2": {
+      "id": 751134,
+      "player_code": "M0GZ",
+      "name": "Giovanni Mpetshi Perricard",
+      "country": "FRA",
+      "rank": 58,
+      "points": 905,
+      "image_url": "/api/player/atp/M0GZ/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:12",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms028",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS029",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS029",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 734160,
+      "player_code": "HB64",
+      "name": "Quentin Halys",
+      "country": "FRA",
+      "rank": 72,
+      "points": 762,
+      "image_url": "/api/player/atp/HB64/image"
+    },
+    "player2": {
+      "id": 726267,
+      "player_code": "R0KD",
+      "name": "Mees Rottgering",
+      "country": "NED",
+      "rank": 503,
+      "points": 84,
+      "image_url": "/api/player/atp/R0KD/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:53",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms029",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS030",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS030",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 706908,
+      "player_code": "M0JF",
+      "name": "Hamad Medjedović",
+      "country": "SRB",
+      "rank": 97,
+      "points": 615,
+      "image_url": "/api/player/atp/M0JF/image"
+    },
+    "player2": {
+      "id": 784773,
+      "player_code": "BU13",
+      "name": "Zizou Bergs",
+      "country": "BEL",
+      "rank": 43,
+      "points": 1080,
+      "image_url": "/api/player/atp/BU13/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        }
+      ]
+    },
+    "match_duration": "2:19",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms030",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS026",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS026",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 752075,
+      "player_code": "SL28",
+      "name": "Jan Lennard Struff",
+      "country": "GER",
+      "rank": 77,
+      "points": 706,
+      "image_url": "/api/player/atp/SL28/image"
+    },
+    "player2": {
+      "id": 756291,
+      "player_code": "GF95",
+      "name": "Hugo Grenier",
+      "country": "FRA",
+      "rank": 191,
+      "points": 310,
+      "image_url": "/api/player/atp/GF95/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 0
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:04",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms026",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS008",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS008",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 760346,
+      "player_code": "C0AU",
+      "name": "Francisco Cerúndolo",
+      "country": "ARG",
+      "rank": 19,
+      "points": 2020,
+      "image_url": "/api/player/atp/C0AU/image"
+    },
+    "player2": {
+      "id": 734555,
+      "player_code": "DA31",
+      "name": "Hugo Dellien",
+      "country": "BOL",
+      "rank": 157,
+      "points": 393,
+      "image_url": "/api/player/atp/DA31/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 0
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 8,
+            "p2": 6
+          }
+        }
+      ]
+    },
+    "match_duration": "1:24",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms008",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS010",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS010",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 708654,
+      "player_code": "TE30",
+      "name": "Alejandro Tabilo",
+      "country": "CHI",
+      "rank": 67,
+      "points": 808,
+      "image_url": "/api/player/atp/TE30/image"
+    },
+    "player2": {
+      "id": 761845,
+      "player_code": "F0FV",
+      "name": "João Fonseca",
+      "country": "BRA",
+      "rank": 37,
+      "points": 1190,
+      "image_url": "/api/player/atp/F0FV/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 7,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "2:24",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms010",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS011",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS011",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 775024,
+      "player_code": "EA24",
+      "name": "Tomás Martín Etcheverry",
+      "country": "ARG",
+      "rank": 53,
+      "points": 970,
+      "image_url": "/api/player/atp/EA24/image"
+    },
+    "player2": {
+      "id": 700674,
+      "player_code": "B0FV",
+      "name": "Román Andrés Burruchaga",
+      "country": "ARG",
+      "rank": 102,
+      "points": 580,
+      "image_url": "/api/player/atp/B0FV/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 7,
+          "tiebreak": {
+            "p1": 3,
+            "p2": 7
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "3:37",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms011",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS009",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS009",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 16",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 791876,
+      "player_code": "KI82",
+      "name": "Vít Kopřiva",
+      "country": "CZE",
+      "rank": 87,
+      "points": 660,
+      "image_url": "/api/player/atp/KI82/image"
+    },
+    "player2": {
+      "id": 761152,
+      "player_code": "BK40",
+      "name": "Matteo Berrettini",
+      "country": "ITA",
+      "rank": 57,
+      "points": 910,
+      "image_url": "/api/player/atp/BK40/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:34",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms009",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS025",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS025",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 740497,
+      "player_code": "N0BS",
+      "name": "Mariano Navone",
+      "country": "ARG",
+      "rank": 74,
+      "points": 750,
+      "image_url": "/api/player/atp/N0BS/image"
+    },
+    "player2": {
+      "id": 773265,
+      "player_code": "N0AM",
+      "name": "Emilio Nava",
+      "country": "USA",
+      "rank": 76,
+      "points": 710,
+      "image_url": "/api/player/atp/N0AM/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:03",
+    "scheduled_time": "2026-02-11T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms025",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS016",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS016",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 702791,
+      "player_code": "FB98",
+      "name": "Taylor Fritz",
+      "country": "USA",
+      "rank": 7,
+      "points": 3990,
+      "image_url": "/api/player/atp/FB98/image"
+    },
+    "player2": {
+      "id": 726036,
+      "player_code": "GC88",
+      "name": "Marcos Giron",
+      "country": "USA",
+      "rank": 63,
+      "points": 855,
+      "image_url": "/api/player/atp/GC88/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 1
+          }
+        }
+      ]
+    },
+    "match_duration": "2:26",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms016",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS031",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS031",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 724447,
+      "player_code": "S0S1",
+      "name": "Ben Shelton",
+      "country": "USA",
+      "rank": 9,
+      "points": 3650,
+      "image_url": "/api/player/atp/S0S1/image"
+    },
+    "player2": {
+      "id": 775022,
+      "player_code": "D0F6",
+      "name": "Gabriel Diallo",
+      "country": "CAN",
+      "rank": 39,
+      "points": 1175,
+      "image_url": "/api/player/atp/D0F6/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:37",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms031",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS020",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS020",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Grandstand",
+    "player1": {
+      "id": 792436,
+      "player_code": "P0HT",
+      "name": "Jack Pinnington Jones",
+      "country": "GBR",
+      "rank": 138,
+      "points": 456,
+      "image_url": "/api/player/atp/P0HT/image"
+    },
+    "player2": {
+      "id": 799301,
+      "player_code": "C0E9",
+      "name": "Flavio Cobolli",
+      "country": "ITA",
+      "rank": 20,
+      "points": 1955,
+      "image_url": "/api/player/atp/C0E9/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "0:53",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms020",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS023",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS023",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 799867,
+      "player_code": "C977",
+      "name": "Marin Čilić",
+      "country": "CRO",
+      "rank": 52,
+      "points": 990,
+      "image_url": "/api/player/atp/C977/image"
+    },
+    "player2": {
+      "id": 784680,
+      "player_code": "T0HA",
+      "name": "Learner Tien",
+      "country": "USA",
+      "rank": 23,
+      "points": 1710,
+      "image_url": "/api/player/atp/T0HA/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 5
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 4
+          }
+        }
+      ]
+    },
+    "match_duration": "1:50",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms023",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS024",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS024",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 703150,
+      "player_code": "SU55",
+      "name": "Denis Shapovalov",
+      "country": "CAN",
+      "rank": 36,
+      "points": 1250,
+      "image_url": "/api/player/atp/SU55/image"
+    },
+    "player2": {
+      "id": 787428,
+      "player_code": "J0DZ",
+      "name": "Rafael Jódar",
+      "country": "ESP",
+      "rank": 117,
+      "points": 523,
+      "image_url": "/api/player/atp/J0DZ/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:09",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms024",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS029",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS029",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Grandstand",
+    "player1": {
+      "id": 709574,
+      "player_code": "KI95",
+      "name": "Miomir Kecmanović",
+      "country": "SRB",
+      "rank": 83,
+      "points": 670,
+      "image_url": "/api/player/atp/KI95/image"
+    },
+    "player2": {
+      "id": 708645,
+      "player_code": "SY67",
+      "name": "Sho Shimabukuro",
+      "country": "JPN",
+      "rank": 135,
+      "points": 466,
+      "image_url": "/api/player/atp/SY67/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 7,
+          "tiebreak": {
+            "p1": 3,
+            "p2": 7
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        }
+      ]
+    },
+    "match_duration": "2:04",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms029",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS025",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS025",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Grandstand",
+    "player1": {
+      "id": 739428,
+      "player_code": "K0AZ",
+      "name": "Aleksandar Kovačević",
+      "country": "USA",
+      "rank": 75,
+      "points": 746,
+      "image_url": "/api/player/atp/K0AZ/image"
+    },
+    "player2": {
+      "id": 731440,
+      "player_code": "K0A3",
+      "name": "Patrick Kypson",
+      "country": "USA",
+      "rank": 105,
+      "points": 565,
+      "image_url": "/api/player/atp/K0A3/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 1
+          }
+        }
+      ]
+    },
+    "match_duration": "1:24",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms025",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS026",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS026",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 718455,
+      "player_code": "M0QI",
+      "name": "Alex Michelsen",
+      "country": "USA",
+      "rank": 41,
+      "points": 1110,
+      "image_url": "/api/player/atp/M0QI/image"
+    },
+    "player2": {
+      "id": 717593,
+      "player_code": "D875",
+      "name": "Grigor Dimitrov",
+      "country": "BUL",
+      "rank": 42,
+      "points": 1105,
+      "image_url": "/api/player/atp/D875/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:05",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms026",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS020",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS020",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 738670,
+      "player_code": "HH26",
+      "name": "Ugo Humbert",
+      "country": "FRA",
+      "rank": 38,
+      "points": 1185,
+      "image_url": "/api/player/atp/HH26/image"
+    },
+    "player2": {
+      "id": 796471,
+      "player_code": "MM58",
+      "name": "Daniil Medvedev",
+      "country": "RUS",
+      "rank": 11,
+      "points": 3010,
+      "image_url": "/api/player/atp/MM58/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 4
+          }
+        },
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "2:22",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms020",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS023",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS023",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 750329,
+      "player_code": "N771",
+      "name": "Cameron Norrie",
+      "country": "GBR",
+      "rank": 27,
+      "points": 1603,
+      "image_url": "/api/player/atp/N771/image"
+    },
+    "player2": {
+      "id": 739756,
+      "player_code": "BD06",
+      "name": "Roberto Bautista Agut",
+      "country": "ESP",
+      "rank": 82,
+      "points": 685,
+      "image_url": "/api/player/atp/BD06/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:54",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms023",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS025",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS025",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 748376,
+      "player_code": "MU94",
+      "name": "Jaume Munar",
+      "country": "ESP",
+      "rank": 35,
+      "points": 1275,
+      "image_url": "/api/player/atp/MU94/image"
+    },
+    "player2": {
+      "id": 793868,
+      "player_code": "B0U4",
+      "name": "Nicolai Budkov Kjaer",
+      "country": "NOR",
+      "rank": 133,
+      "points": 470,
+      "image_url": "/api/player/atp/B0U4/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:11",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms025",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS022",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS022",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Court 1",
+    "player1": {
+      "id": 748742,
+      "player_code": "O483",
+      "name": "Christopher O'Connell",
+      "country": "AUS",
+      "rank": 95,
+      "points": 626,
+      "image_url": "/api/player/atp/O483/image"
+    },
+    "player2": {
+      "id": 756227,
+      "player_code": "R0EB",
+      "name": "Valentin Royer",
+      "country": "FRA",
+      "rank": 59,
+      "points": 897,
+      "image_url": "/api/player/atp/R0EB/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 4,
+          "p2": 6
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 4
+          }
+        }
+      ]
+    },
+    "match_duration": "2:52",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms022",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_MS018",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS018",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Centre Court",
+    "player1": {
+      "id": 769480,
+      "player_code": "V812",
+      "name": "Botic van de Zandschulp",
+      "country": "NED",
+      "rank": 55,
+      "points": 936,
+      "image_url": "/api/player/atp/V812/image"
+    },
+    "player2": {
+      "id": 713399,
+      "player_code": "P0AY",
+      "name": "Luka Pavlovic",
+      "country": "FRA",
+      "rank": 209,
+      "points": 286,
+      "image_url": "/api/player/atp/P0AY/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:35",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/ms018",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS028",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS028",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 758933,
+      "player_code": "C0C8",
+      "name": "Juan Manuel Cerúndolo",
+      "country": "ARG",
+      "rank": 78,
+      "points": 706,
+      "image_url": "/api/player/atp/C0C8/image"
+    },
+    "player2": {
+      "id": 784920,
+      "player_code": "AE14",
+      "name": "Daniel Altmaier",
+      "country": "GER",
+      "rank": 54,
+      "points": 961,
+      "image_url": "/api/player/atp/AE14/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:27",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms028",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS024",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS024",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 704160,
+      "player_code": "U182",
+      "name": "Camilo Ugo Carabelli",
+      "country": "ARG",
+      "rank": 45,
+      "points": 1068,
+      "image_url": "/api/player/atp/U182/image"
+    },
+    "player2": {
+      "id": 704929,
+      "player_code": "C0DF",
+      "name": "Francisco Comesaña",
+      "country": "ARG",
+      "rank": 62,
+      "points": 869,
+      "image_url": "/api/player/atp/C0DF/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        }
+      ]
+    },
+    "match_duration": "2:05",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms024",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS019",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS019",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 761152,
+      "player_code": "BK40",
+      "name": "Matteo Berrettini",
+      "country": "ITA",
+      "rank": 57,
+      "points": 910,
+      "image_url": "/api/player/atp/BK40/image"
+    },
+    "player2": {
+      "id": 740879,
+      "player_code": "CE77",
+      "name": "Federico Coria",
+      "country": "ARG",
+      "rank": 377,
+      "points": 124,
+      "image_url": "/api/player/atp/CE77/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 5
+        },
+        {
+          "p1": 7,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "2:14",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms019",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS030",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS030",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 708785,
+      "player_code": "BS86",
+      "name": "Tomás Barrios Vera",
+      "country": "CHI",
+      "rank": 107,
+      "points": 563,
+      "image_url": "/api/player/atp/BS86/image"
+    },
+    "player2": {
+      "id": 786568,
+      "player_code": "SX91",
+      "name": "Thiago Seyboth Wild",
+      "country": "BRA",
+      "rank": 219,
+      "points": 262,
+      "image_url": "/api/player/atp/SX91/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 4,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "2:03",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms030",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS022",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS022",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 700674,
+      "player_code": "B0FV",
+      "name": "Román Andrés Burruchaga",
+      "country": "ARG",
+      "rank": 102,
+      "points": 580,
+      "image_url": "/api/player/atp/B0FV/image"
+    },
+    "player2": {
+      "id": 786635,
+      "player_code": "DB63",
+      "name": "Laslo Djere",
+      "country": "SRB",
+      "rank": 113,
+      "points": 538,
+      "image_url": "/api/player/atp/DB63/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:19",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms022",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS026",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS026",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 772229,
+      "player_code": "B0ID",
+      "name": "Ignacio Buse",
+      "country": "PER",
+      "rank": 91,
+      "points": 648,
+      "image_url": "/api/player/atp/B0ID/image"
+    },
+    "player2": {
+      "id": 732063,
+      "player_code": "P0CT",
+      "name": "Francesco Passaro",
+      "country": "ITA",
+      "rank": 161,
+      "points": 376,
+      "image_url": "/api/player/atp/P0CT/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 7,
+          "p2": 5
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:34",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms026",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS021",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS021",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 708654,
+      "player_code": "TE30",
+      "name": "Alejandro Tabilo",
+      "country": "CHI",
+      "rank": 67,
+      "points": 808,
+      "image_url": "/api/player/atp/TE30/image"
+    },
+    "player2": {
+      "id": 785093,
+      "player_code": "D0CG",
+      "name": "Facundo Díaz Acosta",
+      "country": "ARG",
+      "rank": 284,
+      "points": 182,
+      "image_url": "/api/player/atp/D0CG/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:50",
+    "scheduled_time": "2026-02-10T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms021",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS027",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS027",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 704420,
+      "player_code": "DH50",
+      "name": "Alejandro Davidovich Fokina",
+      "country": "ESP",
+      "rank": 15,
+      "points": 2470,
+      "image_url": "/api/player/atp/DH50/image"
+    },
+    "player2": {
+      "id": 723731,
+      "player_code": "S0K7",
+      "name": "Zachary Svajda",
+      "country": "USA",
+      "rank": 106,
+      "points": 563,
+      "image_url": "/api/player/atp/S0K7/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 1
+          }
+        }
+      ]
+    },
+    "match_duration": "1:34",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms027",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS019",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS019",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 759049,
+      "player_code": "TD51",
+      "name": "Frances Tiafoe",
+      "country": "USA",
+      "rank": 28,
+      "points": 1550,
+      "image_url": "/api/player/atp/TD51/image"
+    },
+    "player2": {
+      "id": 784870,
+      "player_code": "A0GC",
+      "name": "Térence Atmane",
+      "country": "FRA",
+      "rank": 65,
+      "points": 833,
+      "image_url": "/api/player/atp/A0GC/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 4,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:48",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms019",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS018",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS018",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 719500,
+      "player_code": "K0AH",
+      "name": "Sebastian Korda",
+      "country": "USA",
+      "rank": 49,
+      "points": 1020,
+      "image_url": "/api/player/atp/K0AH/image"
+    },
+    "player2": {
+      "id": 737661,
+      "player_code": "Z0BZ",
+      "name": "Michael Zheng",
+      "country": "USA",
+      "rank": 152,
+      "points": 414,
+      "image_url": "/api/player/atp/Z0BZ/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:07",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms018",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_MS017",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS017",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Center Court",
+    "player1": {
+      "id": 764227,
+      "player_code": "N0AE",
+      "name": "Brandon Nakashima",
+      "country": "USA",
+      "rank": 29,
+      "points": 1535,
+      "image_url": "/api/player/atp/N0AE/image"
+    },
+    "player2": {
+      "id": 713329,
+      "player_code": "B0GG",
+      "name": "Mattia Bellucci",
+      "country": "ITA",
+      "rank": 109,
+      "points": 553,
+      "image_url": "/api/player/atp/B0GG/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:08",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/ms017",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS004",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS004",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Court 1",
+    "player1": {
+      "id": 713399,
+      "player_code": "P0AY",
+      "name": "Luka Pavlovic",
+      "country": "FRA",
+      "rank": 209,
+      "points": 286,
+      "image_url": "/api/player/atp/P0AY/image"
+    },
+    "player2": {
+      "id": 706908,
+      "player_code": "M0JF",
+      "name": "Hamad Medjedović",
+      "country": "SRB",
+      "rank": 97,
+      "points": 615,
+      "image_url": "/api/player/atp/M0JF/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 10,
+            "p2": 8
+          }
+        }
+      ]
+    },
+    "match_duration": "2:29",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs004",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS006",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS006",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Wheelchair Arena",
+    "player1": {
+      "id": 748742,
+      "player_code": "O483",
+      "name": "Christopher O'Connell",
+      "country": "AUS",
+      "rank": 95,
+      "points": 626,
+      "image_url": "/api/player/atp/O483/image"
+    },
+    "player2": {
+      "id": 768107,
+      "player_code": "G09O",
+      "name": "Hugo Gaston",
+      "country": "FRA",
+      "rank": 96,
+      "points": 619,
+      "image_url": "/api/player/atp/G09O/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:19",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs006",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS005",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS005",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Court 1",
+    "player1": {
+      "id": 756291,
+      "player_code": "GF95",
+      "name": "Hugo Grenier",
+      "country": "FRA",
+      "rank": 191,
+      "points": 310,
+      "image_url": "/api/player/atp/GF95/image"
+    },
+    "player2": {
+      "id": null,
+      "player_code": "B0T6",
+      "name": "Thijs Boogaard",
+      "country": "NED",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/B0T6/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 2,
+          "p2": 6
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:37",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs005",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS007",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS007",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Wheelchair Arena",
+    "player1": {
+      "id": 726267,
+      "player_code": "R0KD",
+      "name": "Mees Rottgering",
+      "country": "NED",
+      "rank": 503,
+      "points": 84,
+      "image_url": "/api/player/atp/R0KD/image"
+    },
+    "player2": {
+      "id": 719379,
+      "player_code": "CF59",
+      "name": "Roberto Carballés Baena",
+      "country": "ESP",
+      "rank": 174,
+      "points": 350,
+      "image_url": "/api/player/atp/CF59/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 3
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 7,
+          "tiebreak": {
+            "p1": 8,
+            "p2": 10
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "3:09",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs007",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS023",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS023",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 775024,
+      "player_code": "EA24",
+      "name": "Tomás Martín Etcheverry",
+      "country": "ARG",
+      "rank": 53,
+      "points": 970,
+      "image_url": "/api/player/atp/EA24/image"
+    },
+    "player2": {
+      "id": 775010,
+      "player_code": "PH64",
+      "name": "Andrea Pellegrino",
+      "country": "ITA",
+      "rank": 140,
+      "points": 447,
+      "image_url": "/api/player/atp/PH64/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:38",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms023",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS017",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS017",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 734555,
+      "player_code": "DA31",
+      "name": "Hugo Dellien",
+      "country": "BOL",
+      "rank": 157,
+      "points": 393,
+      "image_url": "/api/player/atp/DA31/image"
+    },
+    "player2": {
+      "id": 788478,
+      "player_code": "D923",
+      "name": "Damir Džumhur",
+      "country": "BIH",
+      "rank": 61,
+      "points": 877,
+      "image_url": "/api/player/atp/D923/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:14",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms017",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS018",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS018",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 791876,
+      "player_code": "KI82",
+      "name": "Vít Kopřiva",
+      "country": "CZE",
+      "rank": 87,
+      "points": 660,
+      "image_url": "/api/player/atp/KI82/image"
+    },
+    "player2": {
+      "id": 722898,
+      "player_code": "B0GY",
+      "name": "Alex Barrena",
+      "country": "ARG",
+      "rank": 180,
+      "points": 336,
+      "image_url": "/api/player/atp/B0GY/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:27",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms018",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_MS029",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS029",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "Round of 32",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 732883,
+      "player_code": "MO44",
+      "name": "Pedro Martínez",
+      "country": "ESP",
+      "rank": 101,
+      "points": 586,
+      "image_url": "/api/player/atp/MO44/image"
+    },
+    "player2": {
+      "id": 732946,
+      "player_code": "M0OH",
+      "name": "Lautaro Midon",
+      "country": "ARG",
+      "rank": 225,
+      "points": 252,
+      "image_url": "/api/player/atp/M0OH/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:35",
+    "scheduled_time": "2026-02-09T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/ms029",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS004",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS004",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Grandstand",
+    "player1": {
+      "id": 792436,
+      "player_code": "P0HT",
+      "name": "Jack Pinnington Jones",
+      "country": "GBR",
+      "rank": 138,
+      "points": 456,
+      "image_url": "/api/player/atp/P0HT/image"
+    },
+    "player2": {
+      "id": 731440,
+      "player_code": "K0A3",
+      "name": "Patrick Kypson",
+      "country": "USA",
+      "rank": 105,
+      "points": 565,
+      "image_url": "/api/player/atp/K0A3/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 4
+          }
+        },
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 7,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "2:54",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs004",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS005",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS005",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Center Court",
+    "player1": {
+      "id": 723731,
+      "player_code": "S0K7",
+      "name": "Zachary Svajda",
+      "country": "USA",
+      "rank": 106,
+      "points": 563,
+      "image_url": "/api/player/atp/S0K7/image"
+    },
+    "player2": {
+      "id": 772661,
+      "player_code": "B0EJ",
+      "name": "Tristan Boyer",
+      "country": "USA",
+      "rank": 216,
+      "points": 268,
+      "image_url": "/api/player/atp/B0EJ/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:18",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs005",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS006",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS006",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Center Court",
+    "player1": {
+      "id": 787428,
+      "player_code": "J0DZ",
+      "name": "Rafael Jódar",
+      "country": "ESP",
+      "rank": 117,
+      "points": 523,
+      "image_url": "/api/player/atp/J0DZ/image"
+    },
+    "player2": {
+      "id": 728054,
+      "player_code": "C0HT",
+      "name": "Murphy Cassone",
+      "country": "USA",
+      "rank": 239,
+      "points": 233,
+      "image_url": "/api/player/atp/C0HT/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 5
+          }
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 8,
+            "p2": 6
+          }
+        }
+      ]
+    },
+    "match_duration": "1:41",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs006",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS007",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS007",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Grandstand",
+    "player1": {
+      "id": 708645,
+      "player_code": "SY67",
+      "name": "Sho Shimabukuro",
+      "country": "JPN",
+      "rank": 135,
+      "points": 466,
+      "image_url": "/api/player/atp/SY67/image"
+    },
+    "player2": {
+      "id": 730016,
+      "player_code": "TA46",
+      "name": "Bernard Tomic",
+      "country": "AUS",
+      "rank": 186,
+      "points": 319,
+      "image_url": "/api/player/atp/TA46/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:01",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs007",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS008",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS008",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Wheelchair Arena",
+    "player1": {
+      "id": 706908,
+      "player_code": "M0JF",
+      "name": "Hamad Medjedović",
+      "country": "SRB",
+      "rank": 97,
+      "points": 615,
+      "image_url": "/api/player/atp/M0JF/image"
+    },
+    "player2": {
+      "id": 700216,
+      "player_code": "BG23",
+      "name": "Nikoloz Basilashvili",
+      "country": "GEO",
+      "rank": 136,
+      "points": 464,
+      "image_url": "/api/player/atp/BG23/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:05",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs008",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS012",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS012",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Court 1",
+    "player1": {
+      "id": 768107,
+      "player_code": "G09O",
+      "name": "Hugo Gaston",
+      "country": "FRA",
+      "rank": 96,
+      "points": 619,
+      "image_url": "/api/player/atp/G09O/image"
+    },
+    "player2": {
+      "id": 777154,
+      "player_code": "D0D2",
+      "name": "Alec Deckers",
+      "country": "NED",
+      "rank": 618,
+      "points": 59,
+      "image_url": "/api/player/atp/D0D2/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 7,
+          "tiebreak": {
+            "p1": 2,
+            "p2": 7
+          }
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 2
+          }
+        }
+      ]
+    },
+    "match_duration": "2:36",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs012",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS014",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS014",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Court 1",
+    "player1": {
+      "id": 719379,
+      "player_code": "CF59",
+      "name": "Roberto Carballés Baena",
+      "country": "ESP",
+      "rank": 174,
+      "points": 350,
+      "image_url": "/api/player/atp/CF59/image"
+    },
+    "player2": {
+      "id": 752545,
+      "player_code": "CD85",
+      "name": "Pablo Carreño Busta",
+      "country": "ESP",
+      "rank": 122,
+      "points": 504,
+      "image_url": "/api/player/atp/CD85/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:56",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs014",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS015",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS015",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Court 1",
+    "player1": {
+      "id": 726267,
+      "player_code": "R0KD",
+      "name": "Mees Rottgering",
+      "country": "NED",
+      "rank": 503,
+      "points": 84,
+      "image_url": "/api/player/atp/R0KD/image"
+    },
+    "player2": {
+      "id": 727233,
+      "player_code": "J0AZ",
+      "name": "Kyrian Jacquet",
+      "country": "FRA",
+      "rank": 153,
+      "points": 414,
+      "image_url": "/api/player/atp/J0AZ/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 0,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "2:09",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs015",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS013",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS013",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Court 1",
+    "player1": {
+      "id": 748742,
+      "player_code": "O483",
+      "name": "Christopher O'Connell",
+      "country": "AUS",
+      "rank": 95,
+      "points": 626,
+      "image_url": "/api/player/atp/O483/image"
+    },
+    "player2": {
+      "id": 739963,
+      "player_code": "SS25",
+      "name": "Vitaliy Sachko",
+      "country": "UKR",
+      "rank": 181,
+      "points": 333,
+      "image_url": "/api/player/atp/SS25/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 7,
+          "p2": 5
+        }
+      ]
+    },
+    "match_duration": "1:31",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs013",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS011",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS011",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Wheelchair Arena",
+    "player1": {
+      "id": 756291,
+      "player_code": "GF95",
+      "name": "Hugo Grenier",
+      "country": "FRA",
+      "rank": 191,
+      "points": 310,
+      "image_url": "/api/player/atp/GF95/image"
+    },
+    "player2": {
+      "id": 794677,
+      "player_code": "CH12",
+      "name": "Jan Choinski",
+      "country": "GBR",
+      "rank": 124,
+      "points": 498,
+      "image_url": "/api/player/atp/CH12/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 5
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:32",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs011",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS009",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS009",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Wheelchair Arena",
+    "player1": {
+      "id": 713399,
+      "player_code": "P0AY",
+      "name": "Luka Pavlovic",
+      "country": "FRA",
+      "rank": 209,
+      "points": 286,
+      "image_url": "/api/player/atp/P0AY/image"
+    },
+    "player2": {
+      "id": 755689,
+      "player_code": "HD68",
+      "name": "Billy Harris",
+      "country": "GBR",
+      "rank": 144,
+      "points": 438,
+      "image_url": "/api/player/atp/HD68/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:15",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs009",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_407_QS010",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS010",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Wheelchair Arena",
+    "player1": {
+      "id": null,
+      "player_code": "B0T6",
+      "name": "Thijs Boogaard",
+      "country": "NED",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/B0T6/image"
+    },
+    "player2": {
+      "id": 737620,
+      "player_code": "CG33",
+      "name": "Kimmer Coppejans",
+      "country": "BEL",
+      "rank": 248,
+      "points": 220,
+      "image_url": "/api/player/atp/CG33/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 3,
+          "p2": 6
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 8,
+            "p2": 6
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "2:26",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/407/qs010",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS004",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS004",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 775010,
+      "player_code": "PH64",
+      "name": "Andrea Pellegrino",
+      "country": "ITA",
+      "rank": 140,
+      "points": 447,
+      "image_url": "/api/player/atp/PH64/image"
+    },
+    "player2": {
+      "id": 786568,
+      "player_code": "SX91",
+      "name": "Thiago Seyboth Wild",
+      "country": "BRA",
+      "rank": 219,
+      "points": 262,
+      "image_url": "/api/player/atp/SX91/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 11,
+            "p2": 9
+          }
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "2:02",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs004",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS005",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS005",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 734555,
+      "player_code": "DA31",
+      "name": "Hugo Dellien",
+      "country": "BOL",
+      "rank": 157,
+      "points": 393,
+      "image_url": "/api/player/atp/DA31/image"
+    },
+    "player2": {
+      "id": 702205,
+      "player_code": "MJ08",
+      "name": "Thiago Monteiro",
+      "country": "BRA",
+      "rank": 208,
+      "points": 290,
+      "image_url": "/api/player/atp/MJ08/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:09",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs005",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS006",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS006",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 732063,
+      "player_code": "P0CT",
+      "name": "Francesco Passaro",
+      "country": "ITA",
+      "rank": 161,
+      "points": 376,
+      "image_url": "/api/player/atp/P0CT/image"
+    },
+    "player2": {
+      "id": 780664,
+      "player_code": "CF01",
+      "name": "Marco Cecchinato",
+      "country": "ITA",
+      "rank": 215,
+      "points": 270,
+      "image_url": "/api/player/atp/CF01/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 5,
+          "p2": 7
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "2:23",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs006",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS007",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS007",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "2nd Round Qualifying",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 732946,
+      "player_code": "M0OH",
+      "name": "Lautaro Midon",
+      "country": "ARG",
+      "rank": 225,
+      "points": 252,
+      "image_url": "/api/player/atp/M0OH/image"
+    },
+    "player2": {
+      "id": 735205,
+      "player_code": "GE33",
+      "name": "Daniel Elahi Galán",
+      "country": "COL",
+      "rank": 183,
+      "points": 330,
+      "image_url": "/api/player/atp/GE33/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 4,
+          "p2": 6
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "2:21",
+    "scheduled_time": "2026-02-08T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs007",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS008",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS008",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand",
+    "player1": {
+      "id": 731440,
+      "player_code": "K0A3",
+      "name": "Patrick Kypson",
+      "country": "USA",
+      "rank": 105,
+      "points": 565,
+      "image_url": "/api/player/atp/K0A3/image"
+    },
+    "player2": {
+      "id": 715827,
+      "player_code": "SL94",
+      "name": "Pedro Sakamoto",
+      "country": "BRA",
+      "rank": 378,
+      "points": 124,
+      "image_url": "/api/player/atp/SL94/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:07",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs008",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS010",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS010",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Center Court",
+    "player1": {
+      "id": 723731,
+      "player_code": "S0K7",
+      "name": "Zachary Svajda",
+      "country": "USA",
+      "rank": 106,
+      "points": 563,
+      "image_url": "/api/player/atp/S0K7/image"
+    },
+    "player2": {
+      "id": null,
+      "player_code": "G0OF",
+      "name": "Georgi Georgiev",
+      "country": "BUL",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/G0OF/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:26",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs010",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS012",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS012",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Center Court",
+    "player1": {
+      "id": 787428,
+      "player_code": "J0DZ",
+      "name": "Rafael Jódar",
+      "country": "ESP",
+      "rank": 117,
+      "points": 523,
+      "image_url": "/api/player/atp/J0DZ/image"
+    },
+    "player2": {
+      "id": 769424,
+      "player_code": "KC12",
+      "name": "Mitchell Krueger",
+      "country": "USA",
+      "rank": 246,
+      "points": 221,
+      "image_url": "/api/player/atp/KC12/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:23",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs012",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS014",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS014",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand",
+    "player1": {
+      "id": 708645,
+      "player_code": "SY67",
+      "name": "Sho Shimabukuro",
+      "country": "JPN",
+      "rank": 135,
+      "points": 466,
+      "image_url": "/api/player/atp/SY67/image"
+    },
+    "player2": {
+      "id": null,
+      "player_code": "KD35",
+      "name": "Thai-Son Kwiatkowski",
+      "country": "USA",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/KD35/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 0
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:01",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs014",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS009",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS009",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand",
+    "player1": {
+      "id": 792436,
+      "player_code": "P0HT",
+      "name": "Jack Pinnington Jones",
+      "country": "GBR",
+      "rank": 138,
+      "points": 456,
+      "image_url": "/api/player/atp/P0HT/image"
+    },
+    "player2": {
+      "id": 797721,
+      "player_code": "SG56",
+      "name": "Daniel Dutra da Silva",
+      "country": "BRA",
+      "rank": 319,
+      "points": 155,
+      "image_url": "/api/player/atp/SG56/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 1
+        }
+      ]
+    },
+    "match_duration": "1:07",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs009",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS015",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS015",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Center Court",
+    "player1": {
+      "id": 730016,
+      "player_code": "TA46",
+      "name": "Bernard Tomic",
+      "country": "AUS",
+      "rank": 186,
+      "points": 319,
+      "image_url": "/api/player/atp/TA46/image"
+    },
+    "player2": {
+      "id": null,
+      "player_code": "A0KY",
+      "name": "Krish Arora",
+      "country": "USA",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/A0KY/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:02",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs015",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS011",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS011",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Center Court",
+    "player1": {
+      "id": 772661,
+      "player_code": "B0EJ",
+      "name": "Tristan Boyer",
+      "country": "USA",
+      "rank": 216,
+      "points": 268,
+      "image_url": "/api/player/atp/B0EJ/image"
+    },
+    "player2": {
+      "id": null,
+      "player_code": "F0HT",
+      "name": "Alex Finkelstein",
+      "country": "USA",
+      "rank": null,
+      "points": null,
+      "image_url": "/api/player/atp/F0HT/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 4
+        },
+        {
+          "p1": 6,
+          "p2": 2
+        }
+      ]
+    },
+    "match_duration": "1:23",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs011",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_424_QS013",
+    "tour": "ATP",
+    "tournament": "Nexo Dallas Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "424",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS013",
+    "location": "Dallas, United States",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Grandstand",
+    "player1": {
+      "id": 728054,
+      "player_code": "C0HT",
+      "name": "Murphy Cassone",
+      "country": "USA",
+      "rank": 239,
+      "points": 233,
+      "image_url": "/api/player/atp/C0HT/image"
+    },
+    "player2": {
+      "id": 736823,
+      "player_code": "RG42",
+      "name": "Alex Rybakov",
+      "country": "USA",
+      "rank": 296,
+      "points": 176,
+      "image_url": "/api/player/atp/RG42/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:08",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/424/qs013",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS008",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS008",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 775010,
+      "player_code": "PH64",
+      "name": "Andrea Pellegrino",
+      "country": "ITA",
+      "rank": 140,
+      "points": 447,
+      "image_url": "/api/player/atp/PH64/image"
+    },
+    "player2": {
+      "id": 737511,
+      "player_code": "L0GR",
+      "name": "Juan Manuel La Serna",
+      "country": "ARG",
+      "rank": 358,
+      "points": 132,
+      "image_url": "/api/player/atp/L0GR/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:10",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs008",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS010",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS010",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Cancha Guillermo Vilas",
+    "player1": {
+      "id": 734555,
+      "player_code": "DA31",
+      "name": "Hugo Dellien",
+      "country": "BOL",
+      "rank": 157,
+      "points": 393,
+      "image_url": "/api/player/atp/DA31/image"
+    },
+    "player2": {
+      "id": 703628,
+      "player_code": "O660",
+      "name": "Genaro Alberto Olivieri",
+      "country": "ARG",
+      "rank": 228,
+      "points": 247,
+      "image_url": "/api/player/atp/O660/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 1
+        },
+        {
+          "p1": 6,
+          "p2": 4
+        }
+      ]
+    },
+    "match_duration": "1:14",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs010",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS012",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS012",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Estadio 3",
+    "player1": {
+      "id": 732063,
+      "player_code": "P0CT",
+      "name": "Francesco Passaro",
+      "country": "ITA",
+      "rank": 161,
+      "points": 376,
+      "image_url": "/api/player/atp/P0CT/image"
+    },
+    "player2": {
+      "id": 739338,
+      "player_code": "KC29",
+      "name": "Nicolás Kicker",
+      "country": "ARG",
+      "rank": 267,
+      "points": 200,
+      "image_url": "/api/player/atp/KC29/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 3
+        },
+        {
+          "p1": 6,
+          "p2": 3
+        }
+      ]
+    },
+    "match_duration": "1:30",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs012",
+    "h2h_text": "N/A"
+  },
+  {
+    "id": "atp_2026_506_QS014",
+    "tour": "ATP",
+    "tournament": "IEB+ Argentina Open",
+    "tournament_category": "atp_250",
+    "atp_event_id": "506",
+    "atp_event_year": "2026",
+    "atp_match_id": "QS014",
+    "location": "Buenos Aires, Argentina",
+    "surface": "",
+    "round": "1st Round Qualifying",
+    "court": "Estadio 2",
+    "player1": {
+      "id": 735205,
+      "player_code": "GE33",
+      "name": "Daniel Elahi Galán",
+      "country": "COL",
+      "rank": 183,
+      "points": 330,
+      "image_url": "/api/player/atp/GE33/image"
+    },
+    "player2": {
+      "id": 704687,
+      "player_code": "T0DM",
+      "name": "Juan Bautista Torres",
+      "country": "ARG",
+      "rank": 354,
+      "points": 134,
+      "image_url": "/api/player/atp/T0DM/image"
+    },
+    "status": "finished",
+    "winner": 1,
+    "final_score": {
+      "sets": [
+        {
+          "p1": 6,
+          "p2": 2
+        },
+        {
+          "p1": 7,
+          "p2": 6,
+          "tiebreak": {
+            "p1": 7,
+            "p2": 4
+          }
+        }
+      ]
+    },
+    "match_duration": "1:36",
+    "scheduled_time": "2026-02-07T00:00:00",
+    "atp_stats_url": "https://www.atptour.com/en/scores/stats-centre/archive/2026/506/qs014",
     "h2h_text": "N/A"
   }
 ]

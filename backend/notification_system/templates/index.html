@@ -35,6 +35,12 @@
           <button id="saveSettingsBtn" class="btn primary with-tip" data-tip="Save recipient email and delivery setup.">Save Settings</button>
           <button id="runNowBtn" class="btn with-tip" data-tip="Run all enabled rules immediately and send matching notifications.">Run Rules Now</button>
           <button id="testEmailBtn" class="btn with-tip" data-tip="Send a sample email to confirm SMTP is working.">Send Test Email</button>
+          <div id="taskProgressInline" class="task-progress-inline is-hidden" aria-live="polite">
+            <div class="task-progress-track">
+              <div id="taskProgressBar" class="task-progress-bar"></div>
+            </div>
+            <span id="taskProgressText" class="task-progress-text">Working...</span>
+          </div>
         </div>
         <p id="settingsMessage" class="feedback"></p>
       </article>
@@ -321,7 +327,7 @@
               </select>
             </div>
             <div class="field-row">
-              <label for="cooldownInput">Cooldown (minutes) <span class="field-status optional">Optional</span></label>
+              <label for="cooldownInput">Cooldown (minutes) <span class="field-status optional">Optional</span><span class="field-help with-tip" data-tip="Prevents repeat alerts from this rule for the selected time after a send. Set 0 to disable cooldown.">i</span></label>
               <input id="cooldownInput" type="number" min="0" max="1440" value="0">
             </div>
             <div class="field-row">
@@ -408,6 +414,19 @@
       <div class="confirm-actions">
         <button id="confirmCancelBtn" type="button" class="btn">Keep Rule</button>
         <button id="confirmOkBtn" type="button" class="btn danger">Delete Rule</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="resultDialog" class="confirm-dialog is-hidden" role="dialog" aria-modal="true" aria-labelledby="resultDialogTitle">
+    <div class="confirm-card result-card">
+      <p class="confirm-kicker">Execution Summary</p>
+      <h3 id="resultDialogTitle" class="confirm-title">Completed</h3>
+      <p id="resultDialogBody" class="confirm-body">Action completed.</p>
+      <div id="resultSummaryList" class="result-summary-list"></div>
+      <p id="resultDialogTimer" class="result-timer"></p>
+      <div class="confirm-actions">
+        <button id="resultCloseBtn" type="button" class="btn primary">Close</button>
       </div>
     </div>
   </div>

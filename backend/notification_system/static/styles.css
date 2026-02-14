@@ -595,6 +595,50 @@ select.soft-disabled {
   margin-top: 12px;
 }
 
+.task-progress-inline {
+  min-width: 230px;
+  max-width: 320px;
+  flex: 1 1 240px;
+  margin-left: auto;
+  display: grid;
+  gap: 5px;
+  align-content: center;
+}
+
+.task-progress-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e3ebf5;
+  overflow: hidden;
+  border: 1px solid #cad8e6;
+}
+
+.task-progress-bar {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(105deg, var(--blue-1) 0%, var(--blue-2) 55%, var(--teal) 100%);
+  transition: width 0.22s ease;
+}
+
+.task-progress-inline.is-success .task-progress-bar {
+  background: linear-gradient(105deg, #2a9d8f 0%, #55c49a 100%);
+}
+
+.task-progress-inline.is-error .task-progress-bar {
+  background: linear-gradient(105deg, #bf4152 0%, #d1626f 100%);
+}
+
+.task-progress-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #4b6078;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .btn {
   font-family: "Space Grotesk", sans-serif;
   border: 1px solid #bfd2e5;
@@ -1083,6 +1127,61 @@ select.soft-disabled {
   justify-content: flex-end;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.result-card {
+  width: min(620px, 100%);
+}
+
+.result-summary-list {
+  display: grid;
+  gap: 8px;
+  max-height: 280px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.result-item {
+  border: 1px solid #d7e1ec;
+  border-radius: 10px;
+  background: #fbf8f2;
+  padding: 8px 10px;
+  display: grid;
+  gap: 4px;
+}
+
+.result-item.status-sent {
+  border-color: #b8d9c5;
+  background: #eff8f2;
+}
+
+.result-item.status-error {
+  border-color: #f0c6ce;
+  background: #fff4f5;
+}
+
+.result-item.status-skipped,
+.result-item.status-no_match,
+.result-item.status-deduped {
+  border-color: #e6d8bc;
+  background: #f9f4e8;
+}
+
+.result-item-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #1c3e5a;
+}
+
+.result-item-meta {
+  font-size: 12px;
+  color: #5f7386;
+}
+
+.result-timer {
+  margin: 0;
+  font-size: 12px;
+  color: #687c90;
 }
 
 .with-tip {

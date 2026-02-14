@@ -1,0 +1,50 @@
+[
+  {
+    "id": "atp_2026_407_MS002",
+    "tour": "ATP",
+    "tournament": "ABN AMRO Open",
+    "tournament_category": "atp_500",
+    "atp_event_id": "407",
+    "atp_event_year": "2026",
+    "atp_match_id": "MS002",
+    "location": "Rotterdam, Netherlands",
+    "surface": "",
+    "round": "Semifinals",
+    "court": "Centre Court",
+    "player1": {
+      "id": 725846,
+      "player_code": "DH58",
+      "name": "Alex de Minaur",
+      "country": "AUS",
+      "rank": 8,
+      "points": 3850,
+      "image_url": "/api/player/atp/DH58/image"
+    },
+    "player2": {
+      "id": 738670,
+      "player_code": "HH26",
+      "name": "Ugo Humbert",
+      "country": "FRA",
+      "rank": 38,
+      "points": 1185,
+      "image_url": "/api/player/atp/HH26/image"
+    },
+    "status": "live",
+    "serving": null,
+    "match_time": "0:24",
+    "scheduled_time": "2026-02-14T09:35:28.5366667",
+    "score": {
+      "sets": [
+        {
+          "p1": 3,
+          "p2": 2
+        }
+      ],
+      "current_game": {
+        "p1": "30",
+        "p2": "15"
+      }
+    },
+    "h2h_text": "N/A"
+  }
+]

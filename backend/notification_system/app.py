@@ -4,24 +4,36 @@ import os
 import smtplib
 import threading
 import unicodedata
+import time
 from datetime import datetime, timedelta, timezone
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from html import escape
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 from urllib.parse import urlparse
 
 import requests
 from apscheduler.schedulers.background import BackgroundScheduler
+from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
 
 
 APP_DIR = Path(__file__).resolve().parent
 STORAGE_DIR = APP_DIR / 'storage'
 STORE_PATH = STORAGE_DIR / 'subscriptions.json'
+load_dotenv(APP_DIR / '.env')
 
 TENNIS_API_BASE_URL = os.getenv('NOTIFY_TENNIS_API_BASE_URL', 'http://localhost:5001/api').rstrip('/')
 POLL_SECONDS = max(30, int(os.getenv('NOTIFY_POLL_SECONDS', '300')))
+try:
+    API_REQUEST_TIMEOUT_SECONDS = max(5, int(os.getenv('NOTIFY_API_TIMEOUT_SECONDS', '40')))
+except Exception:
+    API_REQUEST_TIMEOUT_SECONDS = 40
+try:
+    API_REQUEST_RETRIES = max(0, int(os.getenv('NOTIFY_API_RETRIES', '1')))
+except Exception:
+    API_REQUEST_RETRIES = 1
 
 SMTP_HOST = os.getenv('NOTIFY_SMTP_HOST', '').strip()
 SMTP_PORT = int(os.getenv('NOTIFY_SMTP_PORT', '587'))
@@ -121,6 +133,15 @@ def api_origin(base_url: str) -> str:
 
 
 TENNIS_API_ORIGIN = api_origin(TENNIS_API_BASE_URL)
+PUBLIC_ASSET_ORIGIN = api_origin(os.getenv('NOTIFY_PUBLIC_ASSET_ORIGIN', '').strip()) or TENNIS_API_ORIGIN
+
+COUNTRY_ALPHA3_TO_ALPHA2 = {
+    'AUS': 'AU', 'AUT': 'AT', 'BEL': 'BE', 'BGR': 'BG', 'BLR': 'BY', 'BRA': 'BR', 'CAN': 'CA', 'CHE': 'CH',
+    'CHN': 'CN', 'CZE': 'CZ', 'DEU': 'DE', 'DEN': 'DK', 'ESP': 'ES', 'EST': 'EE', 'FIN': 'FI', 'FRA': 'FR',
+    'GBR': 'GB', 'GEO': 'GE', 'GRC': 'GR', 'HRV': 'HR', 'HUN': 'HU', 'IRL': 'IE', 'ITA': 'IT', 'JPN': 'JP',
+    'KAZ': 'KZ', 'LVA': 'LV', 'NLD': 'NL', 'NOR': 'NO', 'POL': 'PL', 'PRT': 'PT', 'ROU': 'RO', 'RUS': 'RU',
+    'SRB': 'RS', 'SVK': 'SK', 'SVN': 'SI', 'SWE': 'SE', 'TUR': 'TR', 'UKR': 'UA', 'USA': 'US',
+}
 
 
 def normalize_image_url(raw_url: str) -> str:
@@ -138,11 +159,104 @@ def normalize_image_url(raw_url: str) -> str:
     return f'{TENNIS_API_ORIGIN}/{value.lstrip("/")}'
 
 
+def image_url_for_email(raw_url: str) -> str:
+    value = str(raw_url or '').strip()
+    if not value:
+        return ''
+    if value.startswith(('http://', 'https://')):
+        normalized = value
+    elif value.startswith('//'):
+        normalized = f'https:{value}'
+    elif PUBLIC_ASSET_ORIGIN:
+        normalized = f"{PUBLIC_ASSET_ORIGIN}/{value.lstrip('/')}"
+    else:
+        normalized = value
+
+    parsed = urlparse(normalized)
+    host = (parsed.hostname or '').lower()
+    if host in {'localhost', '127.0.0.1', '0.0.0.0'}:
+        # Email clients can't load localhost assets; fallback to initials avatar.
+        return ''
+    return normalized
+
+
+def country_to_iso2(country_code: str) -> str:
+    code = str(country_code or '').strip().upper()
+    if not code:
+        return ''
+    if len(code) == 2 and code.isalpha():
+        return code.lower()
+    if len(code) == 3 and code.isalpha():
+        return (COUNTRY_ALPHA3_TO_ALPHA2.get(code) or '').lower()
+    return ''
+
+
+def country_flag_image(country_code: str) -> str:
+    iso2 = country_to_iso2(country_code)
+    if not iso2:
+        return ''
+    safe_iso2 = escape(iso2, quote=True)
+    safe_code = escape(str(country_code or '').upper())
+    return (
+        f"<img src=\"https://flagcdn.com/w40/{safe_iso2}.png\" alt=\"{safe_code}\" "
+        "style=\"width:18px;height:12px;object-fit:cover;border:1px solid #cfd8e4;"
+        "border-radius:2px;vertical-align:middle;\">"
+    )
+
+
 def normalize_lookup_token(value: str) -> str:
     text = unicodedata.normalize('NFKD', str(value or '').strip().lower())
     text = ''.join(ch for ch in text if not unicodedata.combining(ch))
     text = ''.join(ch if ch.isalnum() else ' ' for ch in text)
     return ' '.join(text.split())
+
+
+def normalize_tournament_category(raw_category: str, tour: str = '') -> str:
+    token = normalize_lookup_token(raw_category).replace(' ', '_')
+    if not token:
+        return ''
+
+    aliases = {
+        'grand_slam': 'grand_slam',
+        'gs': 'grand_slam',
+        'atp_1000': 'atp_1000',
+        'atp1000': 'atp_1000',
+        'wta_1000': 'wta_1000',
+        'wta1000': 'wta_1000',
+        'atp_500': 'atp_500',
+        'atp500': 'atp_500',
+        'wta_500': 'wta_500',
+        'wta500': 'wta_500',
+        'atp_250': 'atp_250',
+        'atp250': 'atp_250',
+        'wta_250': 'wta_250',
+        'wta250': 'wta_250',
+        'atp_finals': 'atp_finals',
+        'atpfinals': 'atp_finals',
+        'wta_finals': 'wta_finals',
+        'wtafinals': 'wta_finals',
+    }
+
+    if token in {'masters_1000', 'masters1000'}:
+        return 'masters_1000'
+    if token == '1000':
+        return '1000'
+
+    return aliases.get(token, token)
+
+
+def category_filter_match(rule_categories: List[str], match_category: str, match_tour: str) -> bool:
+    selected = rule_categories or []
+    if not selected:
+        return True
+    normalized_match_category = normalize_tournament_category(match_category, match_tour)
+    if not normalized_match_category:
+        return False
+    for category in selected:
+        normalized_category = normalize_tournament_category(category, match_tour)
+        if normalized_category == normalized_match_category:
+            return True
+    return False
 
 
 def category_options_for_tour(tour: str) -> List[str]:
@@ -218,37 +332,51 @@ def append_history(store: Dict[str, Any], level: str, message: str, details: Dic
         del history[300:]
 
 
-def safe_get_json(url: str, params: Dict[str, Any] = None, timeout: int = 25) -> Dict[str, Any]:
-    response = requests.get(url, params=params or {}, timeout=timeout)
-    response.raise_for_status()
-    payload = response.json()
-    if isinstance(payload, dict):
-        return payload
-    return {}
+def safe_get_json(url: str, params: Dict[str, Any] = None, timeout: int = None) -> Dict[str, Any]:
+    request_timeout = timeout if isinstance(timeout, (int, float)) and timeout > 0 else API_REQUEST_TIMEOUT_SECONDS
+    attempts = API_REQUEST_RETRIES + 1
+    last_error: Exception = RuntimeError('Unknown request failure')
+    for attempt in range(attempts):
+        try:
+            response = requests.get(url, params=params or {}, timeout=request_timeout)
+            response.raise_for_status()
+            payload = response.json()
+            if isinstance(payload, dict):
+                return payload
+            return {}
+        except requests.RequestException as exc:
+            last_error = exc
+            if attempt + 1 >= attempts:
+                break
+            time.sleep(min(1.5, 0.25 * (attempt + 1)))
+        except ValueError as exc:
+            raise RuntimeError(f'Invalid JSON response from {url}: {exc}') from exc
+    raise RuntimeError(f'Failed to load {url}: {last_error}')
 
 
 def fetch_matches() -> Dict[str, List[Dict[str, Any]]]:
-    live_payload = safe_get_json(
-        f'{TENNIS_API_BASE_URL}/live-scores',
-        {'tour': 'both'},
-    )
-    upcoming_payload = safe_get_json(
-        f'{TENNIS_API_BASE_URL}/upcoming-matches',
-        {'tour': 'both', 'days': 7},
-    )
-    recent_payload = safe_get_json(
-        f'{TENNIS_API_BASE_URL}/recent-matches',
-        {'tour': 'both', 'limit': 120},
-    )
+    errors: List[str] = []
 
-    live = live_payload.get('data') if isinstance(live_payload.get('data'), list) else []
-    upcoming = upcoming_payload.get('data') if isinstance(upcoming_payload.get('data'), list) else []
-    recent = recent_payload.get('data') if isinstance(recent_payload.get('data'), list) else []
+    def fetch_data(endpoint: str, params: Dict[str, Any], label: str) -> List[Dict[str, Any]]:
+        try:
+            payload = safe_get_json(f'{TENNIS_API_BASE_URL}/{endpoint}', params)
+            rows = payload.get('data') if isinstance(payload.get('data'), list) else []
+            return [row for row in rows if isinstance(row, dict)]
+        except Exception as exc:
+            errors.append(f'{label}: {exc}')
+            return []
+
+    live = fetch_data('live-scores', {'tour': 'both'}, 'live-scores')
+    upcoming = fetch_data('upcoming-matches', {'tour': 'both', 'days': 7}, 'upcoming-matches')
+    recent = fetch_data('recent-matches', {'tour': 'both', 'limit': 120}, 'recent-matches')
+    if not live and not upcoming and not recent and errors:
+        raise RuntimeError('Tennis API is unavailable or too slow right now. Please try again.')
 
     return {
         'live': [normalize_match(m, default_status='live') for m in live if isinstance(m, dict)],
         'upcoming': [normalize_match(m, default_status='upcoming') for m in upcoming if isinstance(m, dict)],
         'recent': [normalize_match(m, default_status='finished') for m in recent if isinstance(m, dict)],
+        '_errors': errors,
     }
 
 
@@ -305,13 +433,23 @@ def normalize_match(match: Dict[str, Any], default_status: str) -> Dict[str, Any
     player1 = match.get('player1') or {}
     player2 = match.get('player2') or {}
     raw_round = str(match.get('round') or '').strip()
+    normalized_tour = str(match.get('tour') or '').strip().lower()
+    raw_category = str(match.get('tournament_category') or '').strip()
+    court_value = (
+        str(match.get('court') or '').strip()
+        or str(match.get('court_name') or '').strip()
+        or str(match.get('stadium') or '').strip()
+        or str(match.get('venue') or '').strip()
+        or str(match.get('venue_name') or '').strip()
+    )
     normalized = {
         'id': str(match.get('id') or ''),
-        'tour': str(match.get('tour') or '').strip().lower(),
+        'tour': normalized_tour,
         'status': str(match.get('status') or default_status).strip().lower(),
         'tournament': str(match.get('tournament') or ''),
-        'tournament_category': str(match.get('tournament_category') or '').strip().lower(),
+        'tournament_category': normalize_tournament_category(raw_category, normalized_tour),
         'surface': str(match.get('surface') or '').strip().lower(),
+        'court': court_value,
         'round': raw_round,
         'round_label': normalize_round_label(raw_round),
         'round_rank': round_rank(raw_round),
@@ -321,11 +459,13 @@ def normalize_match(match: Dict[str, Any], default_status: str) -> Dict[str, Any
             'name': str(player1.get('name') or ''),
             'rank': player1.get('rank'),
             'country': str(player1.get('country') or ''),
+            'image_url': normalize_image_url(player1.get('image_url') or ''),
         },
         'player2': {
             'name': str(player2.get('name') or ''),
             'rank': player2.get('rank'),
             'country': str(player2.get('country') or ''),
+            'image_url': normalize_image_url(player2.get('image_url') or ''),
         },
         'winner_name': pick_winner_name(match),
         'final_score': match.get('final_score'),
@@ -729,7 +869,7 @@ def base_rule_match(rule: Dict[str, Any], match: Dict[str, Any]) -> bool:
             return False
 
     categories = rule.get('categories') or []
-    if categories and match.get('tournament_category', '') not in categories:
+    if not category_filter_match(categories, match.get('tournament_category', ''), match.get('tour', '')):
         return False
 
     tournaments = rule.get('tournaments') or []
@@ -861,13 +1001,104 @@ def build_meta_event(rule: Dict[str, Any], kind: str, title: str, detail: str, u
         'detail': detail,
         'player1': '',
         'player2': '',
+        'player1_rank': '',
+        'player2_rank': '',
+        'player1_country': '',
+        'player2_country': '',
+        'player1_image_url': '',
+        'player2_image_url': '',
+        'surface': '',
+        'court': '',
         'scheduled_time': '',
     }
 
 
+def format_rank_label(rank_value: Any) -> str:
+    rank = parse_rank(rank_value)
+    if rank is None:
+        return 'Unranked'
+    return f'#{rank}'
+
+
+def event_type_label(event_type: str) -> str:
+    labels = {
+        'upcoming_match': 'Upcoming Matches',
+        'live_match_starts': 'Live Match Starts',
+        'set_completed': 'Set Completed',
+        'match_result': 'Match Results',
+        'upset_alert': 'Upset Alerts',
+        'close_match_deciding_set': 'Close/Deciding Set',
+        'player_reaches_round': 'Player Reaches Round',
+        'tournament_stage_reminder': 'Tournament Stage Reminder',
+        'surface_specific_result': 'Surface-Specific Results',
+        'time_window_schedule_alert': 'Time-Window Schedule',
+        'ranking_milestone': 'Ranking Milestones',
+        'title_milestone': 'Title Milestones',
+        'head_to_head_breaker': 'Head-to-Head Breaker',
+        'tournament_completed': 'Tournament Completed',
+    }
+    return labels.get(str(event_type or '').strip().lower(), 'Tennis Alerts')
+
+
+def event_kind_label(kind: str) -> str:
+    labels = {
+        'upcoming_match': 'Upcoming Match',
+        'match_result': 'Match Result',
+        'tournament_completed': 'Tournament Complete',
+        'live_match_starts': 'Live Start',
+        'set_completed': 'Set Completed',
+        'upset_alert': 'Upset Alert',
+        'close_match_deciding_set': 'Deciding Set',
+        'surface_specific_result': 'Surface Result',
+        'tournament_stage_reminder': 'Stage Reminder',
+        'time_window_schedule_alert': 'Time Window',
+        'player_reaches_round': 'Round Milestone',
+        'ranking_milestone': 'Ranking Milestone',
+        'title_milestone': 'Title Milestone',
+        'head_to_head_breaker': 'H2H Breaker',
+    }
+    key = str(kind or '').strip().lower()
+    if not key:
+        return 'Alert'
+    return labels.get(key, key.replace('_', ' ').title())
+
+
+def rule_context_text(rule: Dict[str, Any]) -> Tuple[str, str]:
+    event_type = str(rule.get('event_type') or '').strip().lower()
+    tour = str(rule.get('tour') or 'both').strip().lower()
+    tour_label = 'ATP + WTA' if tour == 'both' else tour.upper()
+    label = event_type_label(event_type)
+
+    if event_type == 'upcoming_match':
+        summary = f"These are upcoming matches for {tour_label} based on your rule."
+    else:
+        summary = f"These alerts are for {label} on {tour_label}."
+
+    filters = []
+    categories = rule.get('categories') or []
+    tournaments = rule.get('tournaments') or []
+    players = rule.get('players') or []
+    if categories:
+        filters.append(f"Categories: {', '.join([str(x) for x in categories[:4]])}")
+    if tournaments:
+        filters.append(f"Tournaments: {', '.join([str(x) for x in tournaments[:4]])}")
+    if players:
+        filters.append(f"Players: {', '.join([str(x) for x in players[:4]])}")
+    round_mode = str(rule.get('round_mode') or 'any').lower()
+    round_value = str(rule.get('round_value') or '').strip()
+    if round_mode in {'min', 'exact'} and round_value:
+        filters.append(f"Round: {round_mode.upper()} {round_value}")
+
+    if filters:
+        return summary, f"Rule filters: {' | '.join(filters)}"
+    return summary, "Rule filters: none (broad match scope)."
+
+
 def build_event(rule: Dict[str, Any], match: Dict[str, Any], kind: str) -> Dict[str, Any]:
-    p1 = (match.get('player1') or {}).get('name', 'Player 1')
-    p2 = (match.get('player2') or {}).get('name', 'Player 2')
+    p1_obj = match.get('player1') or {}
+    p2_obj = match.get('player2') or {}
+    p1 = p1_obj.get('name', 'Player 1')
+    p2 = p2_obj.get('name', 'Player 2')
     dt = match.get('scheduled_dt')
     dt_text = dt.strftime('%Y-%m-%d %H:%M') if isinstance(dt, datetime) else 'TBD'
 
@@ -927,6 +1158,14 @@ def build_event(rule: Dict[str, Any], match: Dict[str, Any], kind: str) -> Dict[
         'detail': detail,
         'player1': p1,
         'player2': p2,
+        'player1_rank': parse_rank(p1_obj.get('rank')),
+        'player2_rank': parse_rank(p2_obj.get('rank')),
+        'player1_country': str(p1_obj.get('country') or ''),
+        'player2_country': str(p2_obj.get('country') or ''),
+        'player1_image_url': normalize_image_url(p1_obj.get('image_url') or ''),
+        'player2_image_url': normalize_image_url(p2_obj.get('image_url') or ''),
+        'surface': str(match.get('surface') or ''),
+        'court': str(match.get('court') or ''),
         'scheduled_time': dt_text,
     }
 
@@ -1188,41 +1427,145 @@ def smtp_ready() -> Tuple[bool, str]:
 
 
 def build_email_html(rule: Dict[str, Any], events: List[Dict[str, Any]]) -> str:
-    rows = []
+    summary, filter_text = rule_context_text(rule)
+    cards = []
+
     for e in events[:25]:
-        rows.append(
-            f"""
-            <tr>
-              <td style=\"padding:10px 12px;border-bottom:1px solid #e7edf5;font-weight:700;color:#14324d;\">{e['title']}</td>
-              <td style=\"padding:10px 12px;border-bottom:1px solid #e7edf5;color:#2d4f6b;\">{e['detail']}</td>
-              <td style=\"padding:10px 12px;border-bottom:1px solid #e7edf5;color:#4d667f;white-space:nowrap;\">{e['tour']}</td>
-            </tr>
-            """
+        title_raw = str(e.get('title') or 'Tennis Alert').strip()
+        detail_raw = str(e.get('detail') or '').strip()
+        title = escape(title_raw)
+        detail = escape(detail_raw)
+        tour_raw = str(e.get('tour') or '').strip().upper()
+        tournament_raw = str(e.get('tournament') or '').strip()
+        round_raw = str(e.get('round') or '').strip()
+        when_raw = str(e.get('scheduled_time') or 'TBD').strip() or 'TBD'
+        surface_raw = str(e.get('surface') or '').strip()
+        court_raw = str(e.get('court') or '').strip()
+        kind_raw = str(e.get('kind') or '').strip()
+        p1 = str(e.get('player1') or '').strip()
+        p2 = str(e.get('player2') or '').strip()
+        p1_name = escape(p1 or 'Player 1')
+        p2_name = escape(p2 or 'Player 2')
+        p1_rank = format_rank_label(e.get('player1_rank'))
+        p2_rank = format_rank_label(e.get('player2_rank'))
+        p1_country = escape(str(e.get('player1_country') or '').upper())
+        p2_country = escape(str(e.get('player2_country') or '').upper())
+        p1_flag = country_flag_image(str(e.get('player1_country') or ''))
+        p2_flag = country_flag_image(str(e.get('player2_country') or ''))
+        p1_flag_html = f'<span style="display:inline-block;vertical-align:middle;margin-left:4px;">{p1_flag}</span>' if p1_country else ''
+        p2_flag_html = f'<span style="display:inline-block;vertical-align:middle;margin-left:4px;">{p2_flag}</span>' if p2_country else ''
+        surface_label = surface_raw.title() if surface_raw else ''
+
+        header_parts = [tournament_raw, round_raw, when_raw, tour_raw]
+        header_parts = [part for part in header_parts if part]
+        header_line_raw = ' | '.join(header_parts)
+        header_line = escape(header_line_raw)
+        header_display = header_line or detail
+
+        pill_values = [
+            event_kind_label(kind_raw),
+            tour_raw,
+            round_raw,
+            surface_label,
+            court_raw,
+        ]
+        pills_html = ''.join(
+            f'<span style="display:inline-block;margin:8px 6px 0 0;padding:4px 10px;border:1px solid #c8ddf5;border-radius:999px;background:#eef6ff;color:#1f4f79;font-size:11px;line-height:1.2;font-weight:700;font-family:\'Manrope\',\'Segoe UI Emoji\',sans-serif;">{escape(value)}</span>'
+            for value in pill_values
+            if str(value).strip()
         )
 
-    table = ''.join(rows)
+        detail_norm = normalize_lookup_token(detail_raw)
+        header_norm = normalize_lookup_token(f'{tournament_raw} {round_raw} {when_raw}')
+        header_with_tour_norm = normalize_lookup_token(f'{tournament_raw} {round_raw} {when_raw} {tour_raw}')
+        show_detail = bool(detail_norm) and bool(header_norm or header_with_tour_norm) and detail_norm not in {header_norm, header_with_tour_norm}
+        detail_block = (
+            f'<div style="margin-top:10px;font-size:13px;color:#4d667f;font-family:\'Manrope\',\'Segoe UI Emoji\',sans-serif;">{detail}</div>'
+            if show_detail
+            else ''
+        )
+
+        if p1 or p2:
+            cards.append(
+                f"""
+                <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"border:1px solid #dce8f5;border-radius:14px;overflow:hidden;margin-bottom:12px;background:#f9fcff;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">
+                  <tr>
+                    <td style=\"padding:12px 14px;border-bottom:1px solid #e4edf7;\">
+                      <div style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;font-size:16px;font-weight:800;color:#14324d;\">{title}</div>
+                      <div style=\"margin-top:6px;font-size:13px;color:#4a657f;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">{header_display}</div>
+                      <div>{pills_html}</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style=\"padding:14px;\">
+                      <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">
+                        <tr>
+                          <td width=\"44%\" valign=\"top\" align=\"left\">
+                            <div style=\"display:inline-block;text-align:left;\">
+                              <div style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;font-size:16px;font-weight:800;color:#0f2f4b;\">
+                                <span>{p1_name}</span>
+                                {p1_flag_html}
+                              </div>
+                              <div style=\"margin-top:4px;font-size:13px;color:#4a657f;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">
+                                <span>Rank {escape(p1_rank)}</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td width=\"12%\" align=\"center\" valign=\"middle\" style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;font-size:12px;font-weight:800;color:#567391;letter-spacing:.08em;\">VS</td>
+                          <td width=\"44%\" valign=\"top\" align=\"right\">
+                            <div style=\"display:inline-block;text-align:left;\">
+                              <div style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;font-size:16px;font-weight:800;color:#0f2f4b;\">
+                                <span>{p2_name}</span>
+                                {p2_flag_html}
+                              </div>
+                              <div style=\"margin-top:4px;font-size:13px;color:#4a657f;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">
+                                <span>Rank {escape(p2_rank)}</span>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                      {detail_block}
+                    </td>
+                  </tr>
+                </table>
+                """
+            )
+        else:
+            cards.append(
+                f"""
+                <table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"border:1px solid #dce8f5;border-radius:14px;overflow:hidden;margin-bottom:12px;background:#f9fcff;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">
+                  <tr>
+                    <td style=\"padding:12px 14px;\">
+                      <div style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;font-size:16px;font-weight:800;color:#14324d;\">{title}</div>
+                      <div style=\"margin-top:6px;font-size:13px;color:#4a657f;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">{header_display}</div>
+                      <div>{pills_html}</div>
+                      {detail_block}
+                    </td>
+                  </tr>
+                </table>
+                """
+            )
+
+    cards_html = ''.join(cards)
     return f"""
-    <div style=\"font-family:Arial,Helvetica,sans-serif;background:#f2f6fb;padding:24px;\">
-      <div style=\"max-width:760px;margin:0 auto;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #d8e2ef;\">
+    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+    <link href=\"https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Manrope:wght@400;600;700;800&display=swap\" rel=\"stylesheet\">
+    <div style=\"font-family:'Manrope','Segoe UI Emoji',sans-serif;background:#f2f6fb;padding:24px;\">
+      <div style=\"max-width:780px;margin:0 auto;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #d8e2ef;\">
         <div style=\"padding:20px;background:linear-gradient(120deg,#1f5d99,#2a9d8f);color:#fff;\">
-          <div style=\"font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.9;\">Tennis Notification System</div>
-          <h2 style=\"margin:6px 0 0;font-size:22px;\">{rule['name']}</h2>
-          <p style=\"margin:8px 0 0;opacity:.95;\">{len(events)} new alert(s) matched your rule.</p>
+          <div style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.9;\">Tennis Notification System</div>
+          <h2 style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;margin:6px 0 0;font-size:22px;\">{escape(str(rule.get('name') or 'Unnamed Rule'))}</h2>
+          <p style=\"margin:8px 0 0;opacity:.95;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">{len(events)} new alert(s) matched your rule.</p>
         </div>
         <div style=\"padding:18px 20px;\">
-          <table style=\"width:100%;border-collapse:collapse;border:1px solid #e7edf5;border-radius:10px;overflow:hidden;\">
-            <thead>
-              <tr>
-                <th style=\"text-align:left;padding:10px 12px;background:#f7fbff;border-bottom:1px solid #e7edf5;font-size:12px;text-transform:uppercase;color:#5a728a;\">Alert</th>
-                <th style=\"text-align:left;padding:10px 12px;background:#f7fbff;border-bottom:1px solid #e7edf5;font-size:12px;text-transform:uppercase;color:#5a728a;\">Details</th>
-                <th style=\"text-align:left;padding:10px 12px;background:#f7fbff;border-bottom:1px solid #e7edf5;font-size:12px;text-transform:uppercase;color:#5a728a;\">Tour</th>
-              </tr>
-            </thead>
-            <tbody>
-              {table}
-            </tbody>
-          </table>
-          <p style=\"margin-top:14px;color:#6c7f92;font-size:12px;\">Generated at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.</p>
+          <div style=\"margin-bottom:12px;padding:12px 14px;background:#f4f9ff;border:1px solid #dde9f6;border-radius:10px;\">
+            <div style=\"font-family:'Space Grotesk','Manrope','Segoe UI Emoji',sans-serif;font-size:14px;font-weight:700;color:#163953;\">{escape(summary)}</div>
+            <div style=\"margin-top:6px;font-size:12px;color:#4d667f;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">{escape(filter_text)}</div>
+          </div>
+          {cards_html}
+          <p style=\"margin-top:14px;color:#6c7f92;font-size:12px;font-family:'Manrope','Segoe UI Emoji',sans-serif;\">Generated at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}.</p>
         </div>
       </div>
     </div>
@@ -1230,10 +1573,18 @@ def build_email_html(rule: Dict[str, Any], events: List[Dict[str, Any]]) -> str:
 
 
 def build_email_text(rule: Dict[str, Any], events: List[Dict[str, Any]]) -> str:
-    lines = [f"{rule['name']} - {len(events)} new alert(s)", '']
+    summary, filter_text = rule_context_text(rule)
+    lines = [f"{rule['name']} - {len(events)} new alert(s)", summary, filter_text, '']
     for e in events:
-        lines.append(f"- {e['title']}")
-        lines.append(f"  {e['detail']}")
+        p1 = str(e.get('player1') or '').strip()
+        p2 = str(e.get('player2') or '').strip()
+        if p1 or p2:
+            lines.append(f"- {e['title']}")
+            lines.append(f"  Match: {p1 or 'Player 1'} ({format_rank_label(e.get('player1_rank'))}) vs {p2 or 'Player 2'} ({format_rank_label(e.get('player2_rank'))})")
+            lines.append(f"  {e['detail']}")
+        else:
+            lines.append(f"- {e['title']}")
+            lines.append(f"  {e['detail']}")
     return '\n'.join(lines)
 
 
@@ -1248,12 +1599,46 @@ def send_email(to_email: str, subject: str, html_body: str, text_body: str) -> N
     msg.attach(MIMEText(text_body, 'plain', 'utf-8'))
     msg.attach(MIMEText(html_body, 'html', 'utf-8'))
 
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=25) as smtp:
-        if SMTP_USE_TLS:
-            smtp.starttls()
-        if SMTP_USER:
-            smtp.login(SMTP_USER, SMTP_PASS)
-        smtp.sendmail(SMTP_FROM, [to_email], msg.as_string())
+    last_error: Exception = RuntimeError('Unknown SMTP error')
+    attempts = 3
+    for attempt in range(attempts):
+        smtp = None
+        try:
+            smtp = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=20)
+            try:
+                smtp.ehlo()
+            except Exception:
+                pass
+            if SMTP_USE_TLS:
+                smtp.starttls()
+                try:
+                    smtp.ehlo()
+                except Exception:
+                    pass
+            if SMTP_USER:
+                smtp.login(SMTP_USER, SMTP_PASS)
+            smtp.sendmail(SMTP_FROM, [to_email], msg.as_string())
+            return
+        except smtplib.SMTPServerDisconnected as exc:
+            last_error = exc
+            if attempt + 1 >= attempts:
+                break
+            time.sleep(1.0 * (attempt + 1))
+        except (smtplib.SMTPException, OSError) as exc:
+            last_error = exc
+            if attempt + 1 >= attempts:
+                break
+            time.sleep(1.0 * (attempt + 1))
+        finally:
+            if smtp is not None:
+                try:
+                    smtp.quit()
+                except Exception:
+                    try:
+                        smtp.close()
+                    except Exception:
+                        pass
+    raise RuntimeError(f'SMTP send failed: {last_error}')
 
 
 def send_discord(subject: str, text_body: str) -> None:
@@ -1302,16 +1687,39 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
             return {'ok': True, 'message': 'No enabled rules found.', 'sent': 0, 'matched': 0}
 
         matches = fetch_matches()
+        match_fetch_errors = matches.pop('_errors', []) if isinstance(matches, dict) else []
+        if match_fetch_errors:
+            append_history(
+                store,
+                'warning',
+                'Some live data endpoints failed during this run.',
+                {'errors': match_fetch_errors[:5]},
+            )
         sent_count = 0
         matched_count = 0
+        rule_summaries: List[Dict[str, Any]] = []
 
         for rule in rules:
             rule_id = str(rule.get('id') or '')
             if not rule_id:
                 continue
             runtime_state = rule_state.setdefault(rule_id, {})
+            summary_entry = {
+                'rule_id': rule_id,
+                'rule_name': str(rule.get('name') or rule_id),
+                'status': 'idle',
+                'matched': 0,
+                'new_events': 0,
+                'sent_events': 0,
+                'channels': [],
+                'failed_channels': [],
+                'reason': '',
+            }
+            rule_summaries.append(summary_entry)
 
             if in_quiet_hours(rule):
+                summary_entry['status'] = 'skipped'
+                summary_entry['reason'] = 'quiet_hours'
                 append_history(
                     store,
                     'info',
@@ -1327,6 +1735,8 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
                 if isinstance(last_dt, datetime):
                     age_min = (datetime.now(timezone.utc) - last_dt).total_seconds() / 60.0
                     if age_min < cooldown_minutes:
+                        summary_entry['status'] = 'skipped'
+                        summary_entry['reason'] = f'cooldown_{cooldown_minutes}m'
                         append_history(
                             store,
                             'info',
@@ -1337,18 +1747,27 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
 
             events = collect_rule_events(rule, matches, runtime_state)
             if not events:
+                summary_entry['status'] = 'no_match'
+                summary_entry['reason'] = 'no_events'
                 continue
 
             matched_count += len(events)
-            new_events = []
-            for event in events:
-                if store['sent_events'].get(event['event_id']):
-                    continue
-                new_events.append(event)
+            summary_entry['matched'] = len(events)
+            if manual:
+                new_events = list(events)
+            else:
+                new_events = []
+                for event in events:
+                    if store['sent_events'].get(event['event_id']):
+                        continue
+                    new_events.append(event)
 
             if not new_events:
+                summary_entry['status'] = 'deduped'
+                summary_entry['reason'] = 'all_events_already_sent'
                 continue
 
+            summary_entry['new_events'] = len(new_events)
             severity = str(rule.get('severity') or 'normal').upper()
             subject = f"[{severity}] Tennis Alert: {rule['name']} ({len(new_events)} new)"
             html = build_email_html(rule, new_events)
@@ -1386,6 +1805,10 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
                     raise RuntimeError('No delivery channels succeeded.')
 
                 sent_count += len(new_events)
+                summary_entry['status'] = 'sent'
+                summary_entry['sent_events'] = len(new_events)
+                summary_entry['channels'] = sent_channels
+                summary_entry['failed_channels'] = failed_channels
                 runtime_state['last_sent_at'] = now_iso()
                 for event in new_events:
                     store['sent_events'][event['event_id']] = now_iso()
@@ -1396,6 +1819,10 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
                     {'rule_id': rule.get('id'), 'manual': manual, 'failed_channels': failed_channels},
                 )
             except Exception as exc:
+                summary_entry['status'] = 'error'
+                summary_entry['reason'] = str(exc)
+                summary_entry['channels'] = sent_channels
+                summary_entry['failed_channels'] = failed_channels
                 append_history(
                     store,
                     'error',
@@ -1411,6 +1838,7 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
             'message': 'Notification run completed.',
             'sent': sent_count,
             'matched': matched_count,
+            'rules': rule_summaries,
         }
     except Exception as exc:
         return {
@@ -1418,6 +1846,7 @@ def process_notifications(manual: bool = False) -> Dict[str, Any]:
             'message': f'Notification run failed: {exc}',
             'sent': 0,
             'matched': 0,
+            'rules': [],
         }
     finally:
         run_lock.release()

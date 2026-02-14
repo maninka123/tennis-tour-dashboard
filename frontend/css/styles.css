@@ -5,12 +5,19 @@
 /* CSS Variables */
 :root {
     /* Tournament Category Colors (can remain vibrant) */
-    --grand-slam: #8e44ad;
+    --grand-slam: #6c5ce7;
+    --atp-1000: #f1c40f;
+    --wta-1000: #f1c40f;
     --masters-1000: #f1c40f;
-    --atp-500: #ff7a59;
-    --atp-250: #f4b183;
+    --atp-500: #00b894;
+    --wta-500: #00b894;
+    --atp-250: #e84393;
+    --wta-250: #e84393;
     --atp-125: #9ca3af;
-    --finals: #e91e63;
+    --wta-125: #9ca3af;
+    --atp-finals: #b83280;
+    --wta-finals: #b83280;
+    --finals: #b83280;
     --other: #7F8C8D;
 
     /* Surface Colors */
@@ -453,6 +460,40 @@ body {
     color: var(--accent-primary);
 }
 
+.match-reload-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: 1px solid var(--bg-tertiary);
+    border-radius: 999px;
+    background:
+        repeating-linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.08) 0,
+            rgba(255, 255, 255, 0.08) 4px,
+            rgba(255, 255, 255, 0.02) 4px,
+            rgba(255, 255, 255, 0.02) 8px
+        ),
+        linear-gradient(180deg, #f5f1e7 0%, #ece6da 100%);
+    color: var(--text-primary);
+    font-size: 0.58rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.match-reload-btn:hover:not(:disabled) {
+    border-color: #d8c9ad;
+    filter: brightness(0.98);
+}
+
+.match-reload-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
 .season-progress-header {
     display: flex;
     align-items: center;
@@ -794,10 +835,17 @@ body {
 
 /* Category Colors for Match Cards */
 .match-card.grand-slam::before { background: var(--grand-slam); }
-.match-card.masters-1000::before { background: var(--masters-1000); }
+.match-card.masters-1000::before { background: var(--atp-1000); }
+.match-card.atp-1000::before { background: var(--atp-1000); }
+.match-card.wta-1000::before { background: var(--wta-1000); }
 .match-card.atp-500::before { background: var(--atp-500); }
+.match-card.wta-500::before { background: var(--wta-500); }
 .match-card.atp-250::before { background: var(--atp-250); }
+.match-card.wta-250::before { background: var(--wta-250); }
 .match-card.atp-125::before { background: var(--atp-125); }
+.match-card.wta-125::before { background: var(--wta-125); }
+.match-card.atp-finals::before { background: var(--atp-finals); }
+.match-card.wta-finals::before { background: var(--wta-finals); }
 .match-card.other::before { background: var(--other); }
 
 .match-card.surface-hard { border-right-color: var(--surface-hard); }
@@ -837,10 +885,17 @@ body {
 }
 
 .upcoming-match-card.grand-slam { border-top-color: var(--grand-slam); }
-.upcoming-match-card.masters-1000 { border-top-color: var(--masters-1000); }
+.upcoming-match-card.masters-1000 { border-top-color: var(--atp-1000); }
+.upcoming-match-card.atp-1000 { border-top-color: var(--atp-1000); }
+.upcoming-match-card.wta-1000 { border-top-color: var(--wta-1000); }
 .upcoming-match-card.atp-500 { border-top-color: var(--atp-500); }
+.upcoming-match-card.wta-500 { border-top-color: var(--wta-500); }
 .upcoming-match-card.atp-250 { border-top-color: var(--atp-250); }
+.upcoming-match-card.wta-250 { border-top-color: var(--wta-250); }
 .upcoming-match-card.atp-125 { border-top-color: var(--atp-125); }
+.upcoming-match-card.wta-125 { border-top-color: var(--wta-125); }
+.upcoming-match-card.atp-finals { border-top-color: var(--atp-finals); }
+.upcoming-match-card.wta-finals { border-top-color: var(--wta-finals); }
 .upcoming-match-card.other { border-top-color: var(--other); }
 
 .upcoming-match-card.surface-hard { border-right-color: var(--surface-hard); }
@@ -1747,23 +1802,45 @@ body {
     border-color: rgba(142, 68, 173, 0.3);
 }
 
-.match-card.grand-slam .category-badge { background: rgba(142, 68, 173, 0.2); color: #6b2f85; }
+.match-card.grand-slam .category-badge { background: rgba(108, 92, 231, 0.24); color: #3f33a0; }
 .match-card.masters-1000 .category-badge { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
-.match-card.atp-500 .category-badge { background: rgba(255, 122, 89, 0.25); color: #b3472b; }
-.match-card.atp-250 .category-badge { background: rgba(244, 177, 131, 0.3); color: #8a4b1f; }
+.match-card.atp-1000 .category-badge { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.match-card.wta-1000 .category-badge { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.match-card.atp-500 .category-badge { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.match-card.wta-500 .category-badge { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.match-card.atp-250 .category-badge { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
+.match-card.wta-250 .category-badge { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
 .match-card.atp-125 .category-badge { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
+.match-card.wta-125 .category-badge { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
+.match-card.atp-finals .category-badge { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
+.match-card.wta-finals .category-badge { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
 
-.upcoming-match-card.grand-slam .category-badge { background: rgba(142, 68, 173, 0.2); color: #6b2f85; }
+.upcoming-match-card.grand-slam .category-badge { background: rgba(108, 92, 231, 0.24); color: #3f33a0; }
 .upcoming-match-card.masters-1000 .category-badge { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
-.upcoming-match-card.atp-500 .category-badge { background: rgba(255, 122, 89, 0.25); color: #b3472b; }
-.upcoming-match-card.atp-250 .category-badge { background: rgba(244, 177, 131, 0.3); color: #8a4b1f; }
+.upcoming-match-card.atp-1000 .category-badge { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.upcoming-match-card.wta-1000 .category-badge { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.upcoming-match-card.atp-500 .category-badge { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.upcoming-match-card.wta-500 .category-badge { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.upcoming-match-card.atp-250 .category-badge { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
+.upcoming-match-card.wta-250 .category-badge { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
+.upcoming-match-card.atp-125 .category-badge { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
+.upcoming-match-card.wta-125 .category-badge { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
+.upcoming-match-card.atp-finals .category-badge { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
+.upcoming-match-card.wta-finals .category-badge { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
 
-.category-badge.grand-slam { background: rgba(142, 68, 173, 0.2); color: #6b2f85; }
+.category-badge.grand-slam { background: rgba(108, 92, 231, 0.24); color: #3f33a0; }
 .category-badge.masters-1000 { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
-.category-badge.atp-500 { background: rgba(255, 122, 89, 0.25); color: #b3472b; }
-.category-badge.atp-250 { background: rgba(244, 177, 131, 0.3); color: #8a4b1f; }
+.category-badge.atp-1000 { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.category-badge.wta-1000 { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.category-badge.atp-500 { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.category-badge.wta-500 { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.category-badge.atp-250 { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
+.category-badge.wta-250 { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
 .category-badge.atp-125 { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
-.category-badge.finals { background: rgba(233, 30, 99, 0.2); color: #a3134a; }
+.category-badge.wta-125 { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
+.category-badge.atp-finals { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
+.category-badge.wta-finals { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
+.category-badge.finals { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
 .upcoming-match-card.atp-125 .category-badge { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
 
 .match-round {
@@ -2528,11 +2605,18 @@ body {
 
 /* Tournament Category Colors */
 .tournament-item.grand-slam { border-left-color: var(--grand-slam); }
-.tournament-item.masters-1000 { border-left-color: var(--masters-1000); }
+.tournament-item.masters-1000 { border-left-color: var(--atp-1000); }
+.tournament-item.atp-1000 { border-left-color: var(--atp-1000); }
+.tournament-item.wta-1000 { border-left-color: var(--wta-1000); }
 .tournament-item.atp-500 { border-left-color: var(--atp-500); }
+.tournament-item.wta-500 { border-left-color: var(--wta-500); }
 .tournament-item.atp-250 { border-left-color: var(--atp-250); }
+.tournament-item.wta-250 { border-left-color: var(--wta-250); }
 .tournament-item.atp-125 { border-left-color: var(--atp-125); }
-.tournament-item.finals { border-left-color: var(--finals); }
+.tournament-item.wta-125 { border-left-color: var(--wta-125); }
+.tournament-item.atp-finals { border-left-color: var(--atp-finals); }
+.tournament-item.wta-finals { border-left-color: var(--wta-finals); }
+.tournament-item.finals { border-left-color: var(--atp-finals); }
 .tournament-item.other { border-left-color: var(--other); }
 
 .tournament-item.upcoming {
@@ -2653,12 +2737,19 @@ body {
     text-transform: uppercase;
 }
 
-.tournament-category-badge.grand-slam { background: var(--grand-slam); }
-.tournament-category-badge.masters-1000 { background: var(--masters-1000); color: var(--bg-primary); }
-.tournament-category-badge.atp-500 { background: var(--atp-500); }
-.tournament-category-badge.atp-250 { background: var(--atp-250); }
-.tournament-category-badge.atp-125 { background: var(--atp-125); }
-.tournament-category-badge.finals { background: var(--finals); }
+.tournament-category-badge.grand-slam { background: rgba(108, 92, 231, 0.24); color: #3f33a0; }
+.tournament-category-badge.masters-1000 { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.tournament-category-badge.atp-1000 { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.tournament-category-badge.wta-1000 { background: rgba(241, 196, 15, 0.25); color: #8a6d00; }
+.tournament-category-badge.atp-500 { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.tournament-category-badge.wta-500 { background: rgba(0, 184, 148, 0.24); color: #0b6f5a; }
+.tournament-category-badge.atp-250 { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
+.tournament-category-badge.wta-250 { background: rgba(232, 67, 147, 0.22); color: #8a1f58; }
+.tournament-category-badge.atp-125 { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
+.tournament-category-badge.wta-125 { background: rgba(156, 163, 175, 0.3); color: #4b5563; }
+.tournament-category-badge.atp-finals { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
+.tournament-category-badge.wta-finals { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
+.tournament-category-badge.finals { background: rgba(184, 50, 128, 0.2); color: #7a1f54; }
 
 .tournament-year-badge {
     font-size: 0.6rem;
@@ -3258,12 +3349,19 @@ body {
     font-size: 0.9rem;
 }
 
-.bracket-container.grand-slam .round-header { background: rgba(142, 68, 173, 0.18); color: #6b2f85; border-left: 4px solid #8e44ad; }
-.bracket-container.masters-1000 .round-header { background: rgba(241, 196, 15, 0.22); color: #8a6d00; border-left: 4px solid #f1c40f; }
-.bracket-container.atp-500 .round-header { background: rgba(255, 122, 89, 0.22); color: #b3472b; border-left: 4px solid #ff7a59; }
-.bracket-container.atp-250 .round-header { background: rgba(244, 177, 131, 0.22); color: #8a4b1f; border-left: 4px solid #f4b183; }
-.bracket-container.atp-125 .round-header { background: rgba(156, 163, 175, 0.22); color: #4b5563; border-left: 4px solid #9ca3af; }
-.bracket-container.finals .round-header { background: rgba(233, 30, 99, 0.18); color: #a3134a; border-left: 4px solid #e91e63; }
+.bracket-container.grand-slam .round-header { background: rgba(108, 92, 231, 0.18); color: #3f33a0; border-left: 4px solid #6c5ce7; }
+.bracket-container.masters-1000 .round-header,
+.bracket-container.atp-1000 .round-header,
+.bracket-container.wta-1000 .round-header { background: rgba(241, 196, 15, 0.22); color: #8a6d00; border-left: 4px solid #f1c40f; }
+.bracket-container.atp-500 .round-header,
+.bracket-container.wta-500 .round-header { background: rgba(0, 184, 148, 0.22); color: #0b6f5a; border-left: 4px solid #00b894; }
+.bracket-container.atp-250 .round-header,
+.bracket-container.wta-250 .round-header { background: rgba(232, 67, 147, 0.2); color: #8a1f58; border-left: 4px solid #e84393; }
+.bracket-container.atp-125 .round-header,
+.bracket-container.wta-125 .round-header { background: rgba(156, 163, 175, 0.22); color: #4b5563; border-left: 4px solid #9ca3af; }
+.bracket-container.finals .round-header,
+.bracket-container.atp-finals .round-header,
+.bracket-container.wta-finals .round-header { background: rgba(184, 50, 128, 0.18); color: #7a1f54; border-left: 4px solid #b83280; }
 
 .round-points {
     display: block;
@@ -3367,33 +3465,40 @@ body {
 }
 
 .bracket-container.grand-slam .bracket-match {
-    background: rgba(142, 68, 173, 0.08);
-    border-color: rgba(142, 68, 173, 0.35);
+    background: rgba(108, 92, 231, 0.08);
+    border-color: rgba(108, 92, 231, 0.35);
 }
 
-.bracket-container.masters-1000 .bracket-match {
+.bracket-container.masters-1000 .bracket-match,
+.bracket-container.atp-1000 .bracket-match,
+.bracket-container.wta-1000 .bracket-match {
     background: rgba(241, 196, 15, 0.12);
     border-color: rgba(241, 196, 15, 0.45);
 }
 
-.bracket-container.atp-500 .bracket-match {
-    background: rgba(255, 122, 89, 0.12);
-    border-color: rgba(255, 122, 89, 0.45);
+.bracket-container.atp-500 .bracket-match,
+.bracket-container.wta-500 .bracket-match {
+    background: rgba(0, 184, 148, 0.12);
+    border-color: rgba(0, 184, 148, 0.45);
 }
 
-.bracket-container.atp-250 .bracket-match {
-    background: rgba(244, 177, 131, 0.12);
-    border-color: rgba(244, 177, 131, 0.45);
+.bracket-container.atp-250 .bracket-match,
+.bracket-container.wta-250 .bracket-match {
+    background: rgba(232, 67, 147, 0.12);
+    border-color: rgba(232, 67, 147, 0.42);
 }
 
-.bracket-container.atp-125 .bracket-match {
+.bracket-container.atp-125 .bracket-match,
+.bracket-container.wta-125 .bracket-match {
     background: rgba(156, 163, 175, 0.16);
     border-color: rgba(156, 163, 175, 0.45);
 }
 
-.bracket-container.finals .bracket-match {
-    background: rgba(233, 30, 99, 0.12);
-    border-color: rgba(233, 30, 99, 0.45);
+.bracket-container.finals .bracket-match,
+.bracket-container.atp-finals .bracket-match,
+.bracket-container.wta-finals .bracket-match {
+    background: rgba(184, 50, 128, 0.12);
+    border-color: rgba(184, 50, 128, 0.42);
 }
 
 .bracket-match.finished {
@@ -5004,11 +5109,18 @@ img {
 }
 
 .recent-tournament-card.category-grand-slam { border-left-color: var(--grand-slam); }
-.recent-tournament-card.category-masters-1000 { border-left-color: var(--masters-1000); }
+.recent-tournament-card.category-masters-1000 { border-left-color: var(--atp-1000); }
+.recent-tournament-card.category-atp-1000 { border-left-color: var(--atp-1000); }
+.recent-tournament-card.category-wta-1000 { border-left-color: var(--wta-1000); }
 .recent-tournament-card.category-atp-500 { border-left-color: var(--atp-500); }
+.recent-tournament-card.category-wta-500 { border-left-color: var(--wta-500); }
 .recent-tournament-card.category-atp-250 { border-left-color: var(--atp-250); }
+.recent-tournament-card.category-wta-250 { border-left-color: var(--wta-250); }
 .recent-tournament-card.category-atp-125 { border-left-color: var(--atp-125); }
-.recent-tournament-card.category-finals { border-left-color: var(--finals); }
+.recent-tournament-card.category-wta-125 { border-left-color: var(--wta-125); }
+.recent-tournament-card.category-atp-finals { border-left-color: var(--atp-finals); }
+.recent-tournament-card.category-wta-finals { border-left-color: var(--wta-finals); }
+.recent-tournament-card.category-finals { border-left-color: var(--atp-finals); }
 
 .recent-tournament-header {
     display: flex;

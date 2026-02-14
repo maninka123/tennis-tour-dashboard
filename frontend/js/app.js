@@ -78,6 +78,9 @@ const AppState = {
     recentMatches: { atp: [], wta: [] },
     upcomingMatchesUpdatedAt: null,
     recentMatchesUpdatedAt: null,
+    isRefreshingLiveMatches: false,
+    isRefreshingRecentMatches: false,
+    isRefreshingUpcomingMatches: false,
     rankings: { atp: [], wta: [] },
     rankingsDisplayLimit: { atp: 200, wta: 200 },
     atpRankingsStatus: null,
@@ -112,11 +115,13 @@ const DOM = {
     // Live scores
     liveScoresWrapper: document.getElementById('liveScoresWrapper'),
     liveScoresContainer: document.getElementById('liveScoresContainer'),
+    liveMatchesReloadBtn: document.getElementById('liveMatchesReloadBtn'),
     
     // Recent matches
     recentMatchesWrapper: document.getElementById('recentMatchesWrapper'),
     recentMatchesContainer: document.getElementById('recentMatchesContainer'),
     recentUpdatedAgo: document.getElementById('recentUpdatedAgo'),
+    recentMatchesReloadBtn: document.getElementById('recentMatchesReloadBtn'),
     
     // Rankings
     rankingsList: document.getElementById('rankingsList'),
@@ -219,15 +224,42 @@ const Utils = {
     /**
      * Format category for CSS class
      */
-    getCategoryClass(category) {
+    getCategoryClass(category, tour = '') {
         const safe = String(category || 'other').trim().toLowerCase();
         if (!safe) return 'other';
-        return safe
+        const normalized = safe
             .replace(/\s+/g, '_')
             .replace(/[^a-z0-9_]/g, '_')
             .replace(/_+/g, '_')
-            .replace(/^_+|_+$/g, '')
-            .replace(/_/g, '-') || 'other';
+            .replace(/^_+|_+$/g, '');
+        if (!normalized) return 'other';
+
+        const explicitTour = String(tour || '').trim().toLowerCase();
+        const currentTour = String(window.TennisApp?.AppState?.currentTour || '').trim().toLowerCase();
+        const resolvedTour = explicitTour === 'atp' || explicitTour === 'wta'
+            ? explicitTour
+            : (currentTour === 'atp' || currentTour === 'wta' ? currentTour : '');
+
+        if (normalized === 'grand_slam') return 'grand-slam';
+        if (normalized === 'masters_1000' || normalized === '1000') {
+            return resolvedTour === 'wta' ? 'wta-1000' : 'atp-1000';
+        }
+        if (normalized === 'atp_1000') return 'atp-1000';
+        if (normalized === 'wta_1000') return 'wta-1000';
+        if (normalized === 'atp_500') return 'atp-500';
+        if (normalized === 'wta_500') return 'wta-500';
+        if (normalized === '500') return resolvedTour === 'wta' ? 'wta-500' : 'atp-500';
+        if (normalized === 'atp_250') return 'atp-250';
+        if (normalized === 'wta_250') return 'wta-250';
+        if (normalized === '250') return resolvedTour === 'wta' ? 'wta-250' : 'atp-250';
+        if (normalized === 'atp_125') return 'atp-125';
+        if (normalized === 'wta_125') return 'wta-125';
+        if (normalized === '125') return resolvedTour === 'wta' ? 'wta-125' : 'atp-125';
+        if (normalized === 'atp_finals') return 'atp-finals';
+        if (normalized === 'wta_finals') return 'wta-finals';
+        if (normalized === 'finals') return resolvedTour === 'wta' ? 'wta-finals' : 'atp-finals';
+
+        return normalized.replace(/_/g, '-') || 'other';
     },
 
     /**
@@ -885,6 +917,14 @@ const EventHandlers = {
             await App.refreshCurrentTourTournaments();
         });
 
+        DOM.liveMatchesReloadBtn?.addEventListener('click', async () => {
+            await App.refreshLiveMatches();
+        });
+
+        DOM.recentMatchesReloadBtn?.addEventListener('click', async () => {
+            await App.refreshRecentMatches();
+        });
+
         // Helper to extract player info from a DOM element
         const extractPlayerInfo = (el) => {
             if (!el) return {};
@@ -919,6 +959,12 @@ const EventHandlers = {
 
         // Match card click handlers
         document.addEventListener('click', (e) => {
+            const upcomingRefreshBtn = e.target.closest('#upcomingMatchesReloadBtn');
+            if (upcomingRefreshBtn) {
+                App.refreshUpcomingMatches();
+                return;
+            }
+
             const playerRow = e.target.closest('.player-row[data-player-id]');
             if (playerRow && playerRow.dataset.playerId) {
                 PlayerModule.showPlayerStats(playerRow.dataset.playerId, extractPlayerInfo(playerRow));
@@ -1022,6 +1068,7 @@ const EventHandlers = {
         ScoresModule.renderRecentMatches();
         RankingsModule.render();
         TournamentsModule.render();
+        App.syncMatchSectionReloadButtons();
 
         // Update favourites panel for the new tour
         if (window.FavouritesModule) {
@@ -1234,6 +1281,7 @@ const App = {
         this.syncTournamentHeaderState();
         this.startLiveScoreRefreshLoop();
         this.startPeriodicRefresh();
+        this.syncMatchSectionReloadButtons();
         
         // Hide loading overlay
         setTimeout(() => {
@@ -1629,6 +1677,93 @@ const App = {
         TournamentsModule.render();
     },
 
+    syncMatchSectionReloadButtons() {
+        const tour = AppState.currentTour === 'wta' ? 'wta' : 'atp';
+        const tourLabel = tour.toUpperCase();
+        const controls = [
+            { element: DOM.liveMatchesReloadBtn, key: 'isRefreshingLiveMatches', label: 'live matches' },
+            { element: DOM.recentMatchesReloadBtn, key: 'isRefreshingRecentMatches', label: 'recent matches' },
+            { element: document.getElementById('upcomingMatchesReloadBtn'), key: 'isRefreshingUpcomingMatches', label: 'upcoming matches' }
+        ];
+
+        controls.forEach(({ element, key, label }) => {
+            if (!element) return;
+            const isRefreshing = !!AppState[key];
+            element.disabled = isRefreshing;
+            element.innerHTML = isRefreshing
+                ? '<i class="fas fa-spinner fa-spin"></i>'
+                : '<i class="fas fa-rotate-right"></i>';
+            const text = isRefreshing
+                ? `Reloading ${tourLabel} ${label}`
+                : `Reload ${tourLabel} ${label}`;
+            element.setAttribute('aria-label', text);
+            element.setAttribute('title', text);
+        });
+    },
+
+    async refreshLiveMatches() {
+        const tour = AppState.currentTour === 'wta' ? 'wta' : 'atp';
+        if (AppState.isRefreshingLiveMatches) return;
+
+        AppState.isRefreshingLiveMatches = true;
+        this.syncMatchSectionReloadButtons();
+        try {
+            const matches = await API.getLiveScores(tour);
+            AppState.liveScores[tour] = Array.isArray(matches) ? matches : [];
+            ScoresModule.renderLiveScores();
+            if (window.FavouritesModule) FavouritesModule.updateIconGlow();
+            Socket.updateLastUpdated();
+        } catch (error) {
+            console.error(`Error reloading ${tour.toUpperCase()} live matches:`, error);
+            alert(`${tour.toUpperCase()} live matches reload failed: ${error.message}`);
+        } finally {
+            AppState.isRefreshingLiveMatches = false;
+            this.syncMatchSectionReloadButtons();
+        }
+    },
+
+    async refreshRecentMatches() {
+        const tour = AppState.currentTour === 'wta' ? 'wta' : 'atp';
+        if (AppState.isRefreshingRecentMatches) return;
+
+        AppState.isRefreshingRecentMatches = true;
+        this.syncMatchSectionReloadButtons();
+        try {
+            const matches = await API.getRecentMatches(tour, 15);
+            AppState.recentMatches[tour] = Array.isArray(matches) ? matches : [];
+            AppState.recentMatchesUpdatedAt = new Date().toISOString();
+            ScoresModule.renderRecentMatches();
+            Socket.updateLastUpdated();
+        } catch (error) {
+            console.error(`Error reloading ${tour.toUpperCase()} recent matches:`, error);
+            alert(`${tour.toUpperCase()} recent matches reload failed: ${error.message}`);
+        } finally {
+            AppState.isRefreshingRecentMatches = false;
+            this.syncMatchSectionReloadButtons();
+        }
+    },
+
+    async refreshUpcomingMatches() {
+        const tour = AppState.currentTour === 'wta' ? 'wta' : 'atp';
+        if (AppState.isRefreshingUpcomingMatches) return;
+
+        AppState.isRefreshingUpcomingMatches = true;
+        this.syncMatchSectionReloadButtons();
+        try {
+            const matches = await API.getUpcomingMatches(tour);
+            AppState.upcomingMatches[tour] = Array.isArray(matches) ? matches : [];
+            AppState.upcomingMatchesUpdatedAt = new Date().toISOString();
+            ScoresModule.renderUpcomingMatches();
+            Socket.updateLastUpdated();
+        } catch (error) {
+            console.error(`Error reloading ${tour.toUpperCase()} upcoming matches:`, error);
+            alert(`${tour.toUpperCase()} upcoming matches reload failed: ${error.message}`);
+        } finally {
+            AppState.isRefreshingUpcomingMatches = false;
+            this.syncMatchSectionReloadButtons();
+        }
+    },
+
     /**
      * Periodic refresh for match sections
      */
@@ -1740,4 +1875,8 @@ window.TennisApp.openStatsZoneModal = App.openStatsZoneModal;
 window.TennisApp.closeStatsZoneModal = App.closeStatsZoneModal;
 window.TennisApp.refreshAtpStats = App.refreshAtpStats.bind(App);
 window.TennisApp.refreshWtaStats = App.refreshWtaStats.bind(App);
+window.TennisApp.syncMatchSectionReloadButtons = App.syncMatchSectionReloadButtons.bind(App);
+window.TennisApp.refreshLiveMatches = App.refreshLiveMatches.bind(App);
+window.TennisApp.refreshRecentMatches = App.refreshRecentMatches.bind(App);
+window.TennisApp.refreshUpcomingMatches = App.refreshUpcomingMatches.bind(App);
 window.TennisApp.openDataAnalysis = App.openDataAnalysis.bind(App);

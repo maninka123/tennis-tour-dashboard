@@ -2461,16 +2461,24 @@ class TennisDataFetcher:
         if 'GRAND' in raw_level or raw_level in ('GS',) or any(gs.upper() in raw_name for gs in Config.GRAND_SLAMS):
             return 'grand_slam'
         if any(token in raw_level for token in ('1000', 'PM', 'P1')):
-            return 'masters_1000'
+            return 'wta_1000'
         if any(token in raw_level for token in ('500', 'P5')):
-            return 'atp_500'
+            return 'wta_500'
         if any(token in raw_level for token in ('250', 'P2')):
-            return 'atp_250'
+            return 'wta_250'
         if any(token in raw_level for token in ('125', 'P3')):
-            return 'atp_125'
+            return 'wta_125'
         if 'FINAL' in raw_level:
-            return 'finals'
+            return 'wta_finals'
         category = self.get_tournament_category(tournament_name or '')
+        if category == 'masters_1000':
+            return 'wta_1000'
+        if category == 'atp_500':
+            return 'wta_500'
+        if category == 'atp_250':
+            return 'wta_250'
+        if category == 'atp_125':
+            return 'wta_125'
         return category if category != 'other' else 'other'
 
     def _category_label(self, category):
@@ -2486,10 +2494,17 @@ class TennisDataFetcher:
         labels = {
             'grand_slam': 'Grand Slam',
             'masters_1000': masters_label,
+            'wta_1000': 'WTA 1000',
+            'atp_1000': 'ATP 1000',
             'atp_500': atp500_label,
+            'wta_500': 'WTA 500',
             'atp_250': atp250_label,
+            'wta_250': 'WTA 250',
             'atp_125': atp125_label,
+            'wta_125': 'WTA 125',
             'finals': finals_label,
+            'atp_finals': 'ATP Finals',
+            'wta_finals': 'WTA Finals',
             'other': 'Tour'
         }
         return labels.get(category, 'Tour')
@@ -3323,13 +3338,13 @@ class TennisDataFetcher:
         if self._is_grand_slam_event(name, level):
             return 'grand_slam'
         if '1000' in level_lower:
-            return 'masters_1000'
+            return 'wta_1000'
         if '500' in level_lower:
-            return 'atp_500'
+            return 'wta_500'
         if '250' in level_lower:
-            return 'atp_250'
+            return 'wta_250'
         if '125' in level_lower:
-            return 'atp_125'
+            return 'wta_125'
         return 'other'
 
     def _normalize_draw_size(self, draw_size):
@@ -4890,15 +4905,15 @@ class TennisDataFetcher:
         if "GRAND SLAM" in upper:
             return 'grand_slam'
         if "1000" in upper:
-            return 'masters_1000'
+            return 'wta_1000'
         if "500" in upper:
-            return 'atp_500'
+            return 'wta_500'
         if "250" in upper:
-            return 'atp_250'
+            return 'wta_250'
         if "125" in upper:
-            return 'atp_125'
+            return 'wta_125'
         if "FINALS" in upper:
-            return 'finals'
+            return 'wta_finals'
         return 'other'
 
     def _load_wta_tournaments_from_files(self, year):
@@ -4911,15 +4926,15 @@ class TennisDataFetcher:
             if "GRAND SLAM" in upper or (name in Config.GRAND_SLAMS):
                 return 'grand_slam'
             if "1000" in upper:
-                return 'masters_1000'
+                return 'wta_1000'
             if "500" in upper:
-                return 'atp_500'
+                return 'wta_500'
             if "250" in upper:
-                return 'atp_250'
+                return 'wta_250'
             if "125" in upper:
-                return 'atp_125'
+                return 'wta_125'
             if "FINAL" in upper or "FINALS" in upper or "WTA FINALS" in (name or "").upper():
-                return 'finals'
+                return 'wta_finals'
             return 'other'
 
         def _title_case(value):
@@ -5107,8 +5122,8 @@ class TennisDataFetcher:
         ]
         wta_tournaments = [
             {'name': 'Australian Open', 'category': 'grand_slam', 'location': 'Melbourne, Australia'},
-            {'name': 'Qatar Open', 'category': 'masters_1000', 'location': 'Doha, Qatar'},
-            {'name': 'Dubai Championships', 'category': 'masters_1000', 'location': 'Dubai, UAE'},
+            {'name': 'Qatar Open', 'category': 'wta_1000', 'location': 'Doha, Qatar'},
+            {'name': 'Dubai Championships', 'category': 'wta_1000', 'location': 'Dubai, UAE'},
         ]
         
         matches = []
@@ -5246,8 +5261,8 @@ class TennisDataFetcher:
         ]
         wta_tournaments = [
             {'name': 'Australian Open', 'category': 'grand_slam'},
-            {'name': 'Qatar Open', 'category': 'masters_1000'},
-            {'name': 'Doha Open', 'category': 'atp_500'},
+            {'name': 'Qatar Open', 'category': 'wta_1000'},
+            {'name': 'Doha Open', 'category': 'wta_500'},
         ]
         
         for i in range(limit):
@@ -5309,9 +5324,9 @@ class TennisDataFetcher:
         ]
         wta_tournaments = [
             {'name': 'Australian Open', 'category': 'grand_slam'},
-            {'name': 'Qatar Open', 'category': 'masters_1000'},
-            {'name': 'Dubai Championships', 'category': 'masters_1000'},
-            {'name': 'Abu Dhabi Open', 'category': 'atp_500'},
+            {'name': 'Qatar Open', 'category': 'wta_1000'},
+            {'name': 'Dubai Championships', 'category': 'wta_1000'},
+            {'name': 'Abu Dhabi Open', 'category': 'wta_500'},
         ]
         
         # Generate 2-4 upcoming matches
@@ -5914,48 +5929,48 @@ class TennisDataFetcher:
                  'start': f'{year}-07-01', 'end': f'{year}-07-14', 'surface': 'Grass'},
                 {'name': 'US Open', 'category': 'grand_slam', 'location': 'New York, USA',
                  'start': f'{year}-08-26', 'end': f'{year}-09-08', 'surface': 'Hard'},
-                # WTA 1000 (mapped to masters_1000 for styling)
-                {'name': 'Qatar Open', 'category': 'masters_1000', 'location': 'Doha, Qatar',
+                # WTA 1000
+                {'name': 'Qatar Open', 'category': 'wta_1000', 'location': 'Doha, Qatar',
                  'start': f'{year}-02-10', 'end': f'{year}-02-17', 'surface': 'Hard'},
-                {'name': 'Dubai Championships', 'category': 'masters_1000', 'location': 'Dubai, UAE',
+                {'name': 'Dubai Championships', 'category': 'wta_1000', 'location': 'Dubai, UAE',
                  'start': f'{year}-02-19', 'end': f'{year}-02-25', 'surface': 'Hard'},
-                {'name': 'Indian Wells Open', 'category': 'masters_1000', 'location': 'Indian Wells, USA',
+                {'name': 'Indian Wells Open', 'category': 'wta_1000', 'location': 'Indian Wells, USA',
                  'start': f'{year}-03-06', 'end': f'{year}-03-17', 'surface': 'Hard'},
-                {'name': 'Miami Open', 'category': 'masters_1000', 'location': 'Miami, USA',
+                {'name': 'Miami Open', 'category': 'wta_1000', 'location': 'Miami, USA',
                  'start': f'{year}-03-20', 'end': f'{year}-03-31', 'surface': 'Hard'},
-                {'name': 'Madrid Open', 'category': 'masters_1000', 'location': 'Madrid, Spain',
+                {'name': 'Madrid Open', 'category': 'wta_1000', 'location': 'Madrid, Spain',
                  'start': f'{year}-04-25', 'end': f'{year}-05-05', 'surface': 'Clay'},
-                {'name': 'Italian Open', 'category': 'masters_1000', 'location': 'Rome, Italy',
+                {'name': 'Italian Open', 'category': 'wta_1000', 'location': 'Rome, Italy',
                  'start': f'{year}-05-08', 'end': f'{year}-05-19', 'surface': 'Clay'},
-                {'name': 'Canadian Open', 'category': 'masters_1000', 'location': 'Toronto/Montreal, Canada',
+                {'name': 'Canadian Open', 'category': 'wta_1000', 'location': 'Toronto/Montreal, Canada',
                  'start': f'{year}-08-05', 'end': f'{year}-08-11', 'surface': 'Hard'},
-                {'name': 'Cincinnati Open', 'category': 'masters_1000', 'location': 'Cincinnati, USA',
+                {'name': 'Cincinnati Open', 'category': 'wta_1000', 'location': 'Cincinnati, USA',
                  'start': f'{year}-08-12', 'end': f'{year}-08-18', 'surface': 'Hard'},
-                {'name': 'Wuhan Open', 'category': 'masters_1000', 'location': 'Wuhan, China',
+                {'name': 'Wuhan Open', 'category': 'wta_1000', 'location': 'Wuhan, China',
                  'start': f'{year}-09-21', 'end': f'{year}-09-29', 'surface': 'Hard'},
-                {'name': 'Beijing Open', 'category': 'masters_1000', 'location': 'Beijing, China',
+                {'name': 'Beijing Open', 'category': 'wta_1000', 'location': 'Beijing, China',
                  'start': f'{year}-10-01', 'end': f'{year}-10-08', 'surface': 'Hard'},
                 # WTA 500
-                {'name': 'Adelaide International', 'category': 'atp_500', 'location': 'Adelaide, Australia',
+                {'name': 'Adelaide International', 'category': 'wta_500', 'location': 'Adelaide, Australia',
                  'start': f'{year}-01-08', 'end': f'{year}-01-13', 'surface': 'Hard'},
-                {'name': 'Stuttgart Open', 'category': 'atp_500', 'location': 'Stuttgart, Germany',
+                {'name': 'Stuttgart Open', 'category': 'wta_500', 'location': 'Stuttgart, Germany',
                  'start': f'{year}-04-15', 'end': f'{year}-04-21', 'surface': 'Clay'},
-                {'name': 'Berlin Open', 'category': 'atp_500', 'location': 'Berlin, Germany',
+                {'name': 'Berlin Open', 'category': 'wta_500', 'location': 'Berlin, Germany',
                  'start': f'{year}-06-17', 'end': f'{year}-06-23', 'surface': 'Grass'},
-                {'name': 'Eastbourne International', 'category': 'atp_500', 'location': 'Eastbourne, UK',
+                {'name': 'Eastbourne International', 'category': 'wta_500', 'location': 'Eastbourne, UK',
                  'start': f'{year}-06-24', 'end': f'{year}-06-29', 'surface': 'Grass'},
-                {'name': 'San Diego Open', 'category': 'atp_500', 'location': 'San Diego, USA',
+                {'name': 'San Diego Open', 'category': 'wta_500', 'location': 'San Diego, USA',
                  'start': f'{year}-09-09', 'end': f'{year}-09-15', 'surface': 'Hard'},
                 # WTA 250
-                {'name': 'Hobart International', 'category': 'atp_250', 'location': 'Hobart, Australia',
+                {'name': 'Hobart International', 'category': 'wta_250', 'location': 'Hobart, Australia',
                  'start': f'{year}-01-08', 'end': f'{year}-01-13', 'surface': 'Hard'},
-                {'name': 'Auckland Open', 'category': 'atp_250', 'location': 'Auckland, New Zealand',
+                {'name': 'Auckland Open', 'category': 'wta_250', 'location': 'Auckland, New Zealand',
                  'start': f'{year}-01-01', 'end': f'{year}-01-07', 'surface': 'Hard'},
-                {'name': 'Linz Open', 'category': 'atp_250', 'location': 'Linz, Austria',
+                {'name': 'Linz Open', 'category': 'wta_250', 'location': 'Linz, Austria',
                  'start': f'{year}-01-27', 'end': f'{year}-02-02', 'surface': 'Hard (Indoor)'},
-                {'name': 'Charleston Open', 'category': 'atp_250', 'location': 'Charleston, USA',
+                {'name': 'Charleston Open', 'category': 'wta_250', 'location': 'Charleston, USA',
                  'start': f'{year}-04-01', 'end': f'{year}-04-07', 'surface': 'Clay'},
-                {'name': 'Seoul Open', 'category': 'atp_250', 'location': 'Seoul, South Korea',
+                {'name': 'Seoul Open', 'category': 'wta_250', 'location': 'Seoul, South Korea',
                  'start': f'{year}-09-16', 'end': f'{year}-09-22', 'surface': 'Hard'},
             ]
         

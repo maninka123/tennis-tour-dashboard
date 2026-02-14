@@ -217,7 +217,8 @@ const TournamentsModule = {
      */
     createTournamentItem(tournament) {
         const { Utils } = window.TennisApp;
-        const categoryClass = Utils.getCategoryClass(tournament.category);
+        const categoryKey = String(tournament.category || '').trim().toLowerCase();
+        const categoryClass = Utils.getCategoryClass(categoryKey, tournament.tour || window.TennisApp?.AppState?.currentTour || '');
         const cleanedName = this.sanitizeTournamentName(tournament.name);
         const date = Utils.formatDate(tournament.start_date);
         const startDate = new Date(tournament.start_date);
@@ -287,10 +288,17 @@ const TournamentsModule = {
         const tour = window.TennisApp?.AppState?.currentTour || 'atp';
         const categoryNames = {
             'grand_slam': 'Grand Slam',
+            'atp_1000': 'Masters 1000',
+            'wta_1000': 'WTA 1000',
             'masters_1000': tour === 'wta' ? 'WTA 1000' : 'Masters 1000',
-            'atp_500': tour === 'wta' ? 'WTA 500' : 'ATP 500',
-            'atp_250': tour === 'wta' ? 'WTA 250' : 'ATP 250',
-            'atp_125': tour === 'wta' ? 'WTA 125' : 'ATP 125',
+            'atp_500': 'ATP 500',
+            'wta_500': 'WTA 500',
+            'atp_250': 'ATP 250',
+            'wta_250': 'WTA 250',
+            'atp_125': 'ATP 125',
+            'wta_125': 'WTA 125',
+            'atp_finals': 'ATP Finals',
+            'wta_finals': 'WTA Finals',
             'finals': tour === 'wta' ? 'WTA Finals' : 'ATP Finals',
             'other': 'Other'
         };
@@ -320,7 +328,7 @@ const TournamentsModule = {
                     <div class="tournament-title">
                         <span class="tournament-name-text">${cleanedName}</span>
                         <div class="tournament-badges">
-                            <span class="tournament-category-badge ${categoryClass}">${categoryNames[tournament.category] || tournament.category}</span>
+                            <span class="tournament-category-badge ${categoryClass}">${categoryNames[categoryKey] || categoryKey || 'other'}</span>
                             ${liveBadge}
                         </div>
                     </div>

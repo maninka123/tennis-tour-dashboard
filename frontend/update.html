@@ -112,9 +112,37 @@
                     <div class="update-progress-container">
                         <h3>Updating System...</h3>
                         <p id="update-status-msg">Please wait while we fetch the latest data. Do not close this window.</p>
-                        
-                        <div class="progress-bar-wrapper">
-                            <div class="progress-bar-fill" id="update-progress-bar"></div>
+
+                        <div class="tour-progress-grid">
+                            <div class="tour-progress-card" id="progress-card-atp">
+                                <div class="tour-progress-card-header">
+                                    <h4>ATP Update</h4>
+                                    <span class="tour-progress-eta" id="atp-progress-eta">Not selected</span>
+                                </div>
+                                <div class="tour-progress-meta">
+                                    <span id="atp-progress-count">Not selected</span>
+                                    <span class="tour-progress-state" id="atp-progress-state">Idle</span>
+                                </div>
+                                <div class="progress-bar-wrapper tour-progress-bar">
+                                    <div class="progress-bar-fill tour-progress-fill atp" id="atp-progress-bar"></div>
+                                    <span class="tour-progress-label" id="atp-progress-label">0.0% completed</span>
+                                </div>
+                            </div>
+
+                            <div class="tour-progress-card" id="progress-card-wta">
+                                <div class="tour-progress-card-header">
+                                    <h4>WTA Update</h4>
+                                    <span class="tour-progress-eta" id="wta-progress-eta">Not selected</span>
+                                </div>
+                                <div class="tour-progress-meta">
+                                    <span id="wta-progress-count">Not selected</span>
+                                    <span class="tour-progress-state" id="wta-progress-state">Idle</span>
+                                </div>
+                                <div class="progress-bar-wrapper tour-progress-bar">
+                                    <div class="progress-bar-fill tour-progress-fill wta" id="wta-progress-bar"></div>
+                                    <span class="tour-progress-label" id="wta-progress-label">0.0% completed</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="log-terminal" id="update-log">
